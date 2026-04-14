@@ -27,7 +27,8 @@ A modern, multi-tenant SaaS platform for collecting, managing, and prioritizing 
 
 ### Prerequisites
 
-- Node.js 18+ or Bun
+- Node.js 18+
+- Backend API running on `http://localhost:4560`
 - npm, yarn, or pnpm
 
 ### Installation
@@ -47,24 +48,16 @@ pnpm install
 yarn install
 ```
 
-3. Set up environment variables:
-```bash
-cp .env.example .env.local
-```
-
-Edit `.env.local` and add your configuration:
+3. Environment variables are already configured in `.env.local`:
 ```env
-# Authentication
-AUTH_SECRET=your-secret-key-here
-AUTH_URL=http://localhost:3000
-
-# Database (add your database URL)
-DATABASE_URL=your-database-url
-
-# Add other required environment variables
+AUTH_SECRET=4oQtbMxfAeYQU9d4h7uYeMWwLG9xgGL9PzyXuIjLM9U=
+FEEDBASE_API_BASE_URL=http://localhost:4560
+NEXT_PUBLIC_FEEDBASE_API_BASE_URL=http://localhost:4560
 ```
 
-4. Run the development server:
+4. Ensure the backend API is running on port 4560
+
+5. Run the development server:
 ```bash
 npm run dev
 # or
@@ -73,7 +66,9 @@ pnpm dev
 yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+7. Sign up for a new account and start exploring!
 
 ## Project Structure
 
@@ -95,31 +90,53 @@ feedbase/
 └── tailwind.config.ts    # Tailwind CSS configuration
 ```
 
-## Key Features Implementation
+## Implemented Features
 
-### Multi-Tenant System
-- Subdomain-based tenant isolation (e.g., `tenant.feedbase.com`)
-- Custom domain support
-- Tenant-specific branding and configuration
+### ✅ Authentication System
+- Secure JWT-based sessions with httpOnly cookies
+- Email/password authentication with validation
+- Protected routes with server-side checks
+- Rate limiting on auth endpoints
+- Password strength requirements
 
-### Authentication
-- Secure JWT-based sessions
-- Email/password authentication
-- Protected routes and API endpoints
-- Role-based access control (Visitor, User, Moderator, Admin, Owner)
+### ✅ Dashboard
+- Fixed sidebar navigation
+- Header with user menu and notifications bell
+- Overview page with stats cards
+- Responsive design
 
-### Feedback Management
-- Create, read, update, delete feedback posts
-- Voting system with upvotes
-- Comment threads with nested replies
-- Tag and categorize feedback
-- Duplicate detection
+### ✅ Feedback Board
+- List all feedback posts with filtering (All, Open, Planned, In Progress, Completed)
+- Create new posts (Feedback, Feature Request, Bug Report)
+- View post details with full information
+- Upvote/downvote functionality
+- Comment system with real-time updates
+- Status badges and metadata display
 
-### Roadmap & Changelog
-- Kanban-style roadmap boards
-- Status tracking (Planned, In Progress, Completed)
-- Public changelog publishing
-- Release notes and version management
+### ✅ Roadmap
+- Kanban-style board with columns
+- Roadmap items linked to posts
+- Target release date tracking
+- Column-based organization
+
+### ✅ Changelog
+- List published changelogs
+- View changelog details
+- Author and date information
+- Published/draft status
+
+### ✅ Notifications
+- Notification list with unread count
+- Mark as read (individual and bulk)
+- Notification types: post status, comments, mentions, system
+- Bell icon with badge in header
+
+### ✅ API Integration
+- Type-safe API client with full TypeScript support
+- Comprehensive error handling
+- Bearer token authentication
+- Request timeout protection
+- Services for: Posts, Votes, Comments, Roadmap, Changelog, Notifications
 
 ## Scripts
 
@@ -130,11 +147,16 @@ feedbase/
 
 ## Environment Variables
 
-Required environment variables:
+Required environment variables (already configured in `.env.local`):
 
-- `AUTH_SECRET` - Secret key for authentication
-- `AUTH_URL` - Base URL for authentication callbacks
-- `DATABASE_URL` - Database connection string
+- `AUTH_SECRET` - Secret key for authentication (pre-configured)
+- `FEEDBASE_API_BASE_URL` - Backend API URL (http://localhost:4560)
+- `NEXT_PUBLIC_FEEDBASE_API_BASE_URL` - Public API URL for client-side calls
+
+## API Documentation
+
+See `API_FULL_LIST.md` for complete API endpoint documentation.
+See `IMPLEMENTATION.md` for detailed implementation guide.
 
 ## Contributing
 

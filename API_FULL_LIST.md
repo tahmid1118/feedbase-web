@@ -32,7 +32,7 @@ Sample Response:
 {"status":"success","message":"Tenant created successfully","data":{"id":1}}
 ```
 
-### GET /tenants/:id
+### POST /tenants/:id
 Sample Body:
 ```json
 {"lg":"en"}
@@ -52,7 +52,7 @@ Sample Response:
 {"status":"success","message":"Tenant updated successfully"}
 ```
 
-### GET /tenants
+### POST /tenants
 Sample Body:
 ```json
 {"lg":"en"}
@@ -160,7 +160,7 @@ Sample Response:
 {"status":"success","message":"Post created successfully","data":{"id":101}}
 ```
 
-### GET /posts/:id
+### POST /posts/:id
 Sample Body:
 ```json
 {"lg":"en"}
@@ -234,7 +234,7 @@ Sample Response:
 {"status":"success","message":"Vote removed successfully"}
 ```
 
-### GET /votes/post/:postId
+### POST /votes/post/:postId
 Sample Body:
 ```json
 {"lg":"en"}
@@ -278,7 +278,7 @@ Sample Response:
 {"status":"success","message":"Comment deleted successfully"}
 ```
 
-### GET /comments/post/:postId
+### POST /comments/post/:postId
 Sample Body:
 ```json
 {"lg":"en"}
@@ -322,7 +322,7 @@ Sample Response:
 {"status":"success","message":"Tag deleted successfully"}
 ```
 
-### GET /tags/list
+### POST /tags/list
 Sample Body:
 ```json
 {"lg":"en"}
@@ -386,7 +386,7 @@ Sample Response:
 {"status":"success","message":"Roadmap column deleted successfully"}
 ```
 
-### GET /roadmap/columns
+### POST /roadmap/columns
 Sample Body:
 ```json
 {"lg":"en"}
@@ -426,7 +426,7 @@ Sample Response:
 {"status":"success","message":"Roadmap item removed successfully"}
 ```
 
-### GET /roadmap/items
+### POST /roadmap/items
 Sample Body:
 ```json
 {"lg":"en"}
@@ -470,7 +470,7 @@ Sample Response:
 {"status":"success","message":"Changelog deleted successfully"}
 ```
 
-### GET /changelog/:id
+### POST /changelog/:id
 Sample Body:
 ```json
 {"lg":"en"}
@@ -544,7 +544,7 @@ Sample Response:
 {"status":"success","message":"Notification deleted successfully"}
 ```
 
-### GET /notifications/unread-count
+### POST /notifications/unread-count
 Sample Body:
 ```json
 {"lg":"en"}
@@ -588,7 +588,7 @@ Sample Response:
 {"status":"success","message":"API key revoked successfully"}
 ```
 
-### GET /api-keys/list
+### POST /api-keys/list
 Sample Body:
 ```json
 {"lg":"en"}
@@ -656,7 +656,7 @@ Sample Response:
 {"status":"success","message":"Integration deleted successfully"}
 ```
 
-### GET /integrations/list
+### POST /integrations/list
 Sample Body:
 ```json
 {"lg":"en"}
