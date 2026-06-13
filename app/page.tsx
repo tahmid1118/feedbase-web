@@ -204,7 +204,7 @@ export default async function HomePage() {
               <div className="mb-4 flex gap-1 text-[#c74959]">
                 {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
               </div>
-              <p className="mb-4 text-[#1c0a0c]/70">"Feedbase transformed how we collect and prioritize user feedback. The voting system is brilliant!"</p>
+              <p className="mb-4 text-[#1c0a0c]/70">&ldquo;Feedbase transformed how we collect and prioritize user feedback. The voting system is brilliant!&rdquo;</p>
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c74959]/20 text-[#c74959]">
                   <Users className="h-5 w-5" />
@@ -220,7 +220,7 @@ export default async function HomePage() {
               <div className="mb-4 flex gap-1 text-[#da6a78]">
                 {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
               </div>
-              <p className="mb-4 text-[#1c0a0c]/70">"Setup took less than 5 minutes. The interface is clean and our customers love it!"</p>
+              <p className="mb-4 text-[#1c0a0c]/70">&ldquo;Setup took less than 5 minutes. The interface is clean and our customers love it!&rdquo;</p>
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#da6a78]/20 text-[#da6a78]">
                   <TrendingUp className="h-5 w-5" />
@@ -236,7 +236,7 @@ export default async function HomePage() {
               <div className="mb-4 flex gap-1 text-[#c74959]">
                 {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
               </div>
-              <p className="mb-4 text-[#1c0a0c]/70">"The analytics dashboard gives us insights we never had before. Highly recommend!"</p>
+              <p className="mb-4 text-[#1c0a0c]/70">&ldquo;The analytics dashboard gives us insights we never had before. Highly recommend!&rdquo;</p>
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#e399a3]/30 text-[#c74959]">
                   <CheckCircle2 className="h-5 w-5" />

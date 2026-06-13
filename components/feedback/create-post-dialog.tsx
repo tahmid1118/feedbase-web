@@ -39,7 +39,7 @@ const postSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters"),
   description: z.string().min(10, "Description must be at least 10 characters"),
   postType: z.enum(["feedback", "feature_request", "bug_report"]),
-  priority: z.coerce.number().min(1).max(5).default(2),
+  priority: z.number().min(1).max(5),
 });
 
 type PostFormValues = z.infer<typeof postSchema>;
@@ -47,9 +47,14 @@ type PostFormValues = z.infer<typeof postSchema>;
 interface CreatePostDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onCreated?: () => void;
 }
 
-export function CreatePostDialog({ open, onOpenChange }: CreatePostDialogProps) {
+export function CreatePostDialog({
+  open,
+  onOpenChange,
+  onCreated,
+}: CreatePostDialogProps) {
   const { data: session } = useSession();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,6 +81,7 @@ export function CreatePostDialog({ open, onOpenChange }: CreatePostDialogProps) 
       toast.success("Post created successfully!");
       form.reset();
       onOpenChange(false);
+      onCreated?.();
       router.refresh();
     } catch (error) {
       toast.error("Failed to create post");

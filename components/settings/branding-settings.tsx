@@ -1,0 +1,183 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { Loader2 } from "lucide-react";
+import { tenantsApi, type Tenant } from "@/lib/api";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { toast } from "sonner";
+
+export function BrandingSettings() {
+  const { data: session } = useSession();
+  const token = session?.user?.accessToken;
+  const [tenant, setTenant] = useState<Tenant | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [name, setName] = useState("");
+  const [customDomain, setCustomDomain] = useState("");
+  const [logoUrl, setLogoUrl] = useState("");
+  const [primaryColor, setPrimaryColor] = useState("#c74959");
+  const [planName, setPlanName] = useState("free");
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (!token) return;
+    tenantsApi
+      .getMine(token)
+      .then((res) => {
+        if (res.data) applyTenant(res.data);
+      })
+      .catch(() => toast.error("Failed to load workspace"))
+      .finally(() => setLoading(false));
+  }, [token]);
+
+  const applyTenant = (t: Tenant) => {
+    setTenant(t);
+    setName(t.name ?? "");
+    setCustomDomain(t.custom_domain ?? "");
+    setLogoUrl(t.branding_logo_url ?? "");
+    setPrimaryColor(t.branding_primary_color ?? "#c74959");
+    setPlanName(t.plan_name ?? "free");
+  };
+
+  const save = async () => {
+    if (!token || !tenant) return;
+    setSaving(true);
+    try {
+      await tenantsApi.update(
+        tenant.id,
+        {
+          name: name.trim(),
+          customDomain: customDomain.trim(),
+          brandingLogoUrl: logoUrl.trim(),
+          brandingPrimaryColor: primaryColor,
+          planName,
+        },
+        token
+      );
+      toast.success("Workspace updated");
+    } catch {
+      toast.error("Failed to update workspace");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <Card className="p-6">
+        <div className="py-8 text-center text-[#1c0a0c]/60">
+          Loading workspace...
+        </div>
+      </Card>
+    );
+  }
+
+  if (!tenant) {
+    return (
+      <Card className="p-6">
+        <div className="py-8 text-center text-[#1c0a0c]/60">
+          No workspace available to manage.
+        </div>
+      </Card>
+    );
+  }
+
+  return (
+    <Card className="p-6">
+      <h3 className="text-lg font-semibold text-[#1c0a0c]">Workspace &amp; Branding</h3>
+      <p className="text-sm text-[#1c0a0c]/60">
+        Customize how your feedback portal appears to users
+      </p>
+
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="space-y-2">
+          <Label htmlFor="ws-name">Workspace name</Label>
+          <Input
+            id="ws-name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="ws-subdomain">Subdomain</Label>
+          <Input id="ws-subdomain" value={tenant.subdomain} disabled />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="ws-domain">Custom domain</Label>
+          <Input
+            id="ws-domain"
+            value={customDomain}
+            onChange={(e) => setCustomDomain(e.target.value)}
+            placeholder="feedback.yourcompany.com"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="ws-plan">Plan</Label>
+          <Select value={planName} onValueChange={setPlanName}>
+            <SelectTrigger id="ws-plan">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="free">Free</SelectItem>
+              <SelectItem value="pro">Pro</SelectItem>
+              <SelectItem value="enterprise">Enterprise</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="ws-logo">Logo URL</Label>
+          <Input
+            id="ws-logo"
+            value={logoUrl}
+            onChange={(e) => setLogoUrl(e.target.value)}
+            placeholder="https://cdn.example.com/logo.png"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="ws-color">Primary color</Label>
+          <div className="flex items-center gap-3">
+            <input
+              id="ws-color"
+              type="color"
+              value={primaryColor}
+              onChange={(e) => setPrimaryColor(e.target.value)}
+              className="h-9 w-14 cursor-pointer rounded border border-[#e399a3]/30"
+            />
+            <Input
+              value={primaryColor}
+              onChange={(e) => setPrimaryColor(e.target.value)}
+              className="w-32"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 flex justify-end">
+        <Button
+          className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+          onClick={save}
+          disabled={saving}
+        >
+          {saving ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Saving...
+            </>
+          ) : (
+            "Save Changes"
+          )}
+        </Button>
+      </div>
+    </Card>
+  );
+}

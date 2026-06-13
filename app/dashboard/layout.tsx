@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { Header } from "@/components/dashboard/header";
 import { Sidebar } from "@/components/dashboard/sidebar";
-import { SessionProvider } from "@/components/providers/session-provider";
 import { Toaster } from "@/components/ui/sonner";
 
 export default async function DashboardLayout({
@@ -16,16 +15,17 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
+  // Note: the session context comes from the root <AuthSessionProvider>. We do
+  // NOT add a second SessionProvider here — nesting them breaks `update()`, so
+  // profile changes (e.g. avatar) would never reach the header.
   return (
-    <SessionProvider session={session}>
-      <div className="min-h-screen bg-[#fdf8f9]">
-        <Sidebar />
-        <Header user={session.user} />
-        <main className="ml-64 pt-16">
-          <div className="p-6">{children}</div>
-        </main>
-        <Toaster />
-      </div>
-    </SessionProvider>
+    <div className="min-h-screen bg-[#fdf8f9]">
+      <Sidebar />
+      <Header user={session.user} />
+      <main className="ml-64 pt-16">
+        <div className="p-6">{children}</div>
+      </main>
+      <Toaster />
+    </div>
   );
 }

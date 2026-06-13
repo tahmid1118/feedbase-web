@@ -1,17 +1,23 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  MessageSquare, 
-  GitBranch, 
-  FileText, 
+import { useSession } from "next-auth/react";
+import {
+  LayoutDashboard,
+  MessageSquare,
+  GitBranch,
+  FileText,
   Bell,
   Settings,
-  Heart
+  Heart,
+  ExternalLink,
 } from "lucide-react";
+import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
+
+const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -24,6 +30,27 @@ const navigation = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const token = session?.user?.accessToken;
+
+  // Resolve this tenant's public portal URL from its subdomain.
+  const [portalUrl, setPortalUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!token) return;
+    let active = true;
+    tenantsApi
+      .getMine(token)
+      .then((res) => {
+        const sub = res.data?.subdomain;
+        // Protocol-relative so it works in dev (http) and prod (https) alike.
+        if (active && sub) setPortalUrl(`//${sub}.${ROOT_DOMAIN}`);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [token]);
 
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-[#e399a3]/20 bg-white">
@@ -39,7 +66,10 @@ export function Sidebar() {
         {/* Navigation */}
         <nav className="flex-1 space-y-1 p-4">
           {navigation.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive =
+            item.href === "/dashboard"
+              ? pathname === "/dashboard"
+              : pathname.startsWith(item.href);
             return (
               <Link
                 key={item.name}
@@ -56,6 +86,19 @@ export function Sidebar() {
               </Link>
             );
           })}
+
+          {/* Public portal — external link to this tenant's board */}
+          {portalUrl && (
+            <a
+              href={portalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#1c0a0c]/70 transition-colors hover:bg-[#fdf8f9] hover:text-[#c74959]"
+            >
+              <ExternalLink className="h-5 w-5" />
+              Public Board
+            </a>
+          )}
         </nav>
       </div>
     </aside>

@@ -39,6 +39,9 @@ export async function loginWithCredentials(
   return {
     id: userId,
     userId,
+    tenantId:
+      response.user.tenantId != null ? String(response.user.tenantId) : null,
+    role: response.user.role ?? null,
     name: response.user.fullName,
     email: response.user.email,
     image: response.user.imageUrl ?? null,

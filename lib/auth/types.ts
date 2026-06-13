@@ -28,6 +28,8 @@ export interface LoginApiRequest {
 export interface LoginApiUser {
   token: string;
   id: string | number;
+  tenantId?: string | number | null;
+  role?: string | null;
   fullName: string;
   email: string;
   imageUrl?: string | null;
@@ -52,6 +54,8 @@ export type RegisterApiResponse = ApiMessageResponse;
 export interface SessionUserProfile {
   id: string;
   userId: string;
+  tenantId: string | null;
+  role: string | null;
   name: string;
   email: string;
   image: string | null;

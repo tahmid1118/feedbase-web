@@ -36,6 +36,10 @@ export interface Post {
   author_email: string;
   vote_count: number;
   comment_count: number;
+  is_pinned?: number;
+  duplicate_of_post_id?: number | null;
+  tags?: Tag[];
+  has_voted?: boolean;
   created_at?: string;
 }
 
@@ -45,6 +49,13 @@ export interface CreatePostData {
   postType: PostType;
   status?: PostStatus;
   priority?: number;
+}
+
+export interface PostListFilters {
+  status?: PostStatus;
+  postType?: PostType;
+  tagId?: number;
+  search?: string;
 }
 
 // Vote types
@@ -104,6 +115,9 @@ export interface RoadmapItem {
   target_release_date: string | null;
   title?: string;
   column_name?: string;
+  status?: PostStatus;
+  post_type?: PostType;
+  vote_count?: number;
 }
 
 export interface CreateRoadmapItemData {
@@ -138,6 +152,8 @@ export interface Notification {
   notification_type: NotificationType;
   title: string;
   message: string;
+  reference_type?: string | null;
+  reference_id?: number | null;
   is_read: number;
   created_at?: string;
 }
@@ -152,4 +168,146 @@ export interface User {
   contact_no?: string;
   role?: UserRole;
   image_url?: string;
+}
+
+export interface PersonalData {
+  user_id: number;
+  tenant_id?: number;
+  full_name: string;
+  email: string;
+  contact_no?: string;
+  role?: UserRole;
+  avatar_url?: string | null;
+}
+
+export interface OAuthLoginData {
+  provider: "google" | "github" | "microsoft";
+  providerUserId: string;
+  email: string;
+  fullName: string;
+  avatarUrl?: string;
+  tenantId?: number;
+}
+
+export interface DuplicateSuggestion {
+  id: number;
+  title: string;
+  status: PostStatus;
+  post_type: PostType;
+  created_at?: string;
+  vote_count: number;
+}
+
+export interface UpdateProfileData {
+  userId: number;
+  fullName: string;
+  contact: string;
+  avatarUrl?: string;
+}
+
+// Tenant types
+export interface Tenant {
+  id: number;
+  name: string;
+  slug: string;
+  subdomain: string;
+  custom_domain?: string | null;
+  plan_name: string;
+  branding_logo_url?: string | null;
+  branding_primary_color?: string | null;
+  is_active: number;
+}
+
+export interface UpdateTenantData {
+  name?: string;
+  customDomain?: string;
+  planName?: string;
+  brandingLogoUrl?: string;
+  brandingPrimaryColor?: string;
+  isActive?: number;
+}
+
+// API Key types
+export interface ApiKey {
+  id: number;
+  key_name: string;
+  key_prefix: string;
+  scopes: string;
+  last_used_at?: string | null;
+  expires_at?: string | null;
+  is_revoked: number;
+  created_at?: string;
+}
+
+export interface CreateApiKeyData {
+  keyName: string;
+  scopes: string[];
+  expiresAt?: string;
+}
+
+export const API_KEY_SCOPES = [
+  "read:posts",
+  "write:posts",
+  "read:analytics",
+  "read:roadmap",
+  "write:roadmap",
+  "read:changelog",
+  "write:changelog",
+] as const;
+
+// Audit log types
+export interface AuditLog {
+  id: number;
+  action: string;
+  entity_type: string;
+  entity_id?: number | null;
+  metadata?: string | null;
+  actor_name?: string;
+  ip_address?: string | null;
+  user_agent?: string | null;
+  created_at?: string;
+}
+
+// Integration types
+export type IntegrationType = "slack" | "discord" | "webhook" | "zapier";
+
+export interface Integration {
+  id: number;
+  integration_type: IntegrationType;
+  config: string;
+  is_active: number;
+  created_at?: string;
+}
+
+export interface CreateIntegrationData {
+  integrationType: IntegrationType;
+  config: Record<string, unknown>;
+}
+
+// File upload
+export interface UploadResult {
+  status: string;
+  message: string;
+  filePath: string;
+}
+
+// Analytics (POST /analytics/overview)
+export interface AnalyticsTotals {
+  totalPosts: number;
+  pinnedPosts: number;
+  totalVotes: number;
+  totalComments: number;
+  totalUsers: number;
+}
+
+export interface AnalyticsTrendPoint {
+  date: string;
+  count: number;
+}
+
+export interface AnalyticsOverview {
+  totals: AnalyticsTotals;
+  statusCounts: Partial<Record<PostStatus, number>>;
+  typeCounts: Partial<Record<PostType, number>>;
+  trends: AnalyticsTrendPoint[];
 }

@@ -1,109 +1,192 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, ThumbsUp, MessageSquare, Calendar } from "lucide-react";
+import {
+  ArrowLeft,
+  ThumbsUp,
+  MessageSquare,
+  Calendar,
+  Pencil,
+  Trash2,
+  Pin,
+} from "lucide-react";
 import Link from "next/link";
-import { postsApi, votesApi, commentsApi, type Post, type Comment } from "@/lib/api";
+import {
+  postsApi,
+  votesApi,
+  commentsApi,
+  extractRows,
+  type Post,
+  type Comment,
+  type PostStatus,
+} from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { EditPostDialog } from "@/components/feedback/edit-post-dialog";
+import { PostTags } from "@/components/feedback/post-tags";
+import { CommentThread } from "@/components/feedback/comment-thread";
+import { DuplicateManager } from "@/components/feedback/duplicate-manager";
 import { toast } from "sonner";
+
+const STATUS_OPTIONS: PostStatus[] = [
+  "open",
+  "planned",
+  "in_progress",
+  "completed",
+  "closed",
+];
+
+const STATUS_BADGE: Record<string, string> = {
+  open: "bg-blue-100 text-blue-700",
+  planned: "bg-purple-100 text-purple-700",
+  in_progress: "bg-yellow-100 text-yellow-700",
+  completed: "bg-green-100 text-green-700",
+  closed: "bg-gray-100 text-gray-700",
+};
 
 export default function PostDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { data: session } = useSession();
+  const token = session?.user?.accessToken;
+
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [hasVoted, setHasVoted] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   const postId = parseInt(params.id as string);
 
-  useEffect(() => {
-    loadPostData();
-  }, [postId]);
-
-  const loadPostData = async () => {
+  const loadPostData = useCallback(async () => {
     try {
       setLoading(true);
       const [postRes, commentsRes] = await Promise.all([
-        postsApi.getById(postId, session?.user?.accessToken),
-        commentsApi.getByPost(postId, session?.user?.accessToken),
+        postsApi.getById(postId, token),
+        commentsApi.getByPost(postId, token),
       ]);
 
-      if (postRes.data) setPost(postRes.data);
-      if (commentsRes.data) setComments(commentsRes.data);
+      if (postRes.data) {
+        setPost(postRes.data);
+        setHasVoted(Boolean(postRes.data.has_voted));
+      }
+      setComments(extractRows<Comment>(commentsRes.data, "comments"));
     } catch (error) {
       console.error("Failed to load post:", error);
       toast.error("Failed to load post");
     } finally {
       setLoading(false);
     }
-  };
+  }, [postId, token]);
+
+  useEffect(() => {
+    loadPostData();
+  }, [loadPostData]);
 
   const handleVote = async () => {
-    if (!session?.user?.accessToken) {
+    if (!token) {
       toast.error("Please login to vote");
       return;
     }
-
     try {
       if (hasVoted) {
-        await votesApi.remove(postId, session.user.accessToken);
+        await votesApi.remove(postId, token);
         setHasVoted(false);
-        setPost((prev) => prev ? { ...prev, vote_count: prev.vote_count - 1 } : null);
-        toast.success("Vote removed");
+        setPost((prev) =>
+          prev ? { ...prev, vote_count: Math.max(0, prev.vote_count - 1) } : null
+        );
       } else {
-        await votesApi.add(postId, session.user.accessToken);
+        await votesApi.add(postId, token);
         setHasVoted(true);
-        setPost((prev) => prev ? { ...prev, vote_count: prev.vote_count + 1 } : null);
-        toast.success("Vote added");
+        setPost((prev) =>
+          prev ? { ...prev, vote_count: prev.vote_count + 1 } : null
+        );
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to vote");
     }
   };
 
-  const handleAddComment = async () => {
-    if (!session?.user?.accessToken || !newComment.trim()) return;
-
+  const handleStatusChange = async (status: PostStatus) => {
+    if (!token || !post) return;
     try {
-      setSubmitting(true);
+      await postsApi.updateStatus(postId, status, token);
+      setPost({ ...post, status });
+      toast.success(`Status set to ${status.replace("_", " ")}`);
+    } catch {
+      toast.error("Failed to update status");
+    }
+  };
+
+  const handleTogglePin = async () => {
+    if (!token || !post) return;
+    const next = post.is_pinned ? 0 : 1;
+    try {
+      await postsApi.pin(postId, token, next === 1);
+      setPost({ ...post, is_pinned: next });
+      toast.success(next ? "Post pinned" : "Post unpinned");
+    } catch {
+      toast.error("Failed to update pin");
+    }
+  };
+
+  const handleDeletePost = async () => {
+    if (!token) return;
+    try {
+      await postsApi.delete(postId, token);
+      toast.success("Post deleted");
+      router.push("/dashboard/feedback");
+    } catch {
+      toast.error("Failed to delete post");
+    }
+  };
+
+  const handleAddComment = async () => {
+    if (!token || !newComment.trim()) return;
+    setSubmitting(true);
+    try {
       await commentsApi.create(
-        { postId, body: newComment, parentCommentId: null },
-        session.user.accessToken
+        { postId, body: newComment.trim(), parentCommentId: null },
+        token
       );
       setNewComment("");
       await loadPostData();
       toast.success("Comment added");
-    } catch (error) {
+    } catch {
       toast.error("Failed to add comment");
     } finally {
       setSubmitting(false);
     }
   };
 
-  const getStatusColor = (status: string) => {
-    const colors: Record<string, string> = {
-      open: "bg-blue-100 text-blue-700",
-      planned: "bg-purple-100 text-purple-700",
-      in_progress: "bg-yellow-100 text-yellow-700",
-      completed: "bg-green-100 text-green-700",
-      closed: "bg-gray-100 text-gray-700",
-    };
-    return colors[status] || colors.open;
-  };
-
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-12">
-        <div className="text-[#1c0a0c]/60">Loading post...</div>
+      <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
+        Loading post...
       </div>
     );
   }
@@ -126,61 +209,143 @@ export default function PostDetailPage() {
 
   return (
     <div className="space-y-6">
-      <Link href="/dashboard/feedback">
-        <Button variant="ghost">
-          <ArrowLeft className="h-4 w-4" />
-          Back to Feedback
-        </Button>
-      </Link>
+      <div className="flex items-center justify-between">
+        <Link href="/dashboard/feedback">
+          <Button variant="ghost">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Feedback
+          </Button>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleTogglePin}
+            className={post.is_pinned ? "border-[#c74959] text-[#c74959]" : ""}
+          >
+            <Pin
+              className={`h-4 w-4 ${post.is_pinned ? "fill-[#c74959]" : ""}`}
+            />
+            {post.is_pinned ? "Pinned" : "Pin"}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setEditOpen(true)}
+          >
+            <Pencil className="h-4 w-4" />
+            Edit
+          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-red-600 hover:text-red-700"
+              >
+                <Trash2 className="h-4 w-4" />
+                Delete
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete this post?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This permanently removes the post along with its votes and
+                  comments. This action cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  variant="destructive"
+                  onClick={handleDeletePost}
+                >
+                  Delete
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
+      </div>
 
       <Card className="p-6">
         <div className="flex gap-6">
-          <div className="flex flex-col items-center gap-2">
-            <Button
-              variant={hasVoted ? "default" : "outline"}
-              size="lg"
-              className={`h-16 w-16 flex-col gap-1 rounded-lg ${
-                hasVoted 
-                  ? "bg-[#c74959] hover:bg-[#b03f4d] text-white border-[#c74959]" 
-                  : "bg-white border-[#e399a3]/40 hover:border-[#c74959] hover:bg-[#fdf8f9]"
-              }`}
-              onClick={handleVote}
-            >
-              <ThumbsUp className={`h-5 w-5 ${hasVoted ? "fill-white text-white" : "text-[#c74959]"}`} />
-              <span className={`text-sm font-semibold ${hasVoted ? "text-white" : "text-[#1c0a0c]"}`}>
-                {post.vote_count}
-              </span>
-            </Button>
-          </div>
+          <button
+            type="button"
+            onClick={handleVote}
+            className={`flex h-16 w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border transition-colors ${
+              hasVoted
+                ? "border-[#c74959] bg-[#c74959] text-white"
+                : "border-[#e399a3]/40 bg-white text-[#1c0a0c] hover:border-[#c74959]"
+            }`}
+          >
+            <ThumbsUp
+              className={`h-5 w-5 ${hasVoted ? "fill-white" : "text-[#c74959]"}`}
+            />
+            <span className="text-sm font-semibold">{post.vote_count}</span>
+          </button>
 
           <div className="flex-1 space-y-4">
             <div>
               <div className="flex items-start justify-between gap-4">
-                <h1 className="text-2xl font-bold text-[#1c0a0c]">{post.title}</h1>
-                <Badge className={getStatusColor(post.status)}>
-                  {post.status.replace("_", " ")}
-                </Badge>
+                <h1 className="text-2xl font-bold text-[#1c0a0c]">
+                  {post.title}
+                </h1>
+                <Select
+                  value={post.status}
+                  onValueChange={(v) => handleStatusChange(v as PostStatus)}
+                >
+                  <SelectTrigger className="w-[150px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {STATUS_OPTIONS.map((s) => (
+                      <SelectItem key={s} value={s}>
+                        {s.replace("_", " ")}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
-              <p className="mt-3 text-[#1c0a0c]/70">{post.description}</p>
+              <p className="mt-3 whitespace-pre-wrap text-[#1c0a0c]/70">
+                {post.description}
+              </p>
             </div>
 
-            <div className="flex items-center gap-4 text-sm text-[#1c0a0c]/60">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">
               <span className="flex items-center gap-1">
                 <MessageSquare className="h-4 w-4" />
-                {post.comment_count} comments
+                {comments.length} comments
               </span>
               <span className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
                 by {post.author_name}
               </span>
+              <Badge className={STATUS_BADGE[post.status]}>
+                {post.status.replace("_", " ")}
+              </Badge>
               <Badge variant="outline">{post.post_type.replace("_", " ")}</Badge>
               <Badge variant="outline">Priority {post.priority}</Badge>
             </div>
+
+            <div className="border-t border-[#e399a3]/20 pt-4">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
+                Tags
+              </p>
+              <PostTags postId={post.id} initialTags={post.tags ?? []} />
+            </div>
+
+            <DuplicateManager
+              postId={post.id}
+              duplicateOfPostId={post.duplicate_of_post_id ?? null}
+              onChange={loadPostData}
+            />
           </div>
         </div>
       </Card>
 
-      {/* Comments Section */}
       <Card className="p-6">
         <h3 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
           Comments ({comments.length})
@@ -205,43 +370,20 @@ export default function PostDetailPage() {
             </div>
           </div>
 
-          {comments.length === 0 ? (
-            <p className="py-8 text-center text-sm text-[#1c0a0c]/60">
-              No comments yet. Be the first to comment!
-            </p>
-          ) : (
-            <div className="space-y-3">
-              {comments.map((comment) => (
-                <div
-                  key={comment.id}
-                  className="rounded-lg border border-[#e399a3]/20 bg-[#fdf8f9] p-4"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-[#1c0a0c]">
-                          {comment.author_name}
-                        </span>
-                        {comment.is_edited === 1 && (
-                          <Badge variant="outline" className="text-xs">
-                            Edited
-                          </Badge>
-                        )}
-                      </div>
-                      <p className="mt-2 text-sm text-[#1c0a0c]/80">{comment.body}</p>
-                      <p className="mt-2 text-xs text-[#1c0a0c]/50">
-                        {comment.created_at
-                          ? new Date(comment.created_at).toLocaleString()
-                          : "Recently"}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          <CommentThread
+            postId={post.id}
+            comments={comments}
+            onChange={loadPostData}
+          />
         </div>
       </Card>
+
+      <EditPostDialog
+        post={post}
+        open={editOpen}
+        onOpenChange={setEditOpen}
+        onUpdated={loadPostData}
+      />
     </div>
   );
 }

@@ -1,25 +1,36 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Bell, Check } from "lucide-react";
-import { notificationsApi, type Notification } from "@/lib/api";
+import Link from "next/link";
+import { Bell, Check, Trash2 } from "lucide-react";
+import { notificationsApi, extractRows, type Notification } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 
+/** Resolve a deep link for a notification from its reference, when possible. */
+function notificationHref(notification: Notification): string | null {
+  const { reference_type, reference_id } = notification;
+  if (!reference_id) return null;
+  switch (reference_type) {
+    case "post":
+      return `/dashboard/feedback/${reference_id}`;
+    case "changelog":
+      return `/dashboard/changelog/${reference_id}`;
+    default:
+      return null;
+  }
+}
+
 export default function NotificationsPage() {
   const { data: session } = useSession();
+  const token = session?.user?.accessToken;
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadNotifications();
-  }, []);
-
-  const loadNotifications = async () => {
-    if (!session?.user?.accessToken) return;
-
+  const loadNotifications = useCallback(async () => {
+    if (!token) return;
     try {
       setLoading(true);
       const response = await notificationsApi.list(
@@ -29,41 +40,53 @@ export default function NotificationsPage() {
           sortOrder: "desc",
           filterBy: "",
         },
-        session.user.accessToken
+        token
       );
-
-      if (response.data?.notifications) {
-        setNotifications(response.data.notifications);
-      }
+      setNotifications(
+        extractRows<Notification>(response.data, "notifications")
+      );
     } catch (error) {
       console.error("Failed to load notifications:", error);
     } finally {
       setLoading(false);
     }
+  }, [token]);
+
+  useEffect(() => {
+    loadNotifications();
+  }, [loadNotifications]);
+
+  const deleteNotification = async (id: number) => {
+    if (!token) return;
+    try {
+      await notificationsApi.delete(id, token);
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
+      toast.success("Notification deleted");
+    } catch {
+      toast.error("Failed to delete notification");
+    }
   };
 
   const markAsRead = async (id: number) => {
-    if (!session?.user?.accessToken) return;
-
+    if (!token) return;
     try {
-      await notificationsApi.markRead(id, session.user.accessToken);
+      await notificationsApi.markRead(id, token);
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, is_read: 1 } : n))
       );
       toast.success("Marked as read");
-    } catch (error) {
+    } catch {
       toast.error("Failed to mark as read");
     }
   };
 
   const markAllAsRead = async () => {
-    if (!session?.user?.accessToken) return;
-
+    if (!token) return;
     try {
-      await notificationsApi.markAllRead(session.user.accessToken);
+      await notificationsApi.markAllRead(token);
       setNotifications((prev) => prev.map((n) => ({ ...n, is_read: 1 })));
       toast.success("All notifications marked as read");
-    } catch (error) {
+    } catch {
       toast.error("Failed to mark all as read");
     }
   };
@@ -114,9 +137,28 @@ export default function NotificationsPage() {
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h4 className="font-medium text-[#1c0a0c]">
-                    {notification.title}
-                  </h4>
+                  {(() => {
+                    const href = notificationHref(notification);
+                    const title = (
+                      <h4 className="font-medium text-[#1c0a0c]">
+                        {notification.title}
+                      </h4>
+                    );
+                    return href ? (
+                      <Link
+                        href={href}
+                        onClick={() => {
+                          if (notification.is_read === 0)
+                            markAsRead(notification.id);
+                        }}
+                        className="hover:text-[#c74959] hover:underline"
+                      >
+                        {title}
+                      </Link>
+                    ) : (
+                      title
+                    );
+                  })()}
                   <p className="mt-1 text-sm text-[#1c0a0c]/70">
                     {notification.message}
                   </p>
@@ -126,15 +168,27 @@ export default function NotificationsPage() {
                       : "Recently"}
                   </p>
                 </div>
-                {notification.is_read === 0 && (
+                <div className="flex items-center gap-1">
+                  {notification.is_read === 0 && (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => markAsRead(notification.id)}
+                      aria-label="Mark as read"
+                    >
+                      <Check className="h-4 w-4" />
+                    </Button>
+                  )}
                   <Button
                     variant="ghost"
-                    size="sm"
-                    onClick={() => markAsRead(notification.id)}
+                    size="icon"
+                    onClick={() => deleteNotification(notification.id)}
+                    aria-label="Delete notification"
+                    className="text-[#1c0a0c]/50 hover:text-red-600"
                   >
-                    <Check className="h-4 w-4" />
+                    <Trash2 className="h-4 w-4" />
                   </Button>
-                )}
+                </div>
               </div>
             </Card>
           ))}

@@ -75,13 +75,23 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       if (user) {
         token.userId = user.userId;
+        token.tenantId = user.tenantId;
+        token.role = user.role;
         token.accessToken = user.accessToken;
         token.name = user.name;
         token.email = user.email;
         token.image = user.image;
+      }
+
+      // Profile edits call `update({ name, image })` to refresh the session
+      // without forcing a re-login.
+      if (trigger === "update" && session && typeof session === "object") {
+        const next = session as { name?: string; image?: string | null };
+        if (next.name !== undefined) token.name = next.name;
+        if (next.image !== undefined) token.image = next.image;
       }
 
       return token;
@@ -97,6 +107,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         session.user.id = normalizedUserId;
         session.user.userId = normalizedUserId;
+        session.user.tenantId =
+          typeof token.tenantId === "string" ? token.tenantId : null;
+        session.user.role = typeof token.role === "string" ? token.role : null;
         session.user.accessToken =
           typeof token.accessToken === "string" ? token.accessToken : "";
         session.user.name = typeof token.name === "string" ? token.name : null;

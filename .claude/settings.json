@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -m 5 http://localhost:4560/public/tenant?subdomain=acme)",
+      "Bash(curl -s -m 5 -o /dev/null -w \"%{http_code}\" http://localhost:4560/users/personal-data)",
+      "Bash(node -e 'const b=require\\('\\\\''bcrypt'\\\\''\\);const h='\\\\''$2b$10$NjICKEPJAgWeXAmkkwxq2.XtQsbnWJ329UbY5.nVqDOxCdWvcXp.C'\\\\'';['\\\\''password'\\\\'','\\\\''Password123!'\\\\'','\\\\''password123'\\\\'','\\\\''Acme1234!'\\\\'','\\\\''secret'\\\\'','\\\\''admin123'\\\\'','\\\\''Test1234!'\\\\'','\\\\''changeme'\\\\'','\\\\''feedbase'\\\\'','\\\\''Password1!'\\\\'','\\\\''123456'\\\\'','\\\\''Passw0rd!'\\\\''].forEach\\(p=>{if\\(b.compareSync\\(p,h\\)\\)console.log\\('\\\\''MATCH:'\\\\'',p\\)}\\);console.log\\('\\\\''done'\\\\''\\)')",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\);const d={...p.dependencies,...p.devDependencies};console.log\\(Object.keys\\(d\\).filter\\(k=>/dnd|drag|sortable|beautiful/i.test\\(k\\)\\).join\\(','\\)||'NONE'\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\('react',p.dependencies.react,'| next',p.dependencies.next\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\);const d=p.dependencies;console.log\\('@dnd-kit/core',d['@dnd-kit/core']||'MISSING','| @dnd-kit/utilities',d['@dnd-kit/utilities']||'MISSING'\\)\")",
+      "Bash(curl -s -o /dev/null -w \"root path: %{http_code}\\\\n\" -m 5 http://localhost:3000/)",
+      "Bash(curl -s -m 8 -H \"Host: acme.localhost\" http://localhost:3000/ -o /tmp/portal.html -w \"status: %{http_code}\\\\n\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s -m 15 -H \"Host: acme.localhost\" http://localhost:3000/ -o /tmp/portal.html -w \"acme.localhost status: %{http_code}\\\\n\")",
+      "Bash(curl -s -o /dev/null -m 15 -w \"%{http_code}\\\\n\" http://localhost:3000/portal/acme)",
+      "Bash(curl -s -m 8 -X POST http://localhost:4560/users/login -H \"Content-Type: application/json\" -d '{\"lg\":\"en\",\"userData\":{\"email\":\"owner@acme.test\",\"password\":\"Password123!\"}}' -w \"\\\\nHTTP %{http_code}\\\\n\")"
+    ]
+  }
+}

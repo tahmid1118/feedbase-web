@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, JetBrains_Mono, Sora } from "next/font/google";
+import { JetBrains_Mono, Sora } from "next/font/google";
 
+import { auth } from "@/auth";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
 import "./globals.css";
 
 const fontSans = Sora({
   variable: "--font-brand-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fontHeading = Fraunces({
-  variable: "--font-brand-heading",
   subsets: ["latin"],
   display: "swap",
 });
@@ -27,18 +22,20 @@ export const metadata: Metadata = {
   description: "Collect, prioritize, and ship product feedback with confidence.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontHeading.variable} ${fontMono.variable} h-full antialiased`}
+      className={`${fontSans.variable} ${fontMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
-        <AuthSessionProvider>{children}</AuthSessionProvider>
+        <AuthSessionProvider session={session}>{children}</AuthSessionProvider>
       </body>
     </html>
   );

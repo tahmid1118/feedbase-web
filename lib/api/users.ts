@@ -1,0 +1,59 @@
+/**
+ * Users API service
+ */
+
+import { apiClient } from "./client";
+import type {
+  ApiResponse,
+  PersonalData,
+  UpdateProfileData,
+  OAuthLoginData,
+  User,
+  UserRole,
+  PaginationData,
+  PaginatedResponse,
+} from "./types";
+
+export const usersApi = {
+  /**
+   * Exchange a verified OAuth identity for a Feedbase JWT. The provider
+   * handshake happens on the frontend; this posts the resulting identity.
+   * Public endpoint — no bearer token required.
+   */
+  oauthLogin: (data: OAuthLoginData) =>
+    apiClient.post<ApiResponse & { user?: Record<string, unknown> }>(
+      "/users/oauth/login",
+      { userData: data },
+      { skipAuth: true }
+    ),
+
+  /**
+   * GET endpoint. The browser fetch spec forbids a body on GET, so we send
+   * none — the backend defaults `lg` for this route.
+   */
+  getPersonalData: (token: string) =>
+    apiClient.get<ApiResponse<PersonalData>>("/users/personal-data", { token }),
+
+  updateProfile: (data: UpdateProfileData, token: string) =>
+    apiClient.post<ApiResponse>("/users/update", { userData: data }, { token }),
+
+  changePassword: (oldPassword: string, newPassword: string, token: string) =>
+    apiClient.post<ApiResponse>(
+      "/users/change-password",
+      { oldPassword, newPassword },
+      { token }
+    ),
+
+  updateRole: (userId: number, role: UserRole, token: string) =>
+    apiClient.patch<ApiResponse>(`/users/role/${userId}`, { role }, { token }),
+
+  list: (token: string) =>
+    apiClient.post<ApiResponse<User[]>>("/users/user-list", { lg: "en" }, { token }),
+
+  tableData: (pagination: PaginationData, token: string) =>
+    apiClient.post<ApiResponse<PaginatedResponse<User>>>(
+      "/users/table-data",
+      { paginationData: pagination },
+      { token }
+    ),
+};

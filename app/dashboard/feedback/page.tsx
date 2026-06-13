@@ -8,6 +8,7 @@ import { CreatePostDialog } from "@/components/feedback/create-post-dialog";
 
 export default function FeedbackPage() {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   return (
     <div className="space-y-6">
@@ -27,8 +28,12 @@ export default function FeedbackPage() {
         </Button>
       </div>
 
-      <FeedbackList />
-      <CreatePostDialog open={isCreateOpen} onOpenChange={setIsCreateOpen} />
+      <FeedbackList refreshKey={refreshKey} />
+      <CreatePostDialog
+        open={isCreateOpen}
+        onOpenChange={setIsCreateOpen}
+        onCreated={() => setRefreshKey((k) => k + 1)}
+      />
     </div>
   );
 }

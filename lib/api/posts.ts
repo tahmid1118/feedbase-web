@@ -10,6 +10,8 @@ import type {
   PaginationData,
   PaginatedResponse,
   PostStatus,
+  PostListFilters,
+  DuplicateSuggestion,
 } from "./types";
 
 export const postsApi = {
@@ -39,7 +41,7 @@ export const postsApi = {
 
   list: (
     pagination: PaginationData,
-    filters?: { status?: PostStatus; postType?: string },
+    filters?: PostListFilters,
     token?: string
   ) =>
     apiClient.post<ApiResponse<PaginatedResponse<Post>>>(
@@ -52,6 +54,29 @@ export const postsApi = {
     apiClient.patch<ApiResponse>(
       `/posts/status/${id}`,
       { newStatus },
+      { token }
+    ),
+
+  /** Pin or unpin a post. Omit `isPinned` to toggle the current value. */
+  pin: (id: number, token: string, isPinned?: boolean) =>
+    apiClient.patch<ApiResponse<{ id: number; isPinned: boolean }>>(
+      `/posts/pin/${id}`,
+      isPinned === undefined ? {} : { isPinned },
+      { token }
+    ),
+
+  /** Mark this post as a duplicate of another, or pass `null` to clear it. */
+  markDuplicate: (id: number, duplicateOfPostId: number | null, token: string) =>
+    apiClient.patch<ApiResponse>(
+      `/posts/duplicate/${id}`,
+      { duplicateOfPostId },
+      { token }
+    ),
+
+  duplicateSuggestions: (id: number, token?: string) =>
+    apiClient.post<ApiResponse<DuplicateSuggestion[]>>(
+      `/posts/${id}/duplicate-suggestions`,
+      { lg: "en" },
       { token }
     ),
 };
