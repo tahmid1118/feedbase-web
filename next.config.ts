@@ -37,6 +37,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    // Tenant logos are arbitrary remote URLs; allow any https host plus the
+    // local backend so next/image can optimize them.
+    remotePatterns: [
+      { protocol: "https", hostname: "**" },
+      { protocol: "http", hostname: "localhost" },
+    ],
+  },
   async headers() {
     return [
       {

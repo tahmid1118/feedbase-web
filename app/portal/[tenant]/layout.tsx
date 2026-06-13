@@ -1,9 +1,16 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { publicApi } from "@/lib/api/public";
 import { PortalNav } from "@/components/portal/portal-nav";
 
 const DEFAULT_BRAND = "#c74959";
+
+// Portal data is shared across visitors, so it's a good ISR candidate. This
+// takes effect once the public reads are cacheable (they're POST today, which
+// Next's Data Cache can't cache — see lib/api/public.ts). Until then the route
+// renders dynamically but streams via loading.tsx.
+export const revalidate = 30;
 
 export default async function PortalLayout({
   children,
@@ -25,10 +32,11 @@ export default async function PortalLayout({
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
             {info.branding_logo_url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={info.branding_logo_url}
                 alt={info.name}
+                width={32}
+                height={32}
                 className="h-8 w-8 rounded-lg object-cover"
               />
             ) : (

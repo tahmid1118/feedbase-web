@@ -11,11 +11,11 @@ import {
   FileText,
   Bell,
   Settings,
-  Heart,
   ExternalLink,
 } from "lucide-react";
 import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/ui/logo";
 
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
@@ -57,9 +57,7 @@ export function Sidebar() {
       <div className="flex h-full flex-col">
         {/* Logo */}
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#c74959] to-[#da6a78] text-white">
-            <Heart className="h-4 w-4 fill-current" />
-          </div>
+          <Logo className="h-8 w-8" />
           <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
         </div>
 

@@ -13,7 +13,15 @@
       "Read(//tmp/**)",
       "Bash(curl -s -m 15 -H \"Host: acme.localhost\" http://localhost:3000/ -o /tmp/portal.html -w \"acme.localhost status: %{http_code}\\\\n\")",
       "Bash(curl -s -o /dev/null -m 15 -w \"%{http_code}\\\\n\" http://localhost:3000/portal/acme)",
-      "Bash(curl -s -m 8 -X POST http://localhost:4560/users/login -H \"Content-Type: application/json\" -d '{\"lg\":\"en\",\"userData\":{\"email\":\"owner@acme.test\",\"password\":\"Password123!\"}}' -w \"\\\\nHTTP %{http_code}\\\\n\")"
+      "Bash(curl -s -m 8 -X POST http://localhost:4560/users/login -H \"Content-Type: application/json\" -d '{\"lg\":\"en\",\"userData\":{\"email\":\"owner@acme.test\",\"password\":\"Password123!\"}}' -w \"\\\\nHTTP %{http_code}\\\\n\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(JSON.stringify\\(p.dependencies,null,0\\)\\)\")",
+      "Bash(cd /d/Development/Frontend/feedbase/node_modules/next/dist/docs 2>/dev/null && find . -type f \\\\\\( -iname \"*revalidat*\" -o -iname \"*caching*\" -o -iname \"*dynamic*\" -o -iname \"*loading*\" -o -iname \"*static*\" \\\\\\) 2>/dev/null | head -40 || echo \"docs dir not found\")",
+      "Read(//d/d/Development/Frontend/feedbase/node_modules/next/dist/**)",
+      "Read(//d/d/Development/Frontend/**)",
+      "Read(//d/d/Development/Frontend/feedbase/app/**)",
+      "Bash(node -e \"const p=require\\('./package.json'\\);console.log\\(Object.keys\\(p.dependencies\\).join\\(', '\\)\\)\")",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\('compression installed:', require\\('./package.json'\\).dependencies.compression || require\\('compression/package.json'\\).version\\)\")"
     ]
   }
 }

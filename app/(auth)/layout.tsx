@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { Logo } from "@/components/ui/logo";
 
 const highlights = [
   {
@@ -39,7 +40,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         <div className="grid w-full overflow-hidden rounded-[2rem] border border-[#e399a3]/50 bg-white/80 shadow-[0_36px_90px_-45px_rgba(28,10,12,0.65)] backdrop-blur-xl lg:grid-cols-2">
           <aside className="relative hidden flex-col justify-between bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)] p-10 text-[#fdf8f9] lg:flex">
             <div className="space-y-8">
-              <Link href="/" className="inline-flex items-center gap-2 text-sm tracking-[0.22em]">
+              <Link href="/" className="inline-flex items-center gap-2.5 text-sm tracking-[0.22em]">
+                <Logo className="h-7 w-7" />
                 FEEDBASE
               </Link>
 

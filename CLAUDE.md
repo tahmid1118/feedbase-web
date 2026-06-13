@@ -99,6 +99,15 @@ Conventions:
 - Form fields (Input / Textarea / Select trigger): white bg, soft rose border, rose focus ring, `h-10`.
 - Buttons: filled primary = `bg-[#c74959]`; the `outline` and `ghost` variants have a rose hover (`hover:bg-[#c74959]/10 hover:text-[#c74959]`).
 
+### Rendering & performance
+
+- The root `app/layout.tsx` is intentionally **synchronous** (no `await auth()`) so it doesn't opt every route into dynamic rendering. The session is resolved client-side by the single `AuthSessionProvider`; the dashboard layout passes its server session to the header for an instant first paint.
+- Authenticated surfaces (dashboard, login/signup, landing) read the session/cookies and are **dynamic by design** — don't try to force them static.
+- The **public portal is dynamic** because its backend reads are POST and Next's Data Cache only caches GET. `app/portal/[tenant]/layout.tsx` already sets `export const revalidate` (activates once those reads become GET + `next: { revalidate }`); until then `loading.tsx` provides streaming. `publicApi.getTenant` is wrapped in React `cache()` to dedupe the tenant lookup per render.
+- Route transitions stream via `loading.tsx` skeletons (`app/dashboard/`, `app/portal/[tenant]/`).
+- Remote images use `next/image`; allowed hosts are in `next.config.ts` → `images.remotePatterns`.
+- Heavy libs in `components/ui/` (recharts, @tanstack/react-table, cmdk, react-day-picker, …) are scaffolding **not imported by any route**, so they're tree-shaken out of bundles. Don't import them into a route without weighing the bundle cost.
+
 ### Environment Variables
 
 ```

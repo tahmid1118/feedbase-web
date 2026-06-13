@@ -6,6 +6,7 @@
  * `app/portal` route group, so they use a plain server-side fetch with no token.
  */
 
+import { cache } from "react";
 import type {
   Post,
   Comment,
@@ -50,10 +51,15 @@ async function publicFetch<T>(
   init?: RequestInit
 ): Promise<T | null> {
   try {
+    // Next 16 doesn't cache fetches by default, so we don't set `no-store`.
+    // NOTE: these public reads are POST, which Next's Data Cache never caches —
+    // so the portal currently renders dynamically (with streaming via
+    // loading.tsx). To make the portal CDN-cacheable (ISR), convert the backend
+    // public read endpoints to GET, then add `next: { revalidate }` here; the
+    // `export const revalidate` on the portal layout will then take effect.
     const res = await fetch(`${API_BASE_URL}${path}`, {
       ...init,
       headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
-      cache: "no-store",
     });
     if (!res.ok) return null;
     const json = (await res.json()) as ApiEnvelope<T>;
@@ -67,11 +73,16 @@ const body = (payload: Record<string, unknown> = {}) =>
   JSON.stringify({ lg: "en", ...payload });
 
 export const publicApi = {
-  /** Resolve a tenant by subdomain or custom domain. Returns null if unknown. */
-  getTenant: (identifier: string) =>
+  /**
+   * Resolve a tenant by subdomain or custom domain. Returns null if unknown.
+   * Wrapped in React `cache()` so the layout + page in one render share a
+   * single request instead of resolving the tenant twice.
+   */
+  getTenant: cache((identifier: string) =>
     publicFetch<PublicTenant>(
       `/public/tenant?subdomain=${encodeURIComponent(identifier)}`
-    ),
+    )
+  ),
 
   getBoard: (
     identifier: string,

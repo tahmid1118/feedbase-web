@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Sora } from "next/font/google";
 
-import { auth } from "@/auth";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
 import "./globals.css";
 
@@ -22,20 +21,21 @@ export const metadata: Metadata = {
   description: "Collect, prioritize, and ship product feedback with confidence.",
 };
 
-export default async function RootLayout({
+// Kept synchronous (no `await auth()`) so public routes stay statically
+// renderable. The session is resolved client-side by AuthSessionProvider, and
+// the dashboard layout passes the server session straight to the header.
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
     <html
       lang="en"
       className={`${fontSans.variable} ${fontMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
-        <AuthSessionProvider session={session}>{children}</AuthSessionProvider>
+        <AuthSessionProvider>{children}</AuthSessionProvider>
       </body>
     </html>
   );

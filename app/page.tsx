@@ -1,9 +1,10 @@
-import { ArrowRight, BarChart3, Bell, CheckCircle2, GitBranch, Heart, MessageSquare, Star, TrendingUp, Users, Vote, Zap } from "lucide-react";
+import { ArrowRight, BarChart3, Bell, CheckCircle2, GitBranch, MessageSquare, Star, TrendingUp, Users, Vote, Zap } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/logo";
 
 export default async function HomePage() {
   const session = await auth();
@@ -18,9 +19,7 @@ export default async function HomePage() {
       <nav className="border-b border-[#e399a3]/20 bg-white/60 backdrop-blur-md">
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#c74959] to-[#da6a78] text-white">
-              <Heart className="h-4 w-4 fill-current" />
-            </div>
+            <Logo className="h-8 w-8" />
             <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
           </div>
           <div className="flex items-center gap-3">
