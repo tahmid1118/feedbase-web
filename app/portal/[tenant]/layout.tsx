@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { publicApi } from "@/lib/api/public";
 import { PortalNav } from "@/components/portal/portal-nav";
+import { PortalLogo } from "@/components/portal/portal-logo";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -31,22 +31,11 @@ export default async function PortalLayout({
       <header className="border-b border-black/5 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
-            {info.branding_logo_url ? (
-              <Image
-                src={info.branding_logo_url}
-                alt={info.name}
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-lg object-cover"
-              />
-            ) : (
-              <span
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-sm font-bold text-white"
-                style={{ backgroundColor: brand }}
-              >
-                {info.name.charAt(0).toUpperCase()}
-              </span>
-            )}
+            <PortalLogo
+              logoUrl={info.branding_logo_url}
+              name={info.name}
+              brand={brand}
+            />
             <span className="text-lg font-bold text-[#1c0a0c]">
               {info.name}
             </span>

@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { ThumbsUp, MessageSquare } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { publicApi } from "@/lib/api/public";
 import { Badge } from "@/components/ui/badge";
+import { FeedbackSubmit } from "@/components/portal/feedback-submit";
+import { PortalVoteButton } from "@/components/portal/portal-vote-button";
+
+const DEFAULT_BRAND = "#c74959";
 
 const STATUS_BADGE: Record<string, string> = {
   open: "bg-blue-100 text-blue-700",
@@ -24,16 +28,24 @@ export default async function PortalBoardPage({
 }) {
   const { tenant } = await params;
   const decoded = decodeURIComponent(tenant);
-  const data = await publicApi.getBoard(decoded);
+  // getTenant is React-cached, so this shares the layout's tenant lookup.
+  const [data, info] = await Promise.all([
+    publicApi.getBoard(decoded),
+    publicApi.getTenant(decoded),
+  ]);
   const posts = data?.posts ?? [];
+  const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold text-[#1c0a0c]">Feedback Board</h1>
-        <p className="text-sm text-[#1c0a0c]/60">
-          Vote on ideas and help shape the roadmap
-        </p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-[#1c0a0c]">Feedback Board</h1>
+          <p className="text-sm text-[#1c0a0c]/60">
+            Share an idea or report an issue — and see what&apos;s planned.
+          </p>
+        </div>
+        <FeedbackSubmit tenant={decoded} brand={brand} />
       </div>
 
       {posts.length === 0 ? (
@@ -43,18 +55,22 @@ export default async function PortalBoardPage({
       ) : (
         <div className="space-y-3">
           {posts.map((post) => (
-            <Link
+            <div
               key={post.id}
-              href={`/portal/${decoded}/post/${post.id}`}
-              className="block rounded-xl border border-black/5 bg-white p-4 transition-shadow hover:shadow-md"
+              className="relative isolate rounded-xl border border-black/5 bg-white p-4 transition-shadow hover:shadow-md"
             >
+              <Link
+                href={`/portal/${decoded}/post/${post.id}`}
+                aria-label={`Open ${post.title}`}
+                className="absolute inset-0 z-[1] rounded-xl"
+              />
               <div className="flex items-start gap-4">
-                <div className="flex h-14 w-12 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9]">
-                  <ThumbsUp className="h-4 w-4 text-[#1c0a0c]/60" />
-                  <span className="text-sm font-semibold text-[#1c0a0c]">
-                    {post.vote_count}
-                  </span>
-                </div>
+                <PortalVoteButton
+                  tenant={decoded}
+                  postId={post.id}
+                  initialCount={post.vote_count}
+                  brand={brand}
+                />
 
                 <div className="flex-1 space-y-2">
                   <div className="flex items-start justify-between gap-3">
@@ -97,7 +113,7 @@ export default async function PortalBoardPage({
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       )}

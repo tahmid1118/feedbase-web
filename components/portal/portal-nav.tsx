@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,6 +11,7 @@ interface PortalNavProps {
 
 export function PortalNav({ brand, tenant }: PortalNavProps) {
   const pathname = usePathname();
+  const [hovered, setHovered] = useState<string | null>(null);
 
   // When accessed via /portal/[tenant]/ directly, links must include the prefix.
   // When accessed via subdomain (acme.localhost), the pathname is the bare path
@@ -33,15 +35,20 @@ export function PortalNav({ brand, tenant }: PortalNavProps) {
     <nav className="flex items-center gap-1">
       {items.map((item) => {
         const active = item.key === activeKey;
+        const isHovered = !active && hovered === item.key;
         return (
           <Link
             key={item.key}
             href={item.href}
+            onMouseEnter={() => setHovered(item.key)}
+            onMouseLeave={() => setHovered(null)}
             className="rounded-lg px-3 py-1.5 text-sm font-medium transition-colors"
             style={
               active
                 ? { backgroundColor: brand, color: "#fff" }
-                : { color: "#1c0a0c" }
+                : isHovered
+                  ? { backgroundColor: `${brand}1a`, color: brand }
+                  : { color: "#1c0a0c" }
             }
           >
             {item.label}

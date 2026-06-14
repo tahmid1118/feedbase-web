@@ -41,7 +41,7 @@ const TYPE_ICON: Record<string, string> = {
 };
 
 const TRIGGER_CLASS =
-  "data-[state=active]:bg-[#c74959] data-[state=active]:text-white text-[#1c0a0c]/70 hover:text-[#1c0a0c]";
+  "rounded-lg text-[#1c0a0c]/70 transition-colors data-[state=active]:bg-[#c74959] data-[state=active]:text-white data-[state=inactive]:hover:bg-[#c74959]/10 data-[state=inactive]:hover:text-[#c74959]";
 
 interface FeedbackListProps {
   refreshKey?: number;

@@ -48,7 +48,8 @@ Dashboard pages are `"use client"` and read the access token from `useSession()`
 ### Multi-tenant subdomain portal
 
 - **`proxy.ts`** (project root — Next 16's `proxy` convention, which **replaced `middleware`**) reads the request host and rewrites `<tenant>.<root>/<path>` → `/portal/<tenant>/<path>`. A host that doesn't match the root domain is treated as a custom domain and passed through as the full tenant identifier. Reserved subdomains (`www`, `app`, `admin`, …) stay on the admin app. Root domain comes from `NEXT_PUBLIC_ROOT_DOMAIN` (default `localhost:3000`).
-- **`app/portal/[tenant]/`** renders public, read-only pages from **`lib/api/public.ts`** — an unauthenticated **server-side** client that hits the backend `/public/*` routes. Only safe fields are exposed (no author emails; drafts hidden). Internal links use `/portal/<tenant>/…` so they work both on a subdomain and via the direct path.
+- **`app/portal/[tenant]/`** renders public pages from **`lib/api/public.ts`** — an unauthenticated **server-side** client that hits the backend `/public/*` routes. Only safe fields are exposed (no author emails; drafts hidden). Internal links use `/portal/<tenant>/…` so they work both on a subdomain and via the direct path.
+- Visitors **can submit feedback** (`components/portal/feedback-submit.tsx`, POSTs to `/public/:tenant/feedback`) and **upvote** (`components/portal/portal-vote-button.tsx`, toggles `/public/:tenant/posts/:id/vote`). Anonymous identity for vote spam-control comes from `lib/portal/guest.ts` — a persistent `fb_guest_id` cookie (sent to the backend) plus a localStorage hint for the filled state. The tenant logo (`components/portal/portal-logo.tsx`) falls back to a brand-colored initial if missing/broken.
 - Local testing: visit `http://<tenant>.localhost:3000` (Chrome resolves `*.localhost`) or `/portal/<tenant>` directly.
 
 ### Authentication & session
