@@ -180,6 +180,30 @@ export interface PersonalData {
   avatar_url?: string | null;
 }
 
+export interface Workspace {
+  user_id: number;
+  role: UserRole;
+  tenant_id: number;
+  name: string;
+  subdomain: string;
+  branding_primary_color?: string | null;
+  current: boolean;
+}
+
+/** Auth payload returned when creating or switching a workspace. */
+export interface WorkspaceAuth {
+  token: string;
+  user: {
+    id: number;
+    tenantId: number;
+    role: string;
+    fullName: string;
+    email: string;
+    imageUrl?: string | null;
+  };
+  tenant?: { id: number; name: string; subdomain: string };
+}
+
 export interface OAuthLoginData {
   provider: "google" | "github" | "microsoft";
   providerUserId: string;

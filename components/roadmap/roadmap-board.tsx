@@ -53,6 +53,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 
 function slugify(value: string) {
   return value
@@ -116,6 +117,9 @@ export function RoadmapBoard() {
   useEffect(() => {
     load();
   }, [load]);
+
+  // Reflect status/roadmap changes made elsewhere when returning to this page.
+  useRefetchOnFocus(load);
 
   const sortedColumns = useMemo(
     () => [...columns].sort((a, b) => a.sort_order - b.sort_order),

@@ -54,17 +54,30 @@ async function request<T>(
       cache: "no-store",
     });
 
-    const data = await response.json();
+    // Read as text first: some error responses (e.g. the auth middleware's
+    // plain "Access denied") aren't JSON, and feeding those to response.json()
+    // throws a SyntaxError that would be mistaken for a connection failure.
+    const raw = await response.text();
+    let data: unknown;
+    try {
+      data = raw ? JSON.parse(raw) : {};
+    } catch {
+      data = { message: raw };
+    }
 
     if (!response.ok) {
+      const message =
+        data && typeof data === "object" && "message" in data
+          ? String((data as { message?: unknown }).message)
+          : "";
       throw new ApiError(
-        data.message || "Request failed",
+        message || `Request failed (${response.status})`,
         response.status,
         data
       );
     }
 
-    return data;
+    return data as T;
   } catch (error) {
     if (error instanceof ApiError) throw error;
     

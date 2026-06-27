@@ -1,5 +1,6 @@
 import { requestJson } from "@/lib/auth/api-client";
 import { AuthApiError } from "@/lib/auth/errors";
+import { resolveAvatarUrl } from "@/lib/avatar";
 import type {
   LoginApiRequest,
   LoginApiResponse,
@@ -44,7 +45,7 @@ export async function loginWithCredentials(
     role: response.user.role ?? null,
     name: response.user.fullName,
     email: response.user.email,
-    image: response.user.imageUrl ?? null,
+    image: resolveAvatarUrl(response.user.imageUrl) ?? null,
     accessToken: response.user.token,
   };
 }

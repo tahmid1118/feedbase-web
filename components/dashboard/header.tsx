@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Bell, LogOut, User } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { notificationsApi } from "@/lib/api";
+import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -55,7 +56,7 @@ export function Header({ user }: HeaderProps) {
 
   // Prefer the live session (updated after a profile edit) over the server prop.
   const displayName = session?.user?.name ?? user.name;
-  const displayImage = session?.user?.image ?? user.image;
+  const displayImage = resolveAvatarUrl(session?.user?.image ?? user.image);
   const displayEmail = session?.user?.email ?? user.email;
 
   const initials =

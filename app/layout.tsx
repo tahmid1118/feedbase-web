@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Sora } from "next/font/google";
 
+import { auth } from "@/auth";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
 import "./globals.css";
 
@@ -21,21 +22,24 @@ export const metadata: Metadata = {
   description: "Collect, prioritize, and ship product feedback with confidence.",
 };
 
-// Kept synchronous (no `await auth()`) so public routes stay statically
-// renderable. The session is resolved client-side by AuthSessionProvider, and
-// the dashboard layout passes the server session straight to the header.
-export default function RootLayout({
+// Seed the single AuthSessionProvider server-side so authenticated pages have
+// the session/token on first paint — without it there's a loading gap where the
+// dashboard fires token-less API calls (backend replies "Access denied"). Every
+// route is already dynamic (auth/portal reads), so this costs no static rendering.
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <html
       lang="en"
       className={`${fontSans.variable} ${fontMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
-        <AuthSessionProvider>{children}</AuthSessionProvider>
+        <AuthSessionProvider session={session}>{children}</AuthSessionProvider>
       </body>
     </html>
   );

@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > **Keep this file current.** Whenever you change architecture, conventions, env vars, auth/session behavior, the API surface, the design system, or dependencies, update the relevant section here *in the same change*. A drifted CLAUDE.md is a bug. Prefer concise, additive edits.
 
+> **Keep the SRS current.** Whenever you implement or modify a user-facing feature, update `feedbase_srs.txt` (project root) *in the same change*. Keep it clean and professional — a well-structured requirements spec that accurately reflects what's built, not a changelog or a dump of implementation detail.
+
 ## Commands
 
 ```bash
@@ -57,6 +59,7 @@ Dashboard pages are `"use client"` and read the access token from `useSession()`
 - NextAuth v5 (beta), **Credentials provider only**; config in `auth.ts`. The JWT stores `userId`, `accessToken`, `tenantId`, and `role`. Session type augmentation is in `types/next-auth.d.ts`.
 - **Exactly one `SessionProvider`.** It lives in the root `app/layout.tsx` (`AuthSessionProvider`), seeded with the server session. **Do NOT add a second/nested `SessionProvider`** (e.g. in the dashboard layout) — nesting breaks `useSession().update()`, so client-side session refreshes silently fail (this caused the header avatar not to update after a profile edit).
 - Profile edits call `update({ name, image })` to refresh the session in place; `auth.ts`'s `jwt` callback handles the `"update"` trigger. The header reads name/avatar from the live session so it re-renders immediately.
+- **Multiple workspaces per account.** An email can be a user in several tenants. `components/dashboard/workspace-switcher.tsx` (sidebar) lists `usersApi.getWorkspaces()`, and switching/creating calls `usersApi.switchWorkspace()` / `createWorkspace()` then `update({ accessToken, tenantId, role, userId })` — the `jwt` "update" handler swaps the active identity so the dashboard re-scopes without a re-login. `resolveAvatarUrl` (`lib/avatar.ts`) normalizes avatars everywhere they're shown.
 - Access tokens are forwarded as `Bearer` on every API call. Auth helpers (`lib/auth/`) handle login/register, Zod validation, and in-memory rate limiting.
 
 ### API Client
@@ -102,7 +105,8 @@ Conventions:
 
 ### Rendering & performance
 
-- The root `app/layout.tsx` is intentionally **synchronous** (no `await auth()`) so it doesn't opt every route into dynamic rendering. The session is resolved client-side by the single `AuthSessionProvider`; the dashboard layout passes its server session to the header for an instant first paint.
+- The single `AuthSessionProvider` (root `app/layout.tsx`) is **seeded server-side** via `await auth()` so authenticated pages have the session/token on first paint. Without the seed there's a loading gap where the dashboard fires token-less API calls and the backend replies plain-text `Access denied`. Every route is already dynamic (auth/portal reads), so seeding costs no static rendering.
+- `lib/api/client.ts` reads each response as text then `JSON.parse`s defensively — non-JSON error bodies (like `Access denied`) become a clean `ApiError`, not a misleading "can't connect".
 - Authenticated surfaces (dashboard, login/signup, landing) read the session/cookies and are **dynamic by design** — don't try to force them static.
 - The **public portal is dynamic** because its backend reads are POST and Next's Data Cache only caches GET. `app/portal/[tenant]/layout.tsx` already sets `export const revalidate` (activates once those reads become GET + `next: { revalidate }`); until then `loading.tsx` provides streaming. `publicApi.getTenant` is wrapped in React `cache()` to dedupe the tenant lookup per render.
 - Route transitions stream via `loading.tsx` skeletons (`app/dashboard/`, `app/portal/[tenant]/`).

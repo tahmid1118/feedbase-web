@@ -1,74 +1,204 @@
-SOFTWARE REQUIREMENTS SPECIFICATION (SRS)
-Multi-Tenant Feedback & Roadmap Platform
+================================================================================
+SOFTWARE REQUIREMENTS SPECIFICATION
+Feedbase - Multi-Tenant Feedback & Roadmap Platform
+Version 1.1
+================================================================================
 
-1. Introduction
-Purpose: Build a SaaS platform for collecting feedback, managing feature requests, roadmaps, and changelogs.
+--------------------------------------------------------------------------------
+1. INTRODUCTION
+--------------------------------------------------------------------------------
 
-2. System Overview
-- Multi-tenant SaaS
-- Roles: Visitor, User, Moderator, Admin, Owner
+1.1 Purpose
+    This document specifies the requirements for Feedbase, a multi-tenant SaaS
+    platform that lets companies collect product feedback from their users,
+    prioritize it through voting, and communicate progress through a public
+    roadmap and changelog.
 
-3. Multi-Tenant System
-- Subdomain per tenant (e.g., tenant.app.com)
-- Tenant isolation via tenant_id
-- Custom domain support
+1.2 Scope
+    Each customer (tenant) receives a branded public portal where their end
+    users submit and upvote feedback, and a private admin dashboard where the
+    tenant's team triages and manages that feedback, plans a roadmap, and
+    publishes release notes. The system is delivered as a web application
+    backed by a stateless REST API and a relational database.
 
-4. Functional Requirements
-- Authentication (JWT, OAuth)
-- Feedback posts (CRUD)
-- Voting system
-- Comments with threads
-- Roadmap (Kanban)
-- Changelog publishing
-- Notifications (email + in-app)
-- Search & filtering
-- Duplicate detection
-- Admin dashboard
-- Analytics
-- Branding
-- API access
-- Rate limiting
-- File uploads
-- Audit logs
-- Integrations
+1.3 Definitions
+    Tenant        An isolated customer workspace.
+    Visitor/Guest An unauthenticated end user on a tenant's public portal.
+    Member        An authenticated tenant team member (user/moderator/admin/owner).
+    Portal        The public, tenant-branded surface (board, roadmap, changelog).
+    Dashboard     The private, authenticated admin application.
 
-5. Non-Functional Requirements
-- Performance <2s load
-- Secure (HTTPS, validation)
-- Scalable (10k+ tenants)
-- 99.9% uptime
+--------------------------------------------------------------------------------
+2. OVERALL DESCRIPTION
+--------------------------------------------------------------------------------
 
-6. Database Design
-Tables:
-- Tenants
-- Users
-- Posts
-- Votes
-- Comments
-- Tags
-- Changelog
-- Notifications
-- API Keys
-- Audit Logs
+2.1 Product Perspective
+    - Frontend: Next.js (App Router) web application; communicates only with the
+      REST API.
+    - Backend: Node.js/Express REST API over a MySQL database (raw SQL, no ORM).
+    - One codebase serves two surfaces: the authenticated dashboard and the
+      public, per-tenant portal.
 
-7. API Design
-- Auth endpoints
-- Posts endpoints
-- Comments, votes
-- Roadmap & changelog
+2.2 User Roles & Permissions
+    - Visitor/Guest: view a tenant portal, submit feedback (anonymously or with
+      an optional email), and upvote posts. No account required.
+    - User: authenticated member with baseline access.
+    - Moderator / Admin / Owner: progressively broader management rights over
+      team, tags, integrations, API keys, audit logs, and branding.
 
-8. UI Pages
-- Feedback board
-- Post details
-- Roadmap
-- Changelog
-- Admin dashboard
+2.3 Multi-Tenancy
+    - Each tenant is reachable at <subdomain>.<root-domain> and, optionally, a
+      custom domain.
+    - All data is isolated by tenant; every query is tenant-scoped.
+    - Reserved subdomains (www, app, admin, ...) are never tenants.
 
-9. Deployment
-- Wildcard DNS (*.app.com)
-- Cloud hosting
+2.4 Operating Environment
+    - Modern evergreen web browsers.
+    - Cloud-hosted application and API; managed MySQL; wildcard DNS
+      (*.<root-domain>).
 
-10. Future Enhancements
-- AI prioritization
-- Slack/Discord integration
+--------------------------------------------------------------------------------
+3. FUNCTIONAL REQUIREMENTS
+--------------------------------------------------------------------------------
 
+3.1 Authentication & Accounts
+    - Email/password authentication using JWT bearer tokens (OAuth-ready).
+    - The session carries the user identity, tenant, and role.
+    - Profile management: name, contact, avatar upload, and password change.
+    FR-W1  Workspaces ... One account (email) may belong to multiple workspaces
+                          (tenants). Users can create additional workspaces
+                          (name, subdomain, optional website) and switch the
+                          active one from the sidebar; the dashboard re-scopes to
+                          the selection without a re-login. A new workspace is
+                          owned by its creator and seeded with the default,
+                          status-linked roadmap columns.
+
+3.2 Public Portal (Visitors)
+    The portal is the primary channel for collecting feedback.
+    - Branded header (tenant logo, or a brand-colored initial fallback) using
+      the tenant's primary color.
+    FR-P1  Board ........ Browse feedback posts with vote counts, tags, status,
+                          and comment counts.
+    FR-P2  Submit ....... Any visitor may create a post (title, details, type),
+                          anonymously or with an optional name/email for follow-up.
+    FR-P3  Vote ......... Any visitor may upvote/remove an upvote. Voting is
+                          limited to one vote per browser per post via a
+                          persistent cookie identifier; no account required.
+    FR-P4  Post detail .. Read a post and its threaded comments.
+    FR-P5  Roadmap ...... View the tenant's public roadmap (columns and items).
+    FR-P6  Changelog .... Read published release notes (drafts are hidden).
+    - Public responses expose only safe fields; author and guest emails are
+      never returned on public routes.
+
+3.3 Feedback Management (Dashboard)
+    Feedback originates from end users on the public portal. The dashboard is
+    for triage and management; the team does not author new posts here.
+    FR-F1  List ......... Search and filter by status, type, and tag.
+    FR-F2  Maintain ..... Edit or delete posts.
+    FR-F3  Status ....... Set status: open, planned, in progress, completed, closed.
+    FR-F4  Pin .......... Pin important posts to the top.
+    FR-F5  Tags ......... Assign or remove tags.
+    FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.
+    FR-F7  Engage ....... Quick upvote from the list; full post view with
+                          voting, tags, duplicates, and threaded comments
+                          (reply/edit/delete).
+    FR-F8  Promote ...... From the Open tab, select one, several, or all posts
+                          and add them to a chosen roadmap column in a single
+                          action (with an optional target date). Adding a post to
+                          a status column also sets its status; posts already on
+                          the roadmap are skipped.
+    - Guest submissions appear as "Anonymous" (or the supplied name); the team
+      can see a guest's email, when provided, for follow-up.
+
+3.4 Roadmap
+    FR-R1  Columns ...... Create, rename, reorder, and delete columns.
+    FR-R2  Items ........ Add a post to a column with an optional target date;
+                          move items between columns by drag-and-drop; remove items.
+    FR-R3  Status sync .. Columns whose key matches a post status (planned,
+                          in_progress, completed, ...) are linked to that status:
+                          moving an item into such a column sets the post's status,
+                          and changing a post's status moves its roadmap item into
+                          the matching column. The roadmap and the feedback board's
+                          status tabs therefore stay consistent.
+
+3.5 Changelog
+    FR-C1  Authoring .... Create and edit entries with Markdown content.
+    FR-C2  Publishing ... Save as draft or publish; only published entries are
+                          visible on the portal.
+
+3.6 Notifications
+    FR-N1  In-app notifications with an unread count and deep links to the
+           referenced post or changelog; mark read, mark all read, and delete.
+
+3.7 Administration (Settings)
+    Tabs: Profile, Team (roles), Tags, Integrations, API Keys, Audit Logs, and
+    Branding (logo, primary color, subdomain/custom domain). Admin-only tabs are
+    gated by role.
+
+3.8 Analytics
+    FR-A1  Overview of totals, status/type breakdowns, and a recent-activity trend.
+
+3.9 Platform Services
+    Scoped API keys, audit logging, third-party integrations, and file uploads.
+
+--------------------------------------------------------------------------------
+4. EXTERNAL INTERFACES
+--------------------------------------------------------------------------------
+
+4.1 REST API
+    - JSON over HTTP; responses share a { status, message, data } envelope.
+    - Authenticated routes require Authorization: Bearer <token>.
+    - Public portal routes (/public/*) are unauthenticated and tenant-scoped by
+      subdomain or custom domain.
+
+4.2 User Interface
+    - Portal: board, post detail, roadmap, changelog.
+    - Dashboard: overview, feedback, roadmap, changelog, notifications, settings.
+    - A single, consistent visual system (see 5.5).
+
+--------------------------------------------------------------------------------
+5. NON-FUNCTIONAL REQUIREMENTS
+--------------------------------------------------------------------------------
+
+5.1 Performance .... Interactions feel instant; route transitions stream a
+                     skeleton; API responses are compressed.
+5.2 Security ....... HTTPS; JWT authentication; server-side validation; strict
+                     tenant isolation; no private fields (e.g. emails) on public
+                     routes.
+5.3 Scalability .... Stateless API over a connection-pooled database; designed
+                     for many tenants and wildcard-subdomain routing.
+5.4 Availability ... Target 99.9% uptime.
+5.5 Usability ...... Light-only theme; one type family; a rose product palette
+                     with a per-tenant brand color on each portal; consistent
+                     forms, dialogs, and dropdowns.
+
+--------------------------------------------------------------------------------
+6. DATA MODEL (principal tables)
+--------------------------------------------------------------------------------
+
+    tenants, users, posts (with guest submitter fields), votes (supporting guest
+    voting), comments, tags, post_tags, roadmap_columns, roadmap_items,
+    changelog_entries, notifications, api_keys, audit_logs, integrations,
+    oauth_accounts. All feature tables are scoped by tenant.
+
+--------------------------------------------------------------------------------
+7. DEPLOYMENT
+--------------------------------------------------------------------------------
+
+    Wildcard DNS (*.<root-domain>) plus optional per-tenant custom domains;
+    cloud-hosted web application and API; managed MySQL database.
+
+--------------------------------------------------------------------------------
+8. FUTURE ENHANCEMENTS
+--------------------------------------------------------------------------------
+
+    - OAuth sign-in (Google / GitHub / Microsoft).
+    - Email notifications to guests who shared an address.
+    - AI-assisted prioritization and duplicate detection.
+    - Slack / Discord integrations.
+
+================================================================================
+Document control: update this specification whenever a user-facing feature is
+added or changed (see CLAUDE.md). Keep it concise, well-structured, and accurate
+to the system as built.
+================================================================================

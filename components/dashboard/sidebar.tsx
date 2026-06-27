@@ -16,6 +16,7 @@ import {
 import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/ui/logo";
+import { WorkspaceSwitcher } from "@/components/dashboard/workspace-switcher";
 
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
@@ -59,6 +60,11 @@ export function Sidebar() {
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
           <Logo className="h-8 w-8" />
           <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
+        </div>
+
+        {/* Workspace switcher */}
+        <div className="border-b border-[#e399a3]/20 p-3">
+          <WorkspaceSwitcher />
         </div>
 
         {/* Navigation */}

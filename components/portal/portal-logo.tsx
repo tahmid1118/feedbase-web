@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface PortalLogoProps {
   logoUrl?: string | null;
@@ -15,12 +15,27 @@ interface PortalLogoProps {
  */
 export function PortalLogo({ logoUrl, name, brand }: PortalLogoProps) {
   const [errored, setErrored] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // The <img> is server-rendered, so it can finish loading (and fail) before
+  // React hydrates and attaches onError — which would leave a broken-image icon
+  // forever. Detect that already-failed case on mount.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) {
+      // Fires once for an already-broken image; the perf rule doesn't apply.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setErrored(true);
+    }
+  }, [logoUrl]);
+
   const showImage = logoUrl && !errored;
 
   if (showImage) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
+        ref={imgRef}
         src={logoUrl}
         alt={name}
         width={32}

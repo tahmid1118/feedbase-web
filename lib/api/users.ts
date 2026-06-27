@@ -12,6 +12,8 @@ import type {
   UserRole,
   PaginationData,
   PaginatedResponse,
+  Workspace,
+  WorkspaceAuth,
 } from "./types";
 
 export const usersApi = {
@@ -54,6 +56,30 @@ export const usersApi = {
     apiClient.post<ApiResponse<PaginatedResponse<User>>>(
       "/users/table-data",
       { paginationData: pagination },
+      { token }
+    ),
+
+  // --- Workspaces (multi-tenant per account) ---
+  getWorkspaces: (token: string) =>
+    apiClient.get<ApiResponse<{ workspaces: Workspace[] }>>(
+      "/users/workspaces?lg=en",
+      { token }
+    ),
+
+  createWorkspace: (
+    data: { name: string; subdomain: string; website?: string },
+    token: string
+  ) =>
+    apiClient.post<ApiResponse<WorkspaceAuth>>(
+      "/users/workspaces/create",
+      { workspaceData: data },
+      { token }
+    ),
+
+  switchWorkspace: (tenantId: number, token: string) =>
+    apiClient.post<ApiResponse<WorkspaceAuth>>(
+      "/users/workspaces/switch",
+      { tenantId },
       { token }
     ),
 };

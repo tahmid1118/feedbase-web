@@ -86,12 +86,24 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.image = user.image;
       }
 
-      // Profile edits call `update({ name, image })` to refresh the session
-      // without forcing a re-login.
+      // Client `update(...)` refreshes the session in place: profile edits send
+      // { name, image }; switching workspace sends a fresh token + new tenant
+      // identity so the dashboard re-scopes without a re-login.
       if (trigger === "update" && session && typeof session === "object") {
-        const next = session as { name?: string; image?: string | null };
+        const next = session as {
+          name?: string;
+          image?: string | null;
+          accessToken?: string;
+          tenantId?: string | null;
+          role?: string | null;
+          userId?: string;
+        };
         if (next.name !== undefined) token.name = next.name;
         if (next.image !== undefined) token.image = next.image;
+        if (next.accessToken !== undefined) token.accessToken = next.accessToken;
+        if (next.tenantId !== undefined) token.tenantId = next.tenantId;
+        if (next.role !== undefined) token.role = next.role;
+        if (next.userId !== undefined) token.userId = next.userId;
       }
 
       return token;

@@ -3,24 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Loader2, Upload } from "lucide-react";
-import {
-  usersApi,
-  uploaderApi,
-  getApiBaseUrl,
-  type PersonalData,
-} from "@/lib/api";
+import { usersApi, uploaderApi, type PersonalData } from "@/lib/api";
+import { resolveAvatarUrl } from "@/lib/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { toast } from "sonner";
-
-function resolveAvatar(path?: string | null): string | undefined {
-  if (!path) return undefined;
-  if (path.startsWith("http")) return path;
-  return `${getApiBaseUrl()}/${path.replace(/^\/+/, "")}`;
-}
 
 export function ProfileSettings() {
   const { data: session, update } = useSession();
@@ -86,7 +76,7 @@ export function ProfileSettings() {
       // Refresh the session so the header avatar/name update immediately.
       await update({
         name: fullName.trim(),
-        image: resolveAvatar(avatarPath) ?? null,
+        image: resolveAvatarUrl(avatarPath) ?? null,
       });
       toast.success("Profile updated");
     } catch {
@@ -137,7 +127,7 @@ export function ProfileSettings() {
 
         <div className="mt-6 flex items-center gap-4">
           <Avatar className="h-16 w-16">
-            <AvatarImage src={resolveAvatar(avatarPath)} alt={fullName} />
+            <AvatarImage src={resolveAvatarUrl(avatarPath)} alt={fullName} />
             <AvatarFallback className="bg-[#c74959] text-lg text-white">
               {initials}
             </AvatarFallback>
