@@ -87,8 +87,9 @@ Version 1.1
                           limited to one vote per browser per post via a
                           persistent cookie identifier; no account required.
     FR-P4  Post detail .. Read a post and its threaded comments.
-    FR-P5  Roadmap ...... View the tenant's public roadmap (columns and items).
-    FR-P6  Changelog .... Read published release notes (drafts are hidden).
+    - The public portal exposes the feedback board only. Roadmap and changelog
+      are NOT public (no nav entry; their portal routes redirect to the board) —
+      they are managed in the admin dashboard.
     - Public responses expose only safe fields; author and guest emails are
       never returned on public routes.
 

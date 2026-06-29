@@ -19,17 +19,10 @@ export function PortalNav({ brand, tenant }: PortalNavProps) {
   const isDirectPath = pathname.startsWith("/portal/");
   const base = isDirectPath ? `/portal/${tenant}` : "";
 
-  const items = [
-    { href: `${base}/`, label: "Board", key: "board" },
-    { href: `${base}/roadmap`, label: "Roadmap", key: "roadmap" },
-    { href: `${base}/changelog`, label: "Changelog", key: "changelog" },
-  ];
+  // Roadmap and changelog are intentionally hidden from the public portal.
+  const items = [{ href: `${base}/`, label: "Board", key: "board" }];
 
-  const activeKey = pathname.includes("/roadmap")
-    ? "roadmap"
-    : pathname.includes("/changelog")
-      ? "changelog"
-      : "board";
+  const activeKey = "board";
 
   return (
     <nav className="flex items-center gap-1">
