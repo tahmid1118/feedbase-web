@@ -117,7 +117,8 @@ export function SignupForm() {
         return;
       }
 
-      router.replace("/");
+      // New accounts have no workspace yet — onboard to create their first.
+      router.replace("/onboarding");
       router.refresh();
     } catch {
       setFormError("Unable to create account right now. Please try again.");

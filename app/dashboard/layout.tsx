@@ -15,6 +15,12 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
+  // A signed-in account with no workspace yet (just registered) must onboard
+  // first — create or join a workspace before entering the dashboard.
+  if (!session.user.tenantId) {
+    redirect("/onboarding");
+  }
+
   // Note: the session context comes from the root <AuthSessionProvider>. We do
   // NOT add a second SessionProvider here — nesting them breaks `update()`, so
   // profile changes (e.g. avatar) would never reach the header.

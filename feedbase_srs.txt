@@ -66,12 +66,14 @@ Version 1.1
     - The session carries the user identity, tenant, and role.
     - Profile management: name, contact, avatar upload, and password change.
     FR-W1  Workspaces ... One account (email) may belong to multiple workspaces
-                          (tenants). Users can create additional workspaces
-                          (name, subdomain, optional website) and switch the
-                          active one from the sidebar; the dashboard re-scopes to
-                          the selection without a re-login. A new workspace is
-                          owned by its creator and seeded with the default,
-                          status-linked roadmap columns.
+                          (tenants), and only ever sees workspaces it belongs to.
+                          A new account starts with NO workspace and is sent to
+                          onboarding to create its first (name, subdomain,
+                          optional website). Users can create additional
+                          workspaces and switch the active one from the sidebar;
+                          the dashboard re-scopes to the selection without a
+                          re-login. Each new workspace is owned by its creator and
+                          seeded with the default, status-linked roadmap columns.
 
 3.2 Public Portal (Visitors)
     The portal is the primary channel for collecting feedback.
