@@ -245,10 +245,26 @@ export interface Tenant {
 export interface UpdateTenantData {
   name?: string;
   customDomain?: string;
-  planName?: string;
   brandingLogoUrl?: string;
   brandingPrimaryColor?: string;
   isActive?: number;
+}
+
+// Billing / subscription types
+export type PlanKey = "free" | "pro" | "business";
+
+export interface PlanLimits {
+  seats: number;
+  customDomain: boolean;
+  integrations: boolean;
+}
+
+export interface BillingStatus {
+  planName: PlanKey;
+  subscriptionStatus: string | null;
+  currentPeriodEnd: string | null;
+  hasSubscription: boolean;
+  limits: PlanLimits;
 }
 
 // API Key types

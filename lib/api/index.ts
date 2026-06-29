@@ -19,4 +19,5 @@ export * from "./audit-logs";
 export * from "./integrations";
 export * from "./uploader";
 export * from "./analytics";
+export * from "./billing";
 export * from "./health-check";

@@ -8,13 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { toast } from "sonner";
 
 export function BrandingSettings() {
@@ -26,7 +19,6 @@ export function BrandingSettings() {
   const [customDomain, setCustomDomain] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
   const [primaryColor, setPrimaryColor] = useState("#c74959");
-  const [planName, setPlanName] = useState("free");
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
@@ -46,7 +38,6 @@ export function BrandingSettings() {
     setCustomDomain(t.custom_domain ?? "");
     setLogoUrl(t.branding_logo_url ?? "");
     setPrimaryColor(t.branding_primary_color ?? "#c74959");
-    setPlanName(t.plan_name ?? "free");
   };
 
   const save = async () => {
@@ -60,13 +51,14 @@ export function BrandingSettings() {
           customDomain: customDomain.trim(),
           brandingLogoUrl: logoUrl.trim(),
           brandingPrimaryColor: primaryColor,
-          planName,
         },
         token
       );
       toast.success("Workspace updated");
-    } catch {
-      toast.error("Failed to update workspace");
+    } catch (e) {
+      // Surfaces e.g. the plan-limit message when a Free workspace tries to set
+      // a custom domain.
+      toast.error((e as Error)?.message || "Failed to update workspace");
     } finally {
       setSaving(false);
     }
@@ -120,19 +112,6 @@ export function BrandingSettings() {
             onChange={(e) => setCustomDomain(e.target.value)}
             placeholder="feedback.yourcompany.com"
           />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="ws-plan">Plan</Label>
-          <Select value={planName} onValueChange={setPlanName}>
-            <SelectTrigger id="ws-plan">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="free">Free</SelectItem>
-              <SelectItem value="pro">Pro</SelectItem>
-              <SelectItem value="enterprise">Enterprise</SelectItem>
-            </SelectContent>
-          </Select>
         </div>
         <div className="space-y-2">
           <Label htmlFor="ws-logo">Logo URL</Label>

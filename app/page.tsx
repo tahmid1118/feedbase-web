@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
+import { PricingSection } from "@/components/pricing/pricing-section";
 
 export default async function HomePage() {
   const session = await auth();
@@ -23,6 +24,11 @@ export default async function HomePage() {
             <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
           </div>
           <div className="flex items-center gap-3">
+            <Link href="/pricing" className="hidden sm:block">
+              <Button variant="ghost" className="text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]">
+                Pricing
+              </Button>
+            </Link>
             <Link href="/login">
               <Button variant="ghost" className="text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]">
                 Sign in
@@ -247,6 +253,17 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="container mx-auto px-4 py-20">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">Simple, Transparent Pricing</h2>
+          <p className="text-lg text-[#1c0a0c]/70">Start free, upgrade when you grow</p>
+        </div>
+        <div className="mx-auto max-w-5xl">
+          <PricingSection />
         </div>
       </section>
 

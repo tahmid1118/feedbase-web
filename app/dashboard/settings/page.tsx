@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import {
   User,
@@ -10,6 +11,7 @@ import {
   KeyRound,
   ScrollText,
   Palette,
+  CreditCard,
   type LucideIcon,
 } from "lucide-react";
 import type { UserRole } from "@/lib/api";
@@ -21,6 +23,7 @@ import { IntegrationsSettings } from "@/components/settings/integrations-setting
 import { ApiKeysSettings } from "@/components/settings/api-keys-settings";
 import { AuditLogsSettings } from "@/components/settings/audit-logs-settings";
 import { BrandingSettings } from "@/components/settings/branding-settings";
+import { BillingSettings } from "@/components/settings/billing-settings";
 
 type TabId =
   | "profile"
@@ -29,7 +32,8 @@ type TabId =
   | "integrations"
   | "api-keys"
   | "audit"
-  | "branding";
+  | "branding"
+  | "billing";
 
 interface TabDef {
   id: TabId;
@@ -46,13 +50,19 @@ const TABS: TabDef[] = [
   { id: "api-keys", label: "API Keys", icon: KeyRound, adminOnly: true },
   { id: "audit", label: "Audit Logs", icon: ScrollText, adminOnly: true },
   { id: "branding", label: "Branding", icon: Palette, adminOnly: true },
+  { id: "billing", label: "Billing", icon: CreditCard, adminOnly: true },
 ];
 
 const ADMIN_ROLES: UserRole[] = ["moderator", "admin", "owner"];
 
 export default function SettingsPage() {
   const { data: session } = useSession();
-  const [selected, setSelected] = useState<TabId>("profile");
+  const searchParams = useSearchParams();
+  // Allow deep-linking to a tab (e.g. Stripe Checkout returns to ?tab=billing).
+  const initialTab = TABS.some((t) => t.id === searchParams.get("tab"))
+    ? (searchParams.get("tab") as TabId)
+    : "profile";
+  const [selected, setSelected] = useState<TabId>(initialTab);
 
   // Role comes straight from the session (set at login).
   const role = (session?.user?.role as UserRole | null) ?? null;
@@ -106,6 +116,7 @@ export default function SettingsPage() {
           {active === "api-keys" && <ApiKeysSettings />}
           {active === "audit" && <AuditLogsSettings />}
           {active === "branding" && <BrandingSettings />}
+          {active === "billing" && <BillingSettings />}
         </div>
       </div>
     </div>

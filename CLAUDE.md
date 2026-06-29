@@ -92,6 +92,15 @@ pnpm dlx shadcn@latest add <component>
 
 Toasts use `sonner` — `import { toast } from "sonner"`. Roadmap drag-and-drop uses `@dnd-kit/core`.
 
+### Billing & subscriptions
+
+- Three tiers — **Free / Pro / Business** (monthly). The display config (names, prices, feature bullets, which card is highlighted) lives in **`lib/plans.ts`** and is the single source of truth for both the dashboard Billing tab and the public pricing page. The enforced limits + Stripe Price IDs live on the backend (`src/consts/plans.js`); `lib/plans.ts` is presentation-only.
+- **Hosted Stripe Checkout + Customer Portal** — no card data touches this app. `lib/api/billing.ts` (`billingApi.getStatus / checkout / portal`) calls the backend, which returns a Stripe URL; the client just `window.location.assign`es to it.
+- **Billing settings tab** (`components/settings/billing-settings.tsx`, admin-only) shows the current plan + a 3-card grid. Free users get **Upgrade** (→ Checkout); subscribers get **Manage billing** (→ Portal) for tier changes/cancellation. Stripe Checkout returns to `/dashboard/settings?tab=billing&checkout=success|cancelled`; the settings page reads `?tab=` to deep-link the tab and the component toasts on the `checkout` param.
+- **Public pricing**: `components/pricing/pricing-section.tsx` (display-only, CTAs → `/signup`) is rendered on the landing page (`#pricing`) and a dedicated `app/pricing/page.tsx`.
+- The **plan is set only by Stripe** (checkout + webhook). The old plan dropdown in Branding settings was removed and `planName` dropped from `UpdateTenantData` — clients can't change their plan directly. A Free workspace that tries a paid capability (custom domain, integrations) gets a `402` with an upgrade message, surfaced as a toast.
+- No client-side Stripe key is needed (hosted Checkout only redirects to a backend-provided URL).
+
 ### Design System
 
 **Light-only app.** A `prefers-color-scheme: dark` media query was removed and `color-scheme: light` is forced in `globals.css`. Do not reintroduce dark-mode variants — the app hardcodes light brand colors, so dark tokens make shadcn components unreadable.

@@ -137,15 +137,33 @@ Version 1.1
            referenced post or changelog; mark read, mark all read, and delete.
 
 3.7 Administration (Settings)
-    Tabs: Profile, Team (roles), Tags, Integrations, API Keys, Audit Logs, and
-    Branding (logo, primary color, subdomain/custom domain). Admin-only tabs are
-    gated by role.
+    Tabs: Profile, Team (roles), Tags, Integrations, API Keys, Audit Logs,
+    Branding (logo, primary color, subdomain/custom domain), and Billing.
+    Admin-only tabs are gated by role.
 
 3.8 Analytics
     FR-A1  Overview of totals, status/type breakdowns, and a recent-activity trend.
 
 3.9 Platform Services
     Scoped API keys, audit logging, third-party integrations, and file uploads.
+
+3.10 Billing & Subscriptions
+    Each workspace is on a subscription plan; payment is handled by Stripe
+    (hosted Checkout + Customer Portal — no card data is stored by the platform).
+    FR-B1  Plans ........ Three monthly tiers: Free ($0), Pro ($19), and Business
+                          ($49). Tiers and features are presented on a public
+                          pricing page and on the dashboard Billing tab.
+    FR-B2  Upgrade ...... An owner/admin upgrades from the Billing tab via Stripe
+                          Checkout; on success the workspace's plan is updated.
+    FR-B3  Manage ....... Subscribers open the Stripe Customer Portal to change
+                          tier, update card, or cancel; cancellation returns the
+                          workspace to Free.
+    FR-B4  Sync ......... A Stripe webhook keeps the workspace plan and status in
+                          sync with the subscription lifecycle.
+    FR-B5  Enforcement .. Paid capabilities are gated by plan: a Free workspace
+                          cannot set a custom domain or create integrations and is
+                          prompted to upgrade. The plan is set only by Stripe and
+                          cannot be changed directly by the client.
 
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES
