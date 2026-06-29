@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { Check, ChevronsUpDown, Plus, Loader2 } from "lucide-react";
 import { usersApi, type Workspace, type WorkspaceAuth } from "@/lib/api";
 import {
@@ -50,7 +49,6 @@ function Tile({ name, color }: { name: string; color?: string | null }) {
 
 export function WorkspaceSwitcher() {
   const { data: session, update } = useSession();
-  const router = useRouter();
   const token = session?.user?.accessToken;
 
   const [workspaces, setWorkspaces] = useState<Workspace[]>([]);
@@ -78,7 +76,9 @@ export function WorkspaceSwitcher() {
   const current = workspaces.find((w) => w.current) ?? workspaces[0];
   const currentName = current?.name ?? session?.user?.name ?? "Workspace";
 
-  // Apply a fresh auth payload (from switch/create) to the session in place.
+  // Apply a fresh auth payload (from switch/create) and hard-reload so the whole
+  // app re-scopes to the new workspace. A soft router.refresh() races the
+  // session-cookie write, so the change wouldn't take on the first click.
   const applyAuth = async (auth: WorkspaceAuth) => {
     await update({
       accessToken: auth.token,
@@ -86,7 +86,7 @@ export function WorkspaceSwitcher() {
       role: auth.user.role,
       userId: String(auth.user.id),
     });
-    router.refresh();
+    window.location.assign("/dashboard");
   };
 
   const handleSwitch = async (w: Workspace) => {
@@ -95,14 +95,14 @@ export function WorkspaceSwitcher() {
     try {
       const res = await usersApi.switchWorkspace(w.tenant_id, token);
       if (res.data) {
-        await applyAuth(res.data);
-        toast.success(`Switched to ${w.name}`);
-        load();
+        await applyAuth(res.data); // reloads the page
+      } else {
+        setSwitching(false);
+        toast.error("Failed to switch workspace");
       }
     } catch {
-      toast.error("Failed to switch workspace");
-    } finally {
       setSwitching(false);
+      toast.error("Failed to switch workspace");
     }
   };
 
@@ -124,21 +124,16 @@ export function WorkspaceSwitcher() {
         token
       );
       if (res.data) {
-        setCreateOpen(false);
-        setName("");
-        setSubdomain("");
-        setSubdomainTouched(false);
-        setWebsite("");
-        await applyAuth(res.data); // auto-switch into the new workspace
-        toast.success("Workspace created");
-        load();
+        await applyAuth(res.data); // auto-switch into the new workspace (reloads)
+      } else {
+        setCreating(false);
+        toast.error("Failed to create workspace");
       }
     } catch (error) {
+      setCreating(false);
       toast.error(
         error instanceof Error ? error.message : "Failed to create workspace"
       );
-    } finally {
-      setCreating(false);
     }
   };
 

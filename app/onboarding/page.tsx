@@ -47,8 +47,9 @@ export default function OnboardingPage() {
       role: auth.user.role,
       userId: String(auth.user.id),
     });
-    router.replace("/dashboard");
-    router.refresh();
+    // Hard reload so the dashboard renders with the freshly written session
+    // cookie (a soft router push can race the update and bounce back here).
+    window.location.assign("/dashboard");
   };
 
   const handleNameChange = (value: string) => {
