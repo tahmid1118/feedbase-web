@@ -130,14 +130,7 @@ function CommentForm({
             Commenting as{" "}
             <span className="font-medium text-[#1c0a0c]/70">
               {name || "Anonymous"}
-            </span>{" "}
-            <button
-              type="button"
-              onClick={() => setEditingIdentity(true)}
-              className="text-[#c74959] hover:underline"
-            >
-              change
-            </button>
+            </span>
           </p>
         )}
         <div className="ml-auto flex gap-2">
