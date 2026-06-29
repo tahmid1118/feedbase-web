@@ -29,20 +29,46 @@ const writeLocal = (k: string, v: string) => {
   }
 };
 
-interface Node extends Comment {
-  children: Node[];
+interface Thread {
+  root: Comment;
+  replies: Comment[];
 }
 
-function buildTree(comments: Comment[]): Node[] {
-  const map = new Map<number, Node>();
-  const roots: Node[] = [];
-  comments.forEach((c) => map.set(c.id, { ...c, children: [] }));
-  map.forEach((node) => {
-    const parentId = node.parent_comment_id;
-    if (parentId && map.has(parentId)) map.get(parentId)!.children.push(node);
-    else roots.push(node);
+// Flatten the comments to two levels: each top-level comment plus a single flat
+// list of every reply beneath it (in time order), no matter how deep the stored
+// parent chain goes. Replies never start their own nested thread.
+function buildThreads(comments: Comment[]): Thread[] {
+  const byId = new Map<number, Comment>();
+  comments.forEach((c) => byId.set(c.id, c));
+
+  const isRoot = (c: Comment) =>
+    !c.parent_comment_id || !byId.has(c.parent_comment_id);
+
+  const rootIdOf = (c: Comment): number => {
+    let cur = c;
+    const seen = new Set<number>();
+    while (!isRoot(cur) && !seen.has(cur.id)) {
+      seen.add(cur.id);
+      cur = byId.get(cur.parent_comment_id!)!;
+    }
+    return cur.id;
+  };
+
+  const threads = new Map<number, Thread>();
+  const order: number[] = [];
+  // The API returns comments in created_at ASC order, so roots and replies come
+  // out chronological.
+  comments.forEach((c) => {
+    if (isRoot(c) && !threads.has(c.id)) {
+      threads.set(c.id, { root: c, replies: [] });
+      order.push(c.id);
+    }
   });
-  return roots;
+  comments.forEach((c) => {
+    if (!isRoot(c)) threads.get(rootIdOf(c))?.replies.push(c);
+  });
+
+  return order.map((id) => threads.get(id)!);
 }
 
 type Submit = (
@@ -160,70 +186,81 @@ function CommentForm({
   );
 }
 
-function CommentItem({
-  node,
-  depth,
+function CommentCard({
+  comment,
+  onReply,
+}: {
+  comment: Comment;
+  onReply: () => void;
+}) {
+  return (
+    <div className="rounded-lg border border-black/5 bg-[#fdf8f9] p-4">
+      <div className="flex items-center justify-between">
+        <span className="font-medium text-[#1c0a0c]">{comment.author_name}</span>
+        <span className="text-xs text-[#1c0a0c]/50">
+          {comment.created_at
+            ? new Date(comment.created_at).toLocaleDateString()
+            : ""}
+        </span>
+      </div>
+      <p className="mt-2 text-sm text-[#1c0a0c]/80">{comment.body}</p>
+      <button
+        type="button"
+        onClick={onReply}
+        className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-[#1c0a0c]/50 hover:text-[#1c0a0c]"
+      >
+        <CornerDownRight className="h-3 w-3" />
+        Reply
+      </button>
+    </div>
+  );
+}
+
+function ThreadView({
+  thread,
   brand,
   submitting,
   replyTo,
   setReplyTo,
   submit,
 }: {
-  node: Node;
-  depth: number;
+  thread: Thread;
   brand: string;
   submitting: boolean;
   replyTo: number | null;
   setReplyTo: (id: number | null) => void;
   submit: Submit;
 }) {
+  const { root, replies } = thread;
+  const isReplying = replyTo === root.id;
+
+  // Every "Reply" in the thread (on the root or any reply) targets the root, so
+  // the thread stays a single flat level.
   return (
-    <div className={depth > 0 ? "ml-6 border-l border-black/10 pl-4" : ""}>
-      <div className="rounded-lg border border-black/5 bg-[#fdf8f9] p-4">
-        <div className="flex items-center justify-between">
-          <span className="font-medium text-[#1c0a0c]">{node.author_name}</span>
-          <span className="text-xs text-[#1c0a0c]/50">
-            {node.created_at ? new Date(node.created_at).toLocaleDateString() : ""}
-          </span>
-        </div>
-        <p className="mt-2 text-sm text-[#1c0a0c]/80">{node.body}</p>
-        <button
-          type="button"
-          onClick={() => setReplyTo(replyTo === node.id ? null : node.id)}
-          className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-[#1c0a0c]/50 hover:text-[#1c0a0c]"
-        >
-          <CornerDownRight className="h-3 w-3" />
-          Reply
-        </button>
-      </div>
-
-      {replyTo === node.id && (
-        <div className="mt-3 ml-6">
-          <CommentForm
-            brand={brand}
-            submitting={submitting}
-            compact
-            autoFocus
-            onCancel={() => setReplyTo(null)}
-            onSubmit={(body, name, email) => submit(body, node.id, name, email)}
-          />
-        </div>
-      )}
-
-      {node.children.length > 0 && (
-        <div className="mt-3 space-y-3">
-          {node.children.map((child) => (
-            <CommentItem
-              key={child.id}
-              node={child}
-              depth={depth + 1}
-              brand={brand}
-              submitting={submitting}
-              replyTo={replyTo}
-              setReplyTo={setReplyTo}
-              submit={submit}
+    <div>
+      <CommentCard
+        comment={root}
+        onReply={() => setReplyTo(isReplying ? null : root.id)}
+      />
+      {(replies.length > 0 || isReplying) && (
+        <div className="mt-3 ml-6 space-y-3 border-l border-black/10 pl-4">
+          {replies.map((reply) => (
+            <CommentCard
+              key={reply.id}
+              comment={reply}
+              onReply={() => setReplyTo(root.id)}
             />
           ))}
+          {isReplying && (
+            <CommentForm
+              brand={brand}
+              submitting={submitting}
+              compact
+              autoFocus
+              onCancel={() => setReplyTo(null)}
+              onSubmit={(body, name, email) => submit(body, root.id, name, email)}
+            />
+          )}
         </div>
       )}
     </div>
@@ -242,7 +279,7 @@ export function PortalComments({
   brand: string;
 }) {
   const router = useRouter();
-  const tree = useMemo(() => buildTree(comments), [comments]);
+  const threads = useMemo(() => buildThreads(comments), [comments]);
   const [replyTo, setReplyTo] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -295,17 +332,16 @@ export function PortalComments({
         </p>
       )}
 
-      {tree.length === 0 ? (
+      {threads.length === 0 ? (
         <p className="py-6 text-center text-sm text-[#1c0a0c]/60">
           No comments yet — start the conversation.
         </p>
       ) : (
         <div className="space-y-3">
-          {tree.map((node) => (
-            <CommentItem
-              key={node.id}
-              node={node}
-              depth={0}
+          {threads.map((thread) => (
+            <ThreadView
+              key={thread.root.id}
+              thread={thread}
               brand={brand}
               submitting={submitting}
               replyTo={replyTo}
