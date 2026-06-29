@@ -4,7 +4,9 @@ import { ArrowLeft, ThumbsUp, MessageSquare, Calendar } from "lucide-react";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import type { Comment } from "@/lib/api/types";
+import { PortalComments } from "@/components/portal/portal-comments";
+
+const DEFAULT_BRAND = "#c74959";
 
 const STATUS_BADGE: Record<string, string> = {
   open: "bg-blue-100 text-blue-700",
@@ -14,47 +16,6 @@ const STATUS_BADGE: Record<string, string> = {
   closed: "bg-gray-100 text-gray-700",
 };
 
-interface CommentNode extends Comment {
-  children: CommentNode[];
-}
-
-function buildTree(comments: Comment[]): CommentNode[] {
-  const map = new Map<number, CommentNode>();
-  const roots: CommentNode[] = [];
-  comments.forEach((c) => map.set(c.id, { ...c, children: [] }));
-  map.forEach((node) => {
-    const parentId = node.parent_comment_id;
-    if (parentId && map.has(parentId)) map.get(parentId)!.children.push(node);
-    else roots.push(node);
-  });
-  return roots;
-}
-
-function CommentBranch({ node, depth }: { node: CommentNode; depth: number }) {
-  return (
-    <div className={depth > 0 ? "ml-6 border-l border-black/10 pl-4" : ""}>
-      <div className="rounded-lg border border-black/5 bg-[#fdf8f9] p-4">
-        <div className="flex items-center justify-between">
-          <span className="font-medium text-[#1c0a0c]">{node.author_name}</span>
-          <span className="text-xs text-[#1c0a0c]/50">
-            {node.created_at
-              ? new Date(node.created_at).toLocaleDateString()
-              : ""}
-          </span>
-        </div>
-        <p className="mt-2 text-sm text-[#1c0a0c]/80">{node.body}</p>
-      </div>
-      {node.children.length > 0 && (
-        <div className="mt-3 space-y-3">
-          {node.children.map((child) => (
-            <CommentBranch key={child.id} node={child} depth={depth + 1} />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default async function PortalPostPage({
   params,
 }: {
@@ -62,11 +23,15 @@ export default async function PortalPostPage({
 }) {
   const { tenant, id } = await params;
   const decoded = decodeURIComponent(tenant);
-  const post = await publicApi.getPost(decoded, id);
+  // getTenant is React-cached, so this shares the layout's tenant lookup.
+  const [post, info] = await Promise.all([
+    publicApi.getPost(decoded, id),
+    publicApi.getTenant(decoded),
+  ]);
 
   if (!post) notFound();
 
-  const tree = buildTree(post.comments ?? []);
+  const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
   return (
     <div className="space-y-6">
@@ -130,17 +95,12 @@ export default async function PortalPostPage({
         <h2 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
           Comments ({post.comments?.length ?? 0})
         </h2>
-        {tree.length === 0 ? (
-          <p className="py-8 text-center text-sm text-[#1c0a0c]/60">
-            No comments yet.
-          </p>
-        ) : (
-          <div className="space-y-3">
-            {tree.map((node) => (
-              <CommentBranch key={node.id} node={node} depth={0} />
-            ))}
-          </div>
-        )}
+        <PortalComments
+          tenant={decoded}
+          postId={post.id}
+          comments={post.comments ?? []}
+          brand={brand}
+        />
       </Card>
     </div>
   );
