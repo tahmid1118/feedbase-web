@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { publicApi } from "@/lib/api/public";
-import { PortalNav } from "@/components/portal/portal-nav";
 import { PortalLogo } from "@/components/portal/portal-logo";
 
 const DEFAULT_BRAND = "#c74959";
@@ -40,8 +39,6 @@ export default async function PortalLayout({
               {info.name}
             </span>
           </Link>
-
-          <PortalNav brand={brand} tenant={tenant} />
         </div>
       </header>
 
