@@ -13,6 +13,7 @@ const API_BASE =
 
 const NAME_KEY = "fb_guest_name";
 const EMAIL_KEY = "fb_guest_email";
+const COMMENTED_KEY = "fb_has_commented";
 const readLocal = (k: string) => {
   try {
     return (typeof localStorage !== "undefined" && localStorage.getItem(k)) || "";
@@ -69,21 +70,30 @@ function CommentForm({
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  // Show the name/email inputs only until the visitor has commented once; after
+  // that we remember them and just show "Commenting as …" (with a Change link).
+  const [editingIdentity, setEditingIdentity] = useState(false);
 
-  // Pre-fill from a previous comment (client-only storage, so it must be an
-  // effect to avoid a hydration mismatch — runs once, no perf concern).
+  // Hydrate the remembered identity (client-only storage, so it must run in an
+  // effect to avoid a hydration mismatch — once, no perf concern).
   useEffect(() => {
-    const savedName = readLocal(NAME_KEY);
-    const savedEmail = readLocal(EMAIL_KEY);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (savedName) setName(savedName);
-    if (savedEmail) setEmail(savedEmail);
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setName(readLocal(NAME_KEY));
+    setEmail(readLocal(EMAIL_KEY));
+    setEditingIdentity(readLocal(COMMENTED_KEY) !== "1");
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   const handle = async () => {
     if (!body.trim()) return;
+    writeLocal(NAME_KEY, name.trim());
+    writeLocal(EMAIL_KEY, email.trim());
     const ok = await onSubmit(body.trim(), name.trim(), email.trim());
-    if (ok) setBody("");
+    if (ok) {
+      writeLocal(COMMENTED_KEY, "1"); // remember — don't ask for identity again
+      setBody("");
+      setEditingIdentity(false);
+    }
   };
 
   return (
@@ -95,27 +105,40 @@ function CommentForm({
         className="min-h-[80px]"
         autoFocus={autoFocus}
       />
-      <div className="flex flex-wrap items-center gap-2">
-        <Input
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            writeLocal(NAME_KEY, e.target.value);
-          }}
-          placeholder="Name (optional)"
-          className="h-9 w-40"
-        />
-        {!compact && (
+
+      {editingIdentity && (
+        <div className="flex flex-wrap gap-2">
+          <Input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Name (optional)"
+            className="h-9 w-40"
+          />
           <Input
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              writeLocal(EMAIL_KEY, e.target.value);
-            }}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="Email (optional)"
             className="h-9 w-52"
           />
+        </div>
+      )}
+
+      <div className="flex items-center gap-2">
+        {!editingIdentity && (
+          <p className="text-xs text-[#1c0a0c]/50">
+            Commenting as{" "}
+            <span className="font-medium text-[#1c0a0c]/70">
+              {name || "Anonymous"}
+            </span>{" "}
+            <button
+              type="button"
+              onClick={() => setEditingIdentity(true)}
+              className="text-[#c74959] hover:underline"
+            >
+              change
+            </button>
+          </p>
         )}
         <div className="ml-auto flex gap-2">
           {onCancel && (
