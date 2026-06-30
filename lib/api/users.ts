@@ -66,6 +66,12 @@ export const usersApi = {
       { token }
     ),
 
+  checkSubdomain: (subdomain: string, token: string) =>
+    apiClient.get<ApiResponse<{ valid: boolean; available: boolean }>>(
+      `/users/workspaces/check-subdomain?lg=en&subdomain=${encodeURIComponent(subdomain)}`,
+      { token }
+    ),
+
   createWorkspace: (
     data: { name: string; subdomain: string; website?: string },
     token: string

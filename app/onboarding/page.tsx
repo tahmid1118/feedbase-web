@@ -5,6 +5,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { usersApi, type WorkspaceAuth } from "@/lib/api";
+import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
+import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,6 +34,9 @@ export default function OnboardingPage() {
   const [website, setWebsite] = useState("");
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const subStatus = useSubdomainAvailability(subdomain, token);
+  const subdomainBlocked =
+    subStatus === "checking" || subStatus === "taken" || subStatus === "invalid";
 
   // Not logged in → login. Already has a workspace → dashboard.
   useEffect(() => {
@@ -138,6 +143,7 @@ export default function OnboardingPage() {
                 .{ROOT_DOMAIN.split(":")[0]}
               </span>
             </div>
+            <SubdomainStatusHint status={subStatus} />
           </div>
 
           {error && (
@@ -148,7 +154,9 @@ export default function OnboardingPage() {
 
           <Button
             onClick={handleCreate}
-            disabled={creating || !name.trim() || !subdomain.trim()}
+            disabled={
+              creating || !name.trim() || !subdomain.trim() || subdomainBlocked
+            }
             className="h-11 w-full bg-[#c74959] text-white hover:bg-[#b03f4d]"
           >
             {creating ? (

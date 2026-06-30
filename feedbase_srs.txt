@@ -74,6 +74,8 @@ Version 1.1
                           the dashboard re-scopes to the selection without a
                           re-login. Each new workspace is owned by its creator and
                           seeded with the default, status-linked roadmap columns.
+                          Each workspace subdomain must be unique; the create
+                          forms validate availability live before submission.
 
 3.2 Public Portal (Visitors)
     The portal is the primary channel for collecting feedback.

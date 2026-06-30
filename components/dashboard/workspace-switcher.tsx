@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Check, ChevronsUpDown, Plus, Loader2 } from "lucide-react";
 import { usersApi, type Workspace, type WorkspaceAuth } from "@/lib/api";
+import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
+import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -60,6 +62,9 @@ export function WorkspaceSwitcher() {
   const [subdomainTouched, setSubdomainTouched] = useState(false);
   const [website, setWebsite] = useState("");
   const [creating, setCreating] = useState(false);
+  const subStatus = useSubdomainAvailability(subdomain, token);
+  const subdomainBlocked =
+    subStatus === "checking" || subStatus === "taken" || subStatus === "invalid";
 
   const load = useCallback(() => {
     if (!token) return;
@@ -238,6 +243,7 @@ export function WorkspaceSwitcher() {
                   .{ROOT_DOMAIN.split(":")[0]}
                 </span>
               </div>
+              <SubdomainStatusHint status={subStatus} />
             </div>
           </div>
 
@@ -247,7 +253,9 @@ export function WorkspaceSwitcher() {
             </Button>
             <Button
               onClick={handleCreate}
-              disabled={creating || !name.trim() || !subdomain.trim()}
+              disabled={
+                creating || !name.trim() || !subdomain.trim() || subdomainBlocked
+              }
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
             >
               {creating ? (
