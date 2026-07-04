@@ -121,8 +121,10 @@ Version 1.1
     FR-F5  Tags ......... Assign or remove tags.
     FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.
     FR-F7  Engage ....... Quick upvote from the list; full post view with
-                          voting, tags, duplicates, and threaded comments
-                          (reply/edit/delete).
+                          voting, tags, duplicates, and a read-only view of the
+                          post's discussion. Comments are authored, replied to,
+                          edited, and deleted on the public board (see FR-P5/P7),
+                          not from the dashboard.
     FR-F8  Promote ...... From the Open tab, select one, several, or all posts
                           and add them to a chosen roadmap column in a single
                           action (with an optional target date). Adding a post to

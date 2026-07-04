@@ -40,7 +40,6 @@ function buildPublicPostUrl(
 }
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import {
   Select,
@@ -90,9 +89,7 @@ export default function PostDetailPage() {
 
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
   const [hasVoted, setHasVoted] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [publicUrl, setPublicUrl] = useState<string | null>(null);
@@ -192,24 +189,6 @@ export default function PostDetailPage() {
       router.push("/dashboard/feedback");
     } catch {
       toast.error("Failed to delete post");
-    }
-  };
-
-  const handleAddComment = async () => {
-    if (!token || !newComment.trim()) return;
-    setSubmitting(true);
-    try {
-      await commentsApi.create(
-        { postId, body: newComment.trim(), parentCommentId: null },
-        token
-      );
-      setNewComment("");
-      await loadPostData();
-      toast.success("Comment added");
-    } catch {
-      toast.error("Failed to add comment");
-    } finally {
-      setSubmitting(false);
     }
   };
 
@@ -388,35 +367,16 @@ export default function PostDetailPage() {
       </Card>
 
       <Card className="p-6">
-        <h3 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
-          Comments ({comments.length})
-        </h3>
-
-        <div className="space-y-4">
-          <div className="space-y-2">
-            <Textarea
-              placeholder="Add a comment..."
-              value={newComment}
-              onChange={(e) => setNewComment(e.target.value)}
-              className="min-h-[100px]"
-            />
-            <div className="flex justify-end">
-              <Button
-                onClick={handleAddComment}
-                disabled={!newComment.trim() || submitting}
-                className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
-              >
-                {submitting ? "Posting..." : "Post Comment"}
-              </Button>
-            </div>
-          </div>
-
-          <CommentThread
-            postId={post.id}
-            comments={comments}
-            onChange={loadPostData}
-          />
+        <div className="mb-4 flex items-center justify-between gap-2">
+          <h3 className="text-lg font-semibold text-[#1c0a0c]">
+            Comments ({comments.length})
+          </h3>
+          <span className="text-xs text-[#1c0a0c]/50">
+            Discussion happens on the public board
+          </span>
         </div>
+
+        <CommentThread comments={comments} />
       </Card>
 
       <EditPostDialog
