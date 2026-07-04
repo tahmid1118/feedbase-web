@@ -34,6 +34,8 @@ export interface Post {
   priority: number;
   author_name: string;
   author_email: string;
+  author_id?: number | null;
+  author_avatar?: string | null;
   vote_count: number;
   comment_count: number;
   is_pinned?: number;
@@ -72,11 +74,12 @@ export interface Vote {
 export interface Comment {
   id: number;
   post_id: number;
-  author_id: number;
+  author_id: number | null;
   body: string;
   is_edited: number;
   author_name: string;
   author_email: string;
+  author_avatar?: string | null;
   parent_comment_id?: number | null;
   created_at?: string;
 }

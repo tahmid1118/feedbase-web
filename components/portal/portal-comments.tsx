@@ -2,15 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { CornerDownRight, Loader2 } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { CornerDownRight, Loader2, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LocalTime } from "@/components/local-time";
+import { portalActions } from "@/lib/portal/actions";
+import { resolveUploadUrl } from "@/lib/avatar";
 import type { Comment } from "@/lib/api/types";
-
-const API_BASE =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
 
 const NAME_KEY = "fb_guest_name";
 const EMAIL_KEY = "fb_guest_email";
@@ -30,6 +30,46 @@ const writeLocal = (k: string, v: string) => {
   }
 };
 
+interface Viewer {
+  token?: string;
+  userId: number | null;
+  name: string | null;
+  image: string | null;
+  isLoggedIn: boolean;
+}
+
+function Avatar({
+  name,
+  src,
+  size = 28,
+}: {
+  name: string;
+  src?: string | null;
+  size?: number;
+}) {
+  const url = resolveUploadUrl(src);
+  const dims = { width: size, height: size };
+  if (url) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={url}
+        alt={name}
+        className="shrink-0 rounded-full object-cover"
+        style={dims}
+      />
+    );
+  }
+  return (
+    <span
+      className="flex shrink-0 items-center justify-center rounded-full bg-[#c74959] font-semibold text-white"
+      style={{ ...dims, fontSize: size * 0.42 }}
+    >
+      {(name || "?").charAt(0).toUpperCase()}
+    </span>
+  );
+}
+
 interface Thread {
   root: Comment;
   replies: Comment[];
@@ -37,7 +77,7 @@ interface Thread {
 
 // Flatten the comments to two levels: each top-level comment plus a single flat
 // list of every reply beneath it (in time order), no matter how deep the stored
-// parent chain goes. Replies never start their own nested thread.
+// parent chain goes.
 function buildThreads(comments: Comment[]): Thread[] {
   const byId = new Map<number, Comment>();
   comments.forEach((c) => byId.set(c.id, c));
@@ -57,8 +97,6 @@ function buildThreads(comments: Comment[]): Thread[] {
 
   const threads = new Map<number, Thread>();
   const order: number[] = [];
-  // The API returns comments in created_at ASC order, so roots and replies come
-  // out chronological.
   comments.forEach((c) => {
     if (isRoot(c) && !threads.has(c.id)) {
       threads.set(c.id, { root: c, replies: [] });
@@ -72,15 +110,11 @@ function buildThreads(comments: Comment[]): Thread[] {
   return order.map((id) => threads.get(id)!);
 }
 
-type Submit = (
-  body: string,
-  parentId: number | null,
-  name: string,
-  email: string
-) => Promise<boolean>;
+type Submit = (body: string, parentId: number | null) => Promise<boolean>;
 
 function CommentForm({
   brand,
+  viewer,
   submitting,
   onSubmit,
   onCancel,
@@ -88,6 +122,7 @@ function CommentForm({
   autoFocus,
 }: {
   brand: string;
+  viewer: Viewer;
   submitting: boolean;
   onSubmit: (body: string, name: string, email: string) => Promise<boolean>;
   onCancel?: () => void;
@@ -97,29 +132,31 @@ function CommentForm({
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  // Show the name/email inputs only until the visitor has commented once; after
-  // that we remember them and just show "Commenting as …" (with a Change link).
+  // Guests: show the name/email inputs only until they've commented once.
   const [editingIdentity, setEditingIdentity] = useState(false);
 
-  // Hydrate the remembered identity (client-only storage, so it must run in an
-  // effect to avoid a hydration mismatch — once, no perf concern).
   useEffect(() => {
+    if (viewer.isLoggedIn) return;
     /* eslint-disable react-hooks/set-state-in-effect */
     setName(readLocal(NAME_KEY));
     setEmail(readLocal(EMAIL_KEY));
     setEditingIdentity(readLocal(COMMENTED_KEY) !== "1");
     /* eslint-enable react-hooks/set-state-in-effect */
-  }, []);
+  }, [viewer.isLoggedIn]);
 
   const handle = async () => {
     if (!body.trim()) return;
-    writeLocal(NAME_KEY, name.trim());
-    writeLocal(EMAIL_KEY, email.trim());
+    if (!viewer.isLoggedIn) {
+      writeLocal(NAME_KEY, name.trim());
+      writeLocal(EMAIL_KEY, email.trim());
+    }
     const ok = await onSubmit(body.trim(), name.trim(), email.trim());
     if (ok) {
-      writeLocal(COMMENTED_KEY, "1"); // remember — don't ask for identity again
+      if (!viewer.isLoggedIn) {
+        writeLocal(COMMENTED_KEY, "1");
+        setEditingIdentity(false);
+      }
       setBody("");
-      setEditingIdentity(false);
     }
   };
 
@@ -133,7 +170,7 @@ function CommentForm({
         autoFocus={autoFocus}
       />
 
-      {editingIdentity && (
+      {!viewer.isLoggedIn && editingIdentity && (
         <div className="flex flex-wrap gap-2">
           <Input
             value={name}
@@ -152,13 +189,21 @@ function CommentForm({
       )}
 
       <div className="flex items-center gap-2">
-        {!editingIdentity && (
-          <p className="text-xs text-[#1c0a0c]/50">
+        {viewer.isLoggedIn ? (
+          <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
+            <Avatar name={viewer.name || "You"} src={viewer.image} size={20} />
             Commenting as{" "}
-            <span className="font-medium text-[#1c0a0c]/70">
-              {name || "Anonymous"}
-            </span>
+            <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
           </p>
+        ) : (
+          !editingIdentity && (
+            <p className="text-xs text-[#1c0a0c]/50">
+              Commenting as{" "}
+              <span className="font-medium text-[#1c0a0c]/70">
+                {name || "Anonymous"}
+              </span>
+            </p>
+          )
         )}
         <div className="ml-auto flex gap-2">
           {onCancel && (
@@ -189,30 +234,157 @@ function CommentForm({
 
 function CommentCard({
   comment,
+  viewer,
+  tenant,
   onReply,
+  onChanged,
 }: {
   comment: Comment;
+  viewer: Viewer;
+  tenant: string;
   onReply: () => void;
+  onChanged: () => void;
 }) {
+  const [editing, setEditing] = useState(false);
+  const [editBody, setEditBody] = useState(comment.body);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [busy, setBusy] = useState(false);
+
+  const mine =
+    viewer.isLoggedIn &&
+    comment.author_id != null &&
+    Number(comment.author_id) === viewer.userId;
+
+  const saveEdit = async () => {
+    if (!editBody.trim() || !viewer.token) return;
+    setBusy(true);
+    const res = await portalActions.editComment(
+      tenant,
+      comment.id,
+      editBody.trim(),
+      viewer.token
+    );
+    setBusy(false);
+    if (res.ok) {
+      setEditing(false);
+      onChanged();
+    }
+  };
+
+  const remove = async () => {
+    if (!viewer.token) return;
+    setBusy(true);
+    const res = await portalActions.deleteComment(tenant, comment.id, viewer.token);
+    setBusy(false);
+    if (res.ok) onChanged();
+  };
+
   return (
     <div className="rounded-lg border border-black/5 bg-[#fdf8f9] p-4">
-      <div className="flex items-center justify-between">
-        <span className="font-medium text-[#1c0a0c]">{comment.author_name}</span>
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <Avatar name={comment.author_name} src={comment.author_avatar} size={24} />
+          <span className="font-medium text-[#1c0a0c]">
+            {comment.author_name}
+          </span>
+          {comment.is_edited ? (
+            <span className="text-xs text-[#1c0a0c]/40">(edited)</span>
+          ) : null}
+        </div>
         <LocalTime
           date={comment.created_at}
           relative
-          className="text-xs text-[#1c0a0c]/50"
+          className="shrink-0 text-xs text-[#1c0a0c]/50"
         />
       </div>
-      <p className="mt-2 text-sm text-[#1c0a0c]/80">{comment.body}</p>
-      <button
-        type="button"
-        onClick={onReply}
-        className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-[#1c0a0c]/50 hover:text-[#1c0a0c]"
-      >
-        <CornerDownRight className="h-3 w-3" />
-        Reply
-      </button>
+
+      {editing ? (
+        <div className="mt-2 space-y-2">
+          <Textarea
+            value={editBody}
+            onChange={(e) => setEditBody(e.target.value)}
+            className="min-h-[70px]"
+            autoFocus
+          />
+          <div className="flex justify-end gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setEditing(false);
+                setEditBody(comment.body);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              size="sm"
+              onClick={saveEdit}
+              disabled={busy || !editBody.trim()}
+              className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+            >
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save"}
+            </Button>
+          </div>
+        </div>
+      ) : (
+        <p className="mt-2 whitespace-pre-wrap text-sm text-[#1c0a0c]/80">
+          {comment.body}
+        </p>
+      )}
+
+      {!editing && (
+        <div className="mt-2 flex items-center gap-3 text-xs font-medium text-[#1c0a0c]/50">
+          <button
+            type="button"
+            onClick={onReply}
+            className="inline-flex items-center gap-1 hover:text-[#1c0a0c]"
+          >
+            <CornerDownRight className="h-3 w-3" />
+            Reply
+          </button>
+          {mine && !confirmDelete && (
+            <>
+              <button
+                type="button"
+                onClick={() => setEditing(true)}
+                className="inline-flex items-center gap-1 hover:text-[#1c0a0c]"
+              >
+                <Pencil className="h-3 w-3" />
+                Edit
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirmDelete(true)}
+                className="inline-flex items-center gap-1 hover:text-red-600"
+              >
+                <Trash2 className="h-3 w-3" />
+                Delete
+              </button>
+            </>
+          )}
+          {mine && confirmDelete && (
+            <span className="inline-flex items-center gap-2 text-red-600">
+              Delete this comment?
+              <button
+                type="button"
+                onClick={remove}
+                disabled={busy}
+                className="font-semibold underline"
+              >
+                {busy ? "Deleting…" : "Yes"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setConfirmDelete(false)}
+                className="text-[#1c0a0c]/50 underline"
+              >
+                No
+              </button>
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -220,28 +392,35 @@ function CommentCard({
 function ThreadView({
   thread,
   brand,
+  viewer,
+  tenant,
   submitting,
   replyTo,
   setReplyTo,
   submit,
+  onChanged,
 }: {
   thread: Thread;
   brand: string;
+  viewer: Viewer;
+  tenant: string;
   submitting: boolean;
   replyTo: number | null;
   setReplyTo: (id: number | null) => void;
   submit: Submit;
+  onChanged: () => void;
 }) {
   const { root, replies } = thread;
   const isReplying = replyTo === root.id;
 
-  // Every "Reply" in the thread (on the root or any reply) targets the root, so
-  // the thread stays a single flat level.
   return (
     <div>
       <CommentCard
         comment={root}
+        viewer={viewer}
+        tenant={tenant}
         onReply={() => setReplyTo(isReplying ? null : root.id)}
+        onChanged={onChanged}
       />
       {(replies.length > 0 || isReplying) && (
         <div className="mt-3 ml-6 space-y-3 border-l border-black/10 pl-4">
@@ -249,17 +428,21 @@ function ThreadView({
             <CommentCard
               key={reply.id}
               comment={reply}
+              viewer={viewer}
+              tenant={tenant}
               onReply={() => setReplyTo(root.id)}
+              onChanged={onChanged}
             />
           ))}
           {isReplying && (
             <CommentForm
               brand={brand}
+              viewer={viewer}
               submitting={submitting}
               compact
               autoFocus
               onCancel={() => setReplyTo(null)}
-              onSubmit={(body, name, email) => submit(body, root.id, name, email)}
+              onSubmit={(body) => submit(body, root.id)}
             />
           )}
         </div>
@@ -280,51 +463,58 @@ export function PortalComments({
   brand: string;
 }) {
   const router = useRouter();
+  const { data: session } = useSession();
   const threads = useMemo(() => buildThreads(comments), [comments]);
   const [replyTo, setReplyTo] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const submit: Submit = async (body, parentId, name, email) => {
+  const viewer: Viewer = useMemo(() => {
+    const token = session?.user?.accessToken || undefined;
+    const userId = session?.user?.id ? Number(session.user.id) : null;
+    return {
+      token,
+      userId,
+      name: session?.user?.name ?? null,
+      image: session?.user?.image ?? null,
+      isLoggedIn: Boolean(token && userId),
+    };
+  }, [session]);
+
+  const onChanged = () => router.refresh();
+
+  // name/email are ignored by the backend when a token is sent (logged-in).
+  const submit: Submit = async (body, parentId) => {
     setSubmitting(true);
     setError(null);
-    try {
-      const res = await fetch(
-        `${API_BASE}/public/${encodeURIComponent(tenant)}/posts/${postId}/comments`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            lg: "en",
-            body,
-            parentCommentId: parentId ?? undefined,
-            submitterName: name || undefined,
-            submitterEmail: email || undefined,
-          }),
-        }
-      );
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setError(json?.message || "Failed to post comment.");
-        return false;
-      }
-      setReplyTo(null);
-      router.refresh(); // re-fetch the post + comments
-      return true;
-    } catch {
-      setError("Unable to reach the server. Please try again.");
+    const res = await portalActions.createComment(
+      tenant,
+      postId,
+      {
+        body,
+        parentCommentId: parentId ?? undefined,
+        submitterName: viewer.isLoggedIn ? undefined : readLocal(NAME_KEY) || undefined,
+        submitterEmail: viewer.isLoggedIn ? undefined : readLocal(EMAIL_KEY) || undefined,
+      },
+      viewer.token
+    );
+    setSubmitting(false);
+    if (!res.ok) {
+      setError(res.message || "Failed to post comment.");
       return false;
-    } finally {
-      setSubmitting(false);
     }
+    setReplyTo(null);
+    router.refresh();
+    return true;
   };
 
   return (
     <div className="space-y-5">
       <CommentForm
         brand={brand}
+        viewer={viewer}
         submitting={submitting}
-        onSubmit={(body, name, email) => submit(body, null, name, email)}
+        onSubmit={(body) => submit(body, null)}
       />
 
       {error && (
@@ -344,10 +534,13 @@ export function PortalComments({
               key={thread.root.id}
               thread={thread}
               brand={brand}
+              viewer={viewer}
+              tenant={tenant}
               submitting={submitting}
               replyTo={replyTo}
               setReplyTo={setReplyTo}
               submit={submit}
+              onChanged={onChanged}
             />
           ))}
         </div>

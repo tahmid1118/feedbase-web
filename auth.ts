@@ -9,6 +9,16 @@ import { loginWithCredentials } from "@/lib/auth/auth-service";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
 
+// The public portal lives on tenant subdomains, so in production we scope the
+// session cookie to the parent domain to share the login there. In dev we leave
+// it host-only — a "localhost" Domain cookie is rejected by browsers — so test
+// logged-in portal actions via http://localhost:3000/portal/<tenant>.
+const ROOT_HOST = (process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000").split(
+  ":"
+)[0];
+const SESSION_COOKIE_DOMAIN =
+  process.env.NODE_ENV === "production" ? `.${ROOT_HOST}` : undefined;
+
 const credentialsProvider = Credentials({
   name: "Credentials",
   credentials: {
@@ -71,6 +81,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         sameSite: "lax",
         path: "/",
         secure: process.env.NODE_ENV === "production",
+        domain: SESSION_COOKIE_DOMAIN,
       },
     },
   },

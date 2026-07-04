@@ -8,7 +8,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PortalComments } from "@/components/portal/portal-comments";
 import { SharePost } from "@/components/portal/share-post";
+import { PostOwnerActions } from "@/components/portal/post-owner-actions";
 import { LocalTime } from "@/components/local-time";
+import { resolveUploadUrl } from "@/lib/avatar";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -99,11 +101,19 @@ export default async function PortalPostPage({
           <div className="flex-1 space-y-4">
             <div className="flex items-start justify-between gap-4">
               <h1 className="text-2xl font-bold text-[#1c0a0c]">{post.title}</h1>
-              <div className="flex shrink-0 items-center gap-2">
+              <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
                 <Badge className={STATUS_BADGE[post.status]}>
                   {post.status.replace("_", " ")}
                 </Badge>
                 <SharePost title={post.title} brand={brand} />
+                <PostOwnerActions
+                  tenant={decoded}
+                  postId={post.id}
+                  authorId={post.author_id ?? null}
+                  title={post.title}
+                  description={post.description}
+                  postType={post.post_type}
+                />
               </div>
             </div>
             <p className="whitespace-pre-wrap text-[#1c0a0c]/70">
@@ -115,7 +125,17 @@ export default async function PortalPostPage({
                 <MessageSquare className="h-4 w-4" />
                 {post.comment_count} comments
               </span>
-              <span>by {post.author_name}</span>
+              <span className="flex items-center gap-1.5">
+                {post.author_avatar ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={resolveUploadUrl(post.author_avatar)}
+                    alt={post.author_name}
+                    className="h-5 w-5 rounded-full object-cover"
+                  />
+                ) : null}
+                by {post.author_name}
+              </span>
               {post.created_at && (
                 <span className="flex items-center gap-1">
                   <Calendar className="h-4 w-4" />
