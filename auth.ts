@@ -9,23 +9,27 @@ import { loginWithCredentials } from "@/lib/auth/auth-service";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
 
-// The public portal lives on tenant subdomains, so in production we scope the
-// session cookie to the parent domain (`.<root domain>`) so the login is shared
-// across `*.<root domain>`.
+// The public portal lives on tenant subdomains, so we scope the session cookie to
+// the parent domain (`.<root domain>`) — then every `*.<root domain>` subdomain
+// shares the login. This only works for a real, DOTTED domain: browsers (per RFC
+// 6265, verified against curl) refuse to set a `Domain` cookie for a single-label
+// host like `localhost` or a bare IP, so those stay host-only and can't share a
+// login onto a subdomain.
 //
-// In dev we deliberately leave it HOST-ONLY. The root host is `localhost`, a
-// single-label name with no embedded dot, and browsers (per RFC 6265, verified
-// against curl) refuse to share such a `Domain` cookie with subdomains — a
-// `Domain=localhost` cookie is NEVER sent to `*.localhost`. So there's no way to
-// share the login onto a tenant subdomain locally; test logged-in portal actions
-// via the direct path http://localhost:3000/portal/<tenant> instead (same origin
-// as login, so the cookie is present). Real-domain subdomain sharing works in
-// production.
+// Consequence for local dev: `*.localhost` subdomains can NOT receive the login
+// cookie. Two ways to test logged-in portal actions locally:
+//   1. Direct path — http://localhost:3000/portal/<tenant> (same origin as login,
+//      so the cookie is present). Zero config.
+//   2. Real subdomain — point NEXT_PUBLIC_ROOT_DOMAIN at a dotted loopback domain
+//      such as `lvh.me:3000` (its wildcard `*.lvh.me` resolves to 127.0.0.1), log
+//      in at http://lvh.me:3000 and open http://<tenant>.lvh.me:3000. The cookie
+//      is `.lvh.me`, shared across subdomains exactly like production.
 const ROOT_HOST = (process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000").split(
   ":"
 )[0];
+const IS_IP = /^(\d{1,3}\.){3}\d{1,3}$/.test(ROOT_HOST);
 const SESSION_COOKIE_DOMAIN =
-  process.env.NODE_ENV === "production" ? `.${ROOT_HOST}` : undefined;
+  ROOT_HOST.includes(".") && !IS_IP ? `.${ROOT_HOST}` : undefined;
 
 const credentialsProvider = Credentials({
   name: "Credentials",
