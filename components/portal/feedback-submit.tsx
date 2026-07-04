@@ -61,11 +61,11 @@ export function FeedbackSubmit({
     setDone(false);
   };
 
-  const canSubmit = title.trim() && description.trim();
+  const canSubmit = Boolean(title.trim());
 
   const submit = async () => {
     if (!canSubmit) {
-      setError("Please add a title and description.");
+      setError("Please add a title.");
       return;
     }
     setSubmitting(true);
@@ -181,7 +181,12 @@ export function FeedbackSubmit({
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="fb-desc">Details</Label>
+                  <Label htmlFor="fb-desc">
+                    Details{" "}
+                    <span className="font-normal text-[#1c0a0c]/40">
+                      (optional)
+                    </span>
+                  </Label>
                   <Textarea
                     id="fb-desc"
                     value={description}

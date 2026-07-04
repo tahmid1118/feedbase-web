@@ -83,8 +83,9 @@ Version 1.1
       the tenant's primary color.
     FR-P1  Board ........ Browse feedback posts with vote counts, tags, status,
                           and comment counts.
-    FR-P2  Submit ....... Any visitor may create a post (title, details, type),
-                          anonymously or with an optional name/email for follow-up.
+    FR-P2  Submit ....... Any visitor may create a post (title required; details
+                          and type optional), anonymously or with an optional
+                          name/email for follow-up.
     FR-P3  Vote ......... Any visitor may upvote/remove an upvote. Voting is
                           limited to one vote per browser per post via a
                           persistent cookie identifier; no account required.
