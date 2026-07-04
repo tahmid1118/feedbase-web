@@ -12,6 +12,7 @@ import { PostOwnerActions } from "@/components/portal/post-owner-actions";
 import { LocalTime } from "@/components/local-time";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
+import { IncognitoIcon } from "@/components/portal/incognito-icon";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -89,16 +90,23 @@ export default async function PortalPostPage({
           name: post.author_name,
           avatar: post.author_avatar ?? null,
           color: colorFor(post.author_name || String(post.author_id)),
+          anonymous: false,
         }
       : post.author_name && post.author_name !== "Anonymous"
         ? {
             name: post.author_name,
             avatar: null,
             color: colorFor(post.guest_id || post.author_name),
+            anonymous: false,
           }
         : (() => {
             const id = guestIdentity(post.guest_id || `p${post.id}`);
-            return { name: id.name, avatar: null, color: id.color };
+            return {
+              name: id.name,
+              avatar: null,
+              color: id.color,
+              anonymous: true,
+            };
           })();
 
   return (
@@ -160,7 +168,11 @@ export default async function PortalPostPage({
                     className="flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-semibold text-white"
                     style={{ backgroundColor: author.color }}
                   >
-                    {author.name.charAt(0).toUpperCase()}
+                    {author.anonymous ? (
+                      <IncognitoIcon size={13} />
+                    ) : (
+                      author.name.charAt(0).toUpperCase()
+                    )}
                   </span>
                 )}
                 by {author.name}

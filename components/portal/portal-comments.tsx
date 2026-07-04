@@ -11,6 +11,7 @@ import { LocalTime } from "@/components/local-time";
 import { portalActions } from "@/lib/portal/actions";
 import { getGuestId } from "@/lib/portal/guest";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
+import { IncognitoIcon } from "@/components/portal/incognito-icon";
 import { resolveUploadUrl } from "@/lib/avatar";
 import type { Comment } from "@/lib/api/types";
 
@@ -45,11 +46,13 @@ function Avatar({
   src,
   size = 28,
   color = "#c74959",
+  anonymous = false,
 }: {
   name: string;
   src?: string | null;
   size?: number;
   color?: string;
+  anonymous?: boolean;
 }) {
   const url = resolveUploadUrl(src);
   const dims = { width: size, height: size };
@@ -66,10 +69,16 @@ function Avatar({
   }
   return (
     <span
-      className="flex shrink-0 items-center justify-center rounded-full font-semibold text-white"
-      style={{ ...dims, fontSize: size * 0.42, backgroundColor: color }}
+      className="flex shrink-0 items-center justify-center rounded-full text-white"
+      style={{ ...dims, backgroundColor: color }}
     >
-      {(name || "?").charAt(0).toUpperCase()}
+      {anonymous ? (
+        <IncognitoIcon size={Math.round(size * 0.62)} />
+      ) : (
+        <span className="font-semibold" style={{ fontSize: size * 0.42 }}>
+          {(name || "?").charAt(0).toUpperCase()}
+        </span>
+      )}
     </span>
   );
 }
@@ -78,6 +87,7 @@ interface Display {
   name: string;
   avatar: string | null;
   color: string;
+  anonymous: boolean;
 }
 
 /**
@@ -94,6 +104,7 @@ function commentDisplay(comment: Comment): Display {
       name: comment.author_name,
       avatar: comment.author_avatar ?? null,
       color: colorFor(comment.author_name || String(comment.author_id)),
+      anonymous: false,
     };
   }
   if (comment.author_name && comment.author_name !== "Anonymous") {
@@ -101,10 +112,11 @@ function commentDisplay(comment: Comment): Display {
       name: comment.author_name,
       avatar: null,
       color: colorFor(comment.guest_id || comment.author_name),
+      anonymous: false,
     };
   }
   const id = guestIdentity(comment.guest_id || `c${comment.id}`);
-  return { name: id.name, avatar: null, color: id.color };
+  return { name: id.name, avatar: null, color: id.color, anonymous: true };
 }
 
 interface Thread {
@@ -251,7 +263,12 @@ function CommentForm({
               : guestPseudonym?.color || "#c74959";
             return (
               <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
-                <Avatar name={label} color={color} size={20} />
+                <Avatar
+                  name={label}
+                  color={color}
+                  anonymous={!name}
+                  size={20}
+                />
                 Commenting as{" "}
                 <span className="font-medium text-[#1c0a0c]/70">{label}</span>
               </p>
@@ -342,6 +359,7 @@ function CommentCard({
             name={display.name}
             src={display.avatar}
             color={display.color}
+            anonymous={display.anonymous}
             size={24}
           />
           <span className="font-medium text-[#1c0a0c]">{display.name}</span>
