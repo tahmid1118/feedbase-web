@@ -40,6 +40,7 @@ export const PLANS: PlanDisplay[] = [
       "Everything in Free",
       "Custom domain",
       "Integrations",
+      "Delete feedback posts",
       "Up to 10 team members",
     ],
   },

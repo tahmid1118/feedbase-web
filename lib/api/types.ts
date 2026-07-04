@@ -262,6 +262,7 @@ export interface PlanLimits {
   seats: number;
   customDomain: boolean;
   integrations: boolean;
+  deleteFeedback: boolean;
 }
 
 export interface BillingStatus {

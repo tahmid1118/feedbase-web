@@ -12,6 +12,7 @@ import {
   Trash2,
   Pin,
   ExternalLink,
+  Lock,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -19,7 +20,9 @@ import {
   votesApi,
   commentsApi,
   tenantsApi,
+  billingApi,
   extractRows,
+  ApiError,
   type Post,
   type Comment,
   type PostStatus,
@@ -86,6 +89,7 @@ export default function PostDetailPage() {
   const router = useRouter();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
+  const isOwner = session?.user?.role === "owner";
 
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
@@ -93,8 +97,21 @@ export default function PostDetailPage() {
   const [hasVoted, setHasVoted] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [publicUrl, setPublicUrl] = useState<string | null>(null);
+  // Deleting feedback is a paid capability (Pro+); gate the button on the plan.
+  const [canDeleteFeedback, setCanDeleteFeedback] = useState(false);
 
   const postId = parseInt(params.id as string);
+
+  // Fetch the plan's delete-feedback capability (owner-only + Pro or higher).
+  useEffect(() => {
+    if (!token || !isOwner) return;
+    billingApi
+      .getStatus(token)
+      .then((res) =>
+        setCanDeleteFeedback(Boolean(res.data?.limits?.deleteFeedback))
+      )
+      .catch(() => {});
+  }, [token, isOwner]);
 
   // Resolve the tenant once to build the shareable public link for this post.
   useEffect(() => {
@@ -187,9 +204,21 @@ export default function PostDetailPage() {
       await postsApi.delete(postId, token);
       toast.success("Post deleted");
       router.push("/dashboard/feedback");
-    } catch {
-      toast.error("Failed to delete post");
+    } catch (e) {
+      // Surface the backend's reason (403 owner-only / 402 upgrade required).
+      toast.error(e instanceof ApiError ? e.message : "Failed to delete post");
     }
+  };
+
+  // Free-plan owners see the Delete control but are prompted to upgrade.
+  const promptDeleteUpgrade = () => {
+    toast("Deleting feedback is a Pro feature", {
+      description: "Upgrade your workspace to delete feedback posts.",
+      action: {
+        label: "Upgrade",
+        onClick: () => router.push("/dashboard/settings?tab=billing"),
+      },
+    });
   };
 
   if (loading) {
@@ -257,36 +286,50 @@ export default function PostDetailPage() {
             <Pencil className="h-4 w-4" />
             Edit
           </Button>
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
+          {isOwner &&
+            (canDeleteFeedback ? (
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="text-red-600 hover:text-red-700"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                    Delete
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Delete this post?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This permanently removes the post along with its votes and
+                      comments. This action cannot be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction
+                      variant="destructive"
+                      onClick={handleDeletePost}
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+            ) : (
               <Button
                 variant="outline"
                 size="sm"
-                className="text-red-600 hover:text-red-700"
+                className="text-[#1c0a0c]/50"
+                onClick={promptDeleteUpgrade}
+                title="Deleting feedback requires the Pro plan"
               >
-                <Trash2 className="h-4 w-4" />
+                <Lock className="h-4 w-4" />
                 Delete
               </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Delete this post?</AlertDialogTitle>
-                <AlertDialogDescription>
-                  This permanently removes the post along with its votes and
-                  comments. This action cannot be undone.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction
-                  variant="destructive"
-                  onClick={handleDeletePost}
-                >
-                  Delete
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+            ))}
         </div>
       </div>
 
