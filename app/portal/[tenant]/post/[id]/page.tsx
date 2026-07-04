@@ -1,10 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ThumbsUp, MessageSquare, Calendar } from "lucide-react";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PortalComments } from "@/components/portal/portal-comments";
+import { SharePost } from "@/components/portal/share-post";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -15,6 +18,46 @@ const STATUS_BADGE: Record<string, string> = {
   completed: "bg-green-100 text-green-700",
   closed: "bg-gray-100 text-gray-700",
 };
+
+// Rich link previews (Open Graph + Twitter Card) so a shared post URL unfurls
+// with the post title, summary, and the branded OG image (opengraph-image.tsx).
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ tenant: string; id: string }>;
+}): Promise<Metadata> {
+  const { tenant, id } = await params;
+  const decoded = decodeURIComponent(tenant);
+  const [post, info] = await Promise.all([
+    publicApi.getPost(decoded, id),
+    publicApi.getTenant(decoded),
+  ]);
+
+  if (!post) return { title: "Post not found" };
+
+  const siteName = info?.name || "Feedback";
+  const title = `${post.title} · ${siteName}`;
+  const description =
+    (post.description || "").trim().slice(0, 200) ||
+    `A feedback post on ${siteName}.`;
+
+  // Resolve the base from the request host so OG URLs are correct on the
+  // tenant's subdomain / custom domain (not a hardcoded origin).
+  const h = await headers();
+  const host =
+    h.get("x-forwarded-host") || h.get("host") || "localhost:3000";
+  const proto =
+    h.get("x-forwarded-proto") ||
+    (host.includes("localhost") ? "http" : "https");
+
+  return {
+    metadataBase: new URL(`${proto}://${host}`),
+    title,
+    description,
+    openGraph: { title, description, siteName, type: "article" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export default async function PortalPostPage({
   params,
@@ -55,9 +98,12 @@ export default async function PortalPostPage({
           <div className="flex-1 space-y-4">
             <div className="flex items-start justify-between gap-4">
               <h1 className="text-2xl font-bold text-[#1c0a0c]">{post.title}</h1>
-              <Badge className={STATUS_BADGE[post.status]}>
-                {post.status.replace("_", " ")}
-              </Badge>
+              <div className="flex shrink-0 items-center gap-2">
+                <Badge className={STATUS_BADGE[post.status]}>
+                  {post.status.replace("_", " ")}
+                </Badge>
+                <SharePost title={post.title} brand={brand} />
+              </div>
             </div>
             <p className="whitespace-pre-wrap text-[#1c0a0c]/70">
               {post.description}

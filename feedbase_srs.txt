@@ -92,6 +92,11 @@ Version 1.1
     FR-P5  Comment ...... Any visitor may add a comment, or a threaded reply to a
                           comment, on a post — anonymously or with an optional
                           name/email (the name is remembered for the session).
+    FR-P6  Share ........ Each post has a public share control: copy link, the
+                          device's native share sheet, and one-click social
+                          intents (X, LinkedIn, Facebook, WhatsApp, Email). Shared
+                          links unfurl with a rich preview (Open Graph / Twitter
+                          Card) including a branded, per-post preview image.
     - The public portal exposes the feedback board only. Roadmap and changelog
       are NOT public (no nav entry; their portal routes redirect to the board) —
       they are managed in the admin dashboard.

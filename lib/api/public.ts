@@ -105,11 +105,14 @@ export const publicApi = {
       }
     ),
 
-  getPost: (identifier: string, postId: number | string) =>
+  // Cached so generateMetadata, the page, and the OG image within one render
+  // share a single request.
+  getPost: cache((identifier: string, postId: number | string) =>
     publicFetch<PublicPostDetail>(
       `/public/${encodeURIComponent(identifier)}/posts/${postId}`,
       { method: "POST", body: body() }
-    ),
+    )
+  ),
 
   getRoadmap: (identifier: string) =>
     publicFetch<PublicRoadmap>(
