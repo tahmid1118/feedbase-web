@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PortalComments } from "@/components/portal/portal-comments";
 import { SharePost } from "@/components/portal/share-post";
+import { LocalTime } from "@/components/local-time";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -114,10 +115,13 @@ export default async function PortalPostPage({
                 <MessageSquare className="h-4 w-4" />
                 {post.comment_count} comments
               </span>
-              <span className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
-                by {post.author_name}
-              </span>
+              <span>by {post.author_name}</span>
+              {post.created_at && (
+                <span className="flex items-center gap-1">
+                  <Calendar className="h-4 w-4" />
+                  <LocalTime date={post.created_at} />
+                </span>
+              )}
               <Badge variant="outline">{post.post_type.replace("_", " ")}</Badge>
               {post.tags?.map((tag) => (
                 <Badge

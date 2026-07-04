@@ -6,6 +6,7 @@ import { CornerDownRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { LocalTime } from "@/components/local-time";
 import type { Comment } from "@/lib/api/types";
 
 const API_BASE =
@@ -197,11 +198,11 @@ function CommentCard({
     <div className="rounded-lg border border-black/5 bg-[#fdf8f9] p-4">
       <div className="flex items-center justify-between">
         <span className="font-medium text-[#1c0a0c]">{comment.author_name}</span>
-        <span className="text-xs text-[#1c0a0c]/50">
-          {comment.created_at
-            ? new Date(comment.created_at).toLocaleDateString()
-            : ""}
-        </span>
+        <LocalTime
+          date={comment.created_at}
+          relative
+          className="text-xs text-[#1c0a0c]/50"
+        />
       </div>
       <p className="mt-2 text-sm text-[#1c0a0c]/80">{comment.body}</p>
       <button

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { FeedbackSubmit } from "@/components/portal/feedback-submit";
 import { PortalVoteButton } from "@/components/portal/portal-vote-button";
 import { BoardSort } from "@/components/portal/board-sort";
+import { LocalTime } from "@/components/local-time";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -104,6 +105,9 @@ export default async function PortalBoardPage({
                       <MessageSquare className="h-3 w-3" />
                       {post.comment_count} comments
                     </span>
+                    {post.created_at && (
+                      <LocalTime date={post.created_at} relative />
+                    )}
                     {post.tags?.map((tag) => (
                       <Badge
                         key={tag.id}
