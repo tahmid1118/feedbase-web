@@ -9,15 +9,18 @@ import { loginWithCredentials } from "@/lib/auth/auth-service";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
 
-// The public portal lives on tenant subdomains, so in production we scope the
-// session cookie to the parent domain to share the login there. In dev we leave
-// it host-only — a "localhost" Domain cookie is rejected by browsers — so test
-// logged-in portal actions via http://localhost:3000/portal/<tenant>.
+// The public portal lives on tenant subdomains, so we scope the session cookie
+// to the parent domain to share the login there (dev: `localhost`, which modern
+// browsers send to `*.localhost`; prod: `.<root domain>`). 127.0.0.1/IP hosts
+// can't have subdomains, so they stay host-only.
 const ROOT_HOST = (process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000").split(
   ":"
 )[0];
-const SESSION_COOKIE_DOMAIN =
-  process.env.NODE_ENV === "production" ? `.${ROOT_HOST}` : undefined;
+const SESSION_COOKIE_DOMAIN = /^(localhost|(\d{1,3}\.){3}\d{1,3})$/.test(ROOT_HOST)
+  ? ROOT_HOST === "localhost"
+    ? "localhost"
+    : undefined
+  : `.${ROOT_HOST}`;
 
 const credentialsProvider = Credentials({
   name: "Credentials",
