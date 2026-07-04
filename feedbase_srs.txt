@@ -82,7 +82,8 @@ Version 1.1
     - Branded header (tenant logo, or a brand-colored initial fallback) using
       the tenant's primary color.
     FR-P1  Board ........ Browse feedback posts with vote counts, tags, status,
-                          and comment counts.
+                          and comment counts. Sortable by newest, oldest, most
+                          upvoted, or least upvoted (pinned posts stay on top).
     FR-P2  Submit ....... Any visitor may create a post (title required; details
                           and type optional), anonymously or with an optional
                           name/email for follow-up.

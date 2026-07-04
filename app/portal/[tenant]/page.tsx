@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { MessageSquare } from "lucide-react";
-import { publicApi } from "@/lib/api/public";
+import { publicApi, normalizeBoardSort } from "@/lib/api/public";
 import { Badge } from "@/components/ui/badge";
 import { FeedbackSubmit } from "@/components/portal/feedback-submit";
 import { PortalVoteButton } from "@/components/portal/portal-vote-button";
+import { BoardSort } from "@/components/portal/board-sort";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -23,14 +24,17 @@ const TYPE_ICON: Record<string, string> = {
 
 export default async function PortalBoardPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ tenant: string }>;
+  searchParams: Promise<{ sort?: string }>;
 }) {
   const { tenant } = await params;
   const decoded = decodeURIComponent(tenant);
+  const sort = normalizeBoardSort((await searchParams)?.sort);
   // getTenant is React-cached, so this shares the layout's tenant lookup.
   const [data, info] = await Promise.all([
-    publicApi.getBoard(decoded),
+    publicApi.getBoard(decoded, undefined, 100, sort),
     publicApi.getTenant(decoded),
   ]);
   const posts = data?.posts ?? [];
@@ -54,6 +58,9 @@ export default async function PortalBoardPage({
         </div>
       ) : (
         <div className="space-y-3">
+          <div className="flex justify-end">
+            <BoardSort value={sort} />
+          </div>
           {posts.map((post) => (
             <div
               key={post.id}

@@ -40,6 +40,17 @@ export interface PublicRoadmap {
   items: RoadmapItem[];
 }
 
+// Public board sort options (kept in sync with the backend's SORTS map).
+export type BoardSort = "newest" | "oldest" | "most_voted" | "least_voted";
+export const BOARD_SORTS: BoardSort[] = [
+  "newest",
+  "oldest",
+  "most_voted",
+  "least_voted",
+];
+export const normalizeBoardSort = (v?: string | null): BoardSort =>
+  (BOARD_SORTS as string[]).includes(v ?? "") ? (v as BoardSort) : "newest";
+
 interface ApiEnvelope<T> {
   status: string;
   message: string;
@@ -87,7 +98,8 @@ export const publicApi = {
   getBoard: (
     identifier: string,
     filters?: PostListFilters,
-    itemsPerPage = 100
+    itemsPerPage = 100,
+    sort: BoardSort = "newest"
   ) =>
     publicFetch<{ posts: Post[]; total: number }>(
       `/public/${encodeURIComponent(identifier)}/posts`,
@@ -97,7 +109,7 @@ export const publicApi = {
           paginationData: {
             itemsPerPage,
             currentPageNumber: 0,
-            sortOrder: "desc",
+            sortBy: sort,
             filterBy: "",
           },
           filters,
