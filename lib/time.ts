@@ -20,8 +20,11 @@ export function formatRelativeTime(
   nowMs: number,
   locale?: string
 ): string {
-  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   let duration = (fromMs - nowMs) / 1000; // seconds; negative = past
+  // Anything under a minute reads as "just now" (no seconds-level noise).
+  if (Math.abs(duration) < 60) return "just now";
+
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   for (const division of DIVISIONS) {
     if (Math.abs(duration) < division.amount) {
       return rtf.format(Math.round(duration), division.unit);
