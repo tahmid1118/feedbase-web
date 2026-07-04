@@ -36,6 +36,7 @@ export interface Post {
   author_email: string;
   author_id?: number | null;
   author_avatar?: string | null;
+  guest_id?: string | null;
   vote_count: number;
   comment_count: number;
   is_pinned?: number;
@@ -80,6 +81,7 @@ export interface Comment {
   author_name: string;
   author_email: string;
   author_avatar?: string | null;
+  guest_id?: string | null;
   parent_comment_id?: number | null;
   created_at?: string;
 }

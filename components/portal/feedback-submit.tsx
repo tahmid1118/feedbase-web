@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { getGuestId } from "@/lib/portal/guest";
 import {
   Dialog,
   DialogContent,
@@ -83,6 +84,7 @@ export function FeedbackSubmit({
             postType,
             submitterName: name.trim() || undefined,
             submitterEmail: email.trim() || undefined,
+            guestId: getGuestId() || undefined,
           }),
         }
       );

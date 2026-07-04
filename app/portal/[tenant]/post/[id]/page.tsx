@@ -11,6 +11,7 @@ import { SharePost } from "@/components/portal/share-post";
 import { PostOwnerActions } from "@/components/portal/post-owner-actions";
 import { LocalTime } from "@/components/local-time";
 import { resolveUploadUrl } from "@/lib/avatar";
+import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -79,6 +80,27 @@ export default async function PortalPostPage({
 
   const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
+  // Author display: real identity for logged-in authors; a stable friendly
+  // pseudonym + colour for anonymous guests (keyed off guest_id so it matches
+  // that guest's comments), the given name for guests who left one.
+  const author =
+    post.author_id != null
+      ? {
+          name: post.author_name,
+          avatar: post.author_avatar ?? null,
+          color: colorFor(post.author_name || String(post.author_id)),
+        }
+      : post.author_name && post.author_name !== "Anonymous"
+        ? {
+            name: post.author_name,
+            avatar: null,
+            color: colorFor(post.guest_id || post.author_name),
+          }
+        : (() => {
+            const id = guestIdentity(post.guest_id || `p${post.id}`);
+            return { name: id.name, avatar: null, color: id.color };
+          })();
+
   return (
     <div className="space-y-6">
       <Link
@@ -126,15 +148,22 @@ export default async function PortalPostPage({
                 {post.comment_count} comments
               </span>
               <span className="flex items-center gap-1.5">
-                {post.author_avatar ? (
+                {author.avatar ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={resolveUploadUrl(post.author_avatar)}
-                    alt={post.author_name}
+                    src={resolveUploadUrl(author.avatar)}
+                    alt={author.name}
                     className="h-5 w-5 rounded-full object-cover"
                   />
-                ) : null}
-                by {post.author_name}
+                ) : (
+                  <span
+                    className="flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-semibold text-white"
+                    style={{ backgroundColor: author.color }}
+                  >
+                    {author.name.charAt(0).toUpperCase()}
+                  </span>
+                )}
+                by {author.name}
               </span>
               {post.created_at && (
                 <span className="flex items-center gap-1">

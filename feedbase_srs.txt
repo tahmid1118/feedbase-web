@@ -96,7 +96,10 @@ Version 1.1
                           name/email (the name is remembered for the session). A
                           logged-in user's comment/post is attributed to them,
                           showing their name and profile picture instead of a
-                          guest identity.
+                          guest identity. An anonymous guest who leaves no name is
+                          shown with a stable, friendly pseudonym and avatar colour
+                          (consistent across that guest's posts/comments, distinct
+                          from other guests) rather than a uniform "Anonymous".
     FR-P6  Share ........ Each post has a public share control: copy link, the
                           device's native share sheet, and one-click social
                           intents (X, LinkedIn, Facebook, WhatsApp, Email). Shared

@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LocalTime } from "@/components/local-time";
 import { portalActions } from "@/lib/portal/actions";
+import { getGuestId } from "@/lib/portal/guest";
+import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
 import { resolveUploadUrl } from "@/lib/avatar";
 import type { Comment } from "@/lib/api/types";
 
@@ -42,10 +44,12 @@ function Avatar({
   name,
   src,
   size = 28,
+  color = "#c74959",
 }: {
   name: string;
   src?: string | null;
   size?: number;
+  color?: string;
 }) {
   const url = resolveUploadUrl(src);
   const dims = { width: size, height: size };
@@ -62,12 +66,45 @@ function Avatar({
   }
   return (
     <span
-      className="flex shrink-0 items-center justify-center rounded-full bg-[#c74959] font-semibold text-white"
-      style={{ ...dims, fontSize: size * 0.42 }}
+      className="flex shrink-0 items-center justify-center rounded-full font-semibold text-white"
+      style={{ ...dims, fontSize: size * 0.42, backgroundColor: color }}
     >
       {(name || "?").charAt(0).toUpperCase()}
     </span>
   );
+}
+
+interface Display {
+  name: string;
+  avatar: string | null;
+  color: string;
+}
+
+/**
+ * Resolve how a comment's author is shown:
+ *  - logged-in user  → real name + avatar (colour keyed off their identity)
+ *  - guest w/ a name → the name they gave + a stable colour
+ *  - anonymous guest → a stable friendly pseudonym + colour (keyed off guest_id
+ *    so all of one guest's comments match; falls back to the comment id for
+ *    older rows that predate guest_id capture)
+ */
+function commentDisplay(comment: Comment): Display {
+  if (comment.author_id != null) {
+    return {
+      name: comment.author_name,
+      avatar: comment.author_avatar ?? null,
+      color: colorFor(comment.author_name || String(comment.author_id)),
+    };
+  }
+  if (comment.author_name && comment.author_name !== "Anonymous") {
+    return {
+      name: comment.author_name,
+      avatar: null,
+      color: colorFor(comment.guest_id || comment.author_name),
+    };
+  }
+  const id = guestIdentity(comment.guest_id || `c${comment.id}`);
+  return { name: id.name, avatar: null, color: id.color };
 }
 
 interface Thread {
@@ -134,6 +171,8 @@ function CommentForm({
   const [email, setEmail] = useState("");
   // Guests: show the name/email inputs only until they've commented once.
   const [editingIdentity, setEditingIdentity] = useState(false);
+  // The guest's own stable pseudonym (client-only: keyed off the guest cookie).
+  const [guestId, setGuestId] = useState("");
 
   useEffect(() => {
     if (viewer.isLoggedIn) return;
@@ -141,8 +180,11 @@ function CommentForm({
     setName(readLocal(NAME_KEY));
     setEmail(readLocal(EMAIL_KEY));
     setEditingIdentity(readLocal(COMMENTED_KEY) !== "1");
+    setGuestId(getGuestId());
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [viewer.isLoggedIn]);
+
+  const guestPseudonym = guestId ? guestIdentity(guestId) : null;
 
   const handle = async () => {
     if (!body.trim()) return;
@@ -191,19 +233,30 @@ function CommentForm({
       <div className="flex items-center gap-2">
         {viewer.isLoggedIn ? (
           <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
-            <Avatar name={viewer.name || "You"} src={viewer.image} size={20} />
+            <Avatar
+              name={viewer.name || "You"}
+              src={viewer.image}
+              color={colorFor(viewer.name || "you")}
+              size={20}
+            />
             Commenting as{" "}
             <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
           </p>
         ) : (
-          !editingIdentity && (
-            <p className="text-xs text-[#1c0a0c]/50">
-              Commenting as{" "}
-              <span className="font-medium text-[#1c0a0c]/70">
-                {name || "Anonymous"}
-              </span>
-            </p>
-          )
+          !editingIdentity &&
+          (() => {
+            const label = name || guestPseudonym?.name || "Anonymous";
+            const color = name
+              ? colorFor(guestId || name)
+              : guestPseudonym?.color || "#c74959";
+            return (
+              <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
+                <Avatar name={label} color={color} size={20} />
+                Commenting as{" "}
+                <span className="font-medium text-[#1c0a0c]/70">{label}</span>
+              </p>
+            );
+          })()
         )}
         <div className="ml-auto flex gap-2">
           {onCancel && (
@@ -255,6 +308,8 @@ function CommentCard({
     comment.author_id != null &&
     Number(comment.author_id) === viewer.userId;
 
+  const display = commentDisplay(comment);
+
   const saveEdit = async () => {
     if (!editBody.trim() || !viewer.token) return;
     setBusy(true);
@@ -283,10 +338,13 @@ function CommentCard({
     <div className="rounded-lg border border-black/5 bg-[#fdf8f9] p-4">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <Avatar name={comment.author_name} src={comment.author_avatar} size={24} />
-          <span className="font-medium text-[#1c0a0c]">
-            {comment.author_name}
-          </span>
+          <Avatar
+            name={display.name}
+            src={display.avatar}
+            color={display.color}
+            size={24}
+          />
+          <span className="font-medium text-[#1c0a0c]">{display.name}</span>
           {comment.is_edited ? (
             <span className="text-xs text-[#1c0a0c]/40">(edited)</span>
           ) : null}
@@ -495,6 +553,7 @@ export function PortalComments({
         parentCommentId: parentId ?? undefined,
         submitterName: viewer.isLoggedIn ? undefined : readLocal(NAME_KEY) || undefined,
         submitterEmail: viewer.isLoggedIn ? undefined : readLocal(EMAIL_KEY) || undefined,
+        guestId: viewer.isLoggedIn ? undefined : getGuestId() || undefined,
       },
       viewer.token
     );

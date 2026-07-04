@@ -45,6 +45,7 @@ export const portalActions = {
       parentCommentId?: number | null;
       submitterName?: string;
       submitterEmail?: string;
+      guestId?: string;
     },
     token?: string
   ) => request(`/public/${enc(tenant)}/posts/${postId}/comments`, "POST", token, payload),
