@@ -11,17 +11,33 @@ import {
   Pencil,
   Trash2,
   Pin,
+  ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
 import {
   postsApi,
   votesApi,
   commentsApi,
+  tenantsApi,
   extractRows,
   type Post,
   type Comment,
   type PostStatus,
 } from "@/lib/api";
+import { SharePost } from "@/components/portal/share-post";
+
+const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
+
+/** Build the public portal URL for a post from the tenant's subdomain/domain. */
+function buildPublicPostUrl(
+  tenant: { subdomain: string; custom_domain?: string | null },
+  postId: number
+): string {
+  const isLocal = /localhost|127\.0\.0\.1/.test(ROOT_DOMAIN);
+  const proto = isLocal ? "http" : "https";
+  const host = tenant.custom_domain || `${tenant.subdomain}.${ROOT_DOMAIN}`;
+  return `${proto}://${host}/post/${postId}`;
+}
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -79,8 +95,22 @@ export default function PostDetailPage() {
   const [submitting, setSubmitting] = useState(false);
   const [hasVoted, setHasVoted] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
+  const [publicUrl, setPublicUrl] = useState<string | null>(null);
 
   const postId = parseInt(params.id as string);
+
+  // Resolve the tenant once to build the shareable public link for this post.
+  useEffect(() => {
+    if (!token || Number.isNaN(postId)) return;
+    tenantsApi
+      .getMine(token)
+      .then((res) => {
+        if (res.data?.subdomain) {
+          setPublicUrl(buildPublicPostUrl(res.data, postId));
+        }
+      })
+      .catch(() => {});
+  }, [token, postId]);
 
   const loadPostData = useCallback(async () => {
     try {
@@ -218,6 +248,17 @@ export default function PostDetailPage() {
         </Link>
 
         <div className="flex items-center gap-2">
+          {publicUrl && (
+            <>
+              <a href={publicUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm">
+                  <ExternalLink className="h-4 w-4" />
+                  View
+                </Button>
+              </a>
+              <SharePost title={post.title} brand="#c74959" url={publicUrl} />
+            </>
+          )}
           <Button
             variant="outline"
             size="sm"

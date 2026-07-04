@@ -35,11 +35,22 @@ const SOCIALS: { name: string; build: IntentBuilder }[] = [
 ];
 
 /**
- * Public share control for a feedback post. Copies the current page URL, offers
- * the device's native share sheet (mobile), and opens social share intents. The
- * link itself unfurls richly thanks to the page's Open Graph metadata + image.
+ * Public share control for a feedback post. Copies the link, offers the device's
+ * native share sheet (mobile), and opens social share intents. The link unfurls
+ * richly thanks to the post page's Open Graph metadata + image.
+ *
+ * `url` defaults to the current page (portal usage); pass an explicit public URL
+ * to share a post from elsewhere (e.g. the admin dashboard).
  */
-export function SharePost({ title, brand }: { title: string; brand: string }) {
+export function SharePost({
+  title,
+  brand,
+  url,
+}: {
+  title: string;
+  brand: string;
+  url?: string;
+}) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
@@ -52,7 +63,7 @@ export function SharePost({ title, brand }: { title: string; brand: string }) {
   }, []);
 
   const currentUrl = () =>
-    typeof window !== "undefined" ? window.location.href : "";
+    url ?? (typeof window !== "undefined" ? window.location.href : "");
 
   const copy = async () => {
     try {
