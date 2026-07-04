@@ -9,18 +9,23 @@ import { loginWithCredentials } from "@/lib/auth/auth-service";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
 
-// The public portal lives on tenant subdomains, so we scope the session cookie
-// to the parent domain to share the login there (dev: `localhost`, which modern
-// browsers send to `*.localhost`; prod: `.<root domain>`). 127.0.0.1/IP hosts
-// can't have subdomains, so they stay host-only.
+// The public portal lives on tenant subdomains, so in production we scope the
+// session cookie to the parent domain (`.<root domain>`) so the login is shared
+// across `*.<root domain>`.
+//
+// In dev we deliberately leave it HOST-ONLY. The root host is `localhost`, a
+// single-label name with no embedded dot, and browsers (per RFC 6265, verified
+// against curl) refuse to share such a `Domain` cookie with subdomains — a
+// `Domain=localhost` cookie is NEVER sent to `*.localhost`. So there's no way to
+// share the login onto a tenant subdomain locally; test logged-in portal actions
+// via the direct path http://localhost:3000/portal/<tenant> instead (same origin
+// as login, so the cookie is present). Real-domain subdomain sharing works in
+// production.
 const ROOT_HOST = (process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000").split(
   ":"
 )[0];
-const SESSION_COOKIE_DOMAIN = /^(localhost|(\d{1,3}\.){3}\d{1,3})$/.test(ROOT_HOST)
-  ? ROOT_HOST === "localhost"
-    ? "localhost"
-    : undefined
-  : `.${ROOT_HOST}`;
+const SESSION_COOKIE_DOMAIN =
+  process.env.NODE_ENV === "production" ? `.${ROOT_HOST}` : undefined;
 
 const credentialsProvider = Credentials({
   name: "Credentials",
