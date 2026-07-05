@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useSession } from "next-auth/react";
-import { Plus, Pencil, Trash2, X, Calendar, GripVertical } from "lucide-react";
+import { Plus, Pencil, X, Calendar, GripVertical } from "lucide-react";
 import {
   DndContext,
   DragOverlay,
@@ -41,17 +41,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 
@@ -181,17 +170,6 @@ export function RoadmapBoard() {
       toast.error("Failed to save column");
     } finally {
       setBusy(false);
-    }
-  };
-
-  const deleteColumn = async (id: number) => {
-    if (!token) return;
-    try {
-      await roadmapApi.deleteColumn(id, token);
-      toast.success("Column deleted");
-      await load();
-    } catch {
-      toast.error("Failed to delete column");
     }
   };
 
@@ -339,35 +317,6 @@ export function RoadmapBoard() {
                           >
                             <Pencil className="h-3.5 w-3.5" />
                           </button>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <button
-                                type="button"
-                                className="rounded p-1 text-[#1c0a0c]/60 hover:bg-white hover:text-red-600"
-                                aria-label="Delete column"
-                              >
-                                <Trash2 className="h-3.5 w-3.5" />
-                              </button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>Delete column?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  Deleting &quot;{column.name}&quot; also removes
-                                  its roadmap items.
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction
-                                  variant="destructive"
-                                  onClick={() => deleteColumn(column.id)}
-                                >
-                                  Delete
-                                </AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
                         </div>
                       </div>
 
