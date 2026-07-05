@@ -14,6 +14,7 @@ import type {
   RoadmapItem,
   Changelog,
   PostListFilters,
+  ActiveOffer,
 } from "./types";
 
 const API_BASE_URL =
@@ -93,6 +94,11 @@ export const publicApi = {
     publicFetch<PublicTenant>(
       `/public/tenant?subdomain=${encodeURIComponent(identifier)}`
     )
+  ),
+
+  /** Active promotional offers keyed by plan (for the public pricing cards). */
+  getOffers: cache(() =>
+    publicFetch<Record<string, ActiveOffer>>("/public/offers")
   ),
 
   getBoard: (
