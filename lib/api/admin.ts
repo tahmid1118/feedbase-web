@@ -126,6 +126,16 @@ export interface AdminPost {
   comment_count: number;
 }
 
+export interface AdminComment {
+  id: number;
+  body: string;
+  parent_comment_id: number | null;
+  is_edited: number;
+  created_at: string;
+  author_id: number | null;
+  author_name: string;
+}
+
 export interface Offer {
   id: number;
   plan: "pro" | "business";
@@ -186,6 +196,18 @@ export const adminApi = {
     request(`/workspaces/${id}/posts/${postId}/pin`, "PUT", token, { isPinned }),
   deleteWorkspacePost: (token: string | undefined, id: number, postId: number) =>
     request(`/workspaces/${id}/posts/${postId}`, "DELETE", token),
+
+  // Comment moderation within a workspace
+  listPostComments: (token: string | undefined, id: number, postId: number) =>
+    request<{ rows: AdminComment[] }>(
+      `/workspaces/${id}/posts/${postId}/comments`,
+      "GET",
+      token
+    ),
+  editComment: (token: string | undefined, id: number, commentId: number, body: string) =>
+    request(`/workspaces/${id}/comments/${commentId}`, "PUT", token, { body }),
+  deleteComment: (token: string | undefined, id: number, commentId: number) =>
+    request(`/workspaces/${id}/comments/${commentId}`, "DELETE", token),
 
   // Users
   listUsers: (token?: string, search?: string) =>

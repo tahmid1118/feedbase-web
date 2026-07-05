@@ -4,12 +4,29 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { ArrowLeft, Pin, ThumbsUp, MessageSquare, Trash2, Search } from "lucide-react";
-import { adminApi, type AdminPost } from "@/lib/api";
+import {
+  ArrowLeft,
+  Pin,
+  ThumbsUp,
+  MessageSquare,
+  Trash2,
+  Search,
+  Pencil,
+  CornerDownRight,
+  Loader2,
+} from "lucide-react";
+import { adminApi, type AdminPost, type AdminComment } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Select,
   SelectContent,
@@ -115,6 +132,57 @@ export default function AdminWorkspacePostsPage() {
     if (res.ok) {
       setPosts((prev) => prev.filter((x) => x.id !== p.id));
       toast.success("Post deleted");
+    } else toast.error(res.message || "Failed");
+  };
+
+  // --- Comment moderation ---
+  const [commentsPost, setCommentsPost] = useState<AdminPost | null>(null);
+  const [comments, setComments] = useState<AdminComment[]>([]);
+  const [commentsLoading, setCommentsLoading] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editText, setEditText] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
+
+  const openComments = async (p: AdminPost) => {
+    if (!token) return;
+    setCommentsPost(p);
+    setEditingId(null);
+    setCommentsLoading(true);
+    const res = await adminApi.listPostComments(token, id, p.id);
+    setComments(res.data?.rows ?? []);
+    setCommentsLoading(false);
+  };
+
+  const saveComment = async (c: AdminComment) => {
+    if (!token || !editText.trim()) return;
+    const res = await adminApi.editComment(token, id, c.id, editText.trim());
+    if (res.ok) {
+      setComments((prev) =>
+        prev.map((x) => (x.id === c.id ? { ...x, body: editText.trim(), is_edited: 1 } : x))
+      );
+      setEditingId(null);
+      toast.success("Comment updated");
+    } else toast.error(res.message || "Failed");
+  };
+
+  const removeComment = async (c: AdminComment) => {
+    if (!token || !commentsPost) return;
+    const res = await adminApi.deleteComment(token, id, c.id);
+    if (res.ok) {
+      // A top-level comment takes its replies with it.
+      const removedIds = new Set([
+        c.id,
+        ...comments.filter((x) => x.parent_comment_id === c.id).map((x) => x.id),
+      ]);
+      setComments((prev) => prev.filter((x) => !removedIds.has(x.id)));
+      setPosts((prev) =>
+        prev.map((x) =>
+          x.id === commentsPost.id
+            ? { ...x, comment_count: Math.max(0, x.comment_count - removedIds.size) }
+            : x
+        )
+      );
+      toast.success("Comment deleted");
     } else toast.error(res.message || "Failed");
   };
 
@@ -225,10 +293,15 @@ export default function AdminWorkspacePostsPage() {
                         <ThumbsUp className="h-3.5 w-3.5" />
                         {p.vote_count}
                       </span>
-                      <span className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => openComments(p)}
+                        title="View / moderate comments"
+                        className="flex items-center gap-1 rounded px-1 hover:bg-[#c74959]/10 hover:text-[#c74959]"
+                      >
                         <MessageSquare className="h-3.5 w-3.5" />
                         {p.comment_count}
-                      </span>
+                      </button>
                     </div>
                   </td>
                   <td className="px-4 py-3 text-xs text-[#1c0a0c]/60">
@@ -275,6 +348,147 @@ export default function AdminWorkspacePostsPage() {
           </table>
         )}
       </Card>
+
+      {/* Comment moderation dialog */}
+      <Dialog
+        open={!!commentsPost}
+        onOpenChange={(o) => {
+          if (!o) {
+            setCommentsPost(null);
+            setEditingId(null);
+            setConfirmDeleteId(null);
+          }
+        }}
+      >
+        <DialogContent className="max-h-[80vh] overflow-y-auto sm:max-w-[560px]">
+          <DialogHeader>
+            <DialogTitle className="pr-6 text-base">
+              Comments · {commentsPost?.title}
+            </DialogTitle>
+          </DialogHeader>
+
+          {commentsLoading ? (
+            <div className="py-10 text-center text-[#1c0a0c]/60">
+              <Loader2 className="mx-auto h-5 w-5 animate-spin" />
+            </div>
+          ) : comments.length === 0 ? (
+            <div className="py-10 text-center text-sm text-[#1c0a0c]/60">
+              No comments on this post.
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {comments.map((c) => (
+                <div
+                  key={c.id}
+                  className={cn(
+                    "rounded-lg border border-[#e399a3]/20 bg-[#fdf8f9] p-3",
+                    c.parent_comment_id && "ml-6"
+                  )}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5 text-sm">
+                      {c.parent_comment_id ? (
+                        <CornerDownRight className="h-3 w-3 text-[#1c0a0c]/40" />
+                      ) : null}
+                      <span className="font-medium text-[#1c0a0c]">
+                        {c.author_name}
+                      </span>
+                      {c.is_edited ? (
+                        <span className="text-xs text-[#1c0a0c]/40">(edited)</span>
+                      ) : null}
+                    </div>
+                    <LocalTime
+                      date={c.created_at}
+                      relative
+                      className="shrink-0 text-xs text-[#1c0a0c]/50"
+                    />
+                  </div>
+
+                  {editingId === c.id ? (
+                    <div className="mt-2 space-y-2">
+                      <Textarea
+                        value={editText}
+                        onChange={(e) => setEditText(e.target.value)}
+                        className="min-h-[70px]"
+                        autoFocus
+                      />
+                      <div className="flex justify-end gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => setEditingId(null)}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          size="sm"
+                          className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                          disabled={!editText.trim()}
+                          onClick={() => saveComment(c)}
+                        >
+                          Save
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="mt-1.5 whitespace-pre-wrap text-sm text-[#1c0a0c]/80">
+                      {c.body}
+                    </p>
+                  )}
+
+                  {editingId !== c.id && (
+                    <div className="mt-2 flex items-center gap-3 text-xs font-medium text-[#1c0a0c]/50">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditingId(c.id);
+                          setEditText(c.body);
+                          setConfirmDeleteId(null);
+                        }}
+                        className="inline-flex items-center gap-1 hover:text-[#c74959]"
+                      >
+                        <Pencil className="h-3 w-3" />
+                        Edit
+                      </button>
+                      {confirmDeleteId === c.id ? (
+                        <span className="inline-flex items-center gap-2 text-red-600">
+                          {c.parent_comment_id ? "Delete?" : "Delete comment + replies?"}
+                          <button
+                            type="button"
+                            className="font-semibold underline"
+                            onClick={() => {
+                              setConfirmDeleteId(null);
+                              removeComment(c);
+                            }}
+                          >
+                            Yes
+                          </button>
+                          <button
+                            type="button"
+                            className="text-[#1c0a0c]/50 underline"
+                            onClick={() => setConfirmDeleteId(null)}
+                          >
+                            No
+                          </button>
+                        </span>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => setConfirmDeleteId(c.id)}
+                          className="inline-flex items-center gap-1 hover:text-red-600"
+                        >
+                          <Trash2 className="h-3 w-3" />
+                          Delete
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
