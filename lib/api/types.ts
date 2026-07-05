@@ -164,7 +164,9 @@ export interface Notification {
 }
 
 // User types
-export type UserRole = "visitor" | "user" | "moderator" | "admin" | "owner";
+// Tenant roles only. The platform operator ("admin") is a separate identity
+// (see the admins table + session `isAdmin`), not a value here.
+export type UserRole = "owner" | "user";
 
 export interface User {
   user_id: number;

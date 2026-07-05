@@ -53,7 +53,8 @@ const TABS: TabDef[] = [
   { id: "billing", label: "Billing", icon: CreditCard, adminOnly: true },
 ];
 
-const ADMIN_ROLES: UserRole[] = ["moderator", "admin", "owner"];
+// The workspace owner manages the workspace; members ("user") see Profile only.
+const ADMIN_ROLES: UserRole[] = ["owner"];
 
 export default function SettingsPage() {
   const { data: session } = useSession();

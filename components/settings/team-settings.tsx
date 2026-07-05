@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 
-const ROLES: UserRole[] = ["visitor", "user", "moderator", "admin", "owner"];
+const ROLES: UserRole[] = ["owner", "user"];
 
 export function TeamSettings() {
   const { data: session } = useSession();
