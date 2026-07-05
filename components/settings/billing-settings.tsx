@@ -248,7 +248,9 @@ export function BillingSettings() {
       </Card>
 
       <div className="grid gap-4 lg:grid-cols-3">
-        {PLANS.map((plan) => (
+        {PLANS.map((plan) => {
+          const offer = status?.offers?.[plan.key];
+          return (
           <Card
             key={plan.key}
             className={cn(
@@ -256,10 +258,17 @@ export function BillingSettings() {
               plan.highlighted && "ring-2 ring-[#c74959]"
             )}
           >
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-[#1c0a0c]">
-                {plan.name}
-              </h3>
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-[#1c0a0c]">
+                  {plan.name}
+                </h3>
+                {offer ? (
+                  <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
+                    SAVE {offer.percentOff}%
+                  </span>
+                ) : null}
+              </div>
               {plan.key === current ? (
                 <Badge className="bg-[#c74959] text-white">Current</Badge>
               ) : plan.highlighted ? (
@@ -267,12 +276,43 @@ export function BillingSettings() {
               ) : null}
             </div>
             <div className="mt-2">
-              <span className="text-3xl font-bold text-[#1c0a0c]">
-                {plan.priceLabel}
-              </span>
-              <span className="text-sm text-[#1c0a0c]/50">
-                {plan.priceSuffix}
-              </span>
+              {offer ? (
+                <div className="flex items-baseline gap-2">
+                  {/* Diagonal strike over the original price. */}
+                  <span
+                    className="text-2xl font-bold text-[#1c0a0c]/40"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to top right, transparent calc(50% - 1px), #c74959 calc(50% - 1px), #c74959 calc(50% + 1px), transparent calc(50% + 1px))",
+                    }}
+                  >
+                    ${offer.originalPrice}
+                  </span>
+                  <span className="text-3xl font-bold text-green-600">
+                    ${offer.offerPrice}
+                  </span>
+                  <span className="text-sm text-[#1c0a0c]/50">
+                    {plan.priceSuffix}
+                  </span>
+                </div>
+              ) : (
+                <>
+                  <span className="text-3xl font-bold text-[#1c0a0c]">
+                    {plan.priceLabel}
+                  </span>
+                  <span className="text-sm text-[#1c0a0c]/50">
+                    {plan.priceSuffix}
+                  </span>
+                </>
+              )}
+              {offer && (offer.label || offer.endsAt) ? (
+                <p className="mt-1 text-xs font-medium text-green-700">
+                  {offer.label || "Limited-time offer"}
+                  {offer.endsAt
+                    ? ` · ends ${new Date(offer.endsAt).toLocaleDateString()}`
+                    : ""}
+                </p>
+              ) : null}
             </div>
             <p className="mt-2 text-sm text-[#1c0a0c]/60">{plan.blurb}</p>
             <ul className="mt-4 flex-1 space-y-2 text-sm text-[#1c0a0c]/80">
@@ -285,7 +325,8 @@ export function BillingSettings() {
             </ul>
             <div className="mt-6">{renderCta(plan.key, plan.name)}</div>
           </Card>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

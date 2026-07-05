@@ -8,6 +8,7 @@ import {
   Users,
   ShieldCheck,
   Ticket,
+  Tag,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/ui/logo";
@@ -18,6 +19,7 @@ const navigation = [
   { name: "Users", href: "/admin/users", icon: Users },
   { name: "Admins", href: "/admin/admins", icon: ShieldCheck },
   { name: "Promo Codes", href: "/admin/promo-codes", icon: Ticket },
+  { name: "Offers", href: "/admin/offers", icon: Tag },
 ];
 
 export function AdminSidebar() {

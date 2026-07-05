@@ -112,6 +112,25 @@ export interface CreatePromoInput {
   expiresAt?: string;
 }
 
+export interface Offer {
+  id: number;
+  plan: "pro" | "business";
+  offer_price: string;
+  label: string | null;
+  starts_at: string | null;
+  ends_at: string | null;
+  is_active: number;
+  created_at: string;
+}
+
+export interface CreateOfferInput {
+  plan: "pro" | "business";
+  offerPrice: number;
+  label?: string;
+  startsAt?: string;
+  endsAt?: string;
+}
+
 export const adminApi = {
   overview: (token?: string) =>
     request<OverviewData>("/overview", "GET", token),
@@ -163,4 +182,12 @@ export const adminApi = {
     request("/promo-codes", "POST", token, { ...data }),
   revokePromoCode: (token: string | undefined, id: number) =>
     request(`/promo-codes/${id}/revoke`, "PUT", token),
+
+  // Offers
+  listOffers: (token?: string) =>
+    request<{ rows: Offer[] }>("/offers", "GET", token),
+  createOffer: (token: string | undefined, data: CreateOfferInput) =>
+    request("/offers", "POST", token, { ...data }),
+  deactivateOffer: (token: string | undefined, id: number) =>
+    request(`/offers/${id}/deactivate`, "PUT", token),
 };

@@ -267,12 +267,24 @@ export interface PlanLimits {
   deleteFeedback: boolean;
 }
 
+export interface ActiveOffer {
+  id: number;
+  plan: string;
+  originalPrice: number;
+  offerPrice: number;
+  percentOff: number;
+  label: string | null;
+  endsAt: string | null;
+}
+
 export interface BillingStatus {
   planName: PlanKey;
   subscriptionStatus: string | null;
   currentPeriodEnd: string | null;
   hasSubscription: boolean;
   limits: PlanLimits;
+  // Active promotional offers keyed by plan key ("pro" / "business").
+  offers?: Record<string, ActiveOffer>;
 }
 
 // API Key types

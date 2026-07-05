@@ -211,10 +211,15 @@ Version 1.1
                           codes (for any or a specific plan, backed by Stripe) and
                           free-plan comps (Pro/Business). An owner redeems a code
                           in the Billing tab — free-plan codes grant the plan
-                          instantly with no charge (shown as "Complimentary"),
-                          percentage-off codes apply at checkout. Codes support a
-                          duration, a redemption limit, and an expiry, and may be
-                          revoked.
+                          instantly with no charge, percentage-off codes apply at
+                          checkout. Codes support a duration, a redemption limit,
+                          and an expiry, and may be revoked.
+    FR-B7  Offers ...... Admins set a promotional price on a paid plan (see 3.11),
+                          optionally time-bounded. While an offer is active, every
+                          workspace's Billing tab shows that plan's list price with
+                          a diagonal strikethrough beside the lower offer price and
+                          a "save %" badge, and the discount is applied
+                          automatically at checkout. One active offer per plan.
 
 3.11 Platform Administration (Admin Panel)
     A platform admin manages the entire platform from a dedicated panel.
@@ -231,6 +236,8 @@ Version 1.1
                           admins (an admin cannot modify their own account).
     FR-AD5 Overview .... Platform-wide counts (workspaces, users, posts, paid
                           subscriptions, promo redemptions) and a plan breakdown.
+    FR-AD6 Promo/Offers  Generate and revoke promo codes, and create/end
+                          promotional plan offers (FR-B6, FR-B7).
 
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES
@@ -245,7 +252,7 @@ Version 1.1
 4.2 User Interface
     - Portal: board, post detail, roadmap, changelog.
     - Dashboard: overview, feedback, roadmap, changelog, notifications, settings.
-    - Admin Panel: overview, workspaces, users, admins, promo codes.
+    - Admin Panel: overview, workspaces, users, admins, promo codes, offers.
     - A single, consistent visual system (see 5.5).
 
 --------------------------------------------------------------------------------
@@ -273,7 +280,7 @@ Version 1.1
     roadmap_items, changelog_entries, notifications, api_keys, audit_logs,
     integrations, oauth_accounts. All feature tables are scoped by tenant.
     Platform-level (not tenant-scoped): admins (separate operator accounts),
-    promo_codes, and promo_redemptions.
+    promo_codes, promo_redemptions, and offers.
 
 --------------------------------------------------------------------------------
 7. DEPLOYMENT
