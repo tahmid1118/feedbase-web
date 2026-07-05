@@ -84,6 +84,34 @@ export interface AdminRow {
   created_at: string;
 }
 
+export interface PromoCode {
+  id: number;
+  code: string;
+  type: "percent_off" | "free_plan";
+  applies_to_plan: string | null;
+  percent_off: number | null;
+  plan_grant: string | null;
+  duration: string;
+  duration_months: number | null;
+  max_redemptions: number | null;
+  times_redeemed: number;
+  expires_at: string | null;
+  is_active: number;
+  created_at: string;
+}
+
+export interface CreatePromoInput {
+  code: string;
+  type: "percent_off" | "free_plan";
+  percentOff?: number;
+  appliesToPlan?: string;
+  planGrant?: string;
+  duration?: string;
+  durationMonths?: number;
+  maxRedemptions?: number;
+  expiresAt?: string;
+}
+
 export const adminApi = {
   overview: (token?: string) =>
     request<OverviewData>("/overview", "GET", token),
@@ -127,4 +155,12 @@ export const adminApi = {
     request(`/admins/${id}/active`, "PUT", token, { isActive }),
   deleteAdmin: (token: string | undefined, id: number) =>
     request(`/admins/${id}`, "DELETE", token),
+
+  // Promo codes
+  listPromoCodes: (token?: string) =>
+    request<{ rows: PromoCode[] }>("/promo-codes", "GET", token),
+  createPromoCode: (token: string | undefined, data: CreatePromoInput) =>
+    request("/promo-codes", "POST", token, { ...data }),
+  revokePromoCode: (token: string | undefined, id: number) =>
+    request(`/promo-codes/${id}/revoke`, "PUT", token),
 };

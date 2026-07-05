@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
 const STATUS_LABEL: Record<string, string> = {
@@ -19,6 +20,7 @@ const STATUS_LABEL: Record<string, string> = {
   canceled: "Canceled",
   incomplete: "Incomplete",
   unpaid: "Unpaid",
+  comped: "Complimentary",
 };
 
 export function BillingSettings() {
@@ -29,6 +31,14 @@ export function BillingSettings() {
   const [status, setStatus] = useState<BillingStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState<string | null>(null); // plan key or "portal"
+  const [promoInput, setPromoInput] = useState("");
+  const [redeeming, setRedeeming] = useState(false);
+  // A redeemed percent-off code, applied on the next checkout.
+  const [discount, setDiscount] = useState<{
+    promotionCode?: string;
+    percentOff?: number;
+    appliesToPlan?: string;
+  } | null>(null);
 
   const load = useCallback(() => {
     if (!token) return;
@@ -54,13 +64,39 @@ export function BillingSettings() {
     if (!token) return;
     setBusy(plan);
     try {
-      const res = await billingApi.checkout(plan, token);
+      const res = await billingApi.checkout(plan, token, discount?.promotionCode);
       if (res.data?.url) window.location.assign(res.data.url);
       else toast.error("Could not start checkout");
     } catch (e) {
       toast.error((e as Error)?.message || "Could not start checkout");
     } finally {
       setBusy(null);
+    }
+  };
+
+  const redeem = async () => {
+    if (!token || !promoInput.trim()) return;
+    setRedeeming(true);
+    try {
+      const res = await billingApi.redeem(promoInput.trim(), token);
+      const d = res.data;
+      if (d?.type === "free_plan") {
+        toast.success(`Applied — your workspace is now on ${d.plan}.`);
+        setPromoInput("");
+        load();
+      } else if (d?.type === "percent_off") {
+        setDiscount({
+          promotionCode: d.promotionCode,
+          percentOff: d.percentOff,
+          appliesToPlan: d.appliesToPlan,
+        });
+        setPromoInput("");
+        toast.success(`${d.percentOff}% off will be applied when you check out.`);
+      }
+    } catch (e) {
+      toast.error((e as Error)?.message || "That promo code is not valid.");
+    } finally {
+      setRedeeming(false);
     }
   };
 
@@ -174,6 +210,41 @@ export function BillingSettings() {
             </Button>
           )}
         </div>
+      </Card>
+
+      <Card className="p-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex-1 space-y-1">
+            <p className="text-sm font-medium text-[#1c0a0c]">Have a promo code?</p>
+            <p className="text-xs text-[#1c0a0c]/60">
+              Redeem a code to unlock a discount or a free plan.
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Input
+              value={promoInput}
+              onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
+              placeholder="Enter code"
+              className="w-40 font-mono uppercase sm:w-48"
+            />
+            <Button
+              variant="outline"
+              onClick={redeem}
+              disabled={redeeming || !promoInput.trim()}
+            >
+              {redeeming ? <Loader2 className="h-4 w-4 animate-spin" /> : "Apply"}
+            </Button>
+          </div>
+        </div>
+        {discount?.percentOff ? (
+          <div className="mt-3 rounded-lg bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
+            {discount.percentOff}% off will be applied at checkout
+            {discount.appliesToPlan && discount.appliesToPlan !== "any"
+              ? ` (${discount.appliesToPlan})`
+              : ""}
+            .
+          </div>
+        ) : null}
       </Card>
 
       <div className="grid gap-4 lg:grid-cols-3">
