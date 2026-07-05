@@ -309,7 +309,10 @@ export function BillingSettings() {
                 <p className="mt-1 text-xs font-medium text-green-700">
                   {offer.label || "Limited-time offer"}
                   {offer.endsAt
-                    ? ` · ends ${new Date(offer.endsAt).toLocaleDateString()}`
+                    ? ` · ends ${new Date(offer.endsAt).toLocaleDateString(
+                        undefined,
+                        { month: "long", day: "numeric", year: "numeric" }
+                      )}`
                     : ""}
                 </p>
               ) : null}
