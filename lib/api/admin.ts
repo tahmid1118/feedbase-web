@@ -112,6 +112,20 @@ export interface CreatePromoInput {
   expiresAt?: string;
 }
 
+export interface AdminPost {
+  id: number;
+  title: string;
+  description: string;
+  post_type: string;
+  status: string;
+  priority: number;
+  is_pinned: number;
+  created_at: string;
+  author_name: string;
+  vote_count: number;
+  comment_count: number;
+}
+
 export interface Offer {
   id: number;
   plan: "pro" | "business";
@@ -139,7 +153,11 @@ export const adminApi = {
   listWorkspaces: (token?: string, search?: string) =>
     request<{ rows: AdminWorkspace[] }>(`/workspaces${qs(search)}`, "GET", token),
   getWorkspace: (token: string | undefined, id: number) =>
-    request(`/workspaces/${id}`, "GET", token),
+    request<{ tenant: AdminWorkspace & Record<string, unknown>; members: AdminUserRow[] }>(
+      `/workspaces/${id}`,
+      "GET",
+      token
+    ),
   updateWorkspace: (
     token: string | undefined,
     id: number,
@@ -149,6 +167,25 @@ export const adminApi = {
     request(`/workspaces/${id}/plan`, "PUT", token, { plan }),
   deleteWorkspace: (token: string | undefined, id: number) =>
     request(`/workspaces/${id}`, "DELETE", token),
+
+  // Post moderation within a workspace
+  listWorkspacePosts: (
+    token: string | undefined,
+    id: number,
+    filters?: { status?: string; search?: string }
+  ) => {
+    const q = new URLSearchParams();
+    if (filters?.status) q.set("status", filters.status);
+    if (filters?.search) q.set("search", filters.search);
+    const suffix = q.toString() ? `?${q.toString()}` : "";
+    return request<{ rows: AdminPost[] }>(`/workspaces/${id}/posts${suffix}`, "GET", token);
+  },
+  setPostStatus: (token: string | undefined, id: number, postId: number, status: string) =>
+    request(`/workspaces/${id}/posts/${postId}/status`, "PUT", token, { status }),
+  setPostPin: (token: string | undefined, id: number, postId: number, isPinned: boolean) =>
+    request(`/workspaces/${id}/posts/${postId}/pin`, "PUT", token, { isPinned }),
+  deleteWorkspacePost: (token: string | undefined, id: number, postId: number) =>
+    request(`/workspaces/${id}/posts/${postId}`, "DELETE", token),
 
   // Users
   listUsers: (token?: string, search?: string) =>

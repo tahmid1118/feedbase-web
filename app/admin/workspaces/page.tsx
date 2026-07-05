@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { Loader2, Search, Trash2 } from "lucide-react";
+import { Search, Trash2, MessageSquare } from "lucide-react";
 import { adminApi, type AdminWorkspace } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -187,6 +188,13 @@ export default function AdminWorkspacesPage() {
                     </button>
                   </td>
                   <td className="px-4 py-3 text-right">
+                    <div className="flex items-center justify-end gap-1">
+                    <Button asChild variant="outline" size="sm">
+                      <Link href={`/admin/workspaces/${w.id}`}>
+                        <MessageSquare className="h-4 w-4" />
+                        Posts
+                      </Link>
+                    </Button>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <Button variant="ghost" size="icon" className="text-red-600 hover:text-red-700">
@@ -209,6 +217,7 @@ export default function AdminWorkspacesPage() {
                         </AlertDialogFooter>
                       </AlertDialogContent>
                     </AlertDialog>
+                    </div>
                   </td>
                 </tr>
               ))}
