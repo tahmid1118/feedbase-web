@@ -37,6 +37,11 @@ const FILTERS = ["all", ...STATUSES];
 
 const label = (s: string) => s.replace("_", " ");
 
+// Match the backend ordering: pinned first, then newest.
+const byPinnedThenNewest = (a: AdminPost, b: AdminPost) =>
+  b.is_pinned - a.is_pinned ||
+  new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+
 export default function AdminWorkspacePostsPage() {
   const params = useParams();
   const id = Number(params.id);
@@ -95,7 +100,11 @@ export default function AdminWorkspacePostsPage() {
     const next = p.is_pinned ? false : true;
     const res = await adminApi.setPostPin(token, id, p.id, next);
     if (res.ok) {
-      setPosts((prev) => prev.map((x) => (x.id === p.id ? { ...x, is_pinned: next ? 1 : 0 } : x)));
+      setPosts((prev) =>
+        prev
+          .map((x) => (x.id === p.id ? { ...x, is_pinned: next ? 1 : 0 } : x))
+          .sort(byPinnedThenNewest)
+      );
       toast.success(next ? "Pinned" : "Unpinned");
     } else toast.error(res.message || "Failed");
   };
