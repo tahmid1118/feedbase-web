@@ -8,10 +8,8 @@ import {
   ThumbsUp,
   MessageSquare,
   Calendar,
-  Pencil,
   Trash2,
   Pin,
-  ExternalLink,
   Lock,
 } from "lucide-react";
 import Link from "next/link";
@@ -62,7 +60,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { EditPostDialog } from "@/components/feedback/edit-post-dialog";
 import { PostTags } from "@/components/feedback/post-tags";
 import { CommentThread } from "@/components/feedback/comment-thread";
 import { DuplicateManager } from "@/components/feedback/duplicate-manager";
@@ -95,7 +92,6 @@ export default function PostDetailPage() {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasVoted, setHasVoted] = useState(false);
-  const [editOpen, setEditOpen] = useState(false);
   const [publicUrl, setPublicUrl] = useState<string | null>(null);
   // Deleting feedback is a paid capability (Pro+); gate the button on the plan.
   const [canDeleteFeedback, setCanDeleteFeedback] = useState(false);
@@ -257,15 +253,7 @@ export default function PostDetailPage() {
 
         <div className="flex items-center gap-2">
           {publicUrl && (
-            <>
-              <a href={publicUrl} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm">
-                  <ExternalLink className="h-4 w-4" />
-                  View
-                </Button>
-              </a>
-              <SharePost title={post.title} brand="#c74959" url={publicUrl} />
-            </>
+            <SharePost title={post.title} brand="#c74959" url={publicUrl} />
           )}
           <Button
             variant="outline"
@@ -277,14 +265,6 @@ export default function PostDetailPage() {
               className={`h-4 w-4 ${post.is_pinned ? "fill-[#c74959]" : ""}`}
             />
             {post.is_pinned ? "Pinned" : "Pin"}
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setEditOpen(true)}
-          >
-            <Pencil className="h-4 w-4" />
-            Edit
           </Button>
           {isOwner &&
             (canDeleteFeedback ? (
@@ -421,13 +401,6 @@ export default function PostDetailPage() {
 
         <CommentThread comments={comments} />
       </Card>
-
-      <EditPostDialog
-        post={post}
-        open={editOpen}
-        onOpenChange={setEditOpen}
-        onUpdated={loadPostData}
-      />
     </div>
   );
 }

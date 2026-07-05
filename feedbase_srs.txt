@@ -119,10 +119,13 @@ Version 1.1
     Feedback originates from end users on the public portal. The dashboard is
     for triage and management; the team does not author new posts here.
     FR-F1  List ......... Search and filter by status, type, and tag.
-    FR-F2  Maintain ..... Edit posts. Deleting a feedback post is restricted to
-                          the workspace owner and requires a paid plan (Pro or
-                          higher); it is enforced server-side and the control is
-                          hidden/locked otherwise (see FR-B5).
+    FR-F2  Maintain ..... The team does NOT edit the text of a user's feedback —
+                          the content belongs to its author. Triage is done via
+                          status, tags, pin, and duplicate marking (FR-F3..F6).
+                          Deleting a feedback post is restricted to the workspace
+                          owner and requires a paid plan (Pro or higher); it is
+                          enforced server-side and the control is hidden/locked
+                          otherwise (see FR-B5).
     FR-F3  Status ....... Set status: open, planned, in progress, completed, closed.
     FR-F4  Pin .......... Pin important posts to the top.
     FR-F5  Tags ......... Assign or remove tags.
