@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
 import { KeyRound, Search, Trash2 } from "lucide-react";
 import { adminApi, type AdminUserRow } from "@/lib/api";
@@ -94,6 +94,19 @@ export default function AdminUsersPage() {
     } else toast.error(res.message || "Failed to reset password");
   };
 
+  // One account (email) can belong to multiple workspaces — each is a separate
+  // membership row. Group by email so a person appears once, with each of their
+  // workspace memberships listed (and managed) beneath.
+  const groups = useMemo(() => {
+    const map = new Map<string, AdminUserRow[]>();
+    for (const u of rows) {
+      const arr = map.get(u.email);
+      if (arr) arr.push(u);
+      else map.set(u.email, [u]);
+    }
+    return Array.from(map.values());
+  }, [rows]);
+
   return (
     <div className="space-y-6">
       <div>
@@ -137,84 +150,107 @@ export default function AdminUsersPage() {
               </tr>
             </thead>
             <tbody>
-              {rows.map((u) => (
-                <tr key={u.id} className="border-b border-[#e399a3]/10">
-                  <td className="px-4 py-3">
-                    <div className="font-medium text-[#1c0a0c]">{u.full_name}</div>
-                    <div className="text-xs text-[#1c0a0c]/50">{u.email}</div>
-                  </td>
-                  <td className="px-4 py-3 text-[#1c0a0c]/70">
-                    {u.workspace_name || "—"}
-                  </td>
-                  <td className="px-4 py-3">
-                    <Select
-                      value={u.role ?? "user"}
-                      onValueChange={(v) => changeRole(u, v)}
-                    >
-                      <SelectTrigger className="h-8 w-[110px] capitalize">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {ROLES.map((r) => (
-                          <SelectItem key={r} value={r} className="capitalize">
-                            {r}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </td>
-                  <td className="px-4 py-3">
-                    <button
-                      type="button"
-                      onClick={() => toggleActive(u)}
-                      className={
-                        u.is_active
-                          ? "rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700"
-                          : "rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600"
-                      }
-                    >
-                      {u.is_active ? "Active" : "Inactive"}
-                    </button>
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center justify-end gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        title="Reset password"
-                        onClick={() => {
-                          setPwUser(u);
-                          setPw("");
-                        }}
-                      >
-                        <KeyRound className="h-4 w-4" />
-                      </Button>
-                      <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                          <Button variant="ghost" size="icon" className="text-red-600 hover:text-red-700">
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                          <AlertDialogHeader>
-                            <AlertDialogTitle>Delete {u.full_name}?</AlertDialogTitle>
-                            <AlertDialogDescription>
-                              This permanently removes the user account. This cannot
-                              be undone.
-                            </AlertDialogDescription>
-                          </AlertDialogHeader>
-                          <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction variant="destructive" onClick={() => remove(u)}>
-                              Delete
-                            </AlertDialogAction>
-                          </AlertDialogFooter>
-                        </AlertDialogContent>
-                      </AlertDialog>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {groups.map((group) => {
+                const person = group[0];
+                return (
+                  <Fragment key={person.email}>
+                    {group.map((u, i) => (
+                      <tr key={u.id} className="border-b border-[#e399a3]/10">
+                        {i === 0 && (
+                          <td
+                            className="px-4 py-3 align-top"
+                            rowSpan={group.length}
+                          >
+                            <div className="font-medium text-[#1c0a0c]">
+                              {person.full_name}
+                            </div>
+                            <div className="text-xs text-[#1c0a0c]/50">
+                              {person.email}
+                            </div>
+                            {group.length > 1 && (
+                              <div className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-[#c74959]">
+                                {group.length} workspaces
+                              </div>
+                            )}
+                          </td>
+                        )}
+                        <td className="px-4 py-3 text-[#1c0a0c]/70">
+                          {u.workspace_name || "—"}
+                        </td>
+                        <td className="px-4 py-3">
+                          <Select
+                            value={u.role ?? "user"}
+                            onValueChange={(v) => changeRole(u, v)}
+                          >
+                            <SelectTrigger className="h-8 w-[110px] capitalize">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {ROLES.map((r) => (
+                                <SelectItem key={r} value={r} className="capitalize">
+                                  {r}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </td>
+                        <td className="px-4 py-3">
+                          <button
+                            type="button"
+                            onClick={() => toggleActive(u)}
+                            className={
+                              u.is_active
+                                ? "rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700"
+                                : "rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600"
+                            }
+                          >
+                            {u.is_active ? "Active" : "Inactive"}
+                          </button>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="flex items-center justify-end gap-1">
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              title="Reset password"
+                              onClick={() => {
+                                setPwUser(u);
+                                setPw("");
+                              }}
+                            >
+                              <KeyRound className="h-4 w-4" />
+                            </Button>
+                            <AlertDialog>
+                              <AlertDialogTrigger asChild>
+                                <Button variant="ghost" size="icon" className="text-red-600 hover:text-red-700">
+                                  <Trash2 className="h-4 w-4" />
+                                </Button>
+                              </AlertDialogTrigger>
+                              <AlertDialogContent>
+                                <AlertDialogHeader>
+                                  <AlertDialogTitle>
+                                    Delete {person.full_name} from {u.workspace_name || "this workspace"}?
+                                  </AlertDialogTitle>
+                                  <AlertDialogDescription>
+                                    This removes this workspace membership. This cannot
+                                    be undone.
+                                  </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogAction variant="destructive" onClick={() => remove(u)}>
+                                    Delete
+                                  </AlertDialogAction>
+                                </AlertDialogFooter>
+                              </AlertDialogContent>
+                            </AlertDialog>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </Fragment>
+                );
+              })}
             </tbody>
           </table>
         )}
