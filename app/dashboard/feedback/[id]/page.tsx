@@ -65,12 +65,13 @@ import { CommentThread } from "@/components/feedback/comment-thread";
 import { DuplicateManager } from "@/components/feedback/duplicate-manager";
 import { toast } from "sonner";
 
+// "closed" is intentionally omitted — it's not an offered status. The badge map
+// below still includes it so any pre-existing closed posts render correctly.
 const STATUS_OPTIONS: PostStatus[] = [
   "open",
   "planned",
   "in_progress",
   "completed",
-  "closed",
 ];
 
 const STATUS_BADGE: Record<string, string> = {

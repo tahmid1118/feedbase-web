@@ -126,7 +126,8 @@ Version 1.1
                           owner and requires a paid plan (Pro or higher); it is
                           enforced server-side and the control is hidden/locked
                           otherwise (see FR-B5).
-    FR-F3  Status ....... Set status: open, planned, in progress, completed, closed.
+    FR-F3  Status ....... Set status: open, planned, in progress, or completed
+                          (the "closed" status is not offered in the picker).
     FR-F4  Pin .......... Pin important posts to the top.
     FR-F5  Tags ......... Assign or remove tags.
     FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.
@@ -152,8 +153,10 @@ Version 1.1
                           in_progress, completed, ...) are linked to that status:
                           moving an item into such a column sets the post's status,
                           and changing a post's status moves its roadmap item into
-                          the matching column. The roadmap and the feedback board's
-                          status tabs therefore stay consistent.
+                          the matching column. Removing (dismissing) a post from the
+                          roadmap returns it to the Open state, so it reappears in
+                          the Open tab. The roadmap and the feedback board's status
+                          tabs therefore stay consistent.
 
 3.5 Changelog
     FR-C1  Authoring .... Create and edit entries with Markdown content.
