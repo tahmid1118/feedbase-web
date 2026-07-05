@@ -20,7 +20,7 @@ const STATUS_LABEL: Record<string, string> = {
   canceled: "Canceled",
   incomplete: "Incomplete",
   unpaid: "Unpaid",
-  comped: "Complimentary",
+  comped: "Active",
 };
 
 export function BillingSettings() {
