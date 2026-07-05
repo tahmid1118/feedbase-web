@@ -24,9 +24,12 @@ Version 1.1
 1.3 Definitions
     Tenant        An isolated customer workspace.
     Visitor/Guest An unauthenticated end user on a tenant's public portal.
-    Member        An authenticated tenant team member (user/moderator/admin/owner).
+    Member        An authenticated tenant team member (owner or user).
+    Admin         A platform operator (the app owner) with super-access across
+                  every workspace; a separate identity from tenant accounts (the
+                  same email may be both).
     Portal        The public, tenant-branded surface (board, roadmap, changelog).
-    Dashboard     The private, authenticated admin application.
+    Dashboard     The private, authenticated workspace application.
 
 --------------------------------------------------------------------------------
 2. OVERALL DESCRIPTION
@@ -40,11 +43,17 @@ Version 1.1
       public, per-tenant portal.
 
 2.2 User Roles & Permissions
+    There are exactly three roles.
     - Visitor/Guest: view a tenant portal, submit feedback (anonymously or with
       an optional email), and upvote posts. No account required.
-    - User: authenticated member with baseline access.
-    - Moderator / Admin / Owner: progressively broader management rights over
-      team, tags, integrations, API keys, audit logs, and branding.
+    - User: an authenticated workspace member with baseline access (Profile only
+      in settings).
+    - Owner: the workspace administrator — manages team, tags, integrations, API
+      keys, audit logs, branding, billing, and feedback deletion.
+    - Admin (platform): the app operator. Stored separately from tenant accounts,
+      signs in through a dedicated admin sign-in, and has super-access over every
+      workspace and user through the Admin Panel (see 3.11). "Admin" is never a
+      role inside a workspace.
 
 2.3 Multi-Tenancy
     - Each tenant is reachable at <subdomain>.<root-domain> and, optionally, a
@@ -196,8 +205,32 @@ Version 1.1
                           cannot set a custom domain, create integrations, or
                           delete feedback posts, and is prompted to upgrade.
                           Deleting feedback additionally requires the owner role.
-                          The plan is set only by Stripe and cannot be changed
-                          directly by the client.
+                          The plan is set only by Stripe (or an admin comp) and
+                          cannot be changed directly by the client.
+    FR-B6  Promo codes . Admins generate promo codes (see 3.11): percentage-off
+                          codes (for any or a specific plan, backed by Stripe) and
+                          free-plan comps (Pro/Business). An owner redeems a code
+                          in the Billing tab — free-plan codes grant the plan
+                          instantly with no charge (shown as "Complimentary"),
+                          percentage-off codes apply at checkout. Codes support a
+                          duration, a redemption limit, and an expiry, and may be
+                          revoked.
+
+3.11 Platform Administration (Admin Panel)
+    A platform admin manages the entire platform from a dedicated panel.
+    FR-AD1 Access ...... Admins are stored separately from tenant users and sign
+                          in at a dedicated admin sign-in; the admin session has
+                          no workspace and is routed to the Admin Panel.
+    FR-AD2 Workspaces .. View every workspace (owner, plan, status, member/post
+                          counts); rename, activate/deactivate, delete, and
+                          grant/revoke a plan (a comp — a paid plan with no charge).
+    FR-AD3 Users ....... View and search all users across workspaces; change role
+                          (owner/user), reset password, activate/deactivate, or
+                          delete.
+    FR-AD4 Admins ...... List, create, activate/deactivate, and remove other
+                          admins (an admin cannot modify their own account).
+    FR-AD5 Overview .... Platform-wide counts (workspaces, users, posts, paid
+                          subscriptions, promo redemptions) and a plan breakdown.
 
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES
@@ -212,6 +245,7 @@ Version 1.1
 4.2 User Interface
     - Portal: board, post detail, roadmap, changelog.
     - Dashboard: overview, feedback, roadmap, changelog, notifications, settings.
+    - Admin Panel: overview, workspaces, users, admins, promo codes.
     - A single, consistent visual system (see 5.5).
 
 --------------------------------------------------------------------------------
@@ -234,10 +268,12 @@ Version 1.1
 6. DATA MODEL (principal tables)
 --------------------------------------------------------------------------------
 
-    tenants, users, posts (with guest submitter fields), votes (supporting guest
-    voting), comments, tags, post_tags, roadmap_columns, roadmap_items,
-    changelog_entries, notifications, api_keys, audit_logs, integrations,
-    oauth_accounts. All feature tables are scoped by tenant.
+    tenants, users (role owner/user), posts (with guest submitter fields), votes
+    (supporting guest voting), comments, tags, post_tags, roadmap_columns,
+    roadmap_items, changelog_entries, notifications, api_keys, audit_logs,
+    integrations, oauth_accounts. All feature tables are scoped by tenant.
+    Platform-level (not tenant-scoped): admins (separate operator accounts),
+    promo_codes, and promo_redemptions.
 
 --------------------------------------------------------------------------------
 7. DEPLOYMENT
