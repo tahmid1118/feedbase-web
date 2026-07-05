@@ -44,15 +44,6 @@ import {
 import { toast } from "sonner";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "_")
-    .replace(/^_+|_+$/g, "")
-    .slice(0, 40);
-}
-
 export function RoadmapBoard() {
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
@@ -132,38 +123,21 @@ export function RoadmapBoard() {
     posts.find((p) => p.id === postId)?.title ?? `Post #${postId}`;
 
   // --- Column actions ---
-  const openCreateColumn = () => {
-    setColumnName("");
-    setColumnDialog({ open: true });
-  };
-
   const openEditColumn = (column: RoadmapColumn) => {
     setColumnName(column.name);
     setColumnDialog({ open: true, editing: column });
   };
 
   const saveColumn = async () => {
-    if (!token || !columnName.trim()) return;
+    if (!token || !columnName.trim() || !columnDialog.editing) return;
     setBusy(true);
     try {
-      if (columnDialog.editing) {
-        await roadmapApi.updateColumn(
-          columnDialog.editing.id,
-          { name: columnName.trim() },
-          token
-        );
-        toast.success("Column updated");
-      } else {
-        await roadmapApi.createColumn(
-          {
-            name: columnName.trim(),
-            columnKey: slugify(columnName) || `col_${Date.now()}`,
-            sortOrder: columns.length + 1,
-          },
-          token
-        );
-        toast.success("Column created");
-      }
+      await roadmapApi.updateColumn(
+        columnDialog.editing.id,
+        { name: columnName.trim() },
+        token
+      );
+      toast.success("Column updated");
       setColumnDialog({ open: false });
       await load();
     } catch {
@@ -259,10 +233,6 @@ export function RoadmapBoard() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-end gap-2">
-        <Button variant="outline" onClick={openCreateColumn}>
-          <Plus className="h-4 w-4" />
-          New Column
-        </Button>
         <Button
           className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
           onClick={() => openAddItem()}
@@ -276,7 +246,7 @@ export function RoadmapBoard() {
       {sortedColumns.length === 0 ? (
         <Card className="p-12 text-center">
           <p className="text-[#1c0a0c]/60">
-            No roadmap columns yet. Create your first column to get started.
+            No roadmap columns yet.
           </p>
         </Card>
       ) : (
@@ -365,11 +335,9 @@ export function RoadmapBoard() {
       >
         <DialogContent className="sm:max-w-[420px]">
           <DialogHeader>
-            <DialogTitle>
-              {columnDialog.editing ? "Edit Column" : "New Column"}
-            </DialogTitle>
+            <DialogTitle>Edit Column</DialogTitle>
             <DialogDescription>
-              Columns represent stages of your product roadmap.
+              Rename this roadmap column.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-2">
@@ -393,7 +361,7 @@ export function RoadmapBoard() {
               onClick={saveColumn}
               disabled={busy || !columnName.trim()}
             >
-              {columnDialog.editing ? "Save" : "Create"}
+              Save
             </Button>
           </DialogFooter>
         </DialogContent>
