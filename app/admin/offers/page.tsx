@@ -223,7 +223,7 @@ export default function AdminOffersPage() {
                 <Label htmlFor="o-start">Starts (optional)</Label>
                 <Input
                   id="o-start"
-                  type="date"
+                  type="datetime-local"
                   value={form.startsAt ?? ""}
                   onChange={(e) => set({ startsAt: e.target.value || undefined })}
                 />
@@ -232,12 +232,15 @@ export default function AdminOffersPage() {
                 <Label htmlFor="o-end">Ends (optional)</Label>
                 <Input
                   id="o-end"
-                  type="date"
+                  type="datetime-local"
                   value={form.endsAt ?? ""}
                   onChange={(e) => set({ endsAt: e.target.value || undefined })}
                 />
               </div>
             </div>
+            <p className="text-xs text-[#1c0a0c]/50">
+              Times are in your local timezone. Leave blank for an always-on offer.
+            </p>
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>
