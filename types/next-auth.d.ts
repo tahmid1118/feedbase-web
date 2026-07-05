@@ -8,6 +8,8 @@ declare module "next-auth" {
       tenantId: string | null;
       role: string | null;
       accessToken: string;
+      isAdmin?: boolean;
+      adminId?: string | null;
     };
   }
 
@@ -16,6 +18,8 @@ declare module "next-auth" {
     tenantId: string | null;
     role: string | null;
     accessToken: string;
+    isAdmin?: boolean;
+    adminId?: string | null;
   }
 }
 
@@ -26,6 +30,8 @@ declare module "next-auth/jwt" {
     role?: string | null;
     accessToken?: string;
     image?: string | null;
+    isAdmin?: boolean;
+    adminId?: string | null;
   }
 }
 

@@ -2,6 +2,7 @@ import { requestJson } from "@/lib/auth/api-client";
 import { AuthApiError } from "@/lib/auth/errors";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import type {
+  AdminLoginApiResponse,
   LoginApiRequest,
   LoginApiResponse,
   LoginCredentialsInput,
@@ -47,6 +48,41 @@ export async function loginWithCredentials(
     email: response.user.email,
     image: resolveAvatarUrl(response.user.imageUrl) ?? null,
     accessToken: response.user.token,
+  };
+}
+
+export async function loginAsAdmin(
+  input: LoginCredentialsInput
+): Promise<SessionUserProfile | null> {
+  const payload: LoginApiRequest = {
+    lg: input.lg,
+    userData: { email: input.email, password: input.password },
+  };
+
+  const response = await requestJson<AdminLoginApiResponse>(
+    "/admin/auth/login",
+    { method: "POST", body: JSON.stringify(payload) }
+  );
+
+  if (!isSuccess(response.status) || !response.admin?.token) {
+    return null;
+  }
+
+  const adminId = String(response.admin.id);
+
+  // A platform admin has no tenant identity: tenantId/role are null and the
+  // `isAdmin` flag routes them to the admin panel instead of the dashboard.
+  return {
+    id: adminId,
+    userId: adminId,
+    tenantId: null,
+    role: null,
+    name: response.admin.fullName,
+    email: response.admin.email,
+    image: resolveAvatarUrl(response.admin.imageUrl) ?? null,
+    accessToken: response.admin.token,
+    isAdmin: true,
+    adminId,
   };
 }
 

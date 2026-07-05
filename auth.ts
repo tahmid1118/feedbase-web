@@ -5,7 +5,7 @@ import {
   DEFAULT_LANGUAGE,
   LOGIN_RATE_LIMIT,
 } from "@/lib/auth/constants";
-import { loginWithCredentials } from "@/lib/auth/auth-service";
+import { loginWithCredentials, loginAsAdmin } from "@/lib/auth/auth-service";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
 
@@ -37,6 +37,8 @@ const credentialsProvider = Credentials({
     email: { label: "Email", type: "email" },
     password: { label: "Password", type: "password" },
     lg: { label: "Language", type: "text" },
+    // "admin" authenticates against the separate admins table / admin panel.
+    accountType: { label: "Account type", type: "text" },
   },
   async authorize(rawCredentials) {
     const parsedCredentials = loginSchema.safeParse({
@@ -49,8 +51,9 @@ const credentialsProvider = Credentials({
       return null;
     }
 
+    const isAdminLogin = rawCredentials?.accountType === "admin";
     const normalizedEmail = parsedCredentials.data.email.toLowerCase();
-    const limiterKey = `login:${normalizedEmail}`;
+    const limiterKey = `login:${isAdminLogin ? "admin:" : ""}${normalizedEmail}`;
 
     const isAllowed = consumeRateLimit(
       limiterKey,
@@ -63,8 +66,10 @@ const credentialsProvider = Credentials({
     }
 
     try {
-      const user = await loginWithCredentials(parsedCredentials.data);
-      return user;
+      const profile = isAdminLogin
+        ? await loginAsAdmin(parsedCredentials.data)
+        : await loginWithCredentials(parsedCredentials.data);
+      return profile;
     } catch {
       return null;
     }
@@ -107,6 +112,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.name = user.name;
         token.email = user.email;
         token.image = user.image;
+        token.isAdmin = user.isAdmin ?? false;
+        token.adminId = user.adminId ?? null;
       }
 
       // Client `update(...)` refreshes the session in place: profile edits send
@@ -151,6 +158,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.email =
           typeof token.email === "string" ? token.email : "";
         session.user.image = typeof token.image === "string" ? token.image : null;
+        session.user.isAdmin = token.isAdmin === true;
+        session.user.adminId =
+          typeof token.adminId === "string" ? token.adminId : null;
       }
 
       return session;

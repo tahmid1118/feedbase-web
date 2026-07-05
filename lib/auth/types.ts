@@ -39,6 +39,16 @@ export interface LoginApiResponse extends ApiMessageResponse {
   user?: LoginApiUser;
 }
 
+export interface AdminLoginApiResponse extends ApiMessageResponse {
+  admin?: {
+    token: string;
+    id: string | number;
+    email: string;
+    fullName: string;
+    imageUrl?: string | null;
+  };
+}
+
 export interface RegisterApiRequest {
   lg: string;
   userData: {
@@ -60,6 +70,9 @@ export interface SessionUserProfile {
   email: string;
   image: string | null;
   accessToken: string;
+  // Platform operator (admins table). Absent/false for ordinary tenant users.
+  isAdmin?: boolean;
+  adminId?: string | null;
 }
 
 export interface AuthRouteErrorResponse {
