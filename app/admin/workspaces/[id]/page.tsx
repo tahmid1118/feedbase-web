@@ -11,14 +11,12 @@ import {
   MessageSquare,
   Trash2,
   Search,
-  Pencil,
   CornerDownRight,
   Loader2,
 } from "lucide-react";
 import { adminApi, type AdminPost, type AdminComment } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -139,30 +137,16 @@ export default function AdminWorkspacePostsPage() {
   const [commentsPost, setCommentsPost] = useState<AdminPost | null>(null);
   const [comments, setComments] = useState<AdminComment[]>([]);
   const [commentsLoading, setCommentsLoading] = useState(false);
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [editText, setEditText] = useState("");
   const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
 
   const openComments = async (p: AdminPost) => {
     if (!token) return;
     setCommentsPost(p);
-    setEditingId(null);
+    setConfirmDeleteId(null);
     setCommentsLoading(true);
     const res = await adminApi.listPostComments(token, id, p.id);
     setComments(res.data?.rows ?? []);
     setCommentsLoading(false);
-  };
-
-  const saveComment = async (c: AdminComment) => {
-    if (!token || !editText.trim()) return;
-    const res = await adminApi.editComment(token, id, c.id, editText.trim());
-    if (res.ok) {
-      setComments((prev) =>
-        prev.map((x) => (x.id === c.id ? { ...x, body: editText.trim(), is_edited: 1 } : x))
-      );
-      setEditingId(null);
-      toast.success("Comment updated");
-    } else toast.error(res.message || "Failed");
   };
 
   const removeComment = async (c: AdminComment) => {
@@ -355,7 +339,6 @@ export default function AdminWorkspacePostsPage() {
         onOpenChange={(o) => {
           if (!o) {
             setCommentsPost(null);
-            setEditingId(null);
             setConfirmDeleteId(null);
           }
         }}
@@ -404,85 +387,43 @@ export default function AdminWorkspacePostsPage() {
                     />
                   </div>
 
-                  {editingId === c.id ? (
-                    <div className="mt-2 space-y-2">
-                      <Textarea
-                        value={editText}
-                        onChange={(e) => setEditText(e.target.value)}
-                        className="min-h-[70px]"
-                        autoFocus
-                      />
-                      <div className="flex justify-end gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => setEditingId(null)}
-                        >
-                          Cancel
-                        </Button>
-                        <Button
-                          size="sm"
-                          className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
-                          disabled={!editText.trim()}
-                          onClick={() => saveComment(c)}
-                        >
-                          Save
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    <p className="mt-1.5 whitespace-pre-wrap text-sm text-[#1c0a0c]/80">
-                      {c.body}
-                    </p>
-                  )}
+                  <p className="mt-1.5 whitespace-pre-wrap text-sm text-[#1c0a0c]/80">
+                    {c.body}
+                  </p>
 
-                  {editingId !== c.id && (
-                    <div className="mt-2 flex items-center gap-3 text-xs font-medium text-[#1c0a0c]/50">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setEditingId(c.id);
-                          setEditText(c.body);
-                          setConfirmDeleteId(null);
-                        }}
-                        className="inline-flex items-center gap-1 hover:text-[#c74959]"
-                      >
-                        <Pencil className="h-3 w-3" />
-                        Edit
-                      </button>
-                      {confirmDeleteId === c.id ? (
-                        <span className="inline-flex items-center gap-2 text-red-600">
-                          {c.parent_comment_id ? "Delete?" : "Delete comment + replies?"}
-                          <button
-                            type="button"
-                            className="font-semibold underline"
-                            onClick={() => {
-                              setConfirmDeleteId(null);
-                              removeComment(c);
-                            }}
-                          >
-                            Yes
-                          </button>
-                          <button
-                            type="button"
-                            className="text-[#1c0a0c]/50 underline"
-                            onClick={() => setConfirmDeleteId(null)}
-                          >
-                            No
-                          </button>
-                        </span>
-                      ) : (
+                  <div className="mt-2 flex items-center gap-3 text-xs font-medium text-[#1c0a0c]/50">
+                    {confirmDeleteId === c.id ? (
+                      <span className="inline-flex items-center gap-2 text-red-600">
+                        {c.parent_comment_id ? "Delete?" : "Delete comment + replies?"}
                         <button
                           type="button"
-                          onClick={() => setConfirmDeleteId(c.id)}
-                          className="inline-flex items-center gap-1 hover:text-red-600"
+                          className="font-semibold underline"
+                          onClick={() => {
+                            setConfirmDeleteId(null);
+                            removeComment(c);
+                          }}
                         >
-                          <Trash2 className="h-3 w-3" />
-                          Delete
+                          Yes
                         </button>
-                      )}
-                    </div>
-                  )}
+                        <button
+                          type="button"
+                          className="text-[#1c0a0c]/50 underline"
+                          onClick={() => setConfirmDeleteId(null)}
+                        >
+                          No
+                        </button>
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setConfirmDeleteId(c.id)}
+                        className="inline-flex items-center gap-1 hover:text-red-600"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                        Delete
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

@@ -204,8 +204,6 @@ export const adminApi = {
       "GET",
       token
     ),
-  editComment: (token: string | undefined, id: number, commentId: number, body: string) =>
-    request(`/workspaces/${id}/comments/${commentId}`, "PUT", token, { body }),
   deleteComment: (token: string | undefined, id: number, commentId: number) =>
     request(`/workspaces/${id}/comments/${commentId}`, "DELETE", token),
 

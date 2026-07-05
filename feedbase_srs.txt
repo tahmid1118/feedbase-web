@@ -230,8 +230,9 @@ Version 1.1
                           counts); rename, activate/deactivate, delete, and
                           grant/revoke a plan (a comp — a paid plan with no
                           charge). Open any workspace to moderate its feedback
-                          posts — change status, pin/unpin, or delete — and each
-                          post's comments (edit or delete).
+                          posts — change status, pin/unpin, or delete — and
+                          delete any of a post's comments (comment text is not
+                          editable — it belongs to its author).
     FR-AD3 Users ....... View and search all users across workspaces; change role
                           (owner/user), reset password, activate/deactivate, or
                           delete.
