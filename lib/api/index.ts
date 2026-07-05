@@ -20,4 +20,5 @@ export * from "./integrations";
 export * from "./uploader";
 export * from "./analytics";
 export * from "./billing";
+export * from "./admin";
 export * from "./health-check";
