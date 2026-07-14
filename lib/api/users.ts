@@ -90,6 +90,14 @@ export const usersApi = {
       { token }
     ),
 
+  /**
+   * End this device's session server-side. Must be called on sign-out: on
+   * single-device plans the session is what blocks the next login, so skipping
+   * this would lock the user out until the session went idle.
+   */
+  logout: (token: string) =>
+    apiClient.post<ApiResponse<null>>("/users/logout", {}, { token }),
+
   // --- Account deletion ---
   /** What deleting this account would destroy (for the confirmation dialog). */
   getDeletionSummary: (token: string) =>

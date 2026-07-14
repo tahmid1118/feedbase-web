@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { Loader2, LogIn, UserPlus } from "lucide-react";
 
 import {
@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
+import { endSession } from "@/lib/auth/end-session";
 
 export function InviteAccept({
   token,
@@ -148,7 +149,11 @@ export function InviteAccept({
           <Button
             variant="outline"
             className="h-11 w-full"
-            onClick={() => signOut({ callbackUrl: `/invite/${token}` })}
+            onClick={() =>
+              endSession(session.user.accessToken, {
+                callbackUrl: `/invite/${token}`,
+              })
+            }
           >
             Sign out and switch account
           </Button>

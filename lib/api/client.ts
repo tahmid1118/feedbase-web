@@ -23,6 +23,29 @@ interface RequestOptions extends RequestInit {
   skipAuth?: boolean;
 }
 
+/**
+ * The backend answers 401 "Session ended" when the device session behind a token
+ * is gone — signed out here, or (on one-device plans) taken over by a login on
+ * another device after this one went idle. The cookie would otherwise survive
+ * and leave the user staring at a dashboard where every request fails, so we
+ * sign them out and send them to the login page with an explanation.
+ *
+ * Fires once per page: a dashboard screen makes several parallel calls and they
+ * would all trip this.
+ */
+let sessionEndedHandled = false;
+
+function handleSessionEnded() {
+  if (sessionEndedHandled || typeof window === "undefined") return;
+  sessionEndedHandled = true;
+  // Imported lazily so this module stays usable on the server.
+  import("next-auth/react")
+    .then(({ signOut }) =>
+      signOut({ callbackUrl: "/login?reason=session_ended" })
+    )
+    .catch(() => window.location.assign("/login?reason=session_ended"));
+}
+
 async function request<T>(
   endpoint: string,
   options: RequestOptions = {}
@@ -66,6 +89,12 @@ async function request<T>(
     }
 
     if (!response.ok) {
+      // Not for /users/logout — that call *is* the sign-out, and a 401 there
+      // just means the session was already gone.
+      if (response.status === 401 && endpoint !== "/users/logout") {
+        handleSessionEnded();
+      }
+
       const message =
         data && typeof data === "object" && "message" in data
           ? String((data as { message?: unknown }).message)

@@ -28,6 +28,7 @@ export const PLANS: PlanDisplay[] = [
       "Roadmap & changelog",
       "Unlimited posts & votes",
       "Up to 2 team members",
+      "One active session at a time",
     ],
   },
   {
@@ -42,6 +43,7 @@ export const PLANS: PlanDisplay[] = [
       "Integrations",
       "Delete feedback posts",
       "Up to 10 team members",
+      "One active session at a time",
     ],
   },
   {
@@ -53,6 +55,7 @@ export const PLANS: PlanDisplay[] = [
     features: [
       "Everything in Pro",
       "Unlimited team members",
+      "Sign in on multiple devices",
       "Priority support",
     ],
     highlighted: true,

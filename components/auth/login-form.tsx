@@ -20,6 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import { loginSchema, type LoginFormValues } from "@/lib/auth/schemas";
+import { signInErrorMessage } from "@/lib/auth/signin-errors";
 
 const GENERIC_LOGIN_ERROR = "Invalid email or password.";
 
@@ -31,6 +32,9 @@ export function LoginForm() {
   const searchParams = useSearchParams();
   // e.g. an invite link sends the user here and expects them back afterwards.
   const nextPath = searchParams.get("next");
+  // Set when the API client signs the user out because their device session was
+  // revoked (signed out elsewhere, or taken over by a newer login).
+  const wasSignedOut = searchParams.get("reason") === "session_ended";
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -54,7 +58,13 @@ export function LoginForm() {
       });
 
       if (!result || result.error) {
-        setFormError(GENERIC_LOGIN_ERROR);
+        // `code` distinguishes a real reason (e.g. already signed in on another
+        // device) from a plain bad-credentials failure.
+        setFormError(
+          result?.code
+            ? signInErrorMessage(result.code)
+            : GENERIC_LOGIN_ERROR
+        );
         return;
       }
 
@@ -146,6 +156,11 @@ export function LoginForm() {
           {formError ? (
             <div className="rounded-xl border border-[#c74959]/35 bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
               {formError}
+            </div>
+          ) : wasSignedOut ? (
+            <div className="rounded-xl border border-[#e399a3]/60 bg-[#fdf8f9] px-3 py-2 text-sm text-[#1c0a0c]/75">
+              You were signed out because this account was signed in somewhere
+              else. Sign in again to continue.
             </div>
           ) : null}
 

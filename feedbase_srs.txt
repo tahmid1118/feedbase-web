@@ -99,6 +99,25 @@ Version 1.1
                           signed in as the invited address and joins in one step.
                           Invitees always join as members. Invitations count
                           against the plan's team-member limit (see FR-B5).
+    FR-S1  Single-session  On the Free and Pro plans an account may be signed in
+           login .......... on only ONE device or browser at a time. Attempting to
+                          sign in elsewhere while a session is live is refused, and
+                          the user is told to sign out on the other device first
+                          (with the option to upgrade). Signing out releases the
+                          session immediately. A session that has been inactive for
+                          15 minutes is treated as abandoned — the next sign-in
+                          takes it over and ends the old one — so closing the
+                          browser without signing out never locks a user out. Once
+                          a session ends, that device is signed out on its next
+                          action rather than being left in a broken state.
+                          Switching workspaces does not count as a new device.
+                          BUSINESS plans permit unlimited concurrent devices,
+                          browsers and tabs (see FR-B5).
+    FR-S2  Single tab .... On single-session plans, opening the dashboard in a
+                          second tab or window of the same browser shows a blocking
+                          notice rather than a second working copy, with an option
+                          to upgrade. Closing the original frees the other tab
+                          automatically.
     FR-W1  Workspaces ... One account (email) may belong to multiple workspaces
                           (tenants), and only ever sees workspaces it belongs to.
                           A new account starts with NO workspace and is sent to
@@ -235,6 +254,10 @@ Version 1.1
                           cannot set a custom domain, create integrations, or
                           delete feedback posts, and is prompted to upgrade.
                           Deleting feedback additionally requires the owner role.
+                          Team size is capped by the plan's seat limit. CONCURRENT
+                          DEVICES are also a plan capability: Free and Pro allow a
+                          single active session at a time, while Business allows
+                          unlimited devices, browsers and tabs (see FR-S1, FR-S2).
                           The plan is set only by Stripe (or an admin comp) and
                           cannot be changed directly by the client.
     FR-B6  Promo codes . Admins generate promo codes (see 3.11): percentage-off
@@ -309,12 +332,14 @@ Version 1.1
 6. DATA MODEL (principal tables)
 --------------------------------------------------------------------------------
 
-    tenants, users (role owner/user), posts (with guest submitter fields), votes
-    (supporting guest voting), comments, tags, post_tags, roadmap_columns,
-    roadmap_items, changelog_entries, notifications, api_keys, audit_logs,
-    integrations, oauth_accounts. All feature tables are scoped by tenant.
-    Platform-level (not tenant-scoped): admins (separate operator accounts),
-    promo_codes, promo_redemptions, and offers.
+    tenants, users (role owner/user), invitations, posts (with guest submitter
+    fields), votes (supporting guest voting), comments, tags, post_tags,
+    roadmap_columns, roadmap_items, changelog_entries, notifications, api_keys,
+    audit_logs, integrations, oauth_accounts. All feature tables are scoped by
+    tenant. user_sessions records the active device sessions behind an account
+    and backs single-session login (FR-S1). Platform-level (not tenant-scoped):
+    admins (separate operator accounts), promo_codes, promo_redemptions, and
+    offers.
 
 --------------------------------------------------------------------------------
 7. DEPLOYMENT

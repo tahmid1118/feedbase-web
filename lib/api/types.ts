@@ -289,6 +289,8 @@ export interface PlanLimits {
   customDomain: boolean;
   integrations: boolean;
   deleteFeedback: boolean;
+  /** May the account be signed in on several devices/browsers/tabs at once. */
+  multiDevice: boolean;
 }
 
 export interface ActiveOffer {

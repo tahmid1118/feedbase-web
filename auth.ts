@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import {
@@ -6,8 +6,20 @@ import {
   LOGIN_RATE_LIMIT,
 } from "@/lib/auth/constants";
 import { loginWithCredentials, loginAsAdmin } from "@/lib/auth/auth-service";
+import { AuthApiError } from "@/lib/auth/errors";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
+import { SIGNIN_ERROR_CODE } from "@/lib/auth/signin-errors";
+
+/**
+ * A Credentials provider normally collapses every failure into one opaque error.
+ * Subclassing `CredentialsSignin` lets us set a `code`, which NextAuth surfaces
+ * as `signIn(...).code` — how the login form tells "already signed in on another
+ * device" apart from "wrong password".
+ */
+class ActiveSessionError extends CredentialsSignin {
+  code = SIGNIN_ERROR_CODE.activeSession;
+}
 
 // The public portal lives on tenant subdomains, so we scope the session cookie to
 // the parent domain (`.<root domain>`) — then every `*.<root domain>` subdomain
@@ -70,7 +82,13 @@ const credentialsProvider = Credentials({
         ? await loginAsAdmin(parsedCredentials.data)
         : await loginWithCredentials(parsedCredentials.data);
       return profile;
-    } catch {
+    } catch (error) {
+      // 409 = the account already holds a live session on a plan that only
+      // allows one device. Re-throw with a code so the form can say so, instead
+      // of the misleading "invalid email or password".
+      if (error instanceof AuthApiError && error.statusCode === 409) {
+        throw new ActiveSessionError();
+      }
       return null;
     }
   },

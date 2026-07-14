@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Bell, LogOut, User } from "lucide-react";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { notificationsApi } from "@/lib/api";
+import { endSession } from "@/lib/auth/end-session";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -122,7 +123,11 @@ export function Header({ user }: HeaderProps) {
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="text-[#c74959]"
-                onClick={() => signOut({ callbackUrl: "/login" })}
+                onClick={() =>
+                  endSession(session?.user?.accessToken, {
+                    callbackUrl: "/login",
+                  })
+                }
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Sign out
