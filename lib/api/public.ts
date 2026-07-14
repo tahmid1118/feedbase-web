@@ -15,6 +15,7 @@ import type {
   Changelog,
   PostListFilters,
   ActiveOffer,
+  BoardSort,
 } from "./types";
 
 const API_BASE_URL =
@@ -51,8 +52,10 @@ export interface PublicRoadmap {
   items: RoadmapItem[];
 }
 
-// Public board sort options (kept in sync with the backend's SORTS map).
-export type BoardSort = "newest" | "oldest" | "most_voted" | "least_voted";
+// Board sort options (kept in sync with the backend's SORTS map). The type lives
+// in ./types so the dashboard board can share it without pulling in this
+// server-only module.
+export type { BoardSort };
 export const BOARD_SORTS: BoardSort[] = [
   "newest",
   "oldest",

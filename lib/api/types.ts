@@ -13,7 +13,19 @@ export interface PaginationData {
   currentPageNumber: number;
   sortOrder: "asc" | "desc";
   filterBy: string;
+  /** Board sort (newest | oldest | most_voted | least_voted). Falls back to sortOrder. */
+  sortBy?: BoardSort;
 }
+
+/** Board sort options, shared by the dashboard board and the public portal. */
+export type BoardSort = "newest" | "oldest" | "most_voted" | "least_voted";
+
+export const BOARD_SORT_OPTIONS: { value: BoardSort; label: string }[] = [
+  { value: "newest", label: "Newest" },
+  { value: "oldest", label: "Oldest" },
+  { value: "most_voted", label: "Most upvoted" },
+  { value: "least_voted", label: "Least upvoted" },
+];
 
 export interface PaginatedResponse<T> {
   metadata?: { totalRows: number };

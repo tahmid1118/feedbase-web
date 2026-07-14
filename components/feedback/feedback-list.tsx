@@ -9,6 +9,7 @@ import {
   Search,
   Pin,
   GitBranch,
+  ArrowUpDown,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -17,6 +18,8 @@ import {
   votesApi,
   roadmapApi,
   extractRows,
+  BOARD_SORT_OPTIONS,
+  type BoardSort,
   type Post,
   type PostStatus,
   type PostType,
@@ -78,6 +81,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   const [postType, setPostType] = useState<string>("all");
   const [tagId, setTagId] = useState<string>("all");
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState<BoardSort>("newest");
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
   // Bulk "send to roadmap" selection (Open tab only).
@@ -101,7 +105,13 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     try {
       setLoading(true);
       const res = await postsApi.list(
-        { itemsPerPage: 100, currentPageNumber: 0, sortOrder: "desc", filterBy: "" },
+        {
+          itemsPerPage: 100,
+          currentPageNumber: 0,
+          sortOrder: "desc",
+          filterBy: "",
+          sortBy: sort,
+        },
         {
           ...(status !== "all" ? { status: status as PostStatus } : {}),
           ...(postType !== "all" ? { postType: postType as PostType } : {}),
@@ -117,7 +127,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     } finally {
       setLoading(false);
     }
-  }, [status, postType, tagId, debouncedSearch, token]);
+  }, [status, postType, tagId, debouncedSearch, sort, token]);
 
   useEffect(() => {
     loadPosts();
@@ -316,6 +326,23 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               className="w-48 pl-8"
             />
           </div>
+
+          <Select
+            value={sort}
+            onValueChange={(v) => setSort(v as BoardSort)}
+          >
+            <SelectTrigger className="w-[165px]">
+              <ArrowUpDown className="h-4 w-4 text-[#1c0a0c]/40" />
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {BOARD_SORT_OPTIONS.map((o) => (
+                <SelectItem key={o.value} value={o.value}>
+                  {o.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
           <Select value={postType} onValueChange={setPostType}>
             <SelectTrigger className="w-[150px]">
