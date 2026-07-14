@@ -201,6 +201,11 @@ Version 1.1
 3.6 Notifications
     FR-N1  In-app notifications with an unread count and deep links to the
            referenced post or changelog; mark read, mark all read, and delete.
+    FR-N2  Email — the workspace owner is emailed each time new feedback is
+           posted on their public board. The message shows the type, author,
+           title and an excerpt, and links straight to the post in the dashboard.
+           Owners are not emailed about their own submissions. Delivery never
+           blocks or fails the visitor's submission.
 
 3.7 Administration (Settings)
     Tabs: Profile, Team (roles), Tags, Integrations, API Keys, Audit Logs,
