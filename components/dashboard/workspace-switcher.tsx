@@ -81,6 +81,23 @@ export function WorkspaceSwitcher() {
   const current = workspaces.find((w) => w.current) ?? workspaces[0];
   const currentName = current?.name ?? session?.user?.name ?? "Workspace";
 
+  // Two kinds of workspace: the ones this account owns, and the ones it was
+  // invited into as a member.
+  const owned = workspaces.filter((w) => w.role === "owner");
+  const joined = workspaces.filter((w) => w.role !== "owner");
+
+  const renderWorkspace = (w: Workspace) => (
+    <DropdownMenuItem
+      key={w.tenant_id}
+      onClick={() => handleSwitch(w)}
+      className="gap-2"
+    >
+      <Tile name={w.name} color={w.branding_primary_color} />
+      <span className="min-w-0 flex-1 truncate">{w.name}</span>
+      {w.current && <Check className="h-4 w-4 shrink-0 text-[#c74959]" />}
+    </DropdownMenuItem>
+  );
+
   // Apply a fresh auth payload (from switch/create) and hard-reload so the whole
   // app re-scopes to the new workspace. A soft router.refresh() races the
   // session-cookie write, so the change wouldn't take on the first click.
@@ -155,8 +172,17 @@ export function WorkspaceSwitcher() {
               <p className="truncate text-sm font-semibold text-[#1c0a0c]">
                 {currentName}
               </p>
-              <p className="truncate text-[11px] text-[#1c0a0c]/50">
-                {current ? `${current.subdomain}.${ROOT_DOMAIN.split(":")[0]}` : "Workspace"}
+              <p className="flex items-center gap-1 text-[11px] text-[#1c0a0c]/50">
+                {current && current.role !== "owner" && (
+                  <span className="shrink-0 rounded bg-[#c74959]/10 px-1 py-px font-medium text-[#c74959]">
+                    Member
+                  </span>
+                )}
+                <span className="truncate">
+                  {current
+                    ? `${current.subdomain}.${ROOT_DOMAIN.split(":")[0]}`
+                    : "Workspace"}
+                </span>
               </p>
             </div>
             {switching ? (
@@ -167,21 +193,26 @@ export function WorkspaceSwitcher() {
           </button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="start" className="w-60">
-          <DropdownMenuLabel className="text-xs text-[#1c0a0c]/50">
-            Workspaces
-          </DropdownMenuLabel>
-          {workspaces.map((w) => (
-            <DropdownMenuItem
-              key={w.tenant_id}
-              onClick={() => handleSwitch(w)}
-              className="gap-2"
-            >
-              <Tile name={w.name} color={w.branding_primary_color} />
-              <span className="min-w-0 flex-1 truncate">{w.name}</span>
-              {w.current && <Check className="h-4 w-4 text-[#c74959]" />}
-            </DropdownMenuItem>
-          ))}
+        <DropdownMenuContent align="start" className="w-64">
+          {owned.length > 0 && (
+            <>
+              <DropdownMenuLabel className="text-xs text-[#1c0a0c]/50">
+                Your workspaces
+              </DropdownMenuLabel>
+              {owned.map(renderWorkspace)}
+            </>
+          )}
+
+          {joined.length > 0 && (
+            <>
+              {owned.length > 0 && <DropdownMenuSeparator />}
+              <DropdownMenuLabel className="text-xs text-[#1c0a0c]/50">
+                Shared with you
+              </DropdownMenuLabel>
+              {joined.map(renderWorkspace)}
+            </>
+          )}
+
           <DropdownMenuSeparator />
           <DropdownMenuItem
             onClick={() => setCreateOpen(true)}

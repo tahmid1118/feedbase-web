@@ -47,9 +47,12 @@ Version 1.1
     - Visitor/Guest: view a tenant portal, submit feedback (anonymously or with
       an optional email), and upvote posts. No account required.
     - User: an authenticated workspace member with baseline access (Profile only
-      in settings).
+      in settings). Members join by invitation.
     - Owner: the workspace administrator — manages team, tags, integrations, API
-      keys, audit logs, branding, billing, and feedback deletion.
+      keys, audit logs, branding, billing, and feedback deletion. A workspace has
+      exactly ONE owner (its creator); everyone else is a member. An account may
+      therefore own some workspaces and be a member of others; the two are shown
+      separately in the workspace switcher.
     - Admin (platform): the app operator. Stored separately from tenant accounts,
       signs in through a dedicated admin sign-in, and has super-access over every
       workspace and user through the Admin Panel (see 3.11). "Admin" is never a
@@ -74,6 +77,18 @@ Version 1.1
     - Email/password authentication using JWT bearer tokens (OAuth-ready).
     - The session carries the user identity, tenant, and role.
     - Profile management: name, contact, avatar upload, and password change.
+    FR-I1  Invitations .. A workspace owner invites teammates by email address.
+                          The address is validated (format + mail-domain lookup)
+                          before sending. The invitee receives a branded email with
+                          a secure link that is valid for 7 days and can be used
+                          only once; the owner can revoke a pending invitation,
+                          which disables its link immediately. Accepting as a new
+                          person opens a sign-up dialog (email fixed), after which
+                          they create their own workspace and are taken to the
+                          workspace that invited them. An existing account must be
+                          signed in as the invited address and joins in one step.
+                          Invitees always join as members. Invitations count
+                          against the plan's team-member limit (see FR-B5).
     FR-W1  Workspaces ... One account (email) may belong to multiple workspaces
                           (tenants), and only ever sees workspaces it belongs to.
                           A new account starts with NO workspace and is sent to

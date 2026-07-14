@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, Loader2, LogIn } from "lucide-react";
@@ -28,6 +28,9 @@ export function LoginForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  // e.g. an invite link sends the user here and expects them back afterwards.
+  const nextPath = searchParams.get("next");
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -55,7 +58,12 @@ export function LoginForm() {
         return;
       }
 
-      router.replace("/");
+      // Only allow internal paths — never redirect to an external URL.
+      const safeNext =
+        nextPath && nextPath.startsWith("/") && !nextPath.startsWith("//")
+          ? nextPath
+          : "/";
+      router.replace(safeNext);
       router.refresh();
     } catch {
       setFormError("Unable to sign in right now. Please try again.");

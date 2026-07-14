@@ -21,4 +21,5 @@ export * from "./uploader";
 export * from "./analytics";
 export * from "./billing";
 export * from "./admin";
+export * from "./invitations";
 export * from "./health-check";

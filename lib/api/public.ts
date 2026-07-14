@@ -36,6 +36,16 @@ export interface PublicPostDetail extends Post {
   comments: Comment[];
 }
 
+/** What the /invite/[token] page needs to render (no sensitive fields). */
+export interface PublicInvitation {
+  valid: boolean;
+  reason: "not_found" | "expired" | "revoked" | "already_accepted" | null;
+  email?: string;
+  workspaceName?: string;
+  /** True when this email already has a Feedbase account (→ log in, no signup). */
+  hasAccount?: boolean;
+}
+
 export interface PublicRoadmap {
   columns: RoadmapColumn[];
   items: RoadmapItem[];
@@ -100,6 +110,12 @@ export const publicApi = {
   getOffers: cache(() =>
     publicFetch<Record<string, ActiveOffer>>("/public/offers")
   ),
+
+  /** Describe a workspace invitation (for the /invite/[token] page). */
+  getInvitation: (token: string) =>
+    publicFetch<PublicInvitation>(
+      `/public/invitations/${encodeURIComponent(token)}`
+    ),
 
   getBoard: (
     identifier: string,

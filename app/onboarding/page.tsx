@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { usersApi, type WorkspaceAuth } from "@/lib/api";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
@@ -26,7 +26,13 @@ function slugifySubdomain(value: string) {
 export default function OnboardingPage() {
   const { data: session, status, update } = useSession();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const token = session?.user?.accessToken;
+
+  // Set when the account arrived by accepting a workspace invitation: they
+  // already belong to that workspace, still create their OWN one here, and then
+  // land in the workspace they were invited to.
+  const invitedTenantId = searchParams.get("invited");
 
   const [name, setName] = useState("");
   const [subdomain, setSubdomain] = useState("");
@@ -38,12 +44,14 @@ export default function OnboardingPage() {
   const subdomainBlocked =
     subStatus === "checking" || subStatus === "taken" || subStatus === "invalid";
 
-  // Not logged in → login. Already has a workspace → dashboard.
+  // Not logged in → login. Already has a workspace → dashboard. An invited user
+  // DOES have a workspace (the one they joined) but still needs to create their
+  // own, so don't bounce them.
   useEffect(() => {
     if (status === "unauthenticated") router.replace("/login");
-    else if (status === "authenticated" && session?.user?.tenantId)
+    else if (status === "authenticated" && session?.user?.tenantId && !invitedTenantId)
       router.replace("/dashboard");
-  }, [status, session?.user?.tenantId, router]);
+  }, [status, session?.user?.tenantId, invitedTenantId, router]);
 
   const applyAuth = async (auth: WorkspaceAuth) => {
     await update({
@@ -75,8 +83,22 @@ export default function OnboardingPage() {
         },
         token
       );
-      if (res.data) await applyAuth(res.data);
-      else setError("Something went wrong. Please try again.");
+      if (res.data) {
+        let auth = res.data;
+        // Invited users finish in the workspace that invited them.
+        if (invitedTenantId) {
+          try {
+            const switched = await usersApi.switchWorkspace(
+              Number(invitedTenantId),
+              auth.token
+            );
+            if (switched.data) auth = switched.data;
+          } catch {
+            /* fall back to their own new workspace */
+          }
+        }
+        await applyAuth(auth);
+      } else setError("Something went wrong. Please try again.");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Failed to create workspace.");
       setCreating(false);
@@ -99,6 +121,13 @@ export default function OnboardingPage() {
             Set up a space to collect feedback, plan your roadmap, and share
             updates.
           </p>
+          {invitedTenantId && (
+            <p className="mt-3 rounded-lg border border-[#e399a3]/30 bg-[#fdf8f9] px-3 py-2 text-sm text-[#1c0a0c]/70">
+              🎉 You&apos;ve joined the workspace you were invited to. Create your
+              own workspace here — we&apos;ll take you straight back to theirs
+              afterwards.
+            </p>
+          )}
         </div>
 
         <div className="space-y-5">
