@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DeleteAccount } from "@/components/settings/delete-account";
 import { toast } from "sonner";
 
 export function ProfileSettings() {
@@ -259,6 +260,8 @@ export function ProfileSettings() {
           </Button>
         </div>
       </Card>
+
+      <DeleteAccount />
     </div>
   );
 }

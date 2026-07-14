@@ -4,6 +4,7 @@
 
 import { apiClient } from "./client";
 import type {
+  AccountDeletionSummary,
   ApiResponse,
   PersonalData,
   UpdateProfileData,
@@ -86,6 +87,23 @@ export const usersApi = {
     apiClient.post<ApiResponse<WorkspaceAuth>>(
       "/users/workspaces/switch",
       { tenantId },
+      { token }
+    ),
+
+  // --- Account deletion ---
+  /** What deleting this account would destroy (for the confirmation dialog). */
+  getDeletionSummary: (token: string) =>
+    apiClient.post<ApiResponse<AccountDeletionSummary>>(
+      "/users/account/deletion-summary",
+      {},
+      { token }
+    ),
+
+  /** Permanently delete the account. Owned workspaces go with it. */
+  deleteAccount: (password: string, token: string) =>
+    apiClient.post<ApiResponse<{ deletedWorkspaces: number; leftWorkspaces: number }>>(
+      "/users/account/delete",
+      { password },
       { token }
     ),
 };

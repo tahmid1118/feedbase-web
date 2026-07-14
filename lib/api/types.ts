@@ -197,6 +197,18 @@ export interface Workspace {
   current: boolean;
 }
 
+/** What deleting the account would destroy. */
+export interface AccountDeletionSummary {
+  email: string;
+  ownedWorkspaces: {
+    id: number;
+    name: string;
+    memberCount: number;
+    postCount: number;
+  }[];
+  memberWorkspaces: { id: number; name: string }[];
+}
+
 /** Auth payload returned when creating or switching a workspace. */
 export interface WorkspaceAuth {
   token: string;

@@ -77,6 +77,16 @@ Version 1.1
     - Email/password authentication using JWT bearer tokens (OAuth-ready).
     - The session carries the user identity, tenant, and role.
     - Profile management: name, contact, avatar upload, and password change.
+    FR-D1  Delete account  A user may permanently delete their account from
+                          Settings. Before anything happens they are shown exactly
+                          what will be lost, and must re-enter their password and
+                          type a confirmation word. Workspaces they OWN are deleted
+                          with the account (all feedback, roadmap, changelog and
+                          member access; any subscription is cancelled), because a
+                          workspace has exactly one owner and cannot be
+                          transferred. Workspaces they merely joined are retained:
+                          only their membership is removed, and their posts and
+                          comments there remain but become anonymous.
     FR-I1  Invitations .. A workspace owner invites teammates by email address.
                           The address is validated (format + mail-domain lookup)
                           before sending. The invitee receives a branded email with
