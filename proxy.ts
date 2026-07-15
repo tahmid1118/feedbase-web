@@ -5,9 +5,11 @@ import { NextRequest, NextResponse } from "next/server";
  *
  * (Next 16 renamed the `middleware` file convention to `proxy`.)
  *
- * - `app.com`, `www.app.com`            → admin app (pass through)
- * - `acme.app.com/<path>`               → rewrite to `/portal/acme/<path>`
- * - `feedback.acme.com/<path>` (custom) → rewrite to `/portal/feedback.acme.com/<path>`
+ * - `app.com`, `www.app.com`  → admin app (pass through)
+ * - `acme.app.com/<path>`      → rewrite to `/portal/acme/<path>`
+ *
+ * Only subdomains of the root domain route to a tenant portal. (Custom domains
+ * are not supported — any other host falls through to the admin app.)
  *
  * The root domain is configured via `NEXT_PUBLIC_ROOT_DOMAIN` (default
  * `localhost:3000`). For local testing, `*.localhost` subdomains resolve to
@@ -51,11 +53,8 @@ function resolveTenant(host: string): string | null {
     return subdomain;
   }
 
-  // Host that doesn't match the root domain at all is a custom domain.
-  // (Ignore localhost/IP hosts so plain local dev keeps hitting the admin app.)
-  if (host === "localhost" || host === "127.0.0.1") return null;
-
-  return host;
+  // Any other host (including a would-be custom domain) → admin app.
+  return null;
 }
 
 export function proxy(request: NextRequest) {

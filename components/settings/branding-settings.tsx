@@ -17,7 +17,6 @@ export function BrandingSettings() {
   const [tenant, setTenant] = useState<Tenant | null>(null);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
-  const [customDomain, setCustomDomain] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
   const [primaryColor, setPrimaryColor] = useState("#c74959");
   const [saving, setSaving] = useState(false);
@@ -38,7 +37,6 @@ export function BrandingSettings() {
   const applyTenant = (t: Tenant) => {
     setTenant(t);
     setName(t.name ?? "");
-    setCustomDomain(t.custom_domain ?? "");
     setLogoUrl(t.branding_logo_url ?? "");
     setPrimaryColor(t.branding_primary_color ?? "#c74959");
   };
@@ -67,7 +65,6 @@ export function BrandingSettings() {
         tenant.id,
         {
           name: name.trim(),
-          customDomain: customDomain.trim(),
           brandingLogoUrl: logoUrl.trim(),
           brandingPrimaryColor: primaryColor,
         },
@@ -75,8 +72,6 @@ export function BrandingSettings() {
       );
       toast.success("Workspace updated");
     } catch (e) {
-      // Surfaces e.g. the plan-limit message when a Free workspace tries to set
-      // a custom domain.
       toast.error((e as Error)?.message || "Failed to update workspace");
     } finally {
       setSaving(false);
@@ -176,15 +171,6 @@ export function BrandingSettings() {
         <div className="space-y-2">
           <Label htmlFor="ws-subdomain">Subdomain</Label>
           <Input id="ws-subdomain" value={tenant.subdomain} disabled />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="ws-domain">Custom domain</Label>
-          <Input
-            id="ws-domain"
-            value={customDomain}
-            onChange={(e) => setCustomDomain(e.target.value)}
-            placeholder="feedback.yourcompany.com"
-          />
         </div>
         <div className="space-y-2">
           <Label htmlFor="ws-logo">Logo URL</Label>
