@@ -4,13 +4,19 @@ import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Check, Loader2 } from "lucide-react";
-import { billingApi, type BillingStatus, type PlanKey } from "@/lib/api";
-import { PLANS } from "@/lib/plans";
+import {
+  billingApi,
+  type BillingInterval,
+  type BillingStatus,
+  type PlanKey,
+} from "@/lib/api";
+import { PLANS, planPricing } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { IntervalToggle } from "@/components/pricing/interval-toggle";
 import { toast } from "sonner";
 
 const STATUS_LABEL: Record<string, string> = {
@@ -30,6 +36,7 @@ export function BillingSettings() {
 
   const [status, setStatus] = useState<BillingStatus | null>(null);
   const [loading, setLoading] = useState(true);
+  const [interval, setInterval] = useState<BillingInterval>("month");
   const [busy, setBusy] = useState<string | null>(null); // plan key or "portal"
   const [promoInput, setPromoInput] = useState("");
   const [redeeming, setRedeeming] = useState(false);
@@ -64,7 +71,10 @@ export function BillingSettings() {
     if (!token) return;
     setBusy(plan);
     try {
-      const res = await billingApi.checkout(plan, token, discount?.promotionCode);
+      const res = await billingApi.checkout(plan, token, {
+        interval,
+        promotionCode: discount?.promotionCode,
+      });
       if (res.data?.url) window.location.assign(res.data.url);
       else toast.error("Could not start checkout");
     } catch (e) {
@@ -196,8 +206,16 @@ export function BillingSettings() {
                 </Badge>
               )}
             </div>
-            {renewal && hasSub && (
-              <p className="mt-1 text-xs text-[#1c0a0c]/50">Renews {renewal}</p>
+            {hasSub && (renewal || status?.billingInterval) && (
+              <p className="mt-1 text-xs text-[#1c0a0c]/50">
+                {status?.billingInterval === "year"
+                  ? "Billed yearly"
+                  : status?.billingInterval === "month"
+                    ? "Billed monthly"
+                    : null}
+                {status?.billingInterval && renewal ? " · " : ""}
+                {renewal ? `Renews ${renewal}` : ""}
+              </p>
             )}
           </div>
           {hasSub && (
@@ -247,9 +265,17 @@ export function BillingSettings() {
         ) : null}
       </Card>
 
+      <div className="flex justify-center">
+        <IntervalToggle value={interval} onChange={setInterval} />
+      </div>
+
       <div className="grid gap-4 lg:grid-cols-3">
         {PLANS.map((plan) => {
-          const offer = status?.offers?.[plan.key];
+          // Admin promotional offers apply to the MONTHLY price only; the yearly
+          // price already carries its own 20% discount.
+          const offer = interval === "month" ? status?.offers?.[plan.key] : undefined;
+          const pricing = planPricing(plan, interval);
+          const showYearly = interval === "year" && plan.monthlyPrice > 0;
           return (
           <Card
             key={plan.key}
@@ -266,6 +292,10 @@ export function BillingSettings() {
                 {offer ? (
                   <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
                     SAVE {offer.percentOff}%
+                  </span>
+                ) : showYearly ? (
+                  <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
+                    SAVE {pricing.savingsPercent}%
                   </span>
                 ) : null}
               </div>
@@ -291,17 +321,15 @@ export function BillingSettings() {
                   <span className="text-3xl font-bold text-green-600">
                     ${offer.offerPrice}
                   </span>
-                  <span className="text-sm text-[#1c0a0c]/50">
-                    {plan.priceSuffix}
-                  </span>
+                  <span className="text-sm text-[#1c0a0c]/50">/mo</span>
                 </div>
               ) : (
                 <>
                   <span className="text-3xl font-bold text-[#1c0a0c]">
-                    {plan.priceLabel}
+                    {pricing.perMonthLabel}
                   </span>
                   <span className="text-sm text-[#1c0a0c]/50">
-                    {plan.priceSuffix}
+                    {pricing.suffix}
                   </span>
                 </>
               )}
@@ -315,7 +343,11 @@ export function BillingSettings() {
                       )}`
                     : ""}
                 </p>
-              ) : null}
+              ) : (
+                <p className="mt-1 text-xs text-[#1c0a0c]/50">
+                  {pricing.billedNote}
+                </p>
+              )}
             </div>
             <p className="mt-2 text-sm text-[#1c0a0c]/60">{plan.blurb}</p>
             <ul className="mt-4 flex-1 space-y-2 text-sm text-[#1c0a0c]/80">

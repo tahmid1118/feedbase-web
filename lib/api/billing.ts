@@ -3,18 +3,32 @@
  */
 
 import { apiClient } from "./client";
-import type { ApiResponse, BillingStatus, PlanKey } from "./types";
+import type {
+  ApiResponse,
+  BillingInterval,
+  BillingStatus,
+  PlanKey,
+} from "./types";
 
 export const billingApi = {
   getStatus: (token: string) =>
     apiClient.post<ApiResponse<BillingStatus>>("/billing/status", {}, { token }),
 
-  // Returns a Stripe Checkout URL to redirect the browser to. An optional
-  // promotionCode (from a redeemed percent-off promo) is applied as a discount.
-  checkout: (plan: PlanKey, token: string, promotionCode?: string) =>
+  // Returns a Stripe Checkout URL to redirect the browser to. `interval` picks
+  // monthly (default) or the ~20%-cheaper yearly price; an optional promotionCode
+  // (from a redeemed percent-off promo) is applied as a discount.
+  checkout: (
+    plan: PlanKey,
+    token: string,
+    opts?: { interval?: BillingInterval; promotionCode?: string }
+  ) =>
     apiClient.post<ApiResponse<{ url: string }>>(
       "/billing/checkout",
-      promotionCode ? { plan, promotionCode } : { plan },
+      {
+        plan,
+        interval: opts?.interval ?? "month",
+        ...(opts?.promotionCode ? { promotionCode: opts.promotionCode } : {}),
+      },
       { token }
     ),
 

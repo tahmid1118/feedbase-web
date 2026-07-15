@@ -6,11 +6,21 @@
  */
 import type { PlanKey } from "@/lib/api";
 
+/** Billing interval; mirrors the backend. */
+export type BillingInterval = "month" | "year";
+
+/**
+ * The yearly discount — a yearly plan costs 12 months minus this. Kept in sync
+ * with the backend's `YEARLY_DISCOUNT` (src/consts/plans.js), which drives the
+ * actual Stripe yearly prices. Purely for display here.
+ */
+export const YEARLY_DISCOUNT = 0.2;
+
 export interface PlanDisplay {
   key: PlanKey;
   name: string;
-  priceLabel: string;
-  priceSuffix: string;
+  /** Monthly list price in whole dollars. Yearly is derived from this. */
+  monthlyPrice: number;
   blurb: string;
   features: string[];
   highlighted?: boolean;
@@ -20,8 +30,7 @@ export const PLANS: PlanDisplay[] = [
   {
     key: "free",
     name: "Free",
-    priceLabel: "$0",
-    priceSuffix: "/mo",
+    monthlyPrice: 0,
     blurb: "Everything you need to start collecting feedback.",
     features: [
       "1 workspace",
@@ -35,8 +44,7 @@ export const PLANS: PlanDisplay[] = [
   {
     key: "pro",
     name: "Pro",
-    priceLabel: "$19",
-    priceSuffix: "/mo",
+    monthlyPrice: 19,
     blurb: "For growing teams that need their own brand and tools.",
     features: [
       "Everything in Free",
@@ -52,8 +60,7 @@ export const PLANS: PlanDisplay[] = [
   {
     key: "business",
     name: "Business",
-    priceLabel: "$49",
-    priceSuffix: "/mo",
+    monthlyPrice: 49,
     blurb: "For established products that need to scale support.",
     features: [
       "Everything in Pro",
@@ -71,3 +78,41 @@ export const planByKey = (key: string): PlanDisplay | undefined =>
 
 /** Plan tier order, for deciding upgrade vs current vs downgrade. */
 export const PLAN_ORDER: PlanKey[] = ["free", "pro", "business"];
+
+/** Format a dollar amount, dropping the decimals when it's a whole number. */
+export function formatPrice(amount: number): string {
+  return Number.isInteger(amount)
+    ? `$${amount}`
+    : `$${amount.toFixed(2)}`;
+}
+
+/**
+ * Display pricing for a plan on a given interval:
+ * - `perMonth`   — the headline "$X/mo" figure (yearly shows the discounted
+ *   per-month equivalent),
+ * - `billedNote` — the sub-line ("billed monthly" / "billed annually ($Y/yr)"),
+ * - `yearlyTotal`/`savingsPercent` — for yearly only.
+ */
+export function planPricing(plan: PlanDisplay, interval: BillingInterval) {
+  const monthly = plan.monthlyPrice;
+  if (interval === "month" || monthly === 0) {
+    return {
+      perMonth: monthly,
+      perMonthLabel: `${formatPrice(monthly)}`,
+      suffix: "/mo",
+      billedNote: monthly === 0 ? "Free forever" : "billed monthly",
+      yearlyTotal: null as number | null,
+      savingsPercent: 0,
+    };
+  }
+  const yearlyTotal = Math.round(monthly * 12 * (1 - YEARLY_DISCOUNT) * 100) / 100;
+  const perMonth = Math.round((yearlyTotal / 12) * 100) / 100;
+  return {
+    perMonth,
+    perMonthLabel: formatPrice(perMonth),
+    suffix: "/mo",
+    billedNote: `billed annually (${formatPrice(yearlyTotal)}/yr)`,
+    yearlyTotal,
+    savingsPercent: Math.round(YEARLY_DISCOUNT * 100),
+  };
+}

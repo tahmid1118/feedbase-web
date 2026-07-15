@@ -340,9 +340,13 @@ export interface ActiveOffer {
   endsAt: string | null;
 }
 
+export type BillingInterval = "month" | "year";
+
 export interface BillingStatus {
   planName: PlanKey;
   subscriptionStatus: string | null;
+  /** Interval of the active subscription ('month' | 'year'); null on free. */
+  billingInterval: BillingInterval | null;
   currentPeriodEnd: string | null;
   hasSubscription: boolean;
   limits: PlanLimits;

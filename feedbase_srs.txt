@@ -271,11 +271,18 @@ Version 1.1
 3.10 Billing & Subscriptions
     Each workspace is on a subscription plan; payment is handled by Stripe
     (hosted Checkout + Customer Portal — no card data is stored by the platform).
-    FR-B1  Plans ........ Three monthly tiers: Free ($0), Pro ($19), and Business
-                          ($49). Tiers and features are presented on a public
-                          pricing page and on the dashboard Billing tab.
+    FR-B1  Plans ........ Three tiers: Free ($0), Pro ($19/mo), and Business
+                          ($49/mo). Paid tiers may be billed MONTHLY or YEARLY;
+                          yearly is 20% cheaper than paying monthly (Pro
+                          $182.40/yr, Business $470.40/yr). Tiers and features are
+                          presented on a public pricing page and on the dashboard
+                          Billing tab, each with a Monthly/Yearly toggle that
+                          shows the yearly saving.
     FR-B2  Upgrade ...... An owner/admin upgrades from the Billing tab via Stripe
-                          Checkout; on success the workspace's plan is updated.
+                          Checkout, choosing the monthly or yearly interval; on
+                          success the workspace's plan and interval are updated,
+                          and the Billing tab shows whether it is billed monthly
+                          or yearly.
     FR-B3  Manage ....... Subscribers open the Stripe Customer Portal to change
                           tier, update card, or cancel; cancellation returns the
                           workspace to Free.
