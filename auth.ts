@@ -51,6 +51,8 @@ const credentialsProvider = Credentials({
     lg: { label: "Language", type: "text" },
     // "admin" authenticates against the separate admins table / admin panel.
     accountType: { label: "Account type", type: "text" },
+    // "true" = owner-confirmed takeover after a 409 (sign out other devices).
+    force: { label: "Force", type: "text" },
   },
   async authorize(rawCredentials) {
     const parsedCredentials = loginSchema.safeParse({
@@ -77,10 +79,13 @@ const credentialsProvider = Credentials({
       return null;
     }
 
+    // Owner-confirmed takeover after a 409 — sign out other devices, then in.
+    const force = rawCredentials?.force === "true";
+
     try {
       const profile = isAdminLogin
         ? await loginAsAdmin(parsedCredentials.data)
-        : await loginWithCredentials(parsedCredentials.data);
+        : await loginWithCredentials({ ...parsedCredentials.data, force });
       return profile;
     } catch (error) {
       // 409 = the account already holds a live session on a plan that only

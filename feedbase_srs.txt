@@ -104,11 +104,15 @@ Version 1.1
            login .......... on only ONE device or browser at a time. Attempting to
                           sign in elsewhere while a session is live is refused, and
                           the user is told to sign out on the other device first
-                          (with the option to upgrade). Signing out releases the
-                          session immediately. A session that has been inactive for
-                          15 minutes is treated as abandoned — the next sign-in
-                          takes it over and ends the old one — so closing the
-                          browser without signing out never locks a user out. Once
+                          (with the option to upgrade). Because the password was
+                          correct, they are also offered a one-click "this is me —
+                          sign out other devices and sign in here" takeover that
+                          ends the other sessions and signs them in. Signing out
+                          releases the session immediately. A session that has been
+                          inactive for 15 minutes is also treated as abandoned —
+                          the next sign-in takes it over and ends the old one — so
+                          closing the browser without signing out never locks a
+                          user out. Once
                           a session ends, that device is signed out on its next
                           action rather than being left in a broken state.
                           Switching workspaces does not count as a new device.

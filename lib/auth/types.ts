@@ -7,6 +7,8 @@ export interface LoginCredentialsInput {
   email: string;
   password: string;
   lg: string;
+  /** Owner-confirmed takeover after a 409: sign out other devices, then log in. */
+  force?: boolean;
 }
 
 export interface RegisterInput {
@@ -22,6 +24,7 @@ export interface LoginApiRequest {
   userData: {
     email: string;
     password: string;
+    force?: boolean;
   };
 }
 

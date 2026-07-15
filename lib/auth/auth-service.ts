@@ -24,6 +24,7 @@ export async function loginWithCredentials(
     userData: {
       email: input.email,
       password: input.password,
+      ...(input.force ? { force: true } : {}),
     },
   };
 

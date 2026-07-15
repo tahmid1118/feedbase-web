@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import { loginSchema, type LoginFormValues } from "@/lib/auth/schemas";
-import { signInErrorMessage } from "@/lib/auth/signin-errors";
+import { SIGNIN_ERROR_CODE, signInErrorMessage } from "@/lib/auth/signin-errors";
 
 const GENERIC_LOGIN_ERROR = "Invalid email or password.";
 
@@ -28,6 +28,9 @@ export function LoginForm() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  // Set when the backend refuses the login because a session is live elsewhere
+  // (one-device plans). The password was correct, so we offer a takeover.
+  const [activeSession, setActiveSession] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   // e.g. an invite link sends the user here and expects them back afterwards.
@@ -45,21 +48,26 @@ export function LoginForm() {
     },
   });
 
-  const onSubmit = async (values: LoginFormValues) => {
+  const onSubmit = async (values: LoginFormValues, force = false) => {
     setIsSubmitting(true);
     setFormError(null);
+    if (!force) setActiveSession(false);
 
     try {
       const result = await signIn("credentials", {
         email: values.email,
         password: values.password,
         lg: values.lg ?? DEFAULT_LANGUAGE,
+        ...(force ? { force: "true" } : {}),
         redirect: false,
       });
 
       if (!result || result.error) {
         // `code` distinguishes a real reason (e.g. already signed in on another
-        // device) from a plain bad-credentials failure.
+        // device) from a plain bad-credentials failure. On the active-session
+        // case, offer a takeover — the password was correct.
+        const isActive = result?.code === SIGNIN_ERROR_CODE.activeSession;
+        setActiveSession(isActive);
         setFormError(
           result?.code
             ? signInErrorMessage(result.code)
@@ -94,7 +102,7 @@ export function LoginForm() {
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>
+        <form onSubmit={form.handleSubmit((values) => onSubmit(values))} className="space-y-4" noValidate>
           <FormField
             control={form.control}
             name="email"
@@ -154,8 +162,18 @@ export function LoginForm() {
           />
 
           {formError ? (
-            <div className="rounded-xl border border-[#c74959]/35 bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
-              {formError}
+            <div className="space-y-2 rounded-xl border border-[#c74959]/35 bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
+              <p>{formError}</p>
+              {activeSession && (
+                <button
+                  type="button"
+                  onClick={() => onSubmit(form.getValues(), true)}
+                  disabled={isDisabled}
+                  className="font-semibold text-[#c74959] underline underline-offset-2 hover:text-[#b53f4d] disabled:opacity-60"
+                >
+                  This is me — sign out other devices and sign in here
+                </button>
+              )}
             </div>
           ) : wasSignedOut ? (
             <div className="rounded-xl border border-[#e399a3]/60 bg-[#fdf8f9] px-3 py-2 text-sm text-[#1c0a0c]/75">
