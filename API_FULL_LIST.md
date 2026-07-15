@@ -698,6 +698,17 @@ Sample Response:
 {"status":"success","message":"Notification deleted successfully"}
 ```
 
+### DELETE /notifications/clear
+Delete ALL of the authenticated user's notifications at once.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"All notifications cleared","data":{"deleted":12}}
+```
+
 ### POST /notifications/unread-count
 Sample Body:
 ```json

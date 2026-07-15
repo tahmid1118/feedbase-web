@@ -22,6 +22,14 @@ export const notificationsApi = {
   delete: (id: number, token: string) =>
     apiClient.delete<ApiResponse>(`/notifications/delete/${id}`, {}, { token }),
 
+  /** Delete ALL of the user's notifications. */
+  clearAll: (token: string) =>
+    apiClient.delete<ApiResponse<{ deleted: number }>>(
+      "/notifications/clear",
+      {},
+      { token }
+    ),
+
   getUnreadCount: (token: string) =>
     apiClient.post<ApiResponse<{ unreadCount: number }>>(
       "/notifications/unread-count",

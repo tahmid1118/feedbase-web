@@ -8,6 +8,17 @@ import { notificationsApi, extractRows, type Notification } from "@/lib/api";
 import { emitNotificationsChanged } from "@/lib/notifications-events";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 
 /** Resolve a deep link for a notification from its reference, when possible. */
@@ -29,6 +40,7 @@ export default function NotificationsPage() {
   const token = session?.user?.accessToken;
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState(true);
+  const [clearing, setClearing] = useState(false);
 
   const loadNotifications = useCallback(async () => {
     if (!token) return;
@@ -95,6 +107,21 @@ export default function NotificationsPage() {
     }
   };
 
+  const clearAll = async () => {
+    if (!token) return;
+    setClearing(true);
+    try {
+      await notificationsApi.clearAll(token);
+      setNotifications([]);
+      emitNotificationsChanged();
+      toast.success("All notifications cleared");
+    } catch {
+      toast.error("Failed to clear notifications");
+    } finally {
+      setClearing(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -114,16 +141,57 @@ export default function NotificationsPage() {
             {unreadCount > 0 ? `${unreadCount} unread` : "All caught up!"}
           </p>
         </div>
-        {unreadCount > 0 && (
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={markAllAsRead}
-            className="text-[#c74959]"
-          >
-            <Check className="h-4 w-4" />
-            Mark all as read
-          </Button>
+        {notifications.length > 0 && (
+          <div className="flex items-center gap-2">
+            {unreadCount > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={markAllAsRead}
+                className="text-[#c74959]"
+              >
+                <Check className="h-4 w-4" />
+                Mark all as read
+              </Button>
+            )}
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="text-[#1c0a0c]/60 hover:border-red-300 hover:text-red-600"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Clear all
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Clear all notifications?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This permanently deletes all{" "}
+                    {notifications.length}{" "}
+                    {notifications.length === 1
+                      ? "notification"
+                      : "notifications"}{" "}
+                    on this page. This can&apos;t be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel disabled={clearing}>
+                    Cancel
+                  </AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={clearAll}
+                    disabled={clearing}
+                    className="bg-red-600 text-white hover:bg-red-700"
+                  >
+                    {clearing ? "Clearing…" : "Clear all"}
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
         )}
       </div>
 
