@@ -1193,7 +1193,8 @@ The platform **admin** is NOT a tenant role — it's a separate identity in the 
 
 ### Notification Types
 - `post_status`
-- `comment_reply`
+- `comment_reply` — a new comment on a post (fanned out to the team)
 - `mention`
 - `changelog`
 - `system`
+- `new_feedback` — new feedback posted on the public board (fanned out to the team)
