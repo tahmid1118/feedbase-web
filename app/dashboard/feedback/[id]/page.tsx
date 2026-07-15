@@ -494,11 +494,13 @@ export default function PostDetailPage() {
               <button
                 type="button"
                 onClick={() => router.push("/dashboard/settings?tab=billing")}
-                className="flex w-full items-center gap-2 rounded-lg border border-[#e399a3]/30 bg-[#fdf8f9] p-3 text-left text-sm text-[#1c0a0c]/60 transition-colors hover:border-[#c74959]/40 hover:text-[#c74959]"
+                className="flex w-full items-center gap-2.5 rounded-lg border border-[#c74959]/25 bg-[#c74959]/5 p-3 text-left text-sm text-[#1c0a0c]/70 transition-colors hover:border-[#c74959]/50 hover:bg-[#c74959]/10"
               >
-                <Lock className="h-4 w-4 shrink-0 text-[#1c0a0c]/40" />
+                <Lock className="h-4 w-4 shrink-0 text-[#c74959]" />
                 <span>
-                  <strong className="text-[#1c0a0c]/75">Upgrade to Pro</strong>{" "}
+                  <span className="rounded bg-[#c74959] px-1.5 py-0.5 text-xs font-semibold text-white">
+                    Upgrade to Pro
+                  </span>{" "}
                   to see who submitted this feedback and email them when
                   it&apos;s implemented.
                 </span>
