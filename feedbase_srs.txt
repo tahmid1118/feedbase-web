@@ -295,8 +295,9 @@ Version 1.1
     (hosted Checkout + Customer Portal — no card data is stored by the platform).
     FR-B1  Plans ........ Three tiers: Free ($0), Pro ($19/mo), and Business
                           ($49/mo). Paid tiers may be billed MONTHLY or YEARLY;
-                          yearly is 20% cheaper than paying monthly (Pro
-                          $182.40/yr, Business $470.40/yr). Tiers and features are
+                          yearly is ~20% cheaper, priced at a whole-dollar monthly
+                          equivalent (Pro $15/mo = $180/yr, Business $39/mo =
+                          $468/yr). Tiers and features are
                           presented on a public pricing page and on the dashboard
                           Billing tab, each with a Monthly/Yearly toggle that
                           shows the yearly saving.

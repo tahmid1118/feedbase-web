@@ -105,8 +105,11 @@ export function planPricing(plan: PlanDisplay, interval: BillingInterval) {
       savingsPercent: 0,
     };
   }
-  const yearlyTotal = Math.round(monthly * 12 * (1 - YEARLY_DISCOUNT) * 100) / 100;
-  const perMonth = Math.round((yearlyTotal / 12) * 100) / 100;
+  // Round the per-month equivalent to a WHOLE dollar so both it and the annual
+  // total stay integers ($19 → $15/mo → $180/yr) — matches the yearly Stripe
+  // price created by scripts/stripe-setup.js.
+  const perMonth = Math.round(monthly * (1 - YEARLY_DISCOUNT));
+  const yearlyTotal = perMonth * 12;
   return {
     perMonth,
     perMonthLabel: formatPrice(perMonth),
