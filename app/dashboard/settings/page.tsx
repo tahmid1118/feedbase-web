@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import {
   User,
@@ -58,12 +58,8 @@ const ADMIN_ROLES: UserRole[] = ["owner"];
 
 export default function SettingsPage() {
   const { data: session } = useSession();
+  const router = useRouter();
   const searchParams = useSearchParams();
-  // Allow deep-linking to a tab (e.g. Stripe Checkout returns to ?tab=billing).
-  const initialTab = TABS.some((t) => t.id === searchParams.get("tab"))
-    ? (searchParams.get("tab") as TabId)
-    : "profile";
-  const [selected, setSelected] = useState<TabId>(initialTab);
 
   // Role comes straight from the session (set at login).
   const role = (session?.user?.role as UserRole | null) ?? null;
@@ -74,11 +70,20 @@ export default function SettingsPage() {
     [isAdmin]
   );
 
-  // Derive the effective tab rather than syncing it via an effect: if the
-  // selected tab isn't currently visible (e.g. role downgraded), fall back.
-  const active = visibleTabs.some((t) => t.id === selected)
-    ? selected
-    : "profile";
+  // The URL's `?tab=` is the single source of truth for the active tab. Deriving
+  // it from `searchParams` (rather than seeding local state once at mount) means
+  // a same-page navigation switches tabs too — e.g. the Team tab's "Upgrade"
+  // action pushing `?tab=billing` while Settings is already open. Falls back to
+  // Profile when the tab is missing or not visible for this role.
+  const requested = searchParams.get("tab");
+  const active =
+    requested && visibleTabs.some((t) => t.id === requested)
+      ? (requested as TabId)
+      : "profile";
+
+  const selectTab = (id: TabId) => {
+    router.push(`/dashboard/settings?tab=${id}`);
+  };
 
   return (
     <div className="space-y-6">
@@ -95,7 +100,7 @@ export default function SettingsPage() {
             <button
               key={tab.id}
               type="button"
-              onClick={() => setSelected(tab.id)}
+              onClick={() => selectTab(tab.id)}
               className={cn(
                 "flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 active === tab.id
