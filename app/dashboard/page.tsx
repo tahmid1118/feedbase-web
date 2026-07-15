@@ -94,11 +94,43 @@ export default async function DashboardPage() {
     },
   ];
 
-  const trends = overview?.trends ?? [];
+  // Build a robust 30-day series on the client, independent of what the API
+  // returns — it may send only the days that had posts, and dates as either
+  // 'YYYY-MM-DD' or a full ISO timestamp. We normalize each to a LOCAL calendar
+  // day and zero-fill the gaps, so the chart is always 30 valid daily bars.
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const toKey = (d: Date) =>
+    `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const parseDay = (input: string): string | null => {
+    const s = String(input ?? "");
+    // A plain 'YYYY-MM-DD' must be read as a LOCAL date (not UTC) so it doesn't
+    // shift a day; a full ISO timestamp is parsed as-is and localized.
+    const plain = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
+    const dt = plain
+      ? new Date(Number(plain[1]), Number(plain[2]) - 1, Number(plain[3]))
+      : new Date(s);
+    return Number.isNaN(dt.getTime()) ? null : toKey(dt);
+  };
+
+  const countByDay = new Map<string, number>();
+  for (const t of overview?.trends ?? []) {
+    const key = parseDay(t.date);
+    if (key) countByDay.set(key, (countByDay.get(key) ?? 0) + Number(t.count) || 0);
+  }
+  const trends = (() => {
+    const out: { date: string; count: number }[] = [];
+    const today = new Date();
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      const key = toKey(d);
+      out.push({ date: key, count: countByDay.get(key) ?? 0 });
+    }
+    return out;
+  })();
   const maxTrend = Math.max(1, ...trends.map((t) => t.count));
   const trendTotal = trends.reduce((sum, t) => sum + t.count, 0);
-  // "Jul 3" style label from a 'YYYY-MM-DD' string, parsed as a LOCAL date so it
-  // doesn't shift a day in negative-offset timezones.
+  // "Jul 3" from a clean 'YYYY-MM-DD' key, parsed as a LOCAL date.
   const dayLabel = (d: string) =>
     new Date(`${d}T00:00:00`).toLocaleDateString(undefined, {
       month: "short",
@@ -217,7 +249,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* 30-day new-feedback trend */}
-      {trends.length > 0 && (
+      {overview && (
         <Card className="p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
