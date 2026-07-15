@@ -36,6 +36,9 @@ const TYPES = [
   { value: "bug_report", label: "🐛 Bug report" },
 ];
 
+// Mirror the backend's guest-email check so the form fails fast.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function FeedbackSubmit({
   tenant,
   brand,
@@ -70,11 +73,17 @@ export function FeedbackSubmit({
     setDone(false);
   };
 
-  const canSubmit = Boolean(title.trim());
+  const canSubmit = Boolean(title.trim()) && EMAIL_RE.test(email.trim());
 
   const submit = async () => {
-    if (!canSubmit) {
+    if (!title.trim()) {
       setError("Please add a title.");
+      return;
+    }
+    if (!EMAIL_RE.test(email.trim())) {
+      setError(
+        "Please add a valid email so we can update you about your feedback."
+      );
       return;
     }
     setSubmitting(true);
@@ -158,8 +167,8 @@ export function FeedbackSubmit({
               <DialogHeader>
                 <DialogTitle>Share your feedback</DialogTitle>
                 <DialogDescription>
-                  Tell us what you&apos;d like to see. Sharing your name and email
-                  is optional.
+                  Tell us what you&apos;d like to see. Your email lets us keep you
+                  posted; your name is optional.
                 </DialogDescription>
               </DialogHeader>
 
@@ -243,10 +252,7 @@ export function FeedbackSubmit({
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="fb-email">
-                      Email{" "}
-                      <span className="font-normal text-[#1c0a0c]/40">
-                        (optional)
-                      </span>
+                      Email <span className="text-[#c74959]">*</span>
                     </Label>
                     <Input
                       id="fb-email"
@@ -254,9 +260,16 @@ export function FeedbackSubmit({
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@example.com"
+                      required
+                      aria-required="true"
                     />
                   </div>
                 </div>
+
+                <p className="rounded-lg bg-[#c74959]/5 px-3 py-2 text-xs text-[#1c0a0c]/60">
+                  We ask for your email so we can contact you with updates on
+                  your feedback. It&apos;s never shown publicly.
+                </p>
 
                 {error && (
                   <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">

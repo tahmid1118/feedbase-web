@@ -44,8 +44,9 @@ Version 1.1
 
 2.2 User Roles & Permissions
     There are exactly three roles.
-    - Visitor/Guest: view a tenant portal, submit feedback (anonymously or with
-      an optional email), and upvote posts. No account required.
+    - Visitor/Guest: view a tenant portal, submit feedback (name optional, but a
+      contact email is required for follow-up), and upvote posts. No account
+      required.
     - User: an authenticated workspace member with baseline access (Profile only
       in settings). Members join by invitation.
     - Owner: the workspace administrator — manages team, tags, integrations, API
@@ -137,11 +138,14 @@ Version 1.1
     FR-P1  Board ........ Browse feedback posts with vote counts, tags, status,
                           and comment counts. Sortable by newest, oldest, most
                           upvoted, or least upvoted (pinned posts stay on top).
-    FR-P2  Submit ....... Any visitor may create a post (title required; details
-                          and type optional), anonymously or with an optional
-                          name/email for follow-up. On workspaces whose plan
-                          includes attachments (see FR-A1), the submit form also
-                          lets the visitor attach photos or a short video.
+    FR-P2  Submit ....... Any visitor may create a post (title and a contact
+                          email required; details, type and name optional). The
+                          email is mandatory so the team can reach the submitter
+                          with updates on their post; it is never shown publicly.
+                          A logged-in submitter is identified by their account
+                          instead. On workspaces whose plan includes attachments
+                          (see FR-A1), the submit form also lets the visitor
+                          attach photos or a short video.
     FR-P3  Vote ......... Any visitor may upvote/remove an upvote. Voting is
                           limited to one vote per browser per post via a
                           persistent cookie identifier; no account required.
