@@ -5,11 +5,15 @@ import { useSession } from "next-auth/react";
 import { ImageIcon, Loader2, Upload } from "lucide-react";
 import { tenantsApi, uploaderApi, type Tenant } from "@/lib/api";
 import { resolveUploadUrl } from "@/lib/avatar";
+import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
+import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+
+const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
 export function BrandingSettings() {
   const { data: session } = useSession();
@@ -18,9 +22,22 @@ export function BrandingSettings() {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
+  const [subdomain, setSubdomain] = useState("");
+  const [originalSubdomain, setOriginalSubdomain] = useState("");
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Only validate/gate on availability when the subdomain actually changed —
+  // otherwise the account's OWN current subdomain would read as "taken".
+  const subdomainChanged = subdomain !== originalSubdomain && subdomain !== "";
+  const subStatus = useSubdomainAvailability(
+    subdomainChanged ? subdomain : "",
+    token
+  );
+  const subdomainBlocked =
+    subdomainChanged &&
+    (subStatus === "checking" || subStatus === "taken" || subStatus === "invalid");
 
   useEffect(() => {
     if (!token) return;
@@ -37,6 +54,8 @@ export function BrandingSettings() {
     setTenant(t);
     setName(t.name ?? "");
     setLogoUrl(t.branding_logo_url ?? "");
+    setSubdomain(t.subdomain ?? "");
+    setOriginalSubdomain(t.subdomain ?? "");
   };
 
   const handleLogoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,11 +83,15 @@ export function BrandingSettings() {
         {
           name: name.trim(),
           brandingLogoUrl: logoUrl.trim(),
+          subdomain: subdomain.trim(),
         },
         token
       );
+      setOriginalSubdomain(subdomain.trim());
+      setTenant({ ...tenant, subdomain: subdomain.trim() });
       toast.success("Workspace updated");
     } catch (e) {
+      // Surfaces e.g. "That subdomain is already taken".
       toast.error((e as Error)?.message || "Failed to update workspace");
     } finally {
       setSaving(false);
@@ -167,7 +190,23 @@ export function BrandingSettings() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="ws-subdomain">Subdomain</Label>
-          <Input id="ws-subdomain" value={tenant.subdomain} disabled />
+          <Input
+            id="ws-subdomain"
+            value={subdomain}
+            onChange={(e) =>
+              setSubdomain(
+                e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "")
+              )
+            }
+            placeholder="your-workspace"
+          />
+          {subdomainChanged ? (
+            <SubdomainStatusHint status={subStatus} />
+          ) : (
+            <p className="text-xs text-[#1c0a0c]/50">
+              Your portal: {subdomain || "…"}.{ROOT_DOMAIN.split(":")[0]}
+            </p>
+          )}
         </div>
       </div>
 
@@ -175,7 +214,7 @@ export function BrandingSettings() {
         <Button
           className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
           onClick={save}
-          disabled={saving}
+          disabled={saving || subdomainBlocked}
         >
           {saving ? (
             <>

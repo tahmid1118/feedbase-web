@@ -279,8 +279,10 @@ Version 1.1
            blocks or fails the visitor's submission.
 
 3.7 Administration (Settings)
-    Tabs: Profile, Team (roles), Tags, Branding (logo, primary color,
-    subdomain), and Billing. Owner-only tabs are gated by role.
+    Tabs: Profile, Team (roles), Tags, Branding (company logo, workspace name,
+    and the workspace subdomain — which the owner can change, validated for
+    format and uniqueness), and Billing. Owner-only tabs are gated by role;
+    updating workspace settings is restricted to the workspace's own owner.
 
 3.8 Analytics
     FR-A1  Overview of totals, status/type breakdowns, and a recent-activity trend.

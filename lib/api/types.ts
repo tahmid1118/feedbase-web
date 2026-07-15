@@ -319,7 +319,7 @@ export interface Tenant {
 
 export interface UpdateTenantData {
   name?: string;
-  customDomain?: string;
+  subdomain?: string;
   brandingLogoUrl?: string;
   brandingPrimaryColor?: string;
   isActive?: number;

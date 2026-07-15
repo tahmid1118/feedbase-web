@@ -46,10 +46,10 @@ Sample Response:
 ```
 
 ### PUT /tenants/update/:id
-`planName` is NOT accepted here — the plan is set only by Stripe (or an admin comp). Setting `customDomain` requires a paid plan (`402` on Free).
+**Owner-only, and only your own workspace** (`:id` must be the caller's `tenantId`, else `403`). `planName` is NOT accepted (plan is set only by Stripe / an admin comp); custom domains are not supported. Changing `subdomain` validates format + reserved words (`400 invalid_subdomain`) and uniqueness (`409 subdomain_taken`); `slug` is kept in sync with it.
 Sample Body:
 ```json
-{"lg":"en","tenantData":{"name":"Acme Corporation","brandingLogoUrl":"https://cdn.example.com/acme/new-logo.png","brandingPrimaryColor":"#1B8A5A","customDomain":"feedback.acme.test","isActive":1}}
+{"lg":"en","tenantData":{"name":"Acme Corporation","subdomain":"acme","brandingLogoUrl":"https://cdn.example.com/acme/new-logo.png","isActive":1}}
 ```
 Sample Response:
 ```json
