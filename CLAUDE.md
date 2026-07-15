@@ -42,7 +42,7 @@ app/
 │   ├── roadmap/          # Kanban board (drag & drop via @dnd-kit)
 │   ├── changelog/        # Release notes (markdown)
 │   ├── notifications/    # User notifications
-│   └── settings/         # 8 tabs: profile, team, tags, integrations, api-keys, audit, branding, billing (owner-only tabs gated)
+│   └── settings/         # 5 tabs: profile, team, tags, branding, billing (owner-only tabs gated)
 ├── admin/                # PLATFORM Admin Panel — overview, workspaces, users, admins, promo-codes, offers (isAdmin only)
 ├── portal/[tenant]/      # PUBLIC per-tenant portal — board, post, roadmap, changelog (read-only, unauthenticated)
 └── page.tsx              # Landing page

@@ -7,9 +7,6 @@ import {
   User,
   Users,
   Tag,
-  Plug,
-  KeyRound,
-  ScrollText,
   Palette,
   CreditCard,
   type LucideIcon,
@@ -19,21 +16,10 @@ import { cn } from "@/lib/utils";
 import { ProfileSettings } from "@/components/settings/profile-settings";
 import { TeamSettings } from "@/components/settings/team-settings";
 import { TagsSettings } from "@/components/settings/tags-settings";
-import { IntegrationsSettings } from "@/components/settings/integrations-settings";
-import { ApiKeysSettings } from "@/components/settings/api-keys-settings";
-import { AuditLogsSettings } from "@/components/settings/audit-logs-settings";
 import { BrandingSettings } from "@/components/settings/branding-settings";
 import { BillingSettings } from "@/components/settings/billing-settings";
 
-type TabId =
-  | "profile"
-  | "team"
-  | "tags"
-  | "integrations"
-  | "api-keys"
-  | "audit"
-  | "branding"
-  | "billing";
+type TabId = "profile" | "team" | "tags" | "branding" | "billing";
 
 interface TabDef {
   id: TabId;
@@ -46,9 +32,6 @@ const TABS: TabDef[] = [
   { id: "profile", label: "Profile", icon: User },
   { id: "team", label: "Team", icon: Users, adminOnly: true },
   { id: "tags", label: "Tags", icon: Tag, adminOnly: true },
-  { id: "integrations", label: "Integrations", icon: Plug, adminOnly: true },
-  { id: "api-keys", label: "API Keys", icon: KeyRound, adminOnly: true },
-  { id: "audit", label: "Audit Logs", icon: ScrollText, adminOnly: true },
   { id: "branding", label: "Branding", icon: Palette, adminOnly: true },
   { id: "billing", label: "Billing", icon: CreditCard, adminOnly: true },
 ];
@@ -118,9 +101,6 @@ export default function SettingsPage() {
           {active === "profile" && <ProfileSettings />}
           {active === "team" && <TeamSettings />}
           {active === "tags" && <TagsSettings />}
-          {active === "integrations" && <IntegrationsSettings />}
-          {active === "api-keys" && <ApiKeysSettings />}
-          {active === "audit" && <AuditLogsSettings />}
           {active === "branding" && <BrandingSettings />}
           {active === "billing" && <BillingSettings />}
         </div>

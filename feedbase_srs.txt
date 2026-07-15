@@ -280,9 +280,8 @@ Version 1.1
            blocks or fails the visitor's submission.
 
 3.7 Administration (Settings)
-    Tabs: Profile, Team (roles), Tags, Integrations, API Keys, Audit Logs,
-    Branding (logo, primary color, subdomain/custom domain), and Billing.
-    Admin-only tabs are gated by role.
+    Tabs: Profile, Team (roles), Tags, Branding (logo, primary color,
+    subdomain/custom domain), and Billing. Owner-only tabs are gated by role.
 
 3.8 Analytics
     FR-A1  Overview of totals, status/type breakdowns, and a recent-activity trend.
