@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Bell, LogOut, User } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { notificationsApi } from "@/lib/api";
+import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 import { endSession } from "@/lib/auth/end-session";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -33,27 +34,24 @@ export function Header({ user }: HeaderProps) {
   const token = session?.user?.accessToken;
   const [unreadCount, setUnreadCount] = useState(0);
 
-  useEffect(() => {
+  const fetchUnread = useCallback(() => {
     if (!token) return;
-    let active = true;
-
-    const fetchCount = () => {
-      notificationsApi
-        .getUnreadCount(token)
-        .then((res) => {
-          if (active) setUnreadCount(res.data?.unreadCount ?? 0);
-        })
-        .catch(() => {});
-    };
-
-    fetchCount();
-    // Refresh periodically so the badge stays roughly current.
-    const interval = setInterval(fetchCount, 60000);
-    return () => {
-      active = false;
-      clearInterval(interval);
-    };
+    notificationsApi
+      .getUnreadCount(token)
+      .then((res) => setUnreadCount(res.data?.unreadCount ?? 0))
+      .catch(() => {});
   }, [token]);
+
+  useEffect(() => {
+    fetchUnread();
+    // Poll so the badge stays current even while the tab stays open.
+    const interval = setInterval(fetchUnread, 30000);
+    return () => clearInterval(interval);
+  }, [fetchUnread]);
+
+  // Update promptly when the user returns to the tab (e.g. after generating
+  // activity, or after reading notifications on the notifications page).
+  useRefetchOnFocus(fetchUnread);
 
   // Prefer the live session (updated after a profile edit) over the server prop.
   const displayName = session?.user?.name ?? user.name;
