@@ -181,7 +181,10 @@ export default async function DashboardPage() {
             Feedback by Status
           </h3>
           <div className="space-y-3">
-            {(Object.keys(STATUS_LABELS) as PostStatus[]).map((status) => {
+            {(Object.keys(STATUS_LABELS) as PostStatus[])
+              // 'closed' is a legacy status not offered in the UI — don't show it.
+              .filter((status) => status !== "closed")
+              .map((status) => {
               const count = statusCounts[status] ?? 0;
               const pct = totalPosts > 0 ? (count / totalPosts) * 100 : 0;
               return (
