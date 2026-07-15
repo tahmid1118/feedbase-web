@@ -3,6 +3,7 @@ import {
   BarChart3,
   GitBranch,
   MessageSquare,
+  CheckCircle2,
   ThumbsUp,
   ArrowRight,
   Users,
@@ -81,9 +82,9 @@ export default async function DashboardPage() {
       tint: "bg-[#da6a78]/10 text-[#da6a78]",
     },
     {
-      label: "Total Votes",
-      value: totals?.totalVotes ?? 0,
-      icon: ThumbsUp,
+      label: "Completed",
+      value: statusCounts.completed ?? 0,
+      icon: CheckCircle2,
       tint: "bg-[#c74959]/10 text-[#c74959]",
     },
     {
