@@ -94,7 +94,16 @@ export default async function DashboardPage() {
     },
   ];
 
-  const maxTrend = Math.max(1, ...(overview?.trends ?? []).map((t) => t.count));
+  const trends = overview?.trends ?? [];
+  const maxTrend = Math.max(1, ...trends.map((t) => t.count));
+  const trendTotal = trends.reduce((sum, t) => sum + t.count, 0);
+  // "Jul 3" style label from a 'YYYY-MM-DD' string, parsed as a LOCAL date so it
+  // doesn't shift a day in negative-offset timezones.
+  const dayLabel = (d: string) =>
+    new Date(`${d}T00:00:00`).toLocaleDateString(undefined, {
+      month: "short",
+      day: "numeric",
+    });
 
   return (
     <div className="space-y-6">
@@ -207,35 +216,64 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      {/* 30-day trend */}
-      {overview?.trends && overview.trends.length > 0 && (
+      {/* 30-day new-feedback trend */}
+      {trends.length > 0 && (
         <Card className="p-6">
-          <div className="mb-4 flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-[#c74959]" />
-            <h3 className="text-lg font-semibold text-[#1c0a0c]">
-              New Feedback (last 30 days)
-            </h3>
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-[#c74959]" />
+              <h3 className="text-lg font-semibold text-[#1c0a0c]">
+                New feedback
+              </h3>
+              <span className="text-sm text-[#1c0a0c]/50">· last 30 days</span>
+            </div>
+            <div className="text-sm text-[#1c0a0c]/60">
+              <span className="font-semibold text-[#1c0a0c]">{trendTotal}</span>{" "}
+              {trendTotal === 1 ? "new post" : "new posts"}
+              {maxTrend > 1 && (
+                <span className="text-[#1c0a0c]/40"> · peak {maxTrend}/day</span>
+              )}
+            </div>
           </div>
-          <div className="flex h-32 items-end gap-1">
-            {overview.trends.map((point) => (
-              <div
-                key={point.date}
-                // Each column is full-height with the bar pinned to the bottom,
-                // so the bar's percentage height resolves against a definite
-                // height (a % height inside a shrink-to-content flex item is 0).
-                className="group flex h-full flex-1 flex-col justify-end"
-                title={`${point.date}: ${point.count}`}
-              >
-                <div
-                  className="w-full rounded-t bg-[#c74959]/70 transition-colors group-hover:bg-[#c74959]"
-                  style={{
-                    height: `${(point.count / maxTrend) * 100}%`,
-                    minHeight: point.count > 0 ? "3px" : undefined,
-                  }}
-                />
+
+          {trendTotal === 0 ? (
+            <div className="flex h-32 items-center justify-center rounded-lg bg-[#fdf8f9] text-sm text-[#1c0a0c]/50">
+              No new feedback in the last 30 days.
+            </div>
+          ) : (
+            <>
+              <div className="flex h-32 items-end gap-[3px]">
+                {trends.map((point) => (
+                  <div
+                    key={point.date}
+                    // Full-height column with the bar pinned to the bottom, so the
+                    // bar's % height resolves against a definite height (a % height
+                    // inside a shrink-to-content flex item computes to 0).
+                    className="group relative flex h-full flex-1 flex-col justify-end"
+                  >
+                    <div
+                      className="w-full rounded-t bg-[#c74959]/70 transition-colors group-hover:bg-[#c74959]"
+                      style={{
+                        height: `${(point.count / maxTrend) * 100}%`,
+                        minHeight: point.count > 0 ? "3px" : undefined,
+                      }}
+                    />
+                    {/* Hover tooltip: date + exact count. */}
+                    <div className="pointer-events-none absolute -top-9 left-1/2 z-10 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-[#1c0a0c] px-2 py-1 text-xs text-white group-hover:block">
+                      <span className="font-semibold">{point.count}</span> ·{" "}
+                      {dayLabel(point.date)}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+              {/* X-axis: first / middle / last day. */}
+              <div className="mt-2 flex justify-between text-xs text-[#1c0a0c]/40">
+                <span>{dayLabel(trends[0].date)}</span>
+                <span>{dayLabel(trends[Math.floor(trends.length / 2)].date)}</span>
+                <span>{dayLabel(trends[trends.length - 1].date)}</span>
+              </div>
+            </>
+          )}
         </Card>
       )}
     </div>
