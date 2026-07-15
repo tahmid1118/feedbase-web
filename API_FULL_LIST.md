@@ -15,8 +15,11 @@
 - `lg` is required on routes using `languageValidator`.
 - Several GET/DELETE/PATCH routes still read `lg` from request body.
 - Success response shape is usually `{ status, message, data? }`.
-- Login returns `user` instead of `data`.
-- Image upload returns `filePath`.
+- Login returns `user` instead of `data`; image upload returns `filePath`.
+- File uploads are `multipart/form-data` with a single binary field (`upload_image` for the generic uploader, `file` for post attachments).
+- **Auth roles:** tenant users are `owner` or `user` only. The platform **admin** is a separate identity (its own `admins` table + `/admin/*` routes), not a tenant role.
+- **One device at a time:** on Free/Pro, a second login returns `409` (`already_logged_in_elsewhere`). Pass `userData.force: true` to sign out other devices and take over. Business allows multiple devices. `POST /users/logout` revokes the current session; a revoked token gets `401` "Session ended".
+- Money/plan values: plan keys are `free` / `pro` / `business`; billing `interval` is `month` or `year` (yearly is 20% cheaper).
 
 ---
 
@@ -43,9 +46,10 @@ Sample Response:
 ```
 
 ### PUT /tenants/update/:id
+`planName` is NOT accepted here — the plan is set only by Stripe (or an admin comp). Setting `customDomain` requires a paid plan (`402` on Free).
 Sample Body:
 ```json
-{"lg":"en","tenantData":{"name":"Acme Corporation","brandingLogoUrl":"https://cdn.example.com/acme/new-logo.png","brandingPrimaryColor":"#1B8A5A","planName":"enterprise","isActive":1}}
+{"lg":"en","tenantData":{"name":"Acme Corporation","brandingLogoUrl":"https://cdn.example.com/acme/new-logo.png","brandingPrimaryColor":"#1B8A5A","customDomain":"feedback.acme.test","isActive":1}}
 ```
 Sample Response:
 ```json
@@ -74,13 +78,25 @@ Sample Response:
 ## 2) User APIs
 
 ### POST /users/login
+On Free/Pro plans a second concurrent login is refused with `409` (`already_logged_in_elsewhere`); add `"force": true` to `userData` to sign out other devices and take over.
 Sample Body:
 ```json
-{"lg":"en","userData":{"email":"owner@acme.test","password":"SecurePass123!"}}
+{"lg":"en","userData":{"email":"owner@acme.test","password":"SecurePass123!","force":false}}
 ```
 Sample Response:
 ```json
 {"status":"success","message":"User logged in successfully","user":{"token":"eyJ...","id":1,"tenantId":1,"fullName":"Acme Owner","email":"owner@acme.test","role":"owner","imageUrl":"uploads/profile-images/image-1712901234567.jpeg"}}
+```
+
+### POST /users/logout
+Revokes the current device session (so the account can sign in elsewhere). Best-effort — an already-dead session still reports success.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Logged out successfully"}
 ```
 
 ### POST /users/oauth/login
@@ -126,9 +142,10 @@ Sample Response:
 ```
 
 ### PATCH /users/role/:userId
+Actor must be the workspace `owner`; allowed target roles are `owner` / `user` only.
 Sample Body:
 ```json
-{"lg":"en","role":"moderator"}
+{"lg":"en","role":"user"}
 ```
 Sample Response:
 ```json
@@ -165,6 +182,64 @@ Sample Response:
 {"status":"success","message":"Password updated successfully"}
 ```
 
+### POST /users/account/deletion-summary
+What deleting this account would destroy (for the confirmation dialog): owned workspaces are deleted; joined workspaces are retained (the account's posts/comments there become anonymous).
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Data fetched successfully","data":{"email":"owner@acme.test","ownedWorkspaces":[{"tenantId":1,"name":"Acme Labs"}],"memberWorkspaces":[{"tenantId":2,"name":"Beta Works"}]}}
+```
+
+### POST /users/account/delete
+Permanently deletes the authenticated account after re-authenticating with the password. Owned workspaces (and their Stripe subscriptions) are deleted; memberships elsewhere are removed. Signs the user out afterward.
+Sample Body:
+```json
+{"lg":"en","password":"SecurePass123!"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Account deleted","data":{"deletedWorkspaces":1,"leftWorkspaces":1}}
+```
+
+### GET /users/workspaces
+Lists every workspace the account (by email) belongs to, plus per-account limits. `lg` may be a query param. `role` is `owner` (owned) or `user` (joined). `limits.ownLimit`/`joinLimit` are `null` when unlimited.
+Sample Response:
+```json
+{"status":"success","message":"Data fetched successfully","data":{"workspaces":[{"user_id":1,"role":"owner","tenant_id":1,"name":"Acme Labs","subdomain":"acme","branding_primary_color":"#c74959","current":true}],"limits":{"tier":"pro","ownedCount":1,"memberCount":1,"ownLimit":3,"joinLimit":3,"canCreate":true,"canJoin":true}}}
+```
+
+### GET /users/workspaces/check-subdomain
+Live availability check for the create-workspace form. Query: `?subdomain=acme&lg=en`.
+Sample Response:
+```json
+{"status":"success","message":"Data fetched successfully","data":{"valid":true,"available":false}}
+```
+
+### POST /users/workspaces/create
+Creates a new workspace owned by the account (subject to the plan's `ownWorkspaces` cap → `402` when exceeded). Returns a fresh token scoped to the new workspace.
+Sample Body:
+```json
+{"lg":"en","workspaceData":{"name":"New Product","subdomain":"newprod","website":"https://newprod.com"}}
+```
+Sample Response:
+```json
+{"status":"success","message":"Workspace created successfully","data":{"token":"eyJ...","user":{"id":9,"tenantId":3,"role":"owner","fullName":"Acme Owner","email":"owner@acme.test","imageUrl":null},"tenant":{"id":3,"name":"New Product","subdomain":"newprod"}}}
+```
+
+### POST /users/workspaces/switch
+Switches the active workspace; returns a fresh token scoped to the target (the account must have a user row there).
+Sample Body:
+```json
+{"lg":"en","tenantId":2}
+```
+Sample Response:
+```json
+{"status":"success","message":"Workspace switched successfully","data":{"token":"eyJ...","user":{"id":5,"tenantId":2,"role":"user","fullName":"Acme Owner","email":"owner@acme.test","imageUrl":null}}}
+```
+
 ---
 
 ## 3) Post APIs
@@ -180,13 +255,26 @@ Sample Response:
 ```
 
 ### POST /posts/:id
+`author_email` is only populated on Pro+ workspaces (the `contactSubmitter` capability) — `null` otherwise. `implemented_notified_at` is set once the submitter has been emailed that the feedback shipped. `attachments` lists any photos/videos.
 Sample Body:
 ```json
 {"lg":"en"}
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Post retrieved successfully","data":{"id":101,"title":"Add dark mode","description":"Please add dark mode support for the dashboard.","post_type":"feature_request","status":"open","priority":2,"is_pinned":1,"duplicate_of_post_id":null,"author_name":"Jane Product","author_email":"jane@acme.test","vote_count":12,"comment_count":4,"has_voted":true,"tags":[{"id":1,"name":"ui","color_hex":"#3B82F6"}]}}
+{"status":"success","message":"Post retrieved successfully","data":{"id":101,"title":"Add dark mode","description":"Please add dark mode support for the dashboard.","post_type":"feature_request","status":"completed","priority":2,"is_pinned":1,"duplicate_of_post_id":null,"author_name":"Jane Product","author_email":"jane@acme.test","implemented_notified_at":"2026-07-15T14:09:17.000Z","vote_count":12,"comment_count":4,"has_voted":true,"tags":[{"id":1,"name":"ui","color_hex":"#3B82F6"}],"attachments":[{"id":11,"kind":"image","url":"uploads/attachments/att-1712-abcd.png","mime_type":"image/png","size_bytes":48213,"original_name":"screenshot.png"}]}}
+```
+
+### POST /posts/attachment
+Uploads one photo/video to attach to a feedback post (Pro+ `attachments` capability; `402` on Free). `multipart/form-data` with a single `file` field. Returns the stored attachment; pass its `id` in `postData.attachmentIds` on `POST /posts/create`.
+Sample Body (multipart/form-data):
+```txt
+file: <binary image or video>
+lg: en
+```
+Sample Response:
+```json
+{"status":"success","message":"Attachment uploaded","data":{"id":11,"kind":"image","url":"uploads/attachments/att-1712-abcd.png","mime_type":"image/png","size_bytes":48213}}
 ```
 
 ### PUT /posts/update/:id
@@ -221,6 +309,7 @@ Sample Response:
 ```
 
 ### PATCH /posts/status/:id
+`newStatus` is one of `open` / `planned` / `in_progress` / `completed` / `rejected` (validated). `rejected` = declined feedback (shown in the dashboard "All" + "Rejected" tabs, hidden from the public portal); restore by setting it back to `open`.
 Sample Body:
 ```json
 {"lg":"en","newStatus":"in_progress"}
@@ -228,6 +317,17 @@ Sample Body:
 Sample Response:
 ```json
 {"status":"success","message":"Post status updated successfully"}
+```
+
+### POST /posts/:id/notify-implemented
+Emails the feedback submitter that their request is implemented (Pro+ `contactSubmitter`, owner-only). Requires the post to be `completed` and to have a submitter email. Records `posts.implemented_notified_at`. Errors: `402 plan_limit_contact_submitter`, `403 billing_forbidden`, `400 feedback_not_completed`, `400 no_submitter_email`.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"The submitter has been notified","data":{"emailSent":true}}
 ```
 
 ### PATCH /posts/pin/:id
@@ -762,6 +862,302 @@ Sample Response:
 
 ---
 
+## 15) Billing APIs
+
+Owner-only (Stripe hosted Checkout + Customer Portal — no card data touches this API).
+
+### POST /billing/status
+Reconciles from Stripe, then returns the current subscription state + the plan's enforced limits (and any active promotional offers).
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Billing status retrieved","data":{"planName":"pro","subscriptionStatus":"active","billingInterval":"year","currentPeriodEnd":"2027-07-15T00:00:00.000Z","hasSubscription":true,"limits":{"seats":5,"ownWorkspaces":3,"joinWorkspaces":3,"customDomain":true,"integrations":true,"deleteFeedback":true,"attachments":true,"contactSubmitter":true,"multiDevice":false},"offers":{}}}
+```
+
+### POST /billing/checkout
+Starts a Stripe Checkout session for a paid plan and returns its hosted URL. `interval` is `month` (default) or `year` (~20% cheaper). An optional `promotionCode` (from a redeemed percent-off promo) is applied as a discount.
+Sample Body:
+```json
+{"lg":"en","plan":"pro","interval":"year","promotionCode":"promo_1AbC..."}
+```
+Sample Response:
+```json
+{"status":"success","message":"Checkout session created","data":{"url":"https://checkout.stripe.com/c/pay/cs_test_..."}}
+```
+
+### POST /billing/redeem
+Redeems a promo code (owner-only). A free-plan code comps the plan instantly; a percent-off code returns a Stripe `promotionCode` to pass into the next checkout.
+Sample Body:
+```json
+{"lg":"en","code":"LAUNCH50"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Promo code applied","data":{"type":"percent_off","percentOff":50,"appliesToPlan":"pro","promotionCode":"promo_1AbC..."}}
+```
+
+### POST /billing/portal
+Returns a Stripe Billing Portal URL for the subscriber to change tier / update card / cancel.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Billing portal session created","data":{"url":"https://billing.stripe.com/p/session/..."}}
+```
+
+---
+
+## 16) Invitation APIs
+
+Owner-only (mounted at `/invitations`). The emailed link is single-use and expires in 7 days.
+
+### POST /invitations
+Invite a teammate by email. The address is validated (format + DNS MX). Over the plan's seat cap returns `402` (`plan_limit_seats`).
+Sample Body:
+```json
+{"lg":"en","email":"newmate@acme.test"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Invitation sent","data":{"id":21,"email":"newmate@acme.test","emailSent":true}}
+```
+
+### POST /invitations/list
+List the workspace's pending/accepted invitations.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Invitations retrieved successfully","data":{"rows":[{"id":21,"email":"newmate@acme.test","status":"pending","expires_at":"2026-07-22T00:00:00.000Z"}]}}
+```
+
+### DELETE /invitations/:id
+Revoke a pending invitation (kills its link immediately).
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Invitation revoked"}
+```
+
+### POST /invitations/:token/accept
+Accept as an EXISTING, signed-in account (the session email must match the invited email). Over the account's join cap returns `402` (`plan_limit_workspaces_join`). Returns a fresh token scoped to the joined workspace.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Invitation accepted","data":{"token":"eyJ...","user":{"id":9,"tenantId":2,"role":"user","fullName":"New Mate","email":"newmate@acme.test","imageUrl":null},"tenant":{"id":2,"name":"Beta Works"}}}
+```
+
+---
+
+## 17) Public / Portal APIs
+
+Unauthenticated, mounted at `/public`. The tenant is resolved from the `:subdomain` param (matches `subdomain` OR `custom_domain`). Comment/feedback/vote routes use optional auth: a Bearer token attributes the action to that user, otherwise it's a guest (identified by `guestId`). Rejected posts and author emails are never exposed here.
+
+### GET /public/tenant
+Resolve a tenant by subdomain (or `?domain=`) for the portal. `attachments_enabled` reflects whether the workspace's plan allows attachments. Query: `?subdomain=acme&lg=en`.
+Sample Response:
+```json
+{"status":"success","message":"Tenant retrieved successfully","data":{"id":1,"name":"Acme Labs","subdomain":"acme","custom_domain":null,"branding_logo_url":null,"branding_primary_color":"#c74959","attachments_enabled":true}}
+```
+
+### GET /public/offers
+Active promotional offers keyed by plan (list price strikethrough on the public pricing page). Query: `?lg=en`.
+Sample Response:
+```json
+{"status":"success","data":{"pro":{"id":3,"plan":"pro","originalPrice":19,"offerPrice":9,"percentOff":53,"label":"Launch offer","endsAt":"2026-08-01T23:59:59.000Z"}}}
+```
+
+### GET /public/invitations/:token
+Describe an invitation so the accept page can render (workspace name, invited email, validity).
+Sample Response:
+```json
+{"status":"success","message":"Invitation retrieved successfully","data":{"email":"newmate@acme.test","workspaceName":"Acme Labs","valid":true}}
+```
+
+### POST /public/invitations/:token/accept
+Accept as a NEW person (sets name + password, signs them in).
+Sample Body:
+```json
+{"lg":"en","fullName":"New Mate","password":"SecurePass123!"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Invitation accepted","data":{"token":"eyJ...","user":{"id":10,"tenantId":1,"role":"user","fullName":"New Mate","email":"newmate@acme.test","imageUrl":null},"tenant":{"id":1,"name":"Acme Labs"}}}
+```
+
+### POST /public/:subdomain/posts
+Public feedback board (read). Supports `filters` (`status`, `postType`, `tagId`, `search`) and `paginationData`. Board cards include `attachment_count` + a `thumbnail_path`.
+Sample Body:
+```json
+{"lg":"en","paginationData":{"itemsPerPage":20,"currentPageNumber":0,"sortOrder":"desc","filterBy":""},"filters":{"status":"planned"}}
+```
+Sample Response:
+```json
+{"status":"success","message":"Board retrieved successfully","data":{"posts":[{"id":101,"title":"Add dark mode","post_type":"feature_request","status":"planned","vote_count":12,"comment_count":4,"attachment_count":1,"thumbnail_path":"uploads/attachments/att-1712-abcd.png"}],"total":18}}
+```
+
+### POST /public/:subdomain/posts/:postId
+Public post detail with its comment thread (no author emails).
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Post retrieved successfully","data":{"id":101,"title":"Add dark mode","description":"...","post_type":"feature_request","status":"planned","vote_count":12,"comment_count":4,"author_name":"Brave Otter","guest_id":"fb_guest_ab12","tags":[],"comments":[{"id":401,"body":"Yes please!","author_name":"Kind Fox","guest_id":"fb_guest_cd34"}]}}
+```
+
+### POST /public/:subdomain/feedback
+Submit feedback (guest or logged-in). A guest MUST include `submitterEmail` (so the team can follow up); logged-in submitters are attributed via their Bearer token. `attachmentIds` link previously-uploaded attachments (paid workspaces).
+Sample Body:
+```json
+{"lg":"en","title":"Add dark mode","description":"Please add it","postType":"feature_request","submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12","attachmentIds":[11]}
+```
+Sample Response:
+```json
+{"status":"success","message":"Post created successfully","data":{"id":102}}
+```
+
+### POST /public/:subdomain/attachments
+Upload a photo/video from the public board (only when the workspace's plan allows attachments; `402` otherwise). `multipart/form-data` with a `file` field. Returns an attachment `id` to pass in the feedback body's `attachmentIds`.
+Sample Body (multipart/form-data):
+```txt
+file: <binary image or video>
+lg: en
+```
+Sample Response:
+```json
+{"status":"success","message":"Attachment uploaded","data":{"id":12,"kind":"video","url":"uploads/attachments/att-1712-efgh.mp4","mime_type":"video/mp4","size_bytes":4210233}}
+```
+
+### POST /public/:subdomain/posts/:postId/vote
+Toggle an upvote. Anonymous identity comes from `guestId` (a persistent per-browser id), or the Bearer token when logged in.
+Sample Body:
+```json
+{"lg":"en","guestId":"fb_guest_ab12"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Vote updated","data":{"voted":true,"vote_count":13}}
+```
+
+### POST /public/:subdomain/posts/:postId/comments
+Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer).
+Sample Body:
+```json
+{"lg":"en","body":"Great idea","parentCommentId":null,"submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Comment created successfully","data":{"id":402}}
+```
+
+### PUT /public/:subdomain/posts/:postId · DELETE /public/:subdomain/posts/:postId
+Edit / delete YOUR OWN post — login required (Bearer); rejected unless `author_id === your id` (`not_your_content`).
+Sample Body (PUT):
+```json
+{"lg":"en","title":"Add dark mode (updated)","description":"..."}
+```
+Sample Response:
+```json
+{"status":"success","message":"Post updated successfully"}
+```
+
+### PUT /public/:subdomain/comments/:commentId · DELETE /public/:subdomain/comments/:commentId
+Edit / delete YOUR OWN comment — login required (Bearer), same ownership rule.
+Sample Response:
+```json
+{"status":"success","message":"Comment updated successfully"}
+```
+
+### POST /public/:subdomain/roadmap
+Public roadmap (columns + their items). Read-only.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Roadmap retrieved successfully","data":{"columns":[{"id":601,"name":"Planned","column_key":"planned","items":[{"post_id":101,"title":"Add dark mode","vote_count":12}]}]}}
+```
+
+### POST /public/:subdomain/changelog · POST /public/:subdomain/changelog/:changelogId
+Public changelog list / single published entry.
+Sample Body:
+```json
+{"lg":"en","paginationData":{"itemsPerPage":10,"currentPageNumber":0,"sortOrder":"desc","filterBy":""}}
+```
+Sample Response:
+```json
+{"status":"success","message":"Changelog retrieved successfully","data":{"changelogs":[{"id":801,"title":"July 2026 Update","summary":"...","created_at":"2026-07-01T00:00:00.000Z"}],"total":12}}
+```
+
+---
+
+## 18) Admin (Platform) APIs
+
+Mounted at `/admin`. All routes except `/admin/auth/login` require an **admin** Bearer token (issued by `/admin/auth/login`; a JWT with `scope:'admin'`), distinct from tenant user tokens. Admins are a separate `admins` table.
+
+### POST /admin/auth/login
+Sample Body:
+```json
+{"lg":"en","userData":{"email":"admin@feedbase.app","password":"Test123!"}}
+```
+Sample Response:
+```json
+{"status":"success","message":"Admin logged in successfully","admin":{"token":"eyJ...","id":1,"fullName":"Platform Admin","email":"admin@feedbase.app"}}
+```
+
+### Remaining admin endpoints
+All take `{ "lg": "en", ... }` bodies and return the standard `{ status, message, data? }` shape.
+
+Platform overview:
+- `GET  /admin/overview` — platform-wide counts (tenants, users, posts, active subscriptions, redemptions).
+
+Workspaces (any tenant):
+- `GET    /admin/workspaces` · `GET /admin/workspaces/:id` — list / detail (name, subdomain, owner email, plan, counts).
+- `PUT    /admin/workspaces/:id` — update workspace fields.
+- `PUT    /admin/workspaces/:id/plan` — grant / comp / revoke a plan (comped: no Stripe subscription).
+- `DELETE /admin/workspaces/:id` — delete a workspace.
+- `GET    /admin/workspaces/:id/posts` — list a workspace's posts (moderation view).
+- `PUT    /admin/workspaces/:id/posts/:postId/status` · `.../pin` — moderate status (roadmap-synced) / pin.
+- `DELETE /admin/workspaces/:id/posts/:postId` — delete a post.
+- `GET    /admin/workspaces/:id/posts/:postId/comments` · `DELETE /admin/workspaces/:id/comments/:commentId` — view / delete comments (no editing).
+
+Users (across tenants):
+- `GET  /admin/users` — list/search.
+- `PUT  /admin/users/:id` — update (name/role/active).
+- `PUT  /admin/users/:id/password` — reset password.
+- `DELETE /admin/users/:id` — delete.
+
+Admins:
+- `GET  /admin/admins` · `POST /admin/admins` — list / create (bcrypt).
+- `PUT  /admin/admins/:id/active` — activate/deactivate (self-guarded).
+- `DELETE /admin/admins/:id` — delete.
+
+Promo codes:
+- `GET  /admin/promo-codes` · `POST /admin/promo-codes` — list / generate (percent-off → Stripe coupon + promotion code; free-plan → app record).
+- `PUT  /admin/promo-codes/:id/revoke` — deactivate.
+
+Offers (promotional plan prices):
+- `GET  /admin/offers` · `POST /admin/offers` — list / create (one active offer per plan, backed by a Stripe coupon).
+- `PUT  /admin/offers/:id/deactivate` — deactivate (deletes its coupon).
+
+---
+
 ## Enum Values
 
 ### Post Types
@@ -774,14 +1170,20 @@ Sample Response:
 - `planned`
 - `in_progress`
 - `completed`
-- `closed`
+- `rejected` — declined feedback (dashboard "All" + "Rejected" tabs; hidden from the public portal)
+- `closed` — legacy, not offered in the UI
 
-### Roles
-- `visitor`
-- `user`
-- `moderator`
-- `admin`
-- `owner`
+### Tenant Roles
+- `owner` — administers the workspace (team, billing, feedback deletion, submitter contact)
+- `user` — a workspace member
+
+The platform **admin** is NOT a tenant role — it's a separate identity in the `admins` table (see the Admin APIs).
+
+### Plans
+- `free` · `pro` · `business`
+
+### Billing Interval
+- `month` · `year` (yearly is 20% cheaper)
 
 ### Integration Types
 - `slack`
