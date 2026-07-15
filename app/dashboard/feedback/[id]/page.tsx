@@ -12,6 +12,7 @@ import {
   Pin,
   Lock,
   RotateCcw,
+  Ban,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -177,10 +178,17 @@ export default function PostDetailPage() {
 
   const handleStatusChange = async (status: PostStatus) => {
     if (!token || !post) return;
+    const wasRejected = post.status === "rejected";
     try {
       await postsApi.updateStatus(postId, status, token);
       setPost({ ...post, status });
-      toast.success(`Status set to ${status.replace("_", " ")}`);
+      toast.success(
+        status === "rejected"
+          ? "Feedback rejected"
+          : wasRejected && status === "open"
+            ? "Restored to open"
+            : `Status set to ${status.replace("_", " ")}`
+      );
     } catch {
       toast.error("Failed to update status");
     }
@@ -352,21 +360,31 @@ export default function PostDetailPage() {
                     Restore to open
                   </Button>
                 ) : (
-                  <Select
-                    value={post.status}
-                    onValueChange={(v) => handleStatusChange(v as PostStatus)}
-                  >
-                    <SelectTrigger className="w-[150px]">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {STATUS_OPTIONS.map((s) => (
-                        <SelectItem key={s} value={s}>
-                          {s.replace("_", " ")}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <Select
+                      value={post.status}
+                      onValueChange={(v) => handleStatusChange(v as PostStatus)}
+                    >
+                      <SelectTrigger className="w-[150px]">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {STATUS_OPTIONS.map((s) => (
+                          <SelectItem key={s} value={s}>
+                            {s.replace("_", " ")}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <Button
+                      variant="outline"
+                      className="text-[#c74959] hover:bg-[#c74959]/10 hover:text-[#c74959]"
+                      onClick={() => handleStatusChange("rejected")}
+                    >
+                      <Ban className="h-4 w-4" />
+                      Reject
+                    </Button>
+                  </div>
                 )}
               </div>
               <p className="mt-3 whitespace-pre-wrap text-[#1c0a0c]/70">
