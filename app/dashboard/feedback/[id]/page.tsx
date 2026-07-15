@@ -498,9 +498,9 @@ export default function PostDetailPage() {
               >
                 <Lock className="h-4 w-4 shrink-0 text-[#1c0a0c]/40" />
                 <span>
-                  <strong className="text-[#1c0a0c]/75">Upgrade to Pro</strong> to
-                  see who submitted this feedback and email them when it&apos;s
-                  implemented.
+                  <strong className="text-[#1c0a0c]/75">Upgrade to Pro</strong>{" "}
+                  to see who submitted this feedback and email them when
+                  it&apos;s implemented.
                 </span>
               </button>
             ) : null}
