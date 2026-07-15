@@ -441,7 +441,6 @@ export default function PostDetailPage() {
                 {post.status.replace("_", " ")}
               </Badge>
               <Badge variant="outline">{post.post_type.replace("_", " ")}</Badge>
-              <Badge variant="outline">Priority {post.priority}</Badge>
             </div>
 
             {/* Submitter contact + "implemented" notification (owner, Pro+). */}

@@ -38,7 +38,6 @@ const postSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters"),
   description: z.string().min(10, "Description must be at least 10 characters"),
   postType: z.enum(["feedback", "feature_request", "bug_report"]),
-  priority: z.number().min(1).max(5),
 });
 
 type PostFormValues = z.infer<typeof postSchema>;
@@ -65,7 +64,6 @@ export function EditPostDialog({
       title: post.title,
       description: post.description,
       postType: post.post_type,
-      priority: post.priority,
     },
   });
 
@@ -75,7 +73,6 @@ export function EditPostDialog({
         title: post.title,
         description: post.description,
         postType: post.post_type,
-        priority: post.priority,
       });
     }
   }, [open, post, form]);
@@ -134,7 +131,7 @@ export function EditPostDialog({
               )}
             />
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div>
               <FormField
                 control={form.control}
                 name="postType"
@@ -151,34 +148,6 @@ export function EditPostDialog({
                         <SelectItem value="feedback">💬 Feedback</SelectItem>
                         <SelectItem value="feature_request">✨ Feature Request</SelectItem>
                         <SelectItem value="bug_report">🐛 Bug Report</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="priority"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Priority</FormLabel>
-                    <Select
-                      onValueChange={(v) => field.onChange(parseInt(v))}
-                      value={field.value.toString()}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="1">1 - Low</SelectItem>
-                        <SelectItem value="2">2 - Medium</SelectItem>
-                        <SelectItem value="3">3 - High</SelectItem>
-                        <SelectItem value="4">4 - Urgent</SelectItem>
-                        <SelectItem value="5">5 - Critical</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
