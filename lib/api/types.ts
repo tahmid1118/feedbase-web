@@ -37,6 +37,17 @@ export interface PaginatedResponse<T> {
 export type PostType = "feedback" | "feature_request" | "bug_report";
 export type PostStatus = "open" | "planned" | "in_progress" | "completed" | "closed";
 
+/** A photo or short video attached to a feedback post (Pro+ workspaces). */
+export interface PostAttachment {
+  id: number;
+  kind: "image" | "video";
+  /** Backend-relative path — pass through resolveUploadUrl before rendering. */
+  url: string;
+  mime_type: string;
+  size_bytes?: number;
+  original_name?: string | null;
+}
+
 export interface Post {
   id: number;
   title: string;
@@ -54,6 +65,9 @@ export interface Post {
   is_pinned?: number;
   duplicate_of_post_id?: number | null;
   tags?: Tag[];
+  attachments?: PostAttachment[];
+  /** Present on board-list rows (count only, not the attachments themselves). */
+  attachment_count?: number;
   has_voted?: boolean;
   created_at?: string;
 }
@@ -64,6 +78,8 @@ export interface CreatePostData {
   postType: PostType;
   status?: PostStatus;
   priority?: number;
+  /** Ids of attachments uploaded via uploaderApi.uploadAttachment, to link. */
+  attachmentIds?: number[];
 }
 
 export interface PostListFilters {
@@ -289,6 +305,8 @@ export interface PlanLimits {
   customDomain: boolean;
   integrations: boolean;
   deleteFeedback: boolean;
+  /** May feedback posts carry photo/video attachments (Pro+). */
+  attachments: boolean;
   /** May the account be signed in on several devices/browsers/tabs at once. */
   multiDevice: boolean;
 }

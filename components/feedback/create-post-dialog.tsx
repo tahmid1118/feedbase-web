@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
-import { postsApi } from "@/lib/api";
+import Link from "next/link";
+import { postsApi, billingApi, uploaderApi } from "@/lib/api";
+import type { UploadedAttachment } from "@/lib/api/uploader";
+import { AttachmentPicker } from "@/components/feedback/attachment-picker";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -58,6 +61,30 @@ export function CreatePostDialog({
   const { data: session } = useSession();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [attachments, setAttachments] = useState<UploadedAttachment[]>([]);
+  // null = not yet known; gates the picker on the workspace plan (Pro+).
+  const [attachmentsAllowed, setAttachmentsAllowed] = useState<boolean | null>(
+    null
+  );
+
+  const token = session?.user?.accessToken;
+
+  // Learn the plan when the dialog opens, so the picker only appears on Pro+.
+  useEffect(() => {
+    if (!open || !token || attachmentsAllowed !== null) return;
+    let cancelled = false;
+    billingApi
+      .getStatus(token)
+      .then((res) => {
+        if (!cancelled) setAttachmentsAllowed(Boolean(res.data?.limits?.attachments));
+      })
+      .catch(() => {
+        if (!cancelled) setAttachmentsAllowed(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [open, token, attachmentsAllowed]);
 
   const form = useForm<PostFormValues>({
     resolver: zodResolver(postSchema),
@@ -77,9 +104,13 @@ export function CreatePostDialog({
 
     setIsSubmitting(true);
     try {
-      await postsApi.create(values, session.user.accessToken);
+      await postsApi.create(
+        { ...values, attachmentIds: attachments.map((a) => a.id) },
+        session.user.accessToken
+      );
       toast.success("Post created successfully!");
       form.reset();
+      setAttachments([]);
       onOpenChange(false);
       onCreated?.();
       router.refresh();
@@ -187,6 +218,29 @@ export function CreatePostDialog({
                 )}
               />
             </div>
+
+            {attachmentsAllowed && (
+              <div className="space-y-2">
+                <FormLabel>Attachments</FormLabel>
+                <AttachmentPicker
+                  value={attachments}
+                  onChange={setAttachments}
+                  upload={(file) => uploaderApi.uploadAttachment(file, token!)}
+                />
+              </div>
+            )}
+            {attachmentsAllowed === false && (
+              <p className="text-xs text-[#1c0a0c]/50">
+                Want to attach screenshots or a screen recording?{" "}
+                <Link
+                  href="/dashboard/settings?tab=billing"
+                  className="font-medium text-[#c74959] hover:underline"
+                >
+                  Upgrade to Pro
+                </Link>
+                .
+              </p>
+            )}
 
             <div className="flex justify-end gap-3">
               <Button

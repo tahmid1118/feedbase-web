@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Paperclip } from "lucide-react";
 import { publicApi, normalizeBoardSort } from "@/lib/api/public";
 import { Badge } from "@/components/ui/badge";
 import { FeedbackSubmit } from "@/components/portal/feedback-submit";
@@ -50,7 +50,11 @@ export default async function PortalBoardPage({
             Share an idea or report an issue — and see what&apos;s planned.
           </p>
         </div>
-        <FeedbackSubmit tenant={decoded} brand={brand} />
+        <FeedbackSubmit
+          tenant={decoded}
+          brand={brand}
+          attachmentsEnabled={Boolean(info?.attachments_enabled)}
+        />
       </div>
 
       {posts.length === 0 ? (
@@ -105,6 +109,12 @@ export default async function PortalBoardPage({
                       <MessageSquare className="h-3 w-3" />
                       {post.comment_count} comments
                     </span>
+                    {(post.attachment_count ?? 0) > 0 && (
+                      <span className="flex items-center gap-1">
+                        <Paperclip className="h-3 w-3" />
+                        {post.attachment_count}
+                      </span>
+                    )}
                     {post.created_at && (
                       <LocalTime date={post.created_at} relative />
                     )}

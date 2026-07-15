@@ -31,6 +31,8 @@ export interface PublicTenant {
   custom_domain?: string | null;
   branding_logo_url?: string | null;
   branding_primary_color?: string | null;
+  /** Whether this workspace's plan (Pro+) allows photo/video on feedback. */
+  attachments_enabled?: boolean;
 }
 
 export interface PublicPostDetail extends Post {

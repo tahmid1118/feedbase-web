@@ -10,6 +10,7 @@ import {
   Pin,
   GitBranch,
   ArrowUpDown,
+  Paperclip,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -508,6 +509,12 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                         <MessageSquare className="h-3 w-3" />
                         {post.comment_count} comments
                       </span>
+                      {(post.attachment_count ?? 0) > 0 && (
+                        <span className="flex items-center gap-1">
+                          <Paperclip className="h-3 w-3" />
+                          {post.attachment_count}
+                        </span>
+                      )}
                       <span className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
                         by {post.author_name}

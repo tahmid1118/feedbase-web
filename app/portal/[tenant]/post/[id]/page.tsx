@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PortalComments } from "@/components/portal/portal-comments";
 import { SharePost } from "@/components/portal/share-post";
+import { AttachmentGallery } from "@/components/feedback/attachment-gallery";
 import { PostOwnerActions } from "@/components/portal/post-owner-actions";
 import { LocalTime } from "@/components/local-time";
 import { resolveUploadUrl } from "@/lib/avatar";
@@ -149,6 +150,12 @@ export default async function PortalPostPage({
             <p className="whitespace-pre-wrap text-[#1c0a0c]/70">
               {post.description}
             </p>
+
+            {post.attachments && post.attachments.length > 0 && (
+              <div className="mt-4">
+                <AttachmentGallery attachments={post.attachments} />
+              </div>
+            )}
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">
               <span className="flex items-center gap-1">

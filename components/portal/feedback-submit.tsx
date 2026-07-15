@@ -8,6 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { getGuestId } from "@/lib/portal/guest";
+import { uploaderApi } from "@/lib/api";
+import type { UploadedAttachment } from "@/lib/api/uploader";
+import { AttachmentPicker } from "@/components/feedback/attachment-picker";
 import {
   Dialog,
   DialogContent,
@@ -36,9 +39,12 @@ const TYPES = [
 export function FeedbackSubmit({
   tenant,
   brand,
+  attachmentsEnabled = false,
 }: {
   tenant: string;
   brand: string;
+  /** Pro+ workspaces let visitors attach a photo or short video. */
+  attachmentsEnabled?: boolean;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -51,6 +57,7 @@ export function FeedbackSubmit({
   const [postType, setPostType] = useState("feedback");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [attachments, setAttachments] = useState<UploadedAttachment[]>([]);
 
   const reset = () => {
     setTitle("");
@@ -58,6 +65,7 @@ export function FeedbackSubmit({
     setPostType("feedback");
     setName("");
     setEmail("");
+    setAttachments([]);
     setError(null);
     setDone(false);
   };
@@ -85,6 +93,7 @@ export function FeedbackSubmit({
             submitterName: name.trim() || undefined,
             submitterEmail: email.trim() || undefined,
             guestId: getGuestId() || undefined,
+            attachmentIds: attachments.map((a) => a.id),
           }),
         }
       );
@@ -197,6 +206,25 @@ export function FeedbackSubmit({
                     className="min-h-[110px]"
                   />
                 </div>
+
+                {attachmentsEnabled && (
+                  <div className="space-y-2">
+                    <Label>
+                      Attachments{" "}
+                      <span className="font-normal text-[#1c0a0c]/40">
+                        (optional)
+                      </span>
+                    </Label>
+                    <AttachmentPicker
+                      value={attachments}
+                      onChange={setAttachments}
+                      brand={brand}
+                      upload={(file) =>
+                        uploaderApi.uploadPublicAttachment(file, tenant)
+                      }
+                    />
+                  </div>
+                )}
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">

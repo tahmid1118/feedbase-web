@@ -62,6 +62,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { PostTags } from "@/components/feedback/post-tags";
 import { CommentThread } from "@/components/feedback/comment-thread";
+import { AttachmentGallery } from "@/components/feedback/attachment-gallery";
 import { DuplicateManager } from "@/components/feedback/duplicate-manager";
 import { toast } from "sonner";
 
@@ -356,6 +357,11 @@ export default function PostDetailPage() {
               <p className="mt-3 whitespace-pre-wrap text-[#1c0a0c]/70">
                 {post.description}
               </p>
+              {post.attachments && post.attachments.length > 0 && (
+                <div className="mt-4">
+                  <AttachmentGallery attachments={post.attachments} />
+                </div>
+              )}
             </div>
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">

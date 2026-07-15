@@ -139,7 +139,9 @@ Version 1.1
                           upvoted, or least upvoted (pinned posts stay on top).
     FR-P2  Submit ....... Any visitor may create a post (title required; details
                           and type optional), anonymously or with an optional
-                          name/email for follow-up.
+                          name/email for follow-up. On workspaces whose plan
+                          includes attachments (see FR-A1), the submit form also
+                          lets the visitor attach photos or a short video.
     FR-P3  Vote ......... Any visitor may upvote/remove an upvote. Voting is
                           limited to one vote per browser per post via a
                           persistent cookie identifier; no account required.
@@ -162,6 +164,18 @@ Version 1.1
     FR-P7  Own content .. A logged-in user may edit or delete their own posts and
                           comments from the public portal (owner-only; enforced
                           server-side). Guests cannot edit/delete.
+    FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
+                          FR-B5), a feedback post may carry up to three photo or
+                          short-video attachments. Attaching is offered on both
+                          the public submit form and the dashboard's create-post
+                          form; on plans without it the control is hidden and an
+                          upgrade prompt is shown. Images are limited to 10MB and
+                          video to 50MB each (duration is bounded by file size).
+                          Attachments display on the post detail — photos in a
+                          thumbnail grid that opens full size, video inline with
+                          playback controls — and posts with media are flagged on
+                          the board. Uploads are validated for type and size and
+                          gated by plan on the server, independently of the UI.
     - The public portal exposes the feedback board only. Roadmap and changelog
       are NOT public (no nav entry; their portal routes redirect to the board) —
       they are managed in the admin dashboard.
@@ -251,9 +265,10 @@ Version 1.1
     FR-B4  Sync ......... A Stripe webhook keeps the workspace plan and status in
                           sync with the subscription lifecycle.
     FR-B5  Enforcement .. Paid capabilities are gated by plan: a Free workspace
-                          cannot set a custom domain, create integrations, or
-                          delete feedback posts, and is prompted to upgrade.
-                          Deleting feedback additionally requires the owner role.
+                          cannot set a custom domain, create integrations, delete
+                          feedback posts, or attach photos/video to feedback, and
+                          is prompted to upgrade. Deleting feedback additionally
+                          requires the owner role.
                           Team size is capped by the plan's seat limit. CONCURRENT
                           DEVICES are also a plan capability: Free and Pro allow a
                           single active session at a time, while Business allows
@@ -333,7 +348,8 @@ Version 1.1
 --------------------------------------------------------------------------------
 
     tenants, users (role owner/user), invitations, posts (with guest submitter
-    fields), votes (supporting guest voting), comments, tags, post_tags,
+    fields), post_attachments (photo/video on feedback, Pro+), votes
+    (supporting guest voting), comments, tags, post_tags,
     roadmap_columns, roadmap_items, changelog_entries, notifications, api_keys,
     audit_logs, integrations, oauth_accounts. All feature tables are scoped by
     tenant. user_sessions records the active device sessions behind an account
