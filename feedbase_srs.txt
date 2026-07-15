@@ -130,6 +130,15 @@ Version 1.1
                           seeded with the default, status-linked roadmap columns.
                           Each workspace subdomain must be unique; the create
                           forms validate availability live before submission.
+    FR-W2  Workspace .... The number of workspaces an account may OWN and be a
+           limits ....... MEMBER of is capped by the account's tier — the highest
+                          plan among the workspaces it owns (an account that owns
+                          none is treated as Free). Free may own 1 and join 1, Pro
+                          own 3 and join 3, and Business unlimited of each. A first
+                          workspace is always allowed (an account owns none yet);
+                          beyond the cap, creating or accepting an invitation is
+                          refused with an upgrade prompt. To raise the cap, upgrade
+                          a workspace you own to Pro or Business.
 
 3.2 Public Portal (Visitors)
     The portal is the primary channel for collecting feedback.
@@ -277,7 +286,9 @@ Version 1.1
                           as members BESIDES the owner: Free allows the owner plus
                           2 team members, Pro the owner plus 5, and Business an
                           unlimited team. The cap is enforced when an invitation is
-                          sent (current members + outstanding invites). CONCURRENT
+                          sent (current members + outstanding invites). The number
+                          of workspaces an account may own and join is likewise
+                          tier-capped (see FR-W2). CONCURRENT
                           DEVICES are also a plan capability: Free and Pro allow a
                           single active session at a time, while Business allows
                           unlimited devices, browsers and tabs (see FR-S1, FR-S2).

@@ -13,8 +13,8 @@ import type {
   UserRole,
   PaginationData,
   PaginatedResponse,
-  Workspace,
   WorkspaceAuth,
+  WorkspacesResponse,
 } from "./types";
 
 export const usersApi = {
@@ -62,7 +62,7 @@ export const usersApi = {
 
   // --- Workspaces (multi-tenant per account) ---
   getWorkspaces: (token: string) =>
-    apiClient.get<ApiResponse<{ workspaces: Workspace[] }>>(
+    apiClient.get<ApiResponse<WorkspacesResponse>>(
       "/users/workspaces?lg=en",
       { token }
     ),

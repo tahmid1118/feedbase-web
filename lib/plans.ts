@@ -24,6 +24,7 @@ export const PLANS: PlanDisplay[] = [
     priceSuffix: "/mo",
     blurb: "Everything you need to start collecting feedback.",
     features: [
+      "1 workspace",
       "Public feedback board",
       "Roadmap & changelog",
       "Unlimited posts & votes",
@@ -39,6 +40,7 @@ export const PLANS: PlanDisplay[] = [
     blurb: "For growing teams that need their own brand and tools.",
     features: [
       "Everything in Free",
+      "Up to 3 workspaces",
       "Custom domain",
       "Integrations",
       "Photo & video on feedback",
@@ -55,6 +57,7 @@ export const PLANS: PlanDisplay[] = [
     blurb: "For established products that need to scale support.",
     features: [
       "Everything in Pro",
+      "Unlimited workspaces",
       "Unlimited team members",
       "Sign in on multiple devices",
       "Priority support",

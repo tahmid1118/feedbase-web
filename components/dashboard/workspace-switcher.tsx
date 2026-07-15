@@ -1,9 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Check, ChevronsUpDown, Plus, Loader2 } from "lucide-react";
-import { usersApi, type Workspace, type WorkspaceAuth } from "@/lib/api";
+import { Check, ChevronsUpDown, Plus, Loader2, Lock } from "lucide-react";
+import {
+  usersApi,
+  ApiError,
+  type Workspace,
+  type WorkspaceAuth,
+  type WorkspaceLimits,
+} from "@/lib/api";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
 import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import {
@@ -51,9 +58,11 @@ function Tile({ name, color }: { name: string; color?: string | null }) {
 
 export function WorkspaceSwitcher() {
   const { data: session, update } = useSession();
+  const router = useRouter();
   const token = session?.user?.accessToken;
 
   const [workspaces, setWorkspaces] = useState<Workspace[]>([]);
+  const [limits, setLimits] = useState<WorkspaceLimits | null>(null);
   const [switching, setSwitching] = useState(false);
 
   const [createOpen, setCreateOpen] = useState(false);
@@ -70,7 +79,10 @@ export function WorkspaceSwitcher() {
     if (!token) return;
     usersApi
       .getWorkspaces(token)
-      .then((res) => setWorkspaces(res.data?.workspaces ?? []))
+      .then((res) => {
+        setWorkspaces(res.data?.workspaces ?? []);
+        setLimits(res.data?.limits ?? null);
+      })
       .catch(() => {});
   }, [token]);
 
@@ -153,6 +165,19 @@ export function WorkspaceSwitcher() {
       }
     } catch (error) {
       setCreating(false);
+      // 402 = the account's owned-workspace cap (e.g. reached between load and
+      // submit, or from another tab) — offer the upgrade path.
+      if (error instanceof ApiError && error.status === 402) {
+        setCreateOpen(false);
+        toast("You've reached your plan's workspace limit", {
+          description: error.message,
+          action: {
+            label: "Upgrade",
+            onClick: () => router.push("/dashboard/settings?tab=billing"),
+          },
+        });
+        return;
+      }
       toast.error(
         error instanceof Error ? error.message : "Failed to create workspace"
       );
@@ -214,13 +239,31 @@ export function WorkspaceSwitcher() {
           )}
 
           <DropdownMenuSeparator />
-          <DropdownMenuItem
-            onClick={() => setCreateOpen(true)}
-            className="gap-2 font-medium text-[#c74959]"
-          >
-            <Plus className="h-4 w-4" />
-            Add Workspace
-          </DropdownMenuItem>
+          {limits && !limits.canCreate ? (
+            // At the account's owned-workspace cap → route to Billing to upgrade.
+            <DropdownMenuItem
+              onClick={() =>
+                router.push("/dashboard/settings?tab=billing")
+              }
+              className="gap-2"
+            >
+              <Lock className="h-4 w-4 text-[#1c0a0c]/40" />
+              <span className="min-w-0 flex-1">
+                <span className="block text-[#1c0a0c]/70">Add Workspace</span>
+                <span className="block text-[11px] text-[#1c0a0c]/50">
+                  Plan limit reached — upgrade to add more
+                </span>
+              </span>
+            </DropdownMenuItem>
+          ) : (
+            <DropdownMenuItem
+              onClick={() => setCreateOpen(true)}
+              className="gap-2 font-medium text-[#c74959]"
+            >
+              <Plus className="h-4 w-4" />
+              Add Workspace
+            </DropdownMenuItem>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
 

@@ -225,6 +225,25 @@ export interface Workspace {
   current: boolean;
 }
 
+/**
+ * Per-account workspace caps, governed by the account's tier (the best plan
+ * among the workspaces it owns). `ownLimit`/`joinLimit` are null when unlimited.
+ */
+export interface WorkspaceLimits {
+  tier: PlanKey;
+  ownedCount: number;
+  memberCount: number;
+  ownLimit: number | null;
+  joinLimit: number | null;
+  canCreate: boolean;
+  canJoin: boolean;
+}
+
+export interface WorkspacesResponse {
+  workspaces: Workspace[];
+  limits: WorkspaceLimits;
+}
+
 /** What deleting the account would destroy. */
 export interface AccountDeletionSummary {
   email: string;
