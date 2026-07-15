@@ -212,13 +212,13 @@ Version 1.1
                           otherwise (see FR-B5).
     FR-F3  Status ....... Set status: open, planned, in progress, or completed
                           (the "closed" status is not offered in the picker).
-    FR-F8  Reject ....... From the Open tab the team can REJECT feedback it has
-                          declined (alongside "Send to Roadmap", as a bulk action
-                          on selected posts). Rejected feedback moves to a
-                          dedicated "Rejected" tab and is hidden from the "All"
-                          tab and from the public portal entirely. From the
-                          Rejected tab (or a rejected post's detail view) it can
-                          be RESTORED to Open.
+    FR-F8  Reject ....... The team can REJECT feedback it has declined — as a
+                          bulk action on the Open tab (alongside "Send to
+                          Roadmap") or from a post's detail view. Rejected
+                          feedback appears in its own "Rejected" tab and in the
+                          "All" tab, but is hidden from the public portal
+                          entirely. From the Rejected tab (or the post's detail
+                          view) it can be RESTORED to Open.
     FR-F4  Pin .......... Pin important posts to the top.
     FR-F5  Tags ......... Assign or remove tags.
     FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.
