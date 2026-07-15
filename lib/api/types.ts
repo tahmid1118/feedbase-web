@@ -62,7 +62,10 @@ export interface Post {
   status: PostStatus;
   priority: number;
   author_name: string;
+  /** Submitter email — only populated for Pro+ workspaces (contactSubmitter). */
   author_email: string;
+  /** When the "your feedback is implemented" email was sent (Pro+), else null. */
+  implemented_notified_at?: string | null;
   author_id?: number | null;
   author_avatar?: string | null;
   guest_id?: string | null;
@@ -332,6 +335,8 @@ export interface PlanLimits {
   deleteFeedback: boolean;
   /** May feedback posts carry photo/video attachments (Pro+). */
   attachments: boolean;
+  /** May the owner see a submitter's email and notify them on completion (Pro+). */
+  contactSubmitter: boolean;
   /** May the account be signed in on several devices/browsers/tabs at once. */
   multiDevice: boolean;
 }

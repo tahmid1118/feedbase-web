@@ -219,6 +219,15 @@ Version 1.1
                           "All" tab, but is hidden from the public portal
                           entirely. From the Rejected tab (or the post's detail
                           view) it can be RESTORED to Open.
+    FR-F9  Contact ...... On a paid plan (Pro or higher) the workspace OWNER can
+           submitter ..... see the email address of the person who submitted a
+                          piece of feedback, and — once the feedback is marked
+                          COMPLETED — send them an automated "your feedback is
+                          implemented" email. The send is recorded and can be
+                          re-sent. On the Free plan the email is not shown and the
+                          action is unavailable (an upgrade prompt is shown);
+                          enforced server-side. The email address is never exposed
+                          on the public portal.
     FR-F4  Pin .......... Pin important posts to the top.
     FR-F5  Tags ......... Assign or remove tags.
     FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.

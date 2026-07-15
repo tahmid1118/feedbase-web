@@ -13,6 +13,9 @@ import {
   Lock,
   RotateCcw,
   Ban,
+  Mail,
+  Send,
+  Loader2,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -100,19 +103,47 @@ export default function PostDetailPage() {
   const [publicUrl, setPublicUrl] = useState<string | null>(null);
   // Deleting feedback is a paid capability (Pro+); gate the button on the plan.
   const [canDeleteFeedback, setCanDeleteFeedback] = useState(false);
+  // Seeing the submitter's email + notifying them on completion is Pro+ too.
+  const [canContactSubmitter, setCanContactSubmitter] = useState(false);
+  const [notifying, setNotifying] = useState(false);
+  // Local override so the "notified" state updates immediately after a send.
+  const [notifiedOverride, setNotifiedOverride] = useState<string | null>(null);
 
   const postId = parseInt(params.id as string);
 
-  // Fetch the plan's delete-feedback capability (owner-only + Pro or higher).
+  // Fetch the plan's owner-only capabilities (Pro or higher).
   useEffect(() => {
     if (!token || !isOwner) return;
     billingApi
       .getStatus(token)
-      .then((res) =>
-        setCanDeleteFeedback(Boolean(res.data?.limits?.deleteFeedback))
-      )
+      .then((res) => {
+        setCanDeleteFeedback(Boolean(res.data?.limits?.deleteFeedback));
+        setCanContactSubmitter(Boolean(res.data?.limits?.contactSubmitter));
+      })
       .catch(() => {});
   }, [token, isOwner]);
+
+  const notifiedAt = notifiedOverride ?? post?.implemented_notified_at ?? null;
+
+  const handleNotifyImplemented = async () => {
+    if (!token || !post) return;
+    setNotifying(true);
+    try {
+      const res = await postsApi.notifyImplemented(post.id, token);
+      setNotifiedOverride(new Date().toISOString());
+      toast.success(
+        res.data?.emailSent
+          ? "The submitter was emailed that their feedback is implemented."
+          : "Recorded — no mail provider is configured, so nothing was sent."
+      );
+    } catch (e) {
+      toast.error(
+        (e as Error)?.message || "Failed to notify the submitter."
+      );
+    } finally {
+      setNotifying(false);
+    }
+  };
 
   // Resolve the tenant once to build the shareable public link for this post.
   useEffect(() => {
@@ -412,6 +443,67 @@ export default function PostDetailPage() {
               <Badge variant="outline">{post.post_type.replace("_", " ")}</Badge>
               <Badge variant="outline">Priority {post.priority}</Badge>
             </div>
+
+            {/* Submitter contact + "implemented" notification (owner, Pro+). */}
+            {isOwner && canContactSubmitter && post.author_email ? (
+              <div className="rounded-lg border border-[#e399a3]/25 bg-[#fdf8f9] p-4">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
+                      Submitter
+                    </p>
+                    <p className="mt-1 flex items-center gap-2 text-sm text-[#1c0a0c]">
+                      <Mail className="h-4 w-4 shrink-0 text-[#c74959]" />
+                      <a
+                        href={`mailto:${post.author_email}`}
+                        className="truncate font-medium hover:underline"
+                      >
+                        {post.author_email}
+                      </a>
+                    </p>
+                    {notifiedAt ? (
+                      <p className="mt-1.5 text-xs font-medium text-green-700">
+                        ✓ Implemented email sent{" "}
+                        {new Date(notifiedAt).toLocaleDateString()}
+                      </p>
+                    ) : null}
+                  </div>
+                  {post.status === "completed" ? (
+                    <Button
+                      onClick={handleNotifyImplemented}
+                      disabled={notifying}
+                      className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                    >
+                      {notifying ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Send className="h-4 w-4" />
+                      )}
+                      {notifiedAt ? "Resend implemented email" : "Notify: implemented"}
+                    </Button>
+                  ) : null}
+                </div>
+                {post.status !== "completed" ? (
+                  <p className="mt-2 text-xs text-[#1c0a0c]/50">
+                    Mark this feedback <strong>Completed</strong> to email the
+                    submitter that it&apos;s implemented.
+                  </p>
+                ) : null}
+              </div>
+            ) : isOwner && !canContactSubmitter ? (
+              <button
+                type="button"
+                onClick={() => router.push("/dashboard/settings?tab=billing")}
+                className="flex w-full items-center gap-2 rounded-lg border border-[#e399a3]/30 bg-[#fdf8f9] p-3 text-left text-sm text-[#1c0a0c]/60 transition-colors hover:border-[#c74959]/40 hover:text-[#c74959]"
+              >
+                <Lock className="h-4 w-4 shrink-0 text-[#1c0a0c]/40" />
+                <span>
+                  <strong className="text-[#1c0a0c]/75">Upgrade to Pro</strong> to
+                  see who submitted this feedback and email them when it&apos;s
+                  implemented.
+                </span>
+              </button>
+            ) : null}
 
             <div className="border-t border-[#e399a3]/20 pt-4">
               <p className="mb-2 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">

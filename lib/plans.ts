@@ -52,6 +52,7 @@ export const PLANS: PlanDisplay[] = [
       "Custom domain",
       "Integrations",
       "Photo & video on feedback",
+      "Contact & notify feedback submitters",
       "Delete feedback posts",
       "Up to 5 team members",
       "One active session at a time",

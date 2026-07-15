@@ -57,6 +57,17 @@ export const postsApi = {
       { token }
     ),
 
+  /**
+   * Email the submitter that their feedback is implemented (Pro+, owner-only,
+   * post must be completed). Records the send server-side.
+   */
+  notifyImplemented: (id: number, token: string) =>
+    apiClient.post<ApiResponse<{ emailSent: boolean }>>(
+      `/posts/${id}/notify-implemented`,
+      {},
+      { token }
+    ),
+
   /** Pin or unpin a post. Omit `isPinned` to toggle the current value. */
   pin: (id: number, token: string, isPinned?: boolean) =>
     apiClient.patch<ApiResponse<{ id: number; isPinned: boolean }>>(
