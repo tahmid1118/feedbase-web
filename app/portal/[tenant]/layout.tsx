@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { publicApi } from "@/lib/api/public";
 import { PortalLogo } from "@/components/portal/portal-logo";
+import { PortalNav } from "@/components/portal/portal-nav";
 import { resolveUploadUrl } from "@/lib/avatar";
 
 const DEFAULT_BRAND = "#c74959";
@@ -30,7 +31,10 @@ export default async function PortalLayout({
     <div className="min-h-screen bg-[#fdf8f9]">
       <header className="border-b border-black/5 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-3">
+          <Link
+            href={`/portal/${decodeURIComponent(tenant)}`}
+            className="flex items-center gap-3"
+          >
             <PortalLogo
               logoUrl={resolveUploadUrl(info.branding_logo_url)}
               name={info.name}
@@ -40,6 +44,7 @@ export default async function PortalLayout({
               {info.name}
             </span>
           </Link>
+          <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
         </div>
       </header>
 

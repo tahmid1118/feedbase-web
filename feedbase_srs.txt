@@ -193,9 +193,10 @@ Version 1.1
                           playback controls — and posts with media are flagged on
                           the board. Uploads are validated for type and size and
                           gated by plan on the server, independently of the UI.
-    - The public portal exposes the feedback board only. Roadmap and changelog
-      are NOT public (no nav entry; their portal routes redirect to the board) —
-      they are managed in the admin dashboard.
+    - The public portal exposes the feedback board and a public CHANGELOG (a
+      "Changelog" tab in the portal nav, listing only PUBLISHED entries). The
+      roadmap is NOT public — its portal route redirects to the board and it is
+      managed in the admin dashboard.
     - Public responses expose only safe fields; author and guest emails are
       never returned on public routes.
 
