@@ -84,7 +84,7 @@ export function Header({ user }: HeaderProps) {
             <Link href="/dashboard/notifications" aria-label="Notifications">
               <Bell className="h-5 w-5" />
               {unreadCount > 0 && (
-                <span className="absolute right-1 top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#c74959] text-[10px] font-bold text-white">
+                <span className="pointer-events-none absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#c74959] px-1 text-[10px] font-bold leading-none text-white ring-2 ring-white">
                   {unreadCount > 9 ? "9+" : unreadCount}
                 </span>
               )}
