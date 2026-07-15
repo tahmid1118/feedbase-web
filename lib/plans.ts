@@ -43,7 +43,7 @@ export const PLANS: PlanDisplay[] = [
       "Integrations",
       "Photo & video on feedback",
       "Delete feedback posts",
-      "Up to 10 team members",
+      "Up to 5 team members",
       "One active session at a time",
     ],
   },

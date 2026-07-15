@@ -273,7 +273,11 @@ Version 1.1
                           feedback posts, or attach photos/video to feedback, and
                           is prompted to upgrade. Deleting feedback additionally
                           requires the owner role.
-                          Team size is capped by the plan's seat limit. CONCURRENT
+                          Team size is capped by the plan's seat limit, counted
+                          as members BESIDES the owner: Free allows the owner plus
+                          2 team members, Pro the owner plus 5, and Business an
+                          unlimited team. The cap is enforced when an invitation is
+                          sent (current members + outstanding invites). CONCURRENT
                           DEVICES are also a plan capability: Free and Pro allow a
                           single active session at a time, while Business allows
                           unlimited devices, browsers and tabs (see FR-S1, FR-S2).
