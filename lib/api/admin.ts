@@ -173,8 +173,14 @@ export const adminApi = {
     id: number,
     data: { name?: string; isActive?: boolean }
   ) => request(`/workspaces/${id}`, "PUT", token, data),
-  setWorkspacePlan: (token: string | undefined, id: number, plan: string) =>
-    request(`/workspaces/${id}/plan`, "PUT", token, { plan }),
+  setWorkspacePlan: (
+    token: string | undefined,
+    id: number,
+    plan: string,
+    // Comp duration: omit / 0 = lifetime, else the comp expires after N months.
+    durationMonths?: number
+  ) =>
+    request(`/workspaces/${id}/plan`, "PUT", token, { plan, durationMonths }),
   deleteWorkspace: (token: string | undefined, id: number) =>
     request(`/workspaces/${id}`, "DELETE", token),
 

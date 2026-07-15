@@ -32,12 +32,28 @@ import { toast } from "sonner";
 
 const PLANS = ["free", "pro", "business"];
 
+// Comp duration choices offered when granting a paid plan. "0" months = lifetime
+// (never expires); a positive value expires the comp after that many months.
+const DURATIONS = [
+  { value: "0", label: "Lifetime (never expires)" },
+  { value: "1", label: "1 month" },
+  { value: "3", label: "3 months" },
+  { value: "6", label: "6 months" },
+  { value: "12", label: "12 months" },
+];
+
 export default function AdminWorkspacesPage() {
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [rows, setRows] = useState<AdminWorkspace[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  // Pending paid-plan grant awaiting a duration choice in the dialog.
+  const [pendingGrant, setPendingGrant] = useState<{
+    workspace: AdminWorkspace;
+    plan: string;
+  } | null>(null);
+  const [grantMonths, setGrantMonths] = useState("0");
 
   const load = useCallback(
     async (q?: string) => {
@@ -57,9 +73,21 @@ export default function AdminWorkspacesPage() {
     load();
   }, [load]);
 
-  const changePlan = async (w: AdminWorkspace, plan: string) => {
+  // Revoking to free applies immediately; granting a paid plan opens the
+  // duration dialog first (lifetime vs N-month comp).
+  const selectPlan = (w: AdminWorkspace, plan: string) => {
+    if (plan === w.plan_name) return;
+    if (plan === "free") {
+      changePlan(w, plan);
+    } else {
+      setGrantMonths("0");
+      setPendingGrant({ workspace: w, plan });
+    }
+  };
+
+  const changePlan = async (w: AdminWorkspace, plan: string, durationMonths?: number) => {
     if (!token || plan === w.plan_name) return;
-    const res = await adminApi.setWorkspacePlan(token, w.id, plan);
+    const res = await adminApi.setWorkspacePlan(token, w.id, plan, durationMonths);
     if (res.ok) {
       setRows((prev) =>
         prev.map((r) =>
@@ -68,8 +96,17 @@ export default function AdminWorkspacesPage() {
             : r
         )
       );
-      toast.success(`Plan set to ${plan}`);
+      const suffix =
+        plan === "free" || !durationMonths ? "" : ` for ${durationMonths} month${durationMonths === 1 ? "" : "s"}`;
+      toast.success(`Plan set to ${plan}${suffix}`);
     } else toast.error(res.message || "Failed to update plan");
+  };
+
+  const confirmGrant = async () => {
+    if (!pendingGrant) return;
+    const months = Number(grantMonths);
+    await changePlan(pendingGrant.workspace, pendingGrant.plan, months > 0 ? months : undefined);
+    setPendingGrant(null);
   };
 
   const toggleActive = async (w: AdminWorkspace) => {
@@ -150,7 +187,7 @@ export default function AdminWorkspacesPage() {
                   <td className="px-4 py-3 text-[#1c0a0c]/70">{w.owner_email || "—"}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1.5">
-                      <Select value={w.plan_name} onValueChange={(v) => changePlan(w, v)}>
+                      <Select value={w.plan_name} onValueChange={(v) => selectPlan(w, v)}>
                         <SelectTrigger className="h-8 w-[120px] capitalize">
                           <SelectValue />
                         </SelectTrigger>
@@ -225,6 +262,46 @@ export default function AdminWorkspacesPage() {
           </table>
         )}
       </Card>
+
+      {/* Comp-duration picker shown when granting a paid plan. */}
+      <AlertDialog
+        open={pendingGrant !== null}
+        onOpenChange={(open) => {
+          if (!open) setPendingGrant(null);
+        }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle className="capitalize">
+              Grant {pendingGrant?.plan} to {pendingGrant?.workspace.name}
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              This comps the workspace onto {pendingGrant?.plan} at no charge (any
+              live Stripe subscription is cancelled). Choose how long the comp
+              lasts — after that it reverts to Free automatically.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-[#1c0a0c]/80">Duration</label>
+            <Select value={grantMonths} onValueChange={setGrantMonths}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {DURATIONS.map((d) => (
+                  <SelectItem key={d.value} value={d.value}>
+                    {d.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmGrant}>Grant plan</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
