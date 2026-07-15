@@ -18,7 +18,6 @@ export function BrandingSettings() {
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
-  const [primaryColor, setPrimaryColor] = useState("#c74959");
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -38,7 +37,6 @@ export function BrandingSettings() {
     setTenant(t);
     setName(t.name ?? "");
     setLogoUrl(t.branding_logo_url ?? "");
-    setPrimaryColor(t.branding_primary_color ?? "#c74959");
   };
 
   const handleLogoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -66,7 +64,6 @@ export function BrandingSettings() {
         {
           name: name.trim(),
           brandingLogoUrl: logoUrl.trim(),
-          brandingPrimaryColor: primaryColor,
         },
         token
       );
@@ -171,32 +168,6 @@ export function BrandingSettings() {
         <div className="space-y-2">
           <Label htmlFor="ws-subdomain">Subdomain</Label>
           <Input id="ws-subdomain" value={tenant.subdomain} disabled />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="ws-logo">Logo URL</Label>
-          <Input
-            id="ws-logo"
-            value={logoUrl}
-            onChange={(e) => setLogoUrl(e.target.value)}
-            placeholder="Upload above, or paste an image URL"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="ws-color">Primary color</Label>
-          <div className="flex items-center gap-3">
-            <input
-              id="ws-color"
-              type="color"
-              value={primaryColor}
-              onChange={(e) => setPrimaryColor(e.target.value)}
-              className="h-9 w-14 cursor-pointer rounded border border-[#e399a3]/30"
-            />
-            <Input
-              value={primaryColor}
-              onChange={(e) => setPrimaryColor(e.target.value)}
-              className="w-32"
-            />
-          </div>
         </div>
       </div>
 
