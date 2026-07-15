@@ -11,6 +11,8 @@ import {
   GitBranch,
   ArrowUpDown,
   Paperclip,
+  Ban,
+  RotateCcw,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -58,6 +60,7 @@ const STATUS_BADGE: Record<string, string> = {
   in_progress: "bg-yellow-100 text-yellow-700",
   completed: "bg-green-100 text-green-700",
   closed: "bg-gray-100 text-gray-700",
+  rejected: "bg-red-100 text-red-700",
 };
 
 const TYPE_ICON: Record<string, string> = {
@@ -93,6 +96,8 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   const [sendColumnId, setSendColumnId] = useState("");
   const [sendDate, setSendDate] = useState("");
   const [sending, setSending] = useState(false);
+  // Bulk reject (Open tab) / restore (Rejected tab).
+  const [statusBusy, setStatusBusy] = useState(false);
 
   const token = session?.user?.accessToken;
 
@@ -162,9 +167,9 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     loadRoadmap();
   }, [loadRoadmap]);
 
-  // Bulk selection only applies to the Open tab; clear it when leaving.
+  // Selection is per-tab — clear it whenever the tab changes.
   useEffect(() => {
-    if (status !== "open") setSelected(new Set());
+    setSelected(new Set());
   }, [status]);
 
   const onRoadmap = useMemo(
@@ -220,11 +225,16 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     );
   }, [posts, debouncedSearch]);
 
-  // --- Selection ---
-  const selectionEnabled = status === "open";
+  // --- Selection --- (Open tab → send-to-roadmap/reject; Rejected tab → restore)
+  const selectionEnabled = status === "open" || status === "rejected";
   const selectablePosts = useMemo(
-    () => visiblePosts.filter((p) => !onRoadmap.has(p.id)),
-    [visiblePosts, onRoadmap]
+    // On the Open tab, posts already on the roadmap can't be re-sent; on the
+    // Rejected tab everything is selectable.
+    () =>
+      status === "open"
+        ? visiblePosts.filter((p) => !onRoadmap.has(p.id))
+        : visiblePosts,
+    [status, visiblePosts, onRoadmap]
   );
   const allSelected =
     selectablePosts.length > 0 &&
@@ -298,6 +308,41 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     }
   };
 
+  // Bulk status change for the selected posts (reject → 'rejected', restore →
+  // 'open'). Both are reversible, so no confirm dialog.
+  const bulkSetStatus = async (
+    newStatus: PostStatus,
+    pastVerb: string
+  ) => {
+    if (!token || selected.size === 0) return;
+    const ids = [...selected];
+    setStatusBusy(true);
+    let ok = 0;
+    let fail = 0;
+    for (const id of ids) {
+      try {
+        await postsApi.updateStatus(id, newStatus, token);
+        ok++;
+      } catch {
+        fail++;
+      }
+    }
+    setStatusBusy(false);
+    clearSelection();
+    loadPosts(); // the posts leave this tab
+    if (ok > 0) {
+      toast.success(
+        `${pastVerb} ${ok} ${ok === 1 ? "post" : "posts"}` +
+          (fail ? ` · ${fail} failed` : "")
+      );
+    } else {
+      toast.error(`Failed to update ${ids.length === 1 ? "the post" : "posts"}.`);
+    }
+  };
+
+  const handleReject = () => bulkSetStatus("rejected", "Rejected");
+  const handleRestore = () => bulkSetStatus("open", "Restored");
+
   const selectedCount = selected.size;
   const sortedColumns = useMemo(
     () => [...columns].sort((a, b) => a.sort_order - b.sort_order),
@@ -309,7 +354,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <Tabs value={status} onValueChange={setStatus}>
           <TabsList className="border border-[#e399a3]/30 bg-white">
-            {["all", "open", "planned", "in_progress", "completed"].map((s) => (
+            {["all", "open", "planned", "in_progress", "completed", "rejected"].map((s) => (
               <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
                 {s === "all" ? "All" : s.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
               </TabsTrigger>
@@ -393,14 +438,38 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               <Button variant="ghost" size="sm" onClick={clearSelection}>
                 Clear
               </Button>
-              <Button
-                size="sm"
-                className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
-                onClick={() => setSendOpen(true)}
-              >
-                <GitBranch className="h-4 w-4" />
-                Send to Roadmap
-              </Button>
+              {status === "rejected" ? (
+                <Button
+                  size="sm"
+                  className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                  onClick={handleRestore}
+                  disabled={statusBusy}
+                >
+                  <RotateCcw className="h-4 w-4" />
+                  {statusBusy ? "Restoring…" : "Restore to Open"}
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleReject}
+                    disabled={statusBusy}
+                  >
+                    <Ban className="h-4 w-4" />
+                    {statusBusy ? "Rejecting…" : "Reject"}
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                    onClick={() => setSendOpen(true)}
+                    disabled={statusBusy}
+                  >
+                    <GitBranch className="h-4 w-4" />
+                    Send to Roadmap
+                  </Button>
+                </>
+              )}
             </div>
           )}
         </div>

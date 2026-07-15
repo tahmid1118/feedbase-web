@@ -25,6 +25,7 @@ const STATUS_LABELS: Record<PostStatus, string> = {
   in_progress: "In Progress",
   completed: "Completed",
   closed: "Closed",
+  rejected: "Rejected",
 };
 
 const STATUS_BADGE: Record<string, string> = {

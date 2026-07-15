@@ -35,7 +35,13 @@ export interface PaginatedResponse<T> {
 
 // Post types
 export type PostType = "feedback" | "feature_request" | "bug_report";
-export type PostStatus = "open" | "planned" | "in_progress" | "completed" | "closed";
+export type PostStatus =
+  | "open"
+  | "planned"
+  | "in_progress"
+  | "completed"
+  | "closed"
+  | "rejected";
 
 /** A photo or short video attached to a feedback post (Pro+ workspaces). */
 export interface PostAttachment {

@@ -11,6 +11,7 @@ import {
   Trash2,
   Pin,
   Lock,
+  RotateCcw,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -81,6 +82,7 @@ const STATUS_BADGE: Record<string, string> = {
   in_progress: "bg-yellow-100 text-yellow-700",
   completed: "bg-green-100 text-green-700",
   closed: "bg-gray-100 text-gray-700",
+  rejected: "bg-red-100 text-red-700",
 };
 
 export default function PostDetailPage() {
@@ -338,21 +340,34 @@ export default function PostDetailPage() {
                 <h1 className="text-2xl font-bold text-[#1c0a0c]">
                   {post.title}
                 </h1>
-                <Select
-                  value={post.status}
-                  onValueChange={(v) => handleStatusChange(v as PostStatus)}
-                >
-                  <SelectTrigger className="w-[150px]">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {STATUS_OPTIONS.map((s) => (
-                      <SelectItem key={s} value={s}>
-                        {s.replace("_", " ")}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                {post.status === "rejected" ? (
+                  // Rejected feedback isn't a pipeline stage — offer a restore
+                  // to Open rather than a status dropdown.
+                  <Button
+                    variant="outline"
+                    className="shrink-0"
+                    onClick={() => handleStatusChange("open")}
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                    Restore to open
+                  </Button>
+                ) : (
+                  <Select
+                    value={post.status}
+                    onValueChange={(v) => handleStatusChange(v as PostStatus)}
+                  >
+                    <SelectTrigger className="w-[150px]">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {STATUS_OPTIONS.map((s) => (
+                        <SelectItem key={s} value={s}>
+                          {s.replace("_", " ")}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
               </div>
               <p className="mt-3 whitespace-pre-wrap text-[#1c0a0c]/70">
                 {post.description}
