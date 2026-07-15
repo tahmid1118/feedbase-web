@@ -65,7 +65,8 @@ export const invitationsApi = {
 
   /** Revoke a pending invitation — its link stops working immediately. */
   revoke: (id: number, token: string) =>
-    apiClient.delete<ApiResponse>(`/invitations/${id}`, { token }),
+    // NB: delete(endpoint, body, options) — the token is an OPTION, not the body.
+    apiClient.delete<ApiResponse>(`/invitations/${id}`, {}, { token }),
 
   /**
    * Accept an invitation as an already-registered, signed-in account. The
