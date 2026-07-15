@@ -220,12 +220,18 @@ export default async function DashboardPage() {
             {overview.trends.map((point) => (
               <div
                 key={point.date}
-                className="group relative flex-1"
+                // Each column is full-height with the bar pinned to the bottom,
+                // so the bar's percentage height resolves against a definite
+                // height (a % height inside a shrink-to-content flex item is 0).
+                className="group flex h-full flex-1 flex-col justify-end"
                 title={`${point.date}: ${point.count}`}
               >
                 <div
                   className="w-full rounded-t bg-[#c74959]/70 transition-colors group-hover:bg-[#c74959]"
-                  style={{ height: `${(point.count / maxTrend) * 100}%` }}
+                  style={{
+                    height: `${(point.count / maxTrend) * 100}%`,
+                    minHeight: point.count > 0 ? "3px" : undefined,
+                  }}
                 />
               </div>
             ))}
