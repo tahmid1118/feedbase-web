@@ -71,7 +71,9 @@ export function WorkspaceSwitcher() {
   const [subdomainTouched, setSubdomainTouched] = useState(false);
   const [website, setWebsite] = useState("");
   const [creating, setCreating] = useState(false);
-  const subStatus = useSubdomainAvailability(subdomain, token);
+  // Freeze the check while creating — the token change from update() would
+  // otherwise re-check the just-created subdomain and flash a false "taken".
+  const subStatus = useSubdomainAvailability(creating ? "" : subdomain, token);
   const subdomainBlocked =
     subStatus === "checking" || subStatus === "taken" || subStatus === "invalid";
 

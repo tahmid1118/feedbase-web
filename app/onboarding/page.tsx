@@ -40,7 +40,11 @@ export default function OnboardingPage() {
   const [website, setWebsite] = useState("");
   const [creating, setCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const subStatus = useSubdomainAvailability(subdomain, token);
+  // Freeze the availability check while submitting: once the workspace is
+  // created the subdomain legitimately exists (as this account's own), and the
+  // token change from `update()` would otherwise re-run the check and flash a
+  // false "already taken" before we navigate away.
+  const subStatus = useSubdomainAvailability(creating ? "" : subdomain, token);
   const subdomainBlocked =
     subStatus === "checking" || subStatus === "taken" || subStatus === "invalid";
 
