@@ -7,6 +7,7 @@ import { Bell, LogOut, User } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { notificationsApi } from "@/lib/api";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
+import { onNotificationsChanged } from "@/lib/notifications-events";
 import { endSession } from "@/lib/auth/end-session";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -52,6 +53,10 @@ export function Header({ user }: HeaderProps) {
   // Update promptly when the user returns to the tab (e.g. after generating
   // activity, or after reading notifications on the notifications page).
   useRefetchOnFocus(fetchUnread);
+
+  // Update the badge instantly when notifications change in-app (mark read,
+  // mark all read, delete) without waiting for the poll.
+  useEffect(() => onNotificationsChanged(fetchUnread), [fetchUnread]);
 
   // Prefer the live session (updated after a profile edit) over the server prop.
   const displayName = session?.user?.name ?? user.name;

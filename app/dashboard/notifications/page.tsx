@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Bell, Check, Trash2 } from "lucide-react";
 import { notificationsApi, extractRows, type Notification } from "@/lib/api";
+import { emitNotificationsChanged } from "@/lib/notifications-events";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
@@ -61,6 +62,7 @@ export default function NotificationsPage() {
     try {
       await notificationsApi.delete(id, token);
       setNotifications((prev) => prev.filter((n) => n.id !== id));
+      emitNotificationsChanged(); // deleting an unread one changes the count
       toast.success("Notification deleted");
     } catch {
       toast.error("Failed to delete notification");
@@ -74,6 +76,7 @@ export default function NotificationsPage() {
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, is_read: 1 } : n))
       );
+      emitNotificationsChanged();
       toast.success("Marked as read");
     } catch {
       toast.error("Failed to mark as read");
@@ -85,6 +88,7 @@ export default function NotificationsPage() {
     try {
       await notificationsApi.markAllRead(token);
       setNotifications((prev) => prev.map((n) => ({ ...n, is_read: 1 })));
+      emitNotificationsChanged();
       toast.success("All notifications marked as read");
     } catch {
       toast.error("Failed to mark all as read");
