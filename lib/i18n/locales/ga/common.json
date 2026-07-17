@@ -126,7 +126,13 @@
     "sendToRoadmap": "Seol chuig an Treochlár",
     "column": "Colún",
     "selectColumn": "Roghnaigh colún",
-    "targetReleaseDate": "Spriocdháta eisiúna (roghnach)"
+    "targetReleaseDate": "Spriocdháta eisiúna (roghnach)",
+    "createNewPost": "Cruthaigh postáil nua",
+    "description": "Cur síos",
+    "titlePlaceholder2": "Cur síos gairid ar d'aiseolas",
+    "descPlaceholder2": "Tabhair tuilleadh sonraí faoi d'aiseolas...",
+    "selectType": "Roghnaigh cineál",
+    "attachments": "Ceangaltáin"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Molta",
     "included": "San áireamh",
     "upgradeTo": "Uasghrádaigh go {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Cuir spás oibre leis",
+    "yourWorkspaces": "Do spásanna oibre",
+    "sharedWithYou": "Roinnte leat"
+  },
+  "roadmap": {
+    "editColumn": "Cuir colún in eagar",
+    "columnName": "Ainm an cholúin",
+    "addToRoadmap": "Cuir leis an treochlár",
+    "selectPost": "Roghnaigh postáil"
+  },
+  "changelog": {
+    "noChangelogs": "Níl aon logáil athruithe ann fós.",
+    "deleteConfirm": "Scrios logáil athruithe?"
   }
 }

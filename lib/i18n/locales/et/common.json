@@ -126,7 +126,13 @@
     "sendToRoadmap": "Saada Teekaardile",
     "column": "Veerg",
     "selectColumn": "Valige veerg",
-    "targetReleaseDate": "Sihtavaldamise kuupäev (valikuline)"
+    "targetReleaseDate": "Sihtavaldamise kuupäev (valikuline)",
+    "createNewPost": "Loo uus postitus",
+    "description": "Kirjeldus",
+    "titlePlaceholder2": "Lühikirjeldus teie tagasisidest",
+    "descPlaceholder2": "Esitage oma tagasiside kohta rohkem üksikasju...",
+    "selectType": "Valige tüüp",
+    "attachments": "Manused"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Soovitatud",
     "included": "Sisaldub",
     "upgradeTo": "Uuenda paketile {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Lisa tööruum",
+    "yourWorkspaces": "Teie tööruumid",
+    "sharedWithYou": "Teiega jagatud"
+  },
+  "roadmap": {
+    "editColumn": "Muuda veergu",
+    "columnName": "Veeru nimi",
+    "addToRoadmap": "Lisa teekaardile",
+    "selectPost": "Valige postitus"
+  },
+  "changelog": {
+    "noChangelogs": "Muudatuste logisid veel pole.",
+    "deleteConfirm": "Kustutada muudatuste logi?"
   }
 }

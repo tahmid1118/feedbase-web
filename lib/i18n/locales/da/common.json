@@ -126,7 +126,13 @@
     "sendToRoadmap": "Send til Køreplan",
     "column": "Kolonne",
     "selectColumn": "Vælg en kolonne",
-    "targetReleaseDate": "Måldato for udgivelse (valgfrit)"
+    "targetReleaseDate": "Måldato for udgivelse (valgfrit)",
+    "createNewPost": "Opret nyt opslag",
+    "description": "Beskrivelse",
+    "titlePlaceholder2": "Kort beskrivelse af din feedback",
+    "descPlaceholder2": "Angiv flere detaljer om din feedback...",
+    "selectType": "Vælg type",
+    "attachments": "Vedhæftninger"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Anbefalet",
     "included": "Inkluderet",
     "upgradeTo": "Opgrader til {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Tilføj arbejdsområde",
+    "yourWorkspaces": "Dine arbejdsområder",
+    "sharedWithYou": "Delt med dig"
+  },
+  "roadmap": {
+    "editColumn": "Rediger kolonne",
+    "columnName": "Kolonnenavn",
+    "addToRoadmap": "Tilføj til køreplan",
+    "selectPost": "Vælg et opslag"
+  },
+  "changelog": {
+    "noChangelogs": "Ingen ændringslogge endnu.",
+    "deleteConfirm": "Slet ændringslog?"
   }
 }

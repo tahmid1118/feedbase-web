@@ -126,7 +126,13 @@
     "sendToRoadmap": "Skicka till Färdplan",
     "column": "Kolumn",
     "selectColumn": "Välj en kolumn",
-    "targetReleaseDate": "Måldatum för lansering (valfritt)"
+    "targetReleaseDate": "Måldatum för lansering (valfritt)",
+    "createNewPost": "Skapa nytt inlägg",
+    "description": "Beskrivning",
+    "titlePlaceholder2": "Kort beskrivning av din feedback",
+    "descPlaceholder2": "Ge fler detaljer om din feedback...",
+    "selectType": "Välj typ",
+    "attachments": "Bilagor"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Rekommenderas",
     "included": "Ingår",
     "upgradeTo": "Uppgradera till {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Lägg till arbetsyta",
+    "yourWorkspaces": "Dina arbetsytor",
+    "sharedWithYou": "Delas med dig"
+  },
+  "roadmap": {
+    "editColumn": "Redigera kolumn",
+    "columnName": "Kolumnnamn",
+    "addToRoadmap": "Lägg till i färdplan",
+    "selectPost": "Välj ett inlägg"
+  },
+  "changelog": {
+    "noChangelogs": "Inga ändringsloggar än.",
+    "deleteConfirm": "Ta bort ändringslogg?"
   }
 }

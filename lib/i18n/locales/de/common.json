@@ -126,7 +126,13 @@
     "sendToRoadmap": "An Roadmap senden",
     "column": "Spalte",
     "selectColumn": "Spalte auswählen",
-    "targetReleaseDate": "Ziel-Veröffentlichungsdatum (optional)"
+    "targetReleaseDate": "Ziel-Veröffentlichungsdatum (optional)",
+    "createNewPost": "Neuen Beitrag erstellen",
+    "description": "Beschreibung",
+    "titlePlaceholder2": "Kurze Beschreibung Ihres Feedbacks",
+    "descPlaceholder2": "Geben Sie weitere Details zu Ihrem Feedback an...",
+    "selectType": "Typ auswählen",
+    "attachments": "Anhänge"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Empfohlen",
     "included": "Enthalten",
     "upgradeTo": "Upgrade auf {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Arbeitsbereich hinzufügen",
+    "yourWorkspaces": "Ihre Arbeitsbereiche",
+    "sharedWithYou": "Mit Ihnen geteilt"
+  },
+  "roadmap": {
+    "editColumn": "Spalte bearbeiten",
+    "columnName": "Spaltenname",
+    "addToRoadmap": "Zur Roadmap hinzufügen",
+    "selectPost": "Beitrag auswählen"
+  },
+  "changelog": {
+    "noChangelogs": "Noch keine Änderungsprotokolle.",
+    "deleteConfirm": "Änderungsprotokoll löschen?"
   }
 }

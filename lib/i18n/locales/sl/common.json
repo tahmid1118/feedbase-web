@@ -126,7 +126,13 @@
     "sendToRoadmap": "Pošlji v Načrt",
     "column": "Stolpec",
     "selectColumn": "Izberite stolpec",
-    "targetReleaseDate": "Ciljni datum izdaje (neobvezno)"
+    "targetReleaseDate": "Ciljni datum izdaje (neobvezno)",
+    "createNewPost": "Ustvari novo objavo",
+    "description": "Opis",
+    "titlePlaceholder2": "Kratek opis vaših povratnih informacij",
+    "descPlaceholder2": "Navedite več podrobnosti o svojih povratnih informacijah...",
+    "selectType": "Izberite vrsto",
+    "attachments": "Priloge"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Priporočeno",
     "included": "Vključeno",
     "upgradeTo": "Nadgradi na {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Dodaj delovni prostor",
+    "yourWorkspaces": "Vaši delovni prostori",
+    "sharedWithYou": "Deljeno z vami"
+  },
+  "roadmap": {
+    "editColumn": "Uredi stolpec",
+    "columnName": "Ime stolpca",
+    "addToRoadmap": "Dodaj v načrt",
+    "selectPost": "Izberite objavo"
+  },
+  "changelog": {
+    "noChangelogs": "Še ni dnevnikov sprememb.",
+    "deleteConfirm": "Izbrišem dnevnik sprememb?"
   }
 }

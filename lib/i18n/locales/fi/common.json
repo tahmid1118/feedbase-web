@@ -126,7 +126,13 @@
     "sendToRoadmap": "Lähetä Etenemissuunnitelmaan",
     "column": "Sarake",
     "selectColumn": "Valitse sarake",
-    "targetReleaseDate": "Tavoitejulkaisupäivä (valinnainen)"
+    "targetReleaseDate": "Tavoitejulkaisupäivä (valinnainen)",
+    "createNewPost": "Luo uusi julkaisu",
+    "description": "Kuvaus",
+    "titlePlaceholder2": "Lyhyt kuvaus palautteestasi",
+    "descPlaceholder2": "Anna lisätietoja palautteestasi...",
+    "selectType": "Valitse tyyppi",
+    "attachments": "Liitteet"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Suositeltu",
     "included": "Sisältyy",
     "upgradeTo": "Päivitä tasolle {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Lisää työtila",
+    "yourWorkspaces": "Työtilasi",
+    "sharedWithYou": "Jaettu kanssasi"
+  },
+  "roadmap": {
+    "editColumn": "Muokkaa saraketta",
+    "columnName": "Sarakkeen nimi",
+    "addToRoadmap": "Lisää etenemissuunnitelmaan",
+    "selectPost": "Valitse julkaisu"
+  },
+  "changelog": {
+    "noChangelogs": "Ei vielä muutoslokeja.",
+    "deleteConfirm": "Poistetaanko muutosloki?"
   }
 }

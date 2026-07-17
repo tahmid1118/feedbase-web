@@ -126,7 +126,13 @@
     "sendToRoadmap": "Αποστολή στον Χάρτη πορείας",
     "column": "Στήλη",
     "selectColumn": "Επιλέξτε στήλη",
-    "targetReleaseDate": "Στόχος ημερομηνίας κυκλοφορίας (προαιρετικό)"
+    "targetReleaseDate": "Στόχος ημερομηνίας κυκλοφορίας (προαιρετικό)",
+    "createNewPost": "Δημιουργία νέας ανάρτησης",
+    "description": "Περιγραφή",
+    "titlePlaceholder2": "Σύντομη περιγραφή των σχολίων σας",
+    "descPlaceholder2": "Δώστε περισσότερες λεπτομέρειες για τα σχόλιά σας...",
+    "selectType": "Επιλέξτε τύπο",
+    "attachments": "Συνημμένα"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Συνιστάται",
     "included": "Περιλαμβάνεται",
     "upgradeTo": "Αναβάθμιση σε {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Προσθήκη χώρου εργασίας",
+    "yourWorkspaces": "Οι χώροι εργασίας σας",
+    "sharedWithYou": "Κοινόχρηστα με εσάς"
+  },
+  "roadmap": {
+    "editColumn": "Επεξεργασία στήλης",
+    "columnName": "Όνομα στήλης",
+    "addToRoadmap": "Προσθήκη στον χάρτη πορείας",
+    "selectPost": "Επιλέξτε ανάρτηση"
+  },
+  "changelog": {
+    "noChangelogs": "Δεν υπάρχουν αρχεία αλλαγών ακόμη.",
+    "deleteConfirm": "Διαγραφή αρχείου αλλαγών;"
   }
 }

@@ -30,6 +30,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
@@ -57,6 +58,7 @@ function Tile({ name, color }: { name: string; color?: string | null }) {
 }
 
 export function WorkspaceSwitcher() {
+  const { t } = useTranslation();
   const { data: session, update } = useSession();
   const router = useRouter();
   const token = session?.user?.accessToken;
@@ -224,7 +226,7 @@ export function WorkspaceSwitcher() {
           {owned.length > 0 && (
             <>
               <DropdownMenuLabel className="text-xs text-[#1c0a0c]/50">
-                Your workspaces
+                {t("switcher.yourWorkspaces")}
               </DropdownMenuLabel>
               {owned.map(renderWorkspace)}
             </>
@@ -234,7 +236,7 @@ export function WorkspaceSwitcher() {
             <>
               {owned.length > 0 && <DropdownMenuSeparator />}
               <DropdownMenuLabel className="text-xs text-[#1c0a0c]/50">
-                Shared with you
+                {t("switcher.sharedWithYou")}
               </DropdownMenuLabel>
               {joined.map(renderWorkspace)}
             </>
@@ -251,7 +253,7 @@ export function WorkspaceSwitcher() {
             >
               <Lock className="h-4 w-4 text-[#1c0a0c]/40" />
               <span className="min-w-0 flex-1">
-                <span className="block text-[#1c0a0c]/70">Add Workspace</span>
+                <span className="block text-[#1c0a0c]/70">{t("switcher.addWorkspace")}</span>
                 <span className="block text-[11px] text-[#1c0a0c]/50">
                   Plan limit reached — upgrade to add more
                 </span>
@@ -273,7 +275,7 @@ export function WorkspaceSwitcher() {
       <Dialog open={createOpen} onOpenChange={setCreateOpen}>
         <DialogContent className="sm:max-w-[460px]">
           <DialogHeader>
-            <DialogTitle>Create your workspace</DialogTitle>
+            <DialogTitle>{t("onboarding.title")}</DialogTitle>
             <DialogDescription>
               Set up a space to collect feedback, plan your roadmap, and share
               updates.
@@ -294,7 +296,7 @@ export function WorkspaceSwitcher() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ws-name">Workspace name</Label>
+              <Label htmlFor="ws-name">{t("onboarding.workspaceName")}</Label>
               <Input
                 id="ws-name"
                 value={name}
@@ -303,7 +305,7 @@ export function WorkspaceSwitcher() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ws-subdomain">Subdomain</Label>
+              <Label htmlFor="ws-subdomain">{t("onboarding.subdomain")}</Label>
               <div className="flex items-center gap-2">
                 <Input
                   id="ws-subdomain"
@@ -340,7 +342,7 @@ export function WorkspaceSwitcher() {
                   Creating...
                 </>
               ) : (
-                "Create Workspace"
+                t("onboarding.createWorkspace")
               )}
             </Button>
           </DialogFooter>

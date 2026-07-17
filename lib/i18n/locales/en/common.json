@@ -194,7 +194,13 @@
     "sendToRoadmap": "Send to Roadmap",
     "column": "Column",
     "selectColumn": "Select a column",
-    "targetReleaseDate": "Target release date (optional)"
+    "targetReleaseDate": "Target release date (optional)",
+    "createNewPost": "Create New Post",
+    "description": "Description",
+    "titlePlaceholder2": "Brief description of your feedback",
+    "descPlaceholder2": "Provide more details about your feedback...",
+    "selectType": "Select type",
+    "attachments": "Attachments"
   },
   "page": {
     "feedback": {
@@ -325,5 +331,20 @@
     "recommended": "Recommended",
     "included": "Included",
     "upgradeTo": "Upgrade to {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Add Workspace",
+    "yourWorkspaces": "Your workspaces",
+    "sharedWithYou": "Shared with you"
+  },
+  "roadmap": {
+    "editColumn": "Edit Column",
+    "columnName": "Column name",
+    "addToRoadmap": "Add to Roadmap",
+    "selectPost": "Select a post"
+  },
+  "changelog": {
+    "noChangelogs": "No changelogs yet.",
+    "deleteConfirm": "Delete changelog?"
   }
 }

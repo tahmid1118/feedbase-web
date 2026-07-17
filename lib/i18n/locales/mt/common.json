@@ -126,7 +126,13 @@
     "sendToRoadmap": "Ibgħat lill-Pjan",
     "column": "Kolonna",
     "selectColumn": "Agħżel kolonna",
-    "targetReleaseDate": "Data mmirata tar-rilaxx (mhux obbligatorja)"
+    "targetReleaseDate": "Data mmirata tar-rilaxx (mhux obbligatorja)",
+    "createNewPost": "Oħloq post ġdid",
+    "description": "Deskrizzjoni",
+    "titlePlaceholder2": "Deskrizzjoni qasira tal-feedback tiegħek",
+    "descPlaceholder2": "Ipprovdi aktar dettalji dwar il-feedback tiegħek...",
+    "selectType": "Agħżel tip",
+    "attachments": "Mehmużin"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Rakkomandat",
     "included": "Inkluż",
     "upgradeTo": "Aġġorna għal {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Żid spazju tax-xogħol",
+    "yourWorkspaces": "L-ispazji tax-xogħol tiegħek",
+    "sharedWithYou": "Maqsum miegħek"
+  },
+  "roadmap": {
+    "editColumn": "Editja l-kolonna",
+    "columnName": "Isem tal-kolonna",
+    "addToRoadmap": "Żid mal-pjan",
+    "selectPost": "Agħżel post"
+  },
+  "changelog": {
+    "noChangelogs": "Għad m'hemm l-ebda reġistru tal-bidliet.",
+    "deleteConfirm": "Tħassar ir-reġistru tal-bidliet?"
   }
 }

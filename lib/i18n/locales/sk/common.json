@@ -126,7 +126,13 @@
     "sendToRoadmap": "Odoslať do Plánu",
     "column": "Stĺpec",
     "selectColumn": "Vyberte stĺpec",
-    "targetReleaseDate": "Cieľový dátum vydania (voliteľné)"
+    "targetReleaseDate": "Cieľový dátum vydania (voliteľné)",
+    "createNewPost": "Vytvoriť nový príspevok",
+    "description": "Popis",
+    "titlePlaceholder2": "Stručný popis vašej spätnej väzby",
+    "descPlaceholder2": "Uveďte viac podrobností o svojej spätnej väzbe...",
+    "selectType": "Vyberte typ",
+    "attachments": "Prílohy"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Odporúčané",
     "included": "Zahrnuté",
     "upgradeTo": "Prejsť na {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Pridať pracovný priestor",
+    "yourWorkspaces": "Vaše pracovné priestory",
+    "sharedWithYou": "Zdieľané s vami"
+  },
+  "roadmap": {
+    "editColumn": "Upraviť stĺpec",
+    "columnName": "Názov stĺpca",
+    "addToRoadmap": "Pridať do plánu",
+    "selectPost": "Vyberte príspevok"
+  },
+  "changelog": {
+    "noChangelogs": "Zatiaľ žiadne zoznamy zmien.",
+    "deleteConfirm": "Odstrániť zoznam zmien?"
   }
 }

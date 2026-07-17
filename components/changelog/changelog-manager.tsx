@@ -17,6 +17,7 @@ import {
   type Changelog,
 } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -34,6 +35,7 @@ import { ChangelogEditorDialog } from "@/components/changelog/changelog-editor-d
 import { toast } from "sonner";
 
 export function ChangelogManager() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [changelogs, setChangelogs] = useState<Changelog[]>([]);
@@ -111,7 +113,7 @@ export function ChangelogManager() {
       ) : changelogs.length === 0 ? (
         <Card className="p-12 text-center">
           <FileText className="mx-auto h-12 w-12 text-[#1c0a0c]/30" />
-          <p className="mt-4 text-[#1c0a0c]/60">No changelogs yet.</p>
+          <p className="mt-4 text-[#1c0a0c]/60">{t("changelog.noChangelogs")}</p>
         </Card>
       ) : (
         <div className="space-y-4">
@@ -184,14 +186,14 @@ export function ChangelogManager() {
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Delete changelog?</AlertDialogTitle>
+                        <AlertDialogTitle>{t("changelog.deleteConfirm")}</AlertDialogTitle>
                         <AlertDialogDescription>
                           &quot;{changelog.title}&quot; will be permanently
                           removed.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                         <AlertDialogAction
                           variant="destructive"
                           onClick={() => remove(changelog.id)}

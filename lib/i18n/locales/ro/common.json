@@ -126,7 +126,13 @@
     "sendToRoadmap": "Trimiteți la Foaia de parcurs",
     "column": "Coloană",
     "selectColumn": "Selectați o coloană",
-    "targetReleaseDate": "Data țintă de lansare (opțional)"
+    "targetReleaseDate": "Data țintă de lansare (opțional)",
+    "createNewPost": "Creați o postare nouă",
+    "description": "Descriere",
+    "titlePlaceholder2": "Scurtă descriere a feedbackului dvs.",
+    "descPlaceholder2": "Oferiți mai multe detalii despre feedbackul dvs...",
+    "selectType": "Selectați tipul",
+    "attachments": "Atașamente"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Recomandat",
     "included": "Inclus",
     "upgradeTo": "Treceți la {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Adăugați spațiu de lucru",
+    "yourWorkspaces": "Spațiile dvs. de lucru",
+    "sharedWithYou": "Partajat cu dvs."
+  },
+  "roadmap": {
+    "editColumn": "Editați coloana",
+    "columnName": "Numele coloanei",
+    "addToRoadmap": "Adăugați la foaia de parcurs",
+    "selectPost": "Selectați o postare"
+  },
+  "changelog": {
+    "noChangelogs": "Încă niciun jurnal de modificări.",
+    "deleteConfirm": "Ștergeți jurnalul de modificări?"
   }
 }

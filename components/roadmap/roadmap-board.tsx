@@ -23,6 +23,7 @@ import {
   type Post,
 } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,6 +46,7 @@ import { toast } from "sonner";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 
 export function RoadmapBoard() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
 
@@ -335,13 +337,13 @@ export function RoadmapBoard() {
       >
         <DialogContent className="sm:max-w-[420px]">
           <DialogHeader>
-            <DialogTitle>Edit Column</DialogTitle>
+            <DialogTitle>{t("roadmap.editColumn")}</DialogTitle>
             <DialogDescription>
               Rename this roadmap column.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-2">
-            <Label htmlFor="column-name">Column name</Label>
+            <Label htmlFor="column-name">{t("roadmap.columnName")}</Label>
             <Input
               id="column-name"
               value={columnName}
@@ -371,7 +373,7 @@ export function RoadmapBoard() {
       <Dialog open={itemDialogOpen} onOpenChange={setItemDialogOpen}>
         <DialogContent className="sm:max-w-[460px]">
           <DialogHeader>
-            <DialogTitle>Add to Roadmap</DialogTitle>
+            <DialogTitle>{t("roadmap.addToRoadmap")}</DialogTitle>
             <DialogDescription>
               Place a feedback post onto a roadmap column.
             </DialogDescription>
@@ -381,7 +383,7 @@ export function RoadmapBoard() {
               <Label>Post</Label>
               <Select value={itemPostId} onValueChange={setItemPostId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a post" />
+                  <SelectValue placeholder={t("roadmap.selectPost")} />
                 </SelectTrigger>
                 <SelectContent>
                   {availablePosts.length === 0 ? (
@@ -400,10 +402,10 @@ export function RoadmapBoard() {
             </div>
 
             <div className="space-y-2">
-              <Label>Column</Label>
+              <Label>{t("feedback.column")}</Label>
               <Select value={itemColumnId} onValueChange={setItemColumnId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select a column" />
+                  <SelectValue placeholder={t("feedback.selectColumn")} />
                 </SelectTrigger>
                 <SelectContent>
                   {sortedColumns.map((c) => (
@@ -416,7 +418,7 @@ export function RoadmapBoard() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="target-date">Target release date (optional)</Label>
+              <Label htmlFor="target-date">{t("feedback.targetReleaseDate")}</Label>
               <Input
                 id="target-date"
                 type="date"

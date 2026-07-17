@@ -126,7 +126,13 @@
     "sendToRoadmap": "Wyślij do Planu działań",
     "column": "Kolumna",
     "selectColumn": "Wybierz kolumnę",
-    "targetReleaseDate": "Docelowa data wydania (opcjonalnie)"
+    "targetReleaseDate": "Docelowa data wydania (opcjonalnie)",
+    "createNewPost": "Utwórz nowy wpis",
+    "description": "Opis",
+    "titlePlaceholder2": "Krótki opis Twojej opinii",
+    "descPlaceholder2": "Podaj więcej szczegółów na temat swojej opinii...",
+    "selectType": "Wybierz typ",
+    "attachments": "Załączniki"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Zalecane",
     "included": "W zestawie",
     "upgradeTo": "Przejdź na {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Dodaj przestrzeń roboczą",
+    "yourWorkspaces": "Twoje przestrzenie robocze",
+    "sharedWithYou": "Udostępnione Tobie"
+  },
+  "roadmap": {
+    "editColumn": "Edytuj kolumnę",
+    "columnName": "Nazwa kolumny",
+    "addToRoadmap": "Dodaj do planu działań",
+    "selectPost": "Wybierz wpis"
+  },
+  "changelog": {
+    "noChangelogs": "Brak dzienników zmian.",
+    "deleteConfirm": "Usunąć dziennik zmian?"
   }
 }

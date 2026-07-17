@@ -126,7 +126,13 @@
     "sendToRoadmap": "Изпрати към Пътната карта",
     "column": "Колона",
     "selectColumn": "Изберете колона",
-    "targetReleaseDate": "Целева дата на издаване (по избор)"
+    "targetReleaseDate": "Целева дата на издаване (по избор)",
+    "createNewPost": "Създаване на нова публикация",
+    "description": "Описание",
+    "titlePlaceholder2": "Кратко описание на вашата обратна връзка",
+    "descPlaceholder2": "Предоставете повече подробности за вашата обратна връзка...",
+    "selectType": "Изберете тип",
+    "attachments": "Прикачени файлове"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Препоръчано",
     "included": "Включено",
     "upgradeTo": "Надграждане до {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Добавяне на работно пространство",
+    "yourWorkspaces": "Вашите работни пространства",
+    "sharedWithYou": "Споделени с вас"
+  },
+  "roadmap": {
+    "editColumn": "Редактиране на колона",
+    "columnName": "Име на колоната",
+    "addToRoadmap": "Добавяне към пътната карта",
+    "selectPost": "Изберете публикация"
+  },
+  "changelog": {
+    "noChangelogs": "Все още няма дневници на промените.",
+    "deleteConfirm": "Изтриване на дневника на промените?"
   }
 }

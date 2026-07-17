@@ -126,7 +126,13 @@
     "sendToRoadmap": "Pošalji u Plan razvoja",
     "column": "Stupac",
     "selectColumn": "Odaberite stupac",
-    "targetReleaseDate": "Ciljni datum izdanja (nije obavezno)"
+    "targetReleaseDate": "Ciljni datum izdanja (nije obavezno)",
+    "createNewPost": "Stvori novu objavu",
+    "description": "Opis",
+    "titlePlaceholder2": "Kratak opis vaših povratnih informacija",
+    "descPlaceholder2": "Navedite više pojedinosti o svojim povratnim informacijama...",
+    "selectType": "Odaberite vrstu",
+    "attachments": "Privici"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Preporučeno",
     "included": "Uključeno",
     "upgradeTo": "Nadogradi na {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Dodaj radni prostor",
+    "yourWorkspaces": "Vaši radni prostori",
+    "sharedWithYou": "Podijeljeno s vama"
+  },
+  "roadmap": {
+    "editColumn": "Uredi stupac",
+    "columnName": "Naziv stupca",
+    "addToRoadmap": "Dodaj u plan razvoja",
+    "selectPost": "Odaberite objavu"
+  },
+  "changelog": {
+    "noChangelogs": "Još nema dnevnika promjena.",
+    "deleteConfirm": "Izbrisati dnevnik promjena?"
   }
 }

@@ -126,7 +126,13 @@
     "sendToRoadmap": "Küldés az Ütemtervbe",
     "column": "Oszlop",
     "selectColumn": "Válasszon oszlopot",
-    "targetReleaseDate": "Célzott kiadási dátum (opcionális)"
+    "targetReleaseDate": "Célzott kiadási dátum (opcionális)",
+    "createNewPost": "Új bejegyzés létrehozása",
+    "description": "Leírás",
+    "titlePlaceholder2": "Visszajelzésének rövid leírása",
+    "descPlaceholder2": "Adjon meg további részleteket a visszajelzéséről...",
+    "selectType": "Válasszon típust",
+    "attachments": "Mellékletek"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Ajánlott",
     "included": "Tartalmazza",
     "upgradeTo": "Váltás erre: {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Munkaterület hozzáadása",
+    "yourWorkspaces": "Az Ön munkaterületei",
+    "sharedWithYou": "Megosztva Önnel"
+  },
+  "roadmap": {
+    "editColumn": "Oszlop szerkesztése",
+    "columnName": "Oszlop neve",
+    "addToRoadmap": "Hozzáadás az ütemtervhez",
+    "selectPost": "Válasszon bejegyzést"
+  },
+  "changelog": {
+    "noChangelogs": "Még nincsenek változásnaplók.",
+    "deleteConfirm": "Törli a változásnaplót?"
   }
 }

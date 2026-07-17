@@ -126,7 +126,13 @@
     "sendToRoadmap": "Naar Roadmap sturen",
     "column": "Kolom",
     "selectColumn": "Selecteer een kolom",
-    "targetReleaseDate": "Streefdatum voor release (optioneel)"
+    "targetReleaseDate": "Streefdatum voor release (optioneel)",
+    "createNewPost": "Nieuw bericht maken",
+    "description": "Beschrijving",
+    "titlePlaceholder2": "Korte beschrijving van uw feedback",
+    "descPlaceholder2": "Geef meer details over uw feedback...",
+    "selectType": "Selecteer type",
+    "attachments": "Bijlagen"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Aanbevolen",
     "included": "Inbegrepen",
     "upgradeTo": "Upgraden naar {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Werkruimte toevoegen",
+    "yourWorkspaces": "Uw werkruimtes",
+    "sharedWithYou": "Met u gedeeld"
+  },
+  "roadmap": {
+    "editColumn": "Kolom bewerken",
+    "columnName": "Kolomnaam",
+    "addToRoadmap": "Aan roadmap toevoegen",
+    "selectPost": "Selecteer een bericht"
+  },
+  "changelog": {
+    "noChangelogs": "Nog geen wijzigingslogboeken.",
+    "deleteConfirm": "Wijzigingslogboek verwijderen?"
   }
 }

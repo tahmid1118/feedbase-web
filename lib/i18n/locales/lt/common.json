@@ -126,7 +126,13 @@
     "sendToRoadmap": "Siųsti į Planą",
     "column": "Stulpelis",
     "selectColumn": "Pasirinkite stulpelį",
-    "targetReleaseDate": "Numatoma išleidimo data (nebūtina)"
+    "targetReleaseDate": "Numatoma išleidimo data (nebūtina)",
+    "createNewPost": "Sukurti naują įrašą",
+    "description": "Aprašymas",
+    "titlePlaceholder2": "Trumpas jūsų atsiliepimo aprašymas",
+    "descPlaceholder2": "Pateikite daugiau informacijos apie savo atsiliepimą...",
+    "selectType": "Pasirinkite tipą",
+    "attachments": "Priedai"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Rekomenduojama",
     "included": "Įtraukta",
     "upgradeTo": "Atnaujinti į {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Pridėti darbo sritį",
+    "yourWorkspaces": "Jūsų darbo sritys",
+    "sharedWithYou": "Bendrinama su jumis"
+  },
+  "roadmap": {
+    "editColumn": "Redaguoti stulpelį",
+    "columnName": "Stulpelio pavadinimas",
+    "addToRoadmap": "Pridėti į planą",
+    "selectPost": "Pasirinkite įrašą"
+  },
+  "changelog": {
+    "noChangelogs": "Kol kas nėra pakeitimų žurnalų.",
+    "deleteConfirm": "Ištrinti pakeitimų žurnalą?"
   }
 }

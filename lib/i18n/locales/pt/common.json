@@ -126,7 +126,13 @@
     "sendToRoadmap": "Enviar para o Roteiro",
     "column": "Coluna",
     "selectColumn": "Selecione uma coluna",
-    "targetReleaseDate": "Data de lançamento prevista (opcional)"
+    "targetReleaseDate": "Data de lançamento prevista (opcional)",
+    "createNewPost": "Criar nova publicação",
+    "description": "Descrição",
+    "titlePlaceholder2": "Breve descrição do seu feedback",
+    "descPlaceholder2": "Forneça mais detalhes sobre o seu feedback...",
+    "selectType": "Selecionar tipo",
+    "attachments": "Anexos"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Recomendado",
     "included": "Incluído",
     "upgradeTo": "Atualizar para {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Adicionar espaço de trabalho",
+    "yourWorkspaces": "Os seus espaços de trabalho",
+    "sharedWithYou": "Partilhado consigo"
+  },
+  "roadmap": {
+    "editColumn": "Editar coluna",
+    "columnName": "Nome da coluna",
+    "addToRoadmap": "Adicionar ao roteiro",
+    "selectPost": "Selecione uma publicação"
+  },
+  "changelog": {
+    "noChangelogs": "Ainda sem registos de alterações.",
+    "deleteConfirm": "Eliminar registo de alterações?"
   }
 }

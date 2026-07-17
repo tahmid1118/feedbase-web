@@ -126,7 +126,13 @@
     "sendToRoadmap": "Odeslat do Plánu",
     "column": "Sloupec",
     "selectColumn": "Vyberte sloupec",
-    "targetReleaseDate": "Cílové datum vydání (volitelné)"
+    "targetReleaseDate": "Cílové datum vydání (volitelné)",
+    "createNewPost": "Vytvořit nový příspěvek",
+    "description": "Popis",
+    "titlePlaceholder2": "Stručný popis vaší zpětné vazby",
+    "descPlaceholder2": "Uveďte více podrobností o své zpětné vazbě...",
+    "selectType": "Vyberte typ",
+    "attachments": "Přílohy"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Doporučeno",
     "included": "Zahrnuto",
     "upgradeTo": "Přejít na {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Přidat pracovní prostor",
+    "yourWorkspaces": "Vaše pracovní prostory",
+    "sharedWithYou": "Sdíleno s vámi"
+  },
+  "roadmap": {
+    "editColumn": "Upravit sloupec",
+    "columnName": "Název sloupce",
+    "addToRoadmap": "Přidat do plánu",
+    "selectPost": "Vyberte příspěvek"
+  },
+  "changelog": {
+    "noChangelogs": "Zatím žádné seznamy změn.",
+    "deleteConfirm": "Smazat seznam změn?"
   }
 }

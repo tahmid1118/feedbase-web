@@ -126,7 +126,13 @@
     "sendToRoadmap": "Nosūtīt uz Ceļvedi",
     "column": "Kolonna",
     "selectColumn": "Atlasiet kolonnu",
-    "targetReleaseDate": "Mērķa izlaišanas datums (neobligāti)"
+    "targetReleaseDate": "Mērķa izlaišanas datums (neobligāti)",
+    "createNewPost": "Izveidot jaunu ierakstu",
+    "description": "Apraksts",
+    "titlePlaceholder2": "Īss jūsu atsauksmes apraksts",
+    "descPlaceholder2": "Sniedziet vairāk informācijas par savu atsauksmi...",
+    "selectType": "Atlasiet veidu",
+    "attachments": "Pielikumi"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Ieteicams",
     "included": "Iekļauts",
     "upgradeTo": "Jaunināt uz {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Pievienot darbvietu",
+    "yourWorkspaces": "Jūsu darbvietas",
+    "sharedWithYou": "Kopīgots ar jums"
+  },
+  "roadmap": {
+    "editColumn": "Rediģēt kolonnu",
+    "columnName": "Kolonnas nosaukums",
+    "addToRoadmap": "Pievienot ceļvedim",
+    "selectPost": "Atlasiet ierakstu"
+  },
+  "changelog": {
+    "noChangelogs": "Vēl nav izmaiņu žurnālu.",
+    "deleteConfirm": "Dzēst izmaiņu žurnālu?"
   }
 }

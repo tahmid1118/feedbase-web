@@ -126,7 +126,13 @@
     "sendToRoadmap": "Envoyer à la feuille de route",
     "column": "Colonne",
     "selectColumn": "Sélectionnez une colonne",
-    "targetReleaseDate": "Date de sortie cible (facultatif)"
+    "targetReleaseDate": "Date de sortie cible (facultatif)",
+    "createNewPost": "Créer une publication",
+    "description": "Description",
+    "titlePlaceholder2": "Brève description de votre retour",
+    "descPlaceholder2": "Donnez plus de détails sur votre retour...",
+    "selectType": "Sélectionner le type",
+    "attachments": "Pièces jointes"
   },
   "page": {
     "feedback": {
@@ -257,5 +263,20 @@
     "recommended": "Recommandé",
     "included": "Inclus",
     "upgradeTo": "Passer à {{plan}}"
+  },
+  "switcher": {
+    "addWorkspace": "Ajouter un espace de travail",
+    "yourWorkspaces": "Vos espaces de travail",
+    "sharedWithYou": "Partagé avec vous"
+  },
+  "roadmap": {
+    "editColumn": "Modifier la colonne",
+    "columnName": "Nom de la colonne",
+    "addToRoadmap": "Ajouter à la feuille de route",
+    "selectPost": "Sélectionnez une publication"
+  },
+  "changelog": {
+    "noChangelogs": "Aucun journal des modifications pour l'instant.",
+    "deleteConfirm": "Supprimer le journal des modifications ?"
   }
 }

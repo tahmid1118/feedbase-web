@@ -12,6 +12,7 @@ import { postsApi, billingApi, uploaderApi } from "@/lib/api";
 import type { UploadedAttachment } from "@/lib/api/uploader";
 import { AttachmentPicker } from "@/components/feedback/attachment-picker";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   Dialog,
   DialogContent,
@@ -57,6 +58,7 @@ export function CreatePostDialog({
   onOpenChange,
   onCreated,
 }: CreatePostDialogProps) {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -124,7 +126,7 @@ export function CreatePostDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>
-          <DialogTitle>Create New Post</DialogTitle>
+          <DialogTitle>{t("feedback.createNewPost")}</DialogTitle>
           <DialogDescription>
             Share your feedback, feature request, or bug report
           </DialogDescription>
@@ -137,9 +139,9 @@ export function CreatePostDialog({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel>{t("portal.title")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Brief description of your feedback" {...field} />
+                    <Input placeholder={t("feedback.titlePlaceholder2")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -151,10 +153,10 @@ export function CreatePostDialog({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{t("feedback.description")}</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Provide more details about your feedback..."
+                      placeholder={t("feedback.descPlaceholder2")}
                       className="min-h-[120px]"
                       {...field}
                     />
@@ -174,7 +176,7 @@ export function CreatePostDialog({
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select type" />
+                          <SelectValue placeholder={t("feedback.selectType")} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -191,7 +193,7 @@ export function CreatePostDialog({
 
             {attachmentsAllowed && (
               <div className="space-y-2">
-                <FormLabel>Attachments</FormLabel>
+                <FormLabel>{t("feedback.attachments")}</FormLabel>
                 <AttachmentPicker
                   value={attachments}
                   onChange={setAttachments}
