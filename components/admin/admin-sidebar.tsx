@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import {
   LayoutDashboard,
   Building2,
@@ -9,21 +11,45 @@ import {
   ShieldCheck,
   Ticket,
   Tag,
+  Headset,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/ui/logo";
+import { adminApi } from "@/lib/api";
 
 const navigation = [
   { name: "Overview", href: "/admin", icon: LayoutDashboard, exact: true },
   { name: "Workspaces", href: "/admin/workspaces", icon: Building2 },
+  { name: "Support", href: "/admin/support", icon: Headset },
   { name: "Users", href: "/admin/users", icon: Users },
   { name: "Admins", href: "/admin/admins", icon: ShieldCheck },
   { name: "Promo Codes", href: "/admin/promo-codes", icon: Ticket },
   { name: "Offers", href: "/admin/offers", icon: Tag },
 ];
 
+const POLL_MS = 20000;
+
 export function AdminSidebar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const token = session?.user?.accessToken;
+  const [supportUnread, setSupportUnread] = useState(0);
+
+  // Poll the support inbox so the sidebar shows waiting conversations.
+  useEffect(() => {
+    if (!token) return;
+    let active = true;
+    const tick = async () => {
+      const res = await adminApi.supportInboxUnread(token);
+      if (active && res.ok) setSupportUnread(res.data?.sessionsWithUnread ?? 0);
+    };
+    tick();
+    const t = setInterval(tick, POLL_MS);
+    return () => {
+      active = false;
+      clearInterval(t);
+    };
+  }, [token, pathname]);
 
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-[#e399a3]/20 bg-white">
@@ -43,6 +69,7 @@ export function AdminSidebar() {
             const isActive = item.exact
               ? pathname === item.href
               : pathname.startsWith(item.href);
+            const badge = item.href === "/admin/support" ? supportUnread : 0;
             return (
               <Link
                 key={item.name}
@@ -55,7 +82,17 @@ export function AdminSidebar() {
                 )}
               >
                 <item.icon className="h-5 w-5" />
-                {item.name}
+                <span className="flex-1">{item.name}</span>
+                {badge > 0 && (
+                  <span
+                    className={cn(
+                      "flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[11px] font-bold",
+                      isActive ? "bg-white text-[#c74959]" : "bg-[#c74959] text-white"
+                    )}
+                  >
+                    {badge > 9 ? "9+" : badge}
+                  </span>
+                )}
               </Link>
             );
           })}

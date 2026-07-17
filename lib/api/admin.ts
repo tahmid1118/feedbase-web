@@ -155,6 +155,28 @@ export interface CreateOfferInput {
   endsAt?: string;
 }
 
+export interface SupportSessionRow {
+  id: number;
+  tenant_id: number | null;
+  user_id: number | null;
+  user_email: string;
+  user_name: string | null;
+  status: "open" | "closed";
+  created_at: string;
+  last_message_at: string | null;
+  closed_at: string | null;
+  workspace_name: string | null;
+  unread_from_user: number;
+  last_message: string | null;
+}
+
+export interface AdminSupportMessage {
+  id: number;
+  sender: "user" | "admin";
+  body: string;
+  created_at: string;
+}
+
 export const adminApi = {
   overview: (token?: string) =>
     request<OverviewData>("/overview", "GET", token),
@@ -245,6 +267,26 @@ export const adminApi = {
     request("/promo-codes", "POST", token, { ...data }),
   revokePromoCode: (token: string | undefined, id: number) =>
     request(`/promo-codes/${id}/revoke`, "PUT", token),
+
+  // Support chat
+  supportInboxUnread: (token?: string) =>
+    request<{ sessionsWithUnread: number }>("/support/unread", "GET", token),
+  listSupportSessions: (token: string | undefined, status?: "open" | "closed") =>
+    request<{ rows: SupportSessionRow[] }>(
+      `/support/sessions${status ? `?status=${status}` : ""}`,
+      "GET",
+      token
+    ),
+  getSupportSession: (token: string | undefined, id: number) =>
+    request<{ session: SupportSessionRow; messages: AdminSupportMessage[] }>(
+      `/support/sessions/${id}`,
+      "GET",
+      token
+    ),
+  sendSupportMessage: (token: string | undefined, id: number, body: string) =>
+    request(`/support/sessions/${id}/messages`, "POST", token, { body }),
+  closeSupportSession: (token: string | undefined, id: number) =>
+    request(`/support/sessions/${id}/close`, "PUT", token),
 
   // Offers
   listOffers: (token?: string) =>

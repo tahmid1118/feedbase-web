@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { Header } from "@/components/dashboard/header";
 import { Sidebar } from "@/components/dashboard/sidebar";
 import { SingleTabGuard } from "@/components/dashboard/single-tab-guard";
+import { SupportChatWidget } from "@/components/support/support-chat-widget";
 import { Toaster } from "@/components/ui/sonner";
 import { billingApi } from "@/lib/api";
 
@@ -58,6 +59,8 @@ export default async function DashboardLayout({
       </main>
       {/* A 2nd tab reuses the session cookie, so only the browser can catch it. */}
       <SingleTabGuard multiDevice={multiDevice} />
+      {/* Contact support — available to every role/plan on all dashboard pages. */}
+      <SupportChatWidget />
       <Toaster />
     </div>
   );

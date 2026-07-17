@@ -298,6 +298,24 @@ Version 1.1
     File uploads (avatars, workspace logo, and feedback photo/video attachments)
     served from the API origin.
 
+3.9a Support Chat
+    A live chat between a workspace user and the platform administrator.
+    FR-SC1 Contact ...... Every signed-in user (any role, any plan) has a
+                          "Contact support" launcher on every dashboard page that
+                          opens a chat with the platform admin.
+    FR-SC2 Session ...... A conversation is a session. A user has at most one open
+                          session at a time; contacting support resumes the open
+                          one or starts a new one.
+    FR-SC3 Exchange ..... Both sides send text messages; new messages appear
+                          within a few seconds. Each side sees an unread indicator
+                          for messages awaiting their attention.
+    FR-SC4 Close ........ The admin ends a session when the matter is resolved.
+                          After closing, the USER can no longer view or reply to
+                          that session (a new one must be started), while the ADMIN
+                          retains the full transcript indefinitely, browsable under
+                          a Closed list. Transcripts survive even if the user later
+                          deletes their account.
+
 3.10 Billing & Subscriptions
     Each workspace is on a subscription plan; payment is handled by Stripe
     (hosted Checkout + Customer Portal — no card data is stored by the platform).
@@ -376,6 +394,10 @@ Version 1.1
                           subscriptions, promo redemptions) and a plan breakdown.
     FR-AD6 Promo/Offers  Generate and revoke promo codes, and create/end
                           promotional plan offers (FR-B6, FR-B7).
+    FR-AD7 Support ...... Answer users' support chats from a queue (open first,
+                          with unread indicators), reply in real time, and close a
+                          session when resolved. Closed sessions stay readable as
+                          history (see FR-SC1–FR-SC4).
 
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES

@@ -22,4 +22,5 @@ export * from "./analytics";
 export * from "./billing";
 export * from "./admin";
 export * from "./invitations";
+export * from "./support";
 export * from "./health-check";
