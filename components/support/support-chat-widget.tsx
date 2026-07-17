@@ -12,6 +12,10 @@ import {
 } from "lucide-react";
 import { supportApi, ApiError, type SupportMessage } from "@/lib/api";
 import { LocalTime } from "@/components/local-time";
+import {
+  armNotificationSound,
+  playNotificationBell,
+} from "@/lib/notification-sound";
 
 /**
  * Floating "Contact support" widget available on every dashboard page, for every
@@ -38,20 +42,35 @@ export function SupportChatWidget() {
   const [unread, setUnread] = useState(0);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Newest admin message id seen (open panel) — a jump means a fresh reply.
+  const lastAdminIdRef = useRef<number | null>(null);
   const scrollToBottom = () => {
     requestAnimationFrame(() => {
       scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
     });
   };
 
+  // Enable the notification bell once the user first interacts with the page.
+  useEffect(() => {
+    armNotificationSound();
+  }, []);
+
   // Badge poll — runs while the panel is CLOSED so the user notices a reply.
   useEffect(() => {
     if (!token || open) return;
     let active = true;
+    let first = true;
+    let prev = 0;
     const tick = async () => {
       try {
         const res = await supportApi.unread(token);
-        if (active) setUnread(res.data?.unreadCount ?? 0);
+        if (!active) return;
+        const count = res.data?.unreadCount ?? 0;
+        setUnread(count);
+        // Ring when a new reply lands (but never on the first baseline read).
+        if (!first && count > prev) playNotificationBell();
+        prev = count;
+        first = false;
       } catch {
         /* transient — keep the last value */
       }
@@ -65,13 +84,23 @@ export function SupportChatWidget() {
   }, [token, open]);
 
   const loadMessages = useCallback(
-    async (id: number) => {
+    async (id: number, notify = false) => {
       if (!token) return;
       try {
         const res = await supportApi.listMessages(id, token);
-        setMessages(res.data?.messages ?? []);
+        const msgs = res.data?.messages ?? [];
+        setMessages(msgs);
         setClosedByAdmin(false);
         scrollToBottom();
+        // Ring on a newly-arrived admin reply while the panel is open.
+        const newestAdmin = msgs.reduce(
+          (max, m) => (m.sender === "admin" && m.id > max ? m.id : max),
+          0
+        );
+        if (notify && lastAdminIdRef.current !== null && newestAdmin > lastAdminIdRef.current) {
+          playNotificationBell();
+        }
+        lastAdminIdRef.current = newestAdmin;
       } catch (err) {
         // 403 = the admin closed this session; it's no longer the user's to see.
         if (err instanceof ApiError && err.status === 403) {
@@ -108,7 +137,7 @@ export function SupportChatWidget() {
   // Message poll — runs while the panel is OPEN on an active session.
   useEffect(() => {
     if (!open || sessionId === null) return;
-    const t = setInterval(() => loadMessages(sessionId), POLL_MESSAGES_MS);
+    const t = setInterval(() => loadMessages(sessionId, true), POLL_MESSAGES_MS);
     return () => clearInterval(t);
   }, [open, sessionId, loadMessages]);
 

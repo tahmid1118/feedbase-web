@@ -24,6 +24,10 @@ import {
 } from "@/components/ui/alert-dialog";
 import { LocalTime } from "@/components/local-time";
 import { cn } from "@/lib/utils";
+import {
+  armNotificationSound,
+  playNotificationBell,
+} from "@/lib/notification-sound";
 import { toast } from "sonner";
 
 const POLL_LIST_MS = 8000;
@@ -45,15 +49,35 @@ export default function AdminSupportPage() {
   const [loadingList, setLoadingList] = useState(true);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Total unread-from-user across the listed sessions (null = not yet primed) —
+  // an increase means a new message landed in some session.
+  const prevUnreadTotalRef = useRef<number | null>(null);
+  // Newest user message id in the open thread — a jump means a fresh message.
+  const lastUserIdRef = useRef<number | null>(null);
   const scrollToBottom = () =>
     requestAnimationFrame(() =>
       scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight })
     );
 
+  // Enable the notification bell once the admin first interacts with the page.
+  useEffect(() => {
+    armNotificationSound();
+  }, []);
+
   const loadList = useCallback(async () => {
     if (!token) return;
     const res = await adminApi.listSupportSessions(token, tab);
-    if (res.ok) setSessions(res.data?.rows ?? []);
+    if (res.ok) {
+      const rows = res.data?.rows ?? [];
+      setSessions(rows);
+      const total = rows.reduce((sum, r) => sum + (r.unread_from_user || 0), 0);
+      // Ring on a new user message in a session that isn't currently open (the
+      // open one is caught by loadThread); never on the first baseline read.
+      if (prevUnreadTotalRef.current !== null && total > prevUnreadTotalRef.current) {
+        playNotificationBell();
+      }
+      prevUnreadTotalRef.current = total;
+    }
   }, [token, tab]);
 
   useEffect(() => {
@@ -73,13 +97,23 @@ export default function AdminSupportPage() {
   }, [loadList]);
 
   const loadThread = useCallback(
-    async (id: number) => {
+    async (id: number, notify = false) => {
       if (!token) return;
       const res = await adminApi.getSupportSession(token, id);
       if (res.ok) {
+        const msgs = res.data?.messages ?? [];
         setSelected(res.data?.session ?? null);
-        setMessages(res.data?.messages ?? []);
+        setMessages(msgs);
         scrollToBottom();
+        // Ring on a newly-arrived user message in the open conversation.
+        const newestUser = msgs.reduce(
+          (max, m) => (m.sender === "user" && m.id > max ? m.id : max),
+          0
+        );
+        if (notify && lastUserIdRef.current !== null && newestUser > lastUserIdRef.current) {
+          playNotificationBell();
+        }
+        lastUserIdRef.current = newestUser;
       }
     },
     [token]
@@ -89,8 +123,10 @@ export default function AdminSupportPage() {
   useEffect(() => {
     if (selectedId === null) return;
     let active = true;
+    let first = true;
     const run = () => {
-      if (active) loadThread(selectedId);
+      if (active) loadThread(selectedId, !first);
+      first = false;
     };
     run();
     const t = setInterval(run, POLL_THREAD_MS);
@@ -101,6 +137,8 @@ export default function AdminSupportPage() {
   }, [selectedId, loadThread]);
 
   const openSession = (id: number) => {
+    // Prime the thread ring so selecting a session doesn't ring on its history.
+    lastUserIdRef.current = null;
     setSelectedId(id);
     setMessages([]);
     // Optimistically clear this row's unread badge; loadThread marks it read.
@@ -168,6 +206,8 @@ export default function AdminSupportPage() {
                 key={t}
                 type="button"
                 onClick={() => {
+                  // Re-prime so switching tabs (a different unread total) is silent.
+                  prevUnreadTotalRef.current = null;
                   setTab(t);
                   setSelectedId(null);
                   setSelected(null);
