@@ -484,8 +484,8 @@ export default function PostDetailPage() {
                 </div>
                 {post.status !== "completed" ? (
                   <p className="mt-2 text-xs text-[#1c0a0c]/50">
-                    Mark this feedback <strong>Completed</strong> to email the
-                    submitter that it&apos;s implemented.
+                    Mark this feedback <strong>Completed</strong>{" "}
+                    to email the submitter that it&apos;s implemented.
                   </p>
                 ) : null}
               </div>
