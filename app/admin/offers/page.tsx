@@ -24,27 +24,35 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { LocalTime } from "@/components/local-time";
-import { planByKey, formatPrice } from "@/lib/plans";
+import { planByKey, planPricing, formatPrice } from "@/lib/plans";
 import { toast } from "sonner";
 
-// List prices (USD) sourced from the canonical display config so they never
-// drift when plan pricing changes.
-const PLAN_PRICE: Record<"pro" | "business", number> = {
-  pro: planByKey("pro")?.monthlyPrice ?? 0,
-  business: planByKey("business")?.monthlyPrice ?? 0,
-};
+type OfferInterval = "month" | "year";
 
-// Default a new offer to ~20% off Pro (a whole-dollar starting point below the
-// Pro list price); the admin can set any value, including cents.
+// The whole-dollar list price for a plan on an interval (monthly price, or
+// yearly TOTAL), sourced from the canonical display config so it never drifts.
+// Mirrors the backend's listPrice(plan, interval).
+function listPriceOf(plan: "pro" | "business", interval: OfferInterval): number {
+  const p = planByKey(plan);
+  if (!p) return 0;
+  return interval === "year" ? planPricing(p, "year").yearlyTotal ?? 0 : p.monthlyPrice;
+}
+
+// Default a new offer to ~20% off Pro monthly; the admin can set any value,
+// including cents, and switch the interval.
 const EMPTY: CreateOfferInput = {
   plan: "pro",
-  offerPrice: Math.max(1, Math.round(PLAN_PRICE.pro * 0.8)),
+  interval: "month",
+  offerPrice: Math.max(1, Math.round(listPriceOf("pro", "month") * 0.8)),
 };
 
-function pct(plan: "pro" | "business", offer: number): number {
-  const orig = PLAN_PRICE[plan];
+function pct(plan: "pro" | "business", interval: OfferInterval, offer: number): number {
+  const orig = listPriceOf(plan, interval);
   return orig > 0 ? Math.round((1 - offer / orig) * 100) : 0;
 }
+
+const intervalLabel = (i: OfferInterval) => (i === "year" ? "Yearly" : "Monthly");
+const perSuffix = (i: OfferInterval) => (i === "year" ? "/yr" : "/mo");
 
 export default function AdminOffersPage() {
   const { data: session } = useSession();
@@ -94,7 +102,7 @@ export default function AdminOffersPage() {
     } else toast.error(res.message || "Failed");
   };
 
-  const planPrice = PLAN_PRICE[form.plan];
+  const planPrice = listPriceOf(form.plan, form.interval);
   const valid = form.offerPrice > 0 && form.offerPrice < planPrice;
 
   return (
@@ -123,6 +131,7 @@ export default function AdminOffersPage() {
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
                 <th className="px-4 py-3">Plan</th>
+                <th className="px-4 py-3">Billing</th>
                 <th className="px-4 py-3">Price</th>
                 <th className="px-4 py-3">Label</th>
                 <th className="px-4 py-3">Window</th>
@@ -133,13 +142,16 @@ export default function AdminOffersPage() {
             <tbody>
               {rows.map((o) => {
                 const offer = Number(o.offer_price);
-                const p = pct(o.plan, offer);
+                const iv: OfferInterval = o.billing_interval === "year" ? "year" : "month";
+                const p = pct(o.plan, iv, offer);
                 return (
                   <tr key={o.id} className="border-b border-[#e399a3]/10">
                     <td className="px-4 py-3 font-medium capitalize text-[#1c0a0c]">{o.plan}</td>
+                    <td className="px-4 py-3 text-[#1c0a0c]/70">{intervalLabel(iv)}</td>
                     <td className="px-4 py-3">
-                      <span className="text-[#1c0a0c]/50 line-through">{formatPrice(PLAN_PRICE[o.plan])}</span>{" "}
-                      <span className="font-semibold text-green-600">{formatPrice(offer)}</span>{" "}
+                      <span className="text-[#1c0a0c]/50 line-through">{formatPrice(listPriceOf(o.plan, iv))}</span>{" "}
+                      <span className="font-semibold text-green-600">{formatPrice(offer)}</span>
+                      <span className="text-[#1c0a0c]/50">{perSuffix(iv)}</span>{" "}
                       <span className="text-xs text-[#1c0a0c]/50">({p}% off)</span>
                     </td>
                     <td className="px-4 py-3 text-[#1c0a0c]/70">{o.label || "—"}</td>
@@ -192,19 +204,42 @@ export default function AdminOffersPage() {
               <Label>Plan</Label>
               <Select
                 value={form.plan}
-                onValueChange={(v) => set({ plan: v as "pro" | "business" })}
+                onValueChange={(v) => {
+                  const plan = v as "pro" | "business";
+                  set({ plan, offerPrice: Math.max(1, Math.round(listPriceOf(plan, form.interval) * 0.8)) });
+                }}
               >
                 <SelectTrigger className="w-full capitalize">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="pro">Pro (${PLAN_PRICE.pro}/mo)</SelectItem>
-                  <SelectItem value="business">Business (${PLAN_PRICE.business}/mo)</SelectItem>
+                  <SelectItem value="pro">Pro</SelectItem>
+                  <SelectItem value="business">Business</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="o-price">Offer price (USD / month)</Label>
+              <Label>Billing cycle</Label>
+              <Select
+                value={form.interval}
+                onValueChange={(v) => {
+                  const interval = v as OfferInterval;
+                  set({ interval, offerPrice: Math.max(1, Math.round(listPriceOf(form.plan, interval) * 0.8)) });
+                }}
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="month">Monthly (${listPriceOf(form.plan, "month")}/mo list)</SelectItem>
+                  <SelectItem value="year">Yearly (${listPriceOf(form.plan, "year")}/yr list)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="o-price">
+                Offer price (USD {form.interval === "year" ? "total / year" : "/ month"})
+              </Label>
               <Input
                 id="o-price"
                 type="number"
@@ -216,7 +251,7 @@ export default function AdminOffersPage() {
               />
               <p className="text-xs text-[#1c0a0c]/50">
                 {valid
-                  ? `${pct(form.plan, form.offerPrice)}% off the $${planPrice} list price.`
+                  ? `${pct(form.plan, form.interval, form.offerPrice)}% off the $${planPrice} ${form.interval === "year" ? "yearly" : "monthly"} list price.`
                   : `Must be between $1 and $${planPrice - 1}.`}
               </p>
             </div>

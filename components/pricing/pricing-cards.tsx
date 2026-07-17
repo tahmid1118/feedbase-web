@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { PLANS, planPricing, formatPrice } from "@/lib/plans";
-import type { ActiveOffer, BillingInterval } from "@/lib/api";
+import type { OfferMap, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
 import { cn } from "@/lib/utils";
@@ -18,7 +18,7 @@ export function PricingCards({
   offers,
   ctaHref = "/signup",
 }: {
-  offers: Record<string, ActiveOffer>;
+  offers: OfferMap;
   ctaHref?: string;
 }) {
   const [interval, setInterval] = useState<BillingInterval>("month");
@@ -31,7 +31,7 @@ export function PricingCards({
 
       <div className="grid gap-6 md:grid-cols-3">
         {PLANS.map((plan) => {
-          const offer = interval === "month" ? offers[plan.key] : undefined;
+          const offer = offers[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
           return (
@@ -81,7 +81,9 @@ export function PricingCards({
                     <span className="text-4xl font-bold text-green-600">
                       {formatPrice(offer.offerPrice)}
                     </span>
-                    <span className="text-[#1c0a0c]/50">/mo</span>
+                    <span className="text-[#1c0a0c]/50">
+                      {interval === "year" ? "/yr" : "/mo"}
+                    </span>
                   </div>
                 ) : (
                   <>

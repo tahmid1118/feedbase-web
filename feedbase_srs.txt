@@ -361,12 +361,16 @@ Version 1.1
                           instantly with no charge, percentage-off codes apply at
                           checkout. Codes support a duration, a redemption limit,
                           and an expiry, and may be revoked.
-    FR-B7  Offers ...... Admins set a promotional price on a paid plan (see 3.11),
-                          optionally time-bounded. While an offer is active, every
-                          workspace's Billing tab shows that plan's list price with
-                          a diagonal strikethrough beside the lower offer price and
-                          a "save %" badge, and the discount is applied
-                          automatically at checkout. One active offer per plan.
+    FR-B7  Offers ...... Admins set a promotional price on a paid plan for a chosen
+                          billing cycle — MONTHLY or YEARLY (see 3.11) — optionally
+                          time-bounded, and the price may include cents. A monthly
+                          offer discounts the monthly price; a yearly offer discounts
+                          the yearly total. While an offer is active, the Billing tab
+                          and public pricing cards, when showing that interval, draw
+                          the list price with a diagonal strikethrough beside the
+                          lower offer price and a "save %" badge, and the exact
+                          discount is applied automatically at checkout. One active
+                          offer per plan and cycle.
 
 3.11 Platform Administration (Admin Panel)
     A platform admin manages the entire platform from a dedicated panel.

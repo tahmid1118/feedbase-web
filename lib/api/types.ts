@@ -344,12 +344,16 @@ export interface PlanLimits {
 export interface ActiveOffer {
   id: number;
   plan: string;
+  interval: "month" | "year";
   originalPrice: number;
   offerPrice: number;
   percentOff: number;
   label: string | null;
   endsAt: string | null;
 }
+
+/** Active offers keyed by plan, then by interval: `offers[plan]?.[interval]`. */
+export type OfferMap = Record<string, Partial<Record<"month" | "year", ActiveOffer>>>;
 
 export type BillingInterval = "month" | "year";
 
@@ -361,8 +365,8 @@ export interface BillingStatus {
   currentPeriodEnd: string | null;
   hasSubscription: boolean;
   limits: PlanLimits;
-  // Active promotional offers keyed by plan key ("pro" / "business").
-  offers?: Record<string, ActiveOffer>;
+  // Active promotional offers keyed by plan, then interval: offers[plan]?.[interval].
+  offers?: OfferMap;
 }
 
 // API Key types

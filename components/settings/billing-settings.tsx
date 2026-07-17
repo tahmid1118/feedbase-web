@@ -273,7 +273,7 @@ export function BillingSettings() {
         {PLANS.map((plan) => {
           // Admin promotional offers apply to the MONTHLY price only; the yearly
           // price already carries its own 20% discount.
-          const offer = interval === "month" ? status?.offers?.[plan.key] : undefined;
+          const offer = status?.offers?.[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
           return (
@@ -321,7 +321,9 @@ export function BillingSettings() {
                   <span className="text-3xl font-bold text-green-600">
                     {formatPrice(offer.offerPrice)}
                   </span>
-                  <span className="text-sm text-[#1c0a0c]/50">/mo</span>
+                  <span className="text-sm text-[#1c0a0c]/50">
+                    {interval === "year" ? "/yr" : "/mo"}
+                  </span>
                 </div>
               ) : (
                 <>

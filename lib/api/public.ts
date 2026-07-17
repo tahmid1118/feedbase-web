@@ -14,7 +14,7 @@ import type {
   RoadmapItem,
   Changelog,
   PostListFilters,
-  ActiveOffer,
+  OfferMap,
   BoardSort,
 } from "./types";
 
@@ -111,9 +111,9 @@ export const publicApi = {
     )
   ),
 
-  /** Active promotional offers keyed by plan (for the public pricing cards). */
+  /** Active promotional offers keyed by plan+interval (for the pricing cards). */
   getOffers: cache(() =>
-    publicFetch<Record<string, ActiveOffer>>("/public/offers")
+    publicFetch<OfferMap>("/public/offers")
   ),
 
   /** Describe a workspace invitation (for the /invite/[token] page). */

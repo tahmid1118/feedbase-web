@@ -967,10 +967,10 @@ Sample Response:
 ```
 
 ### GET /public/offers
-Active promotional offers keyed by plan (list price strikethrough on the public pricing page). Query: `?lg=en`.
+Active promotional offers, keyed by **plan then interval** (`offers[plan].month|.year`) — list-price strikethrough on the public pricing page. A monthly offer discounts the monthly price; a yearly offer discounts the yearly total. Query: `?lg=en`.
 Sample Response:
 ```json
-{"status":"success","data":{"pro":{"id":3,"plan":"pro","originalPrice":19,"offerPrice":9,"percentOff":53,"label":"Launch offer","endsAt":"2026-08-01T23:59:59.000Z"}}}
+{"status":"success","data":{"pro":{"month":{"id":3,"plan":"pro","interval":"month","originalPrice":10,"offerPrice":7.5,"percentOff":25,"label":"Launch offer","endsAt":"2026-08-01T23:59:59.000Z"},"year":{"id":4,"plan":"pro","interval":"year","originalPrice":96,"offerPrice":80,"percentOff":17,"label":null,"endsAt":null}}}}
 ```
 
 ### GET /public/invitations/:token
@@ -1146,7 +1146,7 @@ Promo codes:
 - `PUT  /admin/promo-codes/:id/revoke` — deactivate.
 
 Offers (promotional plan prices):
-- `GET  /admin/offers` · `POST /admin/offers` — list / create (one active offer per plan, backed by a Stripe coupon).
+- `GET  /admin/offers` · `POST /admin/offers` — list / create. Body `{ plan, interval: "month"|"year", offerPrice, label?, startsAt?, endsAt? }`; `offerPrice` may be fractional and (for `year`) is the yearly total. One active offer per (plan, interval), backed by a fixed amount-off Stripe coupon.
 - `PUT  /admin/offers/:id/deactivate` — deactivate (deletes its coupon).
 
 Support chat (admin side of the user↔admin chat; see section 19):

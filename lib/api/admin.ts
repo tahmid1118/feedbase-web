@@ -139,6 +139,7 @@ export interface AdminComment {
 export interface Offer {
   id: number;
   plan: "pro" | "business";
+  billing_interval: "month" | "year";
   offer_price: string;
   label: string | null;
   starts_at: string | null;
@@ -149,6 +150,7 @@ export interface Offer {
 
 export interface CreateOfferInput {
   plan: "pro" | "business";
+  interval: "month" | "year";
   offerPrice: number;
   label?: string;
   startsAt?: string;
