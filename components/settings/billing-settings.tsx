@@ -10,7 +10,7 @@ import {
   type BillingStatus,
   type PlanKey,
 } from "@/lib/api";
-import { PLANS, planPricing } from "@/lib/plans";
+import { PLANS, planPricing, formatPrice } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -316,10 +316,10 @@ export function BillingSettings() {
                         "linear-gradient(to top right, transparent calc(50% - 1px), #c74959 calc(50% - 1px), #c74959 calc(50% + 1px), transparent calc(50% + 1px))",
                     }}
                   >
-                    ${offer.originalPrice}
+                    {formatPrice(offer.originalPrice)}
                   </span>
                   <span className="text-3xl font-bold text-green-600">
-                    ${offer.offerPrice}
+                    {formatPrice(offer.offerPrice)}
                   </span>
                   <span className="text-sm text-[#1c0a0c]/50">/mo</span>
                 </div>

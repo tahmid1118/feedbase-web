@@ -24,12 +24,22 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { LocalTime } from "@/components/local-time";
+import { planByKey, formatPrice } from "@/lib/plans";
 import { toast } from "sonner";
 
-// List prices (USD) — keep in sync with lib/plans.ts and the backend PLANS.
-const PLAN_PRICE: Record<"pro" | "business", number> = { pro: 19, business: 49 };
+// List prices (USD) sourced from the canonical display config so they never
+// drift when plan pricing changes.
+const PLAN_PRICE: Record<"pro" | "business", number> = {
+  pro: planByKey("pro")?.monthlyPrice ?? 0,
+  business: planByKey("business")?.monthlyPrice ?? 0,
+};
 
-const EMPTY: CreateOfferInput = { plan: "pro", offerPrice: 15 };
+// Default a new offer to ~20% off Pro (a whole-dollar starting point below the
+// Pro list price); the admin can set any value, including cents.
+const EMPTY: CreateOfferInput = {
+  plan: "pro",
+  offerPrice: Math.max(1, Math.round(PLAN_PRICE.pro * 0.8)),
+};
 
 function pct(plan: "pro" | "business", offer: number): number {
   const orig = PLAN_PRICE[plan];
@@ -128,8 +138,8 @@ export default function AdminOffersPage() {
                   <tr key={o.id} className="border-b border-[#e399a3]/10">
                     <td className="px-4 py-3 font-medium capitalize text-[#1c0a0c]">{o.plan}</td>
                     <td className="px-4 py-3">
-                      <span className="text-[#1c0a0c]/50 line-through">${PLAN_PRICE[o.plan]}</span>{" "}
-                      <span className="font-semibold text-green-600">${offer}</span>{" "}
+                      <span className="text-[#1c0a0c]/50 line-through">{formatPrice(PLAN_PRICE[o.plan])}</span>{" "}
+                      <span className="font-semibold text-green-600">{formatPrice(offer)}</span>{" "}
                       <span className="text-xs text-[#1c0a0c]/50">({p}% off)</span>
                     </td>
                     <td className="px-4 py-3 text-[#1c0a0c]/70">{o.label || "—"}</td>
@@ -198,8 +208,9 @@ export default function AdminOffersPage() {
               <Input
                 id="o-price"
                 type="number"
-                min={1}
-                max={planPrice - 1}
+                min={0.5}
+                max={planPrice - 0.01}
+                step={0.01}
                 value={form.offerPrice}
                 onChange={(e) => set({ offerPrice: Number(e.target.value) })}
               />

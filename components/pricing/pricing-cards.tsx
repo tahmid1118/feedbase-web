@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { PLANS, planPricing } from "@/lib/plans";
+import { PLANS, planPricing, formatPrice } from "@/lib/plans";
 import type { ActiveOffer, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
@@ -76,10 +76,10 @@ export function PricingCards({
                           "linear-gradient(to top right, transparent calc(50% - 1px), #c74959 calc(50% - 1px), #c74959 calc(50% + 1px), transparent calc(50% + 1px))",
                       }}
                     >
-                      ${offer.originalPrice}
+                      {formatPrice(offer.originalPrice)}
                     </span>
                     <span className="text-4xl font-bold text-green-600">
-                      ${offer.offerPrice}
+                      {formatPrice(offer.offerPrice)}
                     </span>
                     <span className="text-[#1c0a0c]/50">/mo</span>
                   </div>
