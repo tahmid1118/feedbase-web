@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import type { UserRole } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n/client";
 import { ProfileSettings } from "@/components/settings/profile-settings";
 import { TeamSettings } from "@/components/settings/team-settings";
 import { TagsSettings } from "@/components/settings/tags-settings";
@@ -23,23 +24,24 @@ type TabId = "profile" | "team" | "tags" | "branding" | "billing";
 
 interface TabDef {
   id: TabId;
-  label: string;
+  labelKey: string;
   icon: LucideIcon;
   adminOnly?: boolean;
 }
 
 const TABS: TabDef[] = [
-  { id: "profile", label: "Profile", icon: User },
-  { id: "team", label: "Team", icon: Users, adminOnly: true },
-  { id: "tags", label: "Tags", icon: Tag, adminOnly: true },
-  { id: "branding", label: "Branding", icon: Palette, adminOnly: true },
-  { id: "billing", label: "Billing", icon: CreditCard, adminOnly: true },
+  { id: "profile", labelKey: "user.profile", icon: User },
+  { id: "team", labelKey: "settings.tab.team", icon: Users, adminOnly: true },
+  { id: "tags", labelKey: "settings.tab.tags", icon: Tag, adminOnly: true },
+  { id: "branding", labelKey: "settings.tab.branding", icon: Palette, adminOnly: true },
+  { id: "billing", labelKey: "settings.tab.billing", icon: CreditCard, adminOnly: true },
 ];
 
 // The workspace owner manages the workspace; members ("user") see Profile only.
 const ADMIN_ROLES: UserRole[] = ["owner"];
 
 export default function SettingsPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -71,10 +73,8 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">Settings</h2>
-        <p className="text-sm text-[#1c0a0c]/60">
-          Manage your profile and workspace preferences
-        </p>
+        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("nav.settings")}</h2>
+        <p className="text-sm text-[#1c0a0c]/60">{t("page.settings.subtitle")}</p>
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row">
@@ -92,7 +92,7 @@ export default function SettingsPage() {
               )}
             >
               <tab.icon className="h-4 w-4" />
-              {tab.label}
+              {t(tab.labelKey)}
             </button>
           ))}
         </nav>

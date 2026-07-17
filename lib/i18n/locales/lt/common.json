@@ -111,5 +111,33 @@
     "column": "Stulpelis",
     "selectColumn": "Pasirinkite stulpelį",
     "targetReleaseDate": "Numatoma išleidimo data (nebūtina)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Atsiliepimų lenta",
+      "subtitle": "Peržiūrėkite, rūšiuokite ir tvarkykite vartotojų atsiliepimus"
+    },
+    "roadmap": {
+      "title": "Produkto planas",
+      "subtitle": "Suskirstykite atsiliepimus į etapus ir stebėkite kūrimą"
+    },
+    "changelog": {
+      "subtitle": "Skelbkite produkto naujinius ir leidimo pastabas"
+    },
+    "settings": {
+      "subtitle": "Tvarkykite savo profilį ir darbo srities nuostatas"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Komanda",
+      "tags": "Žymos",
+      "branding": "Prekės ženklas",
+      "billing": "Atsiskaitymas"
+    }
+  },
+  "notifications": {
+    "loading": "Įkeliami pranešimai...",
+    "empty": "Kol kas nėra pranešimų."
   }
 }

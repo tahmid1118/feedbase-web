@@ -111,5 +111,33 @@
     "column": "Coluna",
     "selectColumn": "Selecione uma coluna",
     "targetReleaseDate": "Data de lançamento prevista (opcional)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Quadro de feedback",
+      "subtitle": "Reveja, trie e faça a gestão do feedback dos seus utilizadores"
+    },
+    "roadmap": {
+      "title": "Roteiro do produto",
+      "subtitle": "Organize o feedback em fases e acompanhe o desenvolvimento"
+    },
+    "changelog": {
+      "subtitle": "Publique atualizações do produto e notas de lançamento"
+    },
+    "settings": {
+      "subtitle": "Faça a gestão do seu perfil e preferências do espaço de trabalho"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Equipa",
+      "tags": "Etiquetas",
+      "branding": "Marca",
+      "billing": "Faturação"
+    }
+  },
+  "notifications": {
+    "loading": "A carregar notificações...",
+    "empty": "Ainda não há notificações."
   }
 }

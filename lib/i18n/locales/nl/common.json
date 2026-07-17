@@ -111,5 +111,33 @@
     "column": "Kolom",
     "selectColumn": "Selecteer een kolom",
     "targetReleaseDate": "Streefdatum voor release (optioneel)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Feedbackbord",
+      "subtitle": "Bekijk, sorteer en beheer feedback van uw gebruikers"
+    },
+    "roadmap": {
+      "title": "Productroadmap",
+      "subtitle": "Organiseer feedback in fasen en volg functieontwikkeling"
+    },
+    "changelog": {
+      "subtitle": "Publiceer productupdates en release-opmerkingen"
+    },
+    "settings": {
+      "subtitle": "Beheer uw profiel en werkruimte-instellingen"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Team",
+      "tags": "Tags",
+      "branding": "Branding",
+      "billing": "Facturering"
+    }
+  },
+  "notifications": {
+    "loading": "Meldingen laden...",
+    "empty": "Nog geen meldingen."
   }
 }

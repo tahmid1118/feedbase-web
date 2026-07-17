@@ -111,5 +111,33 @@
     "column": "Colonne",
     "selectColumn": "Sélectionnez une colonne",
     "targetReleaseDate": "Date de sortie cible (facultatif)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Tableau des retours",
+      "subtitle": "Examinez, triez et gérez les retours de vos utilisateurs"
+    },
+    "roadmap": {
+      "title": "Feuille de route produit",
+      "subtitle": "Organisez les retours en étapes et suivez le développement"
+    },
+    "changelog": {
+      "subtitle": "Publiez les mises à jour et notes de version"
+    },
+    "settings": {
+      "subtitle": "Gérez votre profil et les préférences de l'espace de travail"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Équipe",
+      "tags": "Étiquettes",
+      "branding": "Image de marque",
+      "billing": "Facturation"
+    }
+  },
+  "notifications": {
+    "loading": "Chargement des notifications...",
+    "empty": "Aucune notification pour l'instant."
   }
 }

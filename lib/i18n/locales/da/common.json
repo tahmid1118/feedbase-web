@@ -111,5 +111,33 @@
     "column": "Kolonne",
     "selectColumn": "Vælg en kolonne",
     "targetReleaseDate": "Måldato for udgivelse (valgfrit)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Feedbacktavle",
+      "subtitle": "Gennemgå, sorter og administrer feedback fra dine brugere"
+    },
+    "roadmap": {
+      "title": "Produktkøreplan",
+      "subtitle": "Organiser feedback i faser og følg funktionsudvikling"
+    },
+    "changelog": {
+      "subtitle": "Udgiv produktopdateringer og udgivelsesnoter"
+    },
+    "settings": {
+      "subtitle": "Administrer din profil og arbejdsområdeindstillinger"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Team",
+      "tags": "Tags",
+      "branding": "Branding",
+      "billing": "Fakturering"
+    }
+  },
+  "notifications": {
+    "loading": "Indlæser notifikationer...",
+    "empty": "Ingen notifikationer endnu."
   }
 }

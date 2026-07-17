@@ -111,5 +111,33 @@
     "column": "Columna",
     "selectColumn": "Selecciona una columna",
     "targetReleaseDate": "Fecha de lanzamiento prevista (opcional)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Tablero de comentarios",
+      "subtitle": "Revisa, clasifica y gestiona los comentarios de tus usuarios"
+    },
+    "roadmap": {
+      "title": "Hoja de ruta del producto",
+      "subtitle": "Organiza los comentarios en etapas y sigue el desarrollo"
+    },
+    "changelog": {
+      "subtitle": "Publica actualizaciones del producto y notas de versión"
+    },
+    "settings": {
+      "subtitle": "Gestiona tu perfil y las preferencias del espacio de trabajo"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Equipo",
+      "tags": "Etiquetas",
+      "branding": "Marca",
+      "billing": "Facturación"
+    }
+  },
+  "notifications": {
+    "loading": "Cargando notificaciones...",
+    "empty": "Aún no hay notificaciones."
   }
 }

@@ -111,5 +111,33 @@
     "column": "Oszlop",
     "selectColumn": "Válasszon oszlopot",
     "targetReleaseDate": "Célzott kiadási dátum (opcionális)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Visszajelzési tábla",
+      "subtitle": "Tekintse át, rendezze és kezelje a felhasználók visszajelzéseit"
+    },
+    "roadmap": {
+      "title": "Termék ütemterv",
+      "subtitle": "Rendezze a visszajelzést szakaszokba és kövesse a fejlesztést"
+    },
+    "changelog": {
+      "subtitle": "Tegyen közzé termékfrissítéseket és kiadási megjegyzéseket"
+    },
+    "settings": {
+      "subtitle": "Kezelje profilját és munkaterületének beállításait"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Csapat",
+      "tags": "Címkék",
+      "branding": "Márkajelzés",
+      "billing": "Számlázás"
+    }
+  },
+  "notifications": {
+    "loading": "Értesítések betöltése...",
+    "empty": "Még nincsenek értesítések."
   }
 }

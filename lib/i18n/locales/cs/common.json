@@ -111,5 +111,33 @@
     "column": "Sloupec",
     "selectColumn": "Vyberte sloupec",
     "targetReleaseDate": "Cílové datum vydání (volitelné)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Nástěnka zpětné vazby",
+      "subtitle": "Kontrolujte, třiďte a spravujte zpětnou vazbu od uživatelů"
+    },
+    "roadmap": {
+      "title": "Plán produktu",
+      "subtitle": "Uspořádejte zpětnou vazbu do fází a sledujte vývoj funkcí"
+    },
+    "changelog": {
+      "subtitle": "Publikujte aktualizace produktu a poznámky k vydání"
+    },
+    "settings": {
+      "subtitle": "Spravujte svůj profil a nastavení pracovního prostoru"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Tým",
+      "tags": "Štítky",
+      "branding": "Značka",
+      "billing": "Fakturace"
+    }
+  },
+  "notifications": {
+    "loading": "Načítání oznámení...",
+    "empty": "Zatím žádná oznámení."
   }
 }

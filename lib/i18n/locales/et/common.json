@@ -111,5 +111,33 @@
     "column": "Veerg",
     "selectColumn": "Valige veerg",
     "targetReleaseDate": "Sihtavaldamise kuupäev (valikuline)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Tagasiside tahvel",
+      "subtitle": "Vaadake, sortige ja hallake kasutajate tagasisidet"
+    },
+    "roadmap": {
+      "title": "Toote teekaart",
+      "subtitle": "Korraldage tagasiside etappideks ja jälgige arendust"
+    },
+    "changelog": {
+      "subtitle": "Avaldage tootevärskendusi ja väljalaskemärkmeid"
+    },
+    "settings": {
+      "subtitle": "Hallake oma profiili ja tööruumi eelistusi"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Meeskond",
+      "tags": "Sildid",
+      "branding": "Bränding",
+      "billing": "Arveldus"
+    }
+  },
+  "notifications": {
+    "loading": "Teavituste laadimine...",
+    "empty": "Teavitusi veel pole."
   }
 }

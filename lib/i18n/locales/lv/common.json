@@ -111,5 +111,33 @@
     "column": "Kolonna",
     "selectColumn": "Atlasiet kolonnu",
     "targetReleaseDate": "Mērķa izlaišanas datums (neobligāti)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Atsauksmju tāfele",
+      "subtitle": "Pārskatiet, kārtojiet un pārvaldiet lietotāju atsauksmes"
+    },
+    "roadmap": {
+      "title": "Produkta ceļvedis",
+      "subtitle": "Sakārtojiet atsauksmes posmos un sekojiet līdzi izstrādei"
+    },
+    "changelog": {
+      "subtitle": "Publicējiet produkta atjauninājumus un izlaiduma piezīmes"
+    },
+    "settings": {
+      "subtitle": "Pārvaldiet savu profilu un darbvietas preferences"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Komanda",
+      "tags": "Tagi",
+      "branding": "Zīmolvedība",
+      "billing": "Norēķini"
+    }
+  },
+  "notifications": {
+    "loading": "Ielādē paziņojumus...",
+    "empty": "Vēl nav paziņojumu."
   }
 }

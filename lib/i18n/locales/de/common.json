@@ -111,5 +111,33 @@
     "column": "Spalte",
     "selectColumn": "Spalte auswählen",
     "targetReleaseDate": "Ziel-Veröffentlichungsdatum (optional)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Feedback-Board",
+      "subtitle": "Überprüfen, sortieren und verwalten Sie das Feedback Ihrer Nutzer"
+    },
+    "roadmap": {
+      "title": "Produkt-Roadmap",
+      "subtitle": "Ordnen Sie Feedback in Phasen und verfolgen Sie die Entwicklung"
+    },
+    "changelog": {
+      "subtitle": "Veröffentlichen Sie Produktupdates und Versionshinweise"
+    },
+    "settings": {
+      "subtitle": "Verwalten Sie Ihr Profil und Ihre Arbeitsbereichseinstellungen"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Team",
+      "tags": "Tags",
+      "branding": "Branding",
+      "billing": "Abrechnung"
+    }
+  },
+  "notifications": {
+    "loading": "Benachrichtigungen werden geladen...",
+    "empty": "Noch keine Benachrichtigungen."
   }
 }

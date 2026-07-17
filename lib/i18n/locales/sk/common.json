@@ -111,5 +111,33 @@
     "column": "Stĺpec",
     "selectColumn": "Vyberte stĺpec",
     "targetReleaseDate": "Cieľový dátum vydania (voliteľné)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Nástenka spätnej väzby",
+      "subtitle": "Kontrolujte, triedite a spravujte spätnú väzbu od používateľov"
+    },
+    "roadmap": {
+      "title": "Plán produktu",
+      "subtitle": "Usporiadajte spätnú väzbu do fáz a sledujte vývoj"
+    },
+    "changelog": {
+      "subtitle": "Publikujte aktualizácie produktu a poznámky k vydaniu"
+    },
+    "settings": {
+      "subtitle": "Spravujte svoj profil a nastavenia pracovného priestoru"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Tím",
+      "tags": "Štítky",
+      "branding": "Značka",
+      "billing": "Fakturácia"
+    }
+  },
+  "notifications": {
+    "loading": "Načítavajú sa oznámenia...",
+    "empty": "Zatiaľ žiadne oznámenia."
   }
 }

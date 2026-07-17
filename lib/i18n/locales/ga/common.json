@@ -111,5 +111,33 @@
     "column": "Colún",
     "selectColumn": "Roghnaigh colún",
     "targetReleaseDate": "Spriocdháta eisiúna (roghnach)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Clár Aiseolais",
+      "subtitle": "Déan athbhreithniú, sórtáil agus bainistigh aiseolas d'úsáideoirí"
+    },
+    "roadmap": {
+      "title": "Treochlár Táirge",
+      "subtitle": "Eagraigh aiseolas i gcéimeanna agus lean forbairt gnéithe"
+    },
+    "changelog": {
+      "subtitle": "Foilsigh nuashonruithe táirge agus nótaí eisiúna"
+    },
+    "settings": {
+      "subtitle": "Bainistigh do phróifíl agus roghanna spáis oibre"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Foireann",
+      "tags": "Clibeanna",
+      "branding": "Brandáil",
+      "billing": "Billeáil"
+    }
+  },
+  "notifications": {
+    "loading": "Fógraí á lódáil...",
+    "empty": "Níl aon fhógra ann fós."
   }
 }

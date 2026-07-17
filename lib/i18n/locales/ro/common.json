@@ -111,5 +111,33 @@
     "column": "Coloană",
     "selectColumn": "Selectați o coloană",
     "targetReleaseDate": "Data țintă de lansare (opțional)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Panou de feedback",
+      "subtitle": "Examinați, sortați și gestionați feedbackul de la utilizatori"
+    },
+    "roadmap": {
+      "title": "Foaia de parcurs a produsului",
+      "subtitle": "Organizați feedbackul în etape și urmăriți dezvoltarea"
+    },
+    "changelog": {
+      "subtitle": "Publicați actualizări de produs și note de lansare"
+    },
+    "settings": {
+      "subtitle": "Gestionați-vă profilul și preferințele spațiului de lucru"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Echipă",
+      "tags": "Etichete",
+      "branding": "Branding",
+      "billing": "Facturare"
+    }
+  },
+  "notifications": {
+    "loading": "Se încarcă notificările...",
+    "empty": "Încă nu există notificări."
   }
 }

@@ -111,5 +111,33 @@
     "column": "Stolpec",
     "selectColumn": "Izberite stolpec",
     "targetReleaseDate": "Ciljni datum izdaje (neobvezno)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Tabla povratnih informacij",
+      "subtitle": "Preglejte, razvrstite in upravljajte povratne informacije uporabnikov"
+    },
+    "roadmap": {
+      "title": "Načrt izdelka",
+      "subtitle": "Organizirajte povratne informacije v faze in spremljajte razvoj"
+    },
+    "changelog": {
+      "subtitle": "Objavljajte posodobitve izdelka in opombe ob izdaji"
+    },
+    "settings": {
+      "subtitle": "Upravljajte svoj profil in nastavitve delovnega prostora"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Ekipa",
+      "tags": "Oznake",
+      "branding": "Blagovna znamka",
+      "billing": "Zaračunavanje"
+    }
+  },
+  "notifications": {
+    "loading": "Nalaganje obvestil...",
+    "empty": "Še ni obvestil."
   }
 }

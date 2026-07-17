@@ -111,5 +111,33 @@
     "column": "Sarake",
     "selectColumn": "Valitse sarake",
     "targetReleaseDate": "Tavoitejulkaisupäivä (valinnainen)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Palautetaulu",
+      "subtitle": "Tarkastele, lajittele ja hallitse käyttäjien palautetta"
+    },
+    "roadmap": {
+      "title": "Tuotteen etenemissuunnitelma",
+      "subtitle": "Järjestä palaute vaiheisiin ja seuraa kehitystä"
+    },
+    "changelog": {
+      "subtitle": "Julkaise tuotepäivityksiä ja julkaisutietoja"
+    },
+    "settings": {
+      "subtitle": "Hallitse profiiliasi ja työtilan asetuksia"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Tiimi",
+      "tags": "Tunnisteet",
+      "branding": "Brändäys",
+      "billing": "Laskutus"
+    }
+  },
+  "notifications": {
+    "loading": "Ladataan ilmoituksia...",
+    "empty": "Ei vielä ilmoituksia."
   }
 }

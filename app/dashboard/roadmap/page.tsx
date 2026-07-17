@@ -1,13 +1,13 @@
 import { RoadmapBoard } from "@/components/roadmap/roadmap-board";
+import { getTranslation } from "@/lib/i18n/server";
 
-export default function RoadmapPage() {
+export default async function RoadmapPage() {
+  const { t } = await getTranslation();
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">Product Roadmap</h2>
-        <p className="text-sm text-[#1c0a0c]/60">
-          Organize feedback into stages and track feature development
-        </p>
+        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("page.roadmap.title")}</h2>
+        <p className="text-sm text-[#1c0a0c]/60">{t("page.roadmap.subtitle")}</p>
       </div>
 
       <RoadmapBoard />

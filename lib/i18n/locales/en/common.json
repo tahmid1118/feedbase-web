@@ -179,5 +179,33 @@
     "column": "Column",
     "selectColumn": "Select a column",
     "targetReleaseDate": "Target release date (optional)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Feedback Board",
+      "subtitle": "Review, triage, and manage feedback submitted by your users"
+    },
+    "roadmap": {
+      "title": "Product Roadmap",
+      "subtitle": "Organize feedback into stages and track feature development"
+    },
+    "changelog": {
+      "subtitle": "Publish product updates and release notes"
+    },
+    "settings": {
+      "subtitle": "Manage your profile and workspace preferences"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Team",
+      "tags": "Tags",
+      "branding": "Branding",
+      "billing": "Billing"
+    }
+  },
+  "notifications": {
+    "loading": "Loading notifications...",
+    "empty": "No notifications yet."
   }
 }

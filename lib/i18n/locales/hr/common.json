@@ -111,5 +111,33 @@
     "column": "Stupac",
     "selectColumn": "Odaberite stupac",
     "targetReleaseDate": "Ciljni datum izdanja (nije obavezno)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Ploča povratnih informacija",
+      "subtitle": "Pregledavajte, sortirajte i upravljajte povratnim informacijama korisnika"
+    },
+    "roadmap": {
+      "title": "Plan razvoja proizvoda",
+      "subtitle": "Organizirajte povratne informacije u faze i pratite razvoj"
+    },
+    "changelog": {
+      "subtitle": "Objavljujte ažuriranja proizvoda i bilješke o izdanjima"
+    },
+    "settings": {
+      "subtitle": "Upravljajte profilom i postavkama radnog prostora"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Tim",
+      "tags": "Oznake",
+      "branding": "Brendiranje",
+      "billing": "Naplata"
+    }
+  },
+  "notifications": {
+    "loading": "Učitavanje obavijesti...",
+    "empty": "Još nema obavijesti."
   }
 }

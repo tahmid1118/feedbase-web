@@ -111,5 +111,33 @@
     "column": "Kolumna",
     "selectColumn": "Wybierz kolumnę",
     "targetReleaseDate": "Docelowa data wydania (opcjonalnie)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Tablica opinii",
+      "subtitle": "Przeglądaj, sortuj i zarządzaj opiniami użytkowników"
+    },
+    "roadmap": {
+      "title": "Plan rozwoju produktu",
+      "subtitle": "Organizuj opinie w etapy i śledź rozwój funkcji"
+    },
+    "changelog": {
+      "subtitle": "Publikuj aktualizacje produktu i informacje o wydaniach"
+    },
+    "settings": {
+      "subtitle": "Zarządzaj profilem i preferencjami przestrzeni roboczej"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Zespół",
+      "tags": "Tagi",
+      "branding": "Marka",
+      "billing": "Rozliczenia"
+    }
+  },
+  "notifications": {
+    "loading": "Ładowanie powiadomień...",
+    "empty": "Brak powiadomień."
   }
 }

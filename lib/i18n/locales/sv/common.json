@@ -111,5 +111,33 @@
     "column": "Kolumn",
     "selectColumn": "Välj en kolumn",
     "targetReleaseDate": "Måldatum för lansering (valfritt)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Feedbacktavla",
+      "subtitle": "Granska, sortera och hantera feedback från dina användare"
+    },
+    "roadmap": {
+      "title": "Produktfärdplan",
+      "subtitle": "Organisera feedback i steg och följ funktionsutveckling"
+    },
+    "changelog": {
+      "subtitle": "Publicera produktuppdateringar och versionsinformation"
+    },
+    "settings": {
+      "subtitle": "Hantera din profil och arbetsyteinställningar"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Team",
+      "tags": "Taggar",
+      "branding": "Varumärke",
+      "billing": "Fakturering"
+    }
+  },
+  "notifications": {
+    "loading": "Läser in aviseringar...",
+    "empty": "Inga aviseringar än."
   }
 }

@@ -7,6 +7,7 @@ import { Bell, Check, Trash2 } from "lucide-react";
 import { notificationsApi, extractRows, type Notification } from "@/lib/api";
 import { emitNotificationsChanged } from "@/lib/notifications-events";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import {
   AlertDialog,
@@ -36,6 +37,7 @@ function notificationHref(notification: Notification): string | null {
 }
 
 export default function NotificationsPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -125,7 +127,7 @@ export default function NotificationsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <div className="text-[#1c0a0c]/60">Loading notifications...</div>
+        <div className="text-[#1c0a0c]/60">{t("notifications.loading")}</div>
       </div>
     );
   }
@@ -136,7 +138,7 @@ export default function NotificationsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">Notifications</h2>
+          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("nav.notifications")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             {unreadCount > 0 ? `${unreadCount} unread` : "All caught up!"}
           </p>
@@ -198,7 +200,7 @@ export default function NotificationsPage() {
       {notifications.length === 0 ? (
         <Card className="p-12 text-center">
           <Bell className="mx-auto h-12 w-12 text-[#1c0a0c]/30" />
-          <p className="mt-4 text-[#1c0a0c]/60">No notifications yet.</p>
+          <p className="mt-4 text-[#1c0a0c]/60">{t("notifications.empty")}</p>
         </Card>
       ) : (
         <div className="space-y-2">

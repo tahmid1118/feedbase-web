@@ -111,5 +111,33 @@
     "column": "Colonna",
     "selectColumn": "Seleziona una colonna",
     "targetReleaseDate": "Data di rilascio prevista (facoltativo)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Bacheca dei feedback",
+      "subtitle": "Esamina, ordina e gestisci il feedback inviato dai tuoi utenti"
+    },
+    "roadmap": {
+      "title": "Roadmap del prodotto",
+      "subtitle": "Organizza il feedback in fasi e monitora lo sviluppo"
+    },
+    "changelog": {
+      "subtitle": "Pubblica aggiornamenti del prodotto e note di rilascio"
+    },
+    "settings": {
+      "subtitle": "Gestisci il tuo profilo e le preferenze dello spazio di lavoro"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Team",
+      "tags": "Tag",
+      "branding": "Branding",
+      "billing": "Fatturazione"
+    }
+  },
+  "notifications": {
+    "loading": "Caricamento notifiche...",
+    "empty": "Ancora nessuna notifica."
   }
 }

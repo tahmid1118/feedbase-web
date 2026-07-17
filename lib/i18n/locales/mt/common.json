@@ -111,5 +111,33 @@
     "column": "Kolonna",
     "selectColumn": "Agħżel kolonna",
     "targetReleaseDate": "Data mmirata tar-rilaxx (mhux obbligatorja)"
+  },
+  "page": {
+    "feedback": {
+      "title": "Bord tal-Feedback",
+      "subtitle": "Irrevedi, issortja u mmaniġġja l-feedback tal-utenti tiegħek"
+    },
+    "roadmap": {
+      "title": "Pjan tal-Prodott",
+      "subtitle": "Organizza l-feedback fi stadji u segwi l-iżvilupp"
+    },
+    "changelog": {
+      "subtitle": "Ippubblika aġġornamenti tal-prodott u noti tar-rilaxx"
+    },
+    "settings": {
+      "subtitle": "Immaniġġja l-profil u l-preferenzi tal-ispazju tax-xogħol"
+    }
+  },
+  "settings": {
+    "tab": {
+      "team": "Tim",
+      "tags": "Tikketti",
+      "branding": "Branding",
+      "billing": "Fatturazzjoni"
+    }
+  },
+  "notifications": {
+    "loading": "Qed jitilgħu n-notifiki...",
+    "empty": "Għad m'hemm l-ebda notifika."
   }
 }
