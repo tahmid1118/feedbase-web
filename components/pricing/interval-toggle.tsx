@@ -5,17 +5,21 @@ import type { BillingInterval } from "@/lib/api";
 
 /**
  * Monthly / Yearly segmented toggle. Yearly carries a "Save N%" badge. Shared by
- * the public pricing cards and the dashboard Billing tab.
+ * the public pricing cards and the dashboard Billing tab. `showSave` hides that
+ * badge — pass `false` when a promotional yearly offer is active, so the generic
+ * "Save 20%" doesn't contradict the per-plan offer discount shown on the cards.
  */
 export function IntervalToggle({
   value,
   onChange,
   savePercent = 20,
+  showSave = true,
   className,
 }: {
   value: BillingInterval;
   onChange: (next: BillingInterval) => void;
   savePercent?: number;
+  showSave?: boolean;
   className?: string;
 }) {
   return (
@@ -48,16 +52,18 @@ export function IntervalToggle({
         )}
       >
         Yearly
-        <span
-          className={cn(
-            "rounded-full px-1.5 py-0.5 text-[10px] font-bold",
-            value === "year"
-              ? "bg-white/20 text-white"
-              : "bg-green-100 text-green-700"
-          )}
-        >
-          Save {savePercent}%
-        </span>
+        {showSave && (
+          <span
+            className={cn(
+              "rounded-full px-1.5 py-0.5 text-[10px] font-bold",
+              value === "year"
+                ? "bg-white/20 text-white"
+                : "bg-green-100 text-green-700"
+            )}
+          >
+            Save {savePercent}%
+          </span>
+        )}
       </button>
     </div>
   );

@@ -23,10 +23,14 @@ export function PricingCards({
 }) {
   const [interval, setInterval] = useState<BillingInterval>("month");
 
+  // A yearly offer replaces the flat 20% yearly saving for that plan, so hide
+  // the toggle's generic "Save 20%" badge when any yearly offer is active.
+  const hasYearlyOffer = Object.values(offers).some((o) => o?.year);
+
   return (
     <div className="space-y-8">
       <div className="flex justify-center">
-        <IntervalToggle value={interval} onChange={setInterval} />
+        <IntervalToggle value={interval} onChange={setInterval} showSave={!hasYearlyOffer} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">

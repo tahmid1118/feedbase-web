@@ -266,13 +266,17 @@ export function BillingSettings() {
       </Card>
 
       <div className="flex justify-center">
-        <IntervalToggle value={interval} onChange={setInterval} />
+        <IntervalToggle
+          value={interval}
+          onChange={setInterval}
+          showSave={!Object.values(status?.offers ?? {}).some((o) => o?.year)}
+        />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-3">
         {PLANS.map((plan) => {
-          // Admin promotional offers apply to the MONTHLY price only; the yearly
-          // price already carries its own 20% discount.
+          // Admin promotional offer for the toggled interval (monthly or yearly);
+          // a yearly offer replaces that plan's flat 20% yearly saving.
           const offer = status?.offers?.[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
