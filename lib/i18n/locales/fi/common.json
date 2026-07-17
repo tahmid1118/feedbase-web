@@ -40,7 +40,9 @@
     "yes": "Kyllä",
     "no": "Ei",
     "upgrade": "Päivitä",
-    "saveChanges": "Tallenna muutokset"
+    "saveChanges": "Tallenna muutokset",
+    "deleting": "Poistetaan…",
+    "optional": "valinnainen"
   },
   "dashboard": {
     "welcomeBack": "Tervetuloa takaisin"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Ladataan ilmoituksia...",
     "empty": "Ei vielä ilmoituksia."
+  },
+  "portal": {
+    "board": "Taulu",
+    "shareFeedback": "Jaa palautteesi",
+    "type": "Tyyppi",
+    "title": "Otsikko",
+    "titlePlaceholder": "Lyhyt tiivistelmä ideastasi tai ongelmastasi",
+    "descPlaceholder": "Kuvaile sitä hieman tarkemmin…",
+    "anonymous": "Anonyymi",
+    "submitFeedback": "Lähetä palaute",
+    "giveFeedback": "Anna palautetta",
+    "details": "Tiedot"
+  },
+  "type": {
+    "feedback": "Palaute",
+    "featureRequest": "Ominaisuuspyyntö",
+    "bugReport": "Virheraportti"
+  },
+  "comments": {
+    "writeReply": "Kirjoita vastaus…",
+    "addComment": "Lisää kommentti…",
+    "nameOptional": "Nimi (valinnainen)",
+    "emailOptional": "Sähköposti (valinnainen)",
+    "comment": "Kommentoi",
+    "reply": "Vastaa",
+    "commentingAs": "Kommentoit nimellä",
+    "deleteConfirm": "Poistetaanko tämä kommentti?",
+    "empty": "Ei vielä kommentteja — aloita keskustelu."
+  },
+  "share": {
+    "title": "Jaa tämä julkaisu",
+    "copyLink": "Kopioi linkki",
+    "linkCopied": "Linkki kopioitu!"
+  },
+  "sort": {
+    "newest": "Uusimmat",
+    "oldest": "Vanhimmat",
+    "mostUpvoted": "Eniten ääniä",
+    "leastUpvoted": "Vähiten ääniä"
+  },
+  "postOwner": {
+    "deleteTitle": "Poistetaanko tämä julkaisu?",
+    "editTitle": "Muokkaa palautettasi",
+    "deleteDesc": "Tämä poistaa julkaisusi pysyvästi äänineen ja kommentteineen. Toimintoa ei voi kumota."
   }
 }

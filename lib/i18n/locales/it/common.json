@@ -40,7 +40,9 @@
     "yes": "Sì",
     "no": "No",
     "upgrade": "Aggiorna",
-    "saveChanges": "Salva modifiche"
+    "saveChanges": "Salva modifiche",
+    "deleting": "Eliminazione…",
+    "optional": "facoltativo"
   },
   "dashboard": {
     "welcomeBack": "Bentornato"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Caricamento notifiche...",
     "empty": "Ancora nessuna notifica."
+  },
+  "portal": {
+    "board": "Bacheca",
+    "shareFeedback": "Condividi il tuo feedback",
+    "type": "Tipo",
+    "title": "Titolo",
+    "titlePlaceholder": "Un breve riassunto della tua idea o problema",
+    "descPlaceholder": "Descrivilo un po' più in dettaglio…",
+    "anonymous": "Anonimo",
+    "submitFeedback": "Invia feedback",
+    "giveFeedback": "Dai un feedback",
+    "details": "Dettagli"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Richiesta di funzionalità",
+    "bugReport": "Segnalazione di bug"
+  },
+  "comments": {
+    "writeReply": "Scrivi una risposta…",
+    "addComment": "Aggiungi un commento…",
+    "nameOptional": "Nome (facoltativo)",
+    "emailOptional": "Email (facoltativo)",
+    "comment": "Commenta",
+    "reply": "Rispondi",
+    "commentingAs": "Stai commentando come",
+    "deleteConfirm": "Eliminare questo commento?",
+    "empty": "Ancora nessun commento — inizia la conversazione."
+  },
+  "share": {
+    "title": "Condividi questo post",
+    "copyLink": "Copia link",
+    "linkCopied": "Link copiato!"
+  },
+  "sort": {
+    "newest": "Più recenti",
+    "oldest": "Meno recenti",
+    "mostUpvoted": "Più votati",
+    "leastUpvoted": "Meno votati"
+  },
+  "postOwner": {
+    "deleteTitle": "Eliminare questo post?",
+    "editTitle": "Modifica il tuo feedback",
+    "deleteDesc": "Questa operazione rimuove definitivamente il tuo post insieme ai voti e ai commenti. L'azione non può essere annullata."
   }
 }

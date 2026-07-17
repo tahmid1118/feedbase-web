@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MessageSquare, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -31,9 +32,9 @@ const API_BASE =
   process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
 
 const TYPES = [
-  { value: "feedback", label: "💬 Feedback" },
-  { value: "feature_request", label: "✨ Feature request" },
-  { value: "bug_report", label: "🐛 Bug report" },
+  { value: "feedback", emoji: "💬", key: "type.feedback" },
+  { value: "feature_request", emoji: "✨", key: "type.featureRequest" },
+  { value: "bug_report", emoji: "🐛", key: "type.bugReport" },
 ];
 
 // Mirror the backend's guest-email check so the form fails fast.
@@ -49,6 +50,7 @@ export function FeedbackSubmit({
   /** Pro+ workspaces let visitors attach a photo or short video. */
   attachmentsEnabled?: boolean;
 }) {
+  const { t } = useTranslation();
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -133,7 +135,7 @@ export function FeedbackSubmit({
         style={{ backgroundColor: brand }}
       >
         <MessageSquare className="h-4 w-4" />
-        Give Feedback
+        {t("portal.giveFeedback")}
       </Button>
 
       <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -165,7 +167,7 @@ export function FeedbackSubmit({
           ) : (
             <>
               <DialogHeader>
-                <DialogTitle>Share your feedback</DialogTitle>
+                <DialogTitle>{t("portal.shareFeedback")}</DialogTitle>
                 <DialogDescription>
                   Tell us what you&apos;d like to see. Your email lets us keep you
                   posted; your name is optional.
@@ -174,15 +176,15 @@ export function FeedbackSubmit({
 
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="fb-type">Type</Label>
+                  <Label htmlFor="fb-type">{t("portal.type")}</Label>
                   <Select value={postType} onValueChange={setPostType}>
                     <SelectTrigger id="fb-type" className="w-full">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {TYPES.map((t) => (
-                        <SelectItem key={t.value} value={t.value}>
-                          {t.label}
+                      {TYPES.map((opt) => (
+                        <SelectItem key={opt.value} value={opt.value}>
+                          {opt.emoji} {t(opt.key)}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -190,12 +192,12 @@ export function FeedbackSubmit({
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="fb-title">Title</Label>
+                  <Label htmlFor="fb-title">{t("portal.title")}</Label>
                   <Input
                     id="fb-title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="A short summary of your idea or issue"
+                    placeholder={t("portal.titlePlaceholder")}
                     maxLength={200}
                   />
                 </div>
@@ -211,7 +213,7 @@ export function FeedbackSubmit({
                     id="fb-desc"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Describe it in a bit more detail…"
+                    placeholder={t("portal.descPlaceholder")}
                     className="min-h-[110px]"
                   />
                 </div>
@@ -247,7 +249,7 @@ export function FeedbackSubmit({
                       id="fb-name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Anonymous"
+                      placeholder={t("portal.anonymous")}
                     />
                   </div>
                   <div className="space-y-2">

@@ -40,7 +40,9 @@
     "yes": "Iva",
     "no": "Le",
     "upgrade": "Aġġorna",
-    "saveChanges": "Issejvja l-bidliet"
+    "saveChanges": "Issejvja l-bidliet",
+    "deleting": "Qed jitħassar…",
+    "optional": "mhux obbligatorju"
   },
   "dashboard": {
     "welcomeBack": "Merħba lura"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Qed jitilgħu n-notifiki...",
     "empty": "Għad m'hemm l-ebda notifika."
+  },
+  "portal": {
+    "board": "Bord",
+    "shareFeedback": "Aqsam il-feedback tiegħek",
+    "type": "Tip",
+    "title": "Titlu",
+    "titlePlaceholder": "Sommarju qasir tal-idea jew il-problema tiegħek",
+    "descPlaceholder": "Iddeskrivih ftit iktar fid-dettall…",
+    "anonymous": "Anonimu",
+    "submitFeedback": "Ibgħat feedback",
+    "giveFeedback": "Agħti feedback",
+    "details": "Dettalji"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Talba għal karatteristika",
+    "bugReport": "Rapport ta' bug"
+  },
+  "comments": {
+    "writeReply": "Ikteb tweġiba…",
+    "addComment": "Żid kumment…",
+    "nameOptional": "Isem (mhux obbligatorju)",
+    "emailOptional": "Email (mhux obbligatorju)",
+    "comment": "Ikkummenta",
+    "reply": "Wieġeb",
+    "commentingAs": "Qed tikkummenta bħala",
+    "deleteConfirm": "Tħassar dan il-kumment?",
+    "empty": "Għad m'hemm l-ebda kumment — ibda l-konversazzjoni."
+  },
+  "share": {
+    "title": "Aqsam din il-post",
+    "copyLink": "Ikkopja l-link",
+    "linkCopied": "Link ikkupjat!"
+  },
+  "sort": {
+    "newest": "L-aktar reċenti",
+    "oldest": "L-eqdem",
+    "mostUpvoted": "L-aktar votati",
+    "leastUpvoted": "L-inqas votati"
+  },
+  "postOwner": {
+    "deleteTitle": "Tħassar din il-post?",
+    "editTitle": "Editja l-feedback tiegħek",
+    "deleteDesc": "Dan ineħħi b'mod permanenti l-post tiegħek flimkien mal-voti u l-kummenti tagħha. Din l-azzjoni ma tistax titreġġa' lura."
   }
 }

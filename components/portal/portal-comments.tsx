@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { CornerDownRight, Loader2, Pencil, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LocalTime } from "@/components/local-time";
@@ -178,6 +179,7 @@ function CommentForm({
   compact?: boolean;
   autoFocus?: boolean;
 }) {
+  const { t } = useTranslation();
   const [body, setBody] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -219,7 +221,7 @@ function CommentForm({
       <Textarea
         value={body}
         onChange={(e) => setBody(e.target.value)}
-        placeholder={compact ? "Write a reply…" : "Add a comment…"}
+        placeholder={compact ? t("comments.writeReply") : t("comments.addComment")}
         className="min-h-[80px]"
         autoFocus={autoFocus}
       />
@@ -229,14 +231,14 @@ function CommentForm({
           <Input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Name (optional)"
+            placeholder={t("comments.nameOptional")}
             className="h-9 w-40"
           />
           <Input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="Email (optional)"
+            placeholder={t("comments.emailOptional")}
             className="h-9 w-52"
           />
         </div>
@@ -251,13 +253,13 @@ function CommentForm({
               color={colorFor(viewer.name || "you")}
               size={20}
             />
-            Commenting as{" "}
+            {t("comments.commentingAs")}{" "}
             <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
           </p>
         ) : (
           !editingIdentity &&
           (() => {
-            const label = name || guestPseudonym?.name || "Anonymous";
+            const label = name || guestPseudonym?.name || t("portal.anonymous");
             const color = name
               ? colorFor(guestId || name)
               : guestPseudonym?.color || "#c74959";
@@ -269,7 +271,7 @@ function CommentForm({
                   anonymous={!name}
                   size={20}
                 />
-                Commenting as{" "}
+                {t("comments.commentingAs")}{" "}
                 <span className="font-medium text-[#1c0a0c]/70">{label}</span>
               </p>
             );
@@ -278,7 +280,7 @@ function CommentForm({
         <div className="ml-auto flex gap-2">
           {onCancel && (
             <Button variant="outline" size="sm" onClick={onCancel}>
-              Cancel
+              {t("common.cancel")}
             </Button>
           )}
           <Button
@@ -291,9 +293,9 @@ function CommentForm({
             {submitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : compact ? (
-              "Reply"
+              t("comments.reply")
             ) : (
-              "Comment"
+              t("comments.comment")
             )}
           </Button>
         </div>
@@ -315,6 +317,7 @@ function CommentCard({
   onReply: () => void;
   onChanged: () => void;
 }) {
+  const { t } = useTranslation();
   const [editing, setEditing] = useState(false);
   const [editBody, setEditBody] = useState(comment.body);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -391,7 +394,7 @@ function CommentCard({
                 setEditBody(comment.body);
               }}
             >
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               size="sm"
@@ -399,7 +402,7 @@ function CommentCard({
               disabled={busy || !editBody.trim()}
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
             >
-              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save"}
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : t("common.save")}
             </Button>
           </div>
         </div>
@@ -417,7 +420,7 @@ function CommentCard({
             className="inline-flex items-center gap-1 hover:text-[#1c0a0c]"
           >
             <CornerDownRight className="h-3 w-3" />
-            Reply
+            {t("comments.reply")}
           </button>
           {mine && !confirmDelete && (
             <>
@@ -427,7 +430,7 @@ function CommentCard({
                 className="inline-flex items-center gap-1 hover:text-[#1c0a0c]"
               >
                 <Pencil className="h-3 w-3" />
-                Edit
+                {t("common.edit")}
               </button>
               <button
                 type="button"
@@ -435,27 +438,27 @@ function CommentCard({
                 className="inline-flex items-center gap-1 hover:text-red-600"
               >
                 <Trash2 className="h-3 w-3" />
-                Delete
+                {t("common.delete")}
               </button>
             </>
           )}
           {mine && confirmDelete && (
             <span className="inline-flex items-center gap-2 text-red-600">
-              Delete this comment?
+              {t("comments.deleteConfirm")}
               <button
                 type="button"
                 onClick={remove}
                 disabled={busy}
                 className="font-semibold underline"
               >
-                {busy ? "Deleting…" : "Yes"}
+                {busy ? t("common.deleting") : t("common.yes")}
               </button>
               <button
                 type="button"
                 onClick={() => setConfirmDelete(false)}
                 className="text-[#1c0a0c]/50 underline"
               >
-                No
+                {t("common.no")}
               </button>
             </span>
           )}
@@ -538,6 +541,7 @@ export function PortalComments({
   comments: Comment[];
   brand: string;
 }) {
+  const { t } = useTranslation();
   const router = useRouter();
   const { data: session } = useSession();
   const threads = useMemo(() => buildThreads(comments), [comments]);
@@ -602,7 +606,7 @@ export function PortalComments({
 
       {threads.length === 0 ? (
         <p className="py-6 text-center text-sm text-[#1c0a0c]/60">
-          No comments yet — start the conversation.
+          {t("comments.empty")}
         </p>
       ) : (
         <div className="space-y-3">

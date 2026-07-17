@@ -40,7 +40,9 @@
     "yes": "Oui",
     "no": "Non",
     "upgrade": "Mettre à niveau",
-    "saveChanges": "Enregistrer les modifications"
+    "saveChanges": "Enregistrer les modifications",
+    "deleting": "Suppression…",
+    "optional": "facultatif"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Chargement des notifications...",
     "empty": "Aucune notification pour l'instant."
+  },
+  "portal": {
+    "board": "Tableau",
+    "shareFeedback": "Partagez votre avis",
+    "type": "Type",
+    "title": "Titre",
+    "titlePlaceholder": "Un bref résumé de votre idée ou problème",
+    "descPlaceholder": "Décrivez-le un peu plus en détail…",
+    "anonymous": "Anonyme",
+    "submitFeedback": "Envoyer un avis",
+    "giveFeedback": "Donner un avis",
+    "details": "Détails"
+  },
+  "type": {
+    "feedback": "Retour",
+    "featureRequest": "Demande de fonctionnalité",
+    "bugReport": "Rapport de bogue"
+  },
+  "comments": {
+    "writeReply": "Écrire une réponse…",
+    "addComment": "Ajouter un commentaire…",
+    "nameOptional": "Nom (facultatif)",
+    "emailOptional": "E-mail (facultatif)",
+    "comment": "Commenter",
+    "reply": "Répondre",
+    "commentingAs": "Vous commentez en tant que",
+    "deleteConfirm": "Supprimer ce commentaire ?",
+    "empty": "Aucun commentaire pour l'instant — lancez la conversation."
+  },
+  "share": {
+    "title": "Partager cette publication",
+    "copyLink": "Copier le lien",
+    "linkCopied": "Lien copié !"
+  },
+  "sort": {
+    "newest": "Plus récent",
+    "oldest": "Plus ancien",
+    "mostUpvoted": "Plus votés",
+    "leastUpvoted": "Moins votés"
+  },
+  "postOwner": {
+    "deleteTitle": "Supprimer cette publication ?",
+    "editTitle": "Modifier votre avis",
+    "deleteDesc": "Cela supprime définitivement votre publication ainsi que ses votes et commentaires. Cette action est irréversible."
   }
 }

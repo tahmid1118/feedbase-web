@@ -40,7 +40,9 @@
     "yes": "Da",
     "no": "Ne",
     "upgrade": "Nadogradi",
-    "saveChanges": "Spremi promjene"
+    "saveChanges": "Spremi promjene",
+    "deleting": "Brisanje…",
+    "optional": "nije obavezno"
   },
   "dashboard": {
     "welcomeBack": "Dobro došli natrag"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Učitavanje obavijesti...",
     "empty": "Još nema obavijesti."
+  },
+  "portal": {
+    "board": "Ploča",
+    "shareFeedback": "Podijelite svoje povratne informacije",
+    "type": "Vrsta",
+    "title": "Naslov",
+    "titlePlaceholder": "Kratki sažetak vaše ideje ili problema",
+    "descPlaceholder": "Opišite to malo detaljnije…",
+    "anonymous": "Anonimno",
+    "submitFeedback": "Pošalji povratne informacije",
+    "giveFeedback": "Dajte povratne informacije",
+    "details": "Pojedinosti"
+  },
+  "type": {
+    "feedback": "Povratne informacije",
+    "featureRequest": "Zahtjev za značajku",
+    "bugReport": "Prijava greške"
+  },
+  "comments": {
+    "writeReply": "Napišite odgovor…",
+    "addComment": "Dodajte komentar…",
+    "nameOptional": "Ime (nije obavezno)",
+    "emailOptional": "E-pošta (nije obavezno)",
+    "comment": "Komentiraj",
+    "reply": "Odgovori",
+    "commentingAs": "Komentirate kao",
+    "deleteConfirm": "Izbrisati ovaj komentar?",
+    "empty": "Još nema komentara — započnite razgovor."
+  },
+  "share": {
+    "title": "Podijelite ovu objavu",
+    "copyLink": "Kopiraj poveznicu",
+    "linkCopied": "Poveznica kopirana!"
+  },
+  "sort": {
+    "newest": "Najnovije",
+    "oldest": "Najstarije",
+    "mostUpvoted": "Najviše glasova",
+    "leastUpvoted": "Najmanje glasova"
+  },
+  "postOwner": {
+    "deleteTitle": "Izbrisati ovu objavu?",
+    "editTitle": "Uredite svoje povratne informacije",
+    "deleteDesc": "Ovo trajno uklanja vašu objavu zajedno s glasovima i komentarima. Ova se radnja ne može poništiti."
   }
 }

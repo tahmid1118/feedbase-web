@@ -40,7 +40,9 @@
     "yes": "Tá",
     "no": "Níl",
     "upgrade": "Uasghrádú",
-    "saveChanges": "Sábháil athruithe"
+    "saveChanges": "Sábháil athruithe",
+    "deleting": "Á scriosadh…",
+    "optional": "roghnach"
   },
   "dashboard": {
     "welcomeBack": "Fáilte ar ais"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Fógraí á lódáil...",
     "empty": "Níl aon fhógra ann fós."
+  },
+  "portal": {
+    "board": "Clár",
+    "shareFeedback": "Roinn d'aiseolas",
+    "type": "Cineál",
+    "title": "Teideal",
+    "titlePlaceholder": "Achoimre ghairid ar do smaoineamh nó ar d'fhadhb",
+    "descPlaceholder": "Déan cur síos air níos mine…",
+    "anonymous": "Anaithnid",
+    "submitFeedback": "Cuir aiseolas isteach",
+    "giveFeedback": "Tabhair aiseolas",
+    "details": "Sonraí"
+  },
+  "type": {
+    "feedback": "Aiseolas",
+    "featureRequest": "Iarratas gné",
+    "bugReport": "Tuairisc fabht"
+  },
+  "comments": {
+    "writeReply": "Scríobh freagra…",
+    "addComment": "Cuir nóta tráchta leis…",
+    "nameOptional": "Ainm (roghnach)",
+    "emailOptional": "Ríomhphost (roghnach)",
+    "comment": "Trácht",
+    "reply": "Freagair",
+    "commentingAs": "Ag trácht mar",
+    "deleteConfirm": "Scrios an nóta tráchta seo?",
+    "empty": "Níl aon nóta tráchta ann fós — tosaigh an comhrá."
+  },
+  "share": {
+    "title": "Roinn an postáil seo",
+    "copyLink": "Cóipeáil nasc",
+    "linkCopied": "Nasc cóipeáilte!"
+  },
+  "sort": {
+    "newest": "Is nuaí",
+    "oldest": "Is sine",
+    "mostUpvoted": "Is mó vótaí",
+    "leastUpvoted": "Is lú vótaí"
+  },
+  "postOwner": {
+    "deleteTitle": "Scrios an postáil seo?",
+    "editTitle": "Cuir d'aiseolas in eagar",
+    "deleteDesc": "Baineann sé seo do phostáil go buan mar aon lena vótaí agus a nótaí tráchta. Ní féidir an gníomh seo a chur ar ceal."
   }
 }

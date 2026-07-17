@@ -40,7 +40,9 @@
     "yes": "Ano",
     "no": "Ne",
     "upgrade": "Upgradovat",
-    "saveChanges": "Uložit změny"
+    "saveChanges": "Uložit změny",
+    "deleting": "Mazání…",
+    "optional": "volitelné"
   },
   "dashboard": {
     "welcomeBack": "Vítejte zpět"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Načítání oznámení...",
     "empty": "Zatím žádná oznámení."
+  },
+  "portal": {
+    "board": "Nástěnka",
+    "shareFeedback": "Sdílejte svou zpětnou vazbu",
+    "type": "Typ",
+    "title": "Název",
+    "titlePlaceholder": "Krátké shrnutí vašeho nápadu nebo problému",
+    "descPlaceholder": "Popište to trochu podrobněji…",
+    "anonymous": "Anonymní",
+    "submitFeedback": "Odeslat zpětnou vazbu",
+    "giveFeedback": "Dát zpětnou vazbu",
+    "details": "Podrobnosti"
+  },
+  "type": {
+    "feedback": "Zpětná vazba",
+    "featureRequest": "Požadavek na funkci",
+    "bugReport": "Hlášení chyby"
+  },
+  "comments": {
+    "writeReply": "Napište odpověď…",
+    "addComment": "Přidejte komentář…",
+    "nameOptional": "Jméno (volitelné)",
+    "emailOptional": "E-mail (volitelné)",
+    "comment": "Komentovat",
+    "reply": "Odpovědět",
+    "commentingAs": "Komentujete jako",
+    "deleteConfirm": "Smazat tento komentář?",
+    "empty": "Zatím žádné komentáře — začněte konverzaci."
+  },
+  "share": {
+    "title": "Sdílet tento příspěvek",
+    "copyLink": "Kopírovat odkaz",
+    "linkCopied": "Odkaz zkopírován!"
+  },
+  "sort": {
+    "newest": "Nejnovější",
+    "oldest": "Nejstarší",
+    "mostUpvoted": "Nejvíce hlasů",
+    "leastUpvoted": "Nejméně hlasů"
+  },
+  "postOwner": {
+    "deleteTitle": "Smazat tento příspěvek?",
+    "editTitle": "Upravit svou zpětnou vazbu",
+    "deleteDesc": "Tímto trvale odstraníte svůj příspěvek včetně hlasů a komentářů. Tuto akci nelze vrátit zpět."
   }
 }

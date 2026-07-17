@@ -40,7 +40,9 @@
     "yes": "Taip",
     "no": "Ne",
     "upgrade": "Atnaujinti",
-    "saveChanges": "Išsaugoti pakeitimus"
+    "saveChanges": "Išsaugoti pakeitimus",
+    "deleting": "Trinama…",
+    "optional": "nebūtina"
   },
   "dashboard": {
     "welcomeBack": "Sveiki sugrįžę"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Įkeliami pranešimai...",
     "empty": "Kol kas nėra pranešimų."
+  },
+  "portal": {
+    "board": "Lenta",
+    "shareFeedback": "Pasidalykite atsiliepimu",
+    "type": "Tipas",
+    "title": "Pavadinimas",
+    "titlePlaceholder": "Trumpa jūsų idėjos ar problemos santrauka",
+    "descPlaceholder": "Aprašykite tai šiek tiek išsamiau…",
+    "anonymous": "Anonimas",
+    "submitFeedback": "Pateikti atsiliepimą",
+    "giveFeedback": "Pateikite atsiliepimą",
+    "details": "Išsami informacija"
+  },
+  "type": {
+    "feedback": "Atsiliepimas",
+    "featureRequest": "Funkcijos užklausa",
+    "bugReport": "Klaidos pranešimas"
+  },
+  "comments": {
+    "writeReply": "Parašykite atsakymą…",
+    "addComment": "Pridėkite komentarą…",
+    "nameOptional": "Vardas (nebūtina)",
+    "emailOptional": "El. paštas (nebūtina)",
+    "comment": "Komentuoti",
+    "reply": "Atsakyti",
+    "commentingAs": "Komentuojate kaip",
+    "deleteConfirm": "Ištrinti šį komentarą?",
+    "empty": "Kol kas nėra komentarų — pradėkite pokalbį."
+  },
+  "share": {
+    "title": "Bendrinti šį įrašą",
+    "copyLink": "Kopijuoti nuorodą",
+    "linkCopied": "Nuoroda nukopijuota!"
+  },
+  "sort": {
+    "newest": "Naujausi",
+    "oldest": "Seniausi",
+    "mostUpvoted": "Daugiausiai balsų",
+    "leastUpvoted": "Mažiausiai balsų"
+  },
+  "postOwner": {
+    "deleteTitle": "Ištrinti šį įrašą?",
+    "editTitle": "Redaguoti atsiliepimą",
+    "deleteDesc": "Taip visam laikui pašalinamas jūsų įrašas su balsais ir komentarais. Šio veiksmo negalima anuliuoti."
   }
 }

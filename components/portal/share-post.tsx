@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Share2, Link2, Check, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   Popover,
   PopoverContent,
@@ -51,6 +52,7 @@ export function SharePost({
   brand: string;
   url?: string;
 }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [canNativeShare, setCanNativeShare] = useState(false);
@@ -103,7 +105,7 @@ export function SharePost({
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-72 p-4">
-        <p className="text-sm font-semibold text-[#1c0a0c]">Share this post</p>
+        <p className="text-sm font-semibold text-[#1c0a0c]">{t("share.title")}</p>
 
         <button
           type="button"
@@ -116,7 +118,7 @@ export function SharePost({
             <Link2 className="h-4 w-4 shrink-0 text-[#1c0a0c]/50" />
           )}
           <span className="flex-1 truncate">
-            {copied ? "Link copied!" : "Copy link"}
+            {copied ? t("share.linkCopied") : t("share.copyLink")}
           </span>
         </button>
 

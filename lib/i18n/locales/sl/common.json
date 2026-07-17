@@ -40,7 +40,9 @@
     "yes": "Da",
     "no": "Ne",
     "upgrade": "Nadgradi",
-    "saveChanges": "Shrani spremembe"
+    "saveChanges": "Shrani spremembe",
+    "deleting": "Brisanje…",
+    "optional": "neobvezno"
   },
   "dashboard": {
     "welcomeBack": "Dobrodošli nazaj"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Nalaganje obvestil...",
     "empty": "Še ni obvestil."
+  },
+  "portal": {
+    "board": "Tabla",
+    "shareFeedback": "Delite svoje mnenje",
+    "type": "Vrsta",
+    "title": "Naslov",
+    "titlePlaceholder": "Kratek povzetek vaše ideje ali težave",
+    "descPlaceholder": "Opišite to nekoliko podrobneje…",
+    "anonymous": "Anonimno",
+    "submitFeedback": "Pošlji povratne informacije",
+    "giveFeedback": "Podajte mnenje",
+    "details": "Podrobnosti"
+  },
+  "type": {
+    "feedback": "Povratna informacija",
+    "featureRequest": "Zahteva za funkcijo",
+    "bugReport": "Prijava napake"
+  },
+  "comments": {
+    "writeReply": "Napišite odgovor…",
+    "addComment": "Dodajte komentar…",
+    "nameOptional": "Ime (neobvezno)",
+    "emailOptional": "E-pošta (neobvezno)",
+    "comment": "Komentiraj",
+    "reply": "Odgovori",
+    "commentingAs": "Komentirate kot",
+    "deleteConfirm": "Izbrišem ta komentar?",
+    "empty": "Še ni komentarjev — začnite pogovor."
+  },
+  "share": {
+    "title": "Deli to objavo",
+    "copyLink": "Kopiraj povezavo",
+    "linkCopied": "Povezava kopirana!"
+  },
+  "sort": {
+    "newest": "Najnovejše",
+    "oldest": "Najstarejše",
+    "mostUpvoted": "Največ glasov",
+    "leastUpvoted": "Najmanj glasov"
+  },
+  "postOwner": {
+    "deleteTitle": "Izbrišem to objavo?",
+    "editTitle": "Uredite svoje mnenje",
+    "deleteDesc": "S tem trajno odstranite svojo objavo skupaj z glasovi in komentarji. Tega dejanja ni mogoče razveljaviti."
   }
 }

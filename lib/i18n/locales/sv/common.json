@@ -40,7 +40,9 @@
     "yes": "Ja",
     "no": "Nej",
     "upgrade": "Uppgradera",
-    "saveChanges": "Spara ändringar"
+    "saveChanges": "Spara ändringar",
+    "deleting": "Tar bort…",
+    "optional": "valfritt"
   },
   "dashboard": {
     "welcomeBack": "Välkommen tillbaka"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Läser in aviseringar...",
     "empty": "Inga aviseringar än."
+  },
+  "portal": {
+    "board": "Tavla",
+    "shareFeedback": "Dela din feedback",
+    "type": "Typ",
+    "title": "Titel",
+    "titlePlaceholder": "En kort sammanfattning av din idé eller ditt problem",
+    "descPlaceholder": "Beskriv det lite mer detaljerat…",
+    "anonymous": "Anonym",
+    "submitFeedback": "Skicka feedback",
+    "giveFeedback": "Ge feedback",
+    "details": "Detaljer"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Funktionsförfrågan",
+    "bugReport": "Felrapport"
+  },
+  "comments": {
+    "writeReply": "Skriv ett svar…",
+    "addComment": "Lägg till en kommentar…",
+    "nameOptional": "Namn (valfritt)",
+    "emailOptional": "E-post (valfritt)",
+    "comment": "Kommentera",
+    "reply": "Svara",
+    "commentingAs": "Kommenterar som",
+    "deleteConfirm": "Ta bort denna kommentar?",
+    "empty": "Inga kommentarer än — starta konversationen."
+  },
+  "share": {
+    "title": "Dela detta inlägg",
+    "copyLink": "Kopiera länk",
+    "linkCopied": "Länk kopierad!"
+  },
+  "sort": {
+    "newest": "Nyaste",
+    "oldest": "Äldsta",
+    "mostUpvoted": "Mest uppröstade",
+    "leastUpvoted": "Minst uppröstade"
+  },
+  "postOwner": {
+    "deleteTitle": "Ta bort detta inlägg?",
+    "editTitle": "Redigera din feedback",
+    "deleteDesc": "Detta tar bort ditt inlägg permanent tillsammans med dess röster och kommentarer. Åtgärden kan inte ångras."
   }
 }

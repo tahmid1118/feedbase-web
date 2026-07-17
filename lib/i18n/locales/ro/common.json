@@ -40,7 +40,9 @@
     "yes": "Da",
     "no": "Nu",
     "upgrade": "Actualizați",
-    "saveChanges": "Salvați modificările"
+    "saveChanges": "Salvați modificările",
+    "deleting": "Se șterge…",
+    "optional": "opțional"
   },
   "dashboard": {
     "welcomeBack": "Bine ați revenit"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Se încarcă notificările...",
     "empty": "Încă nu există notificări."
+  },
+  "portal": {
+    "board": "Panou",
+    "shareFeedback": "Împărtășiți feedbackul",
+    "type": "Tip",
+    "title": "Titlu",
+    "titlePlaceholder": "Un scurt rezumat al ideii sau problemei dvs.",
+    "descPlaceholder": "Descrieți-l puțin mai detaliat…",
+    "anonymous": "Anonim",
+    "submitFeedback": "Trimiteți feedback",
+    "giveFeedback": "Oferiți feedback",
+    "details": "Detalii"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Cerere de funcție",
+    "bugReport": "Raport de eroare"
+  },
+  "comments": {
+    "writeReply": "Scrieți un răspuns…",
+    "addComment": "Adăugați un comentariu…",
+    "nameOptional": "Nume (opțional)",
+    "emailOptional": "E-mail (opțional)",
+    "comment": "Comentați",
+    "reply": "Răspundeți",
+    "commentingAs": "Comentați ca",
+    "deleteConfirm": "Ștergeți acest comentariu?",
+    "empty": "Încă nu există comentarii — începeți conversația."
+  },
+  "share": {
+    "title": "Distribuiți această postare",
+    "copyLink": "Copiați linkul",
+    "linkCopied": "Link copiat!"
+  },
+  "sort": {
+    "newest": "Cele mai noi",
+    "oldest": "Cele mai vechi",
+    "mostUpvoted": "Cele mai votate",
+    "leastUpvoted": "Cele mai puțin votate"
+  },
+  "postOwner": {
+    "deleteTitle": "Ștergeți această postare?",
+    "editTitle": "Editați feedbackul",
+    "deleteDesc": "Aceasta elimină definitiv postarea împreună cu voturile și comentariile. Această acțiune nu poate fi anulată."
   }
 }

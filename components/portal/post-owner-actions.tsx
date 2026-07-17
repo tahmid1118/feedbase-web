@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { Pencil, Trash2, Loader2 } from "lucide-react";
 import { portalActions } from "@/lib/portal/actions";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -36,9 +37,9 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const TYPES = [
-  { value: "feedback", label: "Feedback" },
-  { value: "feature_request", label: "Feature request" },
-  { value: "bug_report", label: "Bug report" },
+  { value: "feedback", key: "type.feedback" },
+  { value: "feature_request", key: "type.featureRequest" },
+  { value: "bug_report", key: "type.bugReport" },
 ];
 
 /**
@@ -63,6 +64,7 @@ export function PostOwnerActions({
   const router = useRouter();
   const { data: session } = useSession();
 
+  const { t: tr } = useTranslation();
   const [editOpen, setEditOpen] = useState(false);
   const [t, setT] = useState(title);
   const [d, setD] = useState(description);
@@ -107,7 +109,7 @@ export function PostOwnerActions({
     <>
       <Button variant="outline" size="sm" onClick={() => setEditOpen(true)}>
         <Pencil className="h-4 w-4" />
-        Edit
+        {tr("common.edit")}
       </Button>
 
       <AlertDialog>
@@ -118,21 +120,20 @@ export function PostOwnerActions({
             className="text-red-600 hover:text-red-700"
           >
             <Trash2 className="h-4 w-4" />
-            Delete
+            {tr("common.delete")}
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete this post?</AlertDialogTitle>
+            <AlertDialogTitle>{tr("postOwner.deleteTitle")}</AlertDialogTitle>
             <AlertDialogDescription>
-              This permanently removes your post along with its votes and
-              comments. This action cannot be undone.
+              {tr("postOwner.deleteDesc")}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{tr("common.cancel")}</AlertDialogCancel>
             <AlertDialogAction variant="destructive" onClick={remove}>
-              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Delete"}
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : tr("common.delete")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -141,11 +142,11 @@ export function PostOwnerActions({
       <Dialog open={editOpen} onOpenChange={setEditOpen}>
         <DialogContent className="sm:max-w-[480px]">
           <DialogHeader>
-            <DialogTitle>Edit your feedback</DialogTitle>
+            <DialogTitle>{tr("postOwner.editTitle")}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="ep-type">Type</Label>
+              <Label htmlFor="ep-type">{tr("portal.type")}</Label>
               <Select value={type} onValueChange={setType}>
                 <SelectTrigger id="ep-type" className="w-full">
                   <SelectValue />
@@ -153,14 +154,14 @@ export function PostOwnerActions({
                 <SelectContent>
                   {TYPES.map((o) => (
                     <SelectItem key={o.value} value={o.value}>
-                      {o.label}
+                      {tr(o.key)}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="ep-title">Title</Label>
+              <Label htmlFor="ep-title">{tr("portal.title")}</Label>
               <Input
                 id="ep-title"
                 value={t}
@@ -170,8 +171,8 @@ export function PostOwnerActions({
             </div>
             <div className="space-y-2">
               <Label htmlFor="ep-desc">
-                Details{" "}
-                <span className="font-normal text-[#1c0a0c]/40">(optional)</span>
+                {tr("portal.details")}{" "}
+                <span className="font-normal text-[#1c0a0c]/40">({tr("common.optional")})</span>
               </Label>
               <Textarea
                 id="ep-desc"
@@ -187,15 +188,13 @@ export function PostOwnerActions({
             )}
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setEditOpen(false)}>
-              Cancel
-            </Button>
+            <Button variant="outline" onClick={() => setEditOpen(false)}>{tr("common.cancel")}</Button>
             <Button
               onClick={save}
               disabled={busy || !t.trim()}
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
             >
-              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save changes"}
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : tr("common.saveChanges")}
             </Button>
           </DialogFooter>
         </DialogContent>

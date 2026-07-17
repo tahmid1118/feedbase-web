@@ -32,7 +32,9 @@
     "yes": "Yes",
     "no": "No",
     "upgrade": "Upgrade",
-    "saveChanges": "Save changes"
+    "saveChanges": "Save changes",
+    "deleting": "Deleting…",
+    "optional": "optional"
   },
   "landing": {
     "hero": {
@@ -207,5 +209,49 @@
   "notifications": {
     "loading": "Loading notifications...",
     "empty": "No notifications yet."
+  },
+  "portal": {
+    "board": "Board",
+    "shareFeedback": "Share your feedback",
+    "type": "Type",
+    "title": "Title",
+    "titlePlaceholder": "A short summary of your idea or issue",
+    "descPlaceholder": "Describe it in a bit more detail…",
+    "anonymous": "Anonymous",
+    "submitFeedback": "Submit feedback",
+    "giveFeedback": "Give Feedback",
+    "details": "Details"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Feature request",
+    "bugReport": "Bug report"
+  },
+  "comments": {
+    "writeReply": "Write a reply…",
+    "addComment": "Add a comment…",
+    "nameOptional": "Name (optional)",
+    "emailOptional": "Email (optional)",
+    "comment": "Comment",
+    "reply": "Reply",
+    "commentingAs": "Commenting as",
+    "deleteConfirm": "Delete this comment?",
+    "empty": "No comments yet — start the conversation."
+  },
+  "share": {
+    "title": "Share this post",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!"
+  },
+  "sort": {
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "mostUpvoted": "Most upvoted",
+    "leastUpvoted": "Least upvoted"
+  },
+  "postOwner": {
+    "deleteTitle": "Delete this post?",
+    "editTitle": "Edit your feedback",
+    "deleteDesc": "This permanently removes your post along with its votes and comments. This action cannot be undone."
   }
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslation } from "@/lib/i18n/client";
 
 /**
  * Public portal navigation (Board / Changelog). Uses absolute `/portal/<tenant>`
@@ -10,12 +11,13 @@ import { usePathname } from "next/navigation";
  * the pathname's suffix so it's correct regardless of that prefix.
  */
 export function PortalNav({ tenant, brand }: { tenant: string; brand: string }) {
+  const { t } = useTranslation();
   const pathname = usePathname() ?? "";
   const onChangelog = pathname.includes("/changelog");
 
   const items = [
-    { label: "Board", href: `/portal/${tenant}`, active: !onChangelog },
-    { label: "Changelog", href: `/portal/${tenant}/changelog`, active: onChangelog },
+    { label: t("portal.board"), href: `/portal/${tenant}`, active: !onChangelog },
+    { label: t("nav.changelog"), href: `/portal/${tenant}/changelog`, active: onChangelog },
   ];
 
   return (

@@ -40,7 +40,9 @@
     "yes": "Sí",
     "no": "No",
     "upgrade": "Mejorar",
-    "saveChanges": "Guardar cambios"
+    "saveChanges": "Guardar cambios",
+    "deleting": "Eliminando…",
+    "optional": "opcional"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Cargando notificaciones...",
     "empty": "Aún no hay notificaciones."
+  },
+  "portal": {
+    "board": "Tablero",
+    "shareFeedback": "Comparte tu opinión",
+    "type": "Tipo",
+    "title": "Título",
+    "titlePlaceholder": "Un breve resumen de tu idea o problema",
+    "descPlaceholder": "Descríbelo con un poco más de detalle…",
+    "anonymous": "Anónimo",
+    "submitFeedback": "Enviar comentario",
+    "giveFeedback": "Dar tu opinión",
+    "details": "Detalles"
+  },
+  "type": {
+    "feedback": "Comentario",
+    "featureRequest": "Solicitud de función",
+    "bugReport": "Informe de error"
+  },
+  "comments": {
+    "writeReply": "Escribe una respuesta…",
+    "addComment": "Añade un comentario…",
+    "nameOptional": "Nombre (opcional)",
+    "emailOptional": "Correo (opcional)",
+    "comment": "Comentar",
+    "reply": "Responder",
+    "commentingAs": "Comentando como",
+    "deleteConfirm": "¿Eliminar este comentario?",
+    "empty": "Aún no hay comentarios — inicia la conversación."
+  },
+  "share": {
+    "title": "Compartir esta publicación",
+    "copyLink": "Copiar enlace",
+    "linkCopied": "¡Enlace copiado!"
+  },
+  "sort": {
+    "newest": "Más recientes",
+    "oldest": "Más antiguos",
+    "mostUpvoted": "Más votados",
+    "leastUpvoted": "Menos votados"
+  },
+  "postOwner": {
+    "deleteTitle": "¿Eliminar esta publicación?",
+    "editTitle": "Edita tu comentario",
+    "deleteDesc": "Esto elimina permanentemente tu publicación junto con sus votos y comentarios. Esta acción no se puede deshacer."
   }
 }

@@ -40,7 +40,9 @@
     "yes": "Igen",
     "no": "Nem",
     "upgrade": "Frissítés",
-    "saveChanges": "Változások mentése"
+    "saveChanges": "Változások mentése",
+    "deleting": "Törlés…",
+    "optional": "opcionális"
   },
   "dashboard": {
     "welcomeBack": "Üdvözöljük újra"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Értesítések betöltése...",
     "empty": "Még nincsenek értesítések."
+  },
+  "portal": {
+    "board": "Tábla",
+    "shareFeedback": "Ossza meg visszajelzését",
+    "type": "Típus",
+    "title": "Cím",
+    "titlePlaceholder": "Ötletének vagy problémájának rövid összefoglalása",
+    "descPlaceholder": "Írja le kicsit részletesebben…",
+    "anonymous": "Névtelen",
+    "submitFeedback": "Visszajelzés küldése",
+    "giveFeedback": "Adjon visszajelzést",
+    "details": "Részletek"
+  },
+  "type": {
+    "feedback": "Visszajelzés",
+    "featureRequest": "Funkciókérés",
+    "bugReport": "Hibajelentés"
+  },
+  "comments": {
+    "writeReply": "Írjon választ…",
+    "addComment": "Írjon megjegyzést…",
+    "nameOptional": "Név (opcionális)",
+    "emailOptional": "E-mail (opcionális)",
+    "comment": "Hozzászólás",
+    "reply": "Válasz",
+    "commentingAs": "Hozzászólás mint",
+    "deleteConfirm": "Törli ezt a megjegyzést?",
+    "empty": "Még nincsenek megjegyzések — indítsa el a beszélgetést."
+  },
+  "share": {
+    "title": "Ossza meg ezt a bejegyzést",
+    "copyLink": "Hivatkozás másolása",
+    "linkCopied": "Hivatkozás másolva!"
+  },
+  "sort": {
+    "newest": "Legújabb",
+    "oldest": "Legrégebbi",
+    "mostUpvoted": "Legtöbb szavazat",
+    "leastUpvoted": "Legkevesebb szavazat"
+  },
+  "postOwner": {
+    "deleteTitle": "Törli ezt a bejegyzést?",
+    "editTitle": "Visszajelzés szerkesztése",
+    "deleteDesc": "Ez véglegesen eltávolítja a bejegyzését a szavazatokkal és megjegyzésekkel együtt. A művelet nem vonható vissza."
   }
 }

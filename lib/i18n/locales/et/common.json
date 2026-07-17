@@ -40,7 +40,9 @@
     "yes": "Jah",
     "no": "Ei",
     "upgrade": "Uuenda",
-    "saveChanges": "Salvesta muudatused"
+    "saveChanges": "Salvesta muudatused",
+    "deleting": "Kustutamine…",
+    "optional": "valikuline"
   },
   "dashboard": {
     "welcomeBack": "Tere tulemast tagasi"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Teavituste laadimine...",
     "empty": "Teavitusi veel pole."
+  },
+  "portal": {
+    "board": "Tahvel",
+    "shareFeedback": "Jagage oma tagasisidet",
+    "type": "Tüüp",
+    "title": "Pealkiri",
+    "titlePlaceholder": "Lühike kokkuvõte teie ideest või probleemist",
+    "descPlaceholder": "Kirjeldage seda veidi täpsemalt…",
+    "anonymous": "Anonüümne",
+    "submitFeedback": "Saada tagasiside",
+    "giveFeedback": "Anna tagasisidet",
+    "details": "Üksikasjad"
+  },
+  "type": {
+    "feedback": "Tagasiside",
+    "featureRequest": "Funktsioonisoov",
+    "bugReport": "Veateade"
+  },
+  "comments": {
+    "writeReply": "Kirjutage vastus…",
+    "addComment": "Lisage kommentaar…",
+    "nameOptional": "Nimi (valikuline)",
+    "emailOptional": "E-post (valikuline)",
+    "comment": "Kommenteeri",
+    "reply": "Vasta",
+    "commentingAs": "Kommenteerite kui",
+    "deleteConfirm": "Kustutada see kommentaar?",
+    "empty": "Kommentaare veel pole — alustage vestlust."
+  },
+  "share": {
+    "title": "Jaga seda postitust",
+    "copyLink": "Kopeeri link",
+    "linkCopied": "Link kopeeritud!"
+  },
+  "sort": {
+    "newest": "Uusimad",
+    "oldest": "Vanimad",
+    "mostUpvoted": "Enim hääli",
+    "leastUpvoted": "Vähim hääli"
+  },
+  "postOwner": {
+    "deleteTitle": "Kustutada see postitus?",
+    "editTitle": "Muutke oma tagasisidet",
+    "deleteDesc": "See eemaldab teie postituse jäädavalt koos häälte ja kommentaaridega. Seda toimingut ei saa tagasi võtta."
   }
 }

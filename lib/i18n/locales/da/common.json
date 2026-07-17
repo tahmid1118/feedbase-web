@@ -40,7 +40,9 @@
     "yes": "Ja",
     "no": "Nej",
     "upgrade": "Opgrader",
-    "saveChanges": "Gem ændringer"
+    "saveChanges": "Gem ændringer",
+    "deleting": "Sletter…",
+    "optional": "valgfrit"
   },
   "dashboard": {
     "welcomeBack": "Velkommen tilbage"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Indlæser notifikationer...",
     "empty": "Ingen notifikationer endnu."
+  },
+  "portal": {
+    "board": "Tavle",
+    "shareFeedback": "Del din feedback",
+    "type": "Type",
+    "title": "Titel",
+    "titlePlaceholder": "Et kort resumé af din idé eller dit problem",
+    "descPlaceholder": "Beskriv det lidt mere detaljeret…",
+    "anonymous": "Anonym",
+    "submitFeedback": "Send feedback",
+    "giveFeedback": "Giv feedback",
+    "details": "Detaljer"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Funktionsanmodning",
+    "bugReport": "Fejlrapport"
+  },
+  "comments": {
+    "writeReply": "Skriv et svar…",
+    "addComment": "Tilføj en kommentar…",
+    "nameOptional": "Navn (valgfrit)",
+    "emailOptional": "E-mail (valgfrit)",
+    "comment": "Kommenter",
+    "reply": "Svar",
+    "commentingAs": "Kommenterer som",
+    "deleteConfirm": "Slet denne kommentar?",
+    "empty": "Ingen kommentarer endnu — start samtalen."
+  },
+  "share": {
+    "title": "Del dette opslag",
+    "copyLink": "Kopiér link",
+    "linkCopied": "Link kopieret!"
+  },
+  "sort": {
+    "newest": "Nyeste",
+    "oldest": "Ældste",
+    "mostUpvoted": "Flest stemmer",
+    "leastUpvoted": "Færrest stemmer"
+  },
+  "postOwner": {
+    "deleteTitle": "Slet dette opslag?",
+    "editTitle": "Rediger din feedback",
+    "deleteDesc": "Dette fjerner permanent dit opslag sammen med dets stemmer og kommentarer. Handlingen kan ikke fortrydes."
   }
 }

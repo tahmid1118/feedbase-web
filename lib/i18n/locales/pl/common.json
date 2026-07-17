@@ -40,7 +40,9 @@
     "yes": "Tak",
     "no": "Nie",
     "upgrade": "Ulepsz",
-    "saveChanges": "Zapisz zmiany"
+    "saveChanges": "Zapisz zmiany",
+    "deleting": "Usuwanie…",
+    "optional": "opcjonalnie"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Ładowanie powiadomień...",
     "empty": "Brak powiadomień."
+  },
+  "portal": {
+    "board": "Tablica",
+    "shareFeedback": "Podziel się opinią",
+    "type": "Typ",
+    "title": "Tytuł",
+    "titlePlaceholder": "Krótkie podsumowanie Twojego pomysłu lub problemu",
+    "descPlaceholder": "Opisz to nieco bardziej szczegółowo…",
+    "anonymous": "Anonim",
+    "submitFeedback": "Wyślij opinię",
+    "giveFeedback": "Prześlij opinię",
+    "details": "Szczegóły"
+  },
+  "type": {
+    "feedback": "Opinia",
+    "featureRequest": "Prośba o funkcję",
+    "bugReport": "Zgłoszenie błędu"
+  },
+  "comments": {
+    "writeReply": "Napisz odpowiedź…",
+    "addComment": "Dodaj komentarz…",
+    "nameOptional": "Imię (opcjonalnie)",
+    "emailOptional": "E-mail (opcjonalnie)",
+    "comment": "Skomentuj",
+    "reply": "Odpowiedz",
+    "commentingAs": "Komentujesz jako",
+    "deleteConfirm": "Usunąć ten komentarz?",
+    "empty": "Brak komentarzy — rozpocznij rozmowę."
+  },
+  "share": {
+    "title": "Udostępnij ten wpis",
+    "copyLink": "Kopiuj link",
+    "linkCopied": "Link skopiowany!"
+  },
+  "sort": {
+    "newest": "Najnowsze",
+    "oldest": "Najstarsze",
+    "mostUpvoted": "Najczęściej głosowane",
+    "leastUpvoted": "Najmniej głosowane"
+  },
+  "postOwner": {
+    "deleteTitle": "Usunąć ten wpis?",
+    "editTitle": "Edytuj swoją opinię",
+    "deleteDesc": "Spowoduje to trwałe usunięcie wpisu wraz z głosami i komentarzami. Tej operacji nie można cofnąć."
   }
 }

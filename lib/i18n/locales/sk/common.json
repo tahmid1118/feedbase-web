@@ -40,7 +40,9 @@
     "yes": "Áno",
     "no": "Nie",
     "upgrade": "Inovovať",
-    "saveChanges": "Uložiť zmeny"
+    "saveChanges": "Uložiť zmeny",
+    "deleting": "Odstraňuje sa…",
+    "optional": "voliteľné"
   },
   "dashboard": {
     "welcomeBack": "Vitajte späť"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Načítavajú sa oznámenia...",
     "empty": "Zatiaľ žiadne oznámenia."
+  },
+  "portal": {
+    "board": "Nástenka",
+    "shareFeedback": "Zdieľajte svoju spätnú väzbu",
+    "type": "Typ",
+    "title": "Názov",
+    "titlePlaceholder": "Krátke zhrnutie vášho nápadu alebo problému",
+    "descPlaceholder": "Opíšte to trochu podrobnejšie…",
+    "anonymous": "Anonymný",
+    "submitFeedback": "Odoslať spätnú väzbu",
+    "giveFeedback": "Poskytnúť spätnú väzbu",
+    "details": "Podrobnosti"
+  },
+  "type": {
+    "feedback": "Spätná väzba",
+    "featureRequest": "Žiadosť o funkciu",
+    "bugReport": "Hlásenie chyby"
+  },
+  "comments": {
+    "writeReply": "Napíšte odpoveď…",
+    "addComment": "Pridajte komentár…",
+    "nameOptional": "Meno (voliteľné)",
+    "emailOptional": "E-mail (voliteľné)",
+    "comment": "Komentovať",
+    "reply": "Odpovedať",
+    "commentingAs": "Komentujete ako",
+    "deleteConfirm": "Odstrániť tento komentár?",
+    "empty": "Zatiaľ žiadne komentáre — začnite konverzáciu."
+  },
+  "share": {
+    "title": "Zdieľať tento príspevok",
+    "copyLink": "Kopírovať odkaz",
+    "linkCopied": "Odkaz skopírovaný!"
+  },
+  "sort": {
+    "newest": "Najnovšie",
+    "oldest": "Najstaršie",
+    "mostUpvoted": "Najviac hlasov",
+    "leastUpvoted": "Najmenej hlasov"
+  },
+  "postOwner": {
+    "deleteTitle": "Odstrániť tento príspevok?",
+    "editTitle": "Upraviť svoju spätnú väzbu",
+    "deleteDesc": "Týmto sa natrvalo odstráni váš príspevok spolu s hlasmi a komentármi. Túto akciu nie je možné vrátiť späť."
   }
 }

@@ -40,7 +40,9 @@
     "yes": "Ja",
     "no": "Nee",
     "upgrade": "Upgraden",
-    "saveChanges": "Wijzigingen opslaan"
+    "saveChanges": "Wijzigingen opslaan",
+    "deleting": "Verwijderen…",
+    "optional": "optioneel"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Meldingen laden...",
     "empty": "Nog geen meldingen."
+  },
+  "portal": {
+    "board": "Bord",
+    "shareFeedback": "Deel uw feedback",
+    "type": "Type",
+    "title": "Titel",
+    "titlePlaceholder": "Een korte samenvatting van uw idee of probleem",
+    "descPlaceholder": "Beschrijf het wat gedetailleerder…",
+    "anonymous": "Anoniem",
+    "submitFeedback": "Feedback verzenden",
+    "giveFeedback": "Geef feedback",
+    "details": "Details"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Functieverzoek",
+    "bugReport": "Bugrapport"
+  },
+  "comments": {
+    "writeReply": "Schrijf een antwoord…",
+    "addComment": "Voeg een reactie toe…",
+    "nameOptional": "Naam (optioneel)",
+    "emailOptional": "E-mail (optioneel)",
+    "comment": "Reageren",
+    "reply": "Antwoorden",
+    "commentingAs": "Reageren als",
+    "deleteConfirm": "Deze reactie verwijderen?",
+    "empty": "Nog geen reacties — begin het gesprek."
+  },
+  "share": {
+    "title": "Deel dit bericht",
+    "copyLink": "Link kopiëren",
+    "linkCopied": "Link gekopieerd!"
+  },
+  "sort": {
+    "newest": "Nieuwste",
+    "oldest": "Oudste",
+    "mostUpvoted": "Meeste stemmen",
+    "leastUpvoted": "Minste stemmen"
+  },
+  "postOwner": {
+    "deleteTitle": "Dit bericht verwijderen?",
+    "editTitle": "Bewerk uw feedback",
+    "deleteDesc": "Hiermee wordt uw bericht permanent verwijderd, samen met de stemmen en reacties. Deze actie kan niet ongedaan worden gemaakt."
   }
 }

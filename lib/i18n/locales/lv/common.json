@@ -40,7 +40,9 @@
     "yes": "Jā",
     "no": "Nē",
     "upgrade": "Jaunināt",
-    "saveChanges": "Saglabāt izmaiņas"
+    "saveChanges": "Saglabāt izmaiņas",
+    "deleting": "Dzēš…",
+    "optional": "neobligāti"
   },
   "dashboard": {
     "welcomeBack": "Laipni lūdzam atpakaļ"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Ielādē paziņojumus...",
     "empty": "Vēl nav paziņojumu."
+  },
+  "portal": {
+    "board": "Tāfele",
+    "shareFeedback": "Dalieties ar atsauksmēm",
+    "type": "Veids",
+    "title": "Nosaukums",
+    "titlePlaceholder": "Īss jūsu idejas vai problēmas kopsavilkums",
+    "descPlaceholder": "Aprakstiet to nedaudz sīkāk…",
+    "anonymous": "Anonīms",
+    "submitFeedback": "Nosūtīt atsauksmi",
+    "giveFeedback": "Sniedziet atsauksmi",
+    "details": "Detaļas"
+  },
+  "type": {
+    "feedback": "Atsauksme",
+    "featureRequest": "Funkcijas pieprasījums",
+    "bugReport": "Kļūdas ziņojums"
+  },
+  "comments": {
+    "writeReply": "Rakstiet atbildi…",
+    "addComment": "Pievienojiet komentāru…",
+    "nameOptional": "Vārds (neobligāti)",
+    "emailOptional": "E-pasts (neobligāti)",
+    "comment": "Komentēt",
+    "reply": "Atbildēt",
+    "commentingAs": "Komentējat kā",
+    "deleteConfirm": "Dzēst šo komentāru?",
+    "empty": "Vēl nav komentāru — sāciet sarunu."
+  },
+  "share": {
+    "title": "Kopīgot šo ierakstu",
+    "copyLink": "Kopēt saiti",
+    "linkCopied": "Saite nokopēta!"
+  },
+  "sort": {
+    "newest": "Jaunākie",
+    "oldest": "Vecākie",
+    "mostUpvoted": "Visvairāk balsu",
+    "leastUpvoted": "Vismazāk balsu"
+  },
+  "postOwner": {
+    "deleteTitle": "Dzēst šo ierakstu?",
+    "editTitle": "Rediģēt savu atsauksmi",
+    "deleteDesc": "Tādējādi tiek neatgriezeniski dzēsts jūsu ieraksts kopā ar balsojumiem un komentāriem. Šo darbību nevar atsaukt."
   }
 }

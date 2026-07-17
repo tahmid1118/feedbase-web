@@ -40,7 +40,9 @@
     "yes": "Ja",
     "no": "Nein",
     "upgrade": "Upgrade",
-    "saveChanges": "Änderungen speichern"
+    "saveChanges": "Änderungen speichern",
+    "deleting": "Wird gelöscht…",
+    "optional": "optional"
   },
   "dashboard": {
     "welcomeBack": "Willkommen zurück"
@@ -139,5 +141,49 @@
   "notifications": {
     "loading": "Benachrichtigungen werden geladen...",
     "empty": "Noch keine Benachrichtigungen."
+  },
+  "portal": {
+    "board": "Board",
+    "shareFeedback": "Teilen Sie Ihr Feedback",
+    "type": "Typ",
+    "title": "Titel",
+    "titlePlaceholder": "Eine kurze Zusammenfassung Ihrer Idee oder Ihres Problems",
+    "descPlaceholder": "Beschreiben Sie es etwas ausführlicher…",
+    "anonymous": "Anonym",
+    "submitFeedback": "Feedback senden",
+    "giveFeedback": "Feedback geben",
+    "details": "Details"
+  },
+  "type": {
+    "feedback": "Feedback",
+    "featureRequest": "Funktionswunsch",
+    "bugReport": "Fehlerbericht"
+  },
+  "comments": {
+    "writeReply": "Antwort schreiben…",
+    "addComment": "Kommentar hinzufügen…",
+    "nameOptional": "Name (optional)",
+    "emailOptional": "E-Mail (optional)",
+    "comment": "Kommentieren",
+    "reply": "Antworten",
+    "commentingAs": "Kommentieren als",
+    "deleteConfirm": "Diesen Kommentar löschen?",
+    "empty": "Noch keine Kommentare — starten Sie die Unterhaltung."
+  },
+  "share": {
+    "title": "Diesen Beitrag teilen",
+    "copyLink": "Link kopieren",
+    "linkCopied": "Link kopiert!"
+  },
+  "sort": {
+    "newest": "Neueste",
+    "oldest": "Älteste",
+    "mostUpvoted": "Meiste Stimmen",
+    "leastUpvoted": "Wenigste Stimmen"
+  },
+  "postOwner": {
+    "deleteTitle": "Diesen Beitrag löschen?",
+    "editTitle": "Feedback bearbeiten",
+    "deleteDesc": "Dadurch werden Ihr Beitrag sowie dessen Stimmen und Kommentare dauerhaft entfernt. Diese Aktion kann nicht rückgängig gemacht werden."
   }
 }
