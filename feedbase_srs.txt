@@ -161,6 +161,10 @@ Version 1.1
     FR-P3  Vote ......... Any visitor may upvote/remove an upvote. Voting is
                           limited to one vote per browser per post via a
                           persistent cookie identifier; no account required.
+                          The public board is the ONLY place a vote can be cast:
+                          votes measure demand among a workspace's users, so the
+                          workspace's own owner and team members cannot upvote
+                          (see FR-F7).
     FR-P4  Post detail .. Read a post and its threaded comments.
     FR-P5  Comment ...... Any visitor may add a comment, or a threaded reply to a
                           comment, on a post — anonymously or with an optional
@@ -231,11 +235,14 @@ Version 1.1
     FR-F4  Pin .......... Pin important posts to the top.
     FR-F5  Tags ......... Assign or remove tags.
     FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.
-    FR-F7  Engage ....... Quick upvote from the list; full post view with
-                          voting, tags, duplicates, and a read-only view of the
-                          post's discussion. Comments are authored, replied to,
-                          edited, and deleted on the public board (see FR-P5/P7),
-                          not from the dashboard.
+    FR-F7  Engage ....... Full post view with tags, duplicates, and a read-only
+                          view of the post's discussion. The team cannot upvote:
+                          vote counts are shown as a read-only tally on both the
+                          list and the post view, because votes measure demand
+                          among the workspace's users and are cast only from the
+                          public board (see FR-P3). Comments are likewise
+                          authored, replied to, edited, and deleted on the public
+                          board (see FR-P5/P7), not from the dashboard.
     FR-F8  Promote ...... From the Open tab, select one, several, or all posts
                           and add them to a chosen roadmap column in a single
                           action (with an optional target date). Adding a post to

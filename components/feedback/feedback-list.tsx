@@ -18,7 +18,6 @@ import Link from "next/link";
 import {
   postsApi,
   tagsApi,
-  votesApi,
   roadmapApi,
   extractRows,
   BOARD_SORT_OPTIONS,
@@ -176,38 +175,6 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     () => new Set(roadmapItems.map((i) => i.post_id)),
     [roadmapItems]
   );
-
-  // Vote directly from the card without opening the detail page.
-  const handleVote = async (post: Post) => {
-    if (!token) {
-      toast.error("Please login to vote");
-      return;
-    }
-    const wasVoted = Boolean(post.has_voted);
-    const delta = wasVoted ? -1 : 1;
-
-    setPosts((prev) =>
-      prev.map((p) =>
-        p.id === post.id
-          ? { ...p, has_voted: !wasVoted, vote_count: Math.max(0, p.vote_count + delta) }
-          : p
-      )
-    );
-
-    try {
-      if (wasVoted) await votesApi.remove(post.id, token);
-      else await votesApi.add(post.id, token);
-    } catch {
-      setPosts((prev) =>
-        prev.map((p) =>
-          p.id === post.id
-            ? { ...p, has_voted: wasVoted, vote_count: Math.max(0, p.vote_count - delta) }
-            : p
-        )
-      );
-      toast.error("Failed to vote");
-    }
-  };
 
   // Client-side fallbacks in case the backend ignores the search/tag filters.
   const visiblePosts = useMemo(() => {
@@ -515,32 +482,15 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                     </div>
                   )}
 
-                  <button
-                    type="button"
-                    onClick={() => handleVote(post)}
-                    aria-label={post.has_voted ? "Remove vote" : "Upvote"}
-                    aria-pressed={Boolean(post.has_voted)}
-                    className={`group/vote relative z-[2] flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border transition-all duration-150 active:scale-90 ${
-                      post.has_voted
-                        ? "border-[#c74959] bg-[#c74959] text-white hover:bg-[#b03f4d]"
-                        : "border-[#e399a3]/40 bg-white text-[#1c0a0c] hover:border-[#c74959] hover:bg-[#c74959]/10 hover:shadow-sm"
-                    }`}
+                  {/* Read-only tally: only the public board votes, never the team. */}
+                  <div
+                    aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
+                    title="Upvotes from your public board"
+                    className="relative z-[2] flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c]"
                   >
-                    <ThumbsUp
-                      className={`h-4 w-4 transition-transform duration-150 group-hover/vote:-translate-y-0.5 group-hover/vote:scale-125 ${
-                        post.has_voted
-                          ? "fill-white text-white"
-                          : "text-[#c74959] group-hover/vote:fill-[#c74959]/30"
-                      }`}
-                    />
-                    <span
-                      className={`text-xs font-semibold transition-colors ${
-                        post.has_voted ? "" : "group-hover/vote:text-[#c74959]"
-                      }`}
-                    >
-                      {post.vote_count}
-                    </span>
-                  </button>
+                    <ThumbsUp className="h-4 w-4 text-[#c74959]" />
+                    <span className="text-xs font-semibold">{post.vote_count}</span>
+                  </div>
 
                   <div className="flex-1 space-y-2">
                     <div className="flex items-start justify-between gap-4">

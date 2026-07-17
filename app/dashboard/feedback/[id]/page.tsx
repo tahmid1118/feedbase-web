@@ -20,7 +20,6 @@ import {
 import Link from "next/link";
 import {
   postsApi,
-  votesApi,
   commentsApi,
   tenantsApi,
   billingApi,
@@ -99,7 +98,6 @@ export default function PostDetailPage() {
   const [post, setPost] = useState<Post | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
-  const [hasVoted, setHasVoted] = useState(false);
   const [publicUrl, setPublicUrl] = useState<string | null>(null);
   // Deleting feedback is a paid capability (Pro+); gate the button on the plan.
   const [canDeleteFeedback, setCanDeleteFeedback] = useState(false);
@@ -168,7 +166,6 @@ export default function PostDetailPage() {
 
       if (postRes.data) {
         setPost(postRes.data);
-        setHasVoted(Boolean(postRes.data.has_voted));
       }
       setComments(extractRows<Comment>(commentsRes.data, "comments"));
     } catch (error) {
@@ -182,30 +179,6 @@ export default function PostDetailPage() {
   useEffect(() => {
     loadPostData();
   }, [loadPostData]);
-
-  const handleVote = async () => {
-    if (!token) {
-      toast.error("Please login to vote");
-      return;
-    }
-    try {
-      if (hasVoted) {
-        await votesApi.remove(postId, token);
-        setHasVoted(false);
-        setPost((prev) =>
-          prev ? { ...prev, vote_count: Math.max(0, prev.vote_count - 1) } : null
-        );
-      } else {
-        await votesApi.add(postId, token);
-        setHasVoted(true);
-        setPost((prev) =>
-          prev ? { ...prev, vote_count: prev.vote_count + 1 } : null
-        );
-      }
-    } catch {
-      toast.error("Failed to vote");
-    }
-  };
 
   const handleStatusChange = async (status: PostStatus) => {
     if (!token || !post) return;
@@ -358,20 +331,15 @@ export default function PostDetailPage() {
 
       <Card className="p-6">
         <div className="flex gap-6">
-          <button
-            type="button"
-            onClick={handleVote}
-            className={`flex h-16 w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border transition-colors ${
-              hasVoted
-                ? "border-[#c74959] bg-[#c74959] text-white"
-                : "border-[#e399a3]/40 bg-white text-[#1c0a0c] hover:border-[#c74959]"
-            }`}
+          {/* Read-only tally: only the public board votes, never the team. */}
+          <div
+            aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
+            title="Upvotes from your public board"
+            className="flex h-16 w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c]"
           >
-            <ThumbsUp
-              className={`h-5 w-5 ${hasVoted ? "fill-white" : "text-[#c74959]"}`}
-            />
+            <ThumbsUp className="h-5 w-5 text-[#c74959]" />
             <span className="text-sm font-semibold">{post.vote_count}</span>
-          </button>
+          </div>
 
           <div className="flex-1 space-y-4">
             <div>
