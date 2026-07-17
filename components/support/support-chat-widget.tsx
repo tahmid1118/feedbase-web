@@ -2,9 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { MessageCircle, X, Send, Loader2, Headset } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Send,
+  Loader2,
+  Headset,
+  MessageCirclePlus,
+} from "lucide-react";
 import { supportApi, ApiError, type SupportMessage } from "@/lib/api";
-import { Button } from "@/components/ui/button";
 import { LocalTime } from "@/components/local-time";
 
 /**
@@ -190,13 +196,21 @@ export function SupportChatWidget() {
                 <Loader2 className="h-5 w-5 animate-spin" />
               </div>
             ) : closedByAdmin ? (
-              <div className="flex h-full flex-col items-center justify-center gap-3 text-center">
+              <div className="flex h-full flex-col items-center justify-center gap-4 px-2 text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#c74959]/10">
+                  <Headset className="h-7 w-7 text-[#c74959]" />
+                </div>
                 <p className="text-sm text-[#1c0a0c]/70">
                   This chat was closed by support. Start a new one if you still need help.
                 </p>
-                <Button size="sm" onClick={startSession}>
+                <button
+                  type="button"
+                  onClick={startSession}
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#c74959] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#c74959]/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#c74959]/40 active:translate-y-0 active:scale-95"
+                >
+                  <MessageCirclePlus className="h-4 w-4 transition-transform duration-300 group-hover:rotate-90" />
                   Start new chat
-                </Button>
+                </button>
               </div>
             ) : messages.length === 0 ? (
               <div className="flex h-full flex-col items-center justify-center gap-1 text-center text-[#1c0a0c]/50">
