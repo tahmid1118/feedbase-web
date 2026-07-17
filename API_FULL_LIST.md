@@ -367,25 +367,7 @@ Sample Response:
 
 ## 4) Vote APIs
 
-### POST /votes/add
-Sample Body:
-```json
-{"lg":"en","postId":101}
-```
-Sample Response:
-```json
-{"status":"success","message":"Vote added successfully"}
-```
-
-### DELETE /votes/remove/:postId
-Sample Body:
-```json
-{"lg":"en"}
-```
-Sample Response:
-```json
-{"status":"success","message":"Vote removed successfully"}
-```
+> Voting is **public-board-only** — a workspace's own owner/team cannot upvote (votes measure demand among a workspace's users). The authenticated `POST /votes/add` and `DELETE /votes/remove/:postId` were **removed**; `/votes` is read-only. Visitors vote via `POST /public/:subdomain/posts/:postId/vote` (see Public APIs).
 
 ### POST /votes/post/:postId
 Sample Body:
@@ -1141,7 +1123,7 @@ Platform overview:
 Workspaces (any tenant):
 - `GET    /admin/workspaces` · `GET /admin/workspaces/:id` — list / detail (name, subdomain, owner email, plan, counts).
 - `PUT    /admin/workspaces/:id` — update workspace fields.
-- `PUT    /admin/workspaces/:id/plan` — grant / comp / revoke a plan (comped: no Stripe subscription).
+- `PUT    /admin/workspaces/:id/plan` — grant / comp / revoke a plan. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live Stripe subscription first. Comped: no Stripe subscription.
 - `DELETE /admin/workspaces/:id` — delete a workspace.
 - `GET    /admin/workspaces/:id/posts` — list a workspace's posts (moderation view).
 - `PUT    /admin/workspaces/:id/posts/:postId/status` · `.../pin` — moderate status (roadmap-synced) / pin.
@@ -1166,6 +1148,63 @@ Promo codes:
 Offers (promotional plan prices):
 - `GET  /admin/offers` · `POST /admin/offers` — list / create (one active offer per plan, backed by a Stripe coupon).
 - `PUT  /admin/offers/:id/deactivate` — deactivate (deletes its coupon).
+
+Support chat (admin side of the user↔admin chat; see section 19):
+- `GET  /admin/support/unread` — count of open sessions with unread user messages (sidebar badge).
+- `GET  /admin/support/sessions?status=open|closed` — session queue with workspace/user, unread-from-user, and last message.
+- `GET  /admin/support/sessions/:id` — one session + full transcript (marks user messages read).
+- `POST /admin/support/sessions/:id/messages` — reply. Body `{ body }`. Rejected (`400`) on a closed session.
+- `PUT  /admin/support/sessions/:id/close` — close a session (the user loses access; the admin keeps the transcript).
+
+---
+
+## 19) Support Chat (User) APIs
+
+Mounted at `/support`, all behind a tenant user Bearer token (`authenticateToken`). Every user (any role/plan) may chat with the platform admin. Reads are scoped to the caller's **open** session — once the admin closes it, these return `403` and the session is invisible to the user. See the admin side in section 18.
+
+### POST /support/session
+Resume the caller's open session or create one (at most one open session per user).
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Support session ready","data":{"session":{"id":12,"status":"open","created_at":"2026-07-17T10:00:00.000Z","last_message_at":null}}}
+```
+
+### POST /support/messages/:sessionId/list
+Messages in an open session the caller owns (marks admin replies read). `403` if closed/not theirs.
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Messages retrieved","data":{"messages":[{"id":1,"sender":"user","body":"Hi, I need help","created_at":"2026-07-17T10:00:05.000Z"},{"id":2,"sender":"admin","body":"Happy to help!","created_at":"2026-07-17T10:01:00.000Z"}]}}
+```
+
+### POST /support/messages/:sessionId
+Post a message into the caller's open session.
+Sample Body:
+```json
+{"lg":"en","body":"Thanks, that worked."}
+```
+Sample Response:
+```json
+{"status":"success","message":"Message sent"}
+```
+
+### POST /support/unread
+Unread admin replies in the caller's open session (drives the floating badge).
+Sample Body:
+```json
+{"lg":"en"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Unread count retrieved","data":{"hasOpenSession":true,"sessionId":12,"unreadCount":1}}
+```
 
 ---
 
