@@ -312,7 +312,10 @@ export default function AdminSupportPage() {
                       </AlertDialogHeader>
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={closeSession}>
+                        <AlertDialogAction
+                          onClick={closeSession}
+                          className="bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"
+                        >
                           Close chat
                         </AlertDialogAction>
                       </AlertDialogFooter>
