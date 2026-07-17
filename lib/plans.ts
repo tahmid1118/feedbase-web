@@ -44,7 +44,7 @@ export const PLANS: PlanDisplay[] = [
   {
     key: "pro",
     name: "Pro",
-    monthlyPrice: 19,
+    monthlyPrice: 10,
     blurb: "For growing teams that need their own brand and tools.",
     features: [
       "Everything in Free",
@@ -59,7 +59,7 @@ export const PLANS: PlanDisplay[] = [
   {
     key: "business",
     name: "Business",
-    monthlyPrice: 49,
+    monthlyPrice: 15,
     blurb: "For established products that need to scale support.",
     features: [
       "Everything in Pro",
