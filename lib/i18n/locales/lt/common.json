@@ -77,6 +77,39 @@
     "hidePassword": "Slėpti slaptažodį",
     "signingIn": "Prisijungiama...",
     "newToFeedbase": "Naujokas Feedbase?",
-    "createAccount": "Sukurkite paskyrą"
+    "createAccount": "Sukurkite paskyrą",
+    "fullName": "Vardas ir pavardė",
+    "contact": "Kontaktas",
+    "confirmPassword": "Patvirtinkite slaptažodį",
+    "createStrongPassword": "Sukurkite stiprų slaptažodį",
+    "reenterPassword": "Įveskite slaptažodį dar kartą",
+    "passwordHint": "Naudokite bent 8 simbolius su didžiąja, mažąja raide, skaičiumi ir simboliu.",
+    "alreadyHaveAccount": "Jau turite paskyrą?",
+    "signInInstead": "Vietoj to prisijunkite",
+    "creatingAccount": "Kuriama paskyra...",
+    "createAccountCta": "Sukurti paskyrą"
+  },
+  "status": {
+    "all": "Visi",
+    "open": "Atviras",
+    "planned": "Suplanuota",
+    "in_progress": "Vykdoma",
+    "completed": "Užbaigta",
+    "rejected": "Atmesta"
+  },
+  "feedback": {
+    "searchPlaceholder": "Ieškoti atsiliepimų...",
+    "allTypes": "Visi tipai",
+    "allTags": "Visos žymos",
+    "selectAll": "Pasirinkti visus",
+    "nSelected": "Pasirinkta: {{count}}",
+    "restoreToOpen": "Grąžinti į Atviras",
+    "restoring": "Grąžinama…",
+    "reject": "Atmesti",
+    "rejecting": "Atmetama…",
+    "sendToRoadmap": "Siųsti į Planą",
+    "column": "Stulpelis",
+    "selectColumn": "Pasirinkite stulpelį",
+    "targetReleaseDate": "Numatoma išleidimo data (nebūtina)"
   }
 }

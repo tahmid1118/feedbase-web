@@ -77,6 +77,39 @@
     "hidePassword": "Jelszó elrejtése",
     "signingIn": "Bejelentkezés...",
     "newToFeedbase": "Új a Feedbase-en?",
-    "createAccount": "Fiók létrehozása"
+    "createAccount": "Fiók létrehozása",
+    "fullName": "Teljes név",
+    "contact": "Kapcsolat",
+    "confirmPassword": "Jelszó megerősítése",
+    "createStrongPassword": "Hozzon létre erős jelszót",
+    "reenterPassword": "Adja meg újra a jelszót",
+    "passwordHint": "Használjon legalább 8 karaktert nagybetűvel, kisbetűvel, számmal és szimbólummal.",
+    "alreadyHaveAccount": "Már van fiókja?",
+    "signInInstead": "Jelentkezzen be inkább",
+    "creatingAccount": "Fiók létrehozása...",
+    "createAccountCta": "Fiók létrehozása"
+  },
+  "status": {
+    "all": "Összes",
+    "open": "Nyitott",
+    "planned": "Tervezett",
+    "in_progress": "Folyamatban",
+    "completed": "Befejezett",
+    "rejected": "Elutasított"
+  },
+  "feedback": {
+    "searchPlaceholder": "Visszajelzés keresése...",
+    "allTypes": "Minden típus",
+    "allTags": "Minden címke",
+    "selectAll": "Összes kijelölése",
+    "nSelected": "{{count}} kijelölve",
+    "restoreToOpen": "Visszaállítás Nyitottra",
+    "restoring": "Visszaállítás…",
+    "reject": "Elutasítás",
+    "rejecting": "Elutasítás…",
+    "sendToRoadmap": "Küldés az Ütemtervbe",
+    "column": "Oszlop",
+    "selectColumn": "Válasszon oszlopot",
+    "targetReleaseDate": "Célzott kiadási dátum (opcionális)"
   }
 }

@@ -77,6 +77,39 @@
     "hidePassword": "Dölj lösenord",
     "signingIn": "Loggar in...",
     "newToFeedbase": "Ny på Feedbase?",
-    "createAccount": "Skapa ditt konto"
+    "createAccount": "Skapa ditt konto",
+    "fullName": "Fullständigt namn",
+    "contact": "Kontakt",
+    "confirmPassword": "Bekräfta lösenord",
+    "createStrongPassword": "Skapa ett starkt lösenord",
+    "reenterPassword": "Ange lösenordet igen",
+    "passwordHint": "Använd minst 8 tecken med versal, gemen, siffra och symbol.",
+    "alreadyHaveAccount": "Har du redan ett konto?",
+    "signInInstead": "Logga in istället",
+    "creatingAccount": "Skapar konto...",
+    "createAccountCta": "Skapa konto"
+  },
+  "status": {
+    "all": "Alla",
+    "open": "Öppen",
+    "planned": "Planerad",
+    "in_progress": "Pågår",
+    "completed": "Slutförd",
+    "rejected": "Avvisad"
+  },
+  "feedback": {
+    "searchPlaceholder": "Sök feedback...",
+    "allTypes": "Alla typer",
+    "allTags": "Alla taggar",
+    "selectAll": "Välj alla",
+    "nSelected": "{{count}} valda",
+    "restoreToOpen": "Återställ till Öppen",
+    "restoring": "Återställer…",
+    "reject": "Avvisa",
+    "rejecting": "Avvisar…",
+    "sendToRoadmap": "Skicka till Färdplan",
+    "column": "Kolumn",
+    "selectColumn": "Välj en kolumn",
+    "targetReleaseDate": "Måldatum för lansering (valfritt)"
   }
 }

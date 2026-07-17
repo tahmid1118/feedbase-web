@@ -77,6 +77,39 @@
     "hidePassword": "Slēpt paroli",
     "signingIn": "Notiek pieteikšanās...",
     "newToFeedbase": "Jauns Feedbase lietotājs?",
-    "createAccount": "Izveidojiet kontu"
+    "createAccount": "Izveidojiet kontu",
+    "fullName": "Pilns vārds",
+    "contact": "Kontakts",
+    "confirmPassword": "Apstipriniet paroli",
+    "createStrongPassword": "Izveidojiet spēcīgu paroli",
+    "reenterPassword": "Ievadiet paroli vēlreiz",
+    "passwordHint": "Izmantojiet vismaz 8 rakstzīmes ar lielo, mazo burtu, ciparu un simbolu.",
+    "alreadyHaveAccount": "Jau ir konts?",
+    "signInInstead": "Tā vietā piesakieties",
+    "creatingAccount": "Notiek konta izveide...",
+    "createAccountCta": "Izveidot kontu"
+  },
+  "status": {
+    "all": "Visi",
+    "open": "Atvērts",
+    "planned": "Plānots",
+    "in_progress": "Notiek",
+    "completed": "Pabeigts",
+    "rejected": "Noraidīts"
+  },
+  "feedback": {
+    "searchPlaceholder": "Meklēt atsauksmes...",
+    "allTypes": "Visi veidi",
+    "allTags": "Visi tagi",
+    "selectAll": "Atlasīt visus",
+    "nSelected": "Atlasīti: {{count}}",
+    "restoreToOpen": "Atjaunot uz Atvērts",
+    "restoring": "Atjauno…",
+    "reject": "Noraidīt",
+    "rejecting": "Noraida…",
+    "sendToRoadmap": "Nosūtīt uz Ceļvedi",
+    "column": "Kolonna",
+    "selectColumn": "Atlasiet kolonnu",
+    "targetReleaseDate": "Mērķa izlaišanas datums (neobligāti)"
   }
 }

@@ -77,6 +77,39 @@
     "hidePassword": "Skrýt heslo",
     "signingIn": "Přihlašování...",
     "newToFeedbase": "Jste ve Feedbase noví?",
-    "createAccount": "Vytvořte si účet"
+    "createAccount": "Vytvořte si účet",
+    "fullName": "Celé jméno",
+    "contact": "Kontakt",
+    "confirmPassword": "Potvrďte heslo",
+    "createStrongPassword": "Vytvořte silné heslo",
+    "reenterPassword": "Zadejte heslo znovu",
+    "passwordHint": "Použijte alespoň 8 znaků s velkým a malým písmenem, číslem a symbolem.",
+    "alreadyHaveAccount": "Máte již účet?",
+    "signInInstead": "Přihlaste se místo toho",
+    "creatingAccount": "Vytváření účtu...",
+    "createAccountCta": "Vytvořit účet"
+  },
+  "status": {
+    "all": "Vše",
+    "open": "Otevřené",
+    "planned": "Plánované",
+    "in_progress": "Probíhá",
+    "completed": "Dokončené",
+    "rejected": "Zamítnuté"
+  },
+  "feedback": {
+    "searchPlaceholder": "Hledat zpětnou vazbu...",
+    "allTypes": "Všechny typy",
+    "allTags": "Všechny štítky",
+    "selectAll": "Vybrat vše",
+    "nSelected": "Vybráno: {{count}}",
+    "restoreToOpen": "Obnovit na Otevřené",
+    "restoring": "Obnovování…",
+    "reject": "Zamítnout",
+    "rejecting": "Zamítání…",
+    "sendToRoadmap": "Odeslat do Plánu",
+    "column": "Sloupec",
+    "selectColumn": "Vyberte sloupec",
+    "targetReleaseDate": "Cílové datum vydání (volitelné)"
   }
 }

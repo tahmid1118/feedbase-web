@@ -77,6 +77,39 @@
     "hidePassword": "Peida parool",
     "signingIn": "Sisselogimine...",
     "newToFeedbase": "Feedbase on uus?",
-    "createAccount": "Loo oma konto"
+    "createAccount": "Loo oma konto",
+    "fullName": "Täisnimi",
+    "contact": "Kontakt",
+    "confirmPassword": "Kinnitage parool",
+    "createStrongPassword": "Looge tugev parool",
+    "reenterPassword": "Sisestage parool uuesti",
+    "passwordHint": "Kasutage vähemalt 8 tähemärki suur- ja väiketähe, numbri ja sümboliga.",
+    "alreadyHaveAccount": "Kas teil on juba konto?",
+    "signInInstead": "Logige selle asemel sisse",
+    "creatingAccount": "Konto loomine...",
+    "createAccountCta": "Loo konto"
+  },
+  "status": {
+    "all": "Kõik",
+    "open": "Avatud",
+    "planned": "Planeeritud",
+    "in_progress": "Töös",
+    "completed": "Lõpetatud",
+    "rejected": "Tagasi lükatud"
+  },
+  "feedback": {
+    "searchPlaceholder": "Otsi tagasisidet...",
+    "allTypes": "Kõik tüübid",
+    "allTags": "Kõik sildid",
+    "selectAll": "Vali kõik",
+    "nSelected": "{{count}} valitud",
+    "restoreToOpen": "Taasta Avatuks",
+    "restoring": "Taastamine…",
+    "reject": "Lükka tagasi",
+    "rejecting": "Tagasilükkamine…",
+    "sendToRoadmap": "Saada Teekaardile",
+    "column": "Veerg",
+    "selectColumn": "Valige veerg",
+    "targetReleaseDate": "Sihtavaldamise kuupäev (valikuline)"
   }
 }

@@ -77,6 +77,39 @@
     "hidePassword": "Скриване на паролата",
     "signingIn": "Влизане...",
     "newToFeedbase": "Нови ли сте във Feedbase?",
-    "createAccount": "Създайте акаунт"
+    "createAccount": "Създайте акаунт",
+    "fullName": "Пълно име",
+    "contact": "Контакт",
+    "confirmPassword": "Потвърдете паролата",
+    "createStrongPassword": "Създайте силна парола",
+    "reenterPassword": "Въведете паролата отново",
+    "passwordHint": "Използвайте поне 8 знака с главни, малки букви, цифра и символ.",
+    "alreadyHaveAccount": "Вече имате акаунт?",
+    "signInInstead": "Влезте вместо това",
+    "creatingAccount": "Създаване на акаунт...",
+    "createAccountCta": "Създаване на акаунт"
+  },
+  "status": {
+    "all": "Всички",
+    "open": "Отворени",
+    "planned": "Планирани",
+    "in_progress": "В процес",
+    "completed": "Завършени",
+    "rejected": "Отхвърлени"
+  },
+  "feedback": {
+    "searchPlaceholder": "Търсене на обратна връзка...",
+    "allTypes": "Всички типове",
+    "allTags": "Всички етикети",
+    "selectAll": "Избери всички",
+    "nSelected": "{{count}} избрани",
+    "restoreToOpen": "Възстанови в Отворени",
+    "restoring": "Възстановяване…",
+    "reject": "Отхвърли",
+    "rejecting": "Отхвърляне…",
+    "sendToRoadmap": "Изпрати към Пътната карта",
+    "column": "Колона",
+    "selectColumn": "Изберете колона",
+    "targetReleaseDate": "Целева дата на издаване (по избор)"
   }
 }

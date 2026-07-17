@@ -77,6 +77,39 @@
     "hidePassword": "Skryť heslo",
     "signingIn": "Prihlasovanie...",
     "newToFeedbase": "Ste vo Feedbase noví?",
-    "createAccount": "Vytvorte si účet"
+    "createAccount": "Vytvorte si účet",
+    "fullName": "Celé meno",
+    "contact": "Kontakt",
+    "confirmPassword": "Potvrďte heslo",
+    "createStrongPassword": "Vytvorte silné heslo",
+    "reenterPassword": "Zadajte heslo znova",
+    "passwordHint": "Použite aspoň 8 znakov s veľkým, malým písmenom, číslom a symbolom.",
+    "alreadyHaveAccount": "Už máte účet?",
+    "signInInstead": "Prihláste sa namiesto toho",
+    "creatingAccount": "Vytváranie účtu...",
+    "createAccountCta": "Vytvoriť účet"
+  },
+  "status": {
+    "all": "Všetko",
+    "open": "Otvorené",
+    "planned": "Plánované",
+    "in_progress": "Prebieha",
+    "completed": "Dokončené",
+    "rejected": "Zamietnuté"
+  },
+  "feedback": {
+    "searchPlaceholder": "Hľadať spätnú väzbu...",
+    "allTypes": "Všetky typy",
+    "allTags": "Všetky štítky",
+    "selectAll": "Vybrať všetko",
+    "nSelected": "Vybraných: {{count}}",
+    "restoreToOpen": "Obnoviť na Otvorené",
+    "restoring": "Obnovuje sa…",
+    "reject": "Zamietnuť",
+    "rejecting": "Zamieta sa…",
+    "sendToRoadmap": "Odoslať do Plánu",
+    "column": "Stĺpec",
+    "selectColumn": "Vyberte stĺpec",
+    "targetReleaseDate": "Cieľový dátum vydania (voliteľné)"
   }
 }

@@ -77,6 +77,39 @@
     "hidePassword": "Sakrij lozinku",
     "signingIn": "Prijava...",
     "newToFeedbase": "Novi ste u Feedbaseu?",
-    "createAccount": "Stvorite račun"
+    "createAccount": "Stvorite račun",
+    "fullName": "Puno ime",
+    "contact": "Kontakt",
+    "confirmPassword": "Potvrdite lozinku",
+    "createStrongPassword": "Stvorite jaku lozinku",
+    "reenterPassword": "Ponovno unesite lozinku",
+    "passwordHint": "Koristite najmanje 8 znakova s velikim, malim slovom, brojem i simbolom.",
+    "alreadyHaveAccount": "Već imate račun?",
+    "signInInstead": "Umjesto toga se prijavite",
+    "creatingAccount": "Stvaranje računa...",
+    "createAccountCta": "Stvori račun"
+  },
+  "status": {
+    "all": "Sve",
+    "open": "Otvoreno",
+    "planned": "Planirano",
+    "in_progress": "U tijeku",
+    "completed": "Završeno",
+    "rejected": "Odbijeno"
+  },
+  "feedback": {
+    "searchPlaceholder": "Pretraži povratne informacije...",
+    "allTypes": "Sve vrste",
+    "allTags": "Sve oznake",
+    "selectAll": "Odaberi sve",
+    "nSelected": "{{count}} odabrano",
+    "restoreToOpen": "Vrati u Otvoreno",
+    "restoring": "Vraćanje…",
+    "reject": "Odbij",
+    "rejecting": "Odbijanje…",
+    "sendToRoadmap": "Pošalji u Plan razvoja",
+    "column": "Stupac",
+    "selectColumn": "Odaberite stupac",
+    "targetReleaseDate": "Ciljni datum izdanja (nije obavezno)"
   }
 }

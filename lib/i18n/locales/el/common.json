@@ -77,6 +77,39 @@
     "hidePassword": "Απόκρυψη κωδικού",
     "signingIn": "Σύνδεση...",
     "newToFeedbase": "Νέος στο Feedbase;",
-    "createAccount": "Δημιουργήστε λογαριασμό"
+    "createAccount": "Δημιουργήστε λογαριασμό",
+    "fullName": "Πλήρες όνομα",
+    "contact": "Επικοινωνία",
+    "confirmPassword": "Επιβεβαίωση κωδικού",
+    "createStrongPassword": "Δημιουργήστε ισχυρό κωδικό",
+    "reenterPassword": "Εισαγάγετε ξανά τον κωδικό",
+    "passwordHint": "Χρησιμοποιήστε τουλάχιστον 8 χαρακτήρες με κεφαλαίο, πεζό, αριθμό και σύμβολο.",
+    "alreadyHaveAccount": "Έχετε ήδη λογαριασμό;",
+    "signInInstead": "Συνδεθείτε αντ' αυτού",
+    "creatingAccount": "Δημιουργία λογαριασμού...",
+    "createAccountCta": "Δημιουργία λογαριασμού"
+  },
+  "status": {
+    "all": "Όλα",
+    "open": "Ανοιχτά",
+    "planned": "Προγραμματισμένα",
+    "in_progress": "Σε εξέλιξη",
+    "completed": "Ολοκληρώθηκε",
+    "rejected": "Απορρίφθηκε"
+  },
+  "feedback": {
+    "searchPlaceholder": "Αναζήτηση σχολίων...",
+    "allTypes": "Όλοι οι τύποι",
+    "allTags": "Όλες οι ετικέτες",
+    "selectAll": "Επιλογή όλων",
+    "nSelected": "{{count}} επιλεγμένα",
+    "restoreToOpen": "Επαναφορά σε Ανοιχτό",
+    "restoring": "Επαναφορά…",
+    "reject": "Απόρριψη",
+    "rejecting": "Απόρριψη…",
+    "sendToRoadmap": "Αποστολή στον Χάρτη πορείας",
+    "column": "Στήλη",
+    "selectColumn": "Επιλέξτε στήλη",
+    "targetReleaseDate": "Στόχος ημερομηνίας κυκλοφορίας (προαιρετικό)"
   }
 }

@@ -77,6 +77,39 @@
     "hidePassword": "Ascundeți parola",
     "signingIn": "Se autentifică...",
     "newToFeedbase": "Nou pe Feedbase?",
-    "createAccount": "Creați-vă contul"
+    "createAccount": "Creați-vă contul",
+    "fullName": "Nume complet",
+    "contact": "Contact",
+    "confirmPassword": "Confirmați parola",
+    "createStrongPassword": "Creați o parolă puternică",
+    "reenterPassword": "Reintroduceți parola",
+    "passwordHint": "Folosiți cel puțin 8 caractere cu majusculă, minusculă, cifră și simbol.",
+    "alreadyHaveAccount": "Aveți deja un cont?",
+    "signInInstead": "Autentificați-vă în schimb",
+    "creatingAccount": "Se creează contul...",
+    "createAccountCta": "Creați cont"
+  },
+  "status": {
+    "all": "Toate",
+    "open": "Deschis",
+    "planned": "Planificat",
+    "in_progress": "În desfășurare",
+    "completed": "Finalizat",
+    "rejected": "Respins"
+  },
+  "feedback": {
+    "searchPlaceholder": "Căutați feedback...",
+    "allTypes": "Toate tipurile",
+    "allTags": "Toate etichetele",
+    "selectAll": "Selectați tot",
+    "nSelected": "{{count}} selectate",
+    "restoreToOpen": "Restabiliți la Deschis",
+    "restoring": "Se restabilește…",
+    "reject": "Respingeți",
+    "rejecting": "Se respinge…",
+    "sendToRoadmap": "Trimiteți la Foaia de parcurs",
+    "column": "Coloană",
+    "selectColumn": "Selectați o coloană",
+    "targetReleaseDate": "Data țintă de lansare (opțional)"
   }
 }

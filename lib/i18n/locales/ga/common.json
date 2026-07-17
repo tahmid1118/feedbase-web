@@ -77,6 +77,39 @@
     "hidePassword": "Folaigh pasfhocal",
     "signingIn": "Ag síniú isteach...",
     "newToFeedbase": "Nua ar Feedbase?",
-    "createAccount": "Cruthaigh do chuntas"
+    "createAccount": "Cruthaigh do chuntas",
+    "fullName": "Ainm iomlán",
+    "contact": "Teagmháil",
+    "confirmPassword": "Deimhnigh pasfhocal",
+    "createStrongPassword": "Cruthaigh pasfhocal láidir",
+    "reenterPassword": "Cuir isteach an pasfhocal arís",
+    "passwordHint": "Úsáid 8 gcarachtar ar a laghad le ceannlitir, litir bheag, uimhir agus siombail.",
+    "alreadyHaveAccount": "An bhfuil cuntas agat cheana?",
+    "signInInstead": "Sínigh isteach ina ionad",
+    "creatingAccount": "Cuntas á chruthú...",
+    "createAccountCta": "Cruthaigh cuntas"
+  },
+  "status": {
+    "all": "Uile",
+    "open": "Oscailte",
+    "planned": "Beartaithe",
+    "in_progress": "Ar siúl",
+    "completed": "Críochnaithe",
+    "rejected": "Diúltaithe"
+  },
+  "feedback": {
+    "searchPlaceholder": "Cuardaigh aiseolas...",
+    "allTypes": "Gach cineál",
+    "allTags": "Gach clib",
+    "selectAll": "Roghnaigh gach rud",
+    "nSelected": "{{count}} roghnaithe",
+    "restoreToOpen": "Athchóirigh go Oscailte",
+    "restoring": "Á athchóiriú…",
+    "reject": "Diúltaigh",
+    "rejecting": "Á dhiúltú…",
+    "sendToRoadmap": "Seol chuig an Treochlár",
+    "column": "Colún",
+    "selectColumn": "Roghnaigh colún",
+    "targetReleaseDate": "Spriocdháta eisiúna (roghnach)"
   }
 }

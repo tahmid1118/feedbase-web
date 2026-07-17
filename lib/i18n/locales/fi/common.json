@@ -77,6 +77,39 @@
     "hidePassword": "Piilota salasana",
     "signingIn": "Kirjaudutaan...",
     "newToFeedbase": "Uusi Feedbasessa?",
-    "createAccount": "Luo tilisi"
+    "createAccount": "Luo tilisi",
+    "fullName": "Koko nimi",
+    "contact": "Yhteystieto",
+    "confirmPassword": "Vahvista salasana",
+    "createStrongPassword": "Luo vahva salasana",
+    "reenterPassword": "Anna salasana uudelleen",
+    "passwordHint": "Käytä vähintään 8 merkkiä isolla, pienellä kirjaimella, numerolla ja symbolilla.",
+    "alreadyHaveAccount": "Onko sinulla jo tili?",
+    "signInInstead": "Kirjaudu sen sijaan",
+    "creatingAccount": "Luodaan tiliä...",
+    "createAccountCta": "Luo tili"
+  },
+  "status": {
+    "all": "Kaikki",
+    "open": "Avoin",
+    "planned": "Suunniteltu",
+    "in_progress": "Käynnissä",
+    "completed": "Valmis",
+    "rejected": "Hylätty"
+  },
+  "feedback": {
+    "searchPlaceholder": "Hae palautetta...",
+    "allTypes": "Kaikki tyypit",
+    "allTags": "Kaikki tunnisteet",
+    "selectAll": "Valitse kaikki",
+    "nSelected": "{{count}} valittu",
+    "restoreToOpen": "Palauta Avoimeksi",
+    "restoring": "Palautetaan…",
+    "reject": "Hylkää",
+    "rejecting": "Hylätään…",
+    "sendToRoadmap": "Lähetä Etenemissuunnitelmaan",
+    "column": "Sarake",
+    "selectColumn": "Valitse sarake",
+    "targetReleaseDate": "Tavoitejulkaisupäivä (valinnainen)"
   }
 }

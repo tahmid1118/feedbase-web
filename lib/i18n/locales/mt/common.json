@@ -77,6 +77,39 @@
     "hidePassword": "Aħbi l-password",
     "signingIn": "Qed jidħol...",
     "newToFeedbase": "Ġdid fi Feedbase?",
-    "createAccount": "Oħloq il-kont tiegħek"
+    "createAccount": "Oħloq il-kont tiegħek",
+    "fullName": "Isem sħiħ",
+    "contact": "Kuntatt",
+    "confirmPassword": "Ikkonferma l-password",
+    "createStrongPassword": "Oħloq password b'saħħitha",
+    "reenterPassword": "Erġa' daħħal il-password",
+    "passwordHint": "Uża mill-inqas 8 karattri b'ittra kbira, żgħira, numru u simbolu.",
+    "alreadyHaveAccount": "Diġà għandek kont?",
+    "signInInstead": "Idħol minflok",
+    "creatingAccount": "Qed jinħoloq il-kont...",
+    "createAccountCta": "Oħloq kont"
+  },
+  "status": {
+    "all": "Kollha",
+    "open": "Miftuħ",
+    "planned": "Ippjanat",
+    "in_progress": "Għaddej",
+    "completed": "Lest",
+    "rejected": "Miċħud"
+  },
+  "feedback": {
+    "searchPlaceholder": "Fittex feedback...",
+    "allTypes": "It-tipi kollha",
+    "allTags": "It-tikketti kollha",
+    "selectAll": "Agħżel kollha",
+    "nSelected": "{{count}} magħżula",
+    "restoreToOpen": "Irrestawra għal Miftuħ",
+    "restoring": "Qed jiġi restawrat…",
+    "reject": "Iċħad",
+    "rejecting": "Qed jiġi miċħud…",
+    "sendToRoadmap": "Ibgħat lill-Pjan",
+    "column": "Kolonna",
+    "selectColumn": "Agħżel kolonna",
+    "targetReleaseDate": "Data mmirata tar-rilaxx (mhux obbligatorja)"
   }
 }

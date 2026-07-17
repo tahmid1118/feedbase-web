@@ -77,6 +77,39 @@
     "hidePassword": "Masquer le mot de passe",
     "signingIn": "Connexion...",
     "newToFeedbase": "Nouveau sur Feedbase ?",
-    "createAccount": "Créez votre compte"
+    "createAccount": "Créez votre compte",
+    "fullName": "Nom complet",
+    "contact": "Contact",
+    "confirmPassword": "Confirmer le mot de passe",
+    "createStrongPassword": "Créez un mot de passe fort",
+    "reenterPassword": "Ressaisissez le mot de passe",
+    "passwordHint": "Utilisez au moins 8 caractères avec majuscule, minuscule, chiffre et symbole.",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signInInstead": "Connectez-vous plutôt",
+    "creatingAccount": "Création du compte...",
+    "createAccountCta": "Créer un compte"
+  },
+  "status": {
+    "all": "Tout",
+    "open": "Ouvert",
+    "planned": "Planifié",
+    "in_progress": "En cours",
+    "completed": "Terminé",
+    "rejected": "Rejeté"
+  },
+  "feedback": {
+    "searchPlaceholder": "Rechercher des retours...",
+    "allTypes": "Tous les types",
+    "allTags": "Toutes les étiquettes",
+    "selectAll": "Tout sélectionner",
+    "nSelected": "{{count}} sélectionné(s)",
+    "restoreToOpen": "Rétablir en Ouvert",
+    "restoring": "Restauration…",
+    "reject": "Rejeter",
+    "rejecting": "Rejet…",
+    "sendToRoadmap": "Envoyer à la feuille de route",
+    "column": "Colonne",
+    "selectColumn": "Sélectionnez une colonne",
+    "targetReleaseDate": "Date de sortie cible (facultatif)"
   }
 }

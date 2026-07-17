@@ -77,6 +77,39 @@
     "hidePassword": "Skjul adgangskode",
     "signingIn": "Logger ind...",
     "newToFeedbase": "Ny hos Feedbase?",
-    "createAccount": "Opret din konto"
+    "createAccount": "Opret din konto",
+    "fullName": "Fulde navn",
+    "contact": "Kontakt",
+    "confirmPassword": "Bekræft adgangskode",
+    "createStrongPassword": "Opret en stærk adgangskode",
+    "reenterPassword": "Indtast adgangskode igen",
+    "passwordHint": "Brug mindst 8 tegn med store, små bogstaver, tal og symbol.",
+    "alreadyHaveAccount": "Har du allerede en konto?",
+    "signInInstead": "Log ind i stedet",
+    "creatingAccount": "Opretter konto...",
+    "createAccountCta": "Opret konto"
+  },
+  "status": {
+    "all": "Alle",
+    "open": "Åben",
+    "planned": "Planlagt",
+    "in_progress": "I gang",
+    "completed": "Fuldført",
+    "rejected": "Afvist"
+  },
+  "feedback": {
+    "searchPlaceholder": "Søg feedback...",
+    "allTypes": "Alle typer",
+    "allTags": "Alle tags",
+    "selectAll": "Vælg alle",
+    "nSelected": "{{count}} valgt",
+    "restoreToOpen": "Gendan til Åben",
+    "restoring": "Gendanner…",
+    "reject": "Afvis",
+    "rejecting": "Afviser…",
+    "sendToRoadmap": "Send til Køreplan",
+    "column": "Kolonne",
+    "selectColumn": "Vælg en kolonne",
+    "targetReleaseDate": "Måldato for udgivelse (valgfrit)"
   }
 }

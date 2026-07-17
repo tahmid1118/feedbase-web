@@ -77,6 +77,39 @@
     "hidePassword": "Ocultar contraseña",
     "signingIn": "Iniciando sesión...",
     "newToFeedbase": "¿Nuevo en Feedbase?",
-    "createAccount": "Crea tu cuenta"
+    "createAccount": "Crea tu cuenta",
+    "fullName": "Nombre completo",
+    "contact": "Contacto",
+    "confirmPassword": "Confirmar contraseña",
+    "createStrongPassword": "Crea una contraseña segura",
+    "reenterPassword": "Vuelve a introducir la contraseña",
+    "passwordHint": "Usa al menos 8 caracteres con mayúscula, minúscula, número y símbolo.",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signInInstead": "Inicia sesión en su lugar",
+    "creatingAccount": "Creando cuenta...",
+    "createAccountCta": "Crear cuenta"
+  },
+  "status": {
+    "all": "Todos",
+    "open": "Abierto",
+    "planned": "Planificado",
+    "in_progress": "En curso",
+    "completed": "Completado",
+    "rejected": "Rechazado"
+  },
+  "feedback": {
+    "searchPlaceholder": "Buscar comentarios...",
+    "allTypes": "Todos los tipos",
+    "allTags": "Todas las etiquetas",
+    "selectAll": "Seleccionar todo",
+    "nSelected": "{{count}} seleccionados",
+    "restoreToOpen": "Restaurar a Abierto",
+    "restoring": "Restaurando…",
+    "reject": "Rechazar",
+    "rejecting": "Rechazando…",
+    "sendToRoadmap": "Enviar a la Hoja de ruta",
+    "column": "Columna",
+    "selectColumn": "Selecciona una columna",
+    "targetReleaseDate": "Fecha de lanzamiento prevista (opcional)"
   }
 }

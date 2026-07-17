@@ -77,6 +77,39 @@
     "hidePassword": "Wachtwoord verbergen",
     "signingIn": "Bezig met inloggen...",
     "newToFeedbase": "Nieuw bij Feedbase?",
-    "createAccount": "Maak uw account aan"
+    "createAccount": "Maak uw account aan",
+    "fullName": "Volledige naam",
+    "contact": "Contact",
+    "confirmPassword": "Bevestig wachtwoord",
+    "createStrongPassword": "Maak een sterk wachtwoord",
+    "reenterPassword": "Voer wachtwoord opnieuw in",
+    "passwordHint": "Gebruik minstens 8 tekens met hoofdletter, kleine letter, cijfer en symbool.",
+    "alreadyHaveAccount": "Heeft u al een account?",
+    "signInInstead": "Log in plaats daarvan in",
+    "creatingAccount": "Account aanmaken...",
+    "createAccountCta": "Account aanmaken"
+  },
+  "status": {
+    "all": "Alle",
+    "open": "Open",
+    "planned": "Gepland",
+    "in_progress": "In uitvoering",
+    "completed": "Voltooid",
+    "rejected": "Afgewezen"
+  },
+  "feedback": {
+    "searchPlaceholder": "Feedback zoeken...",
+    "allTypes": "Alle typen",
+    "allTags": "Alle tags",
+    "selectAll": "Alles selecteren",
+    "nSelected": "{{count}} geselecteerd",
+    "restoreToOpen": "Terugzetten naar Open",
+    "restoring": "Terugzetten…",
+    "reject": "Afwijzen",
+    "rejecting": "Afwijzen…",
+    "sendToRoadmap": "Naar Roadmap sturen",
+    "column": "Kolom",
+    "selectColumn": "Selecteer een kolom",
+    "targetReleaseDate": "Streefdatum voor release (optioneel)"
   }
 }

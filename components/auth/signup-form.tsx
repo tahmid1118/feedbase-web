@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "@/lib/i18n/client";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import {
   signupSchema,
@@ -32,6 +33,7 @@ import type {
 type SignupApiResponse = AuthRouteErrorResponse | AuthRouteSuccessResponse;
 
 export function SignupForm() {
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -132,10 +134,8 @@ export function SignupForm() {
   return (
     <div className="auth-reveal space-y-5">
       <div className="rounded-xl border border-[#e399a3]/45 bg-[#fdf8f9] p-3 text-xs leading-relaxed text-[#1c0a0c]/78">
-        Already have an account?{" "}
-        <Link href="/login" className="font-semibold text-[#c74959] hover:text-[#b03f4d]">
-          Sign in instead
-        </Link>
+        {t("auth.alreadyHaveAccount")}{" "}
+        <Link href="/login" className="font-semibold text-[#c74959] hover:text-[#b03f4d]">{t("auth.signInInstead")}</Link>
       </div>
 
       <Form {...form}>
@@ -145,9 +145,7 @@ export function SignupForm() {
             name="fullName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                  Full name
-                </FormLabel>
+                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.fullName")}</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
@@ -167,9 +165,7 @@ export function SignupForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                    Email
-                  </FormLabel>
+                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.email")}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -189,9 +185,7 @@ export function SignupForm() {
               name="contact"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                    Contact
-                  </FormLabel>
+                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.contact")}</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
@@ -212,20 +206,18 @@ export function SignupForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                  Password
-                </FormLabel>
+                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.password")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       {...field}
                       autoComplete="new-password"
-                      placeholder="Create a strong password"
+                      placeholder={t("auth.createStrongPassword")}
                       type={showPassword ? "text" : "password"}
                       className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 pr-10 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
                     />
                     <button
-                      aria-label={showPassword ? "Hide password" : "Show password"}
+                      aria-label={showPassword ? t("auth.hidePassword") : t("auth.showPassword")}
                       className="absolute inset-y-0 right-3 inline-flex items-center text-[#1c0a0c]/55 hover:text-[#1c0a0c]"
                       onClick={() => setShowPassword((previous) => !previous)}
                       type="button"
@@ -239,7 +231,7 @@ export function SignupForm() {
                   </div>
                 </FormControl>
                 <FormDescription className="text-xs text-[#1c0a0c]/55">
-                  Use at least 8 characters with uppercase, lowercase, number, and symbol.
+                  {t("auth.passwordHint")}
                 </FormDescription>
                 <FormMessage className="text-xs text-[#b13d4c]" />
               </FormItem>
@@ -251,20 +243,18 @@ export function SignupForm() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                  Confirm password
-                </FormLabel>
+                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.confirmPassword")}</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       {...field}
                       autoComplete="new-password"
-                      placeholder="Re-enter password"
+                      placeholder={t("auth.reenterPassword")}
                       type={showConfirmPassword ? "text" : "password"}
                       className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 pr-10 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
                     />
                     <button
-                      aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                      aria-label={showConfirmPassword ? t("auth.hidePassword") : t("auth.showPassword")}
                       className="absolute inset-y-0 right-3 inline-flex items-center text-[#1c0a0c]/55 hover:text-[#1c0a0c]"
                       onClick={() => setShowConfirmPassword((previous) => !previous)}
                       type="button"
@@ -295,14 +285,10 @@ export function SignupForm() {
           >
             {isDisabled ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Creating account...
-              </>
+                <Loader2 className="h-4 w-4 animate-spin" />{t("auth.creatingAccount")}</>
             ) : (
               <>
-                <UserPlus className="h-4 w-4" />
-                Create account
-              </>
+                <UserPlus className="h-4 w-4" />{t("auth.createAccountCta")}</>
             )}
           </Button>
         </form>

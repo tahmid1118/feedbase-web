@@ -30,6 +30,7 @@ import {
   type RoadmapItem,
 } from "@/lib/api";
 import { toast } from "sonner";
+import { useTranslation } from "@/lib/i18n/client";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -76,6 +77,7 @@ interface FeedbackListProps {
 }
 
 export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
   const [tags, setTags] = useState<Tag[]>([]);
@@ -323,7 +325,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           <TabsList className="border border-[#e399a3]/30 bg-white">
             {["all", "open", "planned", "in_progress", "completed", "rejected"].map((s) => (
               <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
-                {s === "all" ? "All" : s.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                {t(`status.${s}`)}
               </TabsTrigger>
             ))}
           </TabsList>
@@ -335,7 +337,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search feedback..."
+              placeholder={t("feedback.searchPlaceholder")}
               className="w-48 pl-8"
             />
           </div>
@@ -359,10 +361,10 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
           <Select value={postType} onValueChange={setPostType}>
             <SelectTrigger className="w-[150px]">
-              <SelectValue placeholder="All types" />
+              <SelectValue placeholder={t("feedback.allTypes")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All types</SelectItem>
+              <SelectItem value="all">{t("feedback.allTypes")}</SelectItem>
               <SelectItem value="feedback">💬 Feedback</SelectItem>
               <SelectItem value="feature_request">✨ Feature</SelectItem>
               <SelectItem value="bug_report">🐛 Bug</SelectItem>
@@ -372,10 +374,10 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           {tags.length > 0 && (
             <Select value={tagId} onValueChange={setTagId}>
               <SelectTrigger className="w-[140px]">
-                <SelectValue placeholder="All tags" />
+                <SelectValue placeholder={t("feedback.allTags")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All tags</SelectItem>
+                <SelectItem value="all">{t("feedback.allTags")}</SelectItem>
                 {tags.map((tag) => (
                   <SelectItem key={tag.id} value={String(tag.id)}>
                     {tag.name}
@@ -397,7 +399,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               disabled={selectablePosts.length === 0}
               aria-label="Select all feedback"
             />
-            {selectedCount > 0 ? `${selectedCount} selected` : "Select all"}
+            {selectedCount > 0 ? t("feedback.nSelected", { count: selectedCount }) : t("feedback.selectAll")}
           </label>
 
           {selectedCount > 0 && (
@@ -413,7 +415,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                   disabled={statusBusy}
                 >
                   <RotateCcw className="h-4 w-4" />
-                  {statusBusy ? "Restoring…" : "Restore to Open"}
+                  {statusBusy ? t("feedback.restoring") : t("feedback.restoreToOpen")}
                 </Button>
               ) : (
                 <>
@@ -424,7 +426,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                     disabled={statusBusy}
                   >
                     <Ban className="h-4 w-4" />
-                    {statusBusy ? "Rejecting…" : "Reject"}
+                    {statusBusy ? t("feedback.rejecting") : t("feedback.reject")}
                   </Button>
                   <Button
                     size="sm"
@@ -432,9 +434,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                     onClick={() => setSendOpen(true)}
                     disabled={statusBusy}
                   >
-                    <GitBranch className="h-4 w-4" />
-                    Send to Roadmap
-                  </Button>
+                    <GitBranch className="h-4 w-4" />{t("feedback.sendToRoadmap")}</Button>
                 </>
               )}
             </div>
@@ -565,7 +565,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
       <Dialog open={sendOpen} onOpenChange={setSendOpen}>
         <DialogContent className="sm:max-w-[460px]">
           <DialogHeader>
-            <DialogTitle>Send to Roadmap</DialogTitle>
+            <DialogTitle>{t("feedback.sendToRoadmap")}</DialogTitle>
             <DialogDescription>
               Add {selectedCount} selected{" "}
               {selectedCount === 1 ? "post" : "posts"} to a roadmap column.
@@ -574,7 +574,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label>Column</Label>
+              <Label>{t("feedback.column")}</Label>
               {sortedColumns.length === 0 ? (
                 <p className="text-sm text-[#1c0a0c]/50">
                   No roadmap columns yet — create one on the Roadmap page first.
@@ -582,7 +582,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               ) : (
                 <Select value={sendColumnId} onValueChange={setSendColumnId}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a column" />
+                    <SelectValue placeholder={t("feedback.selectColumn")} />
                   </SelectTrigger>
                   <SelectContent>
                     {sortedColumns.map((c) => (
@@ -596,7 +596,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="send-date">Target release date (optional)</Label>
+              <Label htmlFor="send-date">{t("feedback.targetReleaseDate")}</Label>
               <Input
                 id="send-date"
                 type="date"
