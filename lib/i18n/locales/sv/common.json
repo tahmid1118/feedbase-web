@@ -136,7 +136,13 @@
       "tags": "Taggar",
       "branding": "Varumärke",
       "billing": "Fakturering"
-    }
+    },
+    "contactNumber": "Kontaktnummer",
+    "password": "Lösenord",
+    "currentPassword": "Nuvarande lösenord",
+    "newPassword": "Nytt lösenord",
+    "confirmNewPassword": "Bekräfta nytt lösenord",
+    "updatePassword": "Uppdatera lösenord"
   },
   "notifications": {
     "loading": "Läser in aviseringar...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Skapa ett lösenord",
     "atLeast8": "Minst 8 tecken"
+  },
+  "team": {
+    "inviteTeammate": "Bjud in en lagkamrat",
+    "teamMembers": "Teammedlemmar",
+    "expired": "Utgången"
+  },
+  "role": {
+    "owner": "Ägare",
+    "member": "Medlem"
+  },
+  "tags": {
+    "editTag": "Redigera tagg",
+    "deleteTag": "Ta bort tagg",
+    "deleteTagConfirm": "Ta bort tagg?",
+    "editTagTitle": "Redigera tagg",
+    "color": "Färg"
+  },
+  "branding": {
+    "title": "Arbetsyta och varumärke",
+    "companyLogo": "Företagslogotyp"
+  },
+  "delete": {
+    "dangerZone": "Farozon",
+    "confirmPassword": "Bekräfta ditt lösenord",
+    "yourPassword": "Ditt lösenord",
+    "deleteMyAccount": "Ta bort mitt konto"
+  },
+  "billing": {
+    "loadingBilling": "Läser in fakturering…",
+    "manageBilling": "Hantera fakturering",
+    "currentPlan": "Nuvarande plan",
+    "billedYearly": "Faktureras årligen",
+    "billedMonthly": "Faktureras månadsvis",
+    "havePromoCode": "Har du en kampanjkod?",
+    "enterCode": "Ange kod",
+    "current": "Nuvarande",
+    "recommended": "Rekommenderas",
+    "included": "Ingår",
+    "upgradeTo": "Uppgradera till {{plan}}"
   }
 }

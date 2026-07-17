@@ -136,7 +136,13 @@
       "tags": "Tags",
       "branding": "Branding",
       "billing": "Fakturering"
-    }
+    },
+    "contactNumber": "Kontaktnummer",
+    "password": "Adgangskode",
+    "currentPassword": "Nuværende adgangskode",
+    "newPassword": "Ny adgangskode",
+    "confirmNewPassword": "Bekræft ny adgangskode",
+    "updatePassword": "Opdater adgangskode"
   },
   "notifications": {
     "loading": "Indlæser notifikationer...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Opret en adgangskode",
     "atLeast8": "Mindst 8 tegn"
+  },
+  "team": {
+    "inviteTeammate": "Inviter en holdkammerat",
+    "teamMembers": "Teammedlemmer",
+    "expired": "Udløbet"
+  },
+  "role": {
+    "owner": "Ejer",
+    "member": "Medlem"
+  },
+  "tags": {
+    "editTag": "Rediger tag",
+    "deleteTag": "Slet tag",
+    "deleteTagConfirm": "Slet tag?",
+    "editTagTitle": "Rediger tag",
+    "color": "Farve"
+  },
+  "branding": {
+    "title": "Arbejdsområde og branding",
+    "companyLogo": "Virksomhedslogo"
+  },
+  "delete": {
+    "dangerZone": "Farezone",
+    "confirmPassword": "Bekræft din adgangskode",
+    "yourPassword": "Din adgangskode",
+    "deleteMyAccount": "Slet min konto"
+  },
+  "billing": {
+    "loadingBilling": "Indlæser fakturering…",
+    "manageBilling": "Administrer fakturering",
+    "currentPlan": "Nuværende plan",
+    "billedYearly": "Faktureres årligt",
+    "billedMonthly": "Faktureres månedligt",
+    "havePromoCode": "Har du en rabatkode?",
+    "enterCode": "Indtast kode",
+    "current": "Nuværende",
+    "recommended": "Anbefalet",
+    "included": "Inkluderet",
+    "upgradeTo": "Opgrader til {{plan}}"
   }
 }

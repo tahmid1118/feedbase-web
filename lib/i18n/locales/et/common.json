@@ -136,7 +136,13 @@
       "tags": "Sildid",
       "branding": "Bränding",
       "billing": "Arveldus"
-    }
+    },
+    "contactNumber": "Kontaktnumber",
+    "password": "Parool",
+    "currentPassword": "Praegune parool",
+    "newPassword": "Uus parool",
+    "confirmNewPassword": "Kinnitage uus parool",
+    "updatePassword": "Uuenda parooli"
   },
   "notifications": {
     "loading": "Teavituste laadimine...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Looge parool",
     "atLeast8": "Vähemalt 8 tähemärki"
+  },
+  "team": {
+    "inviteTeammate": "Kutsu meeskonnaliige",
+    "teamMembers": "Meeskonnaliikmed",
+    "expired": "Aegunud"
+  },
+  "role": {
+    "owner": "Omanik",
+    "member": "Liige"
+  },
+  "tags": {
+    "editTag": "Muuda silti",
+    "deleteTag": "Kustuta silt",
+    "deleteTagConfirm": "Kustutada silt?",
+    "editTagTitle": "Muuda silti",
+    "color": "Värv"
+  },
+  "branding": {
+    "title": "Tööruum ja bränding",
+    "companyLogo": "Ettevõtte logo"
+  },
+  "delete": {
+    "dangerZone": "Ohtlik tsoon",
+    "confirmPassword": "Kinnitage oma parool",
+    "yourPassword": "Teie parool",
+    "deleteMyAccount": "Kustuta minu konto"
+  },
+  "billing": {
+    "loadingBilling": "Arvelduse laadimine…",
+    "manageBilling": "Halda arveldust",
+    "currentPlan": "Praegune plaan",
+    "billedYearly": "Arveldatakse aastas",
+    "billedMonthly": "Arveldatakse kuus",
+    "havePromoCode": "Kas teil on sooduskood?",
+    "enterCode": "Sisestage kood",
+    "current": "Praegune",
+    "recommended": "Soovitatud",
+    "included": "Sisaldub",
+    "upgradeTo": "Uuenda paketile {{plan}}"
   }
 }

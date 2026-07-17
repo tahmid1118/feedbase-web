@@ -136,7 +136,13 @@
       "tags": "Oznake",
       "branding": "Brendiranje",
       "billing": "Naplata"
-    }
+    },
+    "contactNumber": "Kontakt broj",
+    "password": "Lozinka",
+    "currentPassword": "Trenutna lozinka",
+    "newPassword": "Nova lozinka",
+    "confirmNewPassword": "Potvrdite novu lozinku",
+    "updatePassword": "Ažuriraj lozinku"
   },
   "notifications": {
     "loading": "Učitavanje obavijesti...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Stvorite lozinku",
     "atLeast8": "Najmanje 8 znakova"
+  },
+  "team": {
+    "inviteTeammate": "Pozovite člana tima",
+    "teamMembers": "Članovi tima",
+    "expired": "Isteklo"
+  },
+  "role": {
+    "owner": "Vlasnik",
+    "member": "Član"
+  },
+  "tags": {
+    "editTag": "Uredi oznaku",
+    "deleteTag": "Izbriši oznaku",
+    "deleteTagConfirm": "Izbrisati oznaku?",
+    "editTagTitle": "Uredi oznaku",
+    "color": "Boja"
+  },
+  "branding": {
+    "title": "Radni prostor i brendiranje",
+    "companyLogo": "Logotip tvrtke"
+  },
+  "delete": {
+    "dangerZone": "Opasna zona",
+    "confirmPassword": "Potvrdite lozinku",
+    "yourPassword": "Vaša lozinka",
+    "deleteMyAccount": "Izbriši moj račun"
+  },
+  "billing": {
+    "loadingBilling": "Učitavanje naplate…",
+    "manageBilling": "Upravljanje naplatom",
+    "currentPlan": "Trenutni plan",
+    "billedYearly": "Naplaćuje se godišnje",
+    "billedMonthly": "Naplaćuje se mjesečno",
+    "havePromoCode": "Imate promo kod?",
+    "enterCode": "Unesite kod",
+    "current": "Trenutno",
+    "recommended": "Preporučeno",
+    "included": "Uključeno",
+    "upgradeTo": "Nadogradi na {{plan}}"
   }
 }

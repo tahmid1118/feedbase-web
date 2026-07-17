@@ -11,6 +11,7 @@ import {
   type PlanKey,
 } from "@/lib/api";
 import { PLANS, planPricing, formatPrice } from "@/lib/plans";
+import { useTranslation } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,7 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 export function BillingSettings() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const params = useSearchParams();
@@ -127,7 +129,7 @@ export function BillingSettings() {
   if (loading) {
     return (
       <Card className="p-6">
-        <div className="py-8 text-center text-[#1c0a0c]/60">Loading billing…</div>
+        <div className="py-8 text-center text-[#1c0a0c]/60">{t("billing.loadingBilling")}</div>
       </Card>
     );
   }
@@ -149,7 +151,7 @@ export function BillingSettings() {
       {busy === "portal" ? (
         <Loader2 className="h-4 w-4 animate-spin" />
       ) : (
-        "Manage billing"
+        t("billing.manageBilling")
       )}
     </Button>
   );
@@ -158,7 +160,7 @@ export function BillingSettings() {
     if (planKey === current) {
       return (
         <Button variant="outline" disabled className="w-full">
-          Current plan
+          {t("billing.currentPlan")}
         </Button>
       );
     }
@@ -167,7 +169,7 @@ export function BillingSettings() {
         manageButton
       ) : (
         <Button variant="outline" disabled className="w-full">
-          Included
+          {t("billing.included")}
         </Button>
       );
     }
@@ -183,7 +185,7 @@ export function BillingSettings() {
         {busy === planKey ? (
           <Loader2 className="h-4 w-4 animate-spin" />
         ) : (
-          `Upgrade to ${planName}`
+          t("billing.upgradeTo", { plan: planName })
         )}
       </Button>
     );
@@ -194,7 +196,7 @@ export function BillingSettings() {
       <Card className="p-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-sm text-[#1c0a0c]/60">Current plan</p>
+            <p className="text-sm text-[#1c0a0c]/60">{t("billing.currentPlan")}</p>
             <div className="mt-1 flex items-center gap-2">
               <span className="text-xl font-bold text-[#1c0a0c]">
                 {currentPlan?.name ?? "Free"}
@@ -209,9 +211,9 @@ export function BillingSettings() {
             {hasSub && (renewal || status?.billingInterval) && (
               <p className="mt-1 text-xs text-[#1c0a0c]/50">
                 {status?.billingInterval === "year"
-                  ? "Billed yearly"
+                  ? t("billing.billedYearly")
                   : status?.billingInterval === "month"
-                    ? "Billed monthly"
+                    ? t("billing.billedMonthly")
                     : null}
                 {status?.billingInterval && renewal ? " · " : ""}
                 {renewal ? `Renews ${renewal}` : ""}
@@ -223,7 +225,7 @@ export function BillingSettings() {
               {busy === "portal" ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
-                "Manage billing"
+                t("billing.manageBilling")
               )}
             </Button>
           )}
@@ -233,7 +235,7 @@ export function BillingSettings() {
       <Card className="p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium text-[#1c0a0c]">Have a promo code?</p>
+            <p className="text-sm font-medium text-[#1c0a0c]">{t("billing.havePromoCode")}</p>
             <p className="text-xs text-[#1c0a0c]/60">
               Redeem a code to unlock a discount or a free plan.
             </p>
@@ -242,7 +244,7 @@ export function BillingSettings() {
             <Input
               value={promoInput}
               onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
-              placeholder="Enter code"
+              placeholder={t("billing.enterCode")}
               className="w-40 font-mono uppercase sm:w-48"
             />
             <Button
@@ -304,9 +306,9 @@ export function BillingSettings() {
                 ) : null}
               </div>
               {plan.key === current ? (
-                <Badge className="bg-[#c74959] text-white">Current</Badge>
+                <Badge className="bg-[#c74959] text-white">{t("billing.current")}</Badge>
               ) : plan.highlighted ? (
-                <Badge variant="outline">Recommended</Badge>
+                <Badge variant="outline">{t("billing.recommended")}</Badge>
               ) : null}
             </div>
             <div className="mt-2">

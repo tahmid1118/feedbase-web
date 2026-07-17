@@ -136,7 +136,13 @@
       "tags": "Tunnisteet",
       "branding": "Brändäys",
       "billing": "Laskutus"
-    }
+    },
+    "contactNumber": "Yhteysnumero",
+    "password": "Salasana",
+    "currentPassword": "Nykyinen salasana",
+    "newPassword": "Uusi salasana",
+    "confirmNewPassword": "Vahvista uusi salasana",
+    "updatePassword": "Päivitä salasana"
   },
   "notifications": {
     "loading": "Ladataan ilmoituksia...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Luo salasana",
     "atLeast8": "Vähintään 8 merkkiä"
+  },
+  "team": {
+    "inviteTeammate": "Kutsu tiimin jäsen",
+    "teamMembers": "Tiimin jäsenet",
+    "expired": "Vanhentunut"
+  },
+  "role": {
+    "owner": "Omistaja",
+    "member": "Jäsen"
+  },
+  "tags": {
+    "editTag": "Muokkaa tunnistetta",
+    "deleteTag": "Poista tunniste",
+    "deleteTagConfirm": "Poistetaanko tunniste?",
+    "editTagTitle": "Muokkaa tunnistetta",
+    "color": "Väri"
+  },
+  "branding": {
+    "title": "Työtila ja brändäys",
+    "companyLogo": "Yrityksen logo"
+  },
+  "delete": {
+    "dangerZone": "Vaaravyöhyke",
+    "confirmPassword": "Vahvista salasanasi",
+    "yourPassword": "Salasanasi",
+    "deleteMyAccount": "Poista tilini"
+  },
+  "billing": {
+    "loadingBilling": "Ladataan laskutusta…",
+    "manageBilling": "Hallitse laskutusta",
+    "currentPlan": "Nykyinen tilaus",
+    "billedYearly": "Laskutetaan vuosittain",
+    "billedMonthly": "Laskutetaan kuukausittain",
+    "havePromoCode": "Onko sinulla tarjouskoodi?",
+    "enterCode": "Anna koodi",
+    "current": "Nykyinen",
+    "recommended": "Suositeltu",
+    "included": "Sisältyy",
+    "upgradeTo": "Päivitä tasolle {{plan}}"
   }
 }

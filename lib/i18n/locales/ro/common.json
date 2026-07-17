@@ -136,7 +136,13 @@
       "tags": "Etichete",
       "branding": "Branding",
       "billing": "Facturare"
-    }
+    },
+    "contactNumber": "Număr de contact",
+    "password": "Parolă",
+    "currentPassword": "Parola actuală",
+    "newPassword": "Parolă nouă",
+    "confirmNewPassword": "Confirmați parola nouă",
+    "updatePassword": "Actualizați parola"
   },
   "notifications": {
     "loading": "Se încarcă notificările...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Creați o parolă",
     "atLeast8": "Cel puțin 8 caractere"
+  },
+  "team": {
+    "inviteTeammate": "Invitați un coechipier",
+    "teamMembers": "Membrii echipei",
+    "expired": "Expirat"
+  },
+  "role": {
+    "owner": "Proprietar",
+    "member": "Membru"
+  },
+  "tags": {
+    "editTag": "Editați eticheta",
+    "deleteTag": "Ștergeți eticheta",
+    "deleteTagConfirm": "Ștergeți eticheta?",
+    "editTagTitle": "Editați eticheta",
+    "color": "Culoare"
+  },
+  "branding": {
+    "title": "Spațiu de lucru și branding",
+    "companyLogo": "Logo-ul companiei"
+  },
+  "delete": {
+    "dangerZone": "Zonă periculoasă",
+    "confirmPassword": "Confirmați parola",
+    "yourPassword": "Parola dvs.",
+    "deleteMyAccount": "Ștergeți contul meu"
+  },
+  "billing": {
+    "loadingBilling": "Se încarcă facturarea…",
+    "manageBilling": "Gestionați facturarea",
+    "currentPlan": "Plan curent",
+    "billedYearly": "Facturat anual",
+    "billedMonthly": "Facturat lunar",
+    "havePromoCode": "Aveți un cod promoțional?",
+    "enterCode": "Introduceți codul",
+    "current": "Curent",
+    "recommended": "Recomandat",
+    "included": "Inclus",
+    "upgradeTo": "Treceți la {{plan}}"
   }
 }

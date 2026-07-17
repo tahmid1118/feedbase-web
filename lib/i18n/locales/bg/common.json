@@ -136,7 +136,13 @@
       "tags": "Етикети",
       "branding": "Брандиране",
       "billing": "Плащане"
-    }
+    },
+    "contactNumber": "Телефон за контакт",
+    "password": "Парола",
+    "currentPassword": "Текуща парола",
+    "newPassword": "Нова парола",
+    "confirmNewPassword": "Потвърдете новата парола",
+    "updatePassword": "Актуализиране на паролата"
   },
   "notifications": {
     "loading": "Зареждане на известия...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Създайте парола",
     "atLeast8": "Поне 8 знака"
+  },
+  "team": {
+    "inviteTeammate": "Поканете съотборник",
+    "teamMembers": "Членове на екипа",
+    "expired": "Изтекла"
+  },
+  "role": {
+    "owner": "Собственик",
+    "member": "Член"
+  },
+  "tags": {
+    "editTag": "Редактиране на етикет",
+    "deleteTag": "Изтриване на етикет",
+    "deleteTagConfirm": "Изтриване на етикет?",
+    "editTagTitle": "Редактиране на етикет",
+    "color": "Цвят"
+  },
+  "branding": {
+    "title": "Работно пространство и брандиране",
+    "companyLogo": "Лого на компанията"
+  },
+  "delete": {
+    "dangerZone": "Опасна зона",
+    "confirmPassword": "Потвърдете паролата си",
+    "yourPassword": "Вашата парола",
+    "deleteMyAccount": "Изтриване на акаунта ми"
+  },
+  "billing": {
+    "loadingBilling": "Зареждане на плащането…",
+    "manageBilling": "Управление на плащането",
+    "currentPlan": "Текущ план",
+    "billedYearly": "Годишно таксуване",
+    "billedMonthly": "Месечно таксуване",
+    "havePromoCode": "Имате промо код?",
+    "enterCode": "Въведете код",
+    "current": "Текущ",
+    "recommended": "Препоръчано",
+    "included": "Включено",
+    "upgradeTo": "Надграждане до {{plan}}"
   }
 }

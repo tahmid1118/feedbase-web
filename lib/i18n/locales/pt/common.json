@@ -136,7 +136,13 @@
       "tags": "Etiquetas",
       "branding": "Marca",
       "billing": "Faturação"
-    }
+    },
+    "contactNumber": "Número de contacto",
+    "password": "Palavra-passe",
+    "currentPassword": "Palavra-passe atual",
+    "newPassword": "Nova palavra-passe",
+    "confirmNewPassword": "Confirmar nova palavra-passe",
+    "updatePassword": "Atualizar palavra-passe"
   },
   "notifications": {
     "loading": "A carregar notificações...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Crie uma palavra-passe",
     "atLeast8": "Pelo menos 8 caracteres"
+  },
+  "team": {
+    "inviteTeammate": "Convidar um colega de equipa",
+    "teamMembers": "Membros da equipa",
+    "expired": "Expirado"
+  },
+  "role": {
+    "owner": "Proprietário",
+    "member": "Membro"
+  },
+  "tags": {
+    "editTag": "Editar etiqueta",
+    "deleteTag": "Eliminar etiqueta",
+    "deleteTagConfirm": "Eliminar etiqueta?",
+    "editTagTitle": "Editar etiqueta",
+    "color": "Cor"
+  },
+  "branding": {
+    "title": "Espaço de trabalho e marca",
+    "companyLogo": "Logótipo da empresa"
+  },
+  "delete": {
+    "dangerZone": "Zona de perigo",
+    "confirmPassword": "Confirme a sua palavra-passe",
+    "yourPassword": "A sua palavra-passe",
+    "deleteMyAccount": "Eliminar a minha conta"
+  },
+  "billing": {
+    "loadingBilling": "A carregar faturação…",
+    "manageBilling": "Gerir faturação",
+    "currentPlan": "Plano atual",
+    "billedYearly": "Faturado anualmente",
+    "billedMonthly": "Faturado mensalmente",
+    "havePromoCode": "Tem um código promocional?",
+    "enterCode": "Introduza o código",
+    "current": "Atual",
+    "recommended": "Recomendado",
+    "included": "Incluído",
+    "upgradeTo": "Atualizar para {{plan}}"
   }
 }

@@ -136,7 +136,13 @@
       "tags": "Oznake",
       "branding": "Blagovna znamka",
       "billing": "Zaračunavanje"
-    }
+    },
+    "contactNumber": "Kontaktna številka",
+    "password": "Geslo",
+    "currentPassword": "Trenutno geslo",
+    "newPassword": "Novo geslo",
+    "confirmNewPassword": "Potrdite novo geslo",
+    "updatePassword": "Posodobi geslo"
   },
   "notifications": {
     "loading": "Nalaganje obvestil...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Ustvarite geslo",
     "atLeast8": "Vsaj 8 znakov"
+  },
+  "team": {
+    "inviteTeammate": "Povabite člana ekipe",
+    "teamMembers": "Člani ekipe",
+    "expired": "Poteklo"
+  },
+  "role": {
+    "owner": "Lastnik",
+    "member": "Član"
+  },
+  "tags": {
+    "editTag": "Uredi oznako",
+    "deleteTag": "Izbriši oznako",
+    "deleteTagConfirm": "Izbrišem oznako?",
+    "editTagTitle": "Uredi oznako",
+    "color": "Barva"
+  },
+  "branding": {
+    "title": "Delovni prostor in znamka",
+    "companyLogo": "Logotip podjetja"
+  },
+  "delete": {
+    "dangerZone": "Nevarno območje",
+    "confirmPassword": "Potrdite geslo",
+    "yourPassword": "Vaše geslo",
+    "deleteMyAccount": "Izbriši moj račun"
+  },
+  "billing": {
+    "loadingBilling": "Nalaganje zaračunavanja…",
+    "manageBilling": "Upravljaj zaračunavanje",
+    "currentPlan": "Trenutni načrt",
+    "billedYearly": "Zaračunano letno",
+    "billedMonthly": "Zaračunano mesečno",
+    "havePromoCode": "Imate promocijsko kodo?",
+    "enterCode": "Vnesite kodo",
+    "current": "Trenutno",
+    "recommended": "Priporočeno",
+    "included": "Vključeno",
+    "upgradeTo": "Nadgradi na {{plan}}"
   }
 }

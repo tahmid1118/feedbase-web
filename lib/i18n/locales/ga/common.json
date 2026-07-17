@@ -136,7 +136,13 @@
       "tags": "Clibeanna",
       "branding": "Brandáil",
       "billing": "Billeáil"
-    }
+    },
+    "contactNumber": "Uimhir teagmhála",
+    "password": "Pasfhocal",
+    "currentPassword": "Pasfhocal reatha",
+    "newPassword": "Pasfhocal nua",
+    "confirmNewPassword": "Deimhnigh an pasfhocal nua",
+    "updatePassword": "Nuashonraigh pasfhocal"
   },
   "notifications": {
     "loading": "Fógraí á lódáil...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Cruthaigh pasfhocal",
     "atLeast8": "8 gcarachtar ar a laghad"
+  },
+  "team": {
+    "inviteTeammate": "Tabhair cuireadh do bhall foirne",
+    "teamMembers": "Baill Foirne",
+    "expired": "As feidhm"
+  },
+  "role": {
+    "owner": "Úinéir",
+    "member": "Ball"
+  },
+  "tags": {
+    "editTag": "Cuir clib in eagar",
+    "deleteTag": "Scrios clib",
+    "deleteTagConfirm": "Scrios clib?",
+    "editTagTitle": "Cuir clib in eagar",
+    "color": "Dath"
+  },
+  "branding": {
+    "title": "Spás oibre & brandáil",
+    "companyLogo": "Lógó cuideachta"
+  },
+  "delete": {
+    "dangerZone": "Crios contúirte",
+    "confirmPassword": "Deimhnigh do phasfhocal",
+    "yourPassword": "Do phasfhocal",
+    "deleteMyAccount": "Scrios mo chuntas"
+  },
+  "billing": {
+    "loadingBilling": "Billeáil á lódáil…",
+    "manageBilling": "Bainistigh billeáil",
+    "currentPlan": "Plean reatha",
+    "billedYearly": "Billeáilte go bliantúil",
+    "billedMonthly": "Billeáilte go míosúil",
+    "havePromoCode": "An bhfuil cód bolscaireachta agat?",
+    "enterCode": "Cuir cód isteach",
+    "current": "Reatha",
+    "recommended": "Molta",
+    "included": "San áireamh",
+    "upgradeTo": "Uasghrádaigh go {{plan}}"
   }
 }

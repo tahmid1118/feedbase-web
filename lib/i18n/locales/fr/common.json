@@ -136,7 +136,13 @@
       "tags": "Étiquettes",
       "branding": "Image de marque",
       "billing": "Facturation"
-    }
+    },
+    "contactNumber": "Numéro de contact",
+    "password": "Mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "confirmNewPassword": "Confirmer le nouveau mot de passe",
+    "updatePassword": "Mettre à jour le mot de passe"
   },
   "notifications": {
     "loading": "Chargement des notifications...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Créez un mot de passe",
     "atLeast8": "Au moins 8 caractères"
+  },
+  "team": {
+    "inviteTeammate": "Inviter un coéquipier",
+    "teamMembers": "Membres de l'équipe",
+    "expired": "Expiré"
+  },
+  "role": {
+    "owner": "Propriétaire",
+    "member": "Membre"
+  },
+  "tags": {
+    "editTag": "Modifier l'étiquette",
+    "deleteTag": "Supprimer l'étiquette",
+    "deleteTagConfirm": "Supprimer l'étiquette ?",
+    "editTagTitle": "Modifier l'étiquette",
+    "color": "Couleur"
+  },
+  "branding": {
+    "title": "Espace de travail et image de marque",
+    "companyLogo": "Logo de l'entreprise"
+  },
+  "delete": {
+    "dangerZone": "Zone de danger",
+    "confirmPassword": "Confirmez votre mot de passe",
+    "yourPassword": "Votre mot de passe",
+    "deleteMyAccount": "Supprimer mon compte"
+  },
+  "billing": {
+    "loadingBilling": "Chargement de la facturation…",
+    "manageBilling": "Gérer la facturation",
+    "currentPlan": "Forfait actuel",
+    "billedYearly": "Facturé annuellement",
+    "billedMonthly": "Facturé mensuellement",
+    "havePromoCode": "Vous avez un code promo ?",
+    "enterCode": "Saisir le code",
+    "current": "Actuel",
+    "recommended": "Recommandé",
+    "included": "Inclus",
+    "upgradeTo": "Passer à {{plan}}"
   }
 }

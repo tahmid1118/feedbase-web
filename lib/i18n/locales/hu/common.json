@@ -136,7 +136,13 @@
       "tags": "Címkék",
       "branding": "Márkajelzés",
       "billing": "Számlázás"
-    }
+    },
+    "contactNumber": "Kapcsolattartási szám",
+    "password": "Jelszó",
+    "currentPassword": "Jelenlegi jelszó",
+    "newPassword": "Új jelszó",
+    "confirmNewPassword": "Új jelszó megerősítése",
+    "updatePassword": "Jelszó frissítése"
   },
   "notifications": {
     "loading": "Értesítések betöltése...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Hozzon létre jelszót",
     "atLeast8": "Legalább 8 karakter"
+  },
+  "team": {
+    "inviteTeammate": "Csapattárs meghívása",
+    "teamMembers": "Csapattagok",
+    "expired": "Lejárt"
+  },
+  "role": {
+    "owner": "Tulajdonos",
+    "member": "Tag"
+  },
+  "tags": {
+    "editTag": "Címke szerkesztése",
+    "deleteTag": "Címke törlése",
+    "deleteTagConfirm": "Törli a címkét?",
+    "editTagTitle": "Címke szerkesztése",
+    "color": "Szín"
+  },
+  "branding": {
+    "title": "Munkaterület és márka",
+    "companyLogo": "Cég logója"
+  },
+  "delete": {
+    "dangerZone": "Veszélyzóna",
+    "confirmPassword": "Erősítse meg jelszavát",
+    "yourPassword": "Az Ön jelszava",
+    "deleteMyAccount": "Fiókom törlése"
+  },
+  "billing": {
+    "loadingBilling": "Számlázás betöltése…",
+    "manageBilling": "Számlázás kezelése",
+    "currentPlan": "Jelenlegi csomag",
+    "billedYearly": "Éves számlázás",
+    "billedMonthly": "Havi számlázás",
+    "havePromoCode": "Van promóciós kódja?",
+    "enterCode": "Adja meg a kódot",
+    "current": "Jelenlegi",
+    "recommended": "Ajánlott",
+    "included": "Tartalmazza",
+    "upgradeTo": "Váltás erre: {{plan}}"
   }
 }

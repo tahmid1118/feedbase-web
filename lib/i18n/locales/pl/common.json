@@ -136,7 +136,13 @@
       "tags": "Tagi",
       "branding": "Marka",
       "billing": "Rozliczenia"
-    }
+    },
+    "contactNumber": "Numer kontaktowy",
+    "password": "Hasło",
+    "currentPassword": "Bieżące hasło",
+    "newPassword": "Nowe hasło",
+    "confirmNewPassword": "Potwierdź nowe hasło",
+    "updatePassword": "Zaktualizuj hasło"
   },
   "notifications": {
     "loading": "Ładowanie powiadomień...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Utwórz hasło",
     "atLeast8": "Co najmniej 8 znaków"
+  },
+  "team": {
+    "inviteTeammate": "Zaproś członka zespołu",
+    "teamMembers": "Członkowie zespołu",
+    "expired": "Wygasło"
+  },
+  "role": {
+    "owner": "Właściciel",
+    "member": "Członek"
+  },
+  "tags": {
+    "editTag": "Edytuj tag",
+    "deleteTag": "Usuń tag",
+    "deleteTagConfirm": "Usunąć tag?",
+    "editTagTitle": "Edytuj tag",
+    "color": "Kolor"
+  },
+  "branding": {
+    "title": "Przestrzeń robocza i marka",
+    "companyLogo": "Logo firmy"
+  },
+  "delete": {
+    "dangerZone": "Strefa zagrożenia",
+    "confirmPassword": "Potwierdź hasło",
+    "yourPassword": "Twoje hasło",
+    "deleteMyAccount": "Usuń moje konto"
+  },
+  "billing": {
+    "loadingBilling": "Ładowanie rozliczeń…",
+    "manageBilling": "Zarządzaj rozliczeniami",
+    "currentPlan": "Bieżący plan",
+    "billedYearly": "Rozliczane rocznie",
+    "billedMonthly": "Rozliczane miesięcznie",
+    "havePromoCode": "Masz kod promocyjny?",
+    "enterCode": "Wprowadź kod",
+    "current": "Bieżący",
+    "recommended": "Zalecane",
+    "included": "W zestawie",
+    "upgradeTo": "Przejdź na {{plan}}"
   }
 }

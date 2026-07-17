@@ -204,7 +204,13 @@
       "tags": "Tags",
       "branding": "Branding",
       "billing": "Billing"
-    }
+    },
+    "contactNumber": "Contact number",
+    "password": "Password",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmNewPassword": "Confirm new password",
+    "updatePassword": "Update Password"
   },
   "notifications": {
     "loading": "Loading notifications...",
@@ -266,5 +272,44 @@
   "invite": {
     "createPassword": "Create a password",
     "atLeast8": "At least 8 characters"
+  },
+  "team": {
+    "inviteTeammate": "Invite a teammate",
+    "teamMembers": "Team Members",
+    "expired": "Expired"
+  },
+  "role": {
+    "owner": "Owner",
+    "member": "Member"
+  },
+  "tags": {
+    "editTag": "Edit tag",
+    "deleteTag": "Delete tag",
+    "deleteTagConfirm": "Delete tag?",
+    "editTagTitle": "Edit Tag",
+    "color": "Color"
+  },
+  "branding": {
+    "title": "Workspace & Branding",
+    "companyLogo": "Company logo"
+  },
+  "delete": {
+    "dangerZone": "Danger zone",
+    "confirmPassword": "Confirm your password",
+    "yourPassword": "Your password",
+    "deleteMyAccount": "Delete my account"
+  },
+  "billing": {
+    "loadingBilling": "Loading billing…",
+    "manageBilling": "Manage billing",
+    "currentPlan": "Current plan",
+    "billedYearly": "Billed yearly",
+    "billedMonthly": "Billed monthly",
+    "havePromoCode": "Have a promo code?",
+    "enterCode": "Enter code",
+    "current": "Current",
+    "recommended": "Recommended",
+    "included": "Included",
+    "upgradeTo": "Upgrade to {{plan}}"
   }
 }

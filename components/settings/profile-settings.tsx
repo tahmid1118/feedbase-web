@@ -6,6 +6,7 @@ import { Loader2, Upload } from "lucide-react";
 import { usersApi, uploaderApi, type PersonalData } from "@/lib/api";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,6 +15,7 @@ import { DeleteAccount } from "@/components/settings/delete-account";
 import { toast } from "sonner";
 
 export function ProfileSettings() {
+  const { t } = useTranslation();
   const { data: session, update } = useSession();
   const token = session?.user?.accessToken;
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -121,7 +123,7 @@ export function ProfileSettings() {
   return (
     <div className="space-y-6">
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-[#1c0a0c]">Profile</h3>
+        <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("user.profile")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
           Update your personal information
         </p>
@@ -159,7 +161,7 @@ export function ProfileSettings() {
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="full-name">Full name</Label>
+            <Label htmlFor="full-name">{t("auth.fullName")}</Label>
             <Input
               id="full-name"
               value={fullName}
@@ -167,11 +169,11 @@ export function ProfileSettings() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{t("auth.email")}</Label>
             <Input id="email" value={profile?.email ?? ""} disabled />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="contact">Contact number</Label>
+            <Label htmlFor="contact">{t("settings.contactNumber")}</Label>
             <Input
               id="contact"
               value={contact}
@@ -201,21 +203,21 @@ export function ProfileSettings() {
                 Saving...
               </>
             ) : (
-              "Save Changes"
+              t("common.saveChanges")
             )}
           </Button>
         </div>
       </Card>
 
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-[#1c0a0c]">Password</h3>
+        <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("settings.password")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
           Change your account password
         </p>
 
         <div className="mt-6 grid gap-4 sm:max-w-md">
           <div className="space-y-2">
-            <Label htmlFor="old-password">Current password</Label>
+            <Label htmlFor="old-password">{t("settings.currentPassword")}</Label>
             <Input
               id="old-password"
               type="password"
@@ -224,7 +226,7 @@ export function ProfileSettings() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="new-password">New password</Label>
+            <Label htmlFor="new-password">{t("settings.newPassword")}</Label>
             <Input
               id="new-password"
               type="password"
@@ -233,7 +235,7 @@ export function ProfileSettings() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="confirm-password">Confirm new password</Label>
+            <Label htmlFor="confirm-password">{t("settings.confirmNewPassword")}</Label>
             <Input
               id="confirm-password"
               type="password"
@@ -255,7 +257,7 @@ export function ProfileSettings() {
                 Updating...
               </>
             ) : (
-              "Update Password"
+              t("settings.updatePassword")
             )}
           </Button>
         </div>

@@ -136,7 +136,13 @@
       "tags": "Tag",
       "branding": "Branding",
       "billing": "Fatturazione"
-    }
+    },
+    "contactNumber": "Numero di contatto",
+    "password": "Password",
+    "currentPassword": "Password attuale",
+    "newPassword": "Nuova password",
+    "confirmNewPassword": "Conferma nuova password",
+    "updatePassword": "Aggiorna password"
   },
   "notifications": {
     "loading": "Caricamento notifiche...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Crea una password",
     "atLeast8": "Almeno 8 caratteri"
+  },
+  "team": {
+    "inviteTeammate": "Invita un membro del team",
+    "teamMembers": "Membri del team",
+    "expired": "Scaduto"
+  },
+  "role": {
+    "owner": "Proprietario",
+    "member": "Membro"
+  },
+  "tags": {
+    "editTag": "Modifica tag",
+    "deleteTag": "Elimina tag",
+    "deleteTagConfirm": "Eliminare il tag?",
+    "editTagTitle": "Modifica tag",
+    "color": "Colore"
+  },
+  "branding": {
+    "title": "Spazio di lavoro e branding",
+    "companyLogo": "Logo aziendale"
+  },
+  "delete": {
+    "dangerZone": "Zona pericolosa",
+    "confirmPassword": "Conferma la tua password",
+    "yourPassword": "La tua password",
+    "deleteMyAccount": "Elimina il mio account"
+  },
+  "billing": {
+    "loadingBilling": "Caricamento fatturazione…",
+    "manageBilling": "Gestisci fatturazione",
+    "currentPlan": "Piano attuale",
+    "billedYearly": "Fatturato annualmente",
+    "billedMonthly": "Fatturato mensilmente",
+    "havePromoCode": "Hai un codice promozionale?",
+    "enterCode": "Inserisci codice",
+    "current": "Attuale",
+    "recommended": "Consigliato",
+    "included": "Incluso",
+    "upgradeTo": "Passa a {{plan}}"
   }
 }

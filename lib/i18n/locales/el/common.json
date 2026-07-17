@@ -136,7 +136,13 @@
       "tags": "Ετικέτες",
       "branding": "Επωνυμία",
       "billing": "Χρέωση"
-    }
+    },
+    "contactNumber": "Αριθμός επικοινωνίας",
+    "password": "Κωδικός",
+    "currentPassword": "Τρέχων κωδικός",
+    "newPassword": "Νέος κωδικός",
+    "confirmNewPassword": "Επιβεβαίωση νέου κωδικού",
+    "updatePassword": "Ενημέρωση κωδικού"
   },
   "notifications": {
     "loading": "Φόρτωση ειδοποιήσεων...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Δημιουργήστε κωδικό",
     "atLeast8": "Τουλάχιστον 8 χαρακτήρες"
+  },
+  "team": {
+    "inviteTeammate": "Προσκαλέστε συνάδελφο",
+    "teamMembers": "Μέλη ομάδας",
+    "expired": "Έληξε"
+  },
+  "role": {
+    "owner": "Ιδιοκτήτης",
+    "member": "Μέλος"
+  },
+  "tags": {
+    "editTag": "Επεξεργασία ετικέτας",
+    "deleteTag": "Διαγραφή ετικέτας",
+    "deleteTagConfirm": "Διαγραφή ετικέτας;",
+    "editTagTitle": "Επεξεργασία ετικέτας",
+    "color": "Χρώμα"
+  },
+  "branding": {
+    "title": "Χώρος εργασίας & επωνυμία",
+    "companyLogo": "Λογότυπο εταιρείας"
+  },
+  "delete": {
+    "dangerZone": "Ζώνη κινδύνου",
+    "confirmPassword": "Επιβεβαιώστε τον κωδικό σας",
+    "yourPassword": "Ο κωδικός σας",
+    "deleteMyAccount": "Διαγραφή του λογαριασμού μου"
+  },
+  "billing": {
+    "loadingBilling": "Φόρτωση χρέωσης…",
+    "manageBilling": "Διαχείριση χρέωσης",
+    "currentPlan": "Τρέχον πρόγραμμα",
+    "billedYearly": "Χρέωση ετησίως",
+    "billedMonthly": "Χρέωση μηνιαίως",
+    "havePromoCode": "Έχετε κωδικό προσφοράς;",
+    "enterCode": "Εισαγάγετε κωδικό",
+    "current": "Τρέχον",
+    "recommended": "Συνιστάται",
+    "included": "Περιλαμβάνεται",
+    "upgradeTo": "Αναβάθμιση σε {{plan}}"
   }
 }

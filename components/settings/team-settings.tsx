@@ -16,6 +16,7 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { LocalTime } from "@/components/local-time";
 import {
@@ -29,6 +30,7 @@ import {
 import { toast } from "sonner";
 
 export function TeamSettings() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const router = useRouter();
   const token = session?.user?.accessToken;
@@ -118,7 +120,7 @@ export function TeamSettings() {
       {/* Invite */}
       {isOwner && (
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-[#1c0a0c]">Invite a teammate</h3>
+          <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("team.inviteTeammate")}</h3>
           <p className="text-sm text-[#1c0a0c]/60">
             They&apos;ll get an email with a secure link to join this workspace as a
             member. The link expires in 7 days and can only be used once.
@@ -174,7 +176,7 @@ export function TeamSettings() {
                       </p>
                       <p className="text-xs text-[#1c0a0c]/50">
                         {inv.is_expired ? (
-                          <span className="text-red-600">Expired</span>
+                          <span className="text-red-600">{t("team.expired")}</span>
                         ) : (
                           <>
                             Expires <LocalTime date={inv.expires_at} relative />
@@ -201,7 +203,7 @@ export function TeamSettings() {
 
       {/* Members */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold text-[#1c0a0c]">Team Members</h3>
+        <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("team.teamMembers")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
           Everyone in this workspace. A workspace has one owner; everybody else is
           a member.
@@ -220,8 +222,8 @@ export function TeamSettings() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Member</TableHead>
-                  <TableHead>Email</TableHead>
+                  <TableHead>{t("role.member")}</TableHead>
+                  <TableHead>{t("auth.email")}</TableHead>
                   <TableHead className="w-[120px]">Role</TableHead>
                 </TableRow>
               </TableHeader>
@@ -243,9 +245,9 @@ export function TeamSettings() {
                     <TableCell className="text-[#1c0a0c]/70">{user.email}</TableCell>
                     <TableCell>
                       {user.role === "owner" ? (
-                        <Badge className="bg-[#c74959] text-white">Owner</Badge>
+                        <Badge className="bg-[#c74959] text-white">{t("role.owner")}</Badge>
                       ) : (
-                        <Badge variant="outline">Member</Badge>
+                        <Badge variant="outline">{t("role.member")}</Badge>
                       )}
                     </TableCell>
                   </TableRow>

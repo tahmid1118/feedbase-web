@@ -136,7 +136,13 @@
       "tags": "Žymos",
       "branding": "Prekės ženklas",
       "billing": "Atsiskaitymas"
-    }
+    },
+    "contactNumber": "Kontaktinis numeris",
+    "password": "Slaptažodis",
+    "currentPassword": "Dabartinis slaptažodis",
+    "newPassword": "Naujas slaptažodis",
+    "confirmNewPassword": "Patvirtinkite naują slaptažodį",
+    "updatePassword": "Atnaujinti slaptažodį"
   },
   "notifications": {
     "loading": "Įkeliami pranešimai...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Sukurkite slaptažodį",
     "atLeast8": "Bent 8 simboliai"
+  },
+  "team": {
+    "inviteTeammate": "Pakviesti komandos narį",
+    "teamMembers": "Komandos nariai",
+    "expired": "Nebegalioja"
+  },
+  "role": {
+    "owner": "Savininkas",
+    "member": "Narys"
+  },
+  "tags": {
+    "editTag": "Redaguoti žymą",
+    "deleteTag": "Ištrinti žymą",
+    "deleteTagConfirm": "Ištrinti žymą?",
+    "editTagTitle": "Redaguoti žymą",
+    "color": "Spalva"
+  },
+  "branding": {
+    "title": "Darbo sritis ir prekės ženklas",
+    "companyLogo": "Įmonės logotipas"
+  },
+  "delete": {
+    "dangerZone": "Pavojinga zona",
+    "confirmPassword": "Patvirtinkite slaptažodį",
+    "yourPassword": "Jūsų slaptažodis",
+    "deleteMyAccount": "Ištrinti mano paskyrą"
+  },
+  "billing": {
+    "loadingBilling": "Įkeliamas atsiskaitymas…",
+    "manageBilling": "Tvarkyti atsiskaitymą",
+    "currentPlan": "Dabartinis planas",
+    "billedYearly": "Atsiskaitoma kasmet",
+    "billedMonthly": "Atsiskaitoma kas mėnesį",
+    "havePromoCode": "Turite reklamos kodą?",
+    "enterCode": "Įveskite kodą",
+    "current": "Dabartinis",
+    "recommended": "Rekomenduojama",
+    "included": "Įtraukta",
+    "upgradeTo": "Atnaujinti į {{plan}}"
   }
 }

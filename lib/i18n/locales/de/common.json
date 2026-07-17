@@ -136,7 +136,13 @@
       "tags": "Tags",
       "branding": "Branding",
       "billing": "Abrechnung"
-    }
+    },
+    "contactNumber": "Kontaktnummer",
+    "password": "Passwort",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmNewPassword": "Neues Passwort bestätigen",
+    "updatePassword": "Passwort aktualisieren"
   },
   "notifications": {
     "loading": "Benachrichtigungen werden geladen...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Passwort erstellen",
     "atLeast8": "Mindestens 8 Zeichen"
+  },
+  "team": {
+    "inviteTeammate": "Teammitglied einladen",
+    "teamMembers": "Teammitglieder",
+    "expired": "Abgelaufen"
+  },
+  "role": {
+    "owner": "Eigentümer",
+    "member": "Mitglied"
+  },
+  "tags": {
+    "editTag": "Tag bearbeiten",
+    "deleteTag": "Tag löschen",
+    "deleteTagConfirm": "Tag löschen?",
+    "editTagTitle": "Tag bearbeiten",
+    "color": "Farbe"
+  },
+  "branding": {
+    "title": "Arbeitsbereich & Branding",
+    "companyLogo": "Firmenlogo"
+  },
+  "delete": {
+    "dangerZone": "Gefahrenzone",
+    "confirmPassword": "Bestätigen Sie Ihr Passwort",
+    "yourPassword": "Ihr Passwort",
+    "deleteMyAccount": "Mein Konto löschen"
+  },
+  "billing": {
+    "loadingBilling": "Abrechnung wird geladen…",
+    "manageBilling": "Abrechnung verwalten",
+    "currentPlan": "Aktueller Tarif",
+    "billedYearly": "Jährlich abgerechnet",
+    "billedMonthly": "Monatlich abgerechnet",
+    "havePromoCode": "Haben Sie einen Aktionscode?",
+    "enterCode": "Code eingeben",
+    "current": "Aktuell",
+    "recommended": "Empfohlen",
+    "included": "Enthalten",
+    "upgradeTo": "Upgrade auf {{plan}}"
   }
 }

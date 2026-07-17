@@ -136,7 +136,13 @@
       "tags": "Tags",
       "branding": "Branding",
       "billing": "Facturering"
-    }
+    },
+    "contactNumber": "Contactnummer",
+    "password": "Wachtwoord",
+    "currentPassword": "Huidig wachtwoord",
+    "newPassword": "Nieuw wachtwoord",
+    "confirmNewPassword": "Bevestig nieuw wachtwoord",
+    "updatePassword": "Wachtwoord bijwerken"
   },
   "notifications": {
     "loading": "Meldingen laden...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Maak een wachtwoord",
     "atLeast8": "Minstens 8 tekens"
+  },
+  "team": {
+    "inviteTeammate": "Nodig een teamlid uit",
+    "teamMembers": "Teamleden",
+    "expired": "Verlopen"
+  },
+  "role": {
+    "owner": "Eigenaar",
+    "member": "Lid"
+  },
+  "tags": {
+    "editTag": "Tag bewerken",
+    "deleteTag": "Tag verwijderen",
+    "deleteTagConfirm": "Tag verwijderen?",
+    "editTagTitle": "Tag bewerken",
+    "color": "Kleur"
+  },
+  "branding": {
+    "title": "Werkruimte & branding",
+    "companyLogo": "Bedrijfslogo"
+  },
+  "delete": {
+    "dangerZone": "Gevarenzone",
+    "confirmPassword": "Bevestig uw wachtwoord",
+    "yourPassword": "Uw wachtwoord",
+    "deleteMyAccount": "Mijn account verwijderen"
+  },
+  "billing": {
+    "loadingBilling": "Facturering laden…",
+    "manageBilling": "Facturering beheren",
+    "currentPlan": "Huidig abonnement",
+    "billedYearly": "Jaarlijks gefactureerd",
+    "billedMonthly": "Maandelijks gefactureerd",
+    "havePromoCode": "Heeft u een promocode?",
+    "enterCode": "Voer code in",
+    "current": "Huidig",
+    "recommended": "Aanbevolen",
+    "included": "Inbegrepen",
+    "upgradeTo": "Upgraden naar {{plan}}"
   }
 }

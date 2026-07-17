@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { tagsApi, extractRows, type Tag } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -33,6 +34,7 @@ import { toast } from "sonner";
 const DEFAULT_COLOR = "#c74959";
 
 export function TagsSettings() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [tags, setTags] = useState<Tag[]>([]);
@@ -158,7 +160,7 @@ export function TagsSettings() {
                     variant="ghost"
                     size="icon"
                     onClick={() => openEdit(tag)}
-                    aria-label="Edit tag"
+                    aria-label={t("tags.editTag")}
                   >
                     <Pencil className="h-4 w-4" />
                   </Button>
@@ -168,20 +170,20 @@ export function TagsSettings() {
                         variant="ghost"
                         size="icon"
                         className="text-red-600 hover:text-red-700"
-                        aria-label="Delete tag"
+                        aria-label={t("tags.deleteTag")}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Delete tag?</AlertDialogTitle>
+                        <AlertDialogTitle>{t("tags.deleteTagConfirm")}</AlertDialogTitle>
                         <AlertDialogDescription>
                           &quot;{tag.name}&quot; will be removed from all posts.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                         <AlertDialogAction
                           variant="destructive"
                           onClick={() => remove(tag.id)}
@@ -201,7 +203,7 @@ export function TagsSettings() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-[420px]">
           <DialogHeader>
-            <DialogTitle>{editing ? "Edit Tag" : "New Tag"}</DialogTitle>
+            <DialogTitle>{editing ? t("tags.editTagTitle") : "New Tag"}</DialogTitle>
             <DialogDescription>
               Tags help categorize and filter feedback.
             </DialogDescription>
@@ -217,7 +219,7 @@ export function TagsSettings() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="tag-color">Color</Label>
+              <Label htmlFor="tag-color">{t("tags.color")}</Label>
               <div className="flex items-center gap-3">
                 <input
                   id="tag-color"

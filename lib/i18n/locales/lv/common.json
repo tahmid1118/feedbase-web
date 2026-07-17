@@ -136,7 +136,13 @@
       "tags": "Tagi",
       "branding": "Zīmolvedība",
       "billing": "Norēķini"
-    }
+    },
+    "contactNumber": "Kontakttālrunis",
+    "password": "Parole",
+    "currentPassword": "Pašreizējā parole",
+    "newPassword": "Jaunā parole",
+    "confirmNewPassword": "Apstipriniet jauno paroli",
+    "updatePassword": "Atjaunināt paroli"
   },
   "notifications": {
     "loading": "Ielādē paziņojumus...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Izveidojiet paroli",
     "atLeast8": "Vismaz 8 rakstzīmes"
+  },
+  "team": {
+    "inviteTeammate": "Uzaicināt komandas biedru",
+    "teamMembers": "Komandas locekļi",
+    "expired": "Beidzies"
+  },
+  "role": {
+    "owner": "Īpašnieks",
+    "member": "Loceklis"
+  },
+  "tags": {
+    "editTag": "Rediģēt tagu",
+    "deleteTag": "Dzēst tagu",
+    "deleteTagConfirm": "Dzēst tagu?",
+    "editTagTitle": "Rediģēt tagu",
+    "color": "Krāsa"
+  },
+  "branding": {
+    "title": "Darbvieta un zīmols",
+    "companyLogo": "Uzņēmuma logotips"
+  },
+  "delete": {
+    "dangerZone": "Bīstamā zona",
+    "confirmPassword": "Apstipriniet savu paroli",
+    "yourPassword": "Jūsu parole",
+    "deleteMyAccount": "Dzēst manu kontu"
+  },
+  "billing": {
+    "loadingBilling": "Ielādē norēķinus…",
+    "manageBilling": "Pārvaldīt norēķinus",
+    "currentPlan": "Pašreizējais plāns",
+    "billedYearly": "Norēķini reizi gadā",
+    "billedMonthly": "Norēķini reizi mēnesī",
+    "havePromoCode": "Vai jums ir akcijas kods?",
+    "enterCode": "Ievadiet kodu",
+    "current": "Pašreizējais",
+    "recommended": "Ieteicams",
+    "included": "Iekļauts",
+    "upgradeTo": "Jaunināt uz {{plan}}"
   }
 }

@@ -10,6 +10,7 @@ import {
 } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -30,6 +31,7 @@ const CONFIRM_WORD = "DELETE";
  * so the dialog spells out exactly what will be lost before anything happens.
  */
 export function DeleteAccount() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
 
@@ -74,7 +76,7 @@ export function DeleteAccount() {
   return (
     <>
       <Card className="border-red-200 p-6">
-        <h3 className="text-lg font-semibold text-red-700">Danger zone</h3>
+        <h3 className="text-lg font-semibold text-red-700">{t("delete.dangerZone")}</h3>
         <p className="mt-1 text-sm text-[#1c0a0c]/60">
           Permanently delete your account. Workspaces you own are deleted with it,
           along with all of their feedback, roadmap, and changelog. This cannot be
@@ -160,13 +162,13 @@ export function DeleteAccount() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="da-pw">Confirm your password</Label>
+                <Label htmlFor="da-pw">{t("delete.confirmPassword")}</Label>
                 <Input
                   id="da-pw"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Your password"
+                  placeholder={t("delete.yourPassword")}
                 />
               </div>
 
@@ -198,7 +200,7 @@ export function DeleteAccount() {
               {busy ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
-                "Delete my account"
+                t("delete.deleteMyAccount")
               )}
             </Button>
           </DialogFooter>

@@ -136,7 +136,13 @@
       "tags": "Tikketti",
       "branding": "Branding",
       "billing": "Fatturazzjoni"
-    }
+    },
+    "contactNumber": "Numru ta' kuntatt",
+    "password": "Password",
+    "currentPassword": "Password kurrenti",
+    "newPassword": "Password ġdida",
+    "confirmNewPassword": "Ikkonferma l-password il-ġdida",
+    "updatePassword": "Aġġorna l-password"
   },
   "notifications": {
     "loading": "Qed jitilgħu n-notifiki...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Oħloq password",
     "atLeast8": "Mill-inqas 8 karattri"
+  },
+  "team": {
+    "inviteTeammate": "Stieden membru tat-tim",
+    "teamMembers": "Membri tat-Tim",
+    "expired": "Skada"
+  },
+  "role": {
+    "owner": "Sid",
+    "member": "Membru"
+  },
+  "tags": {
+    "editTag": "Editja t-tikketta",
+    "deleteTag": "Ħassar it-tikketta",
+    "deleteTagConfirm": "Tħassar it-tikketta?",
+    "editTagTitle": "Editja t-tikketta",
+    "color": "Kulur"
+  },
+  "branding": {
+    "title": "Spazju tax-xogħol u branding",
+    "companyLogo": "Logo tal-kumpanija"
+  },
+  "delete": {
+    "dangerZone": "Żona ta' periklu",
+    "confirmPassword": "Ikkonferma l-password tiegħek",
+    "yourPassword": "Il-password tiegħek",
+    "deleteMyAccount": "Ħassar il-kont tiegħi"
+  },
+  "billing": {
+    "loadingBilling": "Qed titla' l-fatturazzjoni…",
+    "manageBilling": "Immaniġġja l-fatturazzjoni",
+    "currentPlan": "Pjan kurrenti",
+    "billedYearly": "Iffatturat kull sena",
+    "billedMonthly": "Iffatturat kull xahar",
+    "havePromoCode": "Għandek kodiċi promozzjonali?",
+    "enterCode": "Daħħal il-kodiċi",
+    "current": "Kurrenti",
+    "recommended": "Rakkomandat",
+    "included": "Inkluż",
+    "upgradeTo": "Aġġorna għal {{plan}}"
   }
 }

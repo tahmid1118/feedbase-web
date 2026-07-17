@@ -8,6 +8,7 @@ import { resolveUploadUrl } from "@/lib/avatar";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
 import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,6 +17,7 @@ import { toast } from "sonner";
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
 export function BrandingSettings() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [tenant, setTenant] = useState<Tenant | null>(null);
@@ -120,13 +122,13 @@ export function BrandingSettings() {
 
   return (
     <Card className="p-6">
-      <h3 className="text-lg font-semibold text-[#1c0a0c]">Workspace &amp; Branding</h3>
+      <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("branding.title")}</h3>
       <p className="text-sm text-[#1c0a0c]/60">
         Customize how your feedback portal appears to users
       </p>
 
       <div className="mt-6 space-y-2">
-        <Label>Company logo</Label>
+        <Label>{t("branding.companyLogo")}</Label>
         <p className="text-xs text-[#1c0a0c]/50">
           Shown in the header of your public board. A square PNG or SVG works best.
         </p>
@@ -181,7 +183,7 @@ export function BrandingSettings() {
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="ws-name">Workspace name</Label>
+          <Label htmlFor="ws-name">{t("onboarding.workspaceName")}</Label>
           <Input
             id="ws-name"
             value={name}
@@ -189,7 +191,7 @@ export function BrandingSettings() {
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="ws-subdomain">Subdomain</Label>
+          <Label htmlFor="ws-subdomain">{t("onboarding.subdomain")}</Label>
           <Input
             id="ws-subdomain"
             value={subdomain}
@@ -222,7 +224,7 @@ export function BrandingSettings() {
               Saving...
             </>
           ) : (
-            "Save Changes"
+            t("common.saveChanges")
           )}
         </Button>
       </div>

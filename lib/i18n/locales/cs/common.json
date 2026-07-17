@@ -136,7 +136,13 @@
       "tags": "Štítky",
       "branding": "Značka",
       "billing": "Fakturace"
-    }
+    },
+    "contactNumber": "Kontaktní číslo",
+    "password": "Heslo",
+    "currentPassword": "Aktuální heslo",
+    "newPassword": "Nové heslo",
+    "confirmNewPassword": "Potvrďte nové heslo",
+    "updatePassword": "Aktualizovat heslo"
   },
   "notifications": {
     "loading": "Načítání oznámení...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Vytvořte heslo",
     "atLeast8": "Alespoň 8 znaků"
+  },
+  "team": {
+    "inviteTeammate": "Pozvat člena týmu",
+    "teamMembers": "Členové týmu",
+    "expired": "Vypršelo"
+  },
+  "role": {
+    "owner": "Vlastník",
+    "member": "Člen"
+  },
+  "tags": {
+    "editTag": "Upravit štítek",
+    "deleteTag": "Smazat štítek",
+    "deleteTagConfirm": "Smazat štítek?",
+    "editTagTitle": "Upravit štítek",
+    "color": "Barva"
+  },
+  "branding": {
+    "title": "Pracovní prostor a značka",
+    "companyLogo": "Logo společnosti"
+  },
+  "delete": {
+    "dangerZone": "Nebezpečná zóna",
+    "confirmPassword": "Potvrďte heslo",
+    "yourPassword": "Vaše heslo",
+    "deleteMyAccount": "Smazat můj účet"
+  },
+  "billing": {
+    "loadingBilling": "Načítání fakturace…",
+    "manageBilling": "Spravovat fakturaci",
+    "currentPlan": "Aktuální plán",
+    "billedYearly": "Účtováno ročně",
+    "billedMonthly": "Účtováno měsíčně",
+    "havePromoCode": "Máte promo kód?",
+    "enterCode": "Zadejte kód",
+    "current": "Aktuální",
+    "recommended": "Doporučeno",
+    "included": "Zahrnuto",
+    "upgradeTo": "Přejít na {{plan}}"
   }
 }

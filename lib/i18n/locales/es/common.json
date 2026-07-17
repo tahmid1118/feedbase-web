@@ -136,7 +136,13 @@
       "tags": "Etiquetas",
       "branding": "Marca",
       "billing": "Facturación"
-    }
+    },
+    "contactNumber": "Número de contacto",
+    "password": "Contraseña",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "confirmNewPassword": "Confirmar nueva contraseña",
+    "updatePassword": "Actualizar contraseña"
   },
   "notifications": {
     "loading": "Cargando notificaciones...",
@@ -198,5 +204,44 @@
   "invite": {
     "createPassword": "Crea una contraseña",
     "atLeast8": "Al menos 8 caracteres"
+  },
+  "team": {
+    "inviteTeammate": "Invita a un compañero",
+    "teamMembers": "Miembros del equipo",
+    "expired": "Caducado"
+  },
+  "role": {
+    "owner": "Propietario",
+    "member": "Miembro"
+  },
+  "tags": {
+    "editTag": "Editar etiqueta",
+    "deleteTag": "Eliminar etiqueta",
+    "deleteTagConfirm": "¿Eliminar etiqueta?",
+    "editTagTitle": "Editar etiqueta",
+    "color": "Color"
+  },
+  "branding": {
+    "title": "Espacio de trabajo y marca",
+    "companyLogo": "Logotipo de la empresa"
+  },
+  "delete": {
+    "dangerZone": "Zona de peligro",
+    "confirmPassword": "Confirma tu contraseña",
+    "yourPassword": "Tu contraseña",
+    "deleteMyAccount": "Eliminar mi cuenta"
+  },
+  "billing": {
+    "loadingBilling": "Cargando facturación…",
+    "manageBilling": "Gestionar facturación",
+    "currentPlan": "Plan actual",
+    "billedYearly": "Facturado anualmente",
+    "billedMonthly": "Facturado mensualmente",
+    "havePromoCode": "¿Tienes un código promocional?",
+    "enterCode": "Introduce el código",
+    "current": "Actual",
+    "recommended": "Recomendado",
+    "included": "Incluido",
+    "upgradeTo": "Cambiar a {{plan}}"
   }
 }
