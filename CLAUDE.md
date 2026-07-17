@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > **Keep the SRS current.** Whenever you implement or modify a user-facing feature, update `feedbase_srs.txt` (project root) *in the same change*. Keep it clean and professional — a well-structured requirements spec that accurately reflects what's built, not a changelog or a dump of implementation detail.
 
-> **Keep `API_FULL_LIST.md` current.** Whenever you add, remove, or change a backend endpoint (path, method, request/response shape, or auth), update `API_FULL_LIST.md` (project root) *in the same change* — add new endpoints under the right numbered section, and delete entries for routes you remove. It's the canonical API reference; a drifted list is a bug. (The backend repo has its own copy — update it too when the task touches both.)
+> **Keep `API_FULL_LIST.md` current.** Whenever you add, remove, or change a backend endpoint (path, method, request/response shape, or auth), update `API_FULL_LIST.md` (project root) *in the same change* — add new endpoints under the right numbered section, and delete entries for routes you remove. This is the **single canonical** API reference for both repos (the backend repo intentionally has no copy). A drifted list is a bug.
 
 > **Always push after a change.** After completing and verifying a change, commit it and `git push` to the GitHub remote — do not leave finished work uncommitted or unpushed. The frontend and backend are separate repos; when a task touches both, commit and push **both**. (This guards against the working tree being reverted between sessions.)
 
