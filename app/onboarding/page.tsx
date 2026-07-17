@@ -9,6 +9,7 @@ import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability
 import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -24,6 +25,7 @@ function slugifySubdomain(value: string) {
 }
 
 export default function OnboardingPage() {
+  const { t } = useTranslation();
   const { data: session, status, update } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -119,12 +121,9 @@ export default function OnboardingPage() {
 
         <div>
           <h1 className="text-3xl font-bold text-[#1c0a0c]">
-            Create your workspace
+            {t("onboarding.title")}
           </h1>
-          <p className="mt-2 text-[#1c0a0c]/60">
-            Set up a space to collect feedback, plan your roadmap, and share
-            updates.
-          </p>
+          <p className="mt-2 text-[#1c0a0c]/60">{t("onboarding.subtitle")}</p>
           {invitedTenantId && (
             <p className="mt-3 rounded-lg border border-[#e399a3]/30 bg-[#fdf8f9] px-3 py-2 text-sm text-[#1c0a0c]/70">
               🎉 You&apos;ve joined the workspace you were invited to. Create your
@@ -137,8 +136,8 @@ export default function OnboardingPage() {
         <div className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="ob-website">
-              Website{" "}
-              <span className="font-normal text-[#1c0a0c]/40">(optional)</span>
+              {t("onboarding.website")}{" "}
+              <span className="font-normal text-[#1c0a0c]/40">({t("common.optional")})</span>
             </Label>
             <Input
               id="ob-website"
@@ -149,7 +148,7 @@ export default function OnboardingPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="ob-name">Workspace name</Label>
+            <Label htmlFor="ob-name">{t("onboarding.workspaceName")}</Label>
             <Input
               id="ob-name"
               value={name}
@@ -160,7 +159,7 @@ export default function OnboardingPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="ob-subdomain">Subdomain</Label>
+            <Label htmlFor="ob-subdomain">{t("onboarding.subdomain")}</Label>
             <div className="flex items-center gap-2">
               <Input
                 id="ob-subdomain"
@@ -195,10 +194,10 @@ export default function OnboardingPage() {
             {creating ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Creating...
+                {t("onboarding.creating")}
               </>
             ) : (
-              "Create Workspace"
+              t("onboarding.createWorkspace")
             )}
           </Button>
         </div>

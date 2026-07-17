@@ -185,5 +185,18 @@
     "deleteTitle": "Törli ezt a bejegyzést?",
     "editTitle": "Visszajelzés szerkesztése",
     "deleteDesc": "Ez véglegesen eltávolítja a bejegyzését a szavazatokkal és megjegyzésekkel együtt. A művelet nem vonható vissza."
+  },
+  "onboarding": {
+    "title": "Hozza létre munkaterületét",
+    "subtitle": "Hozzon létre egy teret a visszajelzések gyűjtésére, az ütemterv tervezésére és a frissítések megosztására.",
+    "website": "Weboldal",
+    "workspaceName": "Munkaterület neve",
+    "subdomain": "Aldomain",
+    "creating": "Létrehozás...",
+    "createWorkspace": "Munkaterület létrehozása"
+  },
+  "invite": {
+    "createPassword": "Hozzon létre jelszót",
+    "atLeast8": "Legalább 8 karakter"
   }
 }

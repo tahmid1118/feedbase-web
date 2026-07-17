@@ -185,5 +185,18 @@
     "deleteTitle": "Diesen Beitrag löschen?",
     "editTitle": "Feedback bearbeiten",
     "deleteDesc": "Dadurch werden Ihr Beitrag sowie dessen Stimmen und Kommentare dauerhaft entfernt. Diese Aktion kann nicht rückgängig gemacht werden."
+  },
+  "onboarding": {
+    "title": "Erstellen Sie Ihren Arbeitsbereich",
+    "subtitle": "Richten Sie einen Raum ein, um Feedback zu sammeln, Ihre Roadmap zu planen und Updates zu teilen.",
+    "website": "Website",
+    "workspaceName": "Name des Arbeitsbereichs",
+    "subdomain": "Subdomain",
+    "creating": "Wird erstellt...",
+    "createWorkspace": "Arbeitsbereich erstellen"
+  },
+  "invite": {
+    "createPassword": "Passwort erstellen",
+    "atLeast8": "Mindestens 8 Zeichen"
   }
 }

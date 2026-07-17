@@ -185,5 +185,18 @@
     "deleteTitle": "¿Eliminar esta publicación?",
     "editTitle": "Edita tu comentario",
     "deleteDesc": "Esto elimina permanentemente tu publicación junto con sus votos y comentarios. Esta acción no se puede deshacer."
+  },
+  "onboarding": {
+    "title": "Crea tu espacio de trabajo",
+    "subtitle": "Configura un espacio para recopilar comentarios, planificar tu hoja de ruta y compartir novedades.",
+    "website": "Sitio web",
+    "workspaceName": "Nombre del espacio de trabajo",
+    "subdomain": "Subdominio",
+    "creating": "Creando...",
+    "createWorkspace": "Crear espacio de trabajo"
+  },
+  "invite": {
+    "createPassword": "Crea una contraseña",
+    "atLeast8": "Al menos 8 caracteres"
   }
 }

@@ -185,5 +185,18 @@
     "deleteTitle": "Ștergeți această postare?",
     "editTitle": "Editați feedbackul",
     "deleteDesc": "Aceasta elimină definitiv postarea împreună cu voturile și comentariile. Această acțiune nu poate fi anulată."
+  },
+  "onboarding": {
+    "title": "Creați spațiul de lucru",
+    "subtitle": "Configurați un spațiu pentru a colecta feedback, a planifica și a partaja actualizări.",
+    "website": "Site web",
+    "workspaceName": "Numele spațiului de lucru",
+    "subdomain": "Subdomeniu",
+    "creating": "Se creează...",
+    "createWorkspace": "Creați spațiu de lucru"
+  },
+  "invite": {
+    "createPassword": "Creați o parolă",
+    "atLeast8": "Cel puțin 8 caractere"
   }
 }

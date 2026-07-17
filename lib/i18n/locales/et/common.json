@@ -185,5 +185,18 @@
     "deleteTitle": "Kustutada see postitus?",
     "editTitle": "Muutke oma tagasisidet",
     "deleteDesc": "See eemaldab teie postituse jäädavalt koos häälte ja kommentaaridega. Seda toimingut ei saa tagasi võtta."
+  },
+  "onboarding": {
+    "title": "Looge oma tööruum",
+    "subtitle": "Seadistage ruum tagasiside kogumiseks, teekaardi planeerimiseks ja uuenduste jagamiseks.",
+    "website": "Veebisait",
+    "workspaceName": "Tööruumi nimi",
+    "subdomain": "Alamdomeen",
+    "creating": "Loomine...",
+    "createWorkspace": "Loo tööruum"
+  },
+  "invite": {
+    "createPassword": "Looge parool",
+    "atLeast8": "Vähemalt 8 tähemärki"
   }
 }

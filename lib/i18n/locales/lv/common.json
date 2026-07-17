@@ -185,5 +185,18 @@
     "deleteTitle": "Dzēst šo ierakstu?",
     "editTitle": "Rediģēt savu atsauksmi",
     "deleteDesc": "Tādējādi tiek neatgriezeniski dzēsts jūsu ieraksts kopā ar balsojumiem un komentāriem. Šo darbību nevar atsaukt."
+  },
+  "onboarding": {
+    "title": "Izveidojiet savu darbvietu",
+    "subtitle": "Izveidojiet vietu atsauksmju vākšanai, ceļveža plānošanai un atjauninājumu koplietošanai.",
+    "website": "Vietne",
+    "workspaceName": "Darbvietas nosaukums",
+    "subdomain": "Apakšdomēns",
+    "creating": "Notiek izveide...",
+    "createWorkspace": "Izveidot darbvietu"
+  },
+  "invite": {
+    "createPassword": "Izveidojiet paroli",
+    "atLeast8": "Vismaz 8 rakstzīmes"
   }
 }

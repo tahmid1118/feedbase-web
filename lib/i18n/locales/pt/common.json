@@ -185,5 +185,18 @@
     "deleteTitle": "Eliminar esta publicação?",
     "editTitle": "Editar o seu feedback",
     "deleteDesc": "Isto remove permanentemente a sua publicação juntamente com os votos e comentários. Esta ação não pode ser anulada."
+  },
+  "onboarding": {
+    "title": "Crie o seu espaço de trabalho",
+    "subtitle": "Configure um espaço para recolher feedback, planear o roteiro e partilhar atualizações.",
+    "website": "Site",
+    "workspaceName": "Nome do espaço de trabalho",
+    "subdomain": "Subdomínio",
+    "creating": "A criar...",
+    "createWorkspace": "Criar espaço de trabalho"
+  },
+  "invite": {
+    "createPassword": "Crie uma palavra-passe",
+    "atLeast8": "Pelo menos 8 caracteres"
   }
 }

@@ -185,5 +185,18 @@
     "deleteTitle": "Supprimer cette publication ?",
     "editTitle": "Modifier votre avis",
     "deleteDesc": "Cela supprime définitivement votre publication ainsi que ses votes et commentaires. Cette action est irréversible."
+  },
+  "onboarding": {
+    "title": "Créez votre espace de travail",
+    "subtitle": "Créez un espace pour recueillir des retours, planifier votre feuille de route et partager des mises à jour.",
+    "website": "Site web",
+    "workspaceName": "Nom de l'espace de travail",
+    "subdomain": "Sous-domaine",
+    "creating": "Création...",
+    "createWorkspace": "Créer l'espace de travail"
+  },
+  "invite": {
+    "createPassword": "Créez un mot de passe",
+    "atLeast8": "Au moins 8 caractères"
   }
 }

@@ -185,5 +185,18 @@
     "deleteTitle": "Ištrinti šį įrašą?",
     "editTitle": "Redaguoti atsiliepimą",
     "deleteDesc": "Taip visam laikui pašalinamas jūsų įrašas su balsais ir komentarais. Šio veiksmo negalima anuliuoti."
+  },
+  "onboarding": {
+    "title": "Sukurkite darbo sritį",
+    "subtitle": "Sukurkite erdvę atsiliepimams rinkti, planui sudaryti ir naujienoms dalytis.",
+    "website": "Svetainė",
+    "workspaceName": "Darbo srities pavadinimas",
+    "subdomain": "Subdomenas",
+    "creating": "Kuriama...",
+    "createWorkspace": "Sukurti darbo sritį"
+  },
+  "invite": {
+    "createPassword": "Sukurkite slaptažodį",
+    "atLeast8": "Bent 8 simboliai"
   }
 }

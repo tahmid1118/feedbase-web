@@ -185,5 +185,18 @@
     "deleteTitle": "Odstrániť tento príspevok?",
     "editTitle": "Upraviť svoju spätnú väzbu",
     "deleteDesc": "Týmto sa natrvalo odstráni váš príspevok spolu s hlasmi a komentármi. Túto akciu nie je možné vrátiť späť."
+  },
+  "onboarding": {
+    "title": "Vytvorte si pracovný priestor",
+    "subtitle": "Nastavte priestor na zber spätnej väzby, plánovanie a zdieľanie aktualizácií.",
+    "website": "Webová stránka",
+    "workspaceName": "Názov pracovného priestoru",
+    "subdomain": "Subdoména",
+    "creating": "Vytvára sa...",
+    "createWorkspace": "Vytvoriť pracovný priestor"
+  },
+  "invite": {
+    "createPassword": "Vytvorte heslo",
+    "atLeast8": "Aspoň 8 znakov"
   }
 }

@@ -185,5 +185,18 @@
     "deleteTitle": "Eliminare questo post?",
     "editTitle": "Modifica il tuo feedback",
     "deleteDesc": "Questa operazione rimuove definitivamente il tuo post insieme ai voti e ai commenti. L'azione non può essere annullata."
+  },
+  "onboarding": {
+    "title": "Crea il tuo spazio di lavoro",
+    "subtitle": "Configura uno spazio per raccogliere feedback, pianificare la roadmap e condividere aggiornamenti.",
+    "website": "Sito web",
+    "workspaceName": "Nome dello spazio di lavoro",
+    "subdomain": "Sottodominio",
+    "creating": "Creazione...",
+    "createWorkspace": "Crea spazio di lavoro"
+  },
+  "invite": {
+    "createPassword": "Crea una password",
+    "atLeast8": "Almeno 8 caratteri"
   }
 }

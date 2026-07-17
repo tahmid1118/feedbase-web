@@ -185,5 +185,18 @@
     "deleteTitle": "Izbrišem to objavo?",
     "editTitle": "Uredite svoje mnenje",
     "deleteDesc": "S tem trajno odstranite svojo objavo skupaj z glasovi in komentarji. Tega dejanja ni mogoče razveljaviti."
+  },
+  "onboarding": {
+    "title": "Ustvarite delovni prostor",
+    "subtitle": "Nastavite prostor za zbiranje povratnih informacij, načrtovanje in deljenje posodobitev.",
+    "website": "Spletno mesto",
+    "workspaceName": "Ime delovnega prostora",
+    "subdomain": "Poddomena",
+    "creating": "Ustvarjanje...",
+    "createWorkspace": "Ustvari delovni prostor"
+  },
+  "invite": {
+    "createPassword": "Ustvarite geslo",
+    "atLeast8": "Vsaj 8 znakov"
   }
 }

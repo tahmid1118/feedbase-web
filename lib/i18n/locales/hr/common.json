@@ -185,5 +185,18 @@
     "deleteTitle": "Izbrisati ovu objavu?",
     "editTitle": "Uredite svoje povratne informacije",
     "deleteDesc": "Ovo trajno uklanja vašu objavu zajedno s glasovima i komentarima. Ova se radnja ne može poništiti."
+  },
+  "onboarding": {
+    "title": "Stvorite radni prostor",
+    "subtitle": "Postavite prostor za prikupljanje povratnih informacija, planiranje plana i dijeljenje ažuriranja.",
+    "website": "Web-mjesto",
+    "workspaceName": "Naziv radnog prostora",
+    "subdomain": "Poddomena",
+    "creating": "Stvaranje...",
+    "createWorkspace": "Stvori radni prostor"
+  },
+  "invite": {
+    "createPassword": "Stvorite lozinku",
+    "atLeast8": "Najmanje 8 znakova"
   }
 }

@@ -11,6 +11,7 @@ import {
   type WorkspaceAuth,
 } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
@@ -27,6 +28,7 @@ export function InviteAccept({
   workspaceName: string;
   hasAccount: boolean;
 }) {
+  const { t } = useTranslation();
   const { data: session, update } = useSession();
   const router = useRouter();
 
@@ -196,11 +198,11 @@ export function InviteAccept({
         className="space-y-4"
       >
         <div className="space-y-2">
-          <Label htmlFor="inv-email">Email</Label>
+          <Label htmlFor="inv-email">{t("auth.email")}</Label>
           <Input id="inv-email" value={email} disabled />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="inv-name">Full name</Label>
+          <Label htmlFor="inv-name">{t("auth.fullName")}</Label>
           <Input
             id="inv-name"
             value={fullName}
@@ -210,13 +212,13 @@ export function InviteAccept({
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="inv-pw">Create a password</Label>
+          <Label htmlFor="inv-pw">{t("invite.createPassword")}</Label>
           <Input
             id="inv-pw"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="At least 8 characters"
+            placeholder={t("invite.atLeast8")}
           />
         </div>
 

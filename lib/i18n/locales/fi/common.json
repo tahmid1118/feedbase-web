@@ -185,5 +185,18 @@
     "deleteTitle": "Poistetaanko tämä julkaisu?",
     "editTitle": "Muokkaa palautettasi",
     "deleteDesc": "Tämä poistaa julkaisusi pysyvästi äänineen ja kommentteineen. Toimintoa ei voi kumota."
+  },
+  "onboarding": {
+    "title": "Luo työtila",
+    "subtitle": "Luo tila palautteen keräämiseen, etenemissuunnitelman laatimiseen ja päivitysten jakamiseen.",
+    "website": "Verkkosivusto",
+    "workspaceName": "Työtilan nimi",
+    "subdomain": "Aliverkkotunnus",
+    "creating": "Luodaan...",
+    "createWorkspace": "Luo työtila"
+  },
+  "invite": {
+    "createPassword": "Luo salasana",
+    "atLeast8": "Vähintään 8 merkkiä"
   }
 }

@@ -185,5 +185,18 @@
     "deleteTitle": "Dit bericht verwijderen?",
     "editTitle": "Bewerk uw feedback",
     "deleteDesc": "Hiermee wordt uw bericht permanent verwijderd, samen met de stemmen en reacties. Deze actie kan niet ongedaan worden gemaakt."
+  },
+  "onboarding": {
+    "title": "Maak uw werkruimte",
+    "subtitle": "Stel een ruimte in om feedback te verzamelen, uw roadmap te plannen en updates te delen.",
+    "website": "Website",
+    "workspaceName": "Naam werkruimte",
+    "subdomain": "Subdomein",
+    "creating": "Aanmaken...",
+    "createWorkspace": "Werkruimte aanmaken"
+  },
+  "invite": {
+    "createPassword": "Maak een wachtwoord",
+    "atLeast8": "Minstens 8 tekens"
   }
 }

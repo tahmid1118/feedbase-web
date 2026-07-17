@@ -185,5 +185,18 @@
     "deleteTitle": "Scrios an postáil seo?",
     "editTitle": "Cuir d'aiseolas in eagar",
     "deleteDesc": "Baineann sé seo do phostáil go buan mar aon lena vótaí agus a nótaí tráchta. Ní féidir an gníomh seo a chur ar ceal."
+  },
+  "onboarding": {
+    "title": "Cruthaigh do spás oibre",
+    "subtitle": "Cuir spás ar bun chun aiseolas a bhailiú, do threochlár a phleanáil, agus nuashonruithe a roinnt.",
+    "website": "Suíomh gréasáin",
+    "workspaceName": "Ainm an spáis oibre",
+    "subdomain": "Fothiarmpán",
+    "creating": "Á chruthú...",
+    "createWorkspace": "Cruthaigh spás oibre"
+  },
+  "invite": {
+    "createPassword": "Cruthaigh pasfhocal",
+    "atLeast8": "8 gcarachtar ar a laghad"
   }
 }

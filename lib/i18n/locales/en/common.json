@@ -253,5 +253,18 @@
     "deleteTitle": "Delete this post?",
     "editTitle": "Edit your feedback",
     "deleteDesc": "This permanently removes your post along with its votes and comments. This action cannot be undone."
+  },
+  "onboarding": {
+    "title": "Create your workspace",
+    "subtitle": "Set up a space to collect feedback, plan your roadmap, and share updates.",
+    "website": "Website",
+    "workspaceName": "Workspace name",
+    "subdomain": "Subdomain",
+    "creating": "Creating...",
+    "createWorkspace": "Create Workspace"
+  },
+  "invite": {
+    "createPassword": "Create a password",
+    "atLeast8": "At least 8 characters"
   }
 }

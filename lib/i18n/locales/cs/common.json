@@ -185,5 +185,18 @@
     "deleteTitle": "Smazat tento příspěvek?",
     "editTitle": "Upravit svou zpětnou vazbu",
     "deleteDesc": "Tímto trvale odstraníte svůj příspěvek včetně hlasů a komentářů. Tuto akci nelze vrátit zpět."
+  },
+  "onboarding": {
+    "title": "Vytvořte pracovní prostor",
+    "subtitle": "Nastavte prostor pro sběr zpětné vazby, plánování a sdílení aktualizací.",
+    "website": "Web",
+    "workspaceName": "Název pracovního prostoru",
+    "subdomain": "Subdoména",
+    "creating": "Vytváření...",
+    "createWorkspace": "Vytvořit pracovní prostor"
+  },
+  "invite": {
+    "createPassword": "Vytvořte heslo",
+    "atLeast8": "Alespoň 8 znaků"
   }
 }

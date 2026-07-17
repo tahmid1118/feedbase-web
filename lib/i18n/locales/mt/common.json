@@ -185,5 +185,18 @@
     "deleteTitle": "Tħassar din il-post?",
     "editTitle": "Editja l-feedback tiegħek",
     "deleteDesc": "Dan ineħħi b'mod permanenti l-post tiegħek flimkien mal-voti u l-kummenti tagħha. Din l-azzjoni ma tistax titreġġa' lura."
+  },
+  "onboarding": {
+    "title": "Oħloq l-ispazju tax-xogħol tiegħek",
+    "subtitle": "Waqqaf spazju biex tiġbor feedback, tippjana l-pjan tiegħek u taqsam aġġornamenti.",
+    "website": "Websajt",
+    "workspaceName": "Isem tal-ispazju tax-xogħol",
+    "subdomain": "Subdominju",
+    "creating": "Qed jinħoloq...",
+    "createWorkspace": "Oħloq spazju tax-xogħol"
+  },
+  "invite": {
+    "createPassword": "Oħloq password",
+    "atLeast8": "Mill-inqas 8 karattri"
   }
 }

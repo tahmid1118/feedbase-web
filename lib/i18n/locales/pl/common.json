@@ -185,5 +185,18 @@
     "deleteTitle": "Usunąć ten wpis?",
     "editTitle": "Edytuj swoją opinię",
     "deleteDesc": "Spowoduje to trwałe usunięcie wpisu wraz z głosami i komentarzami. Tej operacji nie można cofnąć."
+  },
+  "onboarding": {
+    "title": "Utwórz przestrzeń roboczą",
+    "subtitle": "Skonfiguruj przestrzeń do zbierania opinii, planowania i udostępniania aktualizacji.",
+    "website": "Strona internetowa",
+    "workspaceName": "Nazwa przestrzeni roboczej",
+    "subdomain": "Subdomena",
+    "creating": "Tworzenie...",
+    "createWorkspace": "Utwórz przestrzeń roboczą"
+  },
+  "invite": {
+    "createPassword": "Utwórz hasło",
+    "atLeast8": "Co najmniej 8 znaków"
   }
 }

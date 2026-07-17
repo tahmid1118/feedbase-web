@@ -185,5 +185,18 @@
     "deleteTitle": "Slet dette opslag?",
     "editTitle": "Rediger din feedback",
     "deleteDesc": "Dette fjerner permanent dit opslag sammen med dets stemmer og kommentarer. Handlingen kan ikke fortrydes."
+  },
+  "onboarding": {
+    "title": "Opret dit arbejdsområde",
+    "subtitle": "Opret et rum til at indsamle feedback, planlægge din køreplan og dele opdateringer.",
+    "website": "Websted",
+    "workspaceName": "Navn på arbejdsområde",
+    "subdomain": "Underdomæne",
+    "creating": "Opretter...",
+    "createWorkspace": "Opret arbejdsområde"
+  },
+  "invite": {
+    "createPassword": "Opret en adgangskode",
+    "atLeast8": "Mindst 8 tegn"
   }
 }

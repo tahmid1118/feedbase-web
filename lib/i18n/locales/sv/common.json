@@ -185,5 +185,18 @@
     "deleteTitle": "Ta bort detta inlägg?",
     "editTitle": "Redigera din feedback",
     "deleteDesc": "Detta tar bort ditt inlägg permanent tillsammans med dess röster och kommentarer. Åtgärden kan inte ångras."
+  },
+  "onboarding": {
+    "title": "Skapa din arbetsyta",
+    "subtitle": "Skapa ett utrymme för att samla feedback, planera din färdplan och dela uppdateringar.",
+    "website": "Webbplats",
+    "workspaceName": "Arbetsytans namn",
+    "subdomain": "Underdomän",
+    "creating": "Skapar...",
+    "createWorkspace": "Skapa arbetsyta"
+  },
+  "invite": {
+    "createPassword": "Skapa ett lösenord",
+    "atLeast8": "Minst 8 tecken"
   }
 }
