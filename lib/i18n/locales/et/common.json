@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Vali keel"
+  },
+  "nav": {
+    "pricing": "Hinnad",
+    "signIn": "Logi sisse",
+    "getStarted": "Alusta"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Muutke kliendi tagasiside",
+      "titleHighlight": "tooteedu",
+      "subtitle": "Koguge, korraldage ja seadke tagasiside prioriteedid vaevata. Ehitage tooteid, mida kliendid tõesti soovivad.",
+      "startTrial": "Alusta tasuta prooviperioodi",
+      "watchDemo": "Vaata demo"
+    },
+    "features": {
+      "heading": "Kõik, mida vajate"
+    },
+    "cta": {
+      "heading": "Valmis paremaid tooteid looma?"
+    }
+  },
+  "common": {
+    "save": "Salvesta",
+    "cancel": "Tühista",
+    "delete": "Kustuta",
+    "create": "Loo",
+    "close": "Sulge",
+    "search": "Otsi",
+    "loading": "Laadimine…"
+  }
+}

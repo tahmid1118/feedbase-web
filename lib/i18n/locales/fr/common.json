@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Choisir la langue"
+  },
+  "nav": {
+    "pricing": "Tarifs",
+    "signIn": "Se connecter",
+    "getStarted": "Commencer"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Transformez les retours clients en",
+      "titleHighlight": "succès produit",
+      "subtitle": "Collectez, organisez et priorisez les retours sans effort. Créez des produits que vos clients veulent vraiment.",
+      "startTrial": "Essai gratuit",
+      "watchDemo": "Voir la démo"
+    },
+    "features": {
+      "heading": "Tout ce dont vous avez besoin"
+    },
+    "cta": {
+      "heading": "Prêt à créer de meilleurs produits ?"
+    }
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "create": "Créer",
+    "close": "Fermer",
+    "search": "Rechercher",
+    "loading": "Chargement…"
+  }
+}

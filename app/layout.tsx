@@ -3,6 +3,8 @@ import { JetBrains_Mono, Sora } from "next/font/google";
 
 import { auth } from "@/auth";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
+import { I18nProvider } from "@/components/providers/i18n-provider";
+import { getLanguage } from "@/lib/i18n/server";
 import "./globals.css";
 
 const fontSans = Sora({
@@ -32,14 +34,17 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
+  const lng = await getLanguage();
 
   return (
     <html
-      lang="en"
+      lang={lng}
       className={`${fontSans.variable} ${fontMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
-        <AuthSessionProvider session={session}>{children}</AuthSessionProvider>
+        <I18nProvider lng={lng}>
+          <AuthSessionProvider session={session}>{children}</AuthSessionProvider>
+        </I18nProvider>
       </body>
     </html>
   );

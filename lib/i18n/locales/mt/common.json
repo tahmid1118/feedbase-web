@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Agħżel lingwa"
+  },
+  "nav": {
+    "pricing": "Prezzijiet",
+    "signIn": "Idħol",
+    "getStarted": "Ibda"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Ibdel il-feedback tal-klijenti fi",
+      "titleHighlight": "suċċess tal-prodott",
+      "subtitle": "Iġbor, organizza u agħti prijorità lill-feedback bla sforz. Ibni prodotti li l-klijenti tiegħek verament iridu.",
+      "startTrial": "Ibda prova b'xejn",
+      "watchDemo": "Ara d-demo"
+    },
+    "features": {
+      "heading": "Dak kollu li għandek bżonn"
+    },
+    "cta": {
+      "heading": "Lest biex tibni prodotti aħjar?"
+    }
+  },
+  "common": {
+    "save": "Issejvja",
+    "cancel": "Ikkanċella",
+    "delete": "Ħassar",
+    "create": "Oħloq",
+    "close": "Agħlaq",
+    "search": "Fittex",
+    "loading": "Qed jitla'…"
+  }
+}

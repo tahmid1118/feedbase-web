@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Seleccionar idioma"
+  },
+  "nav": {
+    "pricing": "Precios",
+    "signIn": "Iniciar sesión",
+    "getStarted": "Comenzar"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Convierte los comentarios de clientes en",
+      "titleHighlight": "éxito del producto",
+      "subtitle": "Recopila, organiza y prioriza los comentarios sin esfuerzo. Crea productos que tus clientes realmente quieren.",
+      "startTrial": "Iniciar prueba gratuita",
+      "watchDemo": "Ver demo"
+    },
+    "features": {
+      "heading": "Todo lo que necesitas"
+    },
+    "cta": {
+      "heading": "¿Listo para crear mejores productos?"
+    }
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "create": "Crear",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "loading": "Cargando…"
+  }
+}

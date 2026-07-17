@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Izberite jezik"
+  },
+  "nav": {
+    "pricing": "Cenik",
+    "signIn": "Prijava",
+    "getStarted": "Začni"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Spremenite povratne informacije strank v",
+      "titleHighlight": "uspeh izdelka",
+      "subtitle": "Brez napora zbirajte, organizirajte in razvrščajte povratne informacije. Ustvarjajte izdelke, ki jih stranke resnično želijo.",
+      "startTrial": "Začni brezplačno preskusno obdobje",
+      "watchDemo": "Oglejte si predstavitev"
+    },
+    "features": {
+      "heading": "Vse, kar potrebujete"
+    },
+    "cta": {
+      "heading": "Pripravljeni na izdelavo boljših izdelkov?"
+    }
+  },
+  "common": {
+    "save": "Shrani",
+    "cancel": "Prekliči",
+    "delete": "Izbriši",
+    "create": "Ustvari",
+    "close": "Zapri",
+    "search": "Iskanje",
+    "loading": "Nalaganje…"
+  }
+}

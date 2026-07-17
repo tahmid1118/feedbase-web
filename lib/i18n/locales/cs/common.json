@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Vyberte jazyk"
+  },
+  "nav": {
+    "pricing": "Ceník",
+    "signIn": "Přihlásit se",
+    "getStarted": "Začít"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Proměňte zpětnou vazbu zákazníků v",
+      "titleHighlight": "úspěch produktu",
+      "subtitle": "Snadno sbírejte, organizujte a upřednostňujte zpětnou vazbu. Vytvářejte produkty, které vaši zákazníci opravdu chtějí.",
+      "startTrial": "Spustit zkušební verzi zdarma",
+      "watchDemo": "Přehrát demo"
+    },
+    "features": {
+      "heading": "Vše, co potřebujete"
+    },
+    "cta": {
+      "heading": "Připraveni vytvářet lepší produkty?"
+    }
+  },
+  "common": {
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "delete": "Smazat",
+    "create": "Vytvořit",
+    "close": "Zavřít",
+    "search": "Hledat",
+    "loading": "Načítání…"
+  }
+}

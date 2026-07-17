@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Wybierz język"
+  },
+  "nav": {
+    "pricing": "Cennik",
+    "signIn": "Zaloguj się",
+    "getStarted": "Rozpocznij"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Zamień opinie klientów w",
+      "titleHighlight": "sukces produktu",
+      "subtitle": "Bez wysiłku zbieraj, organizuj i ustalaj priorytety opinii. Twórz produkty, których naprawdę chcą Twoi klienci.",
+      "startTrial": "Rozpocznij darmowy okres próbny",
+      "watchDemo": "Obejrzyj demo"
+    },
+    "features": {
+      "heading": "Wszystko, czego potrzebujesz"
+    },
+    "cta": {
+      "heading": "Gotowy na tworzenie lepszych produktów?"
+    }
+  },
+  "common": {
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "delete": "Usuń",
+    "create": "Utwórz",
+    "close": "Zamknij",
+    "search": "Szukaj",
+    "loading": "Ładowanie…"
+  }
+}

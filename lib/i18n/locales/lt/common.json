@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Pasirinkite kalbą"
+  },
+  "nav": {
+    "pricing": "Kainos",
+    "signIn": "Prisijungti",
+    "getStarted": "Pradėti"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Paverskite klientų atsiliepimus",
+      "titleHighlight": "produkto sėkme",
+      "subtitle": "Be vargo rinkite, tvarkykite ir teikite pirmenybę atsiliepimams. Kurkite produktus, kurių klientai iš tikrųjų nori.",
+      "startTrial": "Pradėti nemokamą bandymą",
+      "watchDemo": "Žiūrėti demonstraciją"
+    },
+    "features": {
+      "heading": "Viskas, ko jums reikia"
+    },
+    "cta": {
+      "heading": "Pasiruošę kurti geresnius produktus?"
+    }
+  },
+  "common": {
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "delete": "Ištrinti",
+    "create": "Sukurti",
+    "close": "Uždaryti",
+    "search": "Ieškoti",
+    "loading": "Įkeliama…"
+  }
+}

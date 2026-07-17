@@ -12,6 +12,7 @@ import { endSession } from "@/lib/auth/end-session";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { LanguageSelector } from "@/components/i18n/language-selector";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -79,6 +80,7 @@ export function Header({ user }: HeaderProps) {
         </div>
 
         <div className="flex items-center gap-3">
+          <LanguageSelector />
           {/* Notifications */}
           <Button
             asChild

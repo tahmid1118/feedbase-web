@@ -7,6 +7,18 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://lo
 const DEFAULT_LANGUAGE = "en";
 const REQUEST_TIMEOUT_MS = 30000;
 
+/**
+ * The language to send as `lg` on each request — the user's selected UI language
+ * so the backend replies with localized messages. Read from the `i18next` cookie
+ * (set by the navbar language selector); falls back to English on the server or
+ * before a choice is made.
+ */
+function currentLanguage(): string {
+  if (typeof document === "undefined") return DEFAULT_LANGUAGE;
+  const m = document.cookie.match(/(?:^|;\s*)i18next=([^;]+)/);
+  return m ? decodeURIComponent(m[1]) : DEFAULT_LANGUAGE;
+}
+
 export class ApiError extends Error {
   constructor(
     message: string,
@@ -139,7 +151,7 @@ export const apiClient = {
     return request<T>(endpoint, {
       ...options,
       method: "POST",
-      body: JSON.stringify({ lg: DEFAULT_LANGUAGE, ...bodyData }),
+      body: JSON.stringify({ lg: currentLanguage(), ...bodyData }),
     });
   },
   
@@ -148,7 +160,7 @@ export const apiClient = {
     return request<T>(endpoint, {
       ...options,
       method: "PUT",
-      body: JSON.stringify({ lg: DEFAULT_LANGUAGE, ...bodyData }),
+      body: JSON.stringify({ lg: currentLanguage(), ...bodyData }),
     });
   },
   
@@ -157,7 +169,7 @@ export const apiClient = {
     return request<T>(endpoint, {
       ...options,
       method: "PATCH",
-      body: JSON.stringify({ lg: DEFAULT_LANGUAGE, ...bodyData }),
+      body: JSON.stringify({ lg: currentLanguage(), ...bodyData }),
     });
   },
   
@@ -166,7 +178,7 @@ export const apiClient = {
     return request<T>(endpoint, {
       ...options,
       method: "DELETE",
-      body: JSON.stringify({ lg: DEFAULT_LANGUAGE, ...bodyData }),
+      body: JSON.stringify({ lg: currentLanguage(), ...bodyData }),
     });
   },
 };

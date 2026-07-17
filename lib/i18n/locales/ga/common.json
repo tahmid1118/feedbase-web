@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Roghnaigh teanga"
+  },
+  "nav": {
+    "pricing": "Praghsáil",
+    "signIn": "Sínigh isteach",
+    "getStarted": "Tosaigh"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Iompaigh aiseolas custaiméirí ina",
+      "titleHighlight": "rath táirge",
+      "subtitle": "Bailigh, eagraigh agus tabhair tosaíocht d'aiseolas gan stró. Tóg táirgí a theastaíonn ó do chustaiméirí i ndáiríre.",
+      "startTrial": "Tosaigh triail saor in aisce",
+      "watchDemo": "Féach ar an taispeántas"
+    },
+    "features": {
+      "heading": "Gach a bhfuil uait"
+    },
+    "cta": {
+      "heading": "Réidh chun táirgí níos fearr a thógáil?"
+    }
+  },
+  "common": {
+    "save": "Sábháil",
+    "cancel": "Cealaigh",
+    "delete": "Scrios",
+    "create": "Cruthaigh",
+    "close": "Dún",
+    "search": "Cuardaigh",
+    "loading": "Ag lódáil…"
+  }
+}

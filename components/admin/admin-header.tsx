@@ -3,6 +3,7 @@
 import { LogOut, ShieldCheck } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
+import { LanguageSelector } from "@/components/i18n/language-selector";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,6 +28,8 @@ export function AdminHeader({
           <p className="text-sm text-[#1c0a0c]/60">Platform administration</p>
         </div>
 
+        <div className="flex items-center gap-3">
+        <LanguageSelector />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="gap-2">
@@ -55,6 +58,7 @@ export function AdminHeader({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        </div>
       </div>
     </header>
   );

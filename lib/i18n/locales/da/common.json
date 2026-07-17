@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Vælg sprog"
+  },
+  "nav": {
+    "pricing": "Priser",
+    "signIn": "Log ind",
+    "getStarted": "Kom i gang"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Gør kundefeedback til",
+      "titleHighlight": "produktsucces",
+      "subtitle": "Indsaml, organiser og prioriter feedback uden besvær. Byg produkter, som dine kunder faktisk vil have.",
+      "startTrial": "Start gratis prøveperiode",
+      "watchDemo": "Se demo"
+    },
+    "features": {
+      "heading": "Alt hvad du behøver"
+    },
+    "cta": {
+      "heading": "Klar til at bygge bedre produkter?"
+    }
+  },
+  "common": {
+    "save": "Gem",
+    "cancel": "Annuller",
+    "delete": "Slet",
+    "create": "Opret",
+    "close": "Luk",
+    "search": "Søg",
+    "loading": "Indlæser…"
+  }
+}

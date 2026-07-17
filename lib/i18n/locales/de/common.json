@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Sprache wählen"
+  },
+  "nav": {
+    "pricing": "Preise",
+    "signIn": "Anmelden",
+    "getStarted": "Loslegen"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Verwandeln Sie Kundenfeedback in",
+      "titleHighlight": "Produkterfolg",
+      "subtitle": "Sammeln, organisieren und priorisieren Sie Feedback mühelos. Entwickeln Sie Produkte, die Ihre Kunden wirklich wollen.",
+      "startTrial": "Kostenlos testen",
+      "watchDemo": "Demo ansehen"
+    },
+    "features": {
+      "heading": "Alles, was Sie brauchen"
+    },
+    "cta": {
+      "heading": "Bereit, bessere Produkte zu entwickeln?"
+    }
+  },
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "create": "Erstellen",
+    "close": "Schließen",
+    "search": "Suchen",
+    "loading": "Wird geladen…"
+  }
+}

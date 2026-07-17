@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Selecionar idioma"
+  },
+  "nav": {
+    "pricing": "Preços",
+    "signIn": "Entrar",
+    "getStarted": "Começar"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Transforme o feedback dos clientes em",
+      "titleHighlight": "sucesso do produto",
+      "subtitle": "Recolha, organize e priorize o feedback sem esforço. Crie produtos que os seus clientes realmente querem.",
+      "startTrial": "Iniciar teste gratuito",
+      "watchDemo": "Ver demonstração"
+    },
+    "features": {
+      "heading": "Tudo o que precisa"
+    },
+    "cta": {
+      "heading": "Pronto para criar produtos melhores?"
+    }
+  },
+  "common": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "create": "Criar",
+    "close": "Fechar",
+    "search": "Pesquisar",
+    "loading": "A carregar…"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Selectați limba"
+  },
+  "nav": {
+    "pricing": "Prețuri",
+    "signIn": "Autentificare",
+    "getStarted": "Începeți"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Transformați feedbackul clienților în",
+      "titleHighlight": "succesul produsului",
+      "subtitle": "Colectați, organizați și prioritizați feedbackul fără efort. Construiți produse pe care clienții și le doresc cu adevărat.",
+      "startTrial": "Începeți perioada de probă gratuită",
+      "watchDemo": "Vizionați demo"
+    },
+    "features": {
+      "heading": "Tot ce aveți nevoie"
+    },
+    "cta": {
+      "heading": "Sunteți gata să creați produse mai bune?"
+    }
+  },
+  "common": {
+    "save": "Salvați",
+    "cancel": "Anulați",
+    "delete": "Ștergeți",
+    "create": "Creați",
+    "close": "Închideți",
+    "search": "Căutați",
+    "loading": "Se încarcă…"
+  }
+}

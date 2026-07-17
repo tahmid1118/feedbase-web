@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Vyberte jazyk"
+  },
+  "nav": {
+    "pricing": "Cenník",
+    "signIn": "Prihlásiť sa",
+    "getStarted": "Začať"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Premeňte spätnú väzbu zákazníkov na",
+      "titleHighlight": "úspech produktu",
+      "subtitle": "Ľahko zbierajte, organizujte a uprednostňujte spätnú väzbu. Vytvárajte produkty, ktoré vaši zákazníci naozaj chcú.",
+      "startTrial": "Spustiť skúšku zdarma",
+      "watchDemo": "Pozrieť demo"
+    },
+    "features": {
+      "heading": "Všetko, čo potrebujete"
+    },
+    "cta": {
+      "heading": "Pripravení vytvárať lepšie produkty?"
+    }
+  },
+  "common": {
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "delete": "Odstrániť",
+    "create": "Vytvoriť",
+    "close": "Zavrieť",
+    "search": "Hľadať",
+    "loading": "Načítava sa…"
+  }
+}

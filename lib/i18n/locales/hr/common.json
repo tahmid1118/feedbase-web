@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Odaberite jezik"
+  },
+  "nav": {
+    "pricing": "Cijene",
+    "signIn": "Prijava",
+    "getStarted": "Započnite"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Pretvorite povratne informacije kupaca u",
+      "titleHighlight": "uspjeh proizvoda",
+      "subtitle": "Prikupljajte, organizirajte i odredite prioritete povratnih informacija bez napora. Gradite proizvode koje vaši kupci stvarno žele.",
+      "startTrial": "Započnite besplatnu probu",
+      "watchDemo": "Pogledajte demo"
+    },
+    "features": {
+      "heading": "Sve što vam treba"
+    },
+    "cta": {
+      "heading": "Spremni za izradu boljih proizvoda?"
+    }
+  },
+  "common": {
+    "save": "Spremi",
+    "cancel": "Odustani",
+    "delete": "Izbriši",
+    "create": "Stvori",
+    "close": "Zatvori",
+    "search": "Pretraži",
+    "loading": "Učitavanje…"
+  }
+}

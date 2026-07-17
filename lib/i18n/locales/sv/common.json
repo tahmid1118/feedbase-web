@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Välj språk"
+  },
+  "nav": {
+    "pricing": "Priser",
+    "signIn": "Logga in",
+    "getStarted": "Kom igång"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Förvandla kundfeedback till",
+      "titleHighlight": "produktframgång",
+      "subtitle": "Samla in, organisera och prioritera feedback utan ansträngning. Bygg produkter som dina kunder verkligen vill ha.",
+      "startTrial": "Starta gratis provperiod",
+      "watchDemo": "Se demo"
+    },
+    "features": {
+      "heading": "Allt du behöver"
+    },
+    "cta": {
+      "heading": "Redo att bygga bättre produkter?"
+    }
+  },
+  "common": {
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "delete": "Ta bort",
+    "create": "Skapa",
+    "close": "Stäng",
+    "search": "Sök",
+    "loading": "Läser in…"
+  }
+}

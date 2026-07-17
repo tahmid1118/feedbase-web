@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Kies taal"
+  },
+  "nav": {
+    "pricing": "Prijzen",
+    "signIn": "Inloggen",
+    "getStarted": "Aan de slag"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Zet klantfeedback om in",
+      "titleHighlight": "productsucces",
+      "subtitle": "Verzamel, organiseer en prioriteer feedback moeiteloos. Bouw producten die uw klanten echt willen.",
+      "startTrial": "Start gratis proefperiode",
+      "watchDemo": "Bekijk demo"
+    },
+    "features": {
+      "heading": "Alles wat u nodig hebt"
+    },
+    "cta": {
+      "heading": "Klaar om betere producten te bouwen?"
+    }
+  },
+  "common": {
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "delete": "Verwijderen",
+    "create": "Aanmaken",
+    "close": "Sluiten",
+    "search": "Zoeken",
+    "loading": "Laden…"
+  }
+}

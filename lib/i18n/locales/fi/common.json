@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Valitse kieli"
+  },
+  "nav": {
+    "pricing": "Hinnat",
+    "signIn": "Kirjaudu",
+    "getStarted": "Aloita"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Muuta asiakaspalaute",
+      "titleHighlight": "tuotemenestykseksi",
+      "subtitle": "Kerää, järjestä ja priorisoi palautetta vaivattomasti. Rakenna tuotteita, joita asiakkaasi todella haluavat.",
+      "startTrial": "Aloita ilmainen kokeilu",
+      "watchDemo": "Katso demo"
+    },
+    "features": {
+      "heading": "Kaikki mitä tarvitset"
+    },
+    "cta": {
+      "heading": "Valmis rakentamaan parempia tuotteita?"
+    }
+  },
+  "common": {
+    "save": "Tallenna",
+    "cancel": "Peruuta",
+    "delete": "Poista",
+    "create": "Luo",
+    "close": "Sulje",
+    "search": "Hae",
+    "loading": "Ladataan…"
+  }
+}

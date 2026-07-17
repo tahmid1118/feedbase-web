@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Nyelv választása"
+  },
+  "nav": {
+    "pricing": "Árak",
+    "signIn": "Bejelentkezés",
+    "getStarted": "Kezdés"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Alakítsa az ügyfél-visszajelzést",
+      "titleHighlight": "terméksikerré",
+      "subtitle": "Gyűjtse, rendszerezze és rangsorolja a visszajelzéseket könnyedén. Építsen olyan termékeket, amelyeket ügyfelei valóban akarnak.",
+      "startTrial": "Ingyenes próba indítása",
+      "watchDemo": "Demó megtekintése"
+    },
+    "features": {
+      "heading": "Minden, amire szüksége van"
+    },
+    "cta": {
+      "heading": "Készen áll jobb termékek építésére?"
+    }
+  },
+  "common": {
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "create": "Létrehozás",
+    "close": "Bezárás",
+    "search": "Keresés",
+    "loading": "Betöltés…"
+  }
+}

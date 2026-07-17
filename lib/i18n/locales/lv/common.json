@@ -1,0 +1,34 @@
+{
+  "language": {
+    "select": "Izvēlieties valodu"
+  },
+  "nav": {
+    "pricing": "Cenas",
+    "signIn": "Pieteikties",
+    "getStarted": "Sākt"
+  },
+  "landing": {
+    "hero": {
+      "titleLead": "Pārvērtiet klientu atsauksmes par",
+      "titleHighlight": "produkta panākumiem",
+      "subtitle": "Bez piepūles vāciet, organizējiet un nosakiet atsauksmju prioritātes. Veidojiet produktus, ko klienti patiešām vēlas.",
+      "startTrial": "Sākt bezmaksas izmēģinājumu",
+      "watchDemo": "Skatīties demo"
+    },
+    "features": {
+      "heading": "Viss, kas jums nepieciešams"
+    },
+    "cta": {
+      "heading": "Vai esat gatavi veidot labākus produktus?"
+    }
+  },
+  "common": {
+    "save": "Saglabāt",
+    "cancel": "Atcelt",
+    "delete": "Dzēst",
+    "create": "Izveidot",
+    "close": "Aizvērt",
+    "search": "Meklēt",
+    "loading": "Ielāde…"
+  }
+}

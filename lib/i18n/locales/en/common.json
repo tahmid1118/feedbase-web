@@ -1,0 +1,102 @@
+{
+  "language": {
+    "select": "Select language",
+    "label": "Language"
+  },
+  "nav": {
+    "pricing": "Pricing",
+    "signIn": "Sign in",
+    "getStarted": "Get Started"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "close": "Close",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading…",
+    "search": "Search",
+    "learnMore": "Learn more"
+  },
+  "landing": {
+    "hero": {
+      "badge": "Trusted by 300K+ users worldwide",
+      "titleLead": "Turn Customer Feedback Into",
+      "titleHighlight": "Product Success",
+      "subtitle": "Collect, organize, and prioritize user feedback effortlessly. Build products your customers actually want with our all-in-one feedback management platform.",
+      "startTrial": "Start Free Trial",
+      "watchDemo": "Watch Demo"
+    },
+    "features": {
+      "heading": "Everything You Need",
+      "subheading": "Powerful features to manage feedback at scale",
+      "collection": {
+        "title": "Feedback Collection",
+        "desc": "Gather insights from customers through customizable feedback boards and forms"
+      },
+      "voting": {
+        "title": "Smart Voting System",
+        "desc": "Let users upvote features they want most to prioritize your roadmap effectively"
+      },
+      "roadmap": {
+        "title": "Visual Roadmap",
+        "desc": "Share your product roadmap publicly and keep customers in the loop"
+      },
+      "notifications": {
+        "title": "Smart Notifications",
+        "desc": "Keep users engaged with automated updates on their feedback status"
+      },
+      "analytics": {
+        "title": "Analytics Dashboard",
+        "desc": "Track trends, measure engagement, and make data-driven decisions"
+      },
+      "multitenant": {
+        "title": "Multi-Tenant Support",
+        "desc": "Manage multiple workspaces with custom domains and branding"
+      }
+    },
+    "stats": {
+      "activeUsers": "Active Users",
+      "pluginUsers": "Plugin Users",
+      "productHunt": "ProductHunt Upvotes"
+    },
+    "how": {
+      "heading": "How Does it Work?",
+      "subheading": "Get your personalized feedback portal in 4 steps",
+      "step1Title": "Sign up and create your workspace",
+      "step1Desc": "Start with our magical setup wizard to get your feedback portal ready in minutes",
+      "step2Title": "Customize your branding",
+      "step2Desc": "Choose your primary and secondary colors, add your logo, and make it yours",
+      "step3Title": "Invite your team and customers",
+      "step3Desc": "Share your feedback board link and start collecting valuable insights",
+      "step4Title": "Analyze and take action",
+      "step4Desc": "Export data in various formats, integrate with your tools, and build better products"
+    },
+    "testimonials": {
+      "heading": "Loved by Product Teams",
+      "subheading": "What people are saying about Feedbase",
+      "quote1": "Feedbase transformed how we collect and prioritize user feedback. The voting system is brilliant!",
+      "role1": "Product Manager",
+      "quote2": "Setup took less than 5 minutes. The interface is clean and our customers love it!",
+      "role2": "Startup Founder",
+      "quote3": "The analytics dashboard gives us insights we never had before. Highly recommend!",
+      "role3": "UX Designer"
+    },
+    "pricing": {
+      "heading": "Simple, Transparent Pricing",
+      "subheading": "Start free, upgrade when you grow"
+    },
+    "cta": {
+      "heading": "Ready to Build Better Products?",
+      "subheading": "Join thousands of teams using Feedbase to understand their customers"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. All rights reserved."
+    }
+  }
+}
