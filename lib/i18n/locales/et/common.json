@@ -42,7 +42,8 @@
     "upgrade": "Uuenda",
     "saveChanges": "Salvesta muudatused",
     "deleting": "Kustutamine…",
-    "optional": "valikuline"
+    "optional": "valikuline",
+    "active": "Aktiivne"
   },
   "dashboard": {
     "welcomeBack": "Tere tulemast tagasi"
@@ -62,7 +63,20 @@
       "admins": "Administraatorid",
       "promoCodes": "Sooduskoodid",
       "offers": "Pakkumised"
-    }
+    },
+    "newAdmin": "Uus administraator",
+    "newPromoCode": "Uus sooduskood",
+    "newOffer": "Uus pakkumine",
+    "grantPlan": "Anna plaan",
+    "resetPassword": "Lähtesta parool",
+    "duration": "Kestus",
+    "planBreakdown": "Plaanide jaotus",
+    "searchUsers": "Otsi nime või e-posti…",
+    "searchWorkspaces": "Otsi nime, alamdomeeni, domeeni…",
+    "noUsers": "Kasutajaid pole.",
+    "noWorkspaces": "Tööruume pole.",
+    "noPromoCodes": "Sooduskoode veel pole.",
+    "noOffers": "Pakkumisi veel pole."
   },
   "auth": {
     "login": {

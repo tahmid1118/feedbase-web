@@ -42,7 +42,8 @@
     "upgrade": "Upgraden",
     "saveChanges": "Wijzigingen opslaan",
     "deleting": "Verwijderen…",
-    "optional": "optioneel"
+    "optional": "optioneel",
+    "active": "Actief"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -62,7 +63,20 @@
       "admins": "Beheerders",
       "promoCodes": "Promocodes",
       "offers": "Aanbiedingen"
-    }
+    },
+    "newAdmin": "Nieuwe beheerder",
+    "newPromoCode": "Nieuwe promocode",
+    "newOffer": "Nieuwe aanbieding",
+    "grantPlan": "Abonnement toekennen",
+    "resetPassword": "Wachtwoord opnieuw instellen",
+    "duration": "Duur",
+    "planBreakdown": "Abonnementsverdeling",
+    "searchUsers": "Zoek naam of e-mail…",
+    "searchWorkspaces": "Zoek naam, subdomein, domein…",
+    "noUsers": "Geen gebruikers.",
+    "noWorkspaces": "Geen werkruimtes.",
+    "noPromoCodes": "Nog geen promocodes.",
+    "noOffers": "Nog geen aanbiedingen."
   },
   "auth": {
     "login": {

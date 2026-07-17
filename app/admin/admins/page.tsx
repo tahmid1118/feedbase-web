@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Plus, Trash2, Loader2 } from "lucide-react";
 import { adminApi, type AdminRow } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,7 @@ import {
 import { toast } from "sonner";
 
 export default function AdminAdminsPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const selfId = session?.user?.adminId ? Number(session.user.adminId) : null;
@@ -105,7 +107,7 @@ export default function AdminAdminsPage() {
 
       <Card className="overflow-x-auto p-0">
         {loading ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">Loading…</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("common.loading")}</div>
         ) : (
           <table className="w-full min-w-[620px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
@@ -164,7 +166,7 @@ export default function AdminAdminsPage() {
                               </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
-                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                               <AlertDialogAction variant="destructive" onClick={() => remove(a)}>
                                 Remove
                               </AlertDialogAction>
@@ -184,7 +186,7 @@ export default function AdminAdminsPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[420px]">
           <DialogHeader>
-            <DialogTitle>New admin</DialogTitle>
+            <DialogTitle>{t("admin.newAdmin")}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">

@@ -9,6 +9,7 @@ import {
   type AdminSupportMessage,
 } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -36,6 +37,7 @@ const POLL_THREAD_MS = 4000;
 type Tab = "open" | "closed";
 
 export default function AdminSupportPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
 
@@ -311,7 +313,7 @@ export default function AdminSupportPage() {
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                         <AlertDialogAction
                           onClick={closeSession}
                           className="bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"

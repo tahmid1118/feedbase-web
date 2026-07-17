@@ -42,7 +42,8 @@
     "upgrade": "Jaunināt",
     "saveChanges": "Saglabāt izmaiņas",
     "deleting": "Dzēš…",
-    "optional": "neobligāti"
+    "optional": "neobligāti",
+    "active": "Aktīvs"
   },
   "dashboard": {
     "welcomeBack": "Laipni lūdzam atpakaļ"
@@ -62,7 +63,20 @@
       "admins": "Administratori",
       "promoCodes": "Akciju kodi",
       "offers": "Piedāvājumi"
-    }
+    },
+    "newAdmin": "Jauns administrators",
+    "newPromoCode": "Jauns akcijas kods",
+    "newOffer": "Jauns piedāvājums",
+    "grantPlan": "Piešķirt plānu",
+    "resetPassword": "Atiestatīt paroli",
+    "duration": "Ilgums",
+    "planBreakdown": "Plānu sadalījums",
+    "searchUsers": "Meklēt vārdu vai e-pastu…",
+    "searchWorkspaces": "Meklēt nosaukumu, apakšdomēnu, domēnu…",
+    "noUsers": "Nav lietotāju.",
+    "noWorkspaces": "Nav darbvietu.",
+    "noPromoCodes": "Vēl nav akcijas kodu.",
+    "noOffers": "Vēl nav piedāvājumu."
   },
   "auth": {
     "login": {

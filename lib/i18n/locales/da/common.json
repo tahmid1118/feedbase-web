@@ -42,7 +42,8 @@
     "upgrade": "Opgrader",
     "saveChanges": "Gem ændringer",
     "deleting": "Sletter…",
-    "optional": "valgfrit"
+    "optional": "valgfrit",
+    "active": "Aktiv"
   },
   "dashboard": {
     "welcomeBack": "Velkommen tilbage"
@@ -62,7 +63,20 @@
       "admins": "Administratorer",
       "promoCodes": "Rabatkoder",
       "offers": "Tilbud"
-    }
+    },
+    "newAdmin": "Ny administrator",
+    "newPromoCode": "Ny rabatkode",
+    "newOffer": "Nyt tilbud",
+    "grantPlan": "Tildel plan",
+    "resetPassword": "Nulstil adgangskode",
+    "duration": "Varighed",
+    "planBreakdown": "Planfordeling",
+    "searchUsers": "Søg navn eller e-mail…",
+    "searchWorkspaces": "Søg navn, underdomæne, domæne…",
+    "noUsers": "Ingen brugere.",
+    "noWorkspaces": "Ingen arbejdsområder.",
+    "noPromoCodes": "Ingen rabatkoder endnu.",
+    "noOffers": "Ingen tilbud endnu."
   },
   "auth": {
     "login": {

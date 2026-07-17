@@ -42,7 +42,8 @@
     "upgrade": "Nadogradi",
     "saveChanges": "Spremi promjene",
     "deleting": "Brisanje…",
-    "optional": "nije obavezno"
+    "optional": "nije obavezno",
+    "active": "Aktivno"
   },
   "dashboard": {
     "welcomeBack": "Dobro došli natrag"
@@ -62,7 +63,20 @@
       "admins": "Administratori",
       "promoCodes": "Promo kodovi",
       "offers": "Ponude"
-    }
+    },
+    "newAdmin": "Novi administrator",
+    "newPromoCode": "Novi promo kod",
+    "newOffer": "Nova ponuda",
+    "grantPlan": "Dodijeli plan",
+    "resetPassword": "Poništi lozinku",
+    "duration": "Trajanje",
+    "planBreakdown": "Raščlamba plana",
+    "searchUsers": "Pretraži ime ili e-poštu…",
+    "searchWorkspaces": "Pretraži naziv, poddomenu, domenu…",
+    "noUsers": "Nema korisnika.",
+    "noWorkspaces": "Nema radnih prostora.",
+    "noPromoCodes": "Još nema promo kodova.",
+    "noOffers": "Još nema ponuda."
   },
   "auth": {
     "login": {

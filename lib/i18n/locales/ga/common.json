@@ -42,7 +42,8 @@
     "upgrade": "Uasghrádú",
     "saveChanges": "Sábháil athruithe",
     "deleting": "Á scriosadh…",
-    "optional": "roghnach"
+    "optional": "roghnach",
+    "active": "Gníomhach"
   },
   "dashboard": {
     "welcomeBack": "Fáilte ar ais"
@@ -62,7 +63,20 @@
       "admins": "Riarthóirí",
       "promoCodes": "Cóid Bholscaireachta",
       "offers": "Tairiscintí"
-    }
+    },
+    "newAdmin": "Riarthóir nua",
+    "newPromoCode": "Cód bolscaireachta nua",
+    "newOffer": "Tairiscint nua",
+    "grantPlan": "Deonaigh plean",
+    "resetPassword": "Athshocraigh pasfhocal",
+    "duration": "Fad",
+    "planBreakdown": "Miondealú plean",
+    "searchUsers": "Cuardaigh ainm nó ríomhphost…",
+    "searchWorkspaces": "Cuardaigh ainm, fothiarmpán, fearann…",
+    "noUsers": "Níl aon úsáideoir ann.",
+    "noWorkspaces": "Níl aon spás oibre ann.",
+    "noPromoCodes": "Níl aon chód bolscaireachta ann fós.",
+    "noOffers": "Níl aon tairiscint ann fós."
   },
   "auth": {
     "login": {

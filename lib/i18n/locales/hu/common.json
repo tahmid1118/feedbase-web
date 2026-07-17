@@ -42,7 +42,8 @@
     "upgrade": "Frissítés",
     "saveChanges": "Változások mentése",
     "deleting": "Törlés…",
-    "optional": "opcionális"
+    "optional": "opcionális",
+    "active": "Aktív"
   },
   "dashboard": {
     "welcomeBack": "Üdvözöljük újra"
@@ -62,7 +63,20 @@
       "admins": "Adminisztrátorok",
       "promoCodes": "Promóciós kódok",
       "offers": "Ajánlatok"
-    }
+    },
+    "newAdmin": "Új adminisztrátor",
+    "newPromoCode": "Új promóciós kód",
+    "newOffer": "Új ajánlat",
+    "grantPlan": "Csomag megadása",
+    "resetPassword": "Jelszó visszaállítása",
+    "duration": "Időtartam",
+    "planBreakdown": "Csomagbontás",
+    "searchUsers": "Név vagy e-mail keresése…",
+    "searchWorkspaces": "Név, aldomain, domain keresése…",
+    "noUsers": "Nincsenek felhasználók.",
+    "noWorkspaces": "Nincsenek munkaterületek.",
+    "noPromoCodes": "Még nincsenek promóciós kódok.",
+    "noOffers": "Még nincsenek ajánlatok."
   },
   "auth": {
     "login": {

@@ -42,7 +42,8 @@
     "upgrade": "Actualizați",
     "saveChanges": "Salvați modificările",
     "deleting": "Se șterge…",
-    "optional": "opțional"
+    "optional": "opțional",
+    "active": "Activ"
   },
   "dashboard": {
     "welcomeBack": "Bine ați revenit"
@@ -62,7 +63,20 @@
       "admins": "Administratori",
       "promoCodes": "Coduri promoționale",
       "offers": "Oferte"
-    }
+    },
+    "newAdmin": "Administrator nou",
+    "newPromoCode": "Cod promoțional nou",
+    "newOffer": "Ofertă nouă",
+    "grantPlan": "Acordați plan",
+    "resetPassword": "Resetați parola",
+    "duration": "Durată",
+    "planBreakdown": "Defalcarea planurilor",
+    "searchUsers": "Căutați nume sau e-mail…",
+    "searchWorkspaces": "Căutați nume, subdomeniu, domeniu…",
+    "noUsers": "Niciun utilizator.",
+    "noWorkspaces": "Niciun spațiu de lucru.",
+    "noPromoCodes": "Încă niciun cod promoțional.",
+    "noOffers": "Încă nicio ofertă."
   },
   "auth": {
     "login": {

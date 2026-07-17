@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Loader2, Plus, Ban } from "lucide-react";
 import { adminApi, type PromoCode, type CreatePromoInput } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,7 @@ function benefit(p: PromoCode): string {
 }
 
 export default function AdminPromoCodesPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [rows, setRows] = useState<PromoCode[]>([]);
@@ -110,16 +112,16 @@ export default function AdminPromoCodesPage() {
 
       <Card className="overflow-x-auto p-0">
         {loading ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">Loading…</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("common.loading")}</div>
         ) : rows.length === 0 ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">No promo codes yet.</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("admin.noPromoCodes")}</div>
         ) : (
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
                 <th className="px-4 py-3">Code</th>
                 <th className="px-4 py-3">Benefit</th>
-                <th className="px-4 py-3">Duration</th>
+                <th className="px-4 py-3">{t("admin.duration")}</th>
                 <th className="px-4 py-3">Redeemed</th>
                 <th className="px-4 py-3">Status</th>
                 <th className="px-4 py-3"></th>
@@ -142,7 +144,7 @@ export default function AdminPromoCodesPage() {
                   </td>
                   <td className="px-4 py-3">
                     {p.is_active ? (
-                      <Badge className="bg-green-100 text-green-700">Active</Badge>
+                      <Badge className="bg-green-100 text-green-700">{t("common.active")}</Badge>
                     ) : (
                       <Badge variant="outline" className="text-[#1c0a0c]/50">
                         Revoked
@@ -172,7 +174,7 @@ export default function AdminPromoCodesPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[460px]">
           <DialogHeader>
-            <DialogTitle>New promo code</DialogTitle>
+            <DialogTitle>{t("admin.newPromoCode")}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
@@ -243,7 +245,7 @@ export default function AdminPromoCodesPage() {
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label>Duration</Label>
+                <Label>{t("admin.duration")}</Label>
                 <Select value={form.duration} onValueChange={(v) => set({ duration: v })}>
                   <SelectTrigger className="w-full capitalize">
                     <SelectValue />

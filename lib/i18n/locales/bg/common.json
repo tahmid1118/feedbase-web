@@ -42,7 +42,8 @@
     "upgrade": "Надграждане",
     "saveChanges": "Запазване на промените",
     "deleting": "Изтриване…",
-    "optional": "по избор"
+    "optional": "по избор",
+    "active": "Активен"
   },
   "dashboard": {
     "welcomeBack": "Добре дошли отново"
@@ -62,7 +63,20 @@
       "admins": "Администратори",
       "promoCodes": "Промо кодове",
       "offers": "Оферти"
-    }
+    },
+    "newAdmin": "Нов администратор",
+    "newPromoCode": "Нов промо код",
+    "newOffer": "Нова оферта",
+    "grantPlan": "Предоставяне на план",
+    "resetPassword": "Нулиране на паролата",
+    "duration": "Продължителност",
+    "planBreakdown": "Разбивка по планове",
+    "searchUsers": "Търсене на име или имейл…",
+    "searchWorkspaces": "Търсене на име, поддомейн, домейн…",
+    "noUsers": "Няма потребители.",
+    "noWorkspaces": "Няма работни пространства.",
+    "noPromoCodes": "Все още няма промо кодове.",
+    "noOffers": "Все още няма оферти."
   },
   "auth": {
     "login": {

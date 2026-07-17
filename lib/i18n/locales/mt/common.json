@@ -42,7 +42,8 @@
     "upgrade": "Aġġorna",
     "saveChanges": "Issejvja l-bidliet",
     "deleting": "Qed jitħassar…",
-    "optional": "mhux obbligatorju"
+    "optional": "mhux obbligatorju",
+    "active": "Attiv"
   },
   "dashboard": {
     "welcomeBack": "Merħba lura"
@@ -62,7 +63,20 @@
       "admins": "Amministraturi",
       "promoCodes": "Kodiċi Promozzjonali",
       "offers": "Offerti"
-    }
+    },
+    "newAdmin": "Amministratur ġdid",
+    "newPromoCode": "Kodiċi promozzjonali ġdid",
+    "newOffer": "Offerta ġdida",
+    "grantPlan": "Agħti pjan",
+    "resetPassword": "Irrisettja l-password",
+    "duration": "Tul",
+    "planBreakdown": "Analiżi tal-pjanijiet",
+    "searchUsers": "Fittex isem jew email…",
+    "searchWorkspaces": "Fittex isem, subdominju, dominju…",
+    "noUsers": "L-ebda utent.",
+    "noWorkspaces": "L-ebda spazju tax-xogħol.",
+    "noPromoCodes": "Għad m'hemm l-ebda kodiċi promozzjonali.",
+    "noOffers": "Għad m'hemm l-ebda offerta."
   },
   "auth": {
     "login": {

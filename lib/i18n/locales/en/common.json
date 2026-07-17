@@ -34,7 +34,8 @@
     "upgrade": "Upgrade",
     "saveChanges": "Save changes",
     "deleting": "Deleting…",
-    "optional": "optional"
+    "optional": "optional",
+    "active": "Active"
   },
   "landing": {
     "hero": {
@@ -130,7 +131,20 @@
       "admins": "Admins",
       "promoCodes": "Promo Codes",
       "offers": "Offers"
-    }
+    },
+    "newAdmin": "New admin",
+    "newPromoCode": "New promo code",
+    "newOffer": "New offer",
+    "grantPlan": "Grant plan",
+    "resetPassword": "Reset password",
+    "duration": "Duration",
+    "planBreakdown": "Plan breakdown",
+    "searchUsers": "Search name or email…",
+    "searchWorkspaces": "Search name, subdomain, domain…",
+    "noUsers": "No users.",
+    "noWorkspaces": "No workspaces.",
+    "noPromoCodes": "No promo codes yet.",
+    "noOffers": "No offers yet."
   },
   "auth": {
     "login": {

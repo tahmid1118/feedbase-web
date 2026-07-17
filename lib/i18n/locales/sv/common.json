@@ -42,7 +42,8 @@
     "upgrade": "Uppgradera",
     "saveChanges": "Spara ändringar",
     "deleting": "Tar bort…",
-    "optional": "valfritt"
+    "optional": "valfritt",
+    "active": "Aktiv"
   },
   "dashboard": {
     "welcomeBack": "Välkommen tillbaka"
@@ -62,7 +63,20 @@
       "admins": "Administratörer",
       "promoCodes": "Kampanjkoder",
       "offers": "Erbjudanden"
-    }
+    },
+    "newAdmin": "Ny administratör",
+    "newPromoCode": "Ny kampanjkod",
+    "newOffer": "Nytt erbjudande",
+    "grantPlan": "Bevilja plan",
+    "resetPassword": "Återställ lösenord",
+    "duration": "Varaktighet",
+    "planBreakdown": "Planfördelning",
+    "searchUsers": "Sök namn eller e-post…",
+    "searchWorkspaces": "Sök namn, underdomän, domän…",
+    "noUsers": "Inga användare.",
+    "noWorkspaces": "Inga arbetsytor.",
+    "noPromoCodes": "Inga kampanjkoder än.",
+    "noOffers": "Inga erbjudanden än."
   },
   "auth": {
     "login": {

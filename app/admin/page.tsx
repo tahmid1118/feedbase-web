@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Building2, Users, MessageSquare, CreditCard, Ticket } from "lucide-react";
 import { adminApi, type OverviewData } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 
 const PLAN_LABEL: Record<string, string> = {
   free: "Free",
@@ -13,6 +14,7 @@ const PLAN_LABEL: Record<string, string> = {
 };
 
 export default function AdminOverviewPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [data, setData] = useState<OverviewData | null>(null);
@@ -44,7 +46,7 @@ export default function AdminOverviewPage() {
       </div>
 
       {loading ? (
-        <div className="py-12 text-center text-[#1c0a0c]/60">Loading…</div>
+        <div className="py-12 text-center text-[#1c0a0c]/60">{t("common.loading")}</div>
       ) : (
         <>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -67,7 +69,7 @@ export default function AdminOverviewPage() {
           </div>
 
           <Card className="p-5">
-            <h3 className="mb-3 text-sm font-semibold text-[#1c0a0c]">Plan breakdown</h3>
+            <h3 className="mb-3 text-sm font-semibold text-[#1c0a0c]">{t("admin.planBreakdown")}</h3>
             <div className="flex flex-wrap gap-3">
               {(data?.plan_breakdown ?? []).map((p) => (
                 <div

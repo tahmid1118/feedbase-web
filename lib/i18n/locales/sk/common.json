@@ -42,7 +42,8 @@
     "upgrade": "Inovovať",
     "saveChanges": "Uložiť zmeny",
     "deleting": "Odstraňuje sa…",
-    "optional": "voliteľné"
+    "optional": "voliteľné",
+    "active": "Aktívny"
   },
   "dashboard": {
     "welcomeBack": "Vitajte späť"
@@ -62,7 +63,20 @@
       "admins": "Administrátori",
       "promoCodes": "Promo kódy",
       "offers": "Ponuky"
-    }
+    },
+    "newAdmin": "Nový administrátor",
+    "newPromoCode": "Nový promo kód",
+    "newOffer": "Nová ponuka",
+    "grantPlan": "Udeliť plán",
+    "resetPassword": "Obnoviť heslo",
+    "duration": "Trvanie",
+    "planBreakdown": "Rozdelenie plánov",
+    "searchUsers": "Hľadať meno alebo e-mail…",
+    "searchWorkspaces": "Hľadať názov, subdoménu, doménu…",
+    "noUsers": "Žiadni používatelia.",
+    "noWorkspaces": "Žiadne pracovné priestory.",
+    "noPromoCodes": "Zatiaľ žiadne promo kódy.",
+    "noOffers": "Zatiaľ žiadne ponuky."
   },
   "auth": {
     "login": {

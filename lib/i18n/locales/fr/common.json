@@ -42,7 +42,8 @@
     "upgrade": "Mettre à niveau",
     "saveChanges": "Enregistrer les modifications",
     "deleting": "Suppression…",
-    "optional": "facultatif"
+    "optional": "facultatif",
+    "active": "Actif"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -62,7 +63,20 @@
       "admins": "Administrateurs",
       "promoCodes": "Codes promo",
       "offers": "Offres"
-    }
+    },
+    "newAdmin": "Nouvel administrateur",
+    "newPromoCode": "Nouveau code promo",
+    "newOffer": "Nouvelle offre",
+    "grantPlan": "Attribuer un forfait",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "duration": "Durée",
+    "planBreakdown": "Répartition des forfaits",
+    "searchUsers": "Rechercher un nom ou e-mail…",
+    "searchWorkspaces": "Rechercher nom, sous-domaine, domaine…",
+    "noUsers": "Aucun utilisateur.",
+    "noWorkspaces": "Aucun espace de travail.",
+    "noPromoCodes": "Aucun code promo pour l'instant.",
+    "noOffers": "Aucune offre pour l'instant."
   },
   "auth": {
     "login": {

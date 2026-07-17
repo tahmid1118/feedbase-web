@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { Search, Trash2, MessageSquare } from "lucide-react";
 import { adminApi, type AdminWorkspace } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,6 +44,7 @@ const DURATIONS = [
 ];
 
 export default function AdminWorkspacesPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [rows, setRows] = useState<AdminWorkspace[]>([]);
@@ -149,7 +151,7 @@ export default function AdminWorkspacesPage() {
         <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search name, subdomain, domain…"
+          placeholder={t("admin.searchWorkspaces")}
         />
         <Button type="submit" variant="outline">
           <Search className="h-4 w-4" />
@@ -158,9 +160,9 @@ export default function AdminWorkspacesPage() {
 
       <Card className="overflow-x-auto p-0">
         {loading ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">Loading…</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("common.loading")}</div>
         ) : rows.length === 0 ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">No workspaces.</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("admin.noWorkspaces")}</div>
         ) : (
           <table className="w-full min-w-[820px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
@@ -247,7 +249,7 @@ export default function AdminWorkspacesPage() {
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                          <AlertDialogCancel>Cancel</AlertDialogCancel>
+                          <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                           <AlertDialogAction variant="destructive" onClick={() => remove(w)}>
                             Delete
                           </AlertDialogAction>
@@ -282,7 +284,7 @@ export default function AdminWorkspacesPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div className="space-y-1.5">
-            <label className="text-sm font-medium text-[#1c0a0c]/80">Duration</label>
+            <label className="text-sm font-medium text-[#1c0a0c]/80">{t("admin.duration")}</label>
             <Select value={grantMonths} onValueChange={setGrantMonths}>
               <SelectTrigger>
                 <SelectValue />
@@ -297,8 +299,8 @@ export default function AdminWorkspacesPage() {
             </Select>
           </div>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmGrant}>Grant plan</AlertDialogAction>
+            <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmGrant}>{t("admin.grantPlan")}</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { KeyRound, Search, Trash2 } from "lucide-react";
 import { adminApi, type AdminUserRow } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +31,7 @@ import { toast } from "sonner";
 const ROLES = ["owner", "user"];
 
 export default function AdminUsersPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [rows, setRows] = useState<AdminUserRow[]>([]);
@@ -126,7 +128,7 @@ export default function AdminUsersPage() {
         <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search name or email…"
+          placeholder={t("admin.searchUsers")}
         />
         <Button type="submit" variant="outline">
           <Search className="h-4 w-4" />
@@ -135,9 +137,9 @@ export default function AdminUsersPage() {
 
       <Card className="overflow-x-auto p-0">
         {loading ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">Loading…</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("common.loading")}</div>
         ) : rows.length === 0 ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">No users.</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("admin.noUsers")}</div>
         ) : (
           <table className="w-full min-w-[780px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
@@ -237,7 +239,7 @@ export default function AdminUsersPage() {
                                   </AlertDialogDescription>
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>
-                                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                  <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                                   <AlertDialogAction variant="destructive" onClick={() => remove(u)}>
                                     Delete
                                   </AlertDialogAction>
@@ -259,7 +261,7 @@ export default function AdminUsersPage() {
       <AlertDialog open={!!pwUser} onOpenChange={(o) => !o && setPwUser(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Reset password</AlertDialogTitle>
+            <AlertDialogTitle>{t("admin.resetPassword")}</AlertDialogTitle>
             <AlertDialogDescription>
               Set a new password for {pwUser?.email}. Minimum 8 characters.
             </AlertDialogDescription>
@@ -271,7 +273,7 @@ export default function AdminUsersPage() {
             placeholder="New password"
           />
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
             <AlertDialogAction disabled={pw.length < 8} onClick={resetPw}>
               Reset
             </AlertDialogAction>

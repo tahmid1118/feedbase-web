@@ -42,7 +42,8 @@
     "upgrade": "Päivitä",
     "saveChanges": "Tallenna muutokset",
     "deleting": "Poistetaan…",
-    "optional": "valinnainen"
+    "optional": "valinnainen",
+    "active": "Aktiivinen"
   },
   "dashboard": {
     "welcomeBack": "Tervetuloa takaisin"
@@ -62,7 +63,20 @@
       "admins": "Ylläpitäjät",
       "promoCodes": "Tarjouskoodit",
       "offers": "Tarjoukset"
-    }
+    },
+    "newAdmin": "Uusi ylläpitäjä",
+    "newPromoCode": "Uusi tarjouskoodi",
+    "newOffer": "Uusi tarjous",
+    "grantPlan": "Myönnä tilaus",
+    "resetPassword": "Nollaa salasana",
+    "duration": "Kesto",
+    "planBreakdown": "Tilausten erittely",
+    "searchUsers": "Hae nimi tai sähköposti…",
+    "searchWorkspaces": "Hae nimi, aliverkkotunnus, verkkotunnus…",
+    "noUsers": "Ei käyttäjiä.",
+    "noWorkspaces": "Ei työtiloja.",
+    "noPromoCodes": "Ei vielä tarjouskoodeja.",
+    "noOffers": "Ei vielä tarjouksia."
   },
   "auth": {
     "login": {

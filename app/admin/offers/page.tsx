@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Loader2, Plus, Ban } from "lucide-react";
 import { adminApi, type Offer, type CreateOfferInput } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -55,6 +56,7 @@ const intervalLabel = (i: OfferInterval) => (i === "year" ? "Yearly" : "Monthly"
 const perSuffix = (i: OfferInterval) => (i === "year" ? "/yr" : "/mo");
 
 export default function AdminOffersPage() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [rows, setRows] = useState<Offer[]>([]);
@@ -117,15 +119,15 @@ export default function AdminOffersPage() {
         </div>
         <Button className="bg-[#c74959] text-white hover:bg-[#b03f4d]" onClick={() => setOpen(true)}>
           <Plus className="h-4 w-4" />
-          New offer
+          {t("admin.newOffer")}
         </Button>
       </div>
 
       <Card className="overflow-x-auto p-0">
         {loading ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">Loading…</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("common.loading")}</div>
         ) : rows.length === 0 ? (
-          <div className="py-12 text-center text-[#1c0a0c]/60">No offers yet.</div>
+          <div className="py-12 text-center text-[#1c0a0c]/60">{t("admin.noOffers")}</div>
         ) : (
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
@@ -168,7 +170,7 @@ export default function AdminOffersPage() {
                     </td>
                     <td className="px-4 py-3">
                       {o.is_active ? (
-                        <Badge className="bg-green-100 text-green-700">Active</Badge>
+                        <Badge className="bg-green-100 text-green-700">{t("common.active")}</Badge>
                       ) : (
                         <Badge variant="outline" className="text-[#1c0a0c]/50">Ended</Badge>
                       )}

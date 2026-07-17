@@ -42,7 +42,8 @@
     "upgrade": "Atnaujinti",
     "saveChanges": "Išsaugoti pakeitimus",
     "deleting": "Trinama…",
-    "optional": "nebūtina"
+    "optional": "nebūtina",
+    "active": "Aktyvus"
   },
   "dashboard": {
     "welcomeBack": "Sveiki sugrįžę"
@@ -62,7 +63,20 @@
       "admins": "Administratoriai",
       "promoCodes": "Reklamos kodai",
       "offers": "Pasiūlymai"
-    }
+    },
+    "newAdmin": "Naujas administratorius",
+    "newPromoCode": "Naujas reklamos kodas",
+    "newOffer": "Naujas pasiūlymas",
+    "grantPlan": "Suteikti planą",
+    "resetPassword": "Iš naujo nustatyti slaptažodį",
+    "duration": "Trukmė",
+    "planBreakdown": "Planų suvestinė",
+    "searchUsers": "Ieškoti vardo ar el. pašto…",
+    "searchWorkspaces": "Ieškoti pavadinimo, subdomeno, domeno…",
+    "noUsers": "Nėra vartotojų.",
+    "noWorkspaces": "Nėra darbo sričių.",
+    "noPromoCodes": "Kol kas nėra reklamos kodų.",
+    "noOffers": "Kol kas nėra pasiūlymų."
   },
   "auth": {
     "login": {
