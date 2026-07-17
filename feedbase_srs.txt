@@ -49,8 +49,8 @@ Version 1.1
       required.
     - User: an authenticated workspace member with baseline access (Profile only
       in settings). Members join by invitation.
-    - Owner: the workspace administrator — manages team, tags, integrations, API
-      keys, audit logs, branding, billing, and feedback deletion. A workspace has
+    - Owner: the workspace administrator — manages team, tags, branding, billing,
+      and feedback deletion. A workspace has
       exactly ONE owner (its creator); everyone else is a member. An account may
       therefore own some workspaces and be a member of others; the two are shown
       separately in the workspace switcher.
@@ -295,7 +295,8 @@ Version 1.1
     FR-A1  Overview of totals, status/type breakdowns, and a recent-activity trend.
 
 3.9 Platform Services
-    Scoped API keys, audit logging, third-party integrations, and file uploads.
+    File uploads (avatars, workspace logo, and feedback photo/video attachments)
+    served from the API origin.
 
 3.10 Billing & Subscriptions
     Each workspace is on a subscription plan; payment is handled by Stripe
@@ -319,10 +320,10 @@ Version 1.1
     FR-B4  Sync ......... A Stripe webhook keeps the workspace plan and status in
                           sync with the subscription lifecycle.
     FR-B5  Enforcement .. Paid capabilities are gated by plan: a Free workspace
-                          cannot create integrations, delete
-                          feedback posts, or attach photos/video to feedback, and
-                          is prompted to upgrade. Deleting feedback additionally
-                          requires the owner role.
+                          cannot delete feedback posts, attach photos/video to
+                          feedback, or contact/notify submitters, and is prompted
+                          to upgrade. Deleting feedback and contacting submitters
+                          additionally require the owner role.
                           Team size is capped by the plan's seat limit, counted
                           as members BESIDES the owner: Free allows the owner plus
                           2 team members, Pro the owner plus 5, and Business an

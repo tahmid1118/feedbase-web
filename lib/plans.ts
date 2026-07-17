@@ -49,7 +49,6 @@ export const PLANS: PlanDisplay[] = [
     features: [
       "Everything in Free",
       "Up to 3 workspaces",
-      "Integrations",
       "Photo & video on feedback",
       "Contact & notify feedback submitters",
       "Delete feedback posts",
