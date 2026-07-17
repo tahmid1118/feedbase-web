@@ -4,6 +4,7 @@ import { LogOut, ShieldCheck } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/i18n/language-selector";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,12 +21,13 @@ export function AdminHeader({
   name?: string | null;
   email?: string | null;
 }) {
+  const { t } = useTranslation();
   return (
     <header className="fixed left-64 right-0 top-0 z-30 h-16 border-b border-[#e399a3]/20 bg-white/80 backdrop-blur-md">
       <div className="flex h-full items-center justify-between px-6">
         <div>
-          <h1 className="text-lg font-semibold text-[#1c0a0c]">Admin Panel</h1>
-          <p className="text-sm text-[#1c0a0c]/60">Platform administration</p>
+          <h1 className="text-lg font-semibold text-[#1c0a0c]">{t("admin.panel")}</h1>
+          <p className="text-sm text-[#1c0a0c]/60">{t("admin.subtitle")}</p>
         </div>
 
         <div className="flex items-center gap-3">
@@ -54,7 +56,7 @@ export function AdminHeader({
               onClick={() => signOut({ callbackUrl: "/admin-login" })}
             >
               <LogOut className="mr-2 h-4 w-4" />
-              Sign out
+              {t("user.signOut")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

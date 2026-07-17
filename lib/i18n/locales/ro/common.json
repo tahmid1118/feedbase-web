@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Prețuri",
     "signIn": "Autentificare",
-    "getStarted": "Începeți"
+    "getStarted": "Începeți",
+    "dashboard": "Panou",
+    "feedback": "Feedback",
+    "roadmap": "Foaie de parcurs",
+    "changelog": "Jurnal de modificări",
+    "notifications": "Notificări",
+    "settings": "Setări",
+    "publicBoard": "Panou public"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Creați",
     "close": "Închideți",
     "search": "Căutați",
-    "loading": "Se încarcă…"
+    "loading": "Se încarcă…",
+    "yes": "Da",
+    "no": "Nu",
+    "upgrade": "Actualizați",
+    "saveChanges": "Salvați modificările"
+  },
+  "dashboard": {
+    "welcomeBack": "Bine ați revenit"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Deconectare"
+  },
+  "admin": {
+    "panel": "Panou de administrare",
+    "subtitle": "Administrarea platformei",
+    "nav": {
+      "overview": "Prezentare generală",
+      "workspaces": "Spații de lucru",
+      "support": "Asistență",
+      "users": "Utilizatori",
+      "admins": "Administratori",
+      "promoCodes": "Coduri promoționale",
+      "offers": "Oferte"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bine ați revenit",
+      "subtitle": "Autentificați-vă în cont pentru a continua"
+    },
+    "email": "E-mail",
+    "password": "Parolă",
+    "enterPassword": "Introduceți parola",
+    "signInCta": "Autentificare",
+    "noAccount": "Nu aveți un cont?",
+    "signUpLink": "Înregistrare",
+    "showPassword": "Afișați parola",
+    "hidePassword": "Ascundeți parola",
+    "signingIn": "Se autentifică...",
+    "newToFeedbase": "Nou pe Feedbase?",
+    "createAccount": "Creați-vă contul"
   }
 }

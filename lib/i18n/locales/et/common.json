@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Hinnad",
     "signIn": "Logi sisse",
-    "getStarted": "Alusta"
+    "getStarted": "Alusta",
+    "dashboard": "Töölaud",
+    "feedback": "Tagasiside",
+    "roadmap": "Teekaart",
+    "changelog": "Muudatuste logi",
+    "notifications": "Teavitused",
+    "settings": "Seaded",
+    "publicBoard": "Avalik tahvel"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Loo",
     "close": "Sulge",
     "search": "Otsi",
-    "loading": "Laadimine…"
+    "loading": "Laadimine…",
+    "yes": "Jah",
+    "no": "Ei",
+    "upgrade": "Uuenda",
+    "saveChanges": "Salvesta muudatused"
+  },
+  "dashboard": {
+    "welcomeBack": "Tere tulemast tagasi"
+  },
+  "user": {
+    "profile": "Profiil",
+    "signOut": "Logi välja"
+  },
+  "admin": {
+    "panel": "Administraatori paneel",
+    "subtitle": "Platvormi haldus",
+    "nav": {
+      "overview": "Ülevaade",
+      "workspaces": "Tööruumid",
+      "support": "Tugi",
+      "users": "Kasutajad",
+      "admins": "Administraatorid",
+      "promoCodes": "Sooduskoodid",
+      "offers": "Pakkumised"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Tere tulemast tagasi",
+      "subtitle": "Jätkamiseks logige oma kontole sisse"
+    },
+    "email": "E-post",
+    "password": "Parool",
+    "enterPassword": "Sisestage parool",
+    "signInCta": "Logi sisse",
+    "noAccount": "Kas teil pole kontot?",
+    "signUpLink": "Registreeru",
+    "showPassword": "Näita parooli",
+    "hidePassword": "Peida parool",
+    "signingIn": "Sisselogimine...",
+    "newToFeedbase": "Feedbase on uus?",
+    "createAccount": "Loo oma konto"
   }
 }

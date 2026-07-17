@@ -6,7 +6,14 @@
   "nav": {
     "pricing": "Pricing",
     "signIn": "Sign in",
-    "getStarted": "Get Started"
+    "getStarted": "Get Started",
+    "dashboard": "Dashboard",
+    "feedback": "Feedback",
+    "roadmap": "Roadmap",
+    "changelog": "Changelog",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "publicBoard": "Public Board"
   },
   "common": {
     "save": "Save",
@@ -21,7 +28,11 @@
     "submit": "Submit",
     "loading": "Loading…",
     "search": "Search",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "yes": "Yes",
+    "no": "No",
+    "upgrade": "Upgrade",
+    "saveChanges": "Save changes"
   },
   "landing": {
     "hero": {
@@ -98,5 +109,42 @@
     "footer": {
       "rights": "© 2026 Feedbase. All rights reserved."
     }
+  },
+  "dashboard": {
+    "welcomeBack": "Welcome back"
+  },
+  "user": {
+    "profile": "Profile",
+    "signOut": "Sign out"
+  },
+  "admin": {
+    "panel": "Admin Panel",
+    "subtitle": "Platform administration",
+    "nav": {
+      "overview": "Overview",
+      "workspaces": "Workspaces",
+      "support": "Support",
+      "users": "Users",
+      "admins": "Admins",
+      "promoCodes": "Promo Codes",
+      "offers": "Offers"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your account to continue"
+    },
+    "email": "Email",
+    "password": "Password",
+    "enterPassword": "Enter your password",
+    "signInCta": "Sign in",
+    "noAccount": "Don't have an account?",
+    "signUpLink": "Sign up",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "signingIn": "Signing in...",
+    "newToFeedbase": "New to Feedbase?",
+    "createAccount": "Create your account"
   }
 }

@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Kainos",
     "signIn": "Prisijungti",
-    "getStarted": "Pradėti"
+    "getStarted": "Pradėti",
+    "dashboard": "Skydelis",
+    "feedback": "Atsiliepimai",
+    "roadmap": "Planas",
+    "changelog": "Pakeitimų žurnalas",
+    "notifications": "Pranešimai",
+    "settings": "Nustatymai",
+    "publicBoard": "Vieša lenta"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Sukurti",
     "close": "Uždaryti",
     "search": "Ieškoti",
-    "loading": "Įkeliama…"
+    "loading": "Įkeliama…",
+    "yes": "Taip",
+    "no": "Ne",
+    "upgrade": "Atnaujinti",
+    "saveChanges": "Išsaugoti pakeitimus"
+  },
+  "dashboard": {
+    "welcomeBack": "Sveiki sugrįžę"
+  },
+  "user": {
+    "profile": "Profilis",
+    "signOut": "Atsijungti"
+  },
+  "admin": {
+    "panel": "Administratoriaus skydelis",
+    "subtitle": "Platformos administravimas",
+    "nav": {
+      "overview": "Apžvalga",
+      "workspaces": "Darbo sritys",
+      "support": "Pagalba",
+      "users": "Vartotojai",
+      "admins": "Administratoriai",
+      "promoCodes": "Reklamos kodai",
+      "offers": "Pasiūlymai"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sveiki sugrįžę",
+      "subtitle": "Norėdami tęsti, prisijunkite prie paskyros"
+    },
+    "email": "El. paštas",
+    "password": "Slaptažodis",
+    "enterPassword": "Įveskite slaptažodį",
+    "signInCta": "Prisijungti",
+    "noAccount": "Neturite paskyros?",
+    "signUpLink": "Registruotis",
+    "showPassword": "Rodyti slaptažodį",
+    "hidePassword": "Slėpti slaptažodį",
+    "signingIn": "Prisijungiama...",
+    "newToFeedbase": "Naujokas Feedbase?",
+    "createAccount": "Sukurkite paskyrą"
   }
 }

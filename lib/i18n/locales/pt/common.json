@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Preços",
     "signIn": "Entrar",
-    "getStarted": "Começar"
+    "getStarted": "Começar",
+    "dashboard": "Painel",
+    "feedback": "Feedback",
+    "roadmap": "Roteiro",
+    "changelog": "Registo de alterações",
+    "notifications": "Notificações",
+    "settings": "Definições",
+    "publicBoard": "Quadro público"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Criar",
     "close": "Fechar",
     "search": "Pesquisar",
-    "loading": "A carregar…"
+    "loading": "A carregar…",
+    "yes": "Sim",
+    "no": "Não",
+    "upgrade": "Atualizar",
+    "saveChanges": "Guardar alterações"
+  },
+  "dashboard": {
+    "welcomeBack": "Bem-vindo de volta"
+  },
+  "user": {
+    "profile": "Perfil",
+    "signOut": "Terminar sessão"
+  },
+  "admin": {
+    "panel": "Painel de administração",
+    "subtitle": "Administração da plataforma",
+    "nav": {
+      "overview": "Visão geral",
+      "workspaces": "Espaços de trabalho",
+      "support": "Suporte",
+      "users": "Utilizadores",
+      "admins": "Administradores",
+      "promoCodes": "Códigos promocionais",
+      "offers": "Ofertas"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bem-vindo de volta",
+      "subtitle": "Inicie sessão na sua conta para continuar"
+    },
+    "email": "E-mail",
+    "password": "Palavra-passe",
+    "enterPassword": "Introduza a sua palavra-passe",
+    "signInCta": "Entrar",
+    "noAccount": "Não tem uma conta?",
+    "signUpLink": "Registar-se",
+    "showPassword": "Mostrar palavra-passe",
+    "hidePassword": "Ocultar palavra-passe",
+    "signingIn": "A iniciar sessão...",
+    "newToFeedbase": "Novo no Feedbase?",
+    "createAccount": "Crie a sua conta"
   }
 }

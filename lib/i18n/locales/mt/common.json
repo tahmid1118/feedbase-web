@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Prezzijiet",
     "signIn": "Idħol",
-    "getStarted": "Ibda"
+    "getStarted": "Ibda",
+    "dashboard": "Dashboard",
+    "feedback": "Feedback",
+    "roadmap": "Pjan",
+    "changelog": "Reġistru tal-bidliet",
+    "notifications": "Notifiki",
+    "settings": "Settings",
+    "publicBoard": "Bord Pubbliku"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Oħloq",
     "close": "Agħlaq",
     "search": "Fittex",
-    "loading": "Qed jitla'…"
+    "loading": "Qed jitla'…",
+    "yes": "Iva",
+    "no": "Le",
+    "upgrade": "Aġġorna",
+    "saveChanges": "Issejvja l-bidliet"
+  },
+  "dashboard": {
+    "welcomeBack": "Merħba lura"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Oħroġ"
+  },
+  "admin": {
+    "panel": "Panel tal-Amministrazzjoni",
+    "subtitle": "Amministrazzjoni tal-pjattaforma",
+    "nav": {
+      "overview": "Ħarsa ġenerali",
+      "workspaces": "Spazji tax-xogħol",
+      "support": "Appoġġ",
+      "users": "Utenti",
+      "admins": "Amministraturi",
+      "promoCodes": "Kodiċi Promozzjonali",
+      "offers": "Offerti"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Merħba lura",
+      "subtitle": "Idħol fil-kont tiegħek biex tkompli"
+    },
+    "email": "Email",
+    "password": "Password",
+    "enterPassword": "Daħħal il-password tiegħek",
+    "signInCta": "Idħol",
+    "noAccount": "M'għandekx kont?",
+    "signUpLink": "Irreġistra",
+    "showPassword": "Uri l-password",
+    "hidePassword": "Aħbi l-password",
+    "signingIn": "Qed jidħol...",
+    "newToFeedbase": "Ġdid fi Feedbase?",
+    "createAccount": "Oħloq il-kont tiegħek"
   }
 }

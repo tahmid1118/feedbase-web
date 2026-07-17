@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Hinnat",
     "signIn": "Kirjaudu",
-    "getStarted": "Aloita"
+    "getStarted": "Aloita",
+    "dashboard": "Kojelauta",
+    "feedback": "Palaute",
+    "roadmap": "Etenemissuunnitelma",
+    "changelog": "Muutosloki",
+    "notifications": "Ilmoitukset",
+    "settings": "Asetukset",
+    "publicBoard": "Julkinen taulu"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Luo",
     "close": "Sulje",
     "search": "Hae",
-    "loading": "Ladataan…"
+    "loading": "Ladataan…",
+    "yes": "Kyllä",
+    "no": "Ei",
+    "upgrade": "Päivitä",
+    "saveChanges": "Tallenna muutokset"
+  },
+  "dashboard": {
+    "welcomeBack": "Tervetuloa takaisin"
+  },
+  "user": {
+    "profile": "Profiili",
+    "signOut": "Kirjaudu ulos"
+  },
+  "admin": {
+    "panel": "Hallintapaneeli",
+    "subtitle": "Alustan hallinta",
+    "nav": {
+      "overview": "Yleiskatsaus",
+      "workspaces": "Työtilat",
+      "support": "Tuki",
+      "users": "Käyttäjät",
+      "admins": "Ylläpitäjät",
+      "promoCodes": "Tarjouskoodit",
+      "offers": "Tarjoukset"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Tervetuloa takaisin",
+      "subtitle": "Jatka kirjautumalla tilillesi"
+    },
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "enterPassword": "Anna salasanasi",
+    "signInCta": "Kirjaudu",
+    "noAccount": "Eikö sinulla ole tiliä?",
+    "signUpLink": "Rekisteröidy",
+    "showPassword": "Näytä salasana",
+    "hidePassword": "Piilota salasana",
+    "signingIn": "Kirjaudutaan...",
+    "newToFeedbase": "Uusi Feedbasessa?",
+    "createAccount": "Luo tilisi"
   }
 }

@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Ceník",
     "signIn": "Přihlásit se",
-    "getStarted": "Začít"
+    "getStarted": "Začít",
+    "dashboard": "Přehled",
+    "feedback": "Zpětná vazba",
+    "roadmap": "Plán",
+    "changelog": "Seznam změn",
+    "notifications": "Oznámení",
+    "settings": "Nastavení",
+    "publicBoard": "Veřejná nástěnka"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Vytvořit",
     "close": "Zavřít",
     "search": "Hledat",
-    "loading": "Načítání…"
+    "loading": "Načítání…",
+    "yes": "Ano",
+    "no": "Ne",
+    "upgrade": "Upgradovat",
+    "saveChanges": "Uložit změny"
+  },
+  "dashboard": {
+    "welcomeBack": "Vítejte zpět"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Odhlásit se"
+  },
+  "admin": {
+    "panel": "Administrace",
+    "subtitle": "Správa platformy",
+    "nav": {
+      "overview": "Přehled",
+      "workspaces": "Pracovní prostory",
+      "support": "Podpora",
+      "users": "Uživatelé",
+      "admins": "Administrátoři",
+      "promoCodes": "Promo kódy",
+      "offers": "Nabídky"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Vítejte zpět",
+      "subtitle": "Pokračujte přihlášením ke svému účtu"
+    },
+    "email": "E-mail",
+    "password": "Heslo",
+    "enterPassword": "Zadejte heslo",
+    "signInCta": "Přihlásit se",
+    "noAccount": "Nemáte účet?",
+    "signUpLink": "Registrovat se",
+    "showPassword": "Zobrazit heslo",
+    "hidePassword": "Skrýt heslo",
+    "signingIn": "Přihlašování...",
+    "newToFeedbase": "Jste ve Feedbase noví?",
+    "createAccount": "Vytvořte si účet"
   }
 }

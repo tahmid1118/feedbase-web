@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Τιμές",
     "signIn": "Σύνδεση",
-    "getStarted": "Ξεκινήστε"
+    "getStarted": "Ξεκινήστε",
+    "dashboard": "Πίνακας ελέγχου",
+    "feedback": "Σχόλια",
+    "roadmap": "Χάρτης πορείας",
+    "changelog": "Αρχείο αλλαγών",
+    "notifications": "Ειδοποιήσεις",
+    "settings": "Ρυθμίσεις",
+    "publicBoard": "Δημόσιος πίνακας"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Δημιουργία",
     "close": "Κλείσιμο",
     "search": "Αναζήτηση",
-    "loading": "Φόρτωση…"
+    "loading": "Φόρτωση…",
+    "yes": "Ναι",
+    "no": "Όχι",
+    "upgrade": "Αναβάθμιση",
+    "saveChanges": "Αποθήκευση αλλαγών"
+  },
+  "dashboard": {
+    "welcomeBack": "Καλώς ήρθατε ξανά"
+  },
+  "user": {
+    "profile": "Προφίλ",
+    "signOut": "Αποσύνδεση"
+  },
+  "admin": {
+    "panel": "Πίνακας διαχείρισης",
+    "subtitle": "Διαχείριση πλατφόρμας",
+    "nav": {
+      "overview": "Επισκόπηση",
+      "workspaces": "Χώροι εργασίας",
+      "support": "Υποστήριξη",
+      "users": "Χρήστες",
+      "admins": "Διαχειριστές",
+      "promoCodes": "Κωδικοί προσφοράς",
+      "offers": "Προσφορές"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Καλώς ήρθατε ξανά",
+      "subtitle": "Συνδεθείτε στον λογαριασμό σας για να συνεχίσετε"
+    },
+    "email": "Email",
+    "password": "Κωδικός",
+    "enterPassword": "Εισαγάγετε τον κωδικό σας",
+    "signInCta": "Σύνδεση",
+    "noAccount": "Δεν έχετε λογαριασμό;",
+    "signUpLink": "Εγγραφή",
+    "showPassword": "Εμφάνιση κωδικού",
+    "hidePassword": "Απόκρυψη κωδικού",
+    "signingIn": "Σύνδεση...",
+    "newToFeedbase": "Νέος στο Feedbase;",
+    "createAccount": "Δημιουργήστε λογαριασμό"
   }
 }

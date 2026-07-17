@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Cenník",
     "signIn": "Prihlásiť sa",
-    "getStarted": "Začať"
+    "getStarted": "Začať",
+    "dashboard": "Prehľad",
+    "feedback": "Spätná väzba",
+    "roadmap": "Plán",
+    "changelog": "Zoznam zmien",
+    "notifications": "Oznámenia",
+    "settings": "Nastavenia",
+    "publicBoard": "Verejná tabuľa"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Vytvoriť",
     "close": "Zavrieť",
     "search": "Hľadať",
-    "loading": "Načítava sa…"
+    "loading": "Načítava sa…",
+    "yes": "Áno",
+    "no": "Nie",
+    "upgrade": "Inovovať",
+    "saveChanges": "Uložiť zmeny"
+  },
+  "dashboard": {
+    "welcomeBack": "Vitajte späť"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Odhlásiť sa"
+  },
+  "admin": {
+    "panel": "Administračný panel",
+    "subtitle": "Správa platformy",
+    "nav": {
+      "overview": "Prehľad",
+      "workspaces": "Pracovné priestory",
+      "support": "Podpora",
+      "users": "Používatelia",
+      "admins": "Administrátori",
+      "promoCodes": "Promo kódy",
+      "offers": "Ponuky"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Vitajte späť",
+      "subtitle": "Pokračujte prihlásením do svojho účtu"
+    },
+    "email": "E-mail",
+    "password": "Heslo",
+    "enterPassword": "Zadajte heslo",
+    "signInCta": "Prihlásiť sa",
+    "noAccount": "Nemáte účet?",
+    "signUpLink": "Registrovať sa",
+    "showPassword": "Zobraziť heslo",
+    "hidePassword": "Skryť heslo",
+    "signingIn": "Prihlasovanie...",
+    "newToFeedbase": "Ste vo Feedbase noví?",
+    "createAccount": "Vytvorte si účet"
   }
 }

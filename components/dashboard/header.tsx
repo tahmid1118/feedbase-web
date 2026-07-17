@@ -13,6 +13,7 @@ import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/i18n/language-selector";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -33,6 +34,7 @@ interface HeaderProps {
 export function Header({ user }: HeaderProps) {
   const { data: session } = useSession();
   const router = useRouter();
+  const { t } = useTranslation();
   const token = session?.user?.accessToken;
   const [unreadCount, setUnreadCount] = useState(0);
 
@@ -75,7 +77,7 @@ export function Header({ user }: HeaderProps) {
     <header className="fixed left-64 right-0 top-0 z-30 h-16 border-b border-[#e399a3]/20 bg-white/80 backdrop-blur-md">
       <div className="flex h-full items-center justify-between px-6">
         <div>
-          <h1 className="text-lg font-semibold text-[#1c0a0c]">Welcome back</h1>
+          <h1 className="text-lg font-semibold text-[#1c0a0c]">{t("dashboard.welcomeBack")}</h1>
           <p className="text-sm text-[#1c0a0c]/60">{displayName || "User"}</p>
         </div>
 
@@ -123,7 +125,7 @@ export function Header({ user }: HeaderProps) {
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => router.push("/dashboard/settings")}>
                 <User className="mr-2 h-4 w-4" />
-                Profile
+                {t("user.profile")}
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
@@ -135,7 +137,7 @@ export function Header({ user }: HeaderProps) {
                 }
               >
                 <LogOut className="mr-2 h-4 w-4" />
-                Sign out
+                {t("user.signOut")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Árak",
     "signIn": "Bejelentkezés",
-    "getStarted": "Kezdés"
+    "getStarted": "Kezdés",
+    "dashboard": "Irányítópult",
+    "feedback": "Visszajelzés",
+    "roadmap": "Ütemterv",
+    "changelog": "Változásnapló",
+    "notifications": "Értesítések",
+    "settings": "Beállítások",
+    "publicBoard": "Nyilvános tábla"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Létrehozás",
     "close": "Bezárás",
     "search": "Keresés",
-    "loading": "Betöltés…"
+    "loading": "Betöltés…",
+    "yes": "Igen",
+    "no": "Nem",
+    "upgrade": "Frissítés",
+    "saveChanges": "Változások mentése"
+  },
+  "dashboard": {
+    "welcomeBack": "Üdvözöljük újra"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Kijelentkezés"
+  },
+  "admin": {
+    "panel": "Adminisztrációs panel",
+    "subtitle": "Platform adminisztráció",
+    "nav": {
+      "overview": "Áttekintés",
+      "workspaces": "Munkaterületek",
+      "support": "Támogatás",
+      "users": "Felhasználók",
+      "admins": "Adminisztrátorok",
+      "promoCodes": "Promóciós kódok",
+      "offers": "Ajánlatok"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Üdvözöljük újra",
+      "subtitle": "A folytatáshoz jelentkezzen be a fiókjába"
+    },
+    "email": "E-mail",
+    "password": "Jelszó",
+    "enterPassword": "Adja meg a jelszavát",
+    "signInCta": "Bejelentkezés",
+    "noAccount": "Nincs fiókja?",
+    "signUpLink": "Regisztráció",
+    "showPassword": "Jelszó megjelenítése",
+    "hidePassword": "Jelszó elrejtése",
+    "signingIn": "Bejelentkezés...",
+    "newToFeedbase": "Új a Feedbase-en?",
+    "createAccount": "Fiók létrehozása"
   }
 }

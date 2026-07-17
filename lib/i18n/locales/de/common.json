@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Preise",
     "signIn": "Anmelden",
-    "getStarted": "Loslegen"
+    "getStarted": "Loslegen",
+    "dashboard": "Übersicht",
+    "feedback": "Feedback",
+    "roadmap": "Roadmap",
+    "changelog": "Änderungsprotokoll",
+    "notifications": "Benachrichtigungen",
+    "settings": "Einstellungen",
+    "publicBoard": "Öffentliches Board"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Erstellen",
     "close": "Schließen",
     "search": "Suchen",
-    "loading": "Wird geladen…"
+    "loading": "Wird geladen…",
+    "yes": "Ja",
+    "no": "Nein",
+    "upgrade": "Upgrade",
+    "saveChanges": "Änderungen speichern"
+  },
+  "dashboard": {
+    "welcomeBack": "Willkommen zurück"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Abmelden"
+  },
+  "admin": {
+    "panel": "Admin-Panel",
+    "subtitle": "Plattformverwaltung",
+    "nav": {
+      "overview": "Übersicht",
+      "workspaces": "Arbeitsbereiche",
+      "support": "Support",
+      "users": "Benutzer",
+      "admins": "Administratoren",
+      "promoCodes": "Aktionscodes",
+      "offers": "Angebote"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melden Sie sich bei Ihrem Konto an, um fortzufahren"
+    },
+    "email": "E-Mail",
+    "password": "Passwort",
+    "enterPassword": "Passwort eingeben",
+    "signInCta": "Anmelden",
+    "noAccount": "Noch kein Konto?",
+    "signUpLink": "Registrieren",
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "signingIn": "Anmeldung...",
+    "newToFeedbase": "Neu bei Feedbase?",
+    "createAccount": "Konto erstellen"
   }
 }

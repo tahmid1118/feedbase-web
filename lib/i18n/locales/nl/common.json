@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Prijzen",
     "signIn": "Inloggen",
-    "getStarted": "Aan de slag"
+    "getStarted": "Aan de slag",
+    "dashboard": "Dashboard",
+    "feedback": "Feedback",
+    "roadmap": "Roadmap",
+    "changelog": "Wijzigingslogboek",
+    "notifications": "Meldingen",
+    "settings": "Instellingen",
+    "publicBoard": "Openbaar bord"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Aanmaken",
     "close": "Sluiten",
     "search": "Zoeken",
-    "loading": "Laden…"
+    "loading": "Laden…",
+    "yes": "Ja",
+    "no": "Nee",
+    "upgrade": "Upgraden",
+    "saveChanges": "Wijzigingen opslaan"
+  },
+  "dashboard": {
+    "welcomeBack": "Welkom terug"
+  },
+  "user": {
+    "profile": "Profiel",
+    "signOut": "Uitloggen"
+  },
+  "admin": {
+    "panel": "Beheerderspaneel",
+    "subtitle": "Platformbeheer",
+    "nav": {
+      "overview": "Overzicht",
+      "workspaces": "Werkruimtes",
+      "support": "Ondersteuning",
+      "users": "Gebruikers",
+      "admins": "Beheerders",
+      "promoCodes": "Promocodes",
+      "offers": "Aanbiedingen"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welkom terug",
+      "subtitle": "Log in op uw account om door te gaan"
+    },
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "enterPassword": "Voer uw wachtwoord in",
+    "signInCta": "Inloggen",
+    "noAccount": "Heeft u geen account?",
+    "signUpLink": "Registreren",
+    "showPassword": "Wachtwoord tonen",
+    "hidePassword": "Wachtwoord verbergen",
+    "signingIn": "Bezig met inloggen...",
+    "newToFeedbase": "Nieuw bij Feedbase?",
+    "createAccount": "Maak uw account aan"
   }
 }

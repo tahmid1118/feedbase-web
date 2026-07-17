@@ -15,23 +15,25 @@ import {
 } from "lucide-react";
 import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n/client";
 import { Logo } from "@/components/ui/logo";
 import { WorkspaceSwitcher } from "@/components/dashboard/workspace-switcher";
 
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
 const navigation = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Feedback", href: "/dashboard/feedback", icon: MessageSquare },
-  { name: "Roadmap", href: "/dashboard/roadmap", icon: GitBranch },
-  { name: "Changelog", href: "/dashboard/changelog", icon: FileText },
-  { name: "Notifications", href: "/dashboard/notifications", icon: Bell },
-  { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { key: "nav.dashboard", href: "/dashboard", icon: LayoutDashboard },
+  { key: "nav.feedback", href: "/dashboard/feedback", icon: MessageSquare },
+  { key: "nav.roadmap", href: "/dashboard/roadmap", icon: GitBranch },
+  { key: "nav.changelog", href: "/dashboard/changelog", icon: FileText },
+  { key: "nav.notifications", href: "/dashboard/notifications", icon: Bell },
+  { key: "nav.settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const { t } = useTranslation();
   const token = session?.user?.accessToken;
 
   // Resolve this tenant's public portal URL from its subdomain.
@@ -76,7 +78,7 @@ export function Sidebar() {
               : pathname.startsWith(item.href);
             return (
               <Link
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
@@ -86,7 +88,7 @@ export function Sidebar() {
                 )}
               >
                 <item.icon className="h-5 w-5" />
-                {item.name}
+                {t(item.key)}
               </Link>
             );
           })}
@@ -100,7 +102,7 @@ export function Sidebar() {
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#1c0a0c]/70 transition-colors hover:bg-[#fdf8f9] hover:text-[#c74959]"
             >
               <ExternalLink className="h-5 w-5" />
-              Public Board
+              {t("nav.publicBoard")}
             </a>
           )}
         </nav>

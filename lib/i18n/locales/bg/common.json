@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Цени",
     "signIn": "Вход",
-    "getStarted": "Започнете"
+    "getStarted": "Започнете",
+    "dashboard": "Табло",
+    "feedback": "Обратна връзка",
+    "roadmap": "Пътна карта",
+    "changelog": "Дневник на промените",
+    "notifications": "Известия",
+    "settings": "Настройки",
+    "publicBoard": "Публична дъска"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Създай",
     "close": "Затвори",
     "search": "Търсене",
-    "loading": "Зареждане…"
+    "loading": "Зареждане…",
+    "yes": "Да",
+    "no": "Не",
+    "upgrade": "Надграждане",
+    "saveChanges": "Запазване на промените"
+  },
+  "dashboard": {
+    "welcomeBack": "Добре дошли отново"
+  },
+  "user": {
+    "profile": "Профил",
+    "signOut": "Изход"
+  },
+  "admin": {
+    "panel": "Административен панел",
+    "subtitle": "Администриране на платформата",
+    "nav": {
+      "overview": "Преглед",
+      "workspaces": "Работни пространства",
+      "support": "Поддръжка",
+      "users": "Потребители",
+      "admins": "Администратори",
+      "promoCodes": "Промо кодове",
+      "offers": "Оферти"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Добре дошли отново",
+      "subtitle": "Влезте в акаунта си, за да продължите"
+    },
+    "email": "Имейл",
+    "password": "Парола",
+    "enterPassword": "Въведете паролата си",
+    "signInCta": "Вход",
+    "noAccount": "Нямате акаунт?",
+    "signUpLink": "Регистрация",
+    "showPassword": "Показване на паролата",
+    "hidePassword": "Скриване на паролата",
+    "signingIn": "Влизане...",
+    "newToFeedbase": "Нови ли сте във Feedbase?",
+    "createAccount": "Създайте акаунт"
   }
 }

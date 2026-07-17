@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Priser",
     "signIn": "Log ind",
-    "getStarted": "Kom i gang"
+    "getStarted": "Kom i gang",
+    "dashboard": "Dashboard",
+    "feedback": "Feedback",
+    "roadmap": "Køreplan",
+    "changelog": "Ændringslog",
+    "notifications": "Notifikationer",
+    "settings": "Indstillinger",
+    "publicBoard": "Offentlig tavle"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Opret",
     "close": "Luk",
     "search": "Søg",
-    "loading": "Indlæser…"
+    "loading": "Indlæser…",
+    "yes": "Ja",
+    "no": "Nej",
+    "upgrade": "Opgrader",
+    "saveChanges": "Gem ændringer"
+  },
+  "dashboard": {
+    "welcomeBack": "Velkommen tilbage"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Log ud"
+  },
+  "admin": {
+    "panel": "Administratorpanel",
+    "subtitle": "Platformadministration",
+    "nav": {
+      "overview": "Oversigt",
+      "workspaces": "Arbejdsområder",
+      "support": "Support",
+      "users": "Brugere",
+      "admins": "Administratorer",
+      "promoCodes": "Rabatkoder",
+      "offers": "Tilbud"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Velkommen tilbage",
+      "subtitle": "Log ind på din konto for at fortsætte"
+    },
+    "email": "E-mail",
+    "password": "Adgangskode",
+    "enterPassword": "Indtast din adgangskode",
+    "signInCta": "Log ind",
+    "noAccount": "Har du ikke en konto?",
+    "signUpLink": "Tilmeld dig",
+    "showPassword": "Vis adgangskode",
+    "hidePassword": "Skjul adgangskode",
+    "signingIn": "Logger ind...",
+    "newToFeedbase": "Ny hos Feedbase?",
+    "createAccount": "Opret din konto"
   }
 }

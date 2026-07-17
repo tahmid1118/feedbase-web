@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Cennik",
     "signIn": "Zaloguj się",
-    "getStarted": "Rozpocznij"
+    "getStarted": "Rozpocznij",
+    "dashboard": "Pulpit",
+    "feedback": "Opinie",
+    "roadmap": "Plan działań",
+    "changelog": "Dziennik zmian",
+    "notifications": "Powiadomienia",
+    "settings": "Ustawienia",
+    "publicBoard": "Tablica publiczna"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Utwórz",
     "close": "Zamknij",
     "search": "Szukaj",
-    "loading": "Ładowanie…"
+    "loading": "Ładowanie…",
+    "yes": "Tak",
+    "no": "Nie",
+    "upgrade": "Ulepsz",
+    "saveChanges": "Zapisz zmiany"
+  },
+  "dashboard": {
+    "welcomeBack": "Witaj ponownie"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Wyloguj się"
+  },
+  "admin": {
+    "panel": "Panel administratora",
+    "subtitle": "Administracja platformą",
+    "nav": {
+      "overview": "Przegląd",
+      "workspaces": "Przestrzenie robocze",
+      "support": "Wsparcie",
+      "users": "Użytkownicy",
+      "admins": "Administratorzy",
+      "promoCodes": "Kody promocyjne",
+      "offers": "Oferty"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Witaj ponownie",
+      "subtitle": "Zaloguj się na swoje konto, aby kontynuować"
+    },
+    "email": "E-mail",
+    "password": "Hasło",
+    "enterPassword": "Wprowadź hasło",
+    "signInCta": "Zaloguj się",
+    "noAccount": "Nie masz konta?",
+    "signUpLink": "Zarejestruj się",
+    "showPassword": "Pokaż hasło",
+    "hidePassword": "Ukryj hasło",
+    "signingIn": "Logowanie...",
+    "newToFeedbase": "Nowy w Feedbase?",
+    "createAccount": "Utwórz konto"
   }
 }

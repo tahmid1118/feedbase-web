@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "@/lib/i18n/client";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import { loginSchema, type LoginFormValues } from "@/lib/auth/schemas";
 import { SIGNIN_ERROR_CODE, signInErrorMessage } from "@/lib/auth/signin-errors";
@@ -25,6 +26,7 @@ import { SIGNIN_ERROR_CODE, signInErrorMessage } from "@/lib/auth/signin-errors"
 const GENERIC_LOGIN_ERROR = "Invalid email or password.";
 
 export function LoginForm() {
+  const { t } = useTranslation();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -95,9 +97,9 @@ export function LoginForm() {
   return (
     <div className="auth-reveal space-y-5">
       <div className="rounded-xl border border-[#e399a3]/45 bg-[#fdf8f9] p-3 text-xs leading-relaxed text-[#1c0a0c]/78">
-        New to Feedbase?{" "}
+        {t("auth.newToFeedbase")}{" "}
         <Link href="/signup" className="font-semibold text-[#c74959] hover:text-[#b03f4d]">
-          Create your account
+          {t("auth.createAccount")}
         </Link>
       </div>
 
@@ -109,7 +111,7 @@ export function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                  Email address
+                  {t("auth.email")}
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -131,19 +133,19 @@ export function LoginForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                  Password
+                  {t("auth.password")}
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
                       {...field}
                       autoComplete="current-password"
-                      placeholder="Enter your password"
+                      placeholder={t("auth.enterPassword")}
                       type={isPasswordVisible ? "text" : "password"}
                       className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 pr-10 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
                     />
                     <button
-                      aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+                      aria-label={isPasswordVisible ? t("auth.hidePassword") : t("auth.showPassword")}
                       className="absolute inset-y-0 right-3 inline-flex items-center text-[#1c0a0c]/55 hover:text-[#1c0a0c]"
                       onClick={() => setIsPasswordVisible((previous) => !previous)}
                       type="button"
@@ -190,12 +192,12 @@ export function LoginForm() {
             {isDisabled ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Signing in...
+                {t("auth.signingIn")}
               </>
             ) : (
               <>
                 <LogIn className="h-4 w-4" />
-                Sign in
+                {t("auth.signInCta")}
               </>
             )}
           </Button>

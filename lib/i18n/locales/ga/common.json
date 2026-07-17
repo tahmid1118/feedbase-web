@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Praghsáil",
     "signIn": "Sínigh isteach",
-    "getStarted": "Tosaigh"
+    "getStarted": "Tosaigh",
+    "dashboard": "Deais",
+    "feedback": "Aiseolas",
+    "roadmap": "Treochlár",
+    "changelog": "Logáil athruithe",
+    "notifications": "Fógraí",
+    "settings": "Socruithe",
+    "publicBoard": "Clár Poiblí"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Cruthaigh",
     "close": "Dún",
     "search": "Cuardaigh",
-    "loading": "Ag lódáil…"
+    "loading": "Ag lódáil…",
+    "yes": "Tá",
+    "no": "Níl",
+    "upgrade": "Uasghrádú",
+    "saveChanges": "Sábháil athruithe"
+  },
+  "dashboard": {
+    "welcomeBack": "Fáilte ar ais"
+  },
+  "user": {
+    "profile": "Próifíl",
+    "signOut": "Sínigh amach"
+  },
+  "admin": {
+    "panel": "Painéal Riaracháin",
+    "subtitle": "Riarachán ardáin",
+    "nav": {
+      "overview": "Forbhreathnú",
+      "workspaces": "Spásanna oibre",
+      "support": "Tacaíocht",
+      "users": "Úsáideoirí",
+      "admins": "Riarthóirí",
+      "promoCodes": "Cóid Bholscaireachta",
+      "offers": "Tairiscintí"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Fáilte ar ais",
+      "subtitle": "Sínigh isteach i do chuntas chun leanúint ar aghaidh"
+    },
+    "email": "Ríomhphost",
+    "password": "Pasfhocal",
+    "enterPassword": "Cuir isteach do phasfhocal",
+    "signInCta": "Sínigh isteach",
+    "noAccount": "Níl cuntas agat?",
+    "signUpLink": "Cláraigh",
+    "showPassword": "Taispeáin pasfhocal",
+    "hidePassword": "Folaigh pasfhocal",
+    "signingIn": "Ag síniú isteach...",
+    "newToFeedbase": "Nua ar Feedbase?",
+    "createAccount": "Cruthaigh do chuntas"
   }
 }

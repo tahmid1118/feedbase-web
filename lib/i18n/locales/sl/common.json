@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Cenik",
     "signIn": "Prijava",
-    "getStarted": "Začni"
+    "getStarted": "Začni",
+    "dashboard": "Nadzorna plošča",
+    "feedback": "Povratne informacije",
+    "roadmap": "Načrt",
+    "changelog": "Dnevnik sprememb",
+    "notifications": "Obvestila",
+    "settings": "Nastavitve",
+    "publicBoard": "Javna tabla"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Ustvari",
     "close": "Zapri",
     "search": "Iskanje",
-    "loading": "Nalaganje…"
+    "loading": "Nalaganje…",
+    "yes": "Da",
+    "no": "Ne",
+    "upgrade": "Nadgradi",
+    "saveChanges": "Shrani spremembe"
+  },
+  "dashboard": {
+    "welcomeBack": "Dobrodošli nazaj"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Odjava"
+  },
+  "admin": {
+    "panel": "Skrbniška plošča",
+    "subtitle": "Skrbništvo platforme",
+    "nav": {
+      "overview": "Pregled",
+      "workspaces": "Delovni prostori",
+      "support": "Podpora",
+      "users": "Uporabniki",
+      "admins": "Skrbniki",
+      "promoCodes": "Promocijske kode",
+      "offers": "Ponudbe"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Dobrodošli nazaj",
+      "subtitle": "Za nadaljevanje se prijavite v svoj račun"
+    },
+    "email": "E-pošta",
+    "password": "Geslo",
+    "enterPassword": "Vnesite geslo",
+    "signInCta": "Prijava",
+    "noAccount": "Nimate računa?",
+    "signUpLink": "Registracija",
+    "showPassword": "Pokaži geslo",
+    "hidePassword": "Skrij geslo",
+    "signingIn": "Prijavljanje...",
+    "newToFeedbase": "Novi v Feedbase?",
+    "createAccount": "Ustvarite račun"
   }
 }

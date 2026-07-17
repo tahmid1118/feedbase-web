@@ -14,17 +14,18 @@ import {
   Headset,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/lib/i18n/client";
 import { Logo } from "@/components/ui/logo";
 import { adminApi } from "@/lib/api";
 
 const navigation = [
-  { name: "Overview", href: "/admin", icon: LayoutDashboard, exact: true },
-  { name: "Workspaces", href: "/admin/workspaces", icon: Building2 },
-  { name: "Support", href: "/admin/support", icon: Headset },
-  { name: "Users", href: "/admin/users", icon: Users },
-  { name: "Admins", href: "/admin/admins", icon: ShieldCheck },
-  { name: "Promo Codes", href: "/admin/promo-codes", icon: Ticket },
-  { name: "Offers", href: "/admin/offers", icon: Tag },
+  { key: "admin.nav.overview", href: "/admin", icon: LayoutDashboard, exact: true },
+  { key: "admin.nav.workspaces", href: "/admin/workspaces", icon: Building2 },
+  { key: "admin.nav.support", href: "/admin/support", icon: Headset },
+  { key: "admin.nav.users", href: "/admin/users", icon: Users },
+  { key: "admin.nav.admins", href: "/admin/admins", icon: ShieldCheck },
+  { key: "admin.nav.promoCodes", href: "/admin/promo-codes", icon: Ticket },
+  { key: "admin.nav.offers", href: "/admin/offers", icon: Tag },
 ];
 
 const POLL_MS = 20000;
@@ -32,6 +33,7 @@ const POLL_MS = 20000;
 export function AdminSidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
+  const { t } = useTranslation();
   const token = session?.user?.accessToken;
   const [supportUnread, setSupportUnread] = useState(0);
 
@@ -72,7 +74,7 @@ export function AdminSidebar() {
             const badge = item.href === "/admin/support" ? supportUnread : 0;
             return (
               <Link
-                key={item.name}
+                key={item.key}
                 href={item.href}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
@@ -82,7 +84,7 @@ export function AdminSidebar() {
                 )}
               >
                 <item.icon className="h-5 w-5" />
-                <span className="flex-1">{item.name}</span>
+                <span className="flex-1">{t(item.key)}</span>
                 {badge > 0 && (
                   <span
                     className={cn(

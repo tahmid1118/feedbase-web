@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Cenas",
     "signIn": "Pieteikties",
-    "getStarted": "Sākt"
+    "getStarted": "Sākt",
+    "dashboard": "Panelis",
+    "feedback": "Atsauksmes",
+    "roadmap": "Ceļvedis",
+    "changelog": "Izmaiņu žurnāls",
+    "notifications": "Paziņojumi",
+    "settings": "Iestatījumi",
+    "publicBoard": "Publiskā tāfele"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Izveidot",
     "close": "Aizvērt",
     "search": "Meklēt",
-    "loading": "Ielāde…"
+    "loading": "Ielāde…",
+    "yes": "Jā",
+    "no": "Nē",
+    "upgrade": "Jaunināt",
+    "saveChanges": "Saglabāt izmaiņas"
+  },
+  "dashboard": {
+    "welcomeBack": "Laipni lūdzam atpakaļ"
+  },
+  "user": {
+    "profile": "Profils",
+    "signOut": "Iziet"
+  },
+  "admin": {
+    "panel": "Administratora panelis",
+    "subtitle": "Platformas administrēšana",
+    "nav": {
+      "overview": "Pārskats",
+      "workspaces": "Darbvietas",
+      "support": "Atbalsts",
+      "users": "Lietotāji",
+      "admins": "Administratori",
+      "promoCodes": "Akciju kodi",
+      "offers": "Piedāvājumi"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Laipni lūdzam atpakaļ",
+      "subtitle": "Piesakieties savā kontā, lai turpinātu"
+    },
+    "email": "E-pasts",
+    "password": "Parole",
+    "enterPassword": "Ievadiet paroli",
+    "signInCta": "Pieteikties",
+    "noAccount": "Nav konta?",
+    "signUpLink": "Reģistrēties",
+    "showPassword": "Rādīt paroli",
+    "hidePassword": "Slēpt paroli",
+    "signingIn": "Notiek pieteikšanās...",
+    "newToFeedbase": "Jauns Feedbase lietotājs?",
+    "createAccount": "Izveidojiet kontu"
   }
 }

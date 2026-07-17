@@ -5,7 +5,14 @@
   "nav": {
     "pricing": "Priser",
     "signIn": "Logga in",
-    "getStarted": "Kom igång"
+    "getStarted": "Kom igång",
+    "dashboard": "Instrumentpanel",
+    "feedback": "Feedback",
+    "roadmap": "Färdplan",
+    "changelog": "Ändringslogg",
+    "notifications": "Aviseringar",
+    "settings": "Inställningar",
+    "publicBoard": "Offentlig tavla"
   },
   "landing": {
     "hero": {
@@ -29,6 +36,47 @@
     "create": "Skapa",
     "close": "Stäng",
     "search": "Sök",
-    "loading": "Läser in…"
+    "loading": "Läser in…",
+    "yes": "Ja",
+    "no": "Nej",
+    "upgrade": "Uppgradera",
+    "saveChanges": "Spara ändringar"
+  },
+  "dashboard": {
+    "welcomeBack": "Välkommen tillbaka"
+  },
+  "user": {
+    "profile": "Profil",
+    "signOut": "Logga ut"
+  },
+  "admin": {
+    "panel": "Administratörspanel",
+    "subtitle": "Plattformsadministration",
+    "nav": {
+      "overview": "Översikt",
+      "workspaces": "Arbetsytor",
+      "support": "Support",
+      "users": "Användare",
+      "admins": "Administratörer",
+      "promoCodes": "Kampanjkoder",
+      "offers": "Erbjudanden"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Välkommen tillbaka",
+      "subtitle": "Logga in på ditt konto för att fortsätta"
+    },
+    "email": "E-post",
+    "password": "Lösenord",
+    "enterPassword": "Ange ditt lösenord",
+    "signInCta": "Logga in",
+    "noAccount": "Har du inget konto?",
+    "signUpLink": "Registrera dig",
+    "showPassword": "Visa lösenord",
+    "hidePassword": "Dölj lösenord",
+    "signingIn": "Loggar in...",
+    "newToFeedbase": "Ny på Feedbase?",
+    "createAccount": "Skapa ditt konto"
   }
 }
