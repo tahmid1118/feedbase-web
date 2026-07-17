@@ -43,7 +43,9 @@
     "saveChanges": "Salvesta muudatused",
     "deleting": "Kustutamine…",
     "optional": "valikuline",
-    "active": "Aktiivne"
+    "active": "Aktiivne",
+    "share": "Jaga",
+    "pin": "Kinnita"
   },
   "dashboard": {
     "welcomeBack": "Tere tulemast tagasi"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Lühikirjeldus teie tagasisidest",
     "descPlaceholder2": "Esitage oma tagasiside kohta rohkem üksikasju...",
     "selectType": "Valige tüüp",
-    "attachments": "Manused"
+    "attachments": "Manused",
+    "postNotFound": "Postitust ei leitud"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Muudatuste logisid veel pole.",
     "deleteConfirm": "Kustutada muudatuste logi?"
+  },
+  "attachments": {
+    "remove": "Eemalda manus",
+    "uploading": "Üleslaadimine…",
+    "addMedia": "Lisa foto või video"
   }
 }

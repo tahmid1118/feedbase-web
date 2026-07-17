@@ -43,7 +43,9 @@
     "saveChanges": "Változások mentése",
     "deleting": "Törlés…",
     "optional": "opcionális",
-    "active": "Aktív"
+    "active": "Aktív",
+    "share": "Megosztás",
+    "pin": "Rögzítés"
   },
   "dashboard": {
     "welcomeBack": "Üdvözöljük újra"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Visszajelzésének rövid leírása",
     "descPlaceholder2": "Adjon meg további részleteket a visszajelzéséről...",
     "selectType": "Válasszon típust",
-    "attachments": "Mellékletek"
+    "attachments": "Mellékletek",
+    "postNotFound": "A bejegyzés nem található"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Még nincsenek változásnaplók.",
     "deleteConfirm": "Törli a változásnaplót?"
+  },
+  "attachments": {
+    "remove": "Melléklet eltávolítása",
+    "uploading": "Feltöltés…",
+    "addMedia": "Fénykép vagy videó hozzáadása"
   }
 }

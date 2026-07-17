@@ -1,4 +1,5 @@
 "use client";
+import { useTranslation } from "@/lib/i18n/client";
 
 import { useRef, useState } from "react";
 import { Paperclip, X, Loader2, Film } from "lucide-react";
@@ -36,6 +37,7 @@ export function AttachmentPicker({
   brand = "#c74959",
   disabled,
 }: AttachmentPickerProps) {
+  const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const atLimit = value.length >= MAX_ATTACHMENTS;
@@ -112,7 +114,7 @@ export function AttachmentPicker({
               <button
                 type="button"
                 onClick={() => remove(att.id)}
-                aria-label="Remove attachment"
+                aria-label={t("attachments.remove")}
                 className="absolute right-0.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-[#1c0a0c]/70 text-white opacity-0 transition-opacity group-hover:opacity-100"
               >
                 <X className="h-3 w-3" />
@@ -134,7 +136,7 @@ export function AttachmentPicker({
           ) : (
             <Paperclip className="h-4 w-4" style={{ color: brand }} />
           )}
-          {uploading ? "Uploading…" : "Add photo or video"}
+          {uploading ? t("attachments.uploading") : t("attachments.addMedia")}
         </button>
       )}
 

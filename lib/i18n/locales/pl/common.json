@@ -43,7 +43,9 @@
     "saveChanges": "Zapisz zmiany",
     "deleting": "Usuwanie…",
     "optional": "opcjonalnie",
-    "active": "Aktywny"
+    "active": "Aktywny",
+    "share": "Udostępnij",
+    "pin": "Przypnij"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Krótki opis Twojej opinii",
     "descPlaceholder2": "Podaj więcej szczegółów na temat swojej opinii...",
     "selectType": "Wybierz typ",
-    "attachments": "Załączniki"
+    "attachments": "Załączniki",
+    "postNotFound": "Nie znaleziono wpisu"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Brak dzienników zmian.",
     "deleteConfirm": "Usunąć dziennik zmian?"
+  },
+  "attachments": {
+    "remove": "Usuń załącznik",
+    "uploading": "Przesyłanie…",
+    "addMedia": "Dodaj zdjęcie lub wideo"
   }
 }

@@ -43,7 +43,9 @@
     "saveChanges": "Gem ændringer",
     "deleting": "Sletter…",
     "optional": "valgfrit",
-    "active": "Aktiv"
+    "active": "Aktiv",
+    "share": "Del",
+    "pin": "Fastgør"
   },
   "dashboard": {
     "welcomeBack": "Velkommen tilbage"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Kort beskrivelse af din feedback",
     "descPlaceholder2": "Angiv flere detaljer om din feedback...",
     "selectType": "Vælg type",
-    "attachments": "Vedhæftninger"
+    "attachments": "Vedhæftninger",
+    "postNotFound": "Opslag ikke fundet"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Ingen ændringslogge endnu.",
     "deleteConfirm": "Slet ændringslog?"
+  },
+  "attachments": {
+    "remove": "Fjern vedhæftning",
+    "uploading": "Uploader…",
+    "addMedia": "Tilføj foto eller video"
   }
 }

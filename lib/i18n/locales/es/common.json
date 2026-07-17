@@ -43,7 +43,9 @@
     "saveChanges": "Guardar cambios",
     "deleting": "Eliminando…",
     "optional": "opcional",
-    "active": "Activo"
+    "active": "Activo",
+    "share": "Compartir",
+    "pin": "Fijar"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Breve descripción de tu comentario",
     "descPlaceholder2": "Proporciona más detalles sobre tu comentario...",
     "selectType": "Selecciona el tipo",
-    "attachments": "Adjuntos"
+    "attachments": "Adjuntos",
+    "postNotFound": "Publicación no encontrada"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Aún no hay registros de cambios.",
     "deleteConfirm": "¿Eliminar el registro de cambios?"
+  },
+  "attachments": {
+    "remove": "Eliminar adjunto",
+    "uploading": "Subiendo…",
+    "addMedia": "Añadir foto o vídeo"
   }
 }

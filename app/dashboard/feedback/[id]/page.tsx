@@ -44,6 +44,7 @@ function buildPublicPostUrl(
   return `${proto}://${host}/post/${postId}`;
 }
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -89,6 +90,7 @@ const STATUS_BADGE: Record<string, string> = {
 };
 
 export default function PostDetailPage() {
+  const { t } = useTranslation();
   const params = useParams();
   const router = useRouter();
   const { data: session } = useSession();
@@ -251,7 +253,7 @@ export default function PostDetailPage() {
           </Button>
         </Link>
         <Card className="p-12 text-center">
-          <p className="text-[#1c0a0c]/60">Post not found</p>
+          <p className="text-[#1c0a0c]/60">{t("feedback.postNotFound")}</p>
         </Card>
       </div>
     );
@@ -297,7 +299,7 @@ export default function PostDetailPage() {
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Delete this post?</AlertDialogTitle>
+                    <AlertDialogTitle>{t("postOwner.deleteTitle")}</AlertDialogTitle>
                     <AlertDialogDescription>
                       This permanently removes the post along with its votes and
                       comments. This action cannot be undone.

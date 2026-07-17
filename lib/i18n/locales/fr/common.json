@@ -43,7 +43,9 @@
     "saveChanges": "Enregistrer les modifications",
     "deleting": "Suppression…",
     "optional": "facultatif",
-    "active": "Actif"
+    "active": "Actif",
+    "share": "Partager",
+    "pin": "Épingler"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Brève description de votre retour",
     "descPlaceholder2": "Donnez plus de détails sur votre retour...",
     "selectType": "Sélectionner le type",
-    "attachments": "Pièces jointes"
+    "attachments": "Pièces jointes",
+    "postNotFound": "Publication introuvable"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Aucun journal des modifications pour l'instant.",
     "deleteConfirm": "Supprimer le journal des modifications ?"
+  },
+  "attachments": {
+    "remove": "Supprimer la pièce jointe",
+    "uploading": "Téléchargement…",
+    "addMedia": "Ajouter une photo ou une vidéo"
   }
 }

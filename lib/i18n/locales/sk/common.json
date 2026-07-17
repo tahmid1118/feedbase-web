@@ -43,7 +43,9 @@
     "saveChanges": "Uložiť zmeny",
     "deleting": "Odstraňuje sa…",
     "optional": "voliteľné",
-    "active": "Aktívny"
+    "active": "Aktívny",
+    "share": "Zdieľať",
+    "pin": "Pripnúť"
   },
   "dashboard": {
     "welcomeBack": "Vitajte späť"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Stručný popis vašej spätnej väzby",
     "descPlaceholder2": "Uveďte viac podrobností o svojej spätnej väzbe...",
     "selectType": "Vyberte typ",
-    "attachments": "Prílohy"
+    "attachments": "Prílohy",
+    "postNotFound": "Príspevok sa nenašiel"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Zatiaľ žiadne zoznamy zmien.",
     "deleteConfirm": "Odstrániť zoznam zmien?"
+  },
+  "attachments": {
+    "remove": "Odstrániť prílohu",
+    "uploading": "Nahráva sa…",
+    "addMedia": "Pridať fotku alebo video"
   }
 }

@@ -43,7 +43,9 @@
     "saveChanges": "Salva modifiche",
     "deleting": "Eliminazione…",
     "optional": "facoltativo",
-    "active": "Attivo"
+    "active": "Attivo",
+    "share": "Condividi",
+    "pin": "Fissa"
   },
   "dashboard": {
     "welcomeBack": "Bentornato"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Breve descrizione del tuo feedback",
     "descPlaceholder2": "Fornisci maggiori dettagli sul tuo feedback...",
     "selectType": "Seleziona tipo",
-    "attachments": "Allegati"
+    "attachments": "Allegati",
+    "postNotFound": "Post non trovato"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Ancora nessun registro modifiche.",
     "deleteConfirm": "Eliminare il registro modifiche?"
+  },
+  "attachments": {
+    "remove": "Rimuovi allegato",
+    "uploading": "Caricamento…",
+    "addMedia": "Aggiungi foto o video"
   }
 }

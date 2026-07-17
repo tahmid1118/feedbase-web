@@ -43,7 +43,9 @@
     "saveChanges": "Saglabāt izmaiņas",
     "deleting": "Dzēš…",
     "optional": "neobligāti",
-    "active": "Aktīvs"
+    "active": "Aktīvs",
+    "share": "Kopīgot",
+    "pin": "Piespraust"
   },
   "dashboard": {
     "welcomeBack": "Laipni lūdzam atpakaļ"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Īss jūsu atsauksmes apraksts",
     "descPlaceholder2": "Sniedziet vairāk informācijas par savu atsauksmi...",
     "selectType": "Atlasiet veidu",
-    "attachments": "Pielikumi"
+    "attachments": "Pielikumi",
+    "postNotFound": "Ieraksts nav atrasts"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Vēl nav izmaiņu žurnālu.",
     "deleteConfirm": "Dzēst izmaiņu žurnālu?"
+  },
+  "attachments": {
+    "remove": "Noņemt pielikumu",
+    "uploading": "Augšupielāde…",
+    "addMedia": "Pievienot fotoattēlu vai video"
   }
 }

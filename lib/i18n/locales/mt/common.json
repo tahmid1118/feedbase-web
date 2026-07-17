@@ -43,7 +43,9 @@
     "saveChanges": "Issejvja l-bidliet",
     "deleting": "Qed jitħassar…",
     "optional": "mhux obbligatorju",
-    "active": "Attiv"
+    "active": "Attiv",
+    "share": "Aqsam",
+    "pin": "Waħħal"
   },
   "dashboard": {
     "welcomeBack": "Merħba lura"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Deskrizzjoni qasira tal-feedback tiegħek",
     "descPlaceholder2": "Ipprovdi aktar dettalji dwar il-feedback tiegħek...",
     "selectType": "Agħżel tip",
-    "attachments": "Mehmużin"
+    "attachments": "Mehmużin",
+    "postNotFound": "Il-post ma nstabx"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Għad m'hemm l-ebda reġistru tal-bidliet.",
     "deleteConfirm": "Tħassar ir-reġistru tal-bidliet?"
+  },
+  "attachments": {
+    "remove": "Neħħi l-mehmuż",
+    "uploading": "Qed jittella'…",
+    "addMedia": "Żid ritratt jew video"
   }
 }

@@ -43,7 +43,9 @@
     "saveChanges": "Shrani spremembe",
     "deleting": "Brisanje…",
     "optional": "neobvezno",
-    "active": "Aktivno"
+    "active": "Aktivno",
+    "share": "Deli",
+    "pin": "Pripni"
   },
   "dashboard": {
     "welcomeBack": "Dobrodošli nazaj"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Kratek opis vaših povratnih informacij",
     "descPlaceholder2": "Navedite več podrobnosti o svojih povratnih informacijah...",
     "selectType": "Izberite vrsto",
-    "attachments": "Priloge"
+    "attachments": "Priloge",
+    "postNotFound": "Objava ni najdena"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Še ni dnevnikov sprememb.",
     "deleteConfirm": "Izbrišem dnevnik sprememb?"
+  },
+  "attachments": {
+    "remove": "Odstrani prilogo",
+    "uploading": "Nalaganje…",
+    "addMedia": "Dodaj fotografijo ali video"
   }
 }

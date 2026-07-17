@@ -35,7 +35,9 @@
     "saveChanges": "Save changes",
     "deleting": "Deleting…",
     "optional": "optional",
-    "active": "Active"
+    "active": "Active",
+    "share": "Share",
+    "pin": "Pin"
   },
   "landing": {
     "hero": {
@@ -200,7 +202,8 @@
     "titlePlaceholder2": "Brief description of your feedback",
     "descPlaceholder2": "Provide more details about your feedback...",
     "selectType": "Select type",
-    "attachments": "Attachments"
+    "attachments": "Attachments",
+    "postNotFound": "Post not found"
   },
   "page": {
     "feedback": {
@@ -346,5 +349,10 @@
   "changelog": {
     "noChangelogs": "No changelogs yet.",
     "deleteConfirm": "Delete changelog?"
+  },
+  "attachments": {
+    "remove": "Remove attachment",
+    "uploading": "Uploading…",
+    "addMedia": "Add photo or video"
   }
 }

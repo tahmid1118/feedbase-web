@@ -43,7 +43,9 @@
     "saveChanges": "Αποθήκευση αλλαγών",
     "deleting": "Διαγραφή…",
     "optional": "προαιρετικό",
-    "active": "Ενεργό"
+    "active": "Ενεργό",
+    "share": "Κοινοποίηση",
+    "pin": "Καρφίτσωμα"
   },
   "dashboard": {
     "welcomeBack": "Καλώς ήρθατε ξανά"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Σύντομη περιγραφή των σχολίων σας",
     "descPlaceholder2": "Δώστε περισσότερες λεπτομέρειες για τα σχόλιά σας...",
     "selectType": "Επιλέξτε τύπο",
-    "attachments": "Συνημμένα"
+    "attachments": "Συνημμένα",
+    "postNotFound": "Η ανάρτηση δεν βρέθηκε"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Δεν υπάρχουν αρχεία αλλαγών ακόμη.",
     "deleteConfirm": "Διαγραφή αρχείου αλλαγών;"
+  },
+  "attachments": {
+    "remove": "Αφαίρεση συνημμένου",
+    "uploading": "Μεταφόρτωση…",
+    "addMedia": "Προσθήκη φωτογραφίας ή βίντεο"
   }
 }

@@ -43,7 +43,9 @@
     "saveChanges": "Išsaugoti pakeitimus",
     "deleting": "Trinama…",
     "optional": "nebūtina",
-    "active": "Aktyvus"
+    "active": "Aktyvus",
+    "share": "Bendrinti",
+    "pin": "Prisegti"
   },
   "dashboard": {
     "welcomeBack": "Sveiki sugrįžę"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Trumpas jūsų atsiliepimo aprašymas",
     "descPlaceholder2": "Pateikite daugiau informacijos apie savo atsiliepimą...",
     "selectType": "Pasirinkite tipą",
-    "attachments": "Priedai"
+    "attachments": "Priedai",
+    "postNotFound": "Įrašas nerastas"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Kol kas nėra pakeitimų žurnalų.",
     "deleteConfirm": "Ištrinti pakeitimų žurnalą?"
+  },
+  "attachments": {
+    "remove": "Pašalinti priedą",
+    "uploading": "Įkeliama…",
+    "addMedia": "Pridėti nuotrauką ar vaizdo įrašą"
   }
 }

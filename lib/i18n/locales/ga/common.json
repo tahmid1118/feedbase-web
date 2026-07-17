@@ -43,7 +43,9 @@
     "saveChanges": "Sábháil athruithe",
     "deleting": "Á scriosadh…",
     "optional": "roghnach",
-    "active": "Gníomhach"
+    "active": "Gníomhach",
+    "share": "Roinn",
+    "pin": "Bioráil"
   },
   "dashboard": {
     "welcomeBack": "Fáilte ar ais"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Cur síos gairid ar d'aiseolas",
     "descPlaceholder2": "Tabhair tuilleadh sonraí faoi d'aiseolas...",
     "selectType": "Roghnaigh cineál",
-    "attachments": "Ceangaltáin"
+    "attachments": "Ceangaltáin",
+    "postNotFound": "Postáil gan aimsiú"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Níl aon logáil athruithe ann fós.",
     "deleteConfirm": "Scrios logáil athruithe?"
+  },
+  "attachments": {
+    "remove": "Bain ceangaltán",
+    "uploading": "Á uaslódáil…",
+    "addMedia": "Cuir grianghraf nó físeán leis"
   }
 }

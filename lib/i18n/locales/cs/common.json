@@ -43,7 +43,9 @@
     "saveChanges": "Uložit změny",
     "deleting": "Mazání…",
     "optional": "volitelné",
-    "active": "Aktivní"
+    "active": "Aktivní",
+    "share": "Sdílet",
+    "pin": "Připnout"
   },
   "dashboard": {
     "welcomeBack": "Vítejte zpět"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Stručný popis vaší zpětné vazby",
     "descPlaceholder2": "Uveďte více podrobností o své zpětné vazbě...",
     "selectType": "Vyberte typ",
-    "attachments": "Přílohy"
+    "attachments": "Přílohy",
+    "postNotFound": "Příspěvek nenalezen"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Zatím žádné seznamy změn.",
     "deleteConfirm": "Smazat seznam změn?"
+  },
+  "attachments": {
+    "remove": "Odebrat přílohu",
+    "uploading": "Nahrávání…",
+    "addMedia": "Přidat foto nebo video"
   }
 }

@@ -43,7 +43,9 @@
     "saveChanges": "Spara ändringar",
     "deleting": "Tar bort…",
     "optional": "valfritt",
-    "active": "Aktiv"
+    "active": "Aktiv",
+    "share": "Dela",
+    "pin": "Fäst"
   },
   "dashboard": {
     "welcomeBack": "Välkommen tillbaka"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Kort beskrivning av din feedback",
     "descPlaceholder2": "Ge fler detaljer om din feedback...",
     "selectType": "Välj typ",
-    "attachments": "Bilagor"
+    "attachments": "Bilagor",
+    "postNotFound": "Inlägget hittades inte"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Inga ändringsloggar än.",
     "deleteConfirm": "Ta bort ändringslogg?"
+  },
+  "attachments": {
+    "remove": "Ta bort bilaga",
+    "uploading": "Laddar upp…",
+    "addMedia": "Lägg till foto eller video"
   }
 }

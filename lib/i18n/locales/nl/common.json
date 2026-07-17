@@ -43,7 +43,9 @@
     "saveChanges": "Wijzigingen opslaan",
     "deleting": "Verwijderen…",
     "optional": "optioneel",
-    "active": "Actief"
+    "active": "Actief",
+    "share": "Delen",
+    "pin": "Vastmaken"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Korte beschrijving van uw feedback",
     "descPlaceholder2": "Geef meer details over uw feedback...",
     "selectType": "Selecteer type",
-    "attachments": "Bijlagen"
+    "attachments": "Bijlagen",
+    "postNotFound": "Bericht niet gevonden"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Nog geen wijzigingslogboeken.",
     "deleteConfirm": "Wijzigingslogboek verwijderen?"
+  },
+  "attachments": {
+    "remove": "Bijlage verwijderen",
+    "uploading": "Uploaden…",
+    "addMedia": "Foto of video toevoegen"
   }
 }

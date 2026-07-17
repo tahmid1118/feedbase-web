@@ -43,7 +43,9 @@
     "saveChanges": "Tallenna muutokset",
     "deleting": "Poistetaan…",
     "optional": "valinnainen",
-    "active": "Aktiivinen"
+    "active": "Aktiivinen",
+    "share": "Jaa",
+    "pin": "Kiinnitä"
   },
   "dashboard": {
     "welcomeBack": "Tervetuloa takaisin"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Lyhyt kuvaus palautteestasi",
     "descPlaceholder2": "Anna lisätietoja palautteestasi...",
     "selectType": "Valitse tyyppi",
-    "attachments": "Liitteet"
+    "attachments": "Liitteet",
+    "postNotFound": "Julkaisua ei löytynyt"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Ei vielä muutoslokeja.",
     "deleteConfirm": "Poistetaanko muutosloki?"
+  },
+  "attachments": {
+    "remove": "Poista liite",
+    "uploading": "Ladataan…",
+    "addMedia": "Lisää kuva tai video"
   }
 }

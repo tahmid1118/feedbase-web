@@ -43,7 +43,9 @@
     "saveChanges": "Salvați modificările",
     "deleting": "Se șterge…",
     "optional": "opțional",
-    "active": "Activ"
+    "active": "Activ",
+    "share": "Distribuiți",
+    "pin": "Fixați"
   },
   "dashboard": {
     "welcomeBack": "Bine ați revenit"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Scurtă descriere a feedbackului dvs.",
     "descPlaceholder2": "Oferiți mai multe detalii despre feedbackul dvs...",
     "selectType": "Selectați tipul",
-    "attachments": "Atașamente"
+    "attachments": "Atașamente",
+    "postNotFound": "Postarea nu a fost găsită"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Încă niciun jurnal de modificări.",
     "deleteConfirm": "Ștergeți jurnalul de modificări?"
+  },
+  "attachments": {
+    "remove": "Eliminați atașamentul",
+    "uploading": "Se încarcă…",
+    "addMedia": "Adăugați o fotografie sau un videoclip"
   }
 }

@@ -43,7 +43,9 @@
     "saveChanges": "Guardar alterações",
     "deleting": "A eliminar…",
     "optional": "opcional",
-    "active": "Ativo"
+    "active": "Ativo",
+    "share": "Partilhar",
+    "pin": "Fixar"
   },
   "dashboard": {
     "welcomeBack": "Bem-vindo de volta"
@@ -132,7 +134,8 @@
     "titlePlaceholder2": "Breve descrição do seu feedback",
     "descPlaceholder2": "Forneça mais detalhes sobre o seu feedback...",
     "selectType": "Selecionar tipo",
-    "attachments": "Anexos"
+    "attachments": "Anexos",
+    "postNotFound": "Publicação não encontrada"
   },
   "page": {
     "feedback": {
@@ -278,5 +281,10 @@
   "changelog": {
     "noChangelogs": "Ainda sem registos de alterações.",
     "deleteConfirm": "Eliminar registo de alterações?"
+  },
+  "attachments": {
+    "remove": "Remover anexo",
+    "uploading": "A carregar…",
+    "addMedia": "Adicionar foto ou vídeo"
   }
 }
