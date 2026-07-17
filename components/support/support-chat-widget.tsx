@@ -112,27 +112,45 @@ export function SupportChatWidget() {
     [token]
   );
 
-  // Start (or resume) a session when the panel opens.
-  const startSession = useCallback(async () => {
+  // Resume the user's existing open session WITHOUT creating one — a session is
+  // only created on the first message (see handleSend), so opening the widget and
+  // leaving never leaves an empty conversation in the admin's queue. `unread`
+  // returns the open session id if there is one.
+  const resumeSession = useCallback(async () => {
     if (!token) return;
     setLoading(true);
     setClosedByAdmin(false);
     try {
-      const res = await supportApi.openSession(token);
-      const id = res.data?.session.id ?? null;
-      setSessionId(id);
-      if (id) await loadMessages(id);
-      setUnread(0);
+      const res = await supportApi.unread(token);
+      const data = res.data;
+      if (data?.hasOpenSession && data.sessionId) {
+        setSessionId(data.sessionId);
+        await loadMessages(data.sessionId);
+        setUnread(0);
+      } else {
+        setSessionId(null);
+        setMessages([]);
+        lastAdminIdRef.current = null;
+      }
     } catch {
-      /* surfaced by the empty state */
+      setSessionId(null);
     } finally {
       setLoading(false);
     }
   }, [token, loadMessages]);
 
-  useEffect(() => {
-    if (open && sessionId === null && !closedByAdmin) startSession();
-  }, [open, sessionId, closedByAdmin, startSession]);
+  const openPanel = () => {
+    setOpen(true);
+    resumeSession();
+  };
+
+  // Reset to a fresh, empty composer (no session created until first send).
+  const newChat = () => {
+    setClosedByAdmin(false);
+    setMessages([]);
+    setSessionId(null);
+    lastAdminIdRef.current = null;
+  };
 
   // Message poll — runs while the panel is OPEN on an active session.
   useEffect(() => {
@@ -143,7 +161,7 @@ export function SupportChatWidget() {
 
   const handleSend = async () => {
     const body = draft.trim();
-    if (!body || !token || sessionId === null || sending) return;
+    if (!body || !token || sending) return;
     setSending(true);
     // Optimistic append so the input feels instant; the poll reconciles ids.
     const optimistic: SupportMessage = {
@@ -156,8 +174,16 @@ export function SupportChatWidget() {
     setDraft("");
     scrollToBottom();
     try {
-      await supportApi.sendMessage(sessionId, body, token);
-      await loadMessages(sessionId);
+      // Create the session lazily on the first message.
+      let id = sessionId;
+      if (id === null) {
+        const res = await supportApi.openSession(token);
+        id = res.data?.session.id ?? null;
+        if (id === null) throw new Error("could not open session");
+        setSessionId(id);
+      }
+      await supportApi.sendMessage(id, body, token);
+      await loadMessages(id);
     } catch (err) {
       if (err instanceof ApiError && err.status === 403) {
         setClosedByAdmin(true);
@@ -180,7 +206,7 @@ export function SupportChatWidget() {
       {!open && (
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={openPanel}
           aria-label="Contact support"
           className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#c74959] text-white shadow-lg shadow-[#c74959]/30 transition-transform hover:scale-105 active:scale-95"
         >
@@ -234,7 +260,7 @@ export function SupportChatWidget() {
                 </p>
                 <button
                   type="button"
-                  onClick={startSession}
+                  onClick={newChat}
                   className="group inline-flex items-center gap-2 rounded-full bg-[#c74959] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#c74959]/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#c74959]/40 active:translate-y-0 active:scale-95"
                 >
                   <MessageCirclePlus className="h-4 w-4 transition-transform duration-300 group-hover:rotate-90" />
@@ -287,13 +313,13 @@ export function SupportChatWidget() {
                   }}
                   rows={1}
                   placeholder="Type your message…"
-                  disabled={loading || sessionId === null}
+                  disabled={loading}
                   className="max-h-28 flex-1 resize-none rounded-lg border border-[#e399a3]/40 bg-white px-3 py-2 text-sm text-[#1c0a0c] outline-none focus:border-[#c74959] focus:ring-1 focus:ring-[#c74959]/30 disabled:opacity-50"
                 />
                 <button
                   type="button"
                   onClick={handleSend}
-                  disabled={!draft.trim() || sending || sessionId === null}
+                  disabled={!draft.trim() || sending}
                   aria-label="Send"
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#c74959] text-white transition-opacity hover:opacity-90 disabled:opacity-40"
                 >
