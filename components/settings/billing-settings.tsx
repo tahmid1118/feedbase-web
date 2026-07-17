@@ -339,16 +339,25 @@ export function BillingSettings() {
                   </span>
                 </>
               )}
-              {offer && (offer.label || offer.endsAt) ? (
-                <p className="mt-1 text-xs font-medium text-green-700">
-                  {offer.label || "Limited-time offer"}
-                  {offer.endsAt
-                    ? ` · ends ${new Date(offer.endsAt).toLocaleDateString(
-                        undefined,
-                        { month: "long", day: "numeric", year: "numeric" }
-                      )}`
-                    : ""}
-                </p>
+              {offer ? (
+                <>
+                  {interval === "year" ? (
+                    <p className="mt-1 text-xs text-[#1c0a0c]/50">
+                      ≈ {formatPrice(offer.offerPrice / 12)}/mo, billed annually
+                    </p>
+                  ) : null}
+                  {offer.label || offer.endsAt ? (
+                    <p className="mt-1 text-xs font-medium text-green-700">
+                      {offer.label || "Limited-time offer"}
+                      {offer.endsAt
+                        ? ` · ends ${new Date(offer.endsAt).toLocaleDateString(
+                            undefined,
+                            { month: "long", day: "numeric", year: "numeric" }
+                          )}`
+                        : ""}
+                    </p>
+                  ) : null}
+                </>
               ) : (
                 <p className="mt-1 text-xs text-[#1c0a0c]/50">
                   {pricing.billedNote}
