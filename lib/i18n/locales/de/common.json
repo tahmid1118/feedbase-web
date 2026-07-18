@@ -13,7 +13,7 @@
     "changelog": "Änderungsprotokoll",
     "notifications": "Benachrichtigungen",
     "settings": "Einstellungen",
-    "publicBoard": "Öffentliches Board"
+    "publicBoard": "Öffentliche Pinnwand"
   },
   "landing": {
     "hero": {
@@ -29,7 +29,7 @@
       "subheading": "Leistungsstarke Funktionen zur Verwaltung von Feedback im großen Maßstab",
       "collection": {
         "title": "Feedback-Sammlung",
-        "desc": "Sammeln Sie Kundenerkenntnisse über anpassbare Feedback-Boards und Formulare"
+        "desc": "Sammeln Sie Kundenerkenntnisse über anpassbare Feedback-Pinnwände und Formulare"
       },
       "voting": {
         "title": "Intelligentes Abstimmungssystem",
@@ -69,7 +69,7 @@
       "step2Title": "Passen Sie Ihr Branding an",
       "step2Desc": "Wählen Sie Ihre Primär- und Sekundärfarben, fügen Sie Ihr Logo hinzu und machen Sie es zu Ihrem",
       "step3Title": "Laden Sie Ihr Team und Ihre Kunden ein",
-      "step3Desc": "Teilen Sie den Link zu Ihrem Feedback-Board und beginnen Sie, wertvolle Erkenntnisse zu sammeln",
+      "step3Desc": "Teilen Sie den Link zu Ihrer Feedback-Pinnwand und beginnen Sie, wertvolle Erkenntnisse zu sammeln",
       "step4Title": "Analysieren und handeln",
       "step4Desc": "Exportieren Sie Daten in verschiedenen Formaten, integrieren Sie Ihre Tools und entwickeln Sie bessere Produkte"
     },
@@ -254,7 +254,7 @@
   },
   "page": {
     "feedback": {
-      "title": "Feedback-Board",
+      "title": "Feedback-Pinnwand",
       "subtitle": "Überprüfen, sortieren und verwalten Sie das Feedback Ihrer Nutzer"
     },
     "roadmap": {
@@ -297,13 +297,13 @@
     "submitFeedback": "Feedback senden",
     "giveFeedback": "Feedback geben",
     "details": "Details",
-    "boardTitle": "Feedback-Board",
+    "boardTitle": "Feedback-Pinnwand",
     "boardSubtitle": "Teilen Sie eine Idee oder melden Sie ein Problem — und sehen Sie, was geplant ist.",
     "noFeedbackYet": "Es wurde noch kein Feedback veröffentlicht.",
     "openPost": "{{title}} öffnen",
     "nComments_one": "{{count}} Kommentar",
     "nComments_other": "{{count}} Kommentare",
-    "backToBoard": "Zurück zum Board",
+    "backToBoard": "Zurück zur Pinnwand",
     "byAuthor": "von {{name}}",
     "commentsHeading": "Kommentare ({{count}})",
     "poweredBy": "Bereitgestellt von Feedbase",
@@ -482,7 +482,7 @@
   },
   "loginPage": {
     "heading": "Melden Sie sich an und treffen Sie weiterhin bessere Entscheidungen.",
-    "subtitle": "Greifen Sie von einem sicheren Ort auf Ihre Feedback-Streams, Roadmap-Boards, Änderungsprotokolle und Benachrichtigungen zu."
+    "subtitle": "Greifen Sie von einem sicheren Ort auf Ihre Feedback-Streams, Roadmap-Übersichten, Änderungsprotokolle und Benachrichtigungen zu."
   },
   "signupPage": {
     "heading": "Werden Sie Teil von Feedbase und sammeln Sie Produktfeedback mit Klarheit.",
@@ -500,7 +500,7 @@
     },
     "feat": {
       "workspace1": "1 Arbeitsbereich",
-      "publicBoard": "Öffentliches Feedback-Board",
+      "publicBoard": "Öffentliche Feedback-Pinnwand",
       "roadmapChangelog": "Roadmap & Änderungsprotokoll",
       "unlimitedPosts": "Unbegrenzte Beiträge & Stimmen",
       "upTo2Members": "Bis zu 2 Teammitglieder",
