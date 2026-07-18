@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Monthly",
     "yearly": "Yearly"
+  },
+  "pricingPage": {
+    "subtitle": "Start free and upgrade when your team grows. No hidden fees — cancel anytime.",
+    "note": "Prices in USD, billed monthly. Upgrade from your dashboard after signing up."
   }
 }

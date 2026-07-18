@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Míosúil",
     "yearly": "Bliantúil"
+  },
+  "pricingPage": {
+    "subtitle": "Tosaigh saor in aisce agus uasghrádaigh de réir mar a fhásann d'fhoireann. Gan táillí i bhfolach — cealaigh am ar bith.",
+    "note": "Praghsanna in USD, billeáilte go míosúil. Uasghrádaigh ó do dheais tar éis clárú."
   }
 }

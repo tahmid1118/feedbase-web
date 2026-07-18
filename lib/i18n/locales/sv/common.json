@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Månadsvis",
     "yearly": "Årsvis"
+  },
+  "pricingPage": {
+    "subtitle": "Börja gratis och uppgradera när ditt team växer. Inga dolda avgifter — avsluta när som helst.",
+    "note": "Priser i USD, faktureras månadsvis. Uppgradera från din instrumentpanel efter registrering."
   }
 }

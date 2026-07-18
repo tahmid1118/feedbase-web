@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mensile",
     "yearly": "Annuale"
+  },
+  "pricingPage": {
+    "subtitle": "Inizia gratis ed esegui l'upgrade man mano che il tuo team cresce. Nessun costo nascosto — annulla quando vuoi.",
+    "note": "Prezzi in USD, fatturati mensilmente. Esegui l'upgrade dalla tua dashboard dopo la registrazione."
   }
 }

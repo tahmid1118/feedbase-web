@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mensal",
     "yearly": "Anual"
+  },
+  "pricingPage": {
+    "subtitle": "Comece grátis e atualize à medida que a sua equipa cresce. Sem taxas ocultas — cancele quando quiser.",
+    "note": "Preços em USD, faturados mensalmente. Atualize a partir do seu painel após o registo."
   }
 }

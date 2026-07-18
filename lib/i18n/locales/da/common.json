@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Månedlig",
     "yearly": "Årlig"
+  },
+  "pricingPage": {
+    "subtitle": "Start gratis, og opgrader, efterhånden som dit team vokser. Ingen skjulte gebyrer — opsig når som helst.",
+    "note": "Priser i USD, faktureres månedligt. Opgrader fra dit dashboard efter tilmelding."
   }
 }

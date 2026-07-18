@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Kull xahar",
     "yearly": "Kull sena"
+  },
+  "pricingPage": {
+    "subtitle": "Ibda b'xejn u aġġorna hekk kif jikber it-tim tiegħek. L-ebda tariffi moħbija — ikkanċella meta trid.",
+    "note": "Prezzijiet f'USD, iffatturati kull xahar. Aġġorna mid-dashboard tiegħek wara li tirreġistra."
   }
 }

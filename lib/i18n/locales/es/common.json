@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mensual",
     "yearly": "Anual"
+  },
+  "pricingPage": {
+    "subtitle": "Empieza gratis y mejora a medida que crece tu equipo. Sin comisiones ocultas: cancela cuando quieras.",
+    "note": "Precios en USD, facturados mensualmente. Mejora desde tu panel después de registrarte."
   }
 }

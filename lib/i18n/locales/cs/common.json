@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Měsíčně",
     "yearly": "Ročně"
+  },
+  "pricingPage": {
+    "subtitle": "Začněte zdarma a upgradujte, jak váš tým roste. Žádné skryté poplatky — zrušte kdykoli.",
+    "note": "Ceny v USD, účtováno měsíčně. Po registraci upgradujte ze svého panelu."
   }
 }

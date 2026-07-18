@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Monatlich",
     "yearly": "Jährlich"
+  },
+  "pricingPage": {
+    "subtitle": "Starten Sie kostenlos und upgraden Sie, wenn Ihr Team wächst. Keine versteckten Gebühren — jederzeit kündbar.",
+    "note": "Preise in USD, monatliche Abrechnung. Nach der Anmeldung über Ihr Dashboard upgraden."
   }
 }

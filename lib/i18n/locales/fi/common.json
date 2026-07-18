@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Kuukausittain",
     "yearly": "Vuosittain"
+  },
+  "pricingPage": {
+    "subtitle": "Aloita ilmaiseksi ja päivitä tiimisi kasvaessa. Ei piilokuluja — peru milloin tahansa.",
+    "note": "Hinnat Yhdysvaltain dollareina, laskutetaan kuukausittain. Päivitä kojelaudastasi rekisteröitymisen jälkeen."
   }
 }

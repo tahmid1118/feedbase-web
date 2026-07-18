@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mesečno",
     "yearly": "Letno"
+  },
+  "pricingPage": {
+    "subtitle": "Začnite brezplačno in nadgradite, ko vaša ekipa raste. Brez skritih stroškov — prekličete lahko kadar koli.",
+    "note": "Cene v USD, zaračunano mesečno. Po registraciji nadgradite s svoje nadzorne plošče."
   }
 }

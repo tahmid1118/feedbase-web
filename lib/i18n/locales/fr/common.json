@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mensuel",
     "yearly": "Annuel"
+  },
+  "pricingPage": {
+    "subtitle": "Commencez gratuitement et évoluez à mesure que votre équipe grandit. Aucuns frais cachés — annulez à tout moment.",
+    "note": "Prix en USD, facturés mensuellement. Effectuez la mise à niveau depuis votre tableau de bord après votre inscription."
   }
 }

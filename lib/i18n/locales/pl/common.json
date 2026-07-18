@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Miesięcznie",
     "yearly": "Rocznie"
+  },
+  "pricingPage": {
+    "subtitle": "Zacznij za darmo i ulepszaj w miarę rozwoju zespołu. Bez ukrytych opłat — anuluj w dowolnej chwili.",
+    "note": "Ceny w USD, rozliczane miesięcznie. Ulepsz z panelu po rejestracji."
   }
 }

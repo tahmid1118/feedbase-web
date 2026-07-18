@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Maandelijks",
     "yearly": "Jaarlijks"
+  },
+  "pricingPage": {
+    "subtitle": "Begin gratis en upgrade naarmate uw team groeit. Geen verborgen kosten — u kunt altijd opzeggen.",
+    "note": "Prijzen in USD, maandelijks gefactureerd. Upgrade na aanmelding vanuit uw dashboard."
   }
 }

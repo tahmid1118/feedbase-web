@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Lunar",
     "yearly": "Anual"
+  },
+  "pricingPage": {
+    "subtitle": "Începeți gratuit și faceți upgrade pe măsură ce echipa crește. Fără taxe ascunse — anulați oricând.",
+    "note": "Prețuri în USD, facturate lunar. Faceți upgrade din panou după înregistrare."
   }
 }

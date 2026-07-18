@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mēnesī",
     "yearly": "Gadā"
+  },
+  "pricingPage": {
+    "subtitle": "Sāciet bez maksas un jauniniet, kad jūsu komanda aug. Bez slēptām maksām — atceliet jebkurā laikā.",
+    "note": "Cenas USD, norēķini reizi mēnesī. Pēc reģistrācijas jauniniet no savas informācijas paneļa."
   }
 }

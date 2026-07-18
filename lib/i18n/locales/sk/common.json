@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Mesačne",
     "yearly": "Ročne"
+  },
+  "pricingPage": {
+    "subtitle": "Začnite zadarmo a inovujte, ako váš tím rastie. Žiadne skryté poplatky — zrušte kedykoľvek.",
+    "note": "Ceny v USD, účtované mesačne. Po registrácii inovujte zo svojho panela."
   }
 }

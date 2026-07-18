@@ -506,5 +506,9 @@
   "toggle": {
     "monthly": "Havi",
     "yearly": "Éves"
+  },
+  "pricingPage": {
+    "subtitle": "Kezdje ingyen, és bővítsen, ahogy csapata növekszik. Nincsenek rejtett díjak — bármikor lemondható.",
+    "note": "Árak USD-ben, havi számlázással. A regisztráció után az irányítópultról bővíthet."
   }
 }
