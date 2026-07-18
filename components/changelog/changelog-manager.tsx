@@ -79,7 +79,7 @@ export function ChangelogManager() {
       toast.success(t("toast.changelogPublished"));
       await load();
     } catch {
-      toast.error("Failed to publish");
+      toast.error(t("changelog.publishFailed"));
     }
   };
 
@@ -90,7 +90,7 @@ export function ChangelogManager() {
       toast.success(t("toast.changelogDeleted"));
       await load();
     } catch {
-      toast.error("Failed to delete");
+      toast.error(t("changelog.deleteFailed"));
     }
   };
 
@@ -102,13 +102,13 @@ export function ChangelogManager() {
           onClick={openCreate}
         >
           <Plus className="h-4 w-4" />
-          New Changelog
+          {t("changelog.newChangelog")}
         </Button>
       </div>
 
       {loading ? (
         <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
-          Loading changelogs...
+          {t("changelog.loading")}
         </div>
       ) : changelogs.length === 0 ? (
         <Card className="p-12 text-center">
@@ -130,11 +130,11 @@ export function ChangelogManager() {
                     </Link>
                     {changelog.is_published === 1 ? (
                       <Badge className="bg-green-100 text-green-700">
-                        Published
+                        {t("changelog.published")}
                       </Badge>
                     ) : (
                       <Badge variant="outline" className="text-[#1c0a0c]/60">
-                        Draft
+                        {t("changelog.draft")}
                       </Badge>
                     )}
                   </div>
@@ -162,14 +162,14 @@ export function ChangelogManager() {
                       className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
                     >
                       <Send className="h-3.5 w-3.5" />
-                      Publish
+                      {t("changelog.publish")}
                     </Button>
                   )}
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => openEdit(changelog)}
-                    aria-label="Edit changelog"
+                    aria-label={t("changelog.editAria")}
                   >
                     <Pencil className="h-4 w-4" />
                   </Button>
@@ -179,7 +179,7 @@ export function ChangelogManager() {
                         variant="ghost"
                         size="icon"
                         className="text-red-600 hover:text-red-700"
-                        aria-label="Delete changelog"
+                        aria-label={t("changelog.deleteAria")}
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -198,7 +198,7 @@ export function ChangelogManager() {
                           variant="destructive"
                           onClick={() => remove(changelog.id)}
                         >
-                          Delete
+                          {t("common.delete")}
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>

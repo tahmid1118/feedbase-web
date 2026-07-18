@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "@/lib/i18n/client";
+
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useParams } from "next/navigation";
@@ -12,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Markdown } from "@/components/ui/markdown";
 
 export default function ChangelogDetailPage() {
+  const { t } = useTranslation();
   const params = useParams();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
@@ -39,7 +42,7 @@ export default function ChangelogDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
-        Loading changelog...
+        {t("changelog.loadingOne")}
       </div>
     );
   }
@@ -50,11 +53,11 @@ export default function ChangelogDetailPage() {
         <Link href="/dashboard/changelog">
           <Button variant="ghost">
             <ArrowLeft className="h-4 w-4" />
-            Back to Changelog
+            {t("changelog.backTo")}
           </Button>
         </Link>
         <Card className="p-12 text-center">
-          <p className="text-[#1c0a0c]/60">Changelog not found</p>
+          <p className="text-[#1c0a0c]/60">{t("changelog.notFound")}</p>
         </Card>
       </div>
     );
@@ -65,7 +68,7 @@ export default function ChangelogDetailPage() {
       <Link href="/dashboard/changelog">
         <Button variant="ghost">
           <ArrowLeft className="h-4 w-4" />
-          Back to Changelog
+          {t("changelog.backTo")}
         </Button>
       </Link>
 
@@ -75,10 +78,10 @@ export default function ChangelogDetailPage() {
             {changelog.title}
           </h1>
           {changelog.is_published === 1 ? (
-            <Badge className="bg-green-100 text-green-700">Published</Badge>
+            <Badge className="bg-green-100 text-green-700">{t("changelog.published")}</Badge>
           ) : (
             <Badge variant="outline" className="text-[#1c0a0c]/60">
-              Draft
+              {t("changelog.draft")}
             </Badge>
           )}
         </div>

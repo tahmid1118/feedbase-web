@@ -52,7 +52,7 @@ export function ChangelogEditorDialog({
 
   const save = async () => {
     if (!token || !title.trim() || !content.trim()) {
-      toast.error("Title and content are required");
+      toast.error(t("changelog.titleContentRequired"));
       return;
     }
     setBusy(true);
@@ -72,7 +72,7 @@ export function ChangelogEditorDialog({
       onOpenChange(false);
       onSaved?.();
     } catch {
-      toast.error("Failed to save changelog");
+      toast.error(t("changelog.saveFailed"));
     } finally {
       setBusy(false);
     }
@@ -83,46 +83,46 @@ export function ChangelogEditorDialog({
       <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[680px]">
         <DialogHeader>
           <DialogTitle>
-            {changelog ? "Edit Changelog" : "New Changelog"}
+            {t(changelog ? "changelog.editChangelog" : "changelog.newChangelog")}
           </DialogTitle>
           <DialogDescription>
-            Markdown is supported in the content field.
+            {t("changelog.markdownHint")}
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="cl-title">Title</Label>
+            <Label htmlFor="cl-title">{t("changelog.title")}</Label>
             <Input
               id="cl-title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. June 2026 Update"
+              placeholder={t("changelog.titlePlaceholder")}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="cl-summary">Summary</Label>
+            <Label htmlFor="cl-summary">{t("changelog.summary")}</Label>
             <Input
               id="cl-summary"
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
-              placeholder="A short one-line summary"
+              placeholder={t("changelog.summaryPlaceholder")}
             />
           </div>
 
           <div className="space-y-2">
-            <Label>Content</Label>
+            <Label>{t("changelog.content")}</Label>
             <Tabs defaultValue="write">
               <TabsList className="border border-[#e399a3]/30 bg-white">
-                <TabsTrigger value="write">Write</TabsTrigger>
-                <TabsTrigger value="preview">Preview</TabsTrigger>
+                <TabsTrigger value="write">{t("changelog.write")}</TabsTrigger>
+                <TabsTrigger value="preview">{t("changelog.preview")}</TabsTrigger>
               </TabsList>
               <TabsContent value="write" className="mt-2">
                 <Textarea
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder={"## New Features\n- Added dark mode\n- Fixed login bug"}
+                  placeholder={t("changelog.contentPlaceholder")}
                   className="min-h-[220px] font-mono text-sm"
                 />
               </TabsContent>
@@ -132,7 +132,7 @@ export function ChangelogEditorDialog({
                     <Markdown content={content} />
                   ) : (
                     <p className="text-sm text-[#1c0a0c]/50">
-                      Nothing to preview yet.
+                      {t("changelog.nothingToPreview")}
                     </p>
                   )}
                 </div>
@@ -143,7 +143,7 @@ export function ChangelogEditorDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancel
+            {t("common.cancel")}
           </Button>
           <Button
             className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
@@ -153,12 +153,12 @@ export function ChangelogEditorDialog({
             {busy ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
+                {t("changelog.saving")}
               </>
             ) : changelog ? (
-              "Save Changes"
+              t("common.saveChanges")
             ) : (
-              "Create"
+              t("common.create")
             )}
           </Button>
         </DialogFooter>
