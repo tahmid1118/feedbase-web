@@ -18,8 +18,18 @@ import {
  * Navbar language selector (cookie-based). Changing it writes the `i18next`
  * cookie, switches the live client i18n language, and refreshes the route so
  * Server Components re-render in the new language. Default is English.
+ *
+ * `iconColor` tints the globe — the public portal passes the tenant's brand
+ * colour so the control doesn't clash with their branding; elsewhere it
+ * defaults to the Feedbase rose.
  */
-export function LanguageSelector({ className }: { className?: string }) {
+export function LanguageSelector({
+  className,
+  iconColor = "#c74959",
+}: {
+  className?: string;
+  iconColor?: string;
+}) {
   const router = useRouter();
   // Server-resolved language — always agrees with the rendered page content.
   const current = useLanguage();
@@ -38,7 +48,7 @@ export function LanguageSelector({ className }: { className?: string }) {
         aria-label="Select language"
         className={`h-9 w-auto gap-1.5 border-[#e399a3]/50 px-2.5 ${className ?? ""}`}
       >
-        <Globe className="h-4 w-4 text-[#c74959]" />
+        <Globe className="h-4 w-4" style={{ color: iconColor }} />
         {/* Explicit children: Radix resolves the item label only on the client,
             so without this the trigger server-renders blank. */}
         <SelectValue>{currentLabel}</SelectValue>

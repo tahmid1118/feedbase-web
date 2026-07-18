@@ -3,6 +3,7 @@ import Link from "next/link";
 import { publicApi } from "@/lib/api/public";
 import { PortalLogo } from "@/components/portal/portal-logo";
 import { PortalNav } from "@/components/portal/portal-nav";
+import { LanguageSelector } from "@/components/i18n/language-selector";
 import { resolveUploadUrl } from "@/lib/avatar";
 
 const DEFAULT_BRAND = "#c74959";
@@ -44,7 +45,12 @@ export default async function PortalLayout({
               {info.name}
             </span>
           </Link>
-          <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
+          <div className="flex items-center gap-2">
+            <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
+            {/* Visitors are the tenant's own users, so they get their own
+                language control — the dashboard navbar isn't shown here. */}
+            <LanguageSelector iconColor={brand} className="border-black/10" />
+          </div>
         </div>
       </header>
 
