@@ -88,9 +88,10 @@ export function SharePost({
 
   const openSocial = (build: IntentBuilder) => {
     const u = encodeURIComponent(currentUrl());
-    const t = encodeURIComponent(title);
+    // Not named `t` — that would shadow the translation function.
+    const encodedTitle = encodeURIComponent(title);
     window.open(
-      build(u, t),
+      build(u, encodedTitle),
       "_blank",
       "noopener,noreferrer,width=600,height=520"
     );
@@ -101,7 +102,7 @@ export function SharePost({
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm" className="gap-1.5">
           <Share2 className="h-4 w-4" />
-          Share
+          {t("common.share")}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-72 p-4">
