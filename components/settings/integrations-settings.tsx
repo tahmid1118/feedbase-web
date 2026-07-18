@@ -10,6 +10,7 @@ import {
   type IntegrationType,
 } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -51,6 +52,7 @@ const TYPES: { value: IntegrationType; label: string }[] = [
 ];
 
 export function IntegrationsSettings() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [integrations, setIntegrations] = useState<Integration[]>([]);

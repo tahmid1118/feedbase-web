@@ -67,7 +67,7 @@ export function BillingSettings() {
     const c = params.get("checkout");
     if (c === "success") toast.success(t("toast.subscriptionUpdated"));
     else if (c === "cancelled") toast("Checkout cancelled.");
-  }, [params]);
+  }, [params, t]);
 
   const upgrade = async (plan: PlanKey) => {
     if (!token) return;

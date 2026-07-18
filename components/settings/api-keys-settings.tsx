@@ -10,6 +10,7 @@ import {
   type ApiKey,
 } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -37,6 +38,7 @@ import {
 import { toast } from "sonner";
 
 export function ApiKeysSettings() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [keys, setKeys] = useState<ApiKey[]>([]);

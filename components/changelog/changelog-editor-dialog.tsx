@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { changelogApi, type Changelog } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,6 +34,7 @@ export function ChangelogEditorDialog({
   changelog,
   onSaved,
 }: ChangelogEditorDialogProps) {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [title, setTitle] = useState("");

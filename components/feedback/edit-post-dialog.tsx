@@ -8,6 +8,7 @@ import { z } from "zod";
 import { Loader2 } from "lucide-react";
 import { postsApi, type Post } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   Dialog,
   DialogContent,
@@ -55,6 +56,7 @@ export function EditPostDialog({
   onOpenChange,
   onUpdated,
 }: EditPostDialogProps) {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
