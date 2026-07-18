@@ -83,7 +83,7 @@ export function EditPostDialog({
     setIsSubmitting(true);
     try {
       await postsApi.update(post.id, values, session.user.accessToken);
-      toast.success("Post updated");
+      toast.success(t("toast.postUpdated"));
       onOpenChange(false);
       onUpdated?.();
     } catch {

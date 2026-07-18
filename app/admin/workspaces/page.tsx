@@ -128,7 +128,7 @@ export default function AdminWorkspacesPage() {
     const res = await adminApi.deleteWorkspace(token, w.id);
     if (res.ok) {
       setRows((prev) => prev.filter((r) => r.id !== w.id));
-      toast.success("Workspace deleted");
+      toast.success(t("toast.workspaceDeleted"));
     } else toast.error(res.message || "Failed to delete");
   };
 

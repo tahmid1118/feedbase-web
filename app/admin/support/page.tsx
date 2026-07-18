@@ -178,7 +178,7 @@ export default function AdminSupportPage() {
     if (!token || selectedId === null) return;
     const res = await adminApi.closeSupportSession(token, selectedId);
     if (res.ok) {
-      toast.success("Chat closed");
+      toast.success(t("toast.chatClosed"));
       setSelected((s) => (s ? { ...s, status: "closed" } : s));
       loadList();
     } else {

@@ -81,10 +81,10 @@ export function TagsSettings() {
     try {
       if (editing) {
         await tagsApi.update(editing.id, { name: name.trim(), colorHex: color }, token);
-        toast.success("Tag updated");
+        toast.success(t("toast.tagUpdated"));
       } else {
         await tagsApi.create({ name: name.trim(), colorHex: color }, token);
-        toast.success("Tag created");
+        toast.success(t("toast.tagCreated"));
       }
       setDialogOpen(false);
       await load();
@@ -100,7 +100,7 @@ export function TagsSettings() {
     try {
       await tagsApi.delete(id, token);
       setTags((prev) => prev.filter((t) => t.id !== id));
-      toast.success("Tag deleted");
+      toast.success(t("toast.tagDeleted"));
     } catch {
       toast.error("Failed to delete tag");
     }

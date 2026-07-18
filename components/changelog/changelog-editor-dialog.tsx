@@ -62,10 +62,10 @@ export function ChangelogEditorDialog({
       };
       if (changelog) {
         await changelogApi.update(changelog.id, payload, token);
-        toast.success("Changelog updated");
+        toast.success(t("toast.changelogUpdated"));
       } else {
         await changelogApi.create(payload, token);
-        toast.success("Changelog created");
+        toast.success(t("toast.changelogCreated"));
       }
       onOpenChange(false);
       onSaved?.();

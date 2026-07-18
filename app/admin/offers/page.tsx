@@ -88,7 +88,7 @@ export default function AdminOffersPage() {
     const res = await adminApi.createOffer(token, form);
     setBusy(false);
     if (res.ok) {
-      toast.success("Offer created");
+      toast.success(t("toast.offerCreated"));
       setOpen(false);
       setForm(EMPTY);
       load();
@@ -100,7 +100,7 @@ export default function AdminOffersPage() {
     const res = await adminApi.deactivateOffer(token, o.id);
     if (res.ok) {
       setRows((prev) => prev.map((r) => (r.id === o.id ? { ...r, is_active: 0 } : r)));
-      toast.success("Offer ended");
+      toast.success(t("toast.offerEnded"));
     } else toast.error(res.message || "Failed");
   };
 

@@ -76,7 +76,7 @@ export function ChangelogManager() {
     if (!token) return;
     try {
       await changelogApi.publish(id, token);
-      toast.success("Changelog published");
+      toast.success(t("toast.changelogPublished"));
       await load();
     } catch {
       toast.error("Failed to publish");
@@ -87,7 +87,7 @@ export function ChangelogManager() {
     if (!token) return;
     try {
       await changelogApi.delete(id, token);
-      toast.success("Changelog deleted");
+      toast.success(t("toast.changelogDeleted"));
       await load();
     } catch {
       toast.error("Failed to delete");

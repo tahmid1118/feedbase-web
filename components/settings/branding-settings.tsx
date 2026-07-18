@@ -67,7 +67,7 @@ export function BrandingSettings() {
     try {
       const res = await uploaderApi.uploadImage(file, token);
       setLogoUrl(res.filePath);
-      toast.success("Logo uploaded. Save changes to apply it.");
+      toast.success(t("toast.logoUploaded"));
     } catch {
       toast.error("Failed to upload logo");
     } finally {
@@ -91,7 +91,7 @@ export function BrandingSettings() {
       );
       setOriginalSubdomain(subdomain.trim());
       setTenant({ ...tenant, subdomain: subdomain.trim() });
-      toast.success("Workspace updated");
+      toast.success(t("toast.workspaceUpdated"));
     } catch (e) {
       // Surfaces e.g. "That subdomain is already taken".
       toast.error((e as Error)?.message || "Failed to update workspace");

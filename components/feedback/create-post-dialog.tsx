@@ -108,7 +108,7 @@ export function CreatePostDialog({
         { ...values, attachmentIds: attachments.map((a) => a.id) },
         session.user.accessToken
       );
-      toast.success("Post created successfully!");
+      toast.success(t("toast.postCreated"));
       form.reset();
       setAttachments([]);
       onOpenChange(false);

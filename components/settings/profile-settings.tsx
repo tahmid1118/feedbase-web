@@ -54,7 +54,7 @@ export function ProfileSettings() {
     try {
       const res = await uploaderApi.uploadImage(file, token);
       setAvatarPath(res.filePath);
-      toast.success("Image uploaded. Save your profile to apply it.");
+      toast.success(t("toast.imageUploaded"));
     } catch {
       toast.error("Failed to upload image");
     } finally {
@@ -81,7 +81,7 @@ export function ProfileSettings() {
         name: fullName.trim(),
         image: resolveAvatarUrl(avatarPath) ?? null,
       });
-      toast.success("Profile updated");
+      toast.success(t("toast.profileUpdated"));
     } catch {
       toast.error("Failed to update profile");
     } finally {
@@ -102,7 +102,7 @@ export function ProfileSettings() {
     setSavingPassword(true);
     try {
       await usersApi.changePassword(oldPassword, newPassword, token);
-      toast.success("Password updated");
+      toast.success(t("toast.passwordUpdated"));
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");

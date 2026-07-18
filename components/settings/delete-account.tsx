@@ -62,7 +62,7 @@ export function DeleteAccount() {
     setBusy(true);
     try {
       await usersApi.deleteAccount(password, token);
-      toast.success("Your account has been deleted");
+      toast.success(t("toast.accountDeleted"));
       // Nothing left to come back to — end the session.
       await signOut({ callbackUrl: "/" });
     } catch (e) {

@@ -77,7 +77,7 @@ export default function AdminPromoCodesPage() {
     const res = await adminApi.createPromoCode(token, form);
     setBusy(false);
     if (res.ok) {
-      toast.success("Promo code created");
+      toast.success(t("toast.promoCreated"));
       setOpen(false);
       setForm(EMPTY);
       load();
@@ -89,7 +89,7 @@ export default function AdminPromoCodesPage() {
     const res = await adminApi.revokePromoCode(token, p.id);
     if (res.ok) {
       setRows((prev) => prev.map((r) => (r.id === p.id ? { ...r, is_active: 0 } : r)));
-      toast.success("Promo code revoked");
+      toast.success(t("toast.promoRevoked"));
     } else toast.error(res.message || "Failed");
   };
 

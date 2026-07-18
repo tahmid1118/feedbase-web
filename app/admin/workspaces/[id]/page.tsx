@@ -131,7 +131,7 @@ export default function AdminWorkspacePostsPage() {
     const res = await adminApi.deleteWorkspacePost(token, id, p.id);
     if (res.ok) {
       setPosts((prev) => prev.filter((x) => x.id !== p.id));
-      toast.success("Post deleted");
+      toast.success(t("toast.postDeleted"));
     } else toast.error(res.message || "Failed");
   };
 
@@ -168,7 +168,7 @@ export default function AdminWorkspacePostsPage() {
             : x
         )
       );
-      toast.success("Comment deleted");
+      toast.success(t("toast.commentDeleted"));
     } else toast.error(res.message || "Failed");
   };
 

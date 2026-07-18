@@ -62,7 +62,7 @@ export default function AdminAdminsPage() {
     const res = await adminApi.createAdmin(token, form);
     setBusy(false);
     if (res.ok) {
-      toast.success("Admin created");
+      toast.success(t("toast.adminCreated"));
       setOpen(false);
       setForm({ fullName: "", email: "", password: "" });
       load();
@@ -83,7 +83,7 @@ export default function AdminAdminsPage() {
     const res = await adminApi.deleteAdmin(token, a.id);
     if (res.ok) {
       setRows((prev) => prev.filter((r) => r.id !== a.id));
-      toast.success("Admin removed");
+      toast.success(t("toast.adminRemoved"));
     } else toast.error(res.message || "Failed");
   };
 

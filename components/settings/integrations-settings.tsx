@@ -104,7 +104,7 @@ export function IntegrationsSettings() {
         },
         token
       );
-      toast.success("Integration created");
+      toast.success(t("toast.integrationCreated"));
       setDialogOpen(false);
       await load();
     } catch {
@@ -135,7 +135,7 @@ export function IntegrationsSettings() {
     try {
       await integrationsApi.delete(id, token);
       setIntegrations((prev) => prev.filter((i) => i.id !== id));
-      toast.success("Integration deleted");
+      toast.success(t("toast.integrationDeleted"));
     } catch {
       toast.error("Failed to delete integration");
     }

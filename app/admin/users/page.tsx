@@ -63,7 +63,7 @@ export default function AdminUsersPage() {
     const res = await adminApi.updateUser(token, u.id, { role });
     if (res.ok) {
       setRows((prev) => prev.map((r) => (r.id === u.id ? { ...r, role } : r)));
-      toast.success("Role updated");
+      toast.success(t("toast.roleUpdated"));
     } else toast.error(res.message || "Failed");
   };
 
@@ -82,7 +82,7 @@ export default function AdminUsersPage() {
     const res = await adminApi.deleteUser(token, u.id);
     if (res.ok) {
       setRows((prev) => prev.filter((r) => r.id !== u.id));
-      toast.success("User deleted");
+      toast.success(t("toast.userDeleted"));
     } else toast.error(res.message || "Failed");
   };
 
@@ -90,7 +90,7 @@ export default function AdminUsersPage() {
     if (!token || !pwUser) return;
     const res = await adminApi.resetUserPassword(token, pwUser.id, pw);
     if (res.ok) {
-      toast.success("Password reset");
+      toast.success(t("toast.passwordReset"));
       setPwUser(null);
       setPw("");
     } else toast.error(res.message || "Failed to reset password");

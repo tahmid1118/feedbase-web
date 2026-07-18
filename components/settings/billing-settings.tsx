@@ -65,7 +65,7 @@ export function BillingSettings() {
   // Toast on return from Stripe Checkout (?checkout=success|cancelled).
   useEffect(() => {
     const c = params.get("checkout");
-    if (c === "success") toast.success("Subscription updated — welcome aboard!");
+    if (c === "success") toast.success(t("toast.subscriptionUpdated"));
     else if (c === "cancelled") toast("Checkout cancelled.");
   }, [params]);
 

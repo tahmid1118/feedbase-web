@@ -77,7 +77,7 @@ export default function NotificationsPage() {
       await notificationsApi.delete(id, token);
       setNotifications((prev) => prev.filter((n) => n.id !== id));
       emitNotificationsChanged(); // deleting an unread one changes the count
-      toast.success("Notification deleted");
+      toast.success(t("toast.notifDeleted"));
     } catch {
       toast.error("Failed to delete notification");
     }
@@ -91,7 +91,7 @@ export default function NotificationsPage() {
         prev.map((n) => (n.id === id ? { ...n, is_read: 1 } : n))
       );
       emitNotificationsChanged();
-      toast.success("Marked as read");
+      toast.success(t("toast.markedRead"));
     } catch {
       toast.error("Failed to mark as read");
     }
@@ -103,7 +103,7 @@ export default function NotificationsPage() {
       await notificationsApi.markAllRead(token);
       setNotifications((prev) => prev.map((n) => ({ ...n, is_read: 1 })));
       emitNotificationsChanged();
-      toast.success("All notifications marked as read");
+      toast.success(t("toast.allNotifsRead"));
     } catch {
       toast.error("Failed to mark all as read");
     }
@@ -116,7 +116,7 @@ export default function NotificationsPage() {
       await notificationsApi.clearAll(token);
       setNotifications([]);
       emitNotificationsChanged();
-      toast.success("All notifications cleared");
+      toast.success(t("toast.allNotifsCleared"));
     } catch {
       toast.error("Failed to clear notifications");
     } finally {

@@ -216,7 +216,7 @@ export default function PostDetailPage() {
     if (!token) return;
     try {
       await postsApi.delete(postId, token);
-      toast.success("Post deleted");
+      toast.success(t("toast.postDeleted"));
       router.push("/dashboard/feedback");
     } catch (e) {
       // Surface the backend's reason (403 owner-only / 402 upgrade required).

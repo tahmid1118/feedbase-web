@@ -101,7 +101,7 @@ export function TeamSettings() {
     try {
       await invitationsApi.revoke(inv.id, token);
       setInvites((prev) => prev.filter((i) => i.id !== inv.id));
-      toast.success("Invitation revoked");
+      toast.success(t("toast.invitationRevoked"));
     } catch {
       toast.error("Failed to revoke invitation");
     }

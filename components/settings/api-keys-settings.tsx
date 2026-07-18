@@ -95,7 +95,7 @@ export function ApiKeysSettings() {
         token
       );
       setCreatedKey(res.data?.key ?? null);
-      toast.success("API key created");
+      toast.success(t("toast.apiKeyCreated"));
       await load();
     } catch {
       toast.error("Failed to create API key");
@@ -108,7 +108,7 @@ export function ApiKeysSettings() {
     if (!token) return;
     try {
       await apiKeysApi.revoke(id, token);
-      toast.success("API key revoked");
+      toast.success(t("toast.apiKeyRevoked"));
       await load();
     } catch {
       toast.error("Failed to revoke key");
@@ -117,7 +117,7 @@ export function ApiKeysSettings() {
 
   const copyKey = (value: string) => {
     navigator.clipboard.writeText(value);
-    toast.success("Copied to clipboard");
+    toast.success(t("toast.copiedToClipboard"));
   };
 
   return (

@@ -139,7 +139,7 @@ export function RoadmapBoard() {
         { name: columnName.trim() },
         token
       );
-      toast.success("Column updated");
+      toast.success(t("toast.columnUpdated"));
       setColumnDialog({ open: false });
       await load();
     } catch {
@@ -171,7 +171,7 @@ export function RoadmapBoard() {
         },
         token
       );
-      toast.success("Added to roadmap");
+      toast.success(t("toast.addedToRoadmap"));
       setItemDialogOpen(false);
       await load();
     } catch {
@@ -218,7 +218,7 @@ export function RoadmapBoard() {
     try {
       await roadmapApi.removeItem(id, token);
       setItems((prev) => prev.filter((i) => i.id !== id));
-      toast.success("Removed from roadmap");
+      toast.success(t("toast.removedFromRoadmap"));
     } catch {
       toast.error("Failed to remove item");
     }
