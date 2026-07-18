@@ -250,7 +250,21 @@
     "typeFeature": "Funzionalità",
     "typeBug": "Bug",
     "typeFeatureRequest": "Richiesta di funzionalità",
-    "typeBugReport": "Segnalazione bug"
+    "typeBugReport": "Segnalazione bug",
+    "loadingFeedback": "Caricamento dei feedback…",
+    "noMatch": "Nessun post corrisponde ai tuoi filtri.",
+    "onRoadmap": "Nella roadmap",
+    "alreadyOnRoadmap": "Già nella roadmap",
+    "selectPost": "Seleziona {{title}}",
+    "addN": "Aggiungi {{count}}",
+    "sending": "Invio…",
+    "loadPostsFailed": "Impossibile caricare i post",
+    "alreadyOnRoadmapToast": "Quei post sono già nella roadmap.",
+    "addedToRoadmap_one": "{{count}} post aggiunto alla roadmap",
+    "addedToRoadmap_other": "{{count}} post aggiunti alla roadmap",
+    "addFailed": "Impossibile aggiungere i post alla roadmap.",
+    "updateFailed_one": "Impossibile aggiornare il post.",
+    "updateFailed_other": "Impossibile aggiornare i post."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Rispondi",
     "commentingAs": "Stai commentando come",
     "deleteConfirm": "Eliminare questo commento?",
-    "empty": "Ancora nessun commento — inizia la conversazione."
+    "empty": "Ancora nessun commento — inizia la conversazione.",
+    "none": "Ancora nessun commento.",
+    "edited": "Modificato"
   },
   "share": {
     "title": "Condividi questo post",
@@ -374,7 +390,12 @@
     "deleteTag": "Elimina tag",
     "deleteTagConfirm": "Eliminare il tag?",
     "editTagTitle": "Modifica tag",
-    "color": "Colore"
+    "color": "Colore",
+    "noTags": "Nessuna etichetta",
+    "addTag": "Etichetta",
+    "noneCreated": "Nessuna etichetta creata finora.",
+    "removeTag": "Rimuovi {{name}}",
+    "updateFailed": "Impossibile aggiornare le etichette"
   },
   "branding": {
     "title": "Spazio di lavoro e branding",
@@ -423,7 +444,15 @@
     "selectConversation": "Seleziona una conversazione per visualizzarla.",
     "closeChat": "Chiudi chat",
     "closeThisChat": "Chiudere questa chat?",
-    "typeReply": "Scrivi una risposta…"
+    "typeReply": "Scrivi una risposta…",
+    "title": "Assistenza",
+    "replyTime": "Di solito rispondiamo entro un giorno",
+    "empty": "Invia un messaggio e il nostro team ti risponderà.",
+    "typeMessage": "Scrivi il tuo messaggio…",
+    "closedByAdmin": "Questa chat è stata chiusa dall'assistenza. Avviane una nuova se hai ancora bisogno di aiuto.",
+    "startNewChat": "Avvia una nuova chat",
+    "contactSupport": "Contatta l'assistenza",
+    "send": "Invia"
   },
   "toast": {
     "apiKeyCreated": "Chiave API creata",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "proprio ora"
+  },
+  "postDetail": {
+    "loadingPost": "Caricamento del post…",
+    "backToFeedback": "Torna ai feedback",
+    "pinned": "Fissato",
+    "deleteDesc": "Questa operazione rimuove definitivamente il post insieme ai suoi voti e commenti. L'azione non può essere annullata.",
+    "deleteProTitle": "L'eliminazione dei feedback richiede il piano Pro",
+    "deleteProToast": "L'eliminazione dei feedback è una funzione Pro",
+    "deleteProToastDesc": "Esegui l'upgrade dello spazio di lavoro per eliminare i post di feedback.",
+    "upvoteTitle": "Voti dalla tua bacheca pubblica",
+    "submitter": "Mittente",
+    "implementedSent": "E-mail di implementazione inviata il {{date}}",
+    "resendImplemented": "Invia di nuovo l'e-mail di implementazione",
+    "notifyImplemented": "Notifica: implementato",
+    "markCompletedHint": "Contrassegna questo feedback come «Completato» per inviare un'e-mail al mittente sull'avvenuta implementazione.",
+    "upgradeToPro": "Passa a Pro",
+    "contactUpsell": "per vedere chi ha inviato questo feedback e contattarlo quando verrà implementato.",
+    "tags": "Etichette",
+    "commentsHeading": "Commenti ({{count}})",
+    "discussionNote": "La discussione avviene nella bacheca pubblica",
+    "emailedSubmitter": "Il mittente è stato informato via e-mail dell'implementazione del suo feedback.",
+    "recordedNoMail": "Registrato — nessun provider di posta configurato, quindi non è stato inviato nulla.",
+    "notifyFailed": "Impossibile notificare il mittente.",
+    "loadFailed": "Impossibile caricare il post",
+    "feedbackRejected": "Feedback rifiutato",
+    "restoredToOpen": "Ripristinato ad «Aperto»",
+    "statusSet": "Stato impostato su {{status}}",
+    "statusUpdateFailed": "Impossibile aggiornare lo stato",
+    "postPinned": "Post fissato",
+    "postUnpinned": "Post non più fissato",
+    "pinUpdateFailed": "Impossibile aggiornare il fissaggio",
+    "deleteFailed": "Impossibile eliminare il post"
+  },
+  "duplicate": {
+    "mark": "Segna come duplicato",
+    "possible": "Possibili duplicati",
+    "finding": "Ricerca di suggerimenti…",
+    "none": "Nessun probabile duplicato trovato.",
+    "marked": "Segnato come duplicato",
+    "cleared": "Contrassegno duplicato rimosso",
+    "updateFailed": "Impossibile aggiornare lo stato di duplicato"
   }
 }

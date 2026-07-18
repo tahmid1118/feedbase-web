@@ -231,7 +231,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     const columnId = Number(sendColumnId);
     const ids = [...selected].filter((id) => !onRoadmap.has(id));
     if (ids.length === 0) {
-      toast.error("Those posts are already on the roadmap.");
+      toast.error(t("feedback.alreadyOnRoadmapToast"));
       return;
     }
 
@@ -273,7 +273,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           (fail ? ` · ${fail} failed` : "")
       );
     } else {
-      toast.error("Failed to add posts to the roadmap.");
+      toast.error(t("feedback.addFailed"));
     }
   };
 
@@ -305,7 +305,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           (fail ? ` · ${fail} failed` : "")
       );
     } else {
-      toast.error(`Failed to update ${ids.length === 1 ? "the post" : "posts"}.`);
+      toast.error(t("feedback.updateFailed", { count: ids.length }));
     }
   };
 
@@ -444,11 +444,11 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
       {loading ? (
         <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
-          Loading feedback...
+          {t("feedback.loadingFeedback")}
         </div>
       ) : visiblePosts.length === 0 ? (
         <div className="rounded-xl border border-[#e399a3]/20 bg-white p-12 text-center text-[#1c0a0c]/60">
-          No feedback posts match your filters.
+          {t("feedback.noMatch")}
         </div>
       ) : (
         <div className="space-y-3">
@@ -462,7 +462,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                 {/* Stretched link: the whole card navigates, except elements above it. */}
                 <Link
                   href={`/dashboard/feedback/${post.id}`}
-                  aria-label={`Open ${post.title}`}
+                  aria-label={t("portal.openPost", { title: post.title })}
                   className="absolute inset-0 z-[1] rounded-xl"
                 />
                 <div className="flex items-start gap-3">
@@ -475,9 +475,9 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                         aria-label={
                           isOnRoadmap
                             ? `${post.title} is already on the roadmap`
-                            : `Select ${post.title}`
+                            : t("feedback.selectPost", { title: post.title })
                         }
-                        title={isOnRoadmap ? "Already on the roadmap" : undefined}
+                        title={isOnRoadmap ? t("feedback.alreadyOnRoadmap") : undefined}
                       />
                     </div>
                   )}
@@ -485,7 +485,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                   {/* Read-only tally: only the public board votes, never the team. */}
                   <div
                     aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
-                    title="Upvotes from your public board"
+                    title={t("postDetail.upvoteTitle")}
                     className="relative z-[2] flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c]"
                   >
                     <ThumbsUp className="h-4 w-4 text-[#c74959]" />
@@ -508,7 +508,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                           {isOnRoadmap && (
                             <span className="relative z-[2] inline-flex items-center gap-1 rounded-full bg-[#c74959]/10 px-2 py-0.5 text-[10px] font-medium text-[#c74959]">
                               <GitBranch className="h-3 w-3" />
-                              On roadmap
+                              {t("feedback.onRoadmap")}
                             </span>
                           )}
                         </div>
@@ -526,7 +526,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#1c0a0c]/60">
                       <span className="flex items-center gap-1">
                         <MessageSquare className="h-3 w-3" />
-                        {post.comment_count} comments
+                        {t("portal.nComments", { count: post.comment_count ?? 0 })}
                       </span>
                       {(post.attachment_count ?? 0) > 0 && (
                         <span className="flex items-center gap-1">
@@ -536,7 +536,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                       )}
                       <span className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        by {post.author_name}
+                        {t("portal.byAuthor", { name: post.author_name })}
                       </span>
                       {post.tags?.map((tag) => (
                         <Badge
@@ -608,14 +608,14 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setSendOpen(false)}>
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               onClick={handleSend}
               disabled={sending || !sendColumnId}
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
             >
-              {sending ? "Sending..." : `Add ${selectedCount}`}
+              {sending ? t("feedback.sending") : t("feedback.addN", { count: selectedCount })}
             </Button>
           </DialogFooter>
         </DialogContent>

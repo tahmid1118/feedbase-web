@@ -2,6 +2,8 @@
 
 import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
+import { LocalTime } from "@/components/local-time";
+import { useTranslation } from "@/lib/i18n/client";
 import type { Comment } from "@/lib/api";
 
 interface CommentNode extends Comment {
@@ -35,12 +37,13 @@ interface CommentThreadProps {
  * displays the discussion for triage.
  */
 export function CommentThread({ comments }: CommentThreadProps) {
+  const { t } = useTranslation();
   const tree = useMemo(() => buildTree(comments), [comments]);
 
   if (comments.length === 0) {
     return (
       <p className="py-8 text-center text-sm text-[#1c0a0c]/60">
-        No comments yet.
+        {t("comments.none")}
       </p>
     );
   }
@@ -55,6 +58,7 @@ export function CommentThread({ comments }: CommentThreadProps) {
 }
 
 function CommentItem({ node, depth }: { node: CommentNode; depth: number }) {
+  const { t } = useTranslation();
   return (
     <div className={depth > 0 ? "ml-6 border-l border-[#e399a3]/30 pl-4" : ""}>
       <div className="rounded-lg border border-[#e399a3]/20 bg-[#fdf8f9] p-4">
@@ -63,14 +67,18 @@ function CommentItem({ node, depth }: { node: CommentNode; depth: number }) {
             <span className="font-medium text-[#1c0a0c]">{node.author_name}</span>
             {node.is_edited === 1 && (
               <Badge variant="outline" className="text-xs">
-                Edited
+                {t("comments.edited")}
               </Badge>
             )}
           </div>
           <span className="text-xs text-[#1c0a0c]/50">
-            {node.created_at
-              ? new Date(node.created_at).toLocaleString()
-              : "Recently"}
+            {node.created_at ? (
+              // Absolute, as before — LocalTime just makes it render in the
+              // active UI language and the viewer's timezone.
+              <LocalTime date={node.created_at} />
+            ) : (
+              t("portal.recently")
+            )}
           </span>
         </div>
 

@@ -250,7 +250,21 @@
     "typeFeature": "Funktion",
     "typeBug": "Fehler",
     "typeFeatureRequest": "Funktionswunsch",
-    "typeBugReport": "Fehlerbericht"
+    "typeBugReport": "Fehlerbericht",
+    "loadingFeedback": "Feedback wird geladen…",
+    "noMatch": "Keine Feedback-Beiträge entsprechen Ihren Filtern.",
+    "onRoadmap": "Auf der Roadmap",
+    "alreadyOnRoadmap": "Bereits auf der Roadmap",
+    "selectPost": "{{title}} auswählen",
+    "addN": "{{count}} hinzufügen",
+    "sending": "Wird gesendet…",
+    "loadPostsFailed": "Beiträge konnten nicht geladen werden",
+    "alreadyOnRoadmapToast": "Diese Beiträge stehen bereits auf der Roadmap.",
+    "addedToRoadmap_one": "{{count}} Beitrag zur Roadmap hinzugefügt",
+    "addedToRoadmap_other": "{{count}} Beiträge zur Roadmap hinzugefügt",
+    "addFailed": "Beiträge konnten nicht zur Roadmap hinzugefügt werden.",
+    "updateFailed_one": "Der Beitrag konnte nicht aktualisiert werden.",
+    "updateFailed_other": "Beiträge konnten nicht aktualisiert werden."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Antworten",
     "commentingAs": "Kommentieren als",
     "deleteConfirm": "Diesen Kommentar löschen?",
-    "empty": "Noch keine Kommentare — starten Sie die Unterhaltung."
+    "empty": "Noch keine Kommentare — starten Sie die Unterhaltung.",
+    "none": "Noch keine Kommentare.",
+    "edited": "Bearbeitet"
   },
   "share": {
     "title": "Diesen Beitrag teilen",
@@ -374,7 +390,12 @@
     "deleteTag": "Tag löschen",
     "deleteTagConfirm": "Tag löschen?",
     "editTagTitle": "Tag bearbeiten",
-    "color": "Farbe"
+    "color": "Farbe",
+    "noTags": "Keine Schlagwörter",
+    "addTag": "Schlagwort",
+    "noneCreated": "Noch keine Schlagwörter erstellt.",
+    "removeTag": "{{name}} entfernen",
+    "updateFailed": "Schlagwörter konnten nicht aktualisiert werden"
   },
   "branding": {
     "title": "Arbeitsbereich & Branding",
@@ -423,7 +444,15 @@
     "selectConversation": "Wählen Sie eine Unterhaltung, um sie anzuzeigen.",
     "closeChat": "Chat schließen",
     "closeThisChat": "Diesen Chat schließen?",
-    "typeReply": "Antwort eingeben…"
+    "typeReply": "Antwort eingeben…",
+    "title": "Support",
+    "replyTime": "Wir antworten in der Regel innerhalb eines Tages",
+    "empty": "Senden Sie eine Nachricht und unser Team meldet sich bei Ihnen.",
+    "typeMessage": "Nachricht eingeben…",
+    "closedByAdmin": "Dieser Chat wurde vom Support geschlossen. Starten Sie einen neuen, wenn Sie weiterhin Hilfe benötigen.",
+    "startNewChat": "Neuen Chat starten",
+    "contactSupport": "Support kontaktieren",
+    "send": "Senden"
   },
   "toast": {
     "apiKeyCreated": "API-Schlüssel erstellt",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "gerade eben"
+  },
+  "postDetail": {
+    "loadingPost": "Beitrag wird geladen…",
+    "backToFeedback": "Zurück zum Feedback",
+    "pinned": "Angeheftet",
+    "deleteDesc": "Dadurch werden der Beitrag sowie seine Stimmen und Kommentare dauerhaft entfernt. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "deleteProTitle": "Das Löschen von Feedback erfordert den Pro-Tarif",
+    "deleteProToast": "Das Löschen von Feedback ist eine Pro-Funktion",
+    "deleteProToastDesc": "Führen Sie ein Upgrade Ihres Arbeitsbereichs durch, um Feedback-Beiträge zu löschen.",
+    "upvoteTitle": "Stimmen von Ihrer öffentlichen Pinnwand",
+    "submitter": "Einreicher",
+    "implementedSent": "E-Mail zur Umsetzung gesendet am {{date}}",
+    "resendImplemented": "E-Mail zur Umsetzung erneut senden",
+    "notifyImplemented": "Benachrichtigen: umgesetzt",
+    "markCompletedHint": "Markieren Sie dieses Feedback als „Abgeschlossen“, um den Einreicher per E-Mail über die Umsetzung zu informieren.",
+    "upgradeToPro": "Auf Pro upgraden",
+    "contactUpsell": "um zu sehen, wer dieses Feedback eingereicht hat, und ihn bei der Umsetzung zu benachrichtigen.",
+    "tags": "Schlagwörter",
+    "commentsHeading": "Kommentare ({{count}})",
+    "discussionNote": "Die Diskussion findet auf der öffentlichen Pinnwand statt",
+    "emailedSubmitter": "Der Einreicher wurde per E-Mail über die Umsetzung seines Feedbacks informiert.",
+    "recordedNoMail": "Erfasst — es ist kein E-Mail-Anbieter konfiguriert, daher wurde nichts gesendet.",
+    "notifyFailed": "Der Einreicher konnte nicht benachrichtigt werden.",
+    "loadFailed": "Beitrag konnte nicht geladen werden",
+    "feedbackRejected": "Feedback abgelehnt",
+    "restoredToOpen": "Auf „Offen“ zurückgesetzt",
+    "statusSet": "Status auf {{status}} gesetzt",
+    "statusUpdateFailed": "Status konnte nicht aktualisiert werden",
+    "postPinned": "Beitrag angeheftet",
+    "postUnpinned": "Beitrag losgelöst",
+    "pinUpdateFailed": "Anheften konnte nicht aktualisiert werden",
+    "deleteFailed": "Beitrag konnte nicht gelöscht werden"
+  },
+  "duplicate": {
+    "mark": "Als Duplikat markieren",
+    "possible": "Mögliche Duplikate",
+    "finding": "Vorschläge werden gesucht…",
+    "none": "Keine wahrscheinlichen Duplikate gefunden.",
+    "marked": "Als Duplikat markiert",
+    "cleared": "Duplikat-Markierung entfernt",
+    "updateFailed": "Duplikatstatus konnte nicht aktualisiert werden"
   }
 }

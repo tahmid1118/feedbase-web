@@ -45,6 +45,7 @@ function buildPublicPostUrl(
 }
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
+import { useLanguage } from "@/components/providers/i18n-provider";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -91,6 +92,7 @@ const STATUS_BADGE: Record<string, string> = {
 
 export default function PostDetailPage() {
   const { t } = useTranslation();
+  const lng = useLanguage();
   const params = useParams();
   const router = useRouter();
   const { data: session } = useSession();
@@ -133,12 +135,12 @@ export default function PostDetailPage() {
       setNotifiedOverride(new Date().toISOString());
       toast.success(
         res.data?.emailSent
-          ? "The submitter was emailed that their feedback is implemented."
-          : "Recorded — no mail provider is configured, so nothing was sent."
+          ? t("postDetail.emailedSubmitter")
+          : t("postDetail.recordedNoMail")
       );
     } catch (e) {
       toast.error(
-        (e as Error)?.message || "Failed to notify the submitter."
+        (e as Error)?.message || t("postDetail.notifyFailed")
       );
     } finally {
       setNotifying(false);
@@ -172,11 +174,11 @@ export default function PostDetailPage() {
       setComments(extractRows<Comment>(commentsRes.data, "comments"));
     } catch (error) {
       console.error("Failed to load post:", error);
-      toast.error("Failed to load post");
+      toast.error(t("postDetail.loadFailed"));
     } finally {
       setLoading(false);
     }
-  }, [postId, token]);
+  }, [postId, token, t]);
 
   useEffect(() => {
     loadPostData();
@@ -190,13 +192,13 @@ export default function PostDetailPage() {
       setPost({ ...post, status });
       toast.success(
         status === "rejected"
-          ? "Feedback rejected"
+          ? t("postDetail.feedbackRejected")
           : wasRejected && status === "open"
-            ? "Restored to open"
-            : `Status set to ${status.replace("_", " ")}`
+            ? t("postDetail.restoredToOpen")
+            : t("postDetail.statusSet", { status: t(`status.${status}`) })
       );
     } catch {
-      toast.error("Failed to update status");
+      toast.error(t("postDetail.statusUpdateFailed"));
     }
   };
 
@@ -206,9 +208,9 @@ export default function PostDetailPage() {
     try {
       await postsApi.pin(postId, token, next === 1);
       setPost({ ...post, is_pinned: next });
-      toast.success(next ? "Post pinned" : "Post unpinned");
+      toast.success(t(next ? "postDetail.postPinned" : "postDetail.postUnpinned"));
     } catch {
-      toast.error("Failed to update pin");
+      toast.error(t("postDetail.pinUpdateFailed"));
     }
   };
 
@@ -220,16 +222,16 @@ export default function PostDetailPage() {
       router.push("/dashboard/feedback");
     } catch (e) {
       // Surface the backend's reason (403 owner-only / 402 upgrade required).
-      toast.error(e instanceof ApiError ? e.message : "Failed to delete post");
+      toast.error(e instanceof ApiError ? e.message : t("postDetail.deleteFailed"));
     }
   };
 
   // Free-plan owners see the Delete control but are prompted to upgrade.
   const promptDeleteUpgrade = () => {
-    toast("Deleting feedback is a Pro feature", {
-      description: "Upgrade your workspace to delete feedback posts.",
+    toast(t("postDetail.deleteProToast"), {
+      description: t("postDetail.deleteProToastDesc"),
       action: {
-        label: "Upgrade",
+        label: t("common.upgrade"),
         onClick: () => router.push("/dashboard/settings?tab=billing"),
       },
     });
@@ -238,7 +240,7 @@ export default function PostDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
-        Loading post...
+        {t("postDetail.loadingPost")}
       </div>
     );
   }
@@ -249,7 +251,7 @@ export default function PostDetailPage() {
         <Link href="/dashboard/feedback">
           <Button variant="ghost">
             <ArrowLeft className="h-4 w-4" />
-            Back to Feedback
+            {t("postDetail.backToFeedback")}
           </Button>
         </Link>
         <Card className="p-12 text-center">
@@ -265,7 +267,7 @@ export default function PostDetailPage() {
         <Link href="/dashboard/feedback">
           <Button variant="ghost">
             <ArrowLeft className="h-4 w-4" />
-            Back to Feedback
+            {t("postDetail.backToFeedback")}
           </Button>
         </Link>
 
@@ -282,7 +284,7 @@ export default function PostDetailPage() {
             <Pin
               className={`h-4 w-4 ${post.is_pinned ? "fill-[#c74959]" : ""}`}
             />
-            {post.is_pinned ? "Pinned" : "Pin"}
+            {t(post.is_pinned ? "postDetail.pinned" : "common.pin")}
           </Button>
           {isOwner &&
             (canDeleteFeedback ? (
@@ -294,24 +296,23 @@ export default function PostDetailPage() {
                     className="text-red-600 hover:text-red-700"
                   >
                     <Trash2 className="h-4 w-4" />
-                    Delete
+                    {t("common.delete")}
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
                     <AlertDialogTitle>{t("postOwner.deleteTitle")}</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This permanently removes the post along with its votes and
-                      comments. This action cannot be undone.
+                      {t("postDetail.deleteDesc")}
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
                     <AlertDialogAction
                       variant="destructive"
                       onClick={handleDeletePost}
                     >
-                      Delete
+                      {t("common.delete")}
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
@@ -322,10 +323,10 @@ export default function PostDetailPage() {
                 size="sm"
                 className="text-[#1c0a0c]/50"
                 onClick={promptDeleteUpgrade}
-                title="Deleting feedback requires the Pro plan"
+                title={t("postDetail.deleteProTitle")}
               >
                 <Lock className="h-4 w-4" />
-                Delete
+                {t("common.delete")}
               </Button>
             ))}
         </div>
@@ -336,7 +337,7 @@ export default function PostDetailPage() {
           {/* Read-only tally: only the public board votes, never the team. */}
           <div
             aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
-            title="Upvotes from your public board"
+            title={t("postDetail.upvoteTitle")}
             className="flex h-16 w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c]"
           >
             <ThumbsUp className="h-5 w-5 text-[#c74959]" />
@@ -358,7 +359,7 @@ export default function PostDetailPage() {
                     onClick={() => handleStatusChange("open")}
                   >
                     <RotateCcw className="h-4 w-4" />
-                    Restore to open
+                    {t("feedback.restoreToOpen")}
                   </Button>
                 ) : (
                   <div className="flex shrink-0 items-center gap-2">
@@ -383,7 +384,7 @@ export default function PostDetailPage() {
                       onClick={() => handleStatusChange("rejected")}
                     >
                       <Ban className="h-4 w-4" />
-                      Reject
+                      {t("feedback.reject")}
                     </Button>
                   </div>
                 )}
@@ -401,11 +402,11 @@ export default function PostDetailPage() {
             <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">
               <span className="flex items-center gap-1">
                 <MessageSquare className="h-4 w-4" />
-                {comments.length} comments
+                {t("portal.nComments", { count: comments.length })}
               </span>
               <span className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
-                by {post.author_name}
+                {t("portal.byAuthor", { name: post.author_name })}
               </span>
               <Badge className={STATUS_BADGE[post.status]}>
                 {t(`status.${post.status}`)}
@@ -419,7 +420,7 @@ export default function PostDetailPage() {
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
-                      Submitter
+                      {t("postDetail.submitter")}
                     </p>
                     <p className="mt-1 flex items-center gap-2 text-sm text-[#1c0a0c]">
                       <Mail className="h-4 w-4 shrink-0 text-[#c74959]" />
@@ -432,8 +433,8 @@ export default function PostDetailPage() {
                     </p>
                     {notifiedAt ? (
                       <p className="mt-1.5 text-xs font-medium text-green-700">
-                        ✓ Implemented email sent{" "}
-                        {new Date(notifiedAt).toLocaleDateString()}
+                        ✓{" "}
+                        {t("postDetail.implementedSent", { date: new Date(notifiedAt).toLocaleDateString(lng) })}
                       </p>
                     ) : null}
                   </div>
@@ -448,14 +449,13 @@ export default function PostDetailPage() {
                       ) : (
                         <Send className="h-4 w-4" />
                       )}
-                      {notifiedAt ? "Resend implemented email" : "Notify: implemented"}
+                      {t(notifiedAt ? "postDetail.resendImplemented" : "postDetail.notifyImplemented")}
                     </Button>
                   ) : null}
                 </div>
                 {post.status !== "completed" ? (
                   <p className="mt-2 text-xs text-[#1c0a0c]/50">
-                    Mark this feedback <strong>Completed</strong>{" "}
-                    to email the submitter that it&apos;s implemented.
+                    {t("postDetail.markCompletedHint")}
                   </p>
                 ) : null}
               </div>
@@ -468,17 +468,16 @@ export default function PostDetailPage() {
                 <Lock className="h-4 w-4 shrink-0 text-[#c74959]" />
                 <span>
                   <span className="rounded bg-[#c74959] px-1.5 py-0.5 text-xs font-semibold text-white">
-                    Upgrade to Pro
+                    {t("postDetail.upgradeToPro")}
                   </span>{" "}
-                  to see who submitted this feedback and email them when
-                  it&apos;s implemented.
+                  {t("postDetail.contactUpsell")}
                 </span>
               </button>
             ) : null}
 
             <div className="border-t border-[#e399a3]/20 pt-4">
               <p className="mb-2 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
-                Tags
+                {t("postDetail.tags")}
               </p>
               <PostTags postId={post.id} initialTags={post.tags ?? []} />
             </div>
@@ -495,10 +494,10 @@ export default function PostDetailPage() {
       <Card className="p-6">
         <div className="mb-4 flex items-center justify-between gap-2">
           <h3 className="text-lg font-semibold text-[#1c0a0c]">
-            Comments ({comments.length})
+            {t("postDetail.commentsHeading", { count: comments.length })}
           </h3>
           <span className="text-xs text-[#1c0a0c]/50">
-            Discussion happens on the public board
+            {t("postDetail.discussionNote")}
           </span>
         </div>
 

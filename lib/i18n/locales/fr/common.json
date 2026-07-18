@@ -250,7 +250,21 @@
     "typeFeature": "Fonctionnalité",
     "typeBug": "Bogue",
     "typeFeatureRequest": "Demande de fonctionnalité",
-    "typeBugReport": "Rapport de bogue"
+    "typeBugReport": "Rapport de bogue",
+    "loadingFeedback": "Chargement des retours…",
+    "noMatch": "Aucune publication ne correspond à vos filtres.",
+    "onRoadmap": "Sur la feuille de route",
+    "alreadyOnRoadmap": "Déjà sur la feuille de route",
+    "selectPost": "Sélectionner {{title}}",
+    "addN": "Ajouter {{count}}",
+    "sending": "Envoi…",
+    "loadPostsFailed": "Échec du chargement des publications",
+    "alreadyOnRoadmapToast": "Ces publications sont déjà sur la feuille de route.",
+    "addedToRoadmap_one": "{{count}} publication ajoutée à la feuille de route",
+    "addedToRoadmap_other": "{{count}} publications ajoutées à la feuille de route",
+    "addFailed": "Échec de l'ajout des publications à la feuille de route.",
+    "updateFailed_one": "Échec de la mise à jour de la publication.",
+    "updateFailed_other": "Échec de la mise à jour des publications."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Répondre",
     "commentingAs": "Vous commentez en tant que",
     "deleteConfirm": "Supprimer ce commentaire ?",
-    "empty": "Aucun commentaire pour l'instant — lancez la conversation."
+    "empty": "Aucun commentaire pour l'instant — lancez la conversation.",
+    "none": "Aucun commentaire pour le moment.",
+    "edited": "Modifié"
   },
   "share": {
     "title": "Partager cette publication",
@@ -374,7 +390,12 @@
     "deleteTag": "Supprimer l'étiquette",
     "deleteTagConfirm": "Supprimer l'étiquette ?",
     "editTagTitle": "Modifier l'étiquette",
-    "color": "Couleur"
+    "color": "Couleur",
+    "noTags": "Aucune étiquette",
+    "addTag": "Étiquette",
+    "noneCreated": "Aucune étiquette créée pour le moment.",
+    "removeTag": "Supprimer {{name}}",
+    "updateFailed": "Échec de la mise à jour des étiquettes"
   },
   "branding": {
     "title": "Espace de travail et image de marque",
@@ -423,7 +444,15 @@
     "selectConversation": "Sélectionnez une conversation pour l'afficher.",
     "closeChat": "Fermer le chat",
     "closeThisChat": "Fermer ce chat ?",
-    "typeReply": "Saisissez une réponse…"
+    "typeReply": "Saisissez une réponse…",
+    "title": "Assistance",
+    "replyTime": "Nous répondons généralement sous un jour",
+    "empty": "Envoyez un message et notre équipe vous répondra.",
+    "typeMessage": "Saisissez votre message…",
+    "closedByAdmin": "Cette discussion a été fermée par l'assistance. Démarrez-en une nouvelle si vous avez encore besoin d'aide.",
+    "startNewChat": "Démarrer une nouvelle discussion",
+    "contactSupport": "Contacter l'assistance",
+    "send": "Envoyer"
   },
   "toast": {
     "apiKeyCreated": "Clé API créée",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "à l'instant"
+  },
+  "postDetail": {
+    "loadingPost": "Chargement de la publication…",
+    "backToFeedback": "Retour aux retours",
+    "pinned": "Épinglé",
+    "deleteDesc": "Cela supprime définitivement la publication ainsi que ses votes et commentaires. Cette action est irréversible.",
+    "deleteProTitle": "La suppression des retours nécessite le forfait Pro",
+    "deleteProToast": "La suppression des retours est une fonctionnalité Pro",
+    "deleteProToastDesc": "Passez à un forfait supérieur pour supprimer des publications.",
+    "upvoteTitle": "Votes depuis votre tableau public",
+    "submitter": "Auteur",
+    "implementedSent": "E-mail de mise en œuvre envoyé le {{date}}",
+    "resendImplemented": "Renvoyer l'e-mail de mise en œuvre",
+    "notifyImplemented": "Notifier : mis en œuvre",
+    "markCompletedHint": "Marquez ce retour comme « Terminé » pour informer l'auteur par e-mail de sa mise en œuvre.",
+    "upgradeToPro": "Passer à Pro",
+    "contactUpsell": "pour voir qui a soumis ce retour et le contacter par e-mail lors de sa mise en œuvre.",
+    "tags": "Étiquettes",
+    "commentsHeading": "Commentaires ({{count}})",
+    "discussionNote": "La discussion a lieu sur le tableau public",
+    "emailedSubmitter": "L'auteur a été informé par e-mail que son retour a été mis en œuvre.",
+    "recordedNoMail": "Enregistré — aucun fournisseur de messagerie n'est configuré, rien n'a donc été envoyé.",
+    "notifyFailed": "Échec de la notification de l'auteur.",
+    "loadFailed": "Échec du chargement de la publication",
+    "feedbackRejected": "Retour rejeté",
+    "restoredToOpen": "Rétabli en « Ouvert »",
+    "statusSet": "Statut défini sur {{status}}",
+    "statusUpdateFailed": "Échec de la mise à jour du statut",
+    "postPinned": "Publication épinglée",
+    "postUnpinned": "Publication désépinglée",
+    "pinUpdateFailed": "Échec de la mise à jour de l'épinglage",
+    "deleteFailed": "Échec de la suppression de la publication"
+  },
+  "duplicate": {
+    "mark": "Marquer comme doublon",
+    "possible": "Doublons possibles",
+    "finding": "Recherche de suggestions…",
+    "none": "Aucun doublon probable trouvé.",
+    "marked": "Marqué comme doublon",
+    "cleared": "Marque de doublon supprimée",
+    "updateFailed": "Échec de la mise à jour du statut de doublon"
   }
 }

@@ -250,7 +250,21 @@
     "typeFeature": "Funkcja",
     "typeBug": "Błąd",
     "typeFeatureRequest": "Prośba o funkcję",
-    "typeBugReport": "Zgłoszenie błędu"
+    "typeBugReport": "Zgłoszenie błędu",
+    "loadingFeedback": "Ładowanie opinii…",
+    "noMatch": "Żaden wpis nie pasuje do Twoich filtrów.",
+    "onRoadmap": "W planie działań",
+    "alreadyOnRoadmap": "Już w planie działań",
+    "selectPost": "Wybierz {{title}}",
+    "addN": "Dodaj {{count}}",
+    "sending": "Wysyłanie…",
+    "loadPostsFailed": "Nie udało się załadować wpisów",
+    "alreadyOnRoadmapToast": "Te wpisy są już w planie działań.",
+    "addedToRoadmap_one": "Dodano {{count}} wpis do planu działań",
+    "addedToRoadmap_other": "Dodano {{count}} wpisów do planu działań",
+    "addFailed": "Nie udało się dodać wpisów do planu działań.",
+    "updateFailed_one": "Nie udało się zaktualizować wpisu.",
+    "updateFailed_other": "Nie udało się zaktualizować wpisów."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Odpowiedz",
     "commentingAs": "Komentujesz jako",
     "deleteConfirm": "Usunąć ten komentarz?",
-    "empty": "Brak komentarzy — rozpocznij rozmowę."
+    "empty": "Brak komentarzy — rozpocznij rozmowę.",
+    "none": "Brak komentarzy.",
+    "edited": "Edytowano"
   },
   "share": {
     "title": "Udostępnij ten wpis",
@@ -374,7 +390,12 @@
     "deleteTag": "Usuń tag",
     "deleteTagConfirm": "Usunąć tag?",
     "editTagTitle": "Edytuj tag",
-    "color": "Kolor"
+    "color": "Kolor",
+    "noTags": "Brak tagów",
+    "addTag": "Tag",
+    "noneCreated": "Nie utworzono jeszcze tagów.",
+    "removeTag": "Usuń {{name}}",
+    "updateFailed": "Nie udało się zaktualizować tagów"
   },
   "branding": {
     "title": "Przestrzeń robocza i marka",
@@ -423,7 +444,15 @@
     "selectConversation": "Wybierz rozmowę, aby ją wyświetlić.",
     "closeChat": "Zamknij czat",
     "closeThisChat": "Zamknąć ten czat?",
-    "typeReply": "Wpisz odpowiedź…"
+    "typeReply": "Wpisz odpowiedź…",
+    "title": "Wsparcie",
+    "replyTime": "Zwykle odpowiadamy w ciągu jednego dnia",
+    "empty": "Wyślij wiadomość, a nasz zespół się z Tobą skontaktuje.",
+    "typeMessage": "Wpisz swoją wiadomość…",
+    "closedByAdmin": "Ten czat został zamknięty przez wsparcie. Rozpocznij nowy, jeśli nadal potrzebujesz pomocy.",
+    "startNewChat": "Rozpocznij nowy czat",
+    "contactSupport": "Skontaktuj się ze wsparciem",
+    "send": "Wyślij"
   },
   "toast": {
     "apiKeyCreated": "Utworzono klucz API",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "przed chwilą"
+  },
+  "postDetail": {
+    "loadingPost": "Ładowanie wpisu…",
+    "backToFeedback": "Powrót do opinii",
+    "pinned": "Przypięte",
+    "deleteDesc": "Spowoduje to trwałe usunięcie wpisu wraz z głosami i komentarzami. Tej operacji nie można cofnąć.",
+    "deleteProTitle": "Usuwanie opinii wymaga planu Pro",
+    "deleteProToast": "Usuwanie opinii to funkcja Pro",
+    "deleteProToastDesc": "Ulepsz obszar roboczy, aby usuwać wpisy z opiniami.",
+    "upvoteTitle": "Głosy z Twojej publicznej tablicy",
+    "submitter": "Zgłaszający",
+    "implementedSent": "E-mail o wdrożeniu wysłany {{date}}",
+    "resendImplemented": "Wyślij ponownie e-mail o wdrożeniu",
+    "notifyImplemented": "Powiadom: wdrożono",
+    "markCompletedHint": "Oznacz tę opinię jako „Ukończone”, aby wysłać zgłaszającemu e-mail o wdrożeniu.",
+    "upgradeToPro": "Przejdź na Pro",
+    "contactUpsell": "aby zobaczyć, kto przesłał tę opinię, i powiadomić go o wdrożeniu.",
+    "tags": "Tagi",
+    "commentsHeading": "Komentarze ({{count}})",
+    "discussionNote": "Dyskusja odbywa się na publicznej tablicy",
+    "emailedSubmitter": "Do zgłaszającego wysłano e-mail o wdrożeniu jego opinii.",
+    "recordedNoMail": "Zapisano — nie skonfigurowano dostawcy poczty, więc nic nie wysłano.",
+    "notifyFailed": "Nie udało się powiadomić zgłaszającego.",
+    "loadFailed": "Nie udało się załadować wpisu",
+    "feedbackRejected": "Opinia odrzucona",
+    "restoredToOpen": "Przywrócono do „Otwarte”",
+    "statusSet": "Ustawiono status na {{status}}",
+    "statusUpdateFailed": "Nie udało się zaktualizować statusu",
+    "postPinned": "Wpis przypięty",
+    "postUnpinned": "Wpis odpięty",
+    "pinUpdateFailed": "Nie udało się zaktualizować przypięcia",
+    "deleteFailed": "Nie udało się usunąć wpisu"
+  },
+  "duplicate": {
+    "mark": "Oznacz jako duplikat",
+    "possible": "Możliwe duplikaty",
+    "finding": "Wyszukiwanie sugestii…",
+    "none": "Nie znaleziono prawdopodobnych duplikatów.",
+    "marked": "Oznaczono jako duplikat",
+    "cleared": "Usunięto oznaczenie duplikatu",
+    "updateFailed": "Nie udało się zaktualizować statusu duplikatu"
   }
 }

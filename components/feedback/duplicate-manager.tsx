@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { useTranslation } from "@/lib/i18n/client";
 import Link from "next/link";
 import { Copy, X, ThumbsUp } from "lucide-react";
 import {
@@ -28,6 +29,7 @@ export function DuplicateManager({
   duplicateOfPostId,
   onChange,
 }: DuplicateManagerProps) {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [suggestions, setSuggestions] = useState<DuplicateSuggestion[]>([]);
@@ -57,11 +59,11 @@ export function DuplicateManager({
     try {
       await postsApi.markDuplicate(postId, targetId, token);
       toast.success(
-        targetId ? "Marked as duplicate" : "Duplicate mark cleared"
+        t(targetId ? "duplicate.marked" : "duplicate.cleared")
       );
       onChange();
     } catch {
-      toast.error("Failed to update duplicate status");
+      toast.error(t("duplicate.updateFailed"));
     } finally {
       setBusy(false);
     }
@@ -88,7 +90,7 @@ export function DuplicateManager({
           disabled={busy}
         >
           <X className="h-3.5 w-3.5" />
-          Clear
+          {t("common.clear")}
         </Button>
       </div>
     );
@@ -99,20 +101,20 @@ export function DuplicateManager({
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm" className="text-[#1c0a0c]/70">
           <Copy className="h-4 w-4" />
-          Mark duplicate
+          {t("duplicate.mark")}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-80 p-2">
         <p className="px-2 py-1 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
-          Possible duplicates
+          {t("duplicate.possible")}
         </p>
         {loading ? (
           <p className="px-2 py-3 text-center text-sm text-[#1c0a0c]/50">
-            Finding suggestions...
+            {t("duplicate.finding")}
           </p>
         ) : suggestions.length === 0 ? (
           <p className="px-2 py-3 text-center text-sm text-[#1c0a0c]/50">
-            No likely duplicates found.
+            {t("duplicate.none")}
           </p>
         ) : (
           <div className="max-h-72 space-y-1 overflow-y-auto">

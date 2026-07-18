@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { useTranslation } from "@/lib/i18n/client";
 import { Check, Plus, X } from "lucide-react";
 import { tagsApi, extractRows, type Tag } from "@/lib/api";
 import { Badge } from "@/components/ui/badge";
@@ -20,6 +21,7 @@ interface PostTagsProps {
 }
 
 export function PostTags({ postId, initialTags = [], canEdit = true }: PostTagsProps) {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const [assigned, setAssigned] = useState<Tag[]>(initialTags);
@@ -51,7 +53,7 @@ export function PostTags({ postId, initialTags = [], canEdit = true }: PostTagsP
         setAssigned((prev) => [...prev, tag]);
       }
     } catch {
-      toast.error("Failed to update tags");
+      toast.error(t("tags.updateFailed"));
     } finally {
       setBusyId(null);
     }
@@ -76,7 +78,7 @@ export function PostTags({ postId, initialTags = [], canEdit = true }: PostTagsP
               type="button"
               onClick={() => toggleTag(tag)}
               className="ml-0.5 hover:opacity-70"
-              aria-label={`Remove ${tag.name}`}
+              aria-label={t("tags.removeTag", { name: tag.name })}
             >
               <X className="h-3 w-3" />
             </button>
@@ -85,7 +87,7 @@ export function PostTags({ postId, initialTags = [], canEdit = true }: PostTagsP
       ))}
 
       {assigned.length === 0 && !canEdit && (
-        <span className="text-sm text-[#1c0a0c]/50">No tags</span>
+        <span className="text-sm text-[#1c0a0c]/50">{t("tags.noTags")}</span>
       )}
 
       {canEdit && (
@@ -97,13 +99,13 @@ export function PostTags({ postId, initialTags = [], canEdit = true }: PostTagsP
               className="h-6 gap-1 border-dashed border-[#e399a3]/50 text-xs text-[#1c0a0c]/70"
             >
               <Plus className="h-3 w-3" />
-              Tag
+              {t("tags.addTag")}
             </Button>
           </PopoverTrigger>
           <PopoverContent align="start" className="w-56 p-1">
             {allTags.length === 0 ? (
               <p className="px-2 py-3 text-center text-sm text-[#1c0a0c]/50">
-                No tags created yet.
+                {t("tags.noneCreated")}
               </p>
             ) : (
               <div className="max-h-64 overflow-y-auto">

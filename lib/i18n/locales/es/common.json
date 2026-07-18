@@ -250,7 +250,21 @@
     "typeFeature": "Función",
     "typeBug": "Error",
     "typeFeatureRequest": "Solicitud de función",
-    "typeBugReport": "Informe de error"
+    "typeBugReport": "Informe de error",
+    "loadingFeedback": "Cargando comentarios…",
+    "noMatch": "Ninguna publicación coincide con tus filtros.",
+    "onRoadmap": "En la hoja de ruta",
+    "alreadyOnRoadmap": "Ya está en la hoja de ruta",
+    "selectPost": "Seleccionar {{title}}",
+    "addN": "Añadir {{count}}",
+    "sending": "Enviando…",
+    "loadPostsFailed": "No se pudieron cargar las publicaciones",
+    "alreadyOnRoadmapToast": "Esas publicaciones ya están en la hoja de ruta.",
+    "addedToRoadmap_one": "{{count}} publicación añadida a la hoja de ruta",
+    "addedToRoadmap_other": "{{count}} publicaciones añadidas a la hoja de ruta",
+    "addFailed": "No se pudieron añadir las publicaciones a la hoja de ruta.",
+    "updateFailed_one": "No se pudo actualizar la publicación.",
+    "updateFailed_other": "No se pudieron actualizar las publicaciones."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Responder",
     "commentingAs": "Comentando como",
     "deleteConfirm": "¿Eliminar este comentario?",
-    "empty": "Aún no hay comentarios — inicia la conversación."
+    "empty": "Aún no hay comentarios — inicia la conversación.",
+    "none": "Aún no hay comentarios.",
+    "edited": "Editado"
   },
   "share": {
     "title": "Compartir esta publicación",
@@ -374,7 +390,12 @@
     "deleteTag": "Eliminar etiqueta",
     "deleteTagConfirm": "¿Eliminar etiqueta?",
     "editTagTitle": "Editar etiqueta",
-    "color": "Color"
+    "color": "Color",
+    "noTags": "Sin etiquetas",
+    "addTag": "Etiqueta",
+    "noneCreated": "Aún no se han creado etiquetas.",
+    "removeTag": "Quitar {{name}}",
+    "updateFailed": "No se pudieron actualizar las etiquetas"
   },
   "branding": {
     "title": "Espacio de trabajo y marca",
@@ -423,7 +444,15 @@
     "selectConversation": "Selecciona una conversación para verla.",
     "closeChat": "Cerrar chat",
     "closeThisChat": "¿Cerrar este chat?",
-    "typeReply": "Escribe una respuesta…"
+    "typeReply": "Escribe una respuesta…",
+    "title": "Soporte",
+    "replyTime": "Normalmente respondemos en un día",
+    "empty": "Envía un mensaje y nuestro equipo te responderá.",
+    "typeMessage": "Escribe tu mensaje…",
+    "closedByAdmin": "El soporte cerró este chat. Inicia uno nuevo si aún necesitas ayuda.",
+    "startNewChat": "Iniciar un chat nuevo",
+    "contactSupport": "Contactar con soporte",
+    "send": "Enviar"
   },
   "toast": {
     "apiKeyCreated": "Clave API creada",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "ahora mismo"
+  },
+  "postDetail": {
+    "loadingPost": "Cargando publicación…",
+    "backToFeedback": "Volver a comentarios",
+    "pinned": "Fijado",
+    "deleteDesc": "Esto elimina permanentemente la publicación junto con sus votos y comentarios. Esta acción no se puede deshacer.",
+    "deleteProTitle": "Eliminar comentarios requiere el plan Pro",
+    "deleteProToast": "Eliminar comentarios es una función Pro",
+    "deleteProToastDesc": "Mejora tu espacio de trabajo para eliminar publicaciones de comentarios.",
+    "upvoteTitle": "Votos de tu tablero público",
+    "submitter": "Remitente",
+    "implementedSent": "Correo de implementación enviado el {{date}}",
+    "resendImplemented": "Reenviar correo de implementación",
+    "notifyImplemented": "Notificar: implementado",
+    "markCompletedHint": "Marca este comentario como «Completado» para enviar un correo al remitente indicando que se ha implementado.",
+    "upgradeToPro": "Cambiar a Pro",
+    "contactUpsell": "para ver quién envió este comentario y escribirle cuando se implemente.",
+    "tags": "Etiquetas",
+    "commentsHeading": "Comentarios ({{count}})",
+    "discussionNote": "La conversación ocurre en el tablero público",
+    "emailedSubmitter": "Se envió un correo al remitente indicando que su comentario se ha implementado.",
+    "recordedNoMail": "Registrado: no hay ningún proveedor de correo configurado, así que no se envió nada.",
+    "notifyFailed": "No se pudo notificar al remitente.",
+    "loadFailed": "No se pudo cargar la publicación",
+    "feedbackRejected": "Comentario rechazado",
+    "restoredToOpen": "Restaurado a «Abierto»",
+    "statusSet": "Estado establecido en {{status}}",
+    "statusUpdateFailed": "No se pudo actualizar el estado",
+    "postPinned": "Publicación fijada",
+    "postUnpinned": "Publicación desfijada",
+    "pinUpdateFailed": "No se pudo actualizar la fijación",
+    "deleteFailed": "No se pudo eliminar la publicación"
+  },
+  "duplicate": {
+    "mark": "Marcar como duplicado",
+    "possible": "Posibles duplicados",
+    "finding": "Buscando sugerencias…",
+    "none": "No se encontraron duplicados probables.",
+    "marked": "Marcado como duplicado",
+    "cleared": "Marca de duplicado eliminada",
+    "updateFailed": "No se pudo actualizar el estado de duplicado"
   }
 }

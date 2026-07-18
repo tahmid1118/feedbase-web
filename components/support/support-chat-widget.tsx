@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { supportApi, ApiError, type SupportMessage } from "@/lib/api";
 import { LocalTime } from "@/components/local-time";
+import { useTranslation } from "@/lib/i18n/client";
 import {
   armNotificationSound,
   playNotificationBell,
@@ -29,6 +30,7 @@ const POLL_MESSAGES_MS = 4000;
 const POLL_UNREAD_MS = 15000;
 
 export function SupportChatWidget() {
+  const { t } = useTranslation();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
 
@@ -207,7 +209,7 @@ export function SupportChatWidget() {
         <button
           type="button"
           onClick={openPanel}
-          aria-label="Contact support"
+          aria-label={t("support.contactSupport")}
           className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#c74959] text-white shadow-lg shadow-[#c74959]/30 transition-transform hover:scale-105 active:scale-95"
         >
           <MessageCircle className="h-6 w-6" />
@@ -227,14 +229,14 @@ export function SupportChatWidget() {
             <div className="flex items-center gap-2">
               <Headset className="h-5 w-5" />
               <div>
-                <p className="text-sm font-semibold leading-tight">Support</p>
-                <p className="text-[11px] text-white/80">We usually reply within a day</p>
+                <p className="text-sm font-semibold leading-tight">{t("support.title")}</p>
+                <p className="text-[11px] text-white/80">{t("support.replyTime")}</p>
               </div>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              aria-label="Close"
+              aria-label={t("common.close")}
               className="rounded-md p-1 hover:bg-white/15"
             >
               <X className="h-5 w-5" />
@@ -256,7 +258,7 @@ export function SupportChatWidget() {
                   <Headset className="h-7 w-7 text-[#c74959]" />
                 </div>
                 <p className="text-sm text-[#1c0a0c]/70">
-                  This chat was closed by support. Start a new one if you still need help.
+                  {t("support.closedByAdmin")}
                 </p>
                 <button
                   type="button"
@@ -264,13 +266,13 @@ export function SupportChatWidget() {
                   className="group inline-flex items-center gap-2 rounded-full bg-[#c74959] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#c74959]/30 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#c74959]/40 active:translate-y-0 active:scale-95"
                 >
                   <MessageCirclePlus className="h-4 w-4 transition-transform duration-300 group-hover:rotate-90" />
-                  Start new chat
+                  {t("support.startNewChat")}
                 </button>
               </div>
             ) : messages.length === 0 ? (
               <div className="flex h-full flex-col items-center justify-center gap-1 text-center text-[#1c0a0c]/50">
                 <MessageCircle className="mb-1 h-8 w-8 text-[#e399a3]" />
-                <p className="text-sm">Send a message and our team will get back to you.</p>
+                <p className="text-sm">{t("support.empty")}</p>
               </div>
             ) : (
               messages.map((m) => (
@@ -290,7 +292,7 @@ export function SupportChatWidget() {
                     {m.body}
                   </div>
                   <span className="mt-0.5 px-1 text-[10px] text-[#1c0a0c]/40">
-                    {m.sender === "admin" ? "Support · " : ""}
+                    {m.sender === "admin" ? t("support.title") + " · " : ""}
                     <LocalTime date={m.created_at} relative />
                   </span>
                 </div>
@@ -312,7 +314,7 @@ export function SupportChatWidget() {
                     }
                   }}
                   rows={1}
-                  placeholder="Type your message…"
+                  placeholder={t("support.typeMessage")}
                   disabled={loading}
                   className="max-h-28 flex-1 resize-none rounded-lg border border-[#e399a3]/40 bg-white px-3 py-2 text-sm text-[#1c0a0c] outline-none focus:border-[#c74959] focus:ring-1 focus:ring-[#c74959]/30 disabled:opacity-50"
                 />
@@ -320,7 +322,7 @@ export function SupportChatWidget() {
                   type="button"
                   onClick={handleSend}
                   disabled={!draft.trim() || sending}
-                  aria-label="Send"
+                  aria-label={t("support.send")}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#c74959] text-white transition-opacity hover:opacity-90 disabled:opacity-40"
                 >
                   {sending ? (

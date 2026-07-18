@@ -250,7 +250,21 @@
     "typeFeature": "Funcionalidade",
     "typeBug": "Erro",
     "typeFeatureRequest": "Pedido de funcionalidade",
-    "typeBugReport": "Relatório de erro"
+    "typeBugReport": "Relatório de erro",
+    "loadingFeedback": "A carregar feedback…",
+    "noMatch": "Nenhuma publicação corresponde aos seus filtros.",
+    "onRoadmap": "No roteiro",
+    "alreadyOnRoadmap": "Já está no roteiro",
+    "selectPost": "Selecionar {{title}}",
+    "addN": "Adicionar {{count}}",
+    "sending": "A enviar…",
+    "loadPostsFailed": "Não foi possível carregar as publicações",
+    "alreadyOnRoadmapToast": "Essas publicações já estão no roteiro.",
+    "addedToRoadmap_one": "{{count}} publicação adicionada ao roteiro",
+    "addedToRoadmap_other": "{{count}} publicações adicionadas ao roteiro",
+    "addFailed": "Não foi possível adicionar as publicações ao roteiro.",
+    "updateFailed_one": "Não foi possível atualizar a publicação.",
+    "updateFailed_other": "Não foi possível atualizar as publicações."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Responder",
     "commentingAs": "A comentar como",
     "deleteConfirm": "Eliminar este comentário?",
-    "empty": "Ainda não há comentários — inicie a conversa."
+    "empty": "Ainda não há comentários — inicie a conversa.",
+    "none": "Ainda não há comentários.",
+    "edited": "Editado"
   },
   "share": {
     "title": "Partilhar esta publicação",
@@ -374,7 +390,12 @@
     "deleteTag": "Eliminar etiqueta",
     "deleteTagConfirm": "Eliminar etiqueta?",
     "editTagTitle": "Editar etiqueta",
-    "color": "Cor"
+    "color": "Cor",
+    "noTags": "Sem etiquetas",
+    "addTag": "Etiqueta",
+    "noneCreated": "Ainda não foram criadas etiquetas.",
+    "removeTag": "Remover {{name}}",
+    "updateFailed": "Não foi possível atualizar as etiquetas"
   },
   "branding": {
     "title": "Espaço de trabalho e marca",
@@ -423,7 +444,15 @@
     "selectConversation": "Selecione uma conversa para a ver.",
     "closeChat": "Fechar conversa",
     "closeThisChat": "Fechar esta conversa?",
-    "typeReply": "Escreva uma resposta…"
+    "typeReply": "Escreva uma resposta…",
+    "title": "Apoio",
+    "replyTime": "Normalmente respondemos no prazo de um dia",
+    "empty": "Envie uma mensagem e a nossa equipa entrará em contacto consigo.",
+    "typeMessage": "Escreva a sua mensagem…",
+    "closedByAdmin": "Este chat foi fechado pelo apoio. Inicie um novo se ainda precisar de ajuda.",
+    "startNewChat": "Iniciar novo chat",
+    "contactSupport": "Contactar o apoio",
+    "send": "Enviar"
   },
   "toast": {
     "apiKeyCreated": "Chave API criada",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "agora mesmo"
+  },
+  "postDetail": {
+    "loadingPost": "A carregar publicação…",
+    "backToFeedback": "Voltar ao feedback",
+    "pinned": "Fixado",
+    "deleteDesc": "Isto remove permanentemente a publicação juntamente com os seus votos e comentários. Esta ação não pode ser anulada.",
+    "deleteProTitle": "Eliminar feedback requer o plano Pro",
+    "deleteProToast": "Eliminar feedback é uma funcionalidade Pro",
+    "deleteProToastDesc": "Atualize o seu espaço de trabalho para eliminar publicações de feedback.",
+    "upvoteTitle": "Votos do seu painel público",
+    "submitter": "Remetente",
+    "implementedSent": "E-mail de implementação enviado em {{date}}",
+    "resendImplemented": "Reenviar e-mail de implementação",
+    "notifyImplemented": "Notificar: implementado",
+    "markCompletedHint": "Marque este feedback como «Concluído» para enviar um e-mail ao remetente a informar que foi implementado.",
+    "upgradeToPro": "Mudar para Pro",
+    "contactUpsell": "para ver quem enviou este feedback e contactá-lo quando for implementado.",
+    "tags": "Etiquetas",
+    "commentsHeading": "Comentários ({{count}})",
+    "discussionNote": "A discussão acontece no painel público",
+    "emailedSubmitter": "O remetente foi informado por e-mail de que o seu feedback foi implementado.",
+    "recordedNoMail": "Registado — não há fornecedor de e-mail configurado, por isso nada foi enviado.",
+    "notifyFailed": "Não foi possível notificar o remetente.",
+    "loadFailed": "Não foi possível carregar a publicação",
+    "feedbackRejected": "Feedback rejeitado",
+    "restoredToOpen": "Restaurado para «Aberto»",
+    "statusSet": "Estado definido como {{status}}",
+    "statusUpdateFailed": "Não foi possível atualizar o estado",
+    "postPinned": "Publicação fixada",
+    "postUnpinned": "Publicação desafixada",
+    "pinUpdateFailed": "Não foi possível atualizar a fixação",
+    "deleteFailed": "Não foi possível eliminar a publicação"
+  },
+  "duplicate": {
+    "mark": "Marcar como duplicado",
+    "possible": "Possíveis duplicados",
+    "finding": "A procurar sugestões…",
+    "none": "Não foram encontrados duplicados prováveis.",
+    "marked": "Marcado como duplicado",
+    "cleared": "Marca de duplicado removida",
+    "updateFailed": "Não foi possível atualizar o estado de duplicado"
   }
 }

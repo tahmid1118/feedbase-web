@@ -250,7 +250,21 @@
     "typeFeature": "Functie",
     "typeBug": "Bug",
     "typeFeatureRequest": "Functieverzoek",
-    "typeBugReport": "Foutmelding"
+    "typeBugReport": "Foutmelding",
+    "loadingFeedback": "Feedback laden…",
+    "noMatch": "Geen feedbackberichten komen overeen met uw filters.",
+    "onRoadmap": "Op roadmap",
+    "alreadyOnRoadmap": "Al op de roadmap",
+    "selectPost": "{{title}} selecteren",
+    "addN": "{{count}} toevoegen",
+    "sending": "Verzenden…",
+    "loadPostsFailed": "Kan berichten niet laden",
+    "alreadyOnRoadmapToast": "Die berichten staan al op de roadmap.",
+    "addedToRoadmap_one": "{{count}} bericht toegevoegd aan de roadmap",
+    "addedToRoadmap_other": "{{count}} berichten toegevoegd aan de roadmap",
+    "addFailed": "Kan berichten niet aan de roadmap toevoegen.",
+    "updateFailed_one": "Kan het bericht niet bijwerken.",
+    "updateFailed_other": "Kan berichten niet bijwerken."
   },
   "page": {
     "feedback": {
@@ -329,7 +343,9 @@
     "reply": "Antwoorden",
     "commentingAs": "Reageren als",
     "deleteConfirm": "Deze reactie verwijderen?",
-    "empty": "Nog geen reacties — begin het gesprek."
+    "empty": "Nog geen reacties — begin het gesprek.",
+    "none": "Nog geen reacties.",
+    "edited": "Bewerkt"
   },
   "share": {
     "title": "Deel dit bericht",
@@ -374,7 +390,12 @@
     "deleteTag": "Tag verwijderen",
     "deleteTagConfirm": "Tag verwijderen?",
     "editTagTitle": "Tag bewerken",
-    "color": "Kleur"
+    "color": "Kleur",
+    "noTags": "Geen labels",
+    "addTag": "Label",
+    "noneCreated": "Nog geen labels aangemaakt.",
+    "removeTag": "{{name}} verwijderen",
+    "updateFailed": "Kan labels niet bijwerken"
   },
   "branding": {
     "title": "Werkruimte & branding",
@@ -423,7 +444,15 @@
     "selectConversation": "Selecteer een gesprek om het te bekijken.",
     "closeChat": "Chat sluiten",
     "closeThisChat": "Deze chat sluiten?",
-    "typeReply": "Typ een antwoord…"
+    "typeReply": "Typ een antwoord…",
+    "title": "Ondersteuning",
+    "replyTime": "We reageren meestal binnen een dag",
+    "empty": "Stuur een bericht en ons team neemt contact met u op.",
+    "typeMessage": "Typ uw bericht…",
+    "closedByAdmin": "Deze chat is gesloten door de ondersteuning. Start een nieuwe als u nog hulp nodig hebt.",
+    "startNewChat": "Nieuwe chat starten",
+    "contactSupport": "Contact opnemen met ondersteuning",
+    "send": "Verzenden"
   },
   "toast": {
     "apiKeyCreated": "API-sleutel aangemaakt",
@@ -555,5 +584,46 @@
   },
   "time": {
     "justNow": "zojuist"
+  },
+  "postDetail": {
+    "loadingPost": "Bericht laden…",
+    "backToFeedback": "Terug naar feedback",
+    "pinned": "Vastgezet",
+    "deleteDesc": "Hiermee worden het bericht en de bijbehorende stemmen en reacties permanent verwijderd. Deze actie kan niet ongedaan worden gemaakt.",
+    "deleteProTitle": "Feedback verwijderen vereist het Pro-abonnement",
+    "deleteProToast": "Feedback verwijderen is een Pro-functie",
+    "deleteProToastDesc": "Upgrade uw werkruimte om feedbackberichten te verwijderen.",
+    "upvoteTitle": "Stemmen van uw openbare bord",
+    "submitter": "Indiener",
+    "implementedSent": "E-mail over implementatie verzonden op {{date}}",
+    "resendImplemented": "E-mail over implementatie opnieuw verzenden",
+    "notifyImplemented": "Melden: geïmplementeerd",
+    "markCompletedHint": "Markeer deze feedback als 'Voltooid' om de indiener te mailen dat het is geïmplementeerd.",
+    "upgradeToPro": "Upgraden naar Pro",
+    "contactUpsell": "om te zien wie deze feedback heeft ingediend en hen te mailen zodra het is geïmplementeerd.",
+    "tags": "Labels",
+    "commentsHeading": "Reacties ({{count}})",
+    "discussionNote": "De discussie vindt plaats op het openbare bord",
+    "emailedSubmitter": "De indiener heeft een e-mail ontvangen dat de feedback is geïmplementeerd.",
+    "recordedNoMail": "Vastgelegd — er is geen mailprovider geconfigureerd, dus er is niets verzonden.",
+    "notifyFailed": "Kan de indiener niet op de hoogte stellen.",
+    "loadFailed": "Kan bericht niet laden",
+    "feedbackRejected": "Feedback afgewezen",
+    "restoredToOpen": "Hersteld naar 'Open'",
+    "statusSet": "Status ingesteld op {{status}}",
+    "statusUpdateFailed": "Kan status niet bijwerken",
+    "postPinned": "Bericht vastgezet",
+    "postUnpinned": "Bericht losgemaakt",
+    "pinUpdateFailed": "Kan vastzetten niet bijwerken",
+    "deleteFailed": "Kan bericht niet verwijderen"
+  },
+  "duplicate": {
+    "mark": "Markeren als duplicaat",
+    "possible": "Mogelijke duplicaten",
+    "finding": "Suggesties zoeken…",
+    "none": "Geen waarschijnlijke duplicaten gevonden.",
+    "marked": "Gemarkeerd als duplicaat",
+    "cleared": "Duplicaatmarkering gewist",
+    "updateFailed": "Kan duplicaatstatus niet bijwerken"
   }
 }
