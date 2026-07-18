@@ -39,7 +39,8 @@
     "share": "Share",
     "pin": "Pin",
     "status": "Status",
-    "clear": "Clear"
+    "clear": "Clear",
+    "add": "Add"
   },
   "landing": {
     "hero": {
@@ -429,7 +430,23 @@
     "editColumn": "Edit Column",
     "columnName": "Column name",
     "addToRoadmap": "Add to Roadmap",
-    "selectPost": "Select a post"
+    "selectPost": "Select a post",
+    "loading": "Loading roadmap…",
+    "noColumns": "No roadmap columns yet.",
+    "nItems_one": "{{count}} item",
+    "nItems_other": "{{count}} items",
+    "addItem": "Add item",
+    "renameDesc": "Rename this roadmap column.",
+    "columnPlaceholder": "e.g. In Progress",
+    "addDesc": "Place a feedback post onto a roadmap column.",
+    "post": "Post",
+    "allOnRoadmap": "All posts are already on the roadmap.",
+    "removeItem": "Remove item",
+    "loadFailed": "Failed to load roadmap",
+    "saveColumnFailed": "Failed to save column",
+    "addItemFailed": "Failed to add item",
+    "moveItemFailed": "Failed to move item",
+    "removeItemFailed": "Failed to remove item"
   },
   "changelog": {
     "noChangelogs": "No changelogs yet.",

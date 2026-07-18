@@ -115,7 +115,8 @@
     "next": "Seguinte",
     "submit": "Enviar",
     "learnMore": "Saber mais",
-    "clear": "Limpar"
+    "clear": "Limpar",
+    "add": "Adicionar"
   },
   "dashboard": {
     "welcomeBack": "Bem-vindo de volta"
@@ -429,7 +430,23 @@
     "editColumn": "Editar coluna",
     "columnName": "Nome da coluna",
     "addToRoadmap": "Adicionar ao roteiro",
-    "selectPost": "Selecione uma publicação"
+    "selectPost": "Selecione uma publicação",
+    "loading": "A carregar roteiro…",
+    "noColumns": "Ainda não há colunas no roteiro.",
+    "nItems_one": "{{count}} item",
+    "nItems_other": "{{count}} itens",
+    "addItem": "Adicionar item",
+    "renameDesc": "Mude o nome desta coluna do roteiro.",
+    "columnPlaceholder": "p. ex. Em curso",
+    "addDesc": "Coloque uma publicação de feedback numa coluna do roteiro.",
+    "post": "Publicação",
+    "allOnRoadmap": "Todas as publicações já estão no roteiro.",
+    "removeItem": "Remover item",
+    "loadFailed": "Não foi possível carregar o roteiro",
+    "saveColumnFailed": "Não foi possível guardar a coluna",
+    "addItemFailed": "Não foi possível adicionar o item",
+    "moveItemFailed": "Não foi possível mover o item",
+    "removeItemFailed": "Não foi possível remover o item"
   },
   "changelog": {
     "noChangelogs": "Ainda sem registos de alterações.",

@@ -45,8 +45,22 @@ import {
 import { toast } from "sonner";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 
+// Roadmap columns are tenant data and can be renamed, so their names aren't
+// translated in general. The three the backend seeds are the exception: map
+// those to the shared status labels so a fresh workspace reads correctly in
+// every language. A renamed or custom column keeps its own text verbatim.
+const DEFAULT_COLUMN_KEYS: Record<string, string> = {
+  planned: "status.planned",
+  "in progress": "status.in_progress",
+  completed: "status.completed",
+};
+
 export function RoadmapBoard() {
   const { t } = useTranslation();
+  const columnLabel = (name: string) => {
+    const key = DEFAULT_COLUMN_KEYS[name.trim().toLowerCase()];
+    return key ? t(key) : name;
+  };
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
 
@@ -143,7 +157,7 @@ export function RoadmapBoard() {
       setColumnDialog({ open: false });
       await load();
     } catch {
-      toast.error("Failed to save column");
+      toast.error(t("roadmap.saveColumnFailed"));
     } finally {
       setBusy(false);
     }
@@ -175,7 +189,7 @@ export function RoadmapBoard() {
       setItemDialogOpen(false);
       await load();
     } catch {
-      toast.error("Failed to add item");
+      toast.error(t("roadmap.addItemFailed"));
     } finally {
       setBusy(false);
     }
@@ -198,7 +212,7 @@ export function RoadmapBoard() {
         )
       );
     } catch {
-      toast.error("Failed to move item");
+      toast.error(t("roadmap.moveItemFailed"));
     }
   };
 
@@ -220,14 +234,14 @@ export function RoadmapBoard() {
       setItems((prev) => prev.filter((i) => i.id !== id));
       toast.success(t("toast.removedFromRoadmap"));
     } catch {
-      toast.error("Failed to remove item");
+      toast.error(t("roadmap.removeItemFailed"));
     }
   };
 
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
-        Loading roadmap...
+        {t("roadmap.loading")}
       </div>
     );
   }
@@ -241,14 +255,14 @@ export function RoadmapBoard() {
           disabled={sortedColumns.length === 0}
         >
           <Plus className="h-4 w-4" />
-          Add to Roadmap
+          {t("roadmap.addToRoadmap")}
         </Button>
       </div>
 
       {sortedColumns.length === 0 ? (
         <Card className="p-12 text-center">
           <p className="text-[#1c0a0c]/60">
-            No roadmap columns yet.
+            {t("roadmap.noColumns")}
           </p>
         </Card>
       ) : (
@@ -274,10 +288,10 @@ export function RoadmapBoard() {
                       <div className="flex items-center justify-between rounded-lg bg-[#c74959]/10 p-3">
                         <div>
                           <h3 className="font-semibold text-[#1c0a0c]">
-                            {column.name}
+                            {columnLabel(column.name)}
                           </h3>
                           <p className="text-xs text-[#1c0a0c]/60">
-                            {columnItems.length} items
+                            {t("roadmap.nItems", { count: columnItems.length })}
                           </p>
                         </div>
                         <div className="flex items-center gap-1">
@@ -285,7 +299,7 @@ export function RoadmapBoard() {
                             type="button"
                             onClick={() => openEditColumn(column)}
                             className="rounded p-1 text-[#1c0a0c]/60 hover:bg-white hover:text-[#c74959]"
-                            aria-label="Edit column"
+                            aria-label={t("roadmap.editColumn")}
                           >
                             <Pencil className="h-3.5 w-3.5" />
                           </button>
@@ -308,7 +322,7 @@ export function RoadmapBoard() {
                           className="flex w-full items-center justify-center gap-1 rounded-lg border border-dashed border-[#e399a3]/50 py-2 text-xs text-[#1c0a0c]/60 hover:border-[#c74959] hover:text-[#c74959]"
                         >
                           <Plus className="h-3 w-3" />
-                          Add item
+                          {t("roadmap.addItem")}
                         </button>
                       </div>
                     </div>
@@ -339,7 +353,7 @@ export function RoadmapBoard() {
           <DialogHeader>
             <DialogTitle>{t("roadmap.editColumn")}</DialogTitle>
             <DialogDescription>
-              Rename this roadmap column.
+              {t("roadmap.renameDesc")}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-2">
@@ -348,7 +362,7 @@ export function RoadmapBoard() {
               id="column-name"
               value={columnName}
               onChange={(e) => setColumnName(e.target.value)}
-              placeholder="e.g. In Progress"
+              placeholder={t("roadmap.columnPlaceholder")}
             />
           </div>
           <DialogFooter>
@@ -356,14 +370,14 @@ export function RoadmapBoard() {
               variant="outline"
               onClick={() => setColumnDialog({ open: false })}
             >
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
               onClick={saveColumn}
               disabled={busy || !columnName.trim()}
             >
-              Save
+              {t("common.save")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -375,12 +389,12 @@ export function RoadmapBoard() {
           <DialogHeader>
             <DialogTitle>{t("roadmap.addToRoadmap")}</DialogTitle>
             <DialogDescription>
-              Place a feedback post onto a roadmap column.
+              {t("roadmap.addDesc")}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label>Post</Label>
+              <Label>{t("roadmap.post")}</Label>
               <Select value={itemPostId} onValueChange={setItemPostId}>
                 <SelectTrigger>
                   <SelectValue placeholder={t("roadmap.selectPost")} />
@@ -388,7 +402,7 @@ export function RoadmapBoard() {
                 <SelectContent>
                   {availablePosts.length === 0 ? (
                     <div className="px-2 py-3 text-center text-sm text-[#1c0a0c]/50">
-                      All posts are already on the roadmap.
+                      {t("roadmap.allOnRoadmap")}
                     </div>
                   ) : (
                     availablePosts.map((p) => (
@@ -410,7 +424,7 @@ export function RoadmapBoard() {
                 <SelectContent>
                   {sortedColumns.map((c) => (
                     <SelectItem key={c.id} value={String(c.id)}>
-                      {c.name}
+                      {columnLabel(c.name)}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -429,14 +443,14 @@ export function RoadmapBoard() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setItemDialogOpen(false)}>
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
               onClick={saveItem}
               disabled={busy || !itemPostId || !itemColumnId}
             >
-              Add
+              {t("common.add")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -459,6 +473,7 @@ function ItemCard({
   dragging?: boolean;
   overlay?: boolean;
 }) {
+  const { t } = useTranslation();
   return (
     <Card
       className={`bg-white p-3 ${
@@ -479,7 +494,7 @@ function ItemCard({
             onPointerDown={(e) => e.stopPropagation()}
             onClick={onRemove}
             className="text-[#1c0a0c]/40 hover:text-red-600"
-            aria-label="Remove item"
+            aria-label={t("roadmap.removeItem")}
           >
             <X className="h-3.5 w-3.5" />
           </button>

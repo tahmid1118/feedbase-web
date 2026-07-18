@@ -115,7 +115,8 @@
     "next": "Volgende",
     "submit": "Verzenden",
     "learnMore": "Meer informatie",
-    "clear": "Wissen"
+    "clear": "Wissen",
+    "add": "Toevoegen"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -429,7 +430,23 @@
     "editColumn": "Kolom bewerken",
     "columnName": "Kolomnaam",
     "addToRoadmap": "Aan roadmap toevoegen",
-    "selectPost": "Selecteer een bericht"
+    "selectPost": "Selecteer een bericht",
+    "loading": "Roadmap laden…",
+    "noColumns": "Nog geen roadmapkolommen.",
+    "nItems_one": "{{count}} item",
+    "nItems_other": "{{count}} items",
+    "addItem": "Item toevoegen",
+    "renameDesc": "Deze roadmapkolom hernoemen.",
+    "columnPlaceholder": "bijv. In uitvoering",
+    "addDesc": "Plaats een feedbackbericht in een roadmapkolom.",
+    "post": "Bericht",
+    "allOnRoadmap": "Alle berichten staan al op de roadmap.",
+    "removeItem": "Item verwijderen",
+    "loadFailed": "Kan roadmap niet laden",
+    "saveColumnFailed": "Kan kolom niet opslaan",
+    "addItemFailed": "Kan item niet toevoegen",
+    "moveItemFailed": "Kan item niet verplaatsen",
+    "removeItemFailed": "Kan item niet verwijderen"
   },
   "changelog": {
     "noChangelogs": "Nog geen wijzigingslogboeken.",

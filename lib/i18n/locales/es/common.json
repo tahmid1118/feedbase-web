@@ -115,7 +115,8 @@
     "next": "Siguiente",
     "submit": "Enviar",
     "learnMore": "Más información",
-    "clear": "Borrar"
+    "clear": "Borrar",
+    "add": "Añadir"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -429,7 +430,23 @@
     "editColumn": "Editar columna",
     "columnName": "Nombre de la columna",
     "addToRoadmap": "Añadir a la hoja de ruta",
-    "selectPost": "Selecciona una publicación"
+    "selectPost": "Selecciona una publicación",
+    "loading": "Cargando hoja de ruta…",
+    "noColumns": "Aún no hay columnas en la hoja de ruta.",
+    "nItems_one": "{{count}} elemento",
+    "nItems_other": "{{count}} elementos",
+    "addItem": "Añadir elemento",
+    "renameDesc": "Cambia el nombre de esta columna de la hoja de ruta.",
+    "columnPlaceholder": "p. ej. En curso",
+    "addDesc": "Coloca una publicación de comentarios en una columna de la hoja de ruta.",
+    "post": "Publicación",
+    "allOnRoadmap": "Todas las publicaciones ya están en la hoja de ruta.",
+    "removeItem": "Quitar elemento",
+    "loadFailed": "No se pudo cargar la hoja de ruta",
+    "saveColumnFailed": "No se pudo guardar la columna",
+    "addItemFailed": "No se pudo añadir el elemento",
+    "moveItemFailed": "No se pudo mover el elemento",
+    "removeItemFailed": "No se pudo quitar el elemento"
   },
   "changelog": {
     "noChangelogs": "Aún no hay registros de cambios.",

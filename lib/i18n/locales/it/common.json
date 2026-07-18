@@ -115,7 +115,8 @@
     "next": "Avanti",
     "submit": "Invia",
     "learnMore": "Scopri di più",
-    "clear": "Cancella"
+    "clear": "Cancella",
+    "add": "Aggiungi"
   },
   "dashboard": {
     "welcomeBack": "Bentornato"
@@ -429,7 +430,23 @@
     "editColumn": "Modifica colonna",
     "columnName": "Nome colonna",
     "addToRoadmap": "Aggiungi alla roadmap",
-    "selectPost": "Seleziona un post"
+    "selectPost": "Seleziona un post",
+    "loading": "Caricamento della roadmap…",
+    "noColumns": "Nessuna colonna della roadmap finora.",
+    "nItems_one": "{{count}} elemento",
+    "nItems_other": "{{count}} elementi",
+    "addItem": "Aggiungi elemento",
+    "renameDesc": "Rinomina questa colonna della roadmap.",
+    "columnPlaceholder": "es. In corso",
+    "addDesc": "Posiziona un post di feedback in una colonna della roadmap.",
+    "post": "Post",
+    "allOnRoadmap": "Tutti i post sono già nella roadmap.",
+    "removeItem": "Rimuovi elemento",
+    "loadFailed": "Impossibile caricare la roadmap",
+    "saveColumnFailed": "Impossibile salvare la colonna",
+    "addItemFailed": "Impossibile aggiungere l'elemento",
+    "moveItemFailed": "Impossibile spostare l'elemento",
+    "removeItemFailed": "Impossibile rimuovere l'elemento"
   },
   "changelog": {
     "noChangelogs": "Ancora nessun registro modifiche.",

@@ -115,7 +115,8 @@
     "next": "Weiter",
     "submit": "Absenden",
     "learnMore": "Mehr erfahren",
-    "clear": "Löschen"
+    "clear": "Löschen",
+    "add": "Hinzufügen"
   },
   "dashboard": {
     "welcomeBack": "Willkommen zurück"
@@ -429,7 +430,23 @@
     "editColumn": "Spalte bearbeiten",
     "columnName": "Spaltenname",
     "addToRoadmap": "Zur Roadmap hinzufügen",
-    "selectPost": "Beitrag auswählen"
+    "selectPost": "Beitrag auswählen",
+    "loading": "Roadmap wird geladen…",
+    "noColumns": "Noch keine Roadmap-Spalten.",
+    "nItems_one": "{{count}} Eintrag",
+    "nItems_other": "{{count}} Einträge",
+    "addItem": "Eintrag hinzufügen",
+    "renameDesc": "Diese Roadmap-Spalte umbenennen.",
+    "columnPlaceholder": "z. B. In Bearbeitung",
+    "addDesc": "Platzieren Sie einen Feedback-Beitrag in einer Roadmap-Spalte.",
+    "post": "Beitrag",
+    "allOnRoadmap": "Alle Beiträge stehen bereits auf der Roadmap.",
+    "removeItem": "Eintrag entfernen",
+    "loadFailed": "Roadmap konnte nicht geladen werden",
+    "saveColumnFailed": "Spalte konnte nicht gespeichert werden",
+    "addItemFailed": "Eintrag konnte nicht hinzugefügt werden",
+    "moveItemFailed": "Eintrag konnte nicht verschoben werden",
+    "removeItemFailed": "Eintrag konnte nicht entfernt werden"
   },
   "changelog": {
     "noChangelogs": "Noch keine Änderungsprotokolle.",

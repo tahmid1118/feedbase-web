@@ -115,7 +115,8 @@
     "next": "Dalej",
     "submit": "Wyślij",
     "learnMore": "Dowiedz się więcej",
-    "clear": "Wyczyść"
+    "clear": "Wyczyść",
+    "add": "Dodaj"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -264,7 +265,11 @@
     "addedToRoadmap_other": "Dodano {{count}} wpisów do planu działań",
     "addFailed": "Nie udało się dodać wpisów do planu działań.",
     "updateFailed_one": "Nie udało się zaktualizować wpisu.",
-    "updateFailed_other": "Nie udało się zaktualizować wpisów."
+    "updateFailed_other": "Nie udało się zaktualizować wpisów.",
+    "addedToRoadmap_few": "Dodano {{count}} wpisy do planu działań",
+    "addedToRoadmap_many": "Dodano {{count}} wpisów do planu działań",
+    "updateFailed_few": "Nie udało się zaktualizować wpisów.",
+    "updateFailed_many": "Nie udało się zaktualizować wpisów."
   },
   "page": {
     "feedback": {
@@ -316,7 +321,7 @@
     "noFeedbackYet": "Nie opublikowano jeszcze żadnych opinii.",
     "openPost": "Otwórz {{title}}",
     "nComments_one": "{{count}} komentarz",
-    "nComments_other": "{{count}} komentarzy",
+    "nComments_other": "{{count}} komentarza",
     "backToBoard": "Powrót do tablicy",
     "byAuthor": "przez {{name}}",
     "commentsHeading": "Komentarze ({{count}})",
@@ -325,7 +330,9 @@
     "changelogSubtitle": "Najnowsze aktualizacje i ulepszenia",
     "noUpdates": "Nie opublikowano jeszcze żadnych aktualizacji.",
     "recently": "Niedawno",
-    "backToChangelog": "Powrót do dziennika zmian"
+    "backToChangelog": "Powrót do dziennika zmian",
+    "nComments_few": "{{count}} komentarze",
+    "nComments_many": "{{count}} komentarzy"
   },
   "type": {
     "feedback": "Opinia",
@@ -429,7 +436,25 @@
     "editColumn": "Edytuj kolumnę",
     "columnName": "Nazwa kolumny",
     "addToRoadmap": "Dodaj do planu działań",
-    "selectPost": "Wybierz wpis"
+    "selectPost": "Wybierz wpis",
+    "loading": "Ładowanie planu działań…",
+    "noColumns": "Brak kolumn w planie działań.",
+    "nItems_one": "{{count}} element",
+    "nItems_other": "{{count}} elementu",
+    "addItem": "Dodaj element",
+    "renameDesc": "Zmień nazwę tej kolumny planu działań.",
+    "columnPlaceholder": "np. W trakcie",
+    "addDesc": "Umieść wpis z opinią w kolumnie planu działań.",
+    "post": "Wpis",
+    "allOnRoadmap": "Wszystkie wpisy są już w planie działań.",
+    "removeItem": "Usuń element",
+    "loadFailed": "Nie udało się załadować planu działań",
+    "saveColumnFailed": "Nie udało się zapisać kolumny",
+    "addItemFailed": "Nie udało się dodać elementu",
+    "moveItemFailed": "Nie udało się przenieść elementu",
+    "removeItemFailed": "Nie udało się usunąć elementu",
+    "nItems_few": "{{count}} elementy",
+    "nItems_many": "{{count}} elementów"
   },
   "changelog": {
     "noChangelogs": "Brak dzienników zmian.",
@@ -577,10 +602,12 @@
     "newFeedback": "Nowe opinie",
     "last30Days": "ostatnie 30 dni",
     "newPostsCount_one": "{{count}} nowy wpis",
-    "newPostsCount_other": "{{count}} nowe wpisy",
+    "newPostsCount_other": "{{count}} nowego wpisu",
     "peakPerDay": "szczyt {{count}}/dzień",
     "noNewFeedback": "Brak nowych opinii w ciągu ostatnich 30 dni.",
-    "backendUnreachable": "Nie można połączyć się z API zaplecza na porcie 4560. Wyświetlanie pustych wskaźników."
+    "backendUnreachable": "Nie można połączyć się z API zaplecza na porcie 4560. Wyświetlanie pustych wskaźników.",
+    "newPostsCount_few": "{{count}} nowe wpisy",
+    "newPostsCount_many": "{{count}} nowych wpisów"
   },
   "time": {
     "justNow": "przed chwilą"
