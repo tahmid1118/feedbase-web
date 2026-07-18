@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Pradėkite nemokamai ir atnaujinkite augant komandai. Jokių paslėptų mokesčių — atšaukite bet kada.",
     "note": "Kainos JAV doleriais, atsiskaitoma kas mėnesį. Užsiregistravę atnaujinkite iš savo skydelio."
+  },
+  "dash": {
+    "overviewTitle": "Skydelio apžvalga",
+    "overviewSubtitle": "Stebėkite atsiliepimus, planą ir įsitraukimo rodiklius",
+    "totalFeedback": "Iš viso atsiliepimų",
+    "teamMembers": "Komandos nariai",
+    "feedbackByStatus": "Atsiliepimai pagal būseną",
+    "recentFeedback": "Naujausi atsiliepimai",
+    "viewAll": "Peržiūrėti viską",
+    "noFeedback": "Kol kas nėra atsiliepimų. Sukurkite pirmąjį įrašą, kad pradėtumėte!",
+    "newFeedback": "Nauji atsiliepimai",
+    "last30Days": "paskutinės 30 dienų",
+    "newPostsCount_one": "{{count}} naujas įrašas",
+    "newPostsCount_other": "{{count}} naujų įrašų",
+    "peakPerDay": "pikas {{count}}/d.",
+    "noNewFeedback": "Per paskutines 30 dienų naujų atsiliepimų nėra.",
+    "backendUnreachable": "Nepavyksta pasiekti backend API 4560 prievade. Rodomi tušti rodikliai."
   }
 }

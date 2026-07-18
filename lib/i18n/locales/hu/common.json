@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Kezdje ingyen, és bővítsen, ahogy csapata növekszik. Nincsenek rejtett díjak — bármikor lemondható.",
     "note": "Árak USD-ben, havi számlázással. A regisztráció után az irányítópultról bővíthet."
+  },
+  "dash": {
+    "overviewTitle": "Irányítópult áttekintése",
+    "overviewSubtitle": "Kövesse nyomon visszajelzéseit, ütemtervét és elköteleződési mutatóit",
+    "totalFeedback": "Összes visszajelzés",
+    "teamMembers": "Csapattagok",
+    "feedbackByStatus": "Visszajelzés állapot szerint",
+    "recentFeedback": "Legutóbbi visszajelzések",
+    "viewAll": "Összes megtekintése",
+    "noFeedback": "Még nincs visszajelzés. Hozza létre első bejegyzését a kezdéshez!",
+    "newFeedback": "Új visszajelzés",
+    "last30Days": "utolsó 30 nap",
+    "newPostsCount_one": "{{count}} új bejegyzés",
+    "newPostsCount_other": "{{count}} új bejegyzés",
+    "peakPerDay": "csúcs {{count}}/nap",
+    "noNewFeedback": "Nincs új visszajelzés az elmúlt 30 napban.",
+    "backendUnreachable": "A backend API nem érhető el a 4560-as porton. Üres mutatók megjelenítése."
   }
 }

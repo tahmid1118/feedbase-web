@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Začněte zdarma a upgradujte, jak váš tým roste. Žádné skryté poplatky — zrušte kdykoli.",
     "note": "Ceny v USD, účtováno měsíčně. Po registraci upgradujte ze svého panelu."
+  },
+  "dash": {
+    "overviewTitle": "Přehled panelu",
+    "overviewSubtitle": "Sledujte zpětnou vazbu, plán a metriky zapojení",
+    "totalFeedback": "Celková zpětná vazba",
+    "teamMembers": "Členové týmu",
+    "feedbackByStatus": "Zpětná vazba podle stavu",
+    "recentFeedback": "Nedávná zpětná vazba",
+    "viewAll": "Zobrazit vše",
+    "noFeedback": "Zatím žádná zpětná vazba. Začněte vytvořením prvního příspěvku!",
+    "newFeedback": "Nová zpětná vazba",
+    "last30Days": "posledních 30 dní",
+    "newPostsCount_one": "{{count}} nový příspěvek",
+    "newPostsCount_other": "{{count}} nových příspěvků",
+    "peakPerDay": "vrchol {{count}}/den",
+    "noNewFeedback": "Za posledních 30 dní žádná nová zpětná vazba.",
+    "backendUnreachable": "Nelze se připojit k backend API na portu 4560. Zobrazují se prázdné metriky."
   }
 }

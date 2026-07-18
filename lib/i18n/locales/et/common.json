@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Alustage tasuta ja uuendage, kui teie meeskond kasvab. Peidetud tasudeta — tühistage igal ajal.",
     "note": "Hinnad USA dollarites, arveldatakse kuus. Pärast registreerumist uuendage oma töölaualt."
+  },
+  "dash": {
+    "overviewTitle": "Töölaua ülevaade",
+    "overviewSubtitle": "Jälgige tagasisidet, teekaarti ja kaasatuse mõõdikuid",
+    "totalFeedback": "Tagasiside kokku",
+    "teamMembers": "Meeskonnaliikmed",
+    "feedbackByStatus": "Tagasiside oleku järgi",
+    "recentFeedback": "Hiljutine tagasiside",
+    "viewAll": "Vaata kõiki",
+    "noFeedback": "Tagasisidet veel pole. Alustamiseks looge oma esimene postitus!",
+    "newFeedback": "Uus tagasiside",
+    "last30Days": "viimased 30 päeva",
+    "newPostsCount_one": "{{count}} uus postitus",
+    "newPostsCount_other": "{{count}} uut postitust",
+    "peakPerDay": "tipp {{count}}/päev",
+    "noNewFeedback": "Viimase 30 päeva jooksul uut tagasisidet pole.",
+    "backendUnreachable": "Backend API-le pordil 4560 ei pääse ligi. Kuvatakse tühjad mõõdikud."
   }
 }

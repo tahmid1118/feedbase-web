@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Inizia gratis ed esegui l'upgrade man mano che il tuo team cresce. Nessun costo nascosto — annulla quando vuoi.",
     "note": "Prezzi in USD, fatturati mensilmente. Esegui l'upgrade dalla tua dashboard dopo la registrazione."
+  },
+  "dash": {
+    "overviewTitle": "Panoramica dashboard",
+    "overviewSubtitle": "Monitora feedback, roadmap e metriche di coinvolgimento",
+    "totalFeedback": "Feedback totali",
+    "teamMembers": "Membri del team",
+    "feedbackByStatus": "Feedback per stato",
+    "recentFeedback": "Feedback recenti",
+    "viewAll": "Vedi tutto",
+    "noFeedback": "Ancora nessun feedback. Crea il tuo primo post per iniziare!",
+    "newFeedback": "Nuovo feedback",
+    "last30Days": "ultimi 30 giorni",
+    "newPostsCount_one": "{{count}} nuovo post",
+    "newPostsCount_other": "{{count}} nuovi post",
+    "peakPerDay": "picco {{count}}/giorno",
+    "noNewFeedback": "Nessun nuovo feedback negli ultimi 30 giorni.",
+    "backendUnreachable": "Impossibile raggiungere l'API backend sulla porta 4560. Visualizzazione di metriche vuote."
   }
 }

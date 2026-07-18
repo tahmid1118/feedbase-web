@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Začnite zadarmo a inovujte, ako váš tím rastie. Žiadne skryté poplatky — zrušte kedykoľvek.",
     "note": "Ceny v USD, účtované mesačne. Po registrácii inovujte zo svojho panela."
+  },
+  "dash": {
+    "overviewTitle": "Prehľad panela",
+    "overviewSubtitle": "Sledujte spätnú väzbu, plán a metriky zapojenia",
+    "totalFeedback": "Celková spätná väzba",
+    "teamMembers": "Členovia tímu",
+    "feedbackByStatus": "Spätná väzba podľa stavu",
+    "recentFeedback": "Nedávna spätná väzba",
+    "viewAll": "Zobraziť všetko",
+    "noFeedback": "Zatiaľ žiadna spätná väzba. Začnite vytvorením prvého príspevku!",
+    "newFeedback": "Nová spätná väzba",
+    "last30Days": "posledných 30 dní",
+    "newPostsCount_one": "{{count}} nový príspevok",
+    "newPostsCount_other": "{{count}} nových príspevkov",
+    "peakPerDay": "vrchol {{count}}/deň",
+    "noNewFeedback": "Za posledných 30 dní žiadna nová spätná väzba.",
+    "backendUnreachable": "Nie je možné pripojiť sa k backend API na porte 4560. Zobrazujú sa prázdne metriky."
   }
 }

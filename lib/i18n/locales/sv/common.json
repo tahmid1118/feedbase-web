@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Börja gratis och uppgradera när ditt team växer. Inga dolda avgifter — avsluta när som helst.",
     "note": "Priser i USD, faktureras månadsvis. Uppgradera från din instrumentpanel efter registrering."
+  },
+  "dash": {
+    "overviewTitle": "Översikt över instrumentpanel",
+    "overviewSubtitle": "Följ din feedback, färdplan och engagemangsmått",
+    "totalFeedback": "Total feedback",
+    "teamMembers": "Teammedlemmar",
+    "feedbackByStatus": "Feedback efter status",
+    "recentFeedback": "Senaste feedback",
+    "viewAll": "Visa alla",
+    "noFeedback": "Ingen feedback än. Skapa ditt första inlägg för att komma igång!",
+    "newFeedback": "Ny feedback",
+    "last30Days": "senaste 30 dagarna",
+    "newPostsCount_one": "{{count}} nytt inlägg",
+    "newPostsCount_other": "{{count}} nya inlägg",
+    "peakPerDay": "topp {{count}}/dag",
+    "noNewFeedback": "Ingen ny feedback de senaste 30 dagarna.",
+    "backendUnreachable": "Kan inte nå backend-API:et på port 4560. Visar tomma mätvärden."
   }
 }

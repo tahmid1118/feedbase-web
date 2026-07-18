@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Aloita ilmaiseksi ja päivitä tiimisi kasvaessa. Ei piilokuluja — peru milloin tahansa.",
     "note": "Hinnat Yhdysvaltain dollareina, laskutetaan kuukausittain. Päivitä kojelaudastasi rekisteröitymisen jälkeen."
+  },
+  "dash": {
+    "overviewTitle": "Kojelaudan yleiskatsaus",
+    "overviewSubtitle": "Seuraa palautetta, etenemissuunnitelmaa ja sitoutumismittareita",
+    "totalFeedback": "Palaute yhteensä",
+    "teamMembers": "Tiimin jäsenet",
+    "feedbackByStatus": "Palaute tilan mukaan",
+    "recentFeedback": "Viimeisin palaute",
+    "viewAll": "Näytä kaikki",
+    "noFeedback": "Ei vielä palautetta. Luo ensimmäinen julkaisusi aloittaaksesi!",
+    "newFeedback": "Uusi palaute",
+    "last30Days": "viimeiset 30 päivää",
+    "newPostsCount_one": "{{count}} uusi julkaisu",
+    "newPostsCount_other": "{{count}} uutta julkaisua",
+    "peakPerDay": "huippu {{count}}/pv",
+    "noNewFeedback": "Ei uutta palautetta viimeisen 30 päivän aikana.",
+    "backendUnreachable": "Taustajärjestelmän API:in portissa 4560 ei saada yhteyttä. Näytetään tyhjät mittarit."
   }
 }

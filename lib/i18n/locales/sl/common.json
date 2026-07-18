@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Začnite brezplačno in nadgradite, ko vaša ekipa raste. Brez skritih stroškov — prekličete lahko kadar koli.",
     "note": "Cene v USD, zaračunano mesečno. Po registraciji nadgradite s svoje nadzorne plošče."
+  },
+  "dash": {
+    "overviewTitle": "Pregled nadzorne plošče",
+    "overviewSubtitle": "Spremljajte povratne informacije, načrt in metrike angažiranosti",
+    "totalFeedback": "Skupaj povratnih informacij",
+    "teamMembers": "Člani ekipe",
+    "feedbackByStatus": "Povratne informacije po stanju",
+    "recentFeedback": "Nedavne povratne informacije",
+    "viewAll": "Prikaži vse",
+    "noFeedback": "Še ni povratnih informacij. Ustvarite prvo objavo za začetek!",
+    "newFeedback": "Nove povratne informacije",
+    "last30Days": "zadnjih 30 dni",
+    "newPostsCount_one": "{{count}} nova objava",
+    "newPostsCount_other": "{{count}} novih objav",
+    "peakPerDay": "vrh {{count}}/dan",
+    "noNewFeedback": "V zadnjih 30 dneh ni novih povratnih informacij.",
+    "backendUnreachable": "Zaledni API na vratih 4560 ni dosegljiv. Prikazane so prazne metrike."
   }
 }

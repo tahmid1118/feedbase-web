@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Sāciet bez maksas un jauniniet, kad jūsu komanda aug. Bez slēptām maksām — atceliet jebkurā laikā.",
     "note": "Cenas USD, norēķini reizi mēnesī. Pēc reģistrācijas jauniniet no savas informācijas paneļa."
+  },
+  "dash": {
+    "overviewTitle": "Paneļa pārskats",
+    "overviewSubtitle": "Sekojiet atsauksmēm, ceļvedim un iesaistes rādītājiem",
+    "totalFeedback": "Kopējās atsauksmes",
+    "teamMembers": "Komandas locekļi",
+    "feedbackByStatus": "Atsauksmes pēc statusa",
+    "recentFeedback": "Jaunākās atsauksmes",
+    "viewAll": "Skatīt visu",
+    "noFeedback": "Vēl nav atsauksmju. Izveidojiet pirmo ierakstu, lai sāktu!",
+    "newFeedback": "Jaunas atsauksmes",
+    "last30Days": "pēdējās 30 dienas",
+    "newPostsCount_one": "{{count}} jauns ieraksts",
+    "newPostsCount_other": "{{count}} jauni ieraksti",
+    "peakPerDay": "maksimums {{count}}/dienā",
+    "noNewFeedback": "Pēdējās 30 dienās nav jaunu atsauksmju.",
+    "backendUnreachable": "Nevar sasniegt backend API portā 4560. Tiek rādīti tukši rādītāji."
   }
 }

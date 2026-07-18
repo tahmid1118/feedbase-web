@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Započnite besplatno i nadogradite kako vaš tim raste. Bez skrivenih naknada — otkažite bilo kada.",
     "note": "Cijene u USD, naplaćuju se mjesečno. Nadogradite s nadzorne ploče nakon registracije."
+  },
+  "dash": {
+    "overviewTitle": "Pregled nadzorne ploče",
+    "overviewSubtitle": "Pratite povratne informacije, plan razvoja i metriku angažmana",
+    "totalFeedback": "Ukupno povratnih informacija",
+    "teamMembers": "Članovi tima",
+    "feedbackByStatus": "Povratne informacije prema statusu",
+    "recentFeedback": "Nedavne povratne informacije",
+    "viewAll": "Prikaži sve",
+    "noFeedback": "Još nema povratnih informacija. Stvorite svoju prvu objavu za početak!",
+    "newFeedback": "Nove povratne informacije",
+    "last30Days": "posljednjih 30 dana",
+    "newPostsCount_one": "{{count}} nova objava",
+    "newPostsCount_other": "{{count}} novih objava",
+    "peakPerDay": "vrhunac {{count}}/dan",
+    "noNewFeedback": "Nema novih povratnih informacija u posljednjih 30 dana.",
+    "backendUnreachable": "Nije moguće doći do backend API-ja na priključku 4560. Prikazuju se prazne metrike."
   }
 }

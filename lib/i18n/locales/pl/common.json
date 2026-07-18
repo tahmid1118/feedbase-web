@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Zacznij za darmo i ulepszaj w miarę rozwoju zespołu. Bez ukrytych opłat — anuluj w dowolnej chwili.",
     "note": "Ceny w USD, rozliczane miesięcznie. Ulepsz z panelu po rejestracji."
+  },
+  "dash": {
+    "overviewTitle": "Przegląd pulpitu",
+    "overviewSubtitle": "Śledź opinie, plan działań i wskaźniki zaangażowania",
+    "totalFeedback": "Łączna liczba opinii",
+    "teamMembers": "Członkowie zespołu",
+    "feedbackByStatus": "Opinie według statusu",
+    "recentFeedback": "Ostatnie opinie",
+    "viewAll": "Zobacz wszystko",
+    "noFeedback": "Brak opinii. Utwórz pierwszy wpis, aby rozpocząć!",
+    "newFeedback": "Nowe opinie",
+    "last30Days": "ostatnie 30 dni",
+    "newPostsCount_one": "{{count}} nowy wpis",
+    "newPostsCount_other": "{{count}} nowe wpisy",
+    "peakPerDay": "szczyt {{count}}/dzień",
+    "noNewFeedback": "Brak nowych opinii w ciągu ostatnich 30 dni.",
+    "backendUnreachable": "Nie można połączyć się z API zaplecza na porcie 4560. Wyświetlanie pustych wskaźników."
   }
 }

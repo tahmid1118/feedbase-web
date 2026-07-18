@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Commencez gratuitement et évoluez à mesure que votre équipe grandit. Aucuns frais cachés — annulez à tout moment.",
     "note": "Prix en USD, facturés mensuellement. Effectuez la mise à niveau depuis votre tableau de bord après votre inscription."
+  },
+  "dash": {
+    "overviewTitle": "Aperçu du tableau de bord",
+    "overviewSubtitle": "Suivez vos retours, votre feuille de route et vos indicateurs d'engagement",
+    "totalFeedback": "Retours totaux",
+    "teamMembers": "Membres de l'équipe",
+    "feedbackByStatus": "Retours par statut",
+    "recentFeedback": "Retours récents",
+    "viewAll": "Tout voir",
+    "noFeedback": "Aucun retour pour l'instant. Créez votre première publication pour commencer !",
+    "newFeedback": "Nouveaux retours",
+    "last30Days": "30 derniers jours",
+    "newPostsCount_one": "{{count}} nouvelle publication",
+    "newPostsCount_other": "{{count}} nouvelles publications",
+    "peakPerDay": "pic {{count}}/jour",
+    "noNewFeedback": "Aucun nouveau retour au cours des 30 derniers jours.",
+    "backendUnreachable": "Impossible d'atteindre l'API backend sur le port 4560. Affichage de métriques vides."
   }
 }

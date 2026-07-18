@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Comece grátis e atualize à medida que a sua equipa cresce. Sem taxas ocultas — cancele quando quiser.",
     "note": "Preços em USD, faturados mensalmente. Atualize a partir do seu painel após o registo."
+  },
+  "dash": {
+    "overviewTitle": "Visão geral do painel",
+    "overviewSubtitle": "Acompanhe o feedback, o roteiro e as métricas de envolvimento",
+    "totalFeedback": "Feedback total",
+    "teamMembers": "Membros da equipa",
+    "feedbackByStatus": "Feedback por estado",
+    "recentFeedback": "Feedback recente",
+    "viewAll": "Ver tudo",
+    "noFeedback": "Ainda não há feedback. Crie a sua primeira publicação para começar!",
+    "newFeedback": "Novo feedback",
+    "last30Days": "últimos 30 dias",
+    "newPostsCount_one": "{{count}} nova publicação",
+    "newPostsCount_other": "{{count}} novas publicações",
+    "peakPerDay": "pico {{count}}/dia",
+    "noNewFeedback": "Sem novo feedback nos últimos 30 dias.",
+    "backendUnreachable": "Não é possível aceder à API backend na porta 4560. A mostrar métricas vazias."
   }
 }

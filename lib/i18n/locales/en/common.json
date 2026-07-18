@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Start free and upgrade when your team grows. No hidden fees — cancel anytime.",
     "note": "Prices in USD, billed monthly. Upgrade from your dashboard after signing up."
+  },
+  "dash": {
+    "overviewTitle": "Dashboard Overview",
+    "overviewSubtitle": "Track your feedback, roadmap, and engagement metrics",
+    "totalFeedback": "Total Feedback",
+    "teamMembers": "Team Members",
+    "feedbackByStatus": "Feedback by Status",
+    "recentFeedback": "Recent Feedback",
+    "viewAll": "View all",
+    "noFeedback": "No feedback yet. Create your first post to get started!",
+    "newFeedback": "New feedback",
+    "last30Days": "last 30 days",
+    "newPostsCount_one": "{{count}} new post",
+    "newPostsCount_other": "{{count}} new posts",
+    "peakPerDay": "peak {{count}}/day",
+    "noNewFeedback": "No new feedback in the last 30 days.",
+    "backendUnreachable": "Unable to reach the backend API on port 4560. Showing empty metrics."
   }
 }

@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Start gratis, og opgrader, efterhånden som dit team vokser. Ingen skjulte gebyrer — opsig når som helst.",
     "note": "Priser i USD, faktureres månedligt. Opgrader fra dit dashboard efter tilmelding."
+  },
+  "dash": {
+    "overviewTitle": "Dashboardoversigt",
+    "overviewSubtitle": "Følg din feedback, køreplan og engagementsmålinger",
+    "totalFeedback": "Samlet feedback",
+    "teamMembers": "Teammedlemmer",
+    "feedbackByStatus": "Feedback efter status",
+    "recentFeedback": "Seneste feedback",
+    "viewAll": "Se alle",
+    "noFeedback": "Ingen feedback endnu. Opret dit første opslag for at komme i gang!",
+    "newFeedback": "Ny feedback",
+    "last30Days": "seneste 30 dage",
+    "newPostsCount_one": "{{count}} nyt opslag",
+    "newPostsCount_other": "{{count}} nye opslag",
+    "peakPerDay": "top {{count}}/dag",
+    "noNewFeedback": "Ingen ny feedback i de seneste 30 dage.",
+    "backendUnreachable": "Kan ikke nå backend-API'en på port 4560. Viser tomme målinger."
   }
 }

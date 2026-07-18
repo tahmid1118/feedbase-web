@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Ibda b'xejn u aġġorna hekk kif jikber it-tim tiegħek. L-ebda tariffi moħbija — ikkanċella meta trid.",
     "note": "Prezzijiet f'USD, iffatturati kull xahar. Aġġorna mid-dashboard tiegħek wara li tirreġistra."
+  },
+  "dash": {
+    "overviewTitle": "Ħarsa ġenerali tad-dashboard",
+    "overviewSubtitle": "Segwi l-feedback, il-pjan u l-metriċi tal-involviment tiegħek",
+    "totalFeedback": "Feedback Totali",
+    "teamMembers": "Membri tat-Tim",
+    "feedbackByStatus": "Feedback skont l-Istatus",
+    "recentFeedback": "Feedback Reċenti",
+    "viewAll": "Ara kollox",
+    "noFeedback": "Għad m'hemm l-ebda feedback. Oħloq l-ewwel post tiegħek biex tibda!",
+    "newFeedback": "Feedback ġdid",
+    "last30Days": "l-aħħar 30 jum",
+    "newPostsCount_one": "{{count}} post ġdid",
+    "newPostsCount_other": "{{count}} posts ġodda",
+    "peakPerDay": "quċċata {{count}}/jum",
+    "noNewFeedback": "L-ebda feedback ġdid fl-aħħar 30 jum.",
+    "backendUnreachable": "Ma jistax jintlaħaq l-API tal-backend fuq il-port 4560. Qed jintwerew metriċi vojta."
   }
 }

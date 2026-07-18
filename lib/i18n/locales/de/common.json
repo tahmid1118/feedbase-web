@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Starten Sie kostenlos und upgraden Sie, wenn Ihr Team wächst. Keine versteckten Gebühren — jederzeit kündbar.",
     "note": "Preise in USD, monatliche Abrechnung. Nach der Anmeldung über Ihr Dashboard upgraden."
+  },
+  "dash": {
+    "overviewTitle": "Dashboard-Übersicht",
+    "overviewSubtitle": "Verfolgen Sie Ihr Feedback, Ihre Roadmap und Ihre Engagement-Kennzahlen",
+    "totalFeedback": "Feedback gesamt",
+    "teamMembers": "Teammitglieder",
+    "feedbackByStatus": "Feedback nach Status",
+    "recentFeedback": "Aktuelles Feedback",
+    "viewAll": "Alle anzeigen",
+    "noFeedback": "Noch kein Feedback. Erstellen Sie Ihren ersten Beitrag, um zu beginnen!",
+    "newFeedback": "Neues Feedback",
+    "last30Days": "letzte 30 Tage",
+    "newPostsCount_one": "{{count}} neuer Beitrag",
+    "newPostsCount_other": "{{count}} neue Beiträge",
+    "peakPerDay": "Spitze {{count}}/Tag",
+    "noNewFeedback": "Kein neues Feedback in den letzten 30 Tagen.",
+    "backendUnreachable": "Backend-API auf Port 4560 nicht erreichbar. Leere Kennzahlen werden angezeigt."
   }
 }

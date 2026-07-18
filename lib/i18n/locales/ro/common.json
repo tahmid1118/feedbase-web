@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Începeți gratuit și faceți upgrade pe măsură ce echipa crește. Fără taxe ascunse — anulați oricând.",
     "note": "Prețuri în USD, facturate lunar. Faceți upgrade din panou după înregistrare."
+  },
+  "dash": {
+    "overviewTitle": "Prezentare generală panou",
+    "overviewSubtitle": "Urmăriți feedbackul, foaia de parcurs și valorile de implicare",
+    "totalFeedback": "Feedback total",
+    "teamMembers": "Membrii echipei",
+    "feedbackByStatus": "Feedback după stare",
+    "recentFeedback": "Feedback recent",
+    "viewAll": "Vedeți tot",
+    "noFeedback": "Încă niciun feedback. Creați prima postare pentru a începe!",
+    "newFeedback": "Feedback nou",
+    "last30Days": "ultimele 30 de zile",
+    "newPostsCount_one": "{{count}} postare nouă",
+    "newPostsCount_other": "{{count}} postări noi",
+    "peakPerDay": "vârf {{count}}/zi",
+    "noNewFeedback": "Niciun feedback nou în ultimele 30 de zile.",
+    "backendUnreachable": "Nu se poate accesa API-ul backend pe portul 4560. Se afișează valori goale."
   }
 }

@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Begin gratis en upgrade naarmate uw team groeit. Geen verborgen kosten — u kunt altijd opzeggen.",
     "note": "Prijzen in USD, maandelijks gefactureerd. Upgrade na aanmelding vanuit uw dashboard."
+  },
+  "dash": {
+    "overviewTitle": "Dashboardoverzicht",
+    "overviewSubtitle": "Volg uw feedback, roadmap en betrokkenheidsstatistieken",
+    "totalFeedback": "Totale feedback",
+    "teamMembers": "Teamleden",
+    "feedbackByStatus": "Feedback per status",
+    "recentFeedback": "Recente feedback",
+    "viewAll": "Alles bekijken",
+    "noFeedback": "Nog geen feedback. Maak uw eerste bericht om te beginnen!",
+    "newFeedback": "Nieuwe feedback",
+    "last30Days": "laatste 30 dagen",
+    "newPostsCount_one": "{{count}} nieuw bericht",
+    "newPostsCount_other": "{{count}} nieuwe berichten",
+    "peakPerDay": "piek {{count}}/dag",
+    "noNewFeedback": "Geen nieuwe feedback in de afgelopen 30 dagen.",
+    "backendUnreachable": "Kan de backend-API op poort 4560 niet bereiken. Lege statistieken worden weergegeven."
   }
 }

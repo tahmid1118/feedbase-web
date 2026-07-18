@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Empieza gratis y mejora a medida que crece tu equipo. Sin comisiones ocultas: cancela cuando quieras.",
     "note": "Precios en USD, facturados mensualmente. Mejora desde tu panel después de registrarte."
+  },
+  "dash": {
+    "overviewTitle": "Resumen del panel",
+    "overviewSubtitle": "Sigue tus comentarios, hoja de ruta y métricas de interacción",
+    "totalFeedback": "Comentarios totales",
+    "teamMembers": "Miembros del equipo",
+    "feedbackByStatus": "Comentarios por estado",
+    "recentFeedback": "Comentarios recientes",
+    "viewAll": "Ver todo",
+    "noFeedback": "Aún no hay comentarios. ¡Crea tu primera publicación para empezar!",
+    "newFeedback": "Comentarios nuevos",
+    "last30Days": "últimos 30 días",
+    "newPostsCount_one": "{{count}} publicación nueva",
+    "newPostsCount_other": "{{count}} publicaciones nuevas",
+    "peakPerDay": "pico {{count}}/día",
+    "noNewFeedback": "Sin comentarios nuevos en los últimos 30 días.",
+    "backendUnreachable": "No se puede conectar con la API backend en el puerto 4560. Mostrando métricas vacías."
   }
 }

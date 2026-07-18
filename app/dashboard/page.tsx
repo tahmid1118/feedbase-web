@@ -9,6 +9,7 @@ import {
   Users,
 } from "lucide-react";
 import { auth } from "@/auth";
+import { getTranslation } from "@/lib/i18n/server";
 import {
   analyticsApi,
   postsApi,
@@ -20,14 +21,15 @@ import {
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const STATUS_LABELS: Record<PostStatus, string> = {
-  open: "Open",
-  planned: "Planned",
-  in_progress: "In Progress",
-  completed: "Completed",
-  closed: "Closed",
-  rejected: "Rejected",
-};
+// Status order for the breakdown list; labels are looked up via t(`status.${s}`).
+const STATUS_ORDER: PostStatus[] = [
+  "open",
+  "planned",
+  "in_progress",
+  "completed",
+  "closed",
+  "rejected",
+];
 
 const STATUS_BADGE: Record<string, string> = {
   open: "bg-blue-100 text-blue-700",
@@ -61,6 +63,7 @@ async function loadData(token?: string) {
 
 export default async function DashboardPage() {
   const session = await auth();
+  const { t } = await getTranslation();
   const { overview, recent, available } = await loadData(
     session?.user?.accessToken
   );
@@ -71,25 +74,25 @@ export default async function DashboardPage() {
 
   const statCards = [
     {
-      label: "Total Feedback",
+      label: t("dash.totalFeedback"),
       value: totalPosts,
       icon: MessageSquare,
       tint: "bg-[#c74959]/10 text-[#c74959]",
     },
     {
-      label: "In Progress",
+      label: t("status.in_progress"),
       value: statusCounts.in_progress ?? 0,
       icon: GitBranch,
       tint: "bg-[#da6a78]/10 text-[#da6a78]",
     },
     {
-      label: "Completed",
+      label: t("status.completed"),
       value: statusCounts.completed ?? 0,
       icon: CheckCircle2,
       tint: "bg-[#c74959]/10 text-[#c74959]",
     },
     {
-      label: "Team Members",
+      label: t("dash.teamMembers"),
       value: totals?.totalUsers ?? 0,
       icon: Users,
       tint: "bg-[#da6a78]/10 text-[#da6a78]",
@@ -142,15 +145,15 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">Dashboard Overview</h2>
+        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("dash.overviewTitle")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
-          Track your feedback, roadmap, and engagement metrics
+          {t("dash.overviewSubtitle")}
         </p>
       </div>
 
       {!available && (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          Unable to reach the backend API on port 4560. Showing empty metrics.
+          {t("dash.backendUnreachable")}
         </div>
       )}
 
@@ -179,10 +182,10 @@ export default async function DashboardPage() {
         {/* Status breakdown */}
         <Card className="p-6 lg:col-span-1">
           <h3 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
-            Feedback by Status
+            {t("dash.feedbackByStatus")}
           </h3>
           <div className="space-y-3">
-            {(Object.keys(STATUS_LABELS) as PostStatus[])
+            {STATUS_ORDER
               // 'closed' is a legacy status not offered in the UI — don't show it.
               .filter((status) => status !== "closed")
               .map((status) => {
@@ -192,7 +195,7 @@ export default async function DashboardPage() {
                 <div key={status}>
                   <div className="mb-1 flex items-center justify-between text-sm">
                     <span className="text-[#1c0a0c]/70">
-                      {STATUS_LABELS[status]}
+                      {t(`status.${status}`)}
                     </span>
                     <span className="font-medium text-[#1c0a0c]">{count}</span>
                   </div>
@@ -212,19 +215,19 @@ export default async function DashboardPage() {
         <Card className="p-6 lg:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-lg font-semibold text-[#1c0a0c]">
-              Recent Feedback
+              {t("dash.recentFeedback")}
             </h3>
             <Link
               href="/dashboard/feedback"
               className="flex items-center gap-1 text-sm text-[#c74959] hover:underline"
             >
-              View all <ArrowRight className="h-3 w-3" />
+              {t("dash.viewAll")} <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
 
           {recent.length === 0 ? (
             <div className="flex items-center justify-center py-12 text-[#1c0a0c]/60">
-              <p>No feedback yet. Create your first post to get started!</p>
+              <p>{t("dash.noFeedback")}</p>
             </div>
           ) : (
             <div className="space-y-2">
@@ -244,7 +247,7 @@ export default async function DashboardPage() {
                     </span>
                   </div>
                   <Badge className={STATUS_BADGE[post.status]}>
-                    {post.status.replace("_", " ")}
+                    {t(`status.${post.status}`)}
                   </Badge>
                 </Link>
               ))}
@@ -260,22 +263,21 @@ export default async function DashboardPage() {
             <div className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5 text-[#c74959]" />
               <h3 className="text-lg font-semibold text-[#1c0a0c]">
-                New feedback
+                {t("dash.newFeedback")}
               </h3>
-              <span className="text-sm text-[#1c0a0c]/50">· last 30 days</span>
+              <span className="text-sm text-[#1c0a0c]/50">· {t("dash.last30Days")}</span>
             </div>
             <div className="text-sm text-[#1c0a0c]/60">
-              <span className="font-semibold text-[#1c0a0c]">{trendTotal}</span>{" "}
-              {trendTotal === 1 ? "new post" : "new posts"}
+              {t("dash.newPostsCount", { count: trendTotal })}
               {maxTrend > 1 && (
-                <span className="text-[#1c0a0c]/40"> · peak {maxTrend}/day</span>
+                <span className="text-[#1c0a0c]/40"> · {t("dash.peakPerDay", { count: maxTrend })}</span>
               )}
             </div>
           </div>
 
           {trendTotal === 0 ? (
             <div className="flex h-32 items-center justify-center rounded-lg bg-[#fdf8f9] text-sm text-[#1c0a0c]/50">
-              No new feedback in the last 30 days.
+              {t("dash.noNewFeedback")}
             </div>
           ) : (
             <>

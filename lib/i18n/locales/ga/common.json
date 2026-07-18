@@ -510,5 +510,22 @@
   "pricingPage": {
     "subtitle": "Tosaigh saor in aisce agus uasghrádaigh de réir mar a fhásann d'fhoireann. Gan táillí i bhfolach — cealaigh am ar bith.",
     "note": "Praghsanna in USD, billeáilte go míosúil. Uasghrádaigh ó do dheais tar éis clárú."
+  },
+  "dash": {
+    "overviewTitle": "Forbhreathnú Deaisce",
+    "overviewSubtitle": "Lean d'aiseolas, do threochlár agus do mhéadrachtaí rannpháirtíochta",
+    "totalFeedback": "Aiseolas Iomlán",
+    "teamMembers": "Baill Foirne",
+    "feedbackByStatus": "Aiseolas de réir Stádais",
+    "recentFeedback": "Aiseolas le Déanaí",
+    "viewAll": "Féach ar gach rud",
+    "noFeedback": "Níl aon aiseolas ann fós. Cruthaigh do chéad phostáil chun tosú!",
+    "newFeedback": "Aiseolas nua",
+    "last30Days": "30 lá anuas",
+    "newPostsCount_one": "{{count}} phostáil nua",
+    "newPostsCount_other": "{{count}} postáil nua",
+    "peakPerDay": "buaic {{count}}/lá",
+    "noNewFeedback": "Níl aon aiseolas nua le 30 lá anuas.",
+    "backendUnreachable": "Ní féidir teacht ar an API cúil ar phort 4560. Méadrachtaí folmha á dtaispeáint."
   }
 }
