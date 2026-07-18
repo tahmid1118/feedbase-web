@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Vyberte jazyk"
+    "select": "Vyberte jazyk",
+    "label": "Jazyk"
   },
   "nav": {
     "pricing": "Ceník",
@@ -20,13 +21,74 @@
       "titleHighlight": "úspěch produktu",
       "subtitle": "Snadno sbírejte, organizujte a upřednostňujte zpětnou vazbu. Vytvářejte produkty, které vaši zákazníci opravdu chtějí.",
       "startTrial": "Spustit zkušební verzi zdarma",
-      "watchDemo": "Přehrát demo"
+      "watchDemo": "Přehrát demo",
+      "badge": "Důvěřuje nám více než 300 tis. uživatelů po celém světě"
     },
     "features": {
-      "heading": "Vše, co potřebujete"
+      "heading": "Vše, co potřebujete",
+      "subheading": "Výkonné funkce pro správu zpětné vazby ve velkém měřítku",
+      "collection": {
+        "title": "Sběr zpětné vazby",
+        "desc": "Získávejte poznatky od zákazníků prostřednictvím přizpůsobitelných nástěnek a formulářů zpětné vazby"
+      },
+      "voting": {
+        "title": "Chytrý hlasovací systém",
+        "desc": "Nechte uživatele hlasovat o nejžádanějších funkcích a efektivně upřednostněte svůj plán"
+      },
+      "roadmap": {
+        "title": "Vizuální plán",
+        "desc": "Sdílejte veřejně plán produktu a udržujte zákazníky v obraze"
+      },
+      "notifications": {
+        "title": "Chytrá oznámení",
+        "desc": "Udržujte uživatele v obraze automatickými aktualizacemi o stavu jejich zpětné vazby"
+      },
+      "analytics": {
+        "title": "Analytický panel",
+        "desc": "Sledujte trendy, měřte zapojení a rozhodujte se na základě dat"
+      },
+      "multitenant": {
+        "title": "Podpora více nájemců",
+        "desc": "Spravujte více pracovních prostorů s vlastními doménami a značkou"
+      }
     },
     "cta": {
-      "heading": "Připraveni vytvářet lepší produkty?"
+      "heading": "Připraveni vytvářet lepší produkty?",
+      "subheading": "Připojte se k tisícům týmů, které používají Feedbase k pochopení svých zákazníků"
+    },
+    "stats": {
+      "activeUsers": "Aktivní uživatelé",
+      "pluginUsers": "Uživatelé pluginu",
+      "productHunt": "Hlasy na ProductHunt"
+    },
+    "how": {
+      "heading": "Jak to funguje?",
+      "subheading": "Získejte svůj personalizovaný portál zpětné vazby ve 4 krocích",
+      "step1Title": "Zaregistrujte se a vytvořte pracovní prostor",
+      "step1Desc": "Začněte s naším kouzelným průvodcem nastavením a připravte si portál zpětné vazby během několika minut",
+      "step2Title": "Přizpůsobte si značku",
+      "step2Desc": "Vyberte primární a sekundární barvy, přidejte logo a přizpůsobte si jej",
+      "step3Title": "Pozvěte svůj tým a zákazníky",
+      "step3Desc": "Sdílejte odkaz na svou nástěnku zpětné vazby a začněte sbírat cenné poznatky",
+      "step4Title": "Analyzujte a jednejte",
+      "step4Desc": "Exportujte data v různých formátech, integrujte své nástroje a vytvářejte lepší produkty"
+    },
+    "testimonials": {
+      "heading": "Oblíbené produktovými týmy",
+      "subheading": "Co lidé říkají o Feedbase",
+      "quote1": "Feedbase změnil způsob, jakým sbíráme a upřednostňujeme zpětnou vazbu uživatelů. Hlasovací systém je skvělý!",
+      "role1": "Produktový manažer",
+      "quote2": "Nastavení trvalo méně než 5 minut. Rozhraní je přehledné a naši zákazníci ho milují!",
+      "role2": "Zakladatel startupu",
+      "quote3": "Analytický panel nám poskytuje poznatky, které jsme nikdy předtím neměli. Vřele doporučuji!",
+      "role3": "UX designér"
+    },
+    "pricing": {
+      "heading": "Jednoduché, transparentní ceny",
+      "subheading": "Začněte zdarma, upgradujte, jak rostete"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Všechna práva vyhrazena."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktivní",
     "share": "Sdílet",
     "pin": "Připnout",
-    "status": "Stav"
+    "status": "Stav",
+    "edit": "Upravit",
+    "confirm": "Potvrdit",
+    "back": "Zpět",
+    "next": "Další",
+    "submit": "Odeslat",
+    "learnMore": "Zjistit více"
   },
   "dashboard": {
     "welcomeBack": "Vítejte zpět"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Pracovní prostor smazán",
     "workspaceUpdated": "Pracovní prostor aktualizován",
     "accountDeleted": "Váš účet byl smazán"
+  },
+  "authAside": {
+    "badge": "Platforma pro zpětnou vazbu k produktu",
+    "heading": "Proměňte zpětnou vazbu uživatelů ve svou konkurenční výhodu.",
+    "subtitle": "Připojte se k tisícům produktových týmů, které používají Feedbase k pochopení toho, co jejich zákazníci opravdu chtějí, a k tvorbě vítězných produktů.",
+    "centralizeTitle": "Centralizujte zpětnou vazbu",
+    "centralizeDesc": "Shromažďujte požadavky na funkce, hlášení chyb a nápady na jednom uspořádaném místě dostupném kdykoli.",
+    "prioritizeTitle": "Upřednostňujte pomocí hlasů",
+    "prioritizeDesc": "Nechte uživatele hlasovat o tom, na čem nejvíce záleží, abyste vytvářeli funkce se skutečným dopadem.",
+    "roadmapTitle": "Sdílejte svůj plán",
+    "roadmapDesc": "Udržujte zákazníky v obraze veřejným plánem a seznamem změn, který ukazuje, že nasloucháte."
+  },
+  "loginPage": {
+    "heading": "Přihlaste se a pokračujte v lepších rozhodnutích.",
+    "subtitle": "Přistupujte ke svým tokům zpětné vazby, nástěnkám plánu, seznamu změn a oznámením z jednoho bezpečného místa."
+  },
+  "signupPage": {
+    "heading": "Připojte se k Feedbase a sbírejte zpětnou vazbu k produktu s přehledem.",
+    "subtitle": "Vytvořte pracovní prostor svého týmu za méně než minutu a poté upřednostněte to, co uživatelé nejvíce potřebují, na bezpečném a škálovatelném základu."
   }
 }

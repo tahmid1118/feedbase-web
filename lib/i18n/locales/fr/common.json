@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Choisir la langue"
+    "select": "Choisir la langue",
+    "label": "Langue"
   },
   "nav": {
     "pricing": "Tarifs",
@@ -20,13 +21,74 @@
       "titleHighlight": "succès produit",
       "subtitle": "Collectez, organisez et priorisez les retours sans effort. Créez des produits que vos clients veulent vraiment.",
       "startTrial": "Essai gratuit",
-      "watchDemo": "Voir la démo"
+      "watchDemo": "Voir la démo",
+      "badge": "Adopté par plus de 300 000 utilisateurs dans le monde"
     },
     "features": {
-      "heading": "Tout ce dont vous avez besoin"
+      "heading": "Tout ce dont vous avez besoin",
+      "subheading": "Des fonctionnalités puissantes pour gérer les retours à grande échelle",
+      "collection": {
+        "title": "Collecte de retours",
+        "desc": "Recueillez des informations auprès des clients via des tableaux et formulaires de retours personnalisables"
+      },
+      "voting": {
+        "title": "Système de vote intelligent",
+        "desc": "Laissez les utilisateurs voter pour les fonctionnalités qu'ils souhaitent le plus afin de prioriser efficacement votre feuille de route"
+      },
+      "roadmap": {
+        "title": "Feuille de route visuelle",
+        "desc": "Partagez publiquement votre feuille de route produit et tenez les clients informés"
+      },
+      "notifications": {
+        "title": "Notifications intelligentes",
+        "desc": "Gardez les utilisateurs engagés avec des mises à jour automatiques sur l'état de leurs retours"
+      },
+      "analytics": {
+        "title": "Tableau de bord d'analyse",
+        "desc": "Suivez les tendances, mesurez l'engagement et prenez des décisions fondées sur les données"
+      },
+      "multitenant": {
+        "title": "Prise en charge multi-locataires",
+        "desc": "Gérez plusieurs espaces de travail avec des domaines et une image de marque personnalisés"
+      }
     },
     "cta": {
-      "heading": "Prêt à créer de meilleurs produits ?"
+      "heading": "Prêt à créer de meilleurs produits ?",
+      "subheading": "Rejoignez des milliers d'équipes qui utilisent Feedbase pour comprendre leurs clients"
+    },
+    "stats": {
+      "activeUsers": "Utilisateurs actifs",
+      "pluginUsers": "Utilisateurs du plugin",
+      "productHunt": "Votes ProductHunt"
+    },
+    "how": {
+      "heading": "Comment ça marche ?",
+      "subheading": "Obtenez votre portail de retours personnalisé en 4 étapes",
+      "step1Title": "Inscrivez-vous et créez votre espace de travail",
+      "step1Desc": "Commencez avec notre assistant de configuration magique pour préparer votre portail de retours en quelques minutes",
+      "step2Title": "Personnalisez votre image de marque",
+      "step2Desc": "Choisissez vos couleurs principale et secondaire, ajoutez votre logo et personnalisez-le",
+      "step3Title": "Invitez votre équipe et vos clients",
+      "step3Desc": "Partagez le lien de votre tableau de retours et commencez à recueillir des informations précieuses",
+      "step4Title": "Analysez et passez à l'action",
+      "step4Desc": "Exportez les données dans divers formats, intégrez vos outils et créez de meilleurs produits"
+    },
+    "testimonials": {
+      "heading": "Adoré par les équipes produit",
+      "subheading": "Ce que les gens disent de Feedbase",
+      "quote1": "Feedbase a transformé notre façon de recueillir et de prioriser les retours des utilisateurs. Le système de vote est génial !",
+      "role1": "Responsable produit",
+      "quote2": "La configuration a pris moins de 5 minutes. L'interface est épurée et nos clients l'adorent !",
+      "role2": "Fondateur de startup",
+      "quote3": "Le tableau de bord d'analyse nous donne des informations que nous n'avions jamais eues auparavant. Vivement recommandé !",
+      "role3": "Designer UX"
+    },
+    "pricing": {
+      "heading": "Tarification simple et transparente",
+      "subheading": "Commencez gratuitement, évoluez au fil de votre croissance"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Tous droits réservés."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Actif",
     "share": "Partager",
     "pin": "Épingler",
-    "status": "Statut"
+    "status": "Statut",
+    "edit": "Modifier",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "submit": "Envoyer",
+    "learnMore": "En savoir plus"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Espace de travail supprimé",
     "workspaceUpdated": "Espace de travail mis à jour",
     "accountDeleted": "Votre compte a été supprimé"
+  },
+  "authAside": {
+    "badge": "Plateforme de retours produit",
+    "heading": "Transformez les retours des utilisateurs en avantage concurrentiel.",
+    "subtitle": "Rejoignez des milliers d'équipes produit qui utilisent Feedbase pour comprendre ce que leurs clients veulent vraiment et créer des produits gagnants.",
+    "centralizeTitle": "Centralisez les retours",
+    "centralizeDesc": "Rassemblez les demandes de fonctionnalités, les rapports de bogues et les idées dans un espace organisé accessible à tout moment.",
+    "prioritizeTitle": "Priorisez avec les votes",
+    "prioritizeDesc": "Laissez vos utilisateurs voter pour ce qui compte le plus, afin de créer des fonctionnalités à impact réel.",
+    "roadmapTitle": "Partagez votre feuille de route",
+    "roadmapDesc": "Gardez vos clients engagés avec une feuille de route publique et un journal des modifications qui montre que vous les écoutez."
+  },
+  "loginPage": {
+    "heading": "Connectez-vous et continuez à prendre de meilleures décisions.",
+    "subtitle": "Accédez à vos flux de retours, tableaux de feuille de route, journal des modifications et notifications depuis un espace sécurisé."
+  },
+  "signupPage": {
+    "heading": "Rejoignez Feedbase et recueillez les retours produit en toute clarté.",
+    "subtitle": "Créez l'espace de travail de votre équipe en moins d'une minute, puis priorisez les besoins des utilisateurs sur une base sécurisée et évolutive."
   }
 }

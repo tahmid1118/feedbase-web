@@ -443,5 +443,24 @@
     "workspaceDeleted": "Workspace deleted",
     "workspaceUpdated": "Workspace updated",
     "accountDeleted": "Your account has been deleted"
+  },
+  "authAside": {
+    "badge": "Product Feedback Platform",
+    "heading": "Turn user feedback into your competitive advantage.",
+    "subtitle": "Join thousands of product teams who use Feedbase to understand what their customers really want and build products that win.",
+    "centralizeTitle": "Centralize feedback",
+    "centralizeDesc": "Collect feature requests, bug reports, and ideas in one organized space your team can access anytime.",
+    "prioritizeTitle": "Prioritize with votes",
+    "prioritizeDesc": "Let your users vote on what matters most, so you build features that drive real impact.",
+    "roadmapTitle": "Share your roadmap",
+    "roadmapDesc": "Keep customers engaged with a public roadmap and changelog that shows you're listening."
+  },
+  "loginPage": {
+    "heading": "Sign in and continue shipping better decisions.",
+    "subtitle": "Access your feedback streams, roadmap boards, changelog pipeline, and notifications from one secure place."
+  },
+  "signupPage": {
+    "heading": "Join Feedbase and collect product feedback with clarity.",
+    "subtitle": "Build your team workspace in under a minute, then prioritize what users need most with a secure and scalable foundation."
   }
 }

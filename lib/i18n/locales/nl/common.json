@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Kies taal"
+    "select": "Kies taal",
+    "label": "Taal"
   },
   "nav": {
     "pricing": "Prijzen",
@@ -20,13 +21,74 @@
       "titleHighlight": "productsucces",
       "subtitle": "Verzamel, organiseer en prioriteer feedback moeiteloos. Bouw producten die uw klanten echt willen.",
       "startTrial": "Start gratis proefperiode",
-      "watchDemo": "Bekijk demo"
+      "watchDemo": "Bekijk demo",
+      "badge": "Vertrouwd door 300K+ gebruikers wereldwijd"
     },
     "features": {
-      "heading": "Alles wat u nodig hebt"
+      "heading": "Alles wat u nodig hebt",
+      "subheading": "Krachtige functies om feedback op schaal te beheren",
+      "collection": {
+        "title": "Feedbackverzameling",
+        "desc": "Verzamel inzichten van klanten via aanpasbare feedbackborden en formulieren"
+      },
+      "voting": {
+        "title": "Slim stemsysteem",
+        "desc": "Laat gebruikers stemmen op de gewenste functies om uw roadmap effectief te prioriteren"
+      },
+      "roadmap": {
+        "title": "Visuele roadmap",
+        "desc": "Deel uw productroadmap openbaar en houd klanten op de hoogte"
+      },
+      "notifications": {
+        "title": "Slimme meldingen",
+        "desc": "Houd gebruikers betrokken met automatische updates over de status van hun feedback"
+      },
+      "analytics": {
+        "title": "Analysedashboard",
+        "desc": "Volg trends, meet betrokkenheid en neem datagestuurde beslissingen"
+      },
+      "multitenant": {
+        "title": "Multi-tenant-ondersteuning",
+        "desc": "Beheer meerdere werkruimtes met aangepaste domeinen en branding"
+      }
     },
     "cta": {
-      "heading": "Klaar om betere producten te bouwen?"
+      "heading": "Klaar om betere producten te bouwen?",
+      "subheading": "Sluit u aan bij duizenden teams die Feedbase gebruiken om hun klanten te begrijpen"
+    },
+    "stats": {
+      "activeUsers": "Actieve gebruikers",
+      "pluginUsers": "Plugin-gebruikers",
+      "productHunt": "ProductHunt-upvotes"
+    },
+    "how": {
+      "heading": "Hoe werkt het?",
+      "subheading": "Krijg uw gepersonaliseerde feedbackportaal in 4 stappen",
+      "step1Title": "Registreer en maak uw werkruimte",
+      "step1Desc": "Begin met onze magische installatiewizard om uw feedbackportaal in enkele minuten klaar te hebben",
+      "step2Title": "Pas uw branding aan",
+      "step2Desc": "Kies uw primaire en secundaire kleuren, voeg uw logo toe en maak het van u",
+      "step3Title": "Nodig uw team en klanten uit",
+      "step3Desc": "Deel de link naar uw feedbackbord en begin met het verzamelen van waardevolle inzichten",
+      "step4Title": "Analyseer en onderneem actie",
+      "step4Desc": "Exporteer gegevens in verschillende formaten, integreer uw tools en bouw betere producten"
+    },
+    "testimonials": {
+      "heading": "Geliefd bij productteams",
+      "subheading": "Wat mensen zeggen over Feedbase",
+      "quote1": "Feedbase heeft veranderd hoe we gebruikersfeedback verzamelen en prioriteren. Het stemsysteem is briljant!",
+      "role1": "Productmanager",
+      "quote2": "De installatie duurde minder dan 5 minuten. De interface is strak en onze klanten zijn er dol op!",
+      "role2": "Startup-oprichter",
+      "quote3": "Het analysedashboard geeft ons inzichten die we nooit eerder hadden. Sterk aanbevolen!",
+      "role3": "UX-ontwerper"
+    },
+    "pricing": {
+      "heading": "Eenvoudige, transparante prijzen",
+      "subheading": "Begin gratis, upgrade naarmate u groeit"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Alle rechten voorbehouden."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Actief",
     "share": "Delen",
     "pin": "Vastmaken",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Bewerken",
+    "confirm": "Bevestigen",
+    "back": "Terug",
+    "next": "Volgende",
+    "submit": "Verzenden",
+    "learnMore": "Meer informatie"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Werkruimte verwijderd",
     "workspaceUpdated": "Werkruimte bijgewerkt",
     "accountDeleted": "Uw account is verwijderd"
+  },
+  "authAside": {
+    "badge": "Platform voor productfeedback",
+    "heading": "Maak van gebruikersfeedback uw concurrentievoordeel.",
+    "subtitle": "Sluit u aan bij duizenden productteams die Feedbase gebruiken om te begrijpen wat hun klanten echt willen en winnende producten te bouwen.",
+    "centralizeTitle": "Centraliseer feedback",
+    "centralizeDesc": "Verzamel functieverzoeken, bugrapporten en ideeën in één georganiseerde ruimte die uw team altijd kan raadplegen.",
+    "prioritizeTitle": "Prioriteer met stemmen",
+    "prioritizeDesc": "Laat uw gebruikers stemmen op wat het belangrijkst is, zodat u functies bouwt met echte impact.",
+    "roadmapTitle": "Deel uw roadmap",
+    "roadmapDesc": "Houd klanten betrokken met een openbare roadmap en wijzigingslogboek dat laat zien dat u luistert."
+  },
+  "loginPage": {
+    "heading": "Log in en blijf betere beslissingen nemen.",
+    "subtitle": "Krijg vanaf één beveiligde plek toegang tot uw feedbackstromen, roadmapborden, wijzigingslogboek en meldingen."
+  },
+  "signupPage": {
+    "heading": "Sluit u aan bij Feedbase en verzamel productfeedback met helderheid.",
+    "subtitle": "Bouw uw teamwerkruimte in minder dan een minuut en prioriteer vervolgens wat gebruikers het meest nodig hebben op een veilige, schaalbare basis."
   }
 }

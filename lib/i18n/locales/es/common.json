@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Seleccionar idioma"
+    "select": "Seleccionar idioma",
+    "label": "Idioma"
   },
   "nav": {
     "pricing": "Precios",
@@ -20,13 +21,74 @@
       "titleHighlight": "éxito del producto",
       "subtitle": "Recopila, organiza y prioriza los comentarios sin esfuerzo. Crea productos que tus clientes realmente quieren.",
       "startTrial": "Iniciar prueba gratuita",
-      "watchDemo": "Ver demo"
+      "watchDemo": "Ver demo",
+      "badge": "Con la confianza de más de 300 000 usuarios en todo el mundo"
     },
     "features": {
-      "heading": "Todo lo que necesitas"
+      "heading": "Todo lo que necesitas",
+      "subheading": "Funciones potentes para gestionar los comentarios a escala",
+      "collection": {
+        "title": "Recopilación de comentarios",
+        "desc": "Obtén información de los clientes mediante tableros y formularios de comentarios personalizables"
+      },
+      "voting": {
+        "title": "Sistema de votación inteligente",
+        "desc": "Deja que los usuarios voten las funciones que más desean para priorizar tu hoja de ruta con eficacia"
+      },
+      "roadmap": {
+        "title": "Hoja de ruta visual",
+        "desc": "Comparte públicamente tu hoja de ruta de producto y mantén informados a los clientes"
+      },
+      "notifications": {
+        "title": "Notificaciones inteligentes",
+        "desc": "Mantén a los usuarios interesados con actualizaciones automáticas sobre el estado de sus comentarios"
+      },
+      "analytics": {
+        "title": "Panel de análisis",
+        "desc": "Sigue las tendencias, mide la interacción y toma decisiones basadas en datos"
+      },
+      "multitenant": {
+        "title": "Compatibilidad multiinquilino",
+        "desc": "Gestiona varios espacios de trabajo con dominios y marca personalizados"
+      }
     },
     "cta": {
-      "heading": "¿Listo para crear mejores productos?"
+      "heading": "¿Listo para crear mejores productos?",
+      "subheading": "Únete a miles de equipos que usan Feedbase para entender a sus clientes"
+    },
+    "stats": {
+      "activeUsers": "Usuarios activos",
+      "pluginUsers": "Usuarios del plugin",
+      "productHunt": "Votos en ProductHunt"
+    },
+    "how": {
+      "heading": "¿Cómo funciona?",
+      "subheading": "Obtén tu portal de comentarios personalizado en 4 pasos",
+      "step1Title": "Regístrate y crea tu espacio de trabajo",
+      "step1Desc": "Empieza con nuestro asistente de configuración mágico para tener tu portal de comentarios listo en minutos",
+      "step2Title": "Personaliza tu marca",
+      "step2Desc": "Elige tus colores principal y secundario, añade tu logotipo y hazlo tuyo",
+      "step3Title": "Invita a tu equipo y clientes",
+      "step3Desc": "Comparte el enlace de tu tablero de comentarios y empieza a recopilar información valiosa",
+      "step4Title": "Analiza y actúa",
+      "step4Desc": "Exporta datos en varios formatos, integra tus herramientas y crea mejores productos"
+    },
+    "testimonials": {
+      "heading": "Adorado por los equipos de producto",
+      "subheading": "Lo que la gente dice de Feedbase",
+      "quote1": "Feedbase transformó cómo recopilamos y priorizamos los comentarios de los usuarios. ¡El sistema de votación es brillante!",
+      "role1": "Gerente de producto",
+      "quote2": "La configuración llevó menos de 5 minutos. La interfaz es limpia y ¡a nuestros clientes les encanta!",
+      "role2": "Fundador de startup",
+      "quote3": "El panel de análisis nos da información que nunca antes teníamos. ¡Muy recomendable!",
+      "role3": "Diseñador UX"
+    },
+    "pricing": {
+      "heading": "Precios sencillos y transparentes",
+      "subheading": "Empieza gratis, mejora cuando crezcas"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Todos los derechos reservados."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Activo",
     "share": "Compartir",
     "pin": "Fijar",
-    "status": "Estado"
+    "status": "Estado",
+    "edit": "Editar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "learnMore": "Más información"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Espacio de trabajo eliminado",
     "workspaceUpdated": "Espacio de trabajo actualizado",
     "accountDeleted": "Tu cuenta ha sido eliminada"
+  },
+  "authAside": {
+    "badge": "Plataforma de comentarios de producto",
+    "heading": "Convierte los comentarios de los usuarios en tu ventaja competitiva.",
+    "subtitle": "Únete a miles de equipos de producto que usan Feedbase para entender lo que sus clientes realmente quieren y crear productos ganadores.",
+    "centralizeTitle": "Centraliza los comentarios",
+    "centralizeDesc": "Reúne solicitudes de funciones, informes de errores e ideas en un espacio organizado al que tu equipo puede acceder en cualquier momento.",
+    "prioritizeTitle": "Prioriza con votos",
+    "prioritizeDesc": "Deja que tus usuarios voten lo que más importa, para que crees funciones con impacto real.",
+    "roadmapTitle": "Comparte tu hoja de ruta",
+    "roadmapDesc": "Mantén a los clientes interesados con una hoja de ruta pública y un registro de cambios que demuestra que los escuchas."
+  },
+  "loginPage": {
+    "heading": "Inicia sesión y sigue tomando mejores decisiones.",
+    "subtitle": "Accede a tus flujos de comentarios, tableros de hoja de ruta, registro de cambios y notificaciones desde un solo lugar seguro."
+  },
+  "signupPage": {
+    "heading": "Únete a Feedbase y recopila comentarios de producto con claridad.",
+    "subtitle": "Crea el espacio de trabajo de tu equipo en menos de un minuto y prioriza lo que más necesitan los usuarios sobre una base segura y escalable."
   }
 }

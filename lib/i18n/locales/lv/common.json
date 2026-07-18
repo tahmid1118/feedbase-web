@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Izvēlieties valodu"
+    "select": "Izvēlieties valodu",
+    "label": "Valoda"
   },
   "nav": {
     "pricing": "Cenas",
@@ -20,13 +21,74 @@
       "titleHighlight": "produkta panākumiem",
       "subtitle": "Bez piepūles vāciet, organizējiet un nosakiet atsauksmju prioritātes. Veidojiet produktus, ko klienti patiešām vēlas.",
       "startTrial": "Sākt bezmaksas izmēģinājumu",
-      "watchDemo": "Skatīties demo"
+      "watchDemo": "Skatīties demo",
+      "badge": "Uzticas vairāk nekā 300 tūkstošiem lietotāju visā pasaulē"
     },
     "features": {
-      "heading": "Viss, kas jums nepieciešams"
+      "heading": "Viss, kas jums nepieciešams",
+      "subheading": "Jaudīgas funkcijas atsauksmju pārvaldībai lielā mērogā",
+      "collection": {
+        "title": "Atsauksmju vākšana",
+        "desc": "Vāciet ieskatus no klientiem, izmantojot pielāgojamas atsauksmju tāfeles un veidlapas"
+      },
+      "voting": {
+        "title": "Vieda balsošanas sistēma",
+        "desc": "Ļaujiet lietotājiem balsot par vēlamākajām funkcijām, lai efektīvi noteiktu ceļveža prioritātes"
+      },
+      "roadmap": {
+        "title": "Vizuāls ceļvedis",
+        "desc": "Publiski kopīgojiet produkta ceļvedi un informējiet klientus"
+      },
+      "notifications": {
+        "title": "Viedi paziņojumi",
+        "desc": "Noturiet lietotāju iesaisti ar automātiskiem atjauninājumiem par viņu atsauksmju statusu"
+      },
+      "analytics": {
+        "title": "Analītikas panelis",
+        "desc": "Sekojiet tendencēm, mēriet iesaisti un pieņemiet uz datiem balstītus lēmumus"
+      },
+      "multitenant": {
+        "title": "Vairāku nomnieku atbalsts",
+        "desc": "Pārvaldiet vairākas darbvietas ar pielāgotiem domēniem un zīmolu"
+      }
     },
     "cta": {
-      "heading": "Vai esat gatavi veidot labākus produktus?"
+      "heading": "Vai esat gatavi veidot labākus produktus?",
+      "subheading": "Pievienojieties tūkstošiem komandu, kas izmanto Feedbase, lai izprastu savus klientus"
+    },
+    "stats": {
+      "activeUsers": "Aktīvie lietotāji",
+      "pluginUsers": "Spraudņa lietotāji",
+      "productHunt": "ProductHunt balsojumi"
+    },
+    "how": {
+      "heading": "Kā tas darbojas?",
+      "subheading": "Izveidojiet savu personalizēto atsauksmju portālu 4 soļos",
+      "step1Title": "Reģistrējieties un izveidojiet darbvietu",
+      "step1Desc": "Sāciet ar mūsu maģisko iestatīšanas vedni, lai jūsu atsauksmju portāls būtu gatavs dažu minūšu laikā",
+      "step2Title": "Pielāgojiet savu zīmolu",
+      "step2Desc": "Izvēlieties primāro un sekundāro krāsu, pievienojiet logotipu un padariet to par savu",
+      "step3Title": "Uzaiciniet savu komandu un klientus",
+      "step3Desc": "Kopīgojiet savas atsauksmju tāfeles saiti un sāciet vākt vērtīgus ieskatus",
+      "step4Title": "Analizējiet un rīkojieties",
+      "step4Desc": "Eksportējiet datus dažādos formātos, integrējiet savus rīkus un veidojiet labākus produktus"
+    },
+    "testimonials": {
+      "heading": "Iemīļots produktu komandu vidū",
+      "subheading": "Ko cilvēki saka par Feedbase",
+      "quote1": "Feedbase pārveidoja veidu, kā vācam un nosakām lietotāju atsauksmju prioritātes. Balsošanas sistēma ir izcila!",
+      "role1": "Produkta vadītājs",
+      "quote2": "Iestatīšana aizņēma mazāk nekā 5 minūtes. Saskarne ir tīra, un mūsu klienti to mīl!",
+      "role2": "Jaunuzņēmuma dibinātājs",
+      "quote3": "Analītikas panelis sniedz mums ieskatus, kādus nekad iepriekš nebijām guvuši. Ļoti iesaku!",
+      "role3": "UX dizainers"
+    },
+    "pricing": {
+      "heading": "Vienkārša, pārredzama cenu noteikšana",
+      "subheading": "Sāciet bez maksas, jauniniet, kad augat"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Visas tiesības aizsargātas."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktīvs",
     "share": "Kopīgot",
     "pin": "Piespraust",
-    "status": "Statuss"
+    "status": "Statuss",
+    "edit": "Rediģēt",
+    "confirm": "Apstiprināt",
+    "back": "Atpakaļ",
+    "next": "Tālāk",
+    "submit": "Iesniegt",
+    "learnMore": "Uzzināt vairāk"
   },
   "dashboard": {
     "welcomeBack": "Laipni lūdzam atpakaļ"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Darbvieta dzēsta",
     "workspaceUpdated": "Darbvieta atjaunināta",
     "accountDeleted": "Jūsu konts ir dzēsts"
+  },
+  "authAside": {
+    "badge": "Produktu atsauksmju platforma",
+    "heading": "Pārvērtiet lietotāju atsauksmes savā konkurences priekšrocībā.",
+    "subtitle": "Pievienojieties tūkstošiem produktu komandu, kas izmanto Feedbase, lai saprastu, ko klienti patiešām vēlas, un veidotu veiksmīgus produktus.",
+    "centralizeTitle": "Centralizējiet atsauksmes",
+    "centralizeDesc": "Apkopojiet funkciju pieprasījumus, kļūdu ziņojumus un idejas vienā organizētā vietā, kas pieejama jebkurā laikā.",
+    "prioritizeTitle": "Nosakiet prioritātes ar balsojumiem",
+    "prioritizeDesc": "Ļaujiet lietotājiem balsot par svarīgāko, lai veidotu funkcijas ar patiesu ietekmi.",
+    "roadmapTitle": "Kopīgojiet savu ceļvedi",
+    "roadmapDesc": "Noturiet klientu iesaisti ar publisku ceļvedi un izmaiņu žurnālu, kas rāda, ka klausāties."
+  },
+  "loginPage": {
+    "heading": "Piesakieties un turpiniet pieņemt labākus lēmumus.",
+    "subtitle": "Piekļūstiet savām atsauksmju plūsmām, ceļveža tāfelēm, izmaiņu žurnālam un paziņojumiem no vienas drošas vietas."
+  },
+  "signupPage": {
+    "heading": "Pievienojieties Feedbase un skaidri vāciet produktu atsauksmes.",
+    "subtitle": "Izveidojiet komandas darbvietu mazāk nekā minūtē, pēc tam nosakiet prioritātes lietotāju svarīgākajām vajadzībām uz drošas un mērogojamas bāzes."
   }
 }

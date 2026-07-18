@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Selecionar idioma"
+    "select": "Selecionar idioma",
+    "label": "Idioma"
   },
   "nav": {
     "pricing": "Preços",
@@ -20,13 +21,74 @@
       "titleHighlight": "sucesso do produto",
       "subtitle": "Recolha, organize e priorize o feedback sem esforço. Crie produtos que os seus clientes realmente querem.",
       "startTrial": "Iniciar teste gratuito",
-      "watchDemo": "Ver demonstração"
+      "watchDemo": "Ver demonstração",
+      "badge": "Com a confiança de mais de 300 000 utilizadores em todo o mundo"
     },
     "features": {
-      "heading": "Tudo o que precisa"
+      "heading": "Tudo o que precisa",
+      "subheading": "Funcionalidades poderosas para gerir feedback em escala",
+      "collection": {
+        "title": "Recolha de feedback",
+        "desc": "Obtenha informações dos clientes através de quadros e formulários de feedback personalizáveis"
+      },
+      "voting": {
+        "title": "Sistema de votação inteligente",
+        "desc": "Deixe os utilizadores votarem nas funcionalidades que mais desejam para priorizar o roteiro de forma eficaz"
+      },
+      "roadmap": {
+        "title": "Roteiro visual",
+        "desc": "Partilhe publicamente o roteiro do produto e mantenha os clientes a par"
+      },
+      "notifications": {
+        "title": "Notificações inteligentes",
+        "desc": "Mantenha os utilizadores envolvidos com atualizações automáticas sobre o estado do feedback"
+      },
+      "analytics": {
+        "title": "Painel de análise",
+        "desc": "Acompanhe tendências, meça o envolvimento e tome decisões baseadas em dados"
+      },
+      "multitenant": {
+        "title": "Suporte multi-inquilino",
+        "desc": "Faça a gestão de vários espaços de trabalho com domínios e marca personalizados"
+      }
     },
     "cta": {
-      "heading": "Pronto para criar produtos melhores?"
+      "heading": "Pronto para criar produtos melhores?",
+      "subheading": "Junte-se a milhares de equipas que usam o Feedbase para perceber os seus clientes"
+    },
+    "stats": {
+      "activeUsers": "Utilizadores ativos",
+      "pluginUsers": "Utilizadores do plugin",
+      "productHunt": "Votos no ProductHunt"
+    },
+    "how": {
+      "heading": "Como funciona?",
+      "subheading": "Obtenha o seu portal de feedback personalizado em 4 passos",
+      "step1Title": "Registe-se e crie o seu espaço de trabalho",
+      "step1Desc": "Comece com o nosso assistente de configuração mágico para ter o portal de feedback pronto em minutos",
+      "step2Title": "Personalize a sua marca",
+      "step2Desc": "Escolha as cores principal e secundária, adicione o seu logótipo e torne-o seu",
+      "step3Title": "Convide a sua equipa e clientes",
+      "step3Desc": "Partilhe o link do seu quadro de feedback e comece a recolher informações valiosas",
+      "step4Title": "Analise e aja",
+      "step4Desc": "Exporte dados em vários formatos, integre as suas ferramentas e crie produtos melhores"
+    },
+    "testimonials": {
+      "heading": "Adorado pelas equipas de produto",
+      "subheading": "O que dizem sobre o Feedbase",
+      "quote1": "O Feedbase transformou a forma como recolhemos e priorizamos o feedback dos utilizadores. O sistema de votação é brilhante!",
+      "role1": "Gestor de produto",
+      "quote2": "A configuração demorou menos de 5 minutos. A interface é limpa e os nossos clientes adoram!",
+      "role2": "Fundador de startup",
+      "quote3": "O painel de análise dá-nos informações que nunca tivemos. Altamente recomendado!",
+      "role3": "Designer de UX"
+    },
+    "pricing": {
+      "heading": "Preços simples e transparentes",
+      "subheading": "Comece grátis, atualize à medida que cresce"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Todos os direitos reservados."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Ativo",
     "share": "Partilhar",
     "pin": "Fixar",
-    "status": "Estado"
+    "status": "Estado",
+    "edit": "Editar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "next": "Seguinte",
+    "submit": "Enviar",
+    "learnMore": "Saber mais"
   },
   "dashboard": {
     "welcomeBack": "Bem-vindo de volta"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Espaço de trabalho eliminado",
     "workspaceUpdated": "Espaço de trabalho atualizado",
     "accountDeleted": "A sua conta foi eliminada"
+  },
+  "authAside": {
+    "badge": "Plataforma de feedback de produto",
+    "heading": "Transforme o feedback dos utilizadores na sua vantagem competitiva.",
+    "subtitle": "Junte-se a milhares de equipas de produto que usam o Feedbase para perceber o que os seus clientes realmente querem e criar produtos vencedores.",
+    "centralizeTitle": "Centralize o feedback",
+    "centralizeDesc": "Reúna pedidos de funcionalidades, relatórios de erros e ideias num espaço organizado ao qual a sua equipa pode aceder a qualquer momento.",
+    "prioritizeTitle": "Priorize com votos",
+    "prioritizeDesc": "Deixe os seus utilizadores votarem no que mais importa, para criar funcionalidades com impacto real.",
+    "roadmapTitle": "Partilhe o seu roteiro",
+    "roadmapDesc": "Mantenha os clientes envolvidos com um roteiro público e um registo de alterações que mostra que os está a ouvir."
+  },
+  "loginPage": {
+    "heading": "Inicie sessão e continue a tomar melhores decisões.",
+    "subtitle": "Aceda aos seus fluxos de feedback, quadros de roteiro, registo de alterações e notificações a partir de um único local seguro."
+  },
+  "signupPage": {
+    "heading": "Junte-se ao Feedbase e recolha feedback de produto com clareza.",
+    "subtitle": "Crie o espaço de trabalho da sua equipa em menos de um minuto e priorize o que os utilizadores mais precisam sobre uma base segura e escalável."
   }
 }

@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Wybierz język"
+    "select": "Wybierz język",
+    "label": "Język"
   },
   "nav": {
     "pricing": "Cennik",
@@ -20,13 +21,74 @@
       "titleHighlight": "sukces produktu",
       "subtitle": "Bez wysiłku zbieraj, organizuj i ustalaj priorytety opinii. Twórz produkty, których naprawdę chcą Twoi klienci.",
       "startTrial": "Rozpocznij darmowy okres próbny",
-      "watchDemo": "Obejrzyj demo"
+      "watchDemo": "Obejrzyj demo",
+      "badge": "Zaufało nam ponad 300 tys. użytkowników na całym świecie"
     },
     "features": {
-      "heading": "Wszystko, czego potrzebujesz"
+      "heading": "Wszystko, czego potrzebujesz",
+      "subheading": "Zaawansowane funkcje do zarządzania opiniami na dużą skalę",
+      "collection": {
+        "title": "Zbieranie opinii",
+        "desc": "Zbieraj informacje od klientów za pomocą konfigurowalnych tablic i formularzy opinii"
+      },
+      "voting": {
+        "title": "Inteligentny system głosowania",
+        "desc": "Pozwól użytkownikom głosować na najbardziej pożądane funkcje, aby skutecznie ustalać priorytety planu"
+      },
+      "roadmap": {
+        "title": "Wizualny plan działań",
+        "desc": "Udostępniaj publicznie plan produktu i informuj klientów na bieżąco"
+      },
+      "notifications": {
+        "title": "Inteligentne powiadomienia",
+        "desc": "Angażuj użytkowników automatycznymi aktualizacjami statusu ich opinii"
+      },
+      "analytics": {
+        "title": "Panel analityczny",
+        "desc": "Śledź trendy, mierz zaangażowanie i podejmuj decyzje oparte na danych"
+      },
+      "multitenant": {
+        "title": "Obsługa wielu środowisk",
+        "desc": "Zarządzaj wieloma przestrzeniami roboczymi z niestandardowymi domenami i marką"
+      }
     },
     "cta": {
-      "heading": "Gotowy na tworzenie lepszych produktów?"
+      "heading": "Gotowy na tworzenie lepszych produktów?",
+      "subheading": "Dołącz do tysięcy zespołów, które używają Feedbase, aby zrozumieć swoich klientów"
+    },
+    "stats": {
+      "activeUsers": "Aktywni użytkownicy",
+      "pluginUsers": "Użytkownicy wtyczki",
+      "productHunt": "Głosy na ProductHunt"
+    },
+    "how": {
+      "heading": "Jak to działa?",
+      "subheading": "Uzyskaj spersonalizowany portal opinii w 4 krokach",
+      "step1Title": "Zarejestruj się i utwórz przestrzeń roboczą",
+      "step1Desc": "Zacznij od naszego magicznego kreatora konfiguracji, aby przygotować portal opinii w kilka minut",
+      "step2Title": "Dostosuj swoją markę",
+      "step2Desc": "Wybierz kolory podstawowy i dodatkowy, dodaj logo i uczyń go swoim",
+      "step3Title": "Zaproś swój zespół i klientów",
+      "step3Desc": "Udostępnij link do tablicy opinii i zacznij zbierać cenne informacje",
+      "step4Title": "Analizuj i działaj",
+      "step4Desc": "Eksportuj dane w różnych formatach, integruj narzędzia i twórz lepsze produkty"
+    },
+    "testimonials": {
+      "heading": "Uwielbiane przez zespoły produktowe",
+      "subheading": "Co ludzie mówią o Feedbase",
+      "quote1": "Feedbase zmienił sposób, w jaki zbieramy i ustalamy priorytety opinii użytkowników. System głosowania jest genialny!",
+      "role1": "Menedżer produktu",
+      "quote2": "Konfiguracja zajęła mniej niż 5 minut. Interfejs jest przejrzysty, a nasi klienci go uwielbiają!",
+      "role2": "Założyciel startupu",
+      "quote3": "Panel analityczny daje nam wgląd, jakiego wcześniej nie mieliśmy. Gorąco polecam!",
+      "role3": "Projektant UX"
+    },
+    "pricing": {
+      "heading": "Proste, przejrzyste ceny",
+      "subheading": "Zacznij za darmo, ulepszaj w miarę rozwoju"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Wszelkie prawa zastrzeżone."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktywny",
     "share": "Udostępnij",
     "pin": "Przypnij",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Edytuj",
+    "confirm": "Potwierdź",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "submit": "Wyślij",
+    "learnMore": "Dowiedz się więcej"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Przestrzeń robocza usunięta",
     "workspaceUpdated": "Przestrzeń robocza zaktualizowana",
     "accountDeleted": "Twoje konto zostało usunięte"
+  },
+  "authAside": {
+    "badge": "Platforma opinii o produkcie",
+    "heading": "Zamień opinie użytkowników w przewagę konkurencyjną.",
+    "subtitle": "Dołącz do tysięcy zespołów produktowych, które używają Feedbase, aby zrozumieć, czego naprawdę chcą ich klienci, i tworzyć zwycięskie produkty.",
+    "centralizeTitle": "Scentralizuj opinie",
+    "centralizeDesc": "Zbieraj prośby o funkcje, zgłoszenia błędów i pomysły w jednym uporządkowanym miejscu, dostępnym dla zespołu o każdej porze.",
+    "prioritizeTitle": "Ustalaj priorytety za pomocą głosów",
+    "prioritizeDesc": "Pozwól użytkownikom głosować na to, co najważniejsze, aby tworzyć funkcje o realnym wpływie.",
+    "roadmapTitle": "Udostępnij swój plan działań",
+    "roadmapDesc": "Angażuj klientów publicznym planem działań i dziennikiem zmian, który pokazuje, że słuchasz."
+  },
+  "loginPage": {
+    "heading": "Zaloguj się i podejmuj lepsze decyzje.",
+    "subtitle": "Uzyskaj dostęp do strumieni opinii, tablic planu działań, dziennika zmian i powiadomień z jednego bezpiecznego miejsca."
+  },
+  "signupPage": {
+    "heading": "Dołącz do Feedbase i zbieraj opinie o produkcie z jasnością.",
+    "subtitle": "Zbuduj przestrzeń roboczą zespołu w niecałą minutę, a następnie ustal priorytety potrzeb użytkowników na bezpiecznej i skalowalnej podstawie."
   }
 }

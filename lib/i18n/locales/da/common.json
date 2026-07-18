@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Vælg sprog"
+    "select": "Vælg sprog",
+    "label": "Sprog"
   },
   "nav": {
     "pricing": "Priser",
@@ -20,13 +21,74 @@
       "titleHighlight": "produktsucces",
       "subtitle": "Indsaml, organiser og prioriter feedback uden besvær. Byg produkter, som dine kunder faktisk vil have.",
       "startTrial": "Start gratis prøveperiode",
-      "watchDemo": "Se demo"
+      "watchDemo": "Se demo",
+      "badge": "Betroet af 300K+ brugere verden over"
     },
     "features": {
-      "heading": "Alt hvad du behøver"
+      "heading": "Alt hvad du behøver",
+      "subheading": "Kraftfulde funktioner til at håndtere feedback i stor skala",
+      "collection": {
+        "title": "Indsamling af feedback",
+        "desc": "Indsaml indsigt fra kunder via tilpasselige feedbacktavler og formularer"
+      },
+      "voting": {
+        "title": "Smart afstemningssystem",
+        "desc": "Lad brugerne stemme på de funktioner, de ønsker mest, for effektivt at prioritere din køreplan"
+      },
+      "roadmap": {
+        "title": "Visuel køreplan",
+        "desc": "Del din produktkøreplan offentligt, og hold kunderne opdateret"
+      },
+      "notifications": {
+        "title": "Smarte notifikationer",
+        "desc": "Hold brugerne engagerede med automatiske opdateringer om deres feedbackstatus"
+      },
+      "analytics": {
+        "title": "Analysedashboard",
+        "desc": "Følg tendenser, mål engagement, og træf datadrevne beslutninger"
+      },
+      "multitenant": {
+        "title": "Multi-tenant-understøttelse",
+        "desc": "Administrer flere arbejdsområder med brugerdefinerede domæner og branding"
+      }
     },
     "cta": {
-      "heading": "Klar til at bygge bedre produkter?"
+      "heading": "Klar til at bygge bedre produkter?",
+      "subheading": "Slut dig til tusindvis af teams, der bruger Feedbase til at forstå deres kunder"
+    },
+    "stats": {
+      "activeUsers": "Aktive brugere",
+      "pluginUsers": "Plugin-brugere",
+      "productHunt": "ProductHunt-stemmer"
+    },
+    "how": {
+      "heading": "Hvordan fungerer det?",
+      "subheading": "Få din personlige feedbackportal i 4 trin",
+      "step1Title": "Tilmeld dig, og opret dit arbejdsområde",
+      "step1Desc": "Start med vores magiske opsætningsguide for at få din feedbackportal klar på få minutter",
+      "step2Title": "Tilpas dit branding",
+      "step2Desc": "Vælg dine primære og sekundære farver, tilføj dit logo, og gør det til dit eget",
+      "step3Title": "Inviter dit team og dine kunder",
+      "step3Desc": "Del linket til din feedbacktavle, og begynd at indsamle værdifuld indsigt",
+      "step4Title": "Analysér og handl",
+      "step4Desc": "Eksportér data i forskellige formater, integrér dine værktøjer, og byg bedre produkter"
+    },
+    "testimonials": {
+      "heading": "Elsket af produktteams",
+      "subheading": "Hvad folk siger om Feedbase",
+      "quote1": "Feedbase ændrede, hvordan vi indsamler og prioriterer brugerfeedback. Afstemningssystemet er genialt!",
+      "role1": "Produktchef",
+      "quote2": "Opsætningen tog under 5 minutter. Grænsefladen er ren, og vores kunder elsker den!",
+      "role2": "Startup-grundlægger",
+      "quote3": "Analysedashboardet giver os indsigt, vi aldrig har haft før. Kan varmt anbefales!",
+      "role3": "UX-designer"
+    },
+    "pricing": {
+      "heading": "Enkel, gennemsigtig prissætning",
+      "subheading": "Start gratis, opgrader efterhånden som du vokser"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Alle rettigheder forbeholdes."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktiv",
     "share": "Del",
     "pin": "Fastgør",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Rediger",
+    "confirm": "Bekræft",
+    "back": "Tilbage",
+    "next": "Næste",
+    "submit": "Send",
+    "learnMore": "Læs mere"
   },
   "dashboard": {
     "welcomeBack": "Velkommen tilbage"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Arbejdsområde slettet",
     "workspaceUpdated": "Arbejdsområde opdateret",
     "accountDeleted": "Din konto er blevet slettet"
+  },
+  "authAside": {
+    "badge": "Platform til produktfeedback",
+    "heading": "Gør brugerfeedback til din konkurrencefordel.",
+    "subtitle": "Slut dig til tusindvis af produktteams, der bruger Feedbase til at forstå, hvad deres kunder virkelig vil have, og bygge produkter, der vinder.",
+    "centralizeTitle": "Centralisér feedback",
+    "centralizeDesc": "Saml funktionsanmodninger, fejlrapporter og idéer på ét organiseret sted, som dit team kan tilgå når som helst.",
+    "prioritizeTitle": "Prioritér med stemmer",
+    "prioritizeDesc": "Lad dine brugere stemme om det vigtigste, så du bygger funktioner med reel effekt.",
+    "roadmapTitle": "Del din køreplan",
+    "roadmapDesc": "Hold kunderne engagerede med en offentlig køreplan og ændringslog, der viser, at du lytter."
+  },
+  "loginPage": {
+    "heading": "Log ind, og fortsæt med at træffe bedre beslutninger.",
+    "subtitle": "Få adgang til dine feedbackstrømme, køreplantavler, ændringslog og notifikationer fra ét sikkert sted."
+  },
+  "signupPage": {
+    "heading": "Bliv en del af Feedbase, og indsaml produktfeedback med klarhed.",
+    "subtitle": "Byg dit teamarbejdsområde på under et minut, og prioritér derefter, hvad brugerne har mest brug for, på et sikkert og skalerbart fundament."
   }
 }

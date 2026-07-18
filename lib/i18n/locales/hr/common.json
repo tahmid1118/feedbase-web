@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Odaberite jezik"
+    "select": "Odaberite jezik",
+    "label": "Jezik"
   },
   "nav": {
     "pricing": "Cijene",
@@ -20,13 +21,74 @@
       "titleHighlight": "uspjeh proizvoda",
       "subtitle": "Prikupljajte, organizirajte i odredite prioritete povratnih informacija bez napora. Gradite proizvode koje vaši kupci stvarno žele.",
       "startTrial": "Započnite besplatnu probu",
-      "watchDemo": "Pogledajte demo"
+      "watchDemo": "Pogledajte demo",
+      "badge": "Vjeruje nam više od 300 tisuća korisnika diljem svijeta"
     },
     "features": {
-      "heading": "Sve što vam treba"
+      "heading": "Sve što vam treba",
+      "subheading": "Moćne značajke za upravljanje povratnim informacijama u velikom opsegu",
+      "collection": {
+        "title": "Prikupljanje povratnih informacija",
+        "desc": "Prikupljajte uvide od kupaca putem prilagodljivih ploča i obrazaca za povratne informacije"
+      },
+      "voting": {
+        "title": "Pametni sustav glasovanja",
+        "desc": "Dopustite korisnicima da glasaju za najpoželjnije značajke kako biste učinkovito odredili prioritete plana"
+      },
+      "roadmap": {
+        "title": "Vizualni plan razvoja",
+        "desc": "Javno podijelite plan razvoja proizvoda i informirajte kupce"
+      },
+      "notifications": {
+        "title": "Pametne obavijesti",
+        "desc": "Zadržite angažman korisnika automatskim ažuriranjima o statusu njihovih povratnih informacija"
+      },
+      "analytics": {
+        "title": "Analitička ploča",
+        "desc": "Pratite trendove, mjerite angažman i donosite odluke temeljene na podacima"
+      },
+      "multitenant": {
+        "title": "Podrška za više najmoprimaca",
+        "desc": "Upravljajte s više radnih prostora s prilagođenim domenama i brendiranjem"
+      }
     },
     "cta": {
-      "heading": "Spremni za izradu boljih proizvoda?"
+      "heading": "Spremni za izradu boljih proizvoda?",
+      "subheading": "Pridružite se tisućama timova koji koriste Feedbase kako bi razumjeli svoje kupce"
+    },
+    "stats": {
+      "activeUsers": "Aktivni korisnici",
+      "pluginUsers": "Korisnici dodatka",
+      "productHunt": "Glasovi na ProductHuntu"
+    },
+    "how": {
+      "heading": "Kako funkcionira?",
+      "subheading": "Nabavite svoj personalizirani portal za povratne informacije u 4 koraka",
+      "step1Title": "Registrirajte se i stvorite radni prostor",
+      "step1Desc": "Započnite s našim čarobnim čarobnjakom za postavljanje kako biste pripremili portal za povratne informacije u nekoliko minuta",
+      "step2Title": "Prilagodite svoje brendiranje",
+      "step2Desc": "Odaberite primarnu i sekundarnu boju, dodajte logotip i učinite ga svojim",
+      "step3Title": "Pozovite svoj tim i kupce",
+      "step3Desc": "Podijelite poveznicu svoje ploče za povratne informacije i počnite prikupljati vrijedne uvide",
+      "step4Title": "Analizirajte i djelujte",
+      "step4Desc": "Izvezite podatke u različitim formatima, integrirajte svoje alate i gradite bolje proizvode"
+    },
+    "testimonials": {
+      "heading": "Omiljeno među proizvodnim timovima",
+      "subheading": "Što ljudi kažu o Feedbaseu",
+      "quote1": "Feedbase je preobrazio način na koji prikupljamo i određujemo prioritete povratnih informacija. Sustav glasovanja je briljantan!",
+      "role1": "Voditelj proizvoda",
+      "quote2": "Postavljanje je trajalo manje od 5 minuta. Sučelje je čisto i naši kupci ga obožavaju!",
+      "role2": "Osnivač startupa",
+      "quote3": "Analitička ploča daje nam uvide kakve nikad prije nismo imali. Toplo preporučujem!",
+      "role3": "UX dizajner"
+    },
+    "pricing": {
+      "heading": "Jednostavne, transparentne cijene",
+      "subheading": "Započnite besplatno, nadogradite kako rastete"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Sva prava pridržana."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktivno",
     "share": "Podijeli",
     "pin": "Prikvači",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Uredi",
+    "confirm": "Potvrdi",
+    "back": "Natrag",
+    "next": "Dalje",
+    "submit": "Pošalji",
+    "learnMore": "Saznajte više"
   },
   "dashboard": {
     "welcomeBack": "Dobro došli natrag"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Radni prostor obrisan",
     "workspaceUpdated": "Radni prostor ažuriran",
     "accountDeleted": "Vaš račun je obrisan"
+  },
+  "authAside": {
+    "badge": "Platforma za povratne informacije o proizvodu",
+    "heading": "Pretvorite povratne informacije korisnika u svoju konkurentsku prednost.",
+    "subtitle": "Pridružite se tisućama proizvodnih timova koji koriste Feedbase kako bi razumjeli što njihovi kupci stvarno žele i gradili pobjedničke proizvode.",
+    "centralizeTitle": "Centralizirajte povratne informacije",
+    "centralizeDesc": "Prikupljajte zahtjeve za značajke, prijave grešaka i ideje na jednom organiziranom mjestu dostupnom u svako doba.",
+    "prioritizeTitle": "Odredite prioritete glasovima",
+    "prioritizeDesc": "Dopustite korisnicima da glasaju o najvažnijem kako biste gradili značajke sa stvarnim učinkom.",
+    "roadmapTitle": "Podijelite svoj plan razvoja",
+    "roadmapDesc": "Zadržite angažman kupaca javnim planom razvoja i dnevnikom promjena koji pokazuje da slušate."
+  },
+  "loginPage": {
+    "heading": "Prijavite se i nastavite donositi bolje odluke.",
+    "subtitle": "Pristupite svojim tokovima povratnih informacija, pločama plana, dnevniku promjena i obavijestima s jednog sigurnog mjesta."
+  },
+  "signupPage": {
+    "heading": "Pridružite se Feedbaseu i prikupljajte povratne informacije o proizvodu s jasnoćom.",
+    "subtitle": "Izgradite radni prostor tima za manje od minute, zatim odredite prioritete potreba korisnika na sigurnom i skalabilnom temelju."
   }
 }

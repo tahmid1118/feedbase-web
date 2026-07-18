@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Agħżel lingwa"
+    "select": "Agħżel lingwa",
+    "label": "Lingwa"
   },
   "nav": {
     "pricing": "Prezzijiet",
@@ -20,13 +21,74 @@
       "titleHighlight": "suċċess tal-prodott",
       "subtitle": "Iġbor, organizza u agħti prijorità lill-feedback bla sforz. Ibni prodotti li l-klijenti tiegħek verament iridu.",
       "startTrial": "Ibda prova b'xejn",
-      "watchDemo": "Ara d-demo"
+      "watchDemo": "Ara d-demo",
+      "badge": "Fdat minn aktar minn 300K utent madwar id-dinja"
     },
     "features": {
-      "heading": "Dak kollu li għandek bżonn"
+      "heading": "Dak kollu li għandek bżonn",
+      "subheading": "Karatteristiċi b'saħħithom biex timmaniġġja l-feedback fuq skala",
+      "collection": {
+        "title": "Ġbir ta' feedback",
+        "desc": "Iġbor għarfien mingħand il-klijenti permezz ta' bordijiet u formoli tal-feedback personalizzabbli"
+      },
+      "voting": {
+        "title": "Sistema tal-votazzjoni intelliġenti",
+        "desc": "Ħalli lill-utenti jivvutaw il-karatteristiċi li jixtiequ l-aktar biex tipprijoritizza l-pjan tiegħek b'mod effettiv"
+      },
+      "roadmap": {
+        "title": "Pjan viżiv",
+        "desc": "Aqsam il-pjan tal-prodott tiegħek pubblikament u żomm lill-klijenti infurmati"
+      },
+      "notifications": {
+        "title": "Notifiki intelliġenti",
+        "desc": "Żomm lill-utenti involuti b'aġġornamenti awtomatiċi dwar l-istatus tal-feedback tagħhom"
+      },
+      "analytics": {
+        "title": "Dashboard tal-analitika",
+        "desc": "Segwi t-tendenzi, kejjel l-involviment u ħu deċiżjonijiet ibbażati fuq id-data"
+      },
+      "multitenant": {
+        "title": "Appoġġ multi-tenant",
+        "desc": "Immaniġġja diversi spazji tax-xogħol b'dominji u branding personalizzati"
+      }
     },
     "cta": {
-      "heading": "Lest biex tibni prodotti aħjar?"
+      "heading": "Lest biex tibni prodotti aħjar?",
+      "subheading": "Ingħaqad ma' eluf ta' timijiet li jużaw Feedbase biex jifhmu l-klijenti tagħhom"
+    },
+    "stats": {
+      "activeUsers": "Utenti attivi",
+      "pluginUsers": "Utenti tal-plugin",
+      "productHunt": "Voti ProductHunt"
+    },
+    "how": {
+      "heading": "Kif jaħdem?",
+      "subheading": "Ikseb il-portal tal-feedback personalizzat tiegħek fi 4 passi",
+      "step1Title": "Irreġistra u oħloq l-ispazju tax-xogħol tiegħek",
+      "step1Desc": "Ibda bil-wizard tas-setup maġiku tagħna biex il-portal tal-feedback tiegħek ikun lest fi ftit minuti",
+      "step2Title": "Personalizza l-branding tiegħek",
+      "step2Desc": "Agħżel il-kuluri primarji u sekondarji tiegħek, żid il-logo tiegħek u agħmlu tiegħek",
+      "step3Title": "Stieden it-tim u l-klijenti tiegħek",
+      "step3Desc": "Aqsam il-link tal-bord tal-feedback tiegħek u ibda tiġbor għarfien siewi",
+      "step4Title": "Analizza u aġixxi",
+      "step4Desc": "Esporta data f'diversi formati, integra l-għodod tiegħek u ibni prodotti aħjar"
+    },
+    "testimonials": {
+      "heading": "Maħbub mit-timijiet tal-prodott",
+      "subheading": "X'jgħidu n-nies dwar Feedbase",
+      "quote1": "Feedbase biddel il-mod kif niġbru u nipprijoritizzaw il-feedback tal-utenti. Is-sistema tal-votazzjoni hija brillanti!",
+      "role1": "Maniġer tal-Prodott",
+      "quote2": "Is-setup ħa inqas minn 5 minuti. L-interface hija nadifa u l-klijenti tagħna jħobbuha!",
+      "role2": "Fundatur ta' startup",
+      "quote3": "Id-dashboard tal-analitika jagħtina għarfien li qatt ma kellna qabel. Nirrakkomandah ħafna!",
+      "role3": "Disinjatur UX"
+    },
+    "pricing": {
+      "heading": "Ipprezzar sempliċi u trasparenti",
+      "subheading": "Ibda b'xejn, aġġorna hekk kif tikber"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Id-drittijiet kollha riżervati."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Attiv",
     "share": "Aqsam",
     "pin": "Waħħal",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Editja",
+    "confirm": "Ikkonferma",
+    "back": "Lura",
+    "next": "Li jmiss",
+    "submit": "Ibgħat",
+    "learnMore": "Kun af aktar"
   },
   "dashboard": {
     "welcomeBack": "Merħba lura"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Spazju tax-xogħol imħassar",
     "workspaceUpdated": "Spazju tax-xogħol aġġornat",
     "accountDeleted": "Il-kont tiegħek tħassar"
+  },
+  "authAside": {
+    "badge": "Pjattaforma tal-Feedback tal-Prodott",
+    "heading": "Ibdel il-feedback tal-utenti f'vantaġġ kompetittiv tiegħek.",
+    "subtitle": "Ingħaqad ma' eluf ta' timijiet tal-prodott li jużaw Feedbase biex jifhmu x'iridu verament il-klijenti tagħhom u jibnu prodotti rebbieħa.",
+    "centralizeTitle": "Iċċentralizza l-feedback",
+    "centralizeDesc": "Iġbor talbiet għal karatteristiċi, rapporti ta' bugs u ideat fi spazju organizzat wieħed li t-tim tiegħek jista' jaċċessa fi kwalunkwe ħin.",
+    "prioritizeTitle": "Agħti prijorità bil-voti",
+    "prioritizeDesc": "Ħalli lill-utenti jivvutaw fuq dak li huwa l-aktar importanti, biex tibni karatteristiċi b'impatt reali.",
+    "roadmapTitle": "Aqsam il-pjan tiegħek",
+    "roadmapDesc": "Żomm lill-klijenti involuti bi pjan pubbliku u reġistru tal-bidliet li juri li qed tisma'."
+  },
+  "loginPage": {
+    "heading": "Idħol u kompli ħu deċiżjonijiet aħjar.",
+    "subtitle": "Aċċessa l-flussi tal-feedback, il-bordijiet tal-pjan, ir-reġistru tal-bidliet u n-notifiki tiegħek minn post sigur wieħed."
+  },
+  "signupPage": {
+    "heading": "Ingħaqad ma' Feedbase u iġbor feedback tal-prodott b'ċarezza.",
+    "subtitle": "Ibni l-ispazju tax-xogħol tat-tim tiegħek f'inqas minn minuta, imbagħad agħti prijorità lil dak li l-utenti jeħtieġu l-aktar fuq bażi sigura u skalabbli."
   }
 }

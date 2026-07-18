@@ -2,36 +2,20 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { ShieldCheck, Sparkles, Zap } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
+import { getTranslation } from "@/lib/i18n/server";
 
 const highlights = [
-  {
-    id: "security",
-    icon: ShieldCheck,
-    title: "Centralize feedback",
-    description:
-      "Collect feature requests, bug reports, and ideas in one organized space your team can access anytime.",
-  },
-  {
-    id: "speed",
-    icon: Zap,
-    title: "Prioritize with votes",
-    description:
-      "Let your users vote on what matters most, so you build features that drive real impact.",
-  },
-  {
-    id: "insight",
-    icon: Sparkles,
-    title: "Share your roadmap",
-    description:
-      "Keep customers engaged with a public roadmap and changelog that shows you're listening.",
-  },
+  { id: "security", icon: ShieldCheck, titleKey: "authAside.centralizeTitle", descKey: "authAside.centralizeDesc" },
+  { id: "speed", icon: Zap, titleKey: "authAside.prioritizeTitle", descKey: "authAside.prioritizeDesc" },
+  { id: "insight", icon: Sparkles, titleKey: "authAside.roadmapTitle", descKey: "authAside.roadmapDesc" },
 ];
 
 interface AuthLayoutProps {
   children: ReactNode;
 }
 
-export default function AuthLayout({ children }: AuthLayoutProps) {
+export default async function AuthLayout({ children }: AuthLayoutProps) {
+  const { t } = await getTranslation();
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#fdf8f9] text-[#1c0a0c]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(227,153,163,0.08),transparent_70%)]" />
@@ -47,13 +31,13 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
               <div className="space-y-4">
                 <p className="text-xs uppercase tracking-[0.28em] text-[#fdf8f9]/75">
-                  Product Feedback Platform
+                  {t("authAside.badge")}
                 </p>
                 <h2 className="font-heading text-4xl leading-tight">
-                  Turn user feedback into your competitive advantage.
+                  {t("authAside.heading")}
                 </h2>
                 <p className="max-w-md text-sm leading-relaxed text-[#fdf8f9]/85">
-                  Join thousands of product teams who use Feedbase to understand what their customers really want and build products that win.
+                  {t("authAside.subtitle")}
                 </p>
               </div>
 
@@ -67,9 +51,9 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
                         <Icon className="h-4 w-4" />
                       </span>
                       <div className="space-y-1">
-                        <h3 className="text-sm font-semibold">{item.title}</h3>
+                        <h3 className="text-sm font-semibold">{t(item.titleKey)}</h3>
                         <p className="text-xs leading-relaxed text-[#fdf8f9]/80">
-                          {item.description}
+                          {t(item.descKey)}
                         </p>
                       </div>
                     </div>

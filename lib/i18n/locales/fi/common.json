@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Valitse kieli"
+    "select": "Valitse kieli",
+    "label": "Kieli"
   },
   "nav": {
     "pricing": "Hinnat",
@@ -20,13 +21,74 @@
       "titleHighlight": "tuotemenestykseksi",
       "subtitle": "Kerää, järjestä ja priorisoi palautetta vaivattomasti. Rakenna tuotteita, joita asiakkaasi todella haluavat.",
       "startTrial": "Aloita ilmainen kokeilu",
-      "watchDemo": "Katso demo"
+      "watchDemo": "Katso demo",
+      "badge": "Yli 300 000 käyttäjän luottama maailmanlaajuisesti"
     },
     "features": {
-      "heading": "Kaikki mitä tarvitset"
+      "heading": "Kaikki mitä tarvitset",
+      "subheading": "Tehokkaita ominaisuuksia palautteen hallintaan laajassa mittakaavassa",
+      "collection": {
+        "title": "Palautteen kerääminen",
+        "desc": "Kerää oivalluksia asiakkailta mukautettavilla palautetauluilla ja lomakkeilla"
+      },
+      "voting": {
+        "title": "Älykäs äänestysjärjestelmä",
+        "desc": "Anna käyttäjien äänestää haluamiaan ominaisuuksia priorisoidaksesi etenemissuunnitelmasi tehokkaasti"
+      },
+      "roadmap": {
+        "title": "Visuaalinen etenemissuunnitelma",
+        "desc": "Jaa tuotteen etenemissuunnitelma julkisesti ja pidä asiakkaat ajan tasalla"
+      },
+      "notifications": {
+        "title": "Älykkäät ilmoitukset",
+        "desc": "Pidä käyttäjät mukana automaattisilla päivityksillä palautteen tilasta"
+      },
+      "analytics": {
+        "title": "Analytiikkakojelauta",
+        "desc": "Seuraa trendejä, mittaa sitoutumista ja tee dataan perustuvia päätöksiä"
+      },
+      "multitenant": {
+        "title": "Monivuokralaistuki",
+        "desc": "Hallitse useita työtiloja mukautetuilla verkkotunnuksilla ja brändäyksellä"
+      }
     },
     "cta": {
-      "heading": "Valmis rakentamaan parempia tuotteita?"
+      "heading": "Valmis rakentamaan parempia tuotteita?",
+      "subheading": "Liity tuhansiin tiimeihin, jotka käyttävät Feedbasea asiakkaidensa ymmärtämiseen"
+    },
+    "stats": {
+      "activeUsers": "Aktiiviset käyttäjät",
+      "pluginUsers": "Laajennuksen käyttäjät",
+      "productHunt": "ProductHunt-äänet"
+    },
+    "how": {
+      "heading": "Miten se toimii?",
+      "subheading": "Luo mukautettu palauteportaalisi 4 vaiheessa",
+      "step1Title": "Rekisteröidy ja luo työtilasi",
+      "step1Desc": "Aloita taianomaisella asennusvelholla saadaksesi palauteportaalisi valmiiksi minuuteissa",
+      "step2Title": "Mukauta brändäyksesi",
+      "step2Desc": "Valitse ensisijainen ja toissijainen värisi, lisää logosi ja tee siitä omasi",
+      "step3Title": "Kutsu tiimisi ja asiakkaasi",
+      "step3Desc": "Jaa palautetaulusi linkki ja ala kerätä arvokkaita oivalluksia",
+      "step4Title": "Analysoi ja toimi",
+      "step4Desc": "Vie tietoja eri muodoissa, integroi työkalusi ja rakenna parempia tuotteita"
+    },
+    "testimonials": {
+      "heading": "Tuotetiimien rakastama",
+      "subheading": "Mitä ihmiset sanovat Feedbasesta",
+      "quote1": "Feedbase muutti tapamme kerätä ja priorisoida käyttäjäpalautetta. Äänestysjärjestelmä on loistava!",
+      "role1": "Tuotepäällikkö",
+      "quote2": "Käyttöönotto vei alle 5 minuuttia. Käyttöliittymä on selkeä ja asiakkaamme rakastavat sitä!",
+      "role2": "Startup-perustaja",
+      "quote3": "Analytiikkakojelauta antaa meille oivalluksia, joita meillä ei ollut ennen. Suosittelen lämpimästi!",
+      "role3": "UX-suunnittelija"
+    },
+    "pricing": {
+      "heading": "Yksinkertainen, läpinäkyvä hinnoittelu",
+      "subheading": "Aloita ilmaiseksi, päivitä kasvaessasi"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Kaikki oikeudet pidätetään."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktiivinen",
     "share": "Jaa",
     "pin": "Kiinnitä",
-    "status": "Tila"
+    "status": "Tila",
+    "edit": "Muokkaa",
+    "confirm": "Vahvista",
+    "back": "Takaisin",
+    "next": "Seuraava",
+    "submit": "Lähetä",
+    "learnMore": "Lue lisää"
   },
   "dashboard": {
     "welcomeBack": "Tervetuloa takaisin"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Työtila poistettu",
     "workspaceUpdated": "Työtila päivitetty",
     "accountDeleted": "Tilisi on poistettu"
+  },
+  "authAside": {
+    "badge": "Tuotepalautealusta",
+    "heading": "Muuta käyttäjäpalaute kilpailueduksesi.",
+    "subtitle": "Liity tuhansiin tuotetiimeihin, jotka käyttävät Feedbasea ymmärtääkseen, mitä heidän asiakkaansa todella haluavat, ja rakentavat menestyviä tuotteita.",
+    "centralizeTitle": "Keskitä palaute",
+    "centralizeDesc": "Kerää ominaisuuspyynnöt, virheraportit ja ideat yhteen järjestettyyn tilaan, johon tiimisi pääsee milloin tahansa.",
+    "prioritizeTitle": "Priorisoi äänillä",
+    "prioritizeDesc": "Anna käyttäjiesi äänestää tärkeimmästä, jotta rakennat aidosti vaikuttavia ominaisuuksia.",
+    "roadmapTitle": "Jaa etenemissuunnitelmasi",
+    "roadmapDesc": "Pidä asiakkaat mukana julkisella etenemissuunnitelmalla ja muutoslokilla, joka osoittaa, että kuuntelet."
+  },
+  "loginPage": {
+    "heading": "Kirjaudu sisään ja jatka parempien päätösten tekemistä.",
+    "subtitle": "Käytä palautevirtojasi, etenemissuunnitelmatauluja, muutoslokia ja ilmoituksia yhdestä turvallisesta paikasta."
+  },
+  "signupPage": {
+    "heading": "Liity Feedbaseen ja kerää tuotepalautetta selkeästi.",
+    "subtitle": "Rakenna tiimisi työtila alle minuutissa ja priorisoi sitten käyttäjien tärkeimmät tarpeet turvallisella ja skaalautuvalla pohjalla."
   }
 }

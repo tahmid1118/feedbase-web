@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Sprache wählen"
+    "select": "Sprache wählen",
+    "label": "Sprache"
   },
   "nav": {
     "pricing": "Preise",
@@ -20,13 +21,74 @@
       "titleHighlight": "Produkterfolg",
       "subtitle": "Sammeln, organisieren und priorisieren Sie Feedback mühelos. Entwickeln Sie Produkte, die Ihre Kunden wirklich wollen.",
       "startTrial": "Kostenlos testen",
-      "watchDemo": "Demo ansehen"
+      "watchDemo": "Demo ansehen",
+      "badge": "Vertraut von über 300.000 Nutzern weltweit"
     },
     "features": {
-      "heading": "Alles, was Sie brauchen"
+      "heading": "Alles, was Sie brauchen",
+      "subheading": "Leistungsstarke Funktionen zur Verwaltung von Feedback im großen Maßstab",
+      "collection": {
+        "title": "Feedback-Sammlung",
+        "desc": "Sammeln Sie Kundenerkenntnisse über anpassbare Feedback-Boards und Formulare"
+      },
+      "voting": {
+        "title": "Intelligentes Abstimmungssystem",
+        "desc": "Lassen Sie Nutzer für die gewünschten Funktionen abstimmen, um Ihre Roadmap effektiv zu priorisieren"
+      },
+      "roadmap": {
+        "title": "Visuelle Roadmap",
+        "desc": "Teilen Sie Ihre Produkt-Roadmap öffentlich und halten Sie Kunden auf dem Laufenden"
+      },
+      "notifications": {
+        "title": "Intelligente Benachrichtigungen",
+        "desc": "Halten Sie Nutzer mit automatischen Updates zum Status ihres Feedbacks bei der Stange"
+      },
+      "analytics": {
+        "title": "Analyse-Dashboard",
+        "desc": "Verfolgen Sie Trends, messen Sie das Engagement und treffen Sie datenbasierte Entscheidungen"
+      },
+      "multitenant": {
+        "title": "Mandantenfähigkeit",
+        "desc": "Verwalten Sie mehrere Arbeitsbereiche mit benutzerdefinierten Domains und Branding"
+      }
     },
     "cta": {
-      "heading": "Bereit, bessere Produkte zu entwickeln?"
+      "heading": "Bereit, bessere Produkte zu entwickeln?",
+      "subheading": "Schließen Sie sich Tausenden von Teams an, die Feedbase nutzen, um ihre Kunden zu verstehen"
+    },
+    "stats": {
+      "activeUsers": "Aktive Nutzer",
+      "pluginUsers": "Plugin-Nutzer",
+      "productHunt": "ProductHunt-Upvotes"
+    },
+    "how": {
+      "heading": "Wie funktioniert es?",
+      "subheading": "Erstellen Sie Ihr personalisiertes Feedback-Portal in 4 Schritten",
+      "step1Title": "Registrieren und Arbeitsbereich erstellen",
+      "step1Desc": "Beginnen Sie mit unserem magischen Einrichtungsassistenten, um Ihr Feedback-Portal in Minuten bereitzustellen",
+      "step2Title": "Passen Sie Ihr Branding an",
+      "step2Desc": "Wählen Sie Ihre Primär- und Sekundärfarben, fügen Sie Ihr Logo hinzu und machen Sie es zu Ihrem",
+      "step3Title": "Laden Sie Ihr Team und Ihre Kunden ein",
+      "step3Desc": "Teilen Sie den Link zu Ihrem Feedback-Board und beginnen Sie, wertvolle Erkenntnisse zu sammeln",
+      "step4Title": "Analysieren und handeln",
+      "step4Desc": "Exportieren Sie Daten in verschiedenen Formaten, integrieren Sie Ihre Tools und entwickeln Sie bessere Produkte"
+    },
+    "testimonials": {
+      "heading": "Beliebt bei Produktteams",
+      "subheading": "Was die Leute über Feedbase sagen",
+      "quote1": "Feedbase hat verändert, wie wir Nutzerfeedback sammeln und priorisieren. Das Abstimmungssystem ist brillant!",
+      "role1": "Produktmanager",
+      "quote2": "Die Einrichtung dauerte weniger als 5 Minuten. Die Oberfläche ist übersichtlich und unsere Kunden lieben sie!",
+      "role2": "Startup-Gründer",
+      "quote3": "Das Analyse-Dashboard liefert uns Erkenntnisse, die wir zuvor nie hatten. Sehr empfehlenswert!",
+      "role3": "UX-Designer"
+    },
+    "pricing": {
+      "heading": "Einfache, transparente Preise",
+      "subheading": "Kostenlos starten, upgraden, wenn Sie wachsen"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Alle Rechte vorbehalten."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktiv",
     "share": "Teilen",
     "pin": "Anheften",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Bearbeiten",
+    "confirm": "Bestätigen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Absenden",
+    "learnMore": "Mehr erfahren"
   },
   "dashboard": {
     "welcomeBack": "Willkommen zurück"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Arbeitsbereich gelöscht",
     "workspaceUpdated": "Arbeitsbereich aktualisiert",
     "accountDeleted": "Ihr Konto wurde gelöscht"
+  },
+  "authAside": {
+    "badge": "Produkt-Feedback-Plattform",
+    "heading": "Machen Sie Nutzerfeedback zu Ihrem Wettbewerbsvorteil.",
+    "subtitle": "Schließen Sie sich Tausenden von Produktteams an, die Feedbase nutzen, um zu verstehen, was ihre Kunden wirklich wollen, und erfolgreiche Produkte zu entwickeln.",
+    "centralizeTitle": "Feedback zentralisieren",
+    "centralizeDesc": "Sammeln Sie Funktionswünsche, Fehlerberichte und Ideen an einem organisierten Ort, auf den Ihr Team jederzeit zugreifen kann.",
+    "prioritizeTitle": "Mit Stimmen priorisieren",
+    "prioritizeDesc": "Lassen Sie Ihre Nutzer über das Wichtigste abstimmen, damit Sie Funktionen mit echter Wirkung entwickeln.",
+    "roadmapTitle": "Teilen Sie Ihre Roadmap",
+    "roadmapDesc": "Halten Sie Kunden mit einer öffentlichen Roadmap und einem Änderungsprotokoll bei der Stange, das zeigt, dass Sie zuhören."
+  },
+  "loginPage": {
+    "heading": "Melden Sie sich an und treffen Sie weiterhin bessere Entscheidungen.",
+    "subtitle": "Greifen Sie von einem sicheren Ort auf Ihre Feedback-Streams, Roadmap-Boards, Änderungsprotokolle und Benachrichtigungen zu."
+  },
+  "signupPage": {
+    "heading": "Werden Sie Teil von Feedbase und sammeln Sie Produktfeedback mit Klarheit.",
+    "subtitle": "Erstellen Sie Ihren Team-Arbeitsbereich in unter einer Minute und priorisieren Sie dann die wichtigsten Nutzerbedürfnisse auf einer sicheren, skalierbaren Grundlage."
   }
 }

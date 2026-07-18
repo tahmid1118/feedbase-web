@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Roghnaigh teanga"
+    "select": "Roghnaigh teanga",
+    "label": "Teanga"
   },
   "nav": {
     "pricing": "Praghsáil",
@@ -20,13 +21,74 @@
       "titleHighlight": "rath táirge",
       "subtitle": "Bailigh, eagraigh agus tabhair tosaíocht d'aiseolas gan stró. Tóg táirgí a theastaíonn ó do chustaiméirí i ndáiríre.",
       "startTrial": "Tosaigh triail saor in aisce",
-      "watchDemo": "Féach ar an taispeántas"
+      "watchDemo": "Féach ar an taispeántas",
+      "badge": "Muiníneach ag 300K+ úsáideoir ar fud an domhain"
     },
     "features": {
-      "heading": "Gach a bhfuil uait"
+      "heading": "Gach a bhfuil uait",
+      "subheading": "Gnéithe cumhachtacha chun aiseolas a bhainistiú ar scála",
+      "collection": {
+        "title": "Bailiú aiseolais",
+        "desc": "Bailigh léargais ó chustaiméirí trí chláir agus foirmeacha aiseolais inoiriúnaithe"
+      },
+      "voting": {
+        "title": "Córas vótála cliste",
+        "desc": "Lig d'úsáideoirí vótáil ar na gnéithe is mó a theastaíonn uathu chun do threochlár a phrioritíocc go héifeachtach"
+      },
+      "roadmap": {
+        "title": "Treochlár amhairc",
+        "desc": "Roinn treochlár do tháirge go poiblí agus coinnigh custaiméirí ar an eolas"
+      },
+      "notifications": {
+        "title": "Fógraí cliste",
+        "desc": "Coinnigh úsáideoirí gafa le nuashonruithe uathoibríocha ar stádas a n-aiseolais"
+      },
+      "analytics": {
+        "title": "Deais anailísíochta",
+        "desc": "Lean treochtaí, tomhais rannpháirtíocht agus déan cinntí sonraí-bhunaithe"
+      },
+      "multitenant": {
+        "title": "Tacaíocht ilthionóntach",
+        "desc": "Bainistigh spásanna oibre iomadúla le fearainn agus brandáil shaincheaptha"
+      }
     },
     "cta": {
-      "heading": "Réidh chun táirgí níos fearr a thógáil?"
+      "heading": "Réidh chun táirgí níos fearr a thógáil?",
+      "subheading": "Bí páirteach le mílte foireann a úsáideann Feedbase chun a gcustaiméirí a thuiscint"
+    },
+    "stats": {
+      "activeUsers": "Úsáideoirí gníomhacha",
+      "pluginUsers": "Úsáideoirí breiseáin",
+      "productHunt": "Vótaí ProductHunt"
+    },
+    "how": {
+      "heading": "Conas a oibríonn sé?",
+      "subheading": "Faigh do thairseach aiseolais phearsantaithe i 4 chéim",
+      "step1Title": "Cláraigh agus cruthaigh do spás oibre",
+      "step1Desc": "Tosaigh lenár draíocht treoraí socraithe chun do thairseach aiseolais a bheith réidh i gceann nóiméad",
+      "step2Title": "Saincheap do bhrandáil",
+      "step2Desc": "Roghnaigh do phríomhdhathanna agus dathanna tánaisteacha, cuir do lógó leis agus déan do chuid féin de",
+      "step3Title": "Tabhair cuireadh do d'fhoireann agus do chustaiméirí",
+      "step3Desc": "Roinn nasc do chláir aiseolais agus tosaigh ag bailiú léargas luachmhar",
+      "step4Title": "Déan anailís agus gníomhaigh",
+      "step4Desc": "Easpórtáil sonraí i bhformáidí éagsúla, comhtháthaigh d'uirlisí agus tóg táirgí níos fearr"
+    },
+    "testimonials": {
+      "heading": "Grá ag foirne táirge dó",
+      "subheading": "Cad a deir daoine faoi Feedbase",
+      "quote1": "D'athraigh Feedbase an chaoi a mbailímid agus a dtugaimid tosaíocht d'aiseolas úsáideoirí. Tá an córas vótála iontach!",
+      "role1": "Bainisteoir Táirge",
+      "quote2": "Thóg an socrú níos lú ná 5 nóiméad. Tá an comhéadan glan agus is breá lenár gcustaiméirí é!",
+      "role2": "Bunaitheoir Gnólachta Nuathionscanta",
+      "quote3": "Tugann an deais anailísíochta léargais dúinn nach raibh againn riamh roimhe seo. Molaim go hard é!",
+      "role3": "Dearthóir UX"
+    },
+    "pricing": {
+      "heading": "Praghsáil shimplí, thrédhearcach",
+      "subheading": "Tosaigh saor in aisce, uasghrádaigh de réir mar a fhásann tú"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Gach ceart ar cosaint."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Gníomhach",
     "share": "Roinn",
     "pin": "Bioráil",
-    "status": "Stádas"
+    "status": "Stádas",
+    "edit": "Cuir in eagar",
+    "confirm": "Deimhnigh",
+    "back": "Ar ais",
+    "next": "Ar aghaidh",
+    "submit": "Cuir isteach",
+    "learnMore": "Tuilleadh eolais"
   },
   "dashboard": {
     "welcomeBack": "Fáilte ar ais"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Spás oibre scriosta",
     "workspaceUpdated": "Spás oibre nuashonraithe",
     "accountDeleted": "Scriosadh do chuntas"
+  },
+  "authAside": {
+    "badge": "Ardán Aiseolais Táirge",
+    "heading": "Déan buntáiste iomaíoch as aiseolas úsáideoirí.",
+    "subtitle": "Bí páirteach le mílte foireann táirge a úsáideann Feedbase chun tuiscint a fháil ar an méid a theastaíonn óna gcustaiméirí i ndáiríre agus táirgí a bhuann a thógáil.",
+    "centralizeTitle": "Láraigh aiseolas",
+    "centralizeDesc": "Bailigh iarratais gné, tuairiscí fabht agus smaointe in aon spás eagraithe amháin ar féidir le d'fhoireann rochtain a fháil air am ar bith.",
+    "prioritizeTitle": "Tabhair tosaíocht le vótaí",
+    "prioritizeDesc": "Lig do d'úsáideoirí vótáil ar an rud is tábhachtaí, ionas go dtógann tú gnéithe a bhfuil fíor-thionchar acu.",
+    "roadmapTitle": "Roinn do threochlár",
+    "roadmapDesc": "Coinnigh custaiméirí gafa le treochlár poiblí agus logáil athruithe a léiríonn go bhfuil tú ag éisteacht."
+  },
+  "loginPage": {
+    "heading": "Sínigh isteach agus lean ort ag déanamh cinntí níos fearr.",
+    "subtitle": "Faigh rochtain ar do shruthanna aiseolais, cláir treochláir, logáil athruithe agus fógraí ó áit shlán amháin."
+  },
+  "signupPage": {
+    "heading": "Bí páirteach le Feedbase agus bailigh aiseolas táirge go soiléir.",
+    "subtitle": "Tóg spás oibre d'fhoirne i níos lú ná nóiméad, ansin tabhair tosaíocht don rud is mó a theastaíonn ó úsáideoirí ar bhonn slán inscálaithe."
   }
 }

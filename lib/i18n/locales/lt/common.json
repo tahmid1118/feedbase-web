@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Pasirinkite kalbą"
+    "select": "Pasirinkite kalbą",
+    "label": "Kalba"
   },
   "nav": {
     "pricing": "Kainos",
@@ -20,13 +21,74 @@
       "titleHighlight": "produkto sėkme",
       "subtitle": "Be vargo rinkite, tvarkykite ir teikite pirmenybę atsiliepimams. Kurkite produktus, kurių klientai iš tikrųjų nori.",
       "startTrial": "Pradėti nemokamą bandymą",
-      "watchDemo": "Žiūrėti demonstraciją"
+      "watchDemo": "Žiūrėti demonstraciją",
+      "badge": "Pasitiki daugiau nei 300 tūkst. vartotojų visame pasaulyje"
     },
     "features": {
-      "heading": "Viskas, ko jums reikia"
+      "heading": "Viskas, ko jums reikia",
+      "subheading": "Galingos funkcijos atsiliepimams valdyti dideliu mastu",
+      "collection": {
+        "title": "Atsiliepimų rinkimas",
+        "desc": "Rinkite įžvalgas iš klientų naudodami pritaikomas atsiliepimų lentas ir formas"
+      },
+      "voting": {
+        "title": "Išmani balsavimo sistema",
+        "desc": "Leiskite vartotojams balsuoti už labiausiai norimas funkcijas, kad efektyviai nustatytumėte plano prioritetus"
+      },
+      "roadmap": {
+        "title": "Vizualus planas",
+        "desc": "Viešai bendrinkite produkto planą ir informuokite klientus"
+      },
+      "notifications": {
+        "title": "Išmanūs pranešimai",
+        "desc": "Išlaikykite vartotojų susidomėjimą automatiniais atsiliepimų būsenos atnaujinimais"
+      },
+      "analytics": {
+        "title": "Analizės skydelis",
+        "desc": "Stebėkite tendencijas, matuokite įsitraukimą ir priimkite duomenimis pagrįstus sprendimus"
+      },
+      "multitenant": {
+        "title": "Kelių nuomininkų palaikymas",
+        "desc": "Valdykite kelias darbo sritis su pasirinktiniais domenais ir prekės ženklu"
+      }
     },
     "cta": {
-      "heading": "Pasiruošę kurti geresnius produktus?"
+      "heading": "Pasiruošę kurti geresnius produktus?",
+      "subheading": "Prisijunkite prie tūkstančių komandų, kurios naudoja Feedbase savo klientams suprasti"
+    },
+    "stats": {
+      "activeUsers": "Aktyvūs vartotojai",
+      "pluginUsers": "Papildinio vartotojai",
+      "productHunt": "ProductHunt balsai"
+    },
+    "how": {
+      "heading": "Kaip tai veikia?",
+      "subheading": "Sukurkite savo asmeninį atsiliepimų portalą 4 žingsniais",
+      "step1Title": "Užsiregistruokite ir sukurkite darbo sritį",
+      "step1Desc": "Pradėkite nuo mūsų stebuklingo sąrankos vediklio, kad atsiliepimų portalas būtų paruoštas per kelias minutes",
+      "step2Title": "Pritaikykite savo prekės ženklą",
+      "step2Desc": "Pasirinkite pagrindinę ir antrinę spalvas, pridėkite logotipą ir pritaikykite jį sau",
+      "step3Title": "Pakvieskite savo komandą ir klientus",
+      "step3Desc": "Bendrinkite savo atsiliepimų lentos nuorodą ir pradėkite rinkti vertingas įžvalgas",
+      "step4Title": "Analizuokite ir veikite",
+      "step4Desc": "Eksportuokite duomenis įvairiais formatais, integruokite savo įrankius ir kurkite geresnius produktus"
+    },
+    "testimonials": {
+      "heading": "Mėgstamas produktų komandų",
+      "subheading": "Ką žmonės sako apie Feedbase",
+      "quote1": "Feedbase pakeitė būdą, kaip renkame ir teikiame pirmenybę vartotojų atsiliepimams. Balsavimo sistema puiki!",
+      "role1": "Produkto vadovas",
+      "quote2": "Sąranka užtruko mažiau nei 5 minutes. Sąsaja aiški, o klientai ją mėgsta!",
+      "role2": "Startuolio įkūrėjas",
+      "quote3": "Analizės skydelis suteikia įžvalgų, kokių anksčiau neturėjome. Labai rekomenduoju!",
+      "role3": "UX dizaineris"
+    },
+    "pricing": {
+      "heading": "Paprastos, skaidrios kainos",
+      "subheading": "Pradėkite nemokamai, atnaujinkite augdami"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Visos teisės saugomos."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktyvus",
     "share": "Bendrinti",
     "pin": "Prisegti",
-    "status": "Būsena"
+    "status": "Būsena",
+    "edit": "Redaguoti",
+    "confirm": "Patvirtinti",
+    "back": "Atgal",
+    "next": "Toliau",
+    "submit": "Pateikti",
+    "learnMore": "Sužinoti daugiau"
   },
   "dashboard": {
     "welcomeBack": "Sveiki sugrįžę"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Darbo sritis ištrinta",
     "workspaceUpdated": "Darbo sritis atnaujinta",
     "accountDeleted": "Jūsų paskyra ištrinta"
+  },
+  "authAside": {
+    "badge": "Produktų atsiliepimų platforma",
+    "heading": "Paverskite vartotojų atsiliepimus savo konkurenciniu pranašumu.",
+    "subtitle": "Prisijunkite prie tūkstančių produktų komandų, kurios naudoja Feedbase, kad suprastų, ko iš tikrųjų nori jų klientai, ir kurtų sėkmingus produktus.",
+    "centralizeTitle": "Centralizuokite atsiliepimus",
+    "centralizeDesc": "Rinkite funkcijų užklausas, klaidų pranešimus ir idėjas vienoje sutvarkytoje vietoje, pasiekiamoje bet kada.",
+    "prioritizeTitle": "Teikite pirmenybę balsais",
+    "prioritizeDesc": "Leiskite vartotojams balsuoti už tai, kas svarbiausia, kad kurtumėte tikrą poveikį turinčias funkcijas.",
+    "roadmapTitle": "Dalykitės savo planu",
+    "roadmapDesc": "Išlaikykite klientų susidomėjimą viešu planu ir pakeitimų žurnalu, kuris rodo, kad klausotės."
+  },
+  "loginPage": {
+    "heading": "Prisijunkite ir toliau priimkite geresnius sprendimus.",
+    "subtitle": "Pasiekite savo atsiliepimų srautus, plano lentas, pakeitimų žurnalą ir pranešimus iš vienos saugios vietos."
+  },
+  "signupPage": {
+    "heading": "Prisijunkite prie Feedbase ir aiškiai rinkite produktų atsiliepimus.",
+    "subtitle": "Sukurkite komandos darbo sritį per mažiau nei minutę, tada suteikite pirmenybę svarbiausiems vartotojų poreikiams saugiu ir keičiamo dydžio pagrindu."
   }
 }

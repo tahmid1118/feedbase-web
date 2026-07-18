@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Selectați limba"
+    "select": "Selectați limba",
+    "label": "Limbă"
   },
   "nav": {
     "pricing": "Prețuri",
@@ -20,13 +21,74 @@
       "titleHighlight": "succesul produsului",
       "subtitle": "Colectați, organizați și prioritizați feedbackul fără efort. Construiți produse pe care clienții și le doresc cu adevărat.",
       "startTrial": "Începeți perioada de probă gratuită",
-      "watchDemo": "Vizionați demo"
+      "watchDemo": "Vizionați demo",
+      "badge": "De încredere pentru peste 300.000 de utilizatori din întreaga lume"
     },
     "features": {
-      "heading": "Tot ce aveți nevoie"
+      "heading": "Tot ce aveți nevoie",
+      "subheading": "Funcții puternice pentru gestionarea feedbackului la scară",
+      "collection": {
+        "title": "Colectare de feedback",
+        "desc": "Adunați informații de la clienți prin panouri și formulare de feedback personalizabile"
+      },
+      "voting": {
+        "title": "Sistem de vot inteligent",
+        "desc": "Lăsați utilizatorii să voteze funcțiile dorite pentru a prioritiza eficient foaia de parcurs"
+      },
+      "roadmap": {
+        "title": "Foaie de parcurs vizuală",
+        "desc": "Partajați public foaia de parcurs a produsului și țineți clienții la curent"
+      },
+      "notifications": {
+        "title": "Notificări inteligente",
+        "desc": "Mențineți utilizatorii implicați cu actualizări automate despre starea feedbackului lor"
+      },
+      "analytics": {
+        "title": "Panou de analiză",
+        "desc": "Urmăriți tendințele, măsurați implicarea și luați decizii bazate pe date"
+      },
+      "multitenant": {
+        "title": "Suport multi-tenant",
+        "desc": "Gestionați mai multe spații de lucru cu domenii și branding personalizate"
+      }
     },
     "cta": {
-      "heading": "Sunteți gata să creați produse mai bune?"
+      "heading": "Sunteți gata să creați produse mai bune?",
+      "subheading": "Alăturați-vă miilor de echipe care folosesc Feedbase pentru a-și înțelege clienții"
+    },
+    "stats": {
+      "activeUsers": "Utilizatori activi",
+      "pluginUsers": "Utilizatori plugin",
+      "productHunt": "Voturi ProductHunt"
+    },
+    "how": {
+      "heading": "Cum funcționează?",
+      "subheading": "Obțineți portalul de feedback personalizat în 4 pași",
+      "step1Title": "Înregistrați-vă și creați spațiul de lucru",
+      "step1Desc": "Începeți cu asistentul nostru magic de configurare pentru a vă pregăti portalul de feedback în câteva minute",
+      "step2Title": "Personalizați-vă brandingul",
+      "step2Desc": "Alegeți culorile principală și secundară, adăugați logoul și faceți-l al dvs.",
+      "step3Title": "Invitați echipa și clienții",
+      "step3Desc": "Partajați linkul panoului de feedback și începeți să adunați informații valoroase",
+      "step4Title": "Analizați și acționați",
+      "step4Desc": "Exportați date în diverse formate, integrați-vă instrumentele și construiți produse mai bune"
+    },
+    "testimonials": {
+      "heading": "Îndrăgit de echipele de produs",
+      "subheading": "Ce spun oamenii despre Feedbase",
+      "quote1": "Feedbase a transformat modul în care colectăm și prioritizăm feedbackul utilizatorilor. Sistemul de vot este genial!",
+      "role1": "Manager de produs",
+      "quote2": "Configurarea a durat mai puțin de 5 minute. Interfața este curată, iar clienții noștri o adoră!",
+      "role2": "Fondator de startup",
+      "quote3": "Panoul de analiză ne oferă informații pe care nu le-am avut niciodată. Recomand cu căldură!",
+      "role3": "Designer UX"
+    },
+    "pricing": {
+      "heading": "Prețuri simple și transparente",
+      "subheading": "Începeți gratuit, faceți upgrade pe măsură ce creșteți"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Toate drepturile rezervate."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Activ",
     "share": "Distribuiți",
     "pin": "Fixați",
-    "status": "Stare"
+    "status": "Stare",
+    "edit": "Editați",
+    "confirm": "Confirmați",
+    "back": "Înapoi",
+    "next": "Următorul",
+    "submit": "Trimiteți",
+    "learnMore": "Aflați mai multe"
   },
   "dashboard": {
     "welcomeBack": "Bine ați revenit"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Spațiu de lucru șters",
     "workspaceUpdated": "Spațiu de lucru actualizat",
     "accountDeleted": "Contul dvs. a fost șters"
+  },
+  "authAside": {
+    "badge": "Platformă de feedback pentru produse",
+    "heading": "Transformați feedbackul utilizatorilor în avantajul dvs. competitiv.",
+    "subtitle": "Alăturați-vă miilor de echipe de produs care folosesc Feedbase pentru a înțelege ce își doresc cu adevărat clienții lor și a construi produse câștigătoare.",
+    "centralizeTitle": "Centralizați feedbackul",
+    "centralizeDesc": "Adunați cererile de funcții, rapoartele de erori și ideile într-un spațiu organizat, accesibil oricând.",
+    "prioritizeTitle": "Prioritizați cu voturi",
+    "prioritizeDesc": "Lăsați utilizatorii să voteze ce contează cel mai mult, ca să construiți funcții cu impact real.",
+    "roadmapTitle": "Partajați foaia de parcurs",
+    "roadmapDesc": "Mențineți clienții implicați cu o foaie de parcurs publică și un jurnal de modificări care arată că îi ascultați."
+  },
+  "loginPage": {
+    "heading": "Autentificați-vă și continuați să luați decizii mai bune.",
+    "subtitle": "Accesați fluxurile de feedback, panourile foii de parcurs, jurnalul de modificări și notificările dintr-un singur loc sigur."
+  },
+  "signupPage": {
+    "heading": "Alăturați-vă Feedbase și colectați feedback de produs cu claritate.",
+    "subtitle": "Construiți spațiul de lucru al echipei în mai puțin de un minut, apoi prioritizați nevoile utilizatorilor pe o bază sigură și scalabilă."
   }
 }

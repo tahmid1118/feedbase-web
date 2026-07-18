@@ -1,6 +1,7 @@
 {
   "language": {
-    "select": "Nyelv választása"
+    "select": "Nyelv választása",
+    "label": "Nyelv"
   },
   "nav": {
     "pricing": "Árak",
@@ -20,13 +21,74 @@
       "titleHighlight": "terméksikerré",
       "subtitle": "Gyűjtse, rendszerezze és rangsorolja a visszajelzéseket könnyedén. Építsen olyan termékeket, amelyeket ügyfelei valóban akarnak.",
       "startTrial": "Ingyenes próba indítása",
-      "watchDemo": "Demó megtekintése"
+      "watchDemo": "Demó megtekintése",
+      "badge": "Több mint 300 ezer felhasználó bízik benne világszerte"
     },
     "features": {
-      "heading": "Minden, amire szüksége van"
+      "heading": "Minden, amire szüksége van",
+      "subheading": "Hatékony funkciók a visszajelzések nagy léptékű kezeléséhez",
+      "collection": {
+        "title": "Visszajelzés gyűjtése",
+        "desc": "Gyűjtsön betekintést az ügyfelektől testreszabható visszajelzési táblák és űrlapok segítségével"
+      },
+      "voting": {
+        "title": "Intelligens szavazási rendszer",
+        "desc": "Hagyja, hogy a felhasználók a legkedveltebb funkciókra szavazzanak, hogy hatékonyan rangsorolja ütemtervét"
+      },
+      "roadmap": {
+        "title": "Vizuális ütemterv",
+        "desc": "Ossza meg nyilvánosan a termék ütemtervét, és tartsa naprakészen az ügyfeleket"
+      },
+      "notifications": {
+        "title": "Intelligens értesítések",
+        "desc": "Tartsa fenn a felhasználók érdeklődését visszajelzésük állapotáról szóló automatikus frissítésekkel"
+      },
+      "analytics": {
+        "title": "Elemzési irányítópult",
+        "desc": "Kövesse a trendeket, mérje az elköteleződést, és hozzon adatvezérelt döntéseket"
+      },
+      "multitenant": {
+        "title": "Több bérlős támogatás",
+        "desc": "Kezeljen több munkaterületet egyéni domainekkel és márkázással"
+      }
     },
     "cta": {
-      "heading": "Készen áll jobb termékek építésére?"
+      "heading": "Készen áll jobb termékek építésére?",
+      "subheading": "Csatlakozzon több ezer csapathoz, amelyek a Feedbase-t használják ügyfeleik megértéséhez"
+    },
+    "stats": {
+      "activeUsers": "Aktív felhasználók",
+      "pluginUsers": "Bővítmény felhasználói",
+      "productHunt": "ProductHunt szavazatok"
+    },
+    "how": {
+      "heading": "Hogyan működik?",
+      "subheading": "Hozza létre személyre szabott visszajelzési portálját 4 lépésben",
+      "step1Title": "Regisztráljon és hozza létre munkaterületét",
+      "step1Desc": "Kezdje varázslatos beállítási varázslónkkal, hogy percek alatt elkészüljön visszajelzési portálja",
+      "step2Title": "Testreszabja márkázását",
+      "step2Desc": "Válassza ki elsődleges és másodlagos színeit, adja hozzá logóját, és tegye sajátjává",
+      "step3Title": "Hívja meg csapatát és ügyfeleit",
+      "step3Desc": "Ossza meg visszajelzési táblájának linkjét, és kezdjen értékes betekintéseket gyűjteni",
+      "step4Title": "Elemezzen és cselekedjen",
+      "step4Desc": "Exportáljon adatokat különböző formátumokban, integrálja eszközeit, és építsen jobb termékeket"
+    },
+    "testimonials": {
+      "heading": "A termékcsapatok kedvence",
+      "subheading": "Mit mondanak az emberek a Feedbase-ről",
+      "quote1": "A Feedbase átalakította, ahogyan a felhasználói visszajelzéseket gyűjtjük és rangsoroljuk. A szavazási rendszer zseniális!",
+      "role1": "Termékmenedzser",
+      "quote2": "A beállítás kevesebb mint 5 percet vett igénybe. A felület letiszta, és ügyfeleink imádják!",
+      "role2": "Startupalapító",
+      "quote3": "Az elemzési irányítópult olyan betekintést nyújt, amilyet korábban sosem. Nagyon ajánlom!",
+      "role3": "UX-tervező"
+    },
+    "pricing": {
+      "heading": "Egyszerű, átlátható árazás",
+      "subheading": "Kezdje ingyen, bővítsen, ahogy növekszik"
+    },
+    "footer": {
+      "rights": "© 2026 Feedbase. Minden jog fenntartva."
     }
   },
   "common": {
@@ -46,7 +108,13 @@
     "active": "Aktív",
     "share": "Megosztás",
     "pin": "Rögzítés",
-    "status": "Állapot"
+    "status": "Állapot",
+    "edit": "Szerkesztés",
+    "confirm": "Megerősítés",
+    "back": "Vissza",
+    "next": "Következő",
+    "submit": "Küldés",
+    "learnMore": "Tudjon meg többet"
   },
   "dashboard": {
     "welcomeBack": "Üdvözöljük újra"
@@ -375,5 +443,24 @@
     "workspaceDeleted": "Munkaterület törölve",
     "workspaceUpdated": "Munkaterület frissítve",
     "accountDeleted": "Fiókja törölve lett"
+  },
+  "authAside": {
+    "badge": "Termék-visszajelzési platform",
+    "heading": "Alakítsa a felhasználói visszajelzést versenyelőnnyé.",
+    "subtitle": "Csatlakozzon több ezer termékcsapathoz, amelyek a Feedbase-t használják, hogy megértsék, mit akarnak igazán az ügyfeleik, és nyerő termékeket építsenek.",
+    "centralizeTitle": "Központosítsa a visszajelzést",
+    "centralizeDesc": "Gyűjtse a funkciókéréseket, hibajelentéseket és ötleteket egy rendezett helyen, amelyet csapata bármikor elérhet.",
+    "prioritizeTitle": "Rangsoroljon szavazatokkal",
+    "prioritizeDesc": "Hagyja, hogy felhasználói a legfontosabbra szavazzanak, hogy valódi hatású funkciókat építsen.",
+    "roadmapTitle": "Ossza meg ütemtervét",
+    "roadmapDesc": "Tartsa fenn az ügyfelek érdeklődését nyilvános ütemtervvel és változásnaplóval, amely megmutatja, hogy figyel rájuk."
+  },
+  "loginPage": {
+    "heading": "Jelentkezzen be, és hozzon továbbra is jobb döntéseket.",
+    "subtitle": "Érje el visszajelzési folyamait, ütemterv-tábláit, változásnaplóját és értesítéseit egyetlen biztonságos helyről."
+  },
+  "signupPage": {
+    "heading": "Csatlakozzon a Feedbase-hez, és gyűjtsön termék-visszajelzést átláthatóan.",
+    "subtitle": "Építse fel csapata munkaterületét kevesebb mint egy perc alatt, majd rangsorolja a felhasználók legfontosabb igényeit egy biztonságos és skálázható alapon."
   }
 }
