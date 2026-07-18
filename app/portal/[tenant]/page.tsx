@@ -6,6 +6,7 @@ import { FeedbackSubmit } from "@/components/portal/feedback-submit";
 import { PortalVoteButton } from "@/components/portal/portal-vote-button";
 import { BoardSort } from "@/components/portal/board-sort";
 import { LocalTime } from "@/components/local-time";
+import { getTranslation } from "@/lib/i18n/server";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -33,6 +34,7 @@ export default async function PortalBoardPage({
 }) {
   const { tenant } = await params;
   const decoded = decodeURIComponent(tenant);
+  const { t } = await getTranslation();
   const sort = normalizeBoardSort((await searchParams)?.sort);
   // getTenant is React-cached, so this shares the layout's tenant lookup.
   const [data, info] = await Promise.all([
@@ -101,7 +103,7 @@ export default async function PortalBoardPage({
                     <span
                       className={`shrink-0 rounded-full px-3 py-1 text-xs font-medium ${STATUS_BADGE[post.status]}`}
                     >
-                      {post.status.replace("_", " ")}
+                      {t(`status.${post.status}`)}
                     </span>
                   </div>
 

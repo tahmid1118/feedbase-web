@@ -114,7 +114,8 @@
     "back": "Indietro",
     "next": "Avanti",
     "submit": "Invia",
-    "learnMore": "Scopri di più"
+    "learnMore": "Scopri di più",
+    "clear": "Cancella"
   },
   "dashboard": {
     "welcomeBack": "Bentornato"
@@ -185,7 +186,8 @@
     "endsOptional": "Termina (facoltativo)",
     "once": "Una volta",
     "repeating": "Ricorrente",
-    "forever": "Per sempre"
+    "forever": "Per sempre",
+    "statusChangedTo": "Stato impostato su {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Pianificato",
     "in_progress": "In corso",
     "completed": "Completato",
-    "rejected": "Rifiutato"
+    "rejected": "Rifiutato",
+    "closed": "Chiuso"
   },
   "feedback": {
     "searchPlaceholder": "Cerca feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Fornisci maggiori dettagli sul tuo feedback...",
     "selectType": "Seleziona tipo",
     "attachments": "Allegati",
-    "postNotFound": "Post non trovato"
+    "postNotFound": "Post non trovato",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Funzionalità",
+    "typeBug": "Bug",
+    "typeFeatureRequest": "Richiesta di funzionalità",
+    "typeBugReport": "Segnalazione bug"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Richiesta di funzionalità",
-    "bugReport": "Segnalazione di bug"
+    "bugReport": "Segnalazione di bug",
+    "feature_request": "Richiesta di funzionalità",
+    "bug_report": "Segnalazione bug"
   },
   "comments": {
     "writeReply": "Scrivi una risposta…",

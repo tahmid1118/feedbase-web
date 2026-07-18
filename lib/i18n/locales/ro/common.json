@@ -114,7 +114,8 @@
     "back": "Înapoi",
     "next": "Următorul",
     "submit": "Trimiteți",
-    "learnMore": "Aflați mai multe"
+    "learnMore": "Aflați mai multe",
+    "clear": "Șterge"
   },
   "dashboard": {
     "welcomeBack": "Bine ați revenit"
@@ -185,7 +186,8 @@
     "endsOptional": "Se termină (opțional)",
     "once": "O dată",
     "repeating": "Recurent",
-    "forever": "Pentru totdeauna"
+    "forever": "Pentru totdeauna",
+    "statusChangedTo": "Stare setată la {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planificat",
     "in_progress": "În desfășurare",
     "completed": "Finalizat",
-    "rejected": "Respins"
+    "rejected": "Respins",
+    "closed": "Închis"
   },
   "feedback": {
     "searchPlaceholder": "Căutați feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Oferiți mai multe detalii despre feedbackul dvs...",
     "selectType": "Selectați tipul",
     "attachments": "Atașamente",
-    "postNotFound": "Postarea nu a fost găsită"
+    "postNotFound": "Postarea nu a fost găsită",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Funcție",
+    "typeBug": "Eroare",
+    "typeFeatureRequest": "Cerere de funcție",
+    "typeBugReport": "Raport de eroare"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Cerere de funcție",
-    "bugReport": "Raport de eroare"
+    "bugReport": "Raport de eroare",
+    "feature_request": "Cerere de funcție",
+    "bug_report": "Raport de eroare"
   },
   "comments": {
     "writeReply": "Scrieți un răspuns…",

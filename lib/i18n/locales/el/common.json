@@ -114,7 +114,8 @@
     "back": "Πίσω",
     "next": "Επόμενο",
     "submit": "Υποβολή",
-    "learnMore": "Μάθετε περισσότερα"
+    "learnMore": "Μάθετε περισσότερα",
+    "clear": "Εκκαθάριση"
   },
   "dashboard": {
     "welcomeBack": "Καλώς ήρθατε ξανά"
@@ -185,7 +186,8 @@
     "endsOptional": "Λήξη (προαιρετικό)",
     "once": "Μία φορά",
     "repeating": "Επαναλαμβανόμενο",
-    "forever": "Για πάντα"
+    "forever": "Για πάντα",
+    "statusChangedTo": "Η κατάσταση ορίστηκε σε {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Προγραμματισμένα",
     "in_progress": "Σε εξέλιξη",
     "completed": "Ολοκληρώθηκε",
-    "rejected": "Απορρίφθηκε"
+    "rejected": "Απορρίφθηκε",
+    "closed": "Κλειστό"
   },
   "feedback": {
     "searchPlaceholder": "Αναζήτηση σχολίων...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Δώστε περισσότερες λεπτομέρειες για τα σχόλιά σας...",
     "selectType": "Επιλέξτε τύπο",
     "attachments": "Συνημμένα",
-    "postNotFound": "Η ανάρτηση δεν βρέθηκε"
+    "postNotFound": "Η ανάρτηση δεν βρέθηκε",
+    "typeFeedback": "Σχόλιο",
+    "typeFeature": "Λειτουργία",
+    "typeBug": "Σφάλμα",
+    "typeFeatureRequest": "Αίτημα λειτουργίας",
+    "typeBugReport": "Αναφορά σφάλματος"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Σχόλιο",
     "featureRequest": "Αίτημα λειτουργίας",
-    "bugReport": "Αναφορά σφάλματος"
+    "bugReport": "Αναφορά σφάλματος",
+    "feature_request": "Αίτημα λειτουργίας",
+    "bug_report": "Αναφορά σφάλματος"
   },
   "comments": {
     "writeReply": "Γράψτε μια απάντηση…",

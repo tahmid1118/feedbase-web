@@ -114,7 +114,8 @@
     "back": "Atgal",
     "next": "Toliau",
     "submit": "Pateikti",
-    "learnMore": "Sužinoti daugiau"
+    "learnMore": "Sužinoti daugiau",
+    "clear": "Išvalyti"
   },
   "dashboard": {
     "welcomeBack": "Sveiki sugrįžę"
@@ -185,7 +186,8 @@
     "endsOptional": "Baigiasi (nebūtina)",
     "once": "Vieną kartą",
     "repeating": "Pasikartojantis",
-    "forever": "Amžinai"
+    "forever": "Amžinai",
+    "statusChangedTo": "Būsena nustatyta į {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Suplanuota",
     "in_progress": "Vykdoma",
     "completed": "Užbaigta",
-    "rejected": "Atmesta"
+    "rejected": "Atmesta",
+    "closed": "Uždaryta"
   },
   "feedback": {
     "searchPlaceholder": "Ieškoti atsiliepimų...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Pateikite daugiau informacijos apie savo atsiliepimą...",
     "selectType": "Pasirinkite tipą",
     "attachments": "Priedai",
-    "postNotFound": "Įrašas nerastas"
+    "postNotFound": "Įrašas nerastas",
+    "typeFeedback": "Atsiliepimas",
+    "typeFeature": "Funkcija",
+    "typeBug": "Klaida",
+    "typeFeatureRequest": "Funkcijos prašymas",
+    "typeBugReport": "Klaidos pranešimas"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Atsiliepimas",
     "featureRequest": "Funkcijos užklausa",
-    "bugReport": "Klaidos pranešimas"
+    "bugReport": "Klaidos pranešimas",
+    "feature_request": "Funkcijos prašymas",
+    "bug_report": "Klaidos pranešimas"
   },
   "comments": {
     "writeReply": "Parašykite atsakymą…",

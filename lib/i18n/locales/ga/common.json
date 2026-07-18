@@ -114,7 +114,8 @@
     "back": "Ar ais",
     "next": "Ar aghaidh",
     "submit": "Cuir isteach",
-    "learnMore": "Tuilleadh eolais"
+    "learnMore": "Tuilleadh eolais",
+    "clear": "Glan"
   },
   "dashboard": {
     "welcomeBack": "Fáilte ar ais"
@@ -185,7 +186,8 @@
     "endsOptional": "Críochnaíonn (roghnach)",
     "once": "Uair amháin",
     "repeating": "Athtarlaitheach",
-    "forever": "Go deo"
+    "forever": "Go deo",
+    "statusChangedTo": "Stádas socraithe go {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Beartaithe",
     "in_progress": "Ar siúl",
     "completed": "Críochnaithe",
-    "rejected": "Diúltaithe"
+    "rejected": "Diúltaithe",
+    "closed": "Dúnta"
   },
   "feedback": {
     "searchPlaceholder": "Cuardaigh aiseolas...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Tabhair tuilleadh sonraí faoi d'aiseolas...",
     "selectType": "Roghnaigh cineál",
     "attachments": "Ceangaltáin",
-    "postNotFound": "Postáil gan aimsiú"
+    "postNotFound": "Postáil gan aimsiú",
+    "typeFeedback": "Aiseolas",
+    "typeFeature": "Gné",
+    "typeBug": "Fabht",
+    "typeFeatureRequest": "Iarratas Gné",
+    "typeBugReport": "Tuairisc Fhabht"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Aiseolas",
     "featureRequest": "Iarratas gné",
-    "bugReport": "Tuairisc fabht"
+    "bugReport": "Tuairisc fabht",
+    "feature_request": "Iarratas Gné",
+    "bug_report": "Tuairisc Fhabht"
   },
   "comments": {
     "writeReply": "Scríobh freagra…",

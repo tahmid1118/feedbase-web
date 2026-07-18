@@ -38,7 +38,8 @@
     "active": "Active",
     "share": "Share",
     "pin": "Pin",
-    "status": "Status"
+    "status": "Status",
+    "clear": "Clear"
   },
   "landing": {
     "hero": {
@@ -185,7 +186,8 @@
     "endsOptional": "Ends (optional)",
     "once": "Once",
     "repeating": "Repeating",
-    "forever": "Forever"
+    "forever": "Forever",
+    "statusChangedTo": "Status set to {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planned",
     "in_progress": "In Progress",
     "completed": "Completed",
-    "rejected": "Rejected"
+    "rejected": "Rejected",
+    "closed": "Closed"
   },
   "feedback": {
     "searchPlaceholder": "Search feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Provide more details about your feedback...",
     "selectType": "Select type",
     "attachments": "Attachments",
-    "postNotFound": "Post not found"
+    "postNotFound": "Post not found",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Feature",
+    "typeBug": "Bug",
+    "typeFeatureRequest": "Feature Request",
+    "typeBugReport": "Bug Report"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Feature request",
-    "bugReport": "Bug report"
+    "bugReport": "Bug report",
+    "feature_request": "Feature Request",
+    "bug_report": "Bug Report"
   },
   "comments": {
     "writeReply": "Write a reply…",

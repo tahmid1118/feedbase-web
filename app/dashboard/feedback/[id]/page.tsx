@@ -372,7 +372,7 @@ export default function PostDetailPage() {
                       <SelectContent>
                         {STATUS_OPTIONS.map((s) => (
                           <SelectItem key={s} value={s}>
-                            {s.replace("_", " ")}
+                            {t(`status.${s}`)}
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -408,9 +408,9 @@ export default function PostDetailPage() {
                 by {post.author_name}
               </span>
               <Badge className={STATUS_BADGE[post.status]}>
-                {post.status.replace("_", " ")}
+                {t(`status.${post.status}`)}
               </Badge>
-              <Badge variant="outline">{post.post_type.replace("_", " ")}</Badge>
+              <Badge variant="outline">{t(`type.${post.post_type}`)}</Badge>
             </div>
 
             {/* Submitter contact + "implemented" notification (owner, Pro+). */}

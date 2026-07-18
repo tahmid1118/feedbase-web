@@ -353,7 +353,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             <SelectContent>
               {BOARD_SORT_OPTIONS.map((o) => (
                 <SelectItem key={o.value} value={o.value}>
-                  {o.label}
+                  {t(o.labelKey)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -365,9 +365,9 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">{t("feedback.allTypes")}</SelectItem>
-              <SelectItem value="feedback">💬 Feedback</SelectItem>
-              <SelectItem value="feature_request">✨ Feature</SelectItem>
-              <SelectItem value="bug_report">🐛 Bug</SelectItem>
+              <SelectItem value="feedback">💬 {t("feedback.typeFeedback")}</SelectItem>
+              <SelectItem value="feature_request">✨ {t("feedback.typeFeature")}</SelectItem>
+              <SelectItem value="bug_report">🐛 {t("feedback.typeBug")}</SelectItem>
             </SelectContent>
           </Select>
 
@@ -397,7 +397,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               checked={allSelected}
               onCheckedChange={toggleAll}
               disabled={selectablePosts.length === 0}
-              aria-label="Select all feedback"
+              aria-label={t("feedback.selectAll")}
             />
             {selectedCount > 0 ? t("feedback.nSelected", { count: selectedCount }) : t("feedback.selectAll")}
           </label>
@@ -405,7 +405,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           {selectedCount > 0 && (
             <div className="flex items-center gap-2">
               <Button variant="ghost" size="sm" onClick={clearSelection}>
-                Clear
+                {t("common.clear")}
               </Button>
               {status === "rejected" ? (
                 <Button
@@ -519,7 +519,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                       <span
                         className={`rounded-full px-3 py-1 text-xs font-medium ${STATUS_BADGE[post.status]}`}
                       >
-                        {post.status.replace("_", " ")}
+                        {t(`status.${post.status}`)}
                       </span>
                     </div>
 

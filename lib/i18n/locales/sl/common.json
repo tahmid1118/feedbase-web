@@ -114,7 +114,8 @@
     "back": "Nazaj",
     "next": "Naprej",
     "submit": "Pošlji",
-    "learnMore": "Več o tem"
+    "learnMore": "Več o tem",
+    "clear": "Počisti"
   },
   "dashboard": {
     "welcomeBack": "Dobrodošli nazaj"
@@ -185,7 +186,8 @@
     "endsOptional": "Konča se (neobvezno)",
     "once": "Enkrat",
     "repeating": "Ponavljajoče",
-    "forever": "Za vedno"
+    "forever": "Za vedno",
+    "statusChangedTo": "Stanje nastavljeno na {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Načrtovano",
     "in_progress": "V teku",
     "completed": "Zaključeno",
-    "rejected": "Zavrnjeno"
+    "rejected": "Zavrnjeno",
+    "closed": "Zaprto"
   },
   "feedback": {
     "searchPlaceholder": "Išči povratne informacije...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Navedite več podrobnosti o svojih povratnih informacijah...",
     "selectType": "Izberite vrsto",
     "attachments": "Priloge",
-    "postNotFound": "Objava ni najdena"
+    "postNotFound": "Objava ni najdena",
+    "typeFeedback": "Povratna informacija",
+    "typeFeature": "Funkcija",
+    "typeBug": "Napaka",
+    "typeFeatureRequest": "Zahteva za funkcijo",
+    "typeBugReport": "Poročilo o napaki"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Povratna informacija",
     "featureRequest": "Zahteva za funkcijo",
-    "bugReport": "Prijava napake"
+    "bugReport": "Prijava napake",
+    "feature_request": "Zahteva za funkcijo",
+    "bug_report": "Poročilo o napaki"
   },
   "comments": {
     "writeReply": "Napišite odgovor…",

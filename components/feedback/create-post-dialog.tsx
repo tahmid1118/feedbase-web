@@ -180,9 +180,9 @@ export function CreatePostDialog({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="feedback">💬 Feedback</SelectItem>
-                        <SelectItem value="feature_request">✨ Feature Request</SelectItem>
-                        <SelectItem value="bug_report">🐛 Bug Report</SelectItem>
+                        <SelectItem value="feedback">💬 {t("feedback.typeFeedback")}</SelectItem>
+                        <SelectItem value="feature_request">✨ {t("feedback.typeFeatureRequest")}</SelectItem>
+                        <SelectItem value="bug_report">🐛 {t("feedback.typeBugReport")}</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

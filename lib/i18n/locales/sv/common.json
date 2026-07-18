@@ -114,7 +114,8 @@
     "back": "Tillbaka",
     "next": "Nästa",
     "submit": "Skicka",
-    "learnMore": "Läs mer"
+    "learnMore": "Läs mer",
+    "clear": "Rensa"
   },
   "dashboard": {
     "welcomeBack": "Välkommen tillbaka"
@@ -185,7 +186,8 @@
     "endsOptional": "Slutar (valfritt)",
     "once": "En gång",
     "repeating": "Återkommande",
-    "forever": "För alltid"
+    "forever": "För alltid",
+    "statusChangedTo": "Status inställd på {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planerad",
     "in_progress": "Pågår",
     "completed": "Slutförd",
-    "rejected": "Avvisad"
+    "rejected": "Avvisad",
+    "closed": "Stängd"
   },
   "feedback": {
     "searchPlaceholder": "Sök feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Ge fler detaljer om din feedback...",
     "selectType": "Välj typ",
     "attachments": "Bilagor",
-    "postNotFound": "Inlägget hittades inte"
+    "postNotFound": "Inlägget hittades inte",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Funktion",
+    "typeBug": "Bugg",
+    "typeFeatureRequest": "Funktionsförfrågan",
+    "typeBugReport": "Buggrapport"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Funktionsförfrågan",
-    "bugReport": "Felrapport"
+    "bugReport": "Felrapport",
+    "feature_request": "Funktionsförfrågan",
+    "bug_report": "Buggrapport"
   },
   "comments": {
     "writeReply": "Skriv ett svar…",

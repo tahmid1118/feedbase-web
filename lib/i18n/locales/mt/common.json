@@ -114,7 +114,8 @@
     "back": "Lura",
     "next": "Li jmiss",
     "submit": "Ibgħat",
-    "learnMore": "Kun af aktar"
+    "learnMore": "Kun af aktar",
+    "clear": "Ħassar"
   },
   "dashboard": {
     "welcomeBack": "Merħba lura"
@@ -185,7 +186,8 @@
     "endsOptional": "Jispiċċa (mhux obbligatorju)",
     "once": "Darba",
     "repeating": "Ripetut",
-    "forever": "Għal dejjem"
+    "forever": "Għal dejjem",
+    "statusChangedTo": "L-istatus issettjat għal {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Ippjanat",
     "in_progress": "Għaddej",
     "completed": "Lest",
-    "rejected": "Miċħud"
+    "rejected": "Miċħud",
+    "closed": "Magħluq"
   },
   "feedback": {
     "searchPlaceholder": "Fittex feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Ipprovdi aktar dettalji dwar il-feedback tiegħek...",
     "selectType": "Agħżel tip",
     "attachments": "Mehmużin",
-    "postNotFound": "Il-post ma nstabx"
+    "postNotFound": "Il-post ma nstabx",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Karatteristika",
+    "typeBug": "Bug",
+    "typeFeatureRequest": "Talba għal Karatteristika",
+    "typeBugReport": "Rapport ta' Bug"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Talba għal karatteristika",
-    "bugReport": "Rapport ta' bug"
+    "bugReport": "Rapport ta' bug",
+    "feature_request": "Talba għal Karatteristika",
+    "bug_report": "Rapport ta' Bug"
   },
   "comments": {
     "writeReply": "Ikteb tweġiba…",

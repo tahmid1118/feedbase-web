@@ -114,7 +114,8 @@
     "back": "Atpakaļ",
     "next": "Tālāk",
     "submit": "Iesniegt",
-    "learnMore": "Uzzināt vairāk"
+    "learnMore": "Uzzināt vairāk",
+    "clear": "Notīrīt"
   },
   "dashboard": {
     "welcomeBack": "Laipni lūdzam atpakaļ"
@@ -185,7 +186,8 @@
     "endsOptional": "Beidzas (neobligāti)",
     "once": "Vienreiz",
     "repeating": "Atkārtojošs",
-    "forever": "Mūžīgi"
+    "forever": "Mūžīgi",
+    "statusChangedTo": "Statuss iestatīts uz {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Plānots",
     "in_progress": "Notiek",
     "completed": "Pabeigts",
-    "rejected": "Noraidīts"
+    "rejected": "Noraidīts",
+    "closed": "Slēgts"
   },
   "feedback": {
     "searchPlaceholder": "Meklēt atsauksmes...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Sniedziet vairāk informācijas par savu atsauksmi...",
     "selectType": "Atlasiet veidu",
     "attachments": "Pielikumi",
-    "postNotFound": "Ieraksts nav atrasts"
+    "postNotFound": "Ieraksts nav atrasts",
+    "typeFeedback": "Atsauksme",
+    "typeFeature": "Funkcija",
+    "typeBug": "Kļūda",
+    "typeFeatureRequest": "Funkcijas pieprasījums",
+    "typeBugReport": "Kļūdas ziņojums"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Atsauksme",
     "featureRequest": "Funkcijas pieprasījums",
-    "bugReport": "Kļūdas ziņojums"
+    "bugReport": "Kļūdas ziņojums",
+    "feature_request": "Funkcijas pieprasījums",
+    "bug_report": "Kļūdas ziņojums"
   },
   "comments": {
     "writeReply": "Rakstiet atbildi…",

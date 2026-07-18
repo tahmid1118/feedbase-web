@@ -114,7 +114,8 @@
     "back": "Vissza",
     "next": "Következő",
     "submit": "Küldés",
-    "learnMore": "Tudjon meg többet"
+    "learnMore": "Tudjon meg többet",
+    "clear": "Törlés"
   },
   "dashboard": {
     "welcomeBack": "Üdvözöljük újra"
@@ -185,7 +186,8 @@
     "endsOptional": "Vége (opcionális)",
     "once": "Egyszer",
     "repeating": "Ismétlődő",
-    "forever": "Örökre"
+    "forever": "Örökre",
+    "statusChangedTo": "Állapot beállítva: {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Tervezett",
     "in_progress": "Folyamatban",
     "completed": "Befejezett",
-    "rejected": "Elutasított"
+    "rejected": "Elutasított",
+    "closed": "Lezárva"
   },
   "feedback": {
     "searchPlaceholder": "Visszajelzés keresése...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Adjon meg további részleteket a visszajelzéséről...",
     "selectType": "Válasszon típust",
     "attachments": "Mellékletek",
-    "postNotFound": "A bejegyzés nem található"
+    "postNotFound": "A bejegyzés nem található",
+    "typeFeedback": "Visszajelzés",
+    "typeFeature": "Funkció",
+    "typeBug": "Hiba",
+    "typeFeatureRequest": "Funkciókérés",
+    "typeBugReport": "Hibajelentés"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Visszajelzés",
     "featureRequest": "Funkciókérés",
-    "bugReport": "Hibajelentés"
+    "bugReport": "Hibajelentés",
+    "feature_request": "Funkciókérés",
+    "bug_report": "Hibajelentés"
   },
   "comments": {
     "writeReply": "Írjon választ…",

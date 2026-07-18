@@ -114,7 +114,8 @@
     "back": "Zurück",
     "next": "Weiter",
     "submit": "Absenden",
-    "learnMore": "Mehr erfahren"
+    "learnMore": "Mehr erfahren",
+    "clear": "Löschen"
   },
   "dashboard": {
     "welcomeBack": "Willkommen zurück"
@@ -185,7 +186,8 @@
     "endsOptional": "Ende (optional)",
     "once": "Einmalig",
     "repeating": "Wiederkehrend",
-    "forever": "Für immer"
+    "forever": "Für immer",
+    "statusChangedTo": "Status auf {{status}} gesetzt"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Geplant",
     "in_progress": "In Bearbeitung",
     "completed": "Abgeschlossen",
-    "rejected": "Abgelehnt"
+    "rejected": "Abgelehnt",
+    "closed": "Geschlossen"
   },
   "feedback": {
     "searchPlaceholder": "Feedback suchen...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Geben Sie weitere Details zu Ihrem Feedback an...",
     "selectType": "Typ auswählen",
     "attachments": "Anhänge",
-    "postNotFound": "Beitrag nicht gefunden"
+    "postNotFound": "Beitrag nicht gefunden",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Funktion",
+    "typeBug": "Fehler",
+    "typeFeatureRequest": "Funktionswunsch",
+    "typeBugReport": "Fehlerbericht"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Funktionswunsch",
-    "bugReport": "Fehlerbericht"
+    "bugReport": "Fehlerbericht",
+    "feature_request": "Funktionswunsch",
+    "bug_report": "Fehlerbericht"
   },
   "comments": {
     "writeReply": "Antwort schreiben…",

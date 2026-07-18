@@ -114,7 +114,8 @@
     "back": "Wstecz",
     "next": "Dalej",
     "submit": "Wyślij",
-    "learnMore": "Dowiedz się więcej"
+    "learnMore": "Dowiedz się więcej",
+    "clear": "Wyczyść"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -185,7 +186,8 @@
     "endsOptional": "Kończy się (opcjonalnie)",
     "once": "Raz",
     "repeating": "Powtarzające się",
-    "forever": "Na zawsze"
+    "forever": "Na zawsze",
+    "statusChangedTo": "Ustawiono status na {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Zaplanowane",
     "in_progress": "W toku",
     "completed": "Ukończone",
-    "rejected": "Odrzucone"
+    "rejected": "Odrzucone",
+    "closed": "Zamknięte"
   },
   "feedback": {
     "searchPlaceholder": "Szukaj opinii...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Podaj więcej szczegółów na temat swojej opinii...",
     "selectType": "Wybierz typ",
     "attachments": "Załączniki",
-    "postNotFound": "Nie znaleziono wpisu"
+    "postNotFound": "Nie znaleziono wpisu",
+    "typeFeedback": "Opinia",
+    "typeFeature": "Funkcja",
+    "typeBug": "Błąd",
+    "typeFeatureRequest": "Prośba o funkcję",
+    "typeBugReport": "Zgłoszenie błędu"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Opinia",
     "featureRequest": "Prośba o funkcję",
-    "bugReport": "Zgłoszenie błędu"
+    "bugReport": "Zgłoszenie błędu",
+    "feature_request": "Prośba o funkcję",
+    "bug_report": "Zgłoszenie błędu"
   },
   "comments": {
     "writeReply": "Napisz odpowiedź…",

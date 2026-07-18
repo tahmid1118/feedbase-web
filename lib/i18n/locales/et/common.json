@@ -114,7 +114,8 @@
     "back": "Tagasi",
     "next": "Järgmine",
     "submit": "Esita",
-    "learnMore": "Loe rohkem"
+    "learnMore": "Loe rohkem",
+    "clear": "Tühjenda"
   },
   "dashboard": {
     "welcomeBack": "Tere tulemast tagasi"
@@ -185,7 +186,8 @@
     "endsOptional": "Lõpeb (valikuline)",
     "once": "Üks kord",
     "repeating": "Korduv",
-    "forever": "Igavesti"
+    "forever": "Igavesti",
+    "statusChangedTo": "Olek määratud: {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planeeritud",
     "in_progress": "Töös",
     "completed": "Lõpetatud",
-    "rejected": "Tagasi lükatud"
+    "rejected": "Tagasi lükatud",
+    "closed": "Suletud"
   },
   "feedback": {
     "searchPlaceholder": "Otsi tagasisidet...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Esitage oma tagasiside kohta rohkem üksikasju...",
     "selectType": "Valige tüüp",
     "attachments": "Manused",
-    "postNotFound": "Postitust ei leitud"
+    "postNotFound": "Postitust ei leitud",
+    "typeFeedback": "Tagasiside",
+    "typeFeature": "Funktsioon",
+    "typeBug": "Viga",
+    "typeFeatureRequest": "Funktsiooni taotlus",
+    "typeBugReport": "Veaaruanne"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Tagasiside",
     "featureRequest": "Funktsioonisoov",
-    "bugReport": "Veateade"
+    "bugReport": "Veateade",
+    "feature_request": "Funktsiooni taotlus",
+    "bug_report": "Veaaruanne"
   },
   "comments": {
     "writeReply": "Kirjutage vastus…",

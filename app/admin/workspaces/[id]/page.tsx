@@ -51,8 +51,6 @@ import { toast } from "sonner";
 const STATUSES = ["open", "planned", "in_progress", "completed", "closed"];
 const FILTERS = ["all", ...STATUSES];
 
-const label = (s: string) => s.replace("_", " ");
-
 // Match the backend ordering: pinned first, then newest.
 const byPinnedThenNewest = (a: AdminPost, b: AdminPost) =>
   b.is_pinned - a.is_pinned ||
@@ -108,7 +106,7 @@ export default function AdminWorkspacePostsPage() {
     const res = await adminApi.setPostStatus(token, id, p.id, next);
     if (res.ok) {
       setPosts((prev) => prev.map((x) => (x.id === p.id ? { ...x, status: next } : x)));
-      toast.success(`Status set to ${label(next)}`);
+      toast.success(t("admin.statusChangedTo", { status: t(`status.${next}`) }));
     } else toast.error(res.message || "Failed");
   };
 
@@ -204,7 +202,7 @@ export default function AdminWorkspacePostsPage() {
                   : "text-[#1c0a0c]/60 hover:bg-[#fdf8f9] hover:text-[#c74959]"
               )}
             >
-              {f === "all" ? "All" : label(f)}
+              {t(`status.${f}`)}
             </button>
           ))}
         </div>
@@ -255,7 +253,7 @@ export default function AdminWorkspacePostsPage() {
                       <span className="font-medium text-[#1c0a0c]">{p.title}</span>
                     </div>
                     <Badge variant="outline" className="mt-1 text-[10px]">
-                      {label(p.post_type)}
+                      {t(`type.${p.post_type}`)}
                     </Badge>
                   </td>
                   <td className="px-4 py-3 text-[#1c0a0c]/70">{p.author_name}</td>
@@ -267,7 +265,7 @@ export default function AdminWorkspacePostsPage() {
                       <SelectContent>
                         {STATUSES.map((s) => (
                           <SelectItem key={s} value={s} className="capitalize">
-                            {label(s)}
+                            {t(`status.${s}`)}
                           </SelectItem>
                         ))}
                       </SelectContent>

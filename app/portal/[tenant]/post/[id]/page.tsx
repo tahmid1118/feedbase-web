@@ -14,6 +14,7 @@ import { LocalTime } from "@/components/local-time";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
 import { IncognitoIcon } from "@/components/portal/incognito-icon";
+import { getTranslation } from "@/lib/i18n/server";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -73,6 +74,7 @@ export default async function PortalPostPage({
 }) {
   const { tenant, id } = await params;
   const decoded = decodeURIComponent(tenant);
+  const { t } = await getTranslation();
   // getTenant is React-cached, so this shares the layout's tenant lookup.
   const [post, info] = await Promise.all([
     publicApi.getPost(decoded, id),
@@ -135,7 +137,7 @@ export default async function PortalPostPage({
               <h1 className="text-2xl font-bold text-[#1c0a0c]">{post.title}</h1>
               <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
                 <Badge className={STATUS_BADGE[post.status]}>
-                  {post.status.replace("_", " ")}
+                  {t(`status.${post.status}`)}
                 </Badge>
                 <SharePost title={post.title} brand={brand} />
                 <PostOwnerActions
@@ -191,7 +193,7 @@ export default async function PortalPostPage({
                   <LocalTime date={post.created_at} />
                 </span>
               )}
-              <Badge variant="outline">{post.post_type.replace("_", " ")}</Badge>
+              <Badge variant="outline">{t(`type.${post.post_type}`)}</Badge>
               {post.tags?.map((tag) => (
                 <Badge
                   key={tag.id}

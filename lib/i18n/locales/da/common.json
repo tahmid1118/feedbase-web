@@ -114,7 +114,8 @@
     "back": "Tilbage",
     "next": "Næste",
     "submit": "Send",
-    "learnMore": "Læs mere"
+    "learnMore": "Læs mere",
+    "clear": "Ryd"
   },
   "dashboard": {
     "welcomeBack": "Velkommen tilbage"
@@ -185,7 +186,8 @@
     "endsOptional": "Slutter (valgfrit)",
     "once": "Én gang",
     "repeating": "Gentagende",
-    "forever": "For altid"
+    "forever": "For altid",
+    "statusChangedTo": "Status sat til {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planlagt",
     "in_progress": "I gang",
     "completed": "Fuldført",
-    "rejected": "Afvist"
+    "rejected": "Afvist",
+    "closed": "Lukket"
   },
   "feedback": {
     "searchPlaceholder": "Søg feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Angiv flere detaljer om din feedback...",
     "selectType": "Vælg type",
     "attachments": "Vedhæftninger",
-    "postNotFound": "Opslag ikke fundet"
+    "postNotFound": "Opslag ikke fundet",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Funktion",
+    "typeBug": "Fejl",
+    "typeFeatureRequest": "Funktionsanmodning",
+    "typeBugReport": "Fejlrapport"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Funktionsanmodning",
-    "bugReport": "Fejlrapport"
+    "bugReport": "Fejlrapport",
+    "feature_request": "Funktionsanmodning",
+    "bug_report": "Fejlrapport"
   },
   "comments": {
     "writeReply": "Skriv et svar…",

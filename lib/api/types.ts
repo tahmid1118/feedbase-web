@@ -20,11 +20,16 @@ export interface PaginationData {
 /** Board sort options, shared by the dashboard board and the public portal. */
 export type BoardSort = "newest" | "oldest" | "most_voted" | "least_voted";
 
-export const BOARD_SORT_OPTIONS: { value: BoardSort; label: string }[] = [
-  { value: "newest", label: "Newest" },
-  { value: "oldest", label: "Oldest" },
-  { value: "most_voted", label: "Most upvoted" },
-  { value: "least_voted", label: "Least upvoted" },
+export const BOARD_SORT_OPTIONS: {
+  value: BoardSort;
+  label: string;
+  /** i18n key (namespace `common`) for the label — render with t(). */
+  labelKey: string;
+}[] = [
+  { value: "newest", label: "Newest", labelKey: "sort.newest" },
+  { value: "oldest", label: "Oldest", labelKey: "sort.oldest" },
+  { value: "most_voted", label: "Most upvoted", labelKey: "sort.mostUpvoted" },
+  { value: "least_voted", label: "Least upvoted", labelKey: "sort.leastUpvoted" },
 ];
 
 export interface PaginatedResponse<T> {

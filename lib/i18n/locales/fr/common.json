@@ -114,7 +114,8 @@
     "back": "Retour",
     "next": "Suivant",
     "submit": "Envoyer",
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "clear": "Effacer"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -185,7 +186,8 @@
     "endsOptional": "Fin (facultatif)",
     "once": "Une fois",
     "repeating": "Récurrent",
-    "forever": "Pour toujours"
+    "forever": "Pour toujours",
+    "statusChangedTo": "Statut défini sur {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planifié",
     "in_progress": "En cours",
     "completed": "Terminé",
-    "rejected": "Rejeté"
+    "rejected": "Rejeté",
+    "closed": "Fermé"
   },
   "feedback": {
     "searchPlaceholder": "Rechercher des retours...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Donnez plus de détails sur votre retour...",
     "selectType": "Sélectionner le type",
     "attachments": "Pièces jointes",
-    "postNotFound": "Publication introuvable"
+    "postNotFound": "Publication introuvable",
+    "typeFeedback": "Retour",
+    "typeFeature": "Fonctionnalité",
+    "typeBug": "Bogue",
+    "typeFeatureRequest": "Demande de fonctionnalité",
+    "typeBugReport": "Rapport de bogue"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Retour",
     "featureRequest": "Demande de fonctionnalité",
-    "bugReport": "Rapport de bogue"
+    "bugReport": "Rapport de bogue",
+    "feature_request": "Demande de fonctionnalité",
+    "bug_report": "Rapport de bogue"
   },
   "comments": {
     "writeReply": "Écrire une réponse…",

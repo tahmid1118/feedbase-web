@@ -114,7 +114,8 @@
     "back": "Назад",
     "next": "Напред",
     "submit": "Изпращане",
-    "learnMore": "Научете повече"
+    "learnMore": "Научете повече",
+    "clear": "Изчисти"
   },
   "dashboard": {
     "welcomeBack": "Добре дошли отново"
@@ -185,7 +186,8 @@
     "endsOptional": "Завършва (по избор)",
     "once": "Веднъж",
     "repeating": "Повтарящо се",
-    "forever": "Завинаги"
+    "forever": "Завинаги",
+    "statusChangedTo": "Статусът е зададен на {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Планирани",
     "in_progress": "В процес",
     "completed": "Завършени",
-    "rejected": "Отхвърлени"
+    "rejected": "Отхвърлени",
+    "closed": "Затворено"
   },
   "feedback": {
     "searchPlaceholder": "Търсене на обратна връзка...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Предоставете повече подробности за вашата обратна връзка...",
     "selectType": "Изберете тип",
     "attachments": "Прикачени файлове",
-    "postNotFound": "Публикацията не е намерена"
+    "postNotFound": "Публикацията не е намерена",
+    "typeFeedback": "Обратна връзка",
+    "typeFeature": "Функция",
+    "typeBug": "Грешка",
+    "typeFeatureRequest": "Заявка за функция",
+    "typeBugReport": "Доклад за грешка"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Обратна връзка",
     "featureRequest": "Заявка за функция",
-    "bugReport": "Съобщение за грешка"
+    "bugReport": "Съобщение за грешка",
+    "feature_request": "Заявка за функция",
+    "bug_report": "Доклад за грешка"
   },
   "comments": {
     "writeReply": "Напишете отговор…",

@@ -114,7 +114,8 @@
     "back": "Atrás",
     "next": "Siguiente",
     "submit": "Enviar",
-    "learnMore": "Más información"
+    "learnMore": "Más información",
+    "clear": "Borrar"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -185,7 +186,8 @@
     "endsOptional": "Termina (opcional)",
     "once": "Una vez",
     "repeating": "Recurrente",
-    "forever": "Para siempre"
+    "forever": "Para siempre",
+    "statusChangedTo": "Estado establecido en {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planificado",
     "in_progress": "En curso",
     "completed": "Completado",
-    "rejected": "Rechazado"
+    "rejected": "Rechazado",
+    "closed": "Cerrado"
   },
   "feedback": {
     "searchPlaceholder": "Buscar comentarios...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Proporciona más detalles sobre tu comentario...",
     "selectType": "Selecciona el tipo",
     "attachments": "Adjuntos",
-    "postNotFound": "Publicación no encontrada"
+    "postNotFound": "Publicación no encontrada",
+    "typeFeedback": "Comentario",
+    "typeFeature": "Función",
+    "typeBug": "Error",
+    "typeFeatureRequest": "Solicitud de función",
+    "typeBugReport": "Informe de error"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Comentario",
     "featureRequest": "Solicitud de función",
-    "bugReport": "Informe de error"
+    "bugReport": "Informe de error",
+    "feature_request": "Solicitud de función",
+    "bug_report": "Informe de error"
   },
   "comments": {
     "writeReply": "Escribe una respuesta…",

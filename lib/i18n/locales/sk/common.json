@@ -114,7 +114,8 @@
     "back": "Späť",
     "next": "Ďalej",
     "submit": "Odoslať",
-    "learnMore": "Zistiť viac"
+    "learnMore": "Zistiť viac",
+    "clear": "Vymazať"
   },
   "dashboard": {
     "welcomeBack": "Vitajte späť"
@@ -185,7 +186,8 @@
     "endsOptional": "Končí (voliteľné)",
     "once": "Raz",
     "repeating": "Opakujúce sa",
-    "forever": "Navždy"
+    "forever": "Navždy",
+    "statusChangedTo": "Stav nastavený na {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Plánované",
     "in_progress": "Prebieha",
     "completed": "Dokončené",
-    "rejected": "Zamietnuté"
+    "rejected": "Zamietnuté",
+    "closed": "Uzavreté"
   },
   "feedback": {
     "searchPlaceholder": "Hľadať spätnú väzbu...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Uveďte viac podrobností o svojej spätnej väzbe...",
     "selectType": "Vyberte typ",
     "attachments": "Prílohy",
-    "postNotFound": "Príspevok sa nenašiel"
+    "postNotFound": "Príspevok sa nenašiel",
+    "typeFeedback": "Spätná väzba",
+    "typeFeature": "Funkcia",
+    "typeBug": "Chyba",
+    "typeFeatureRequest": "Žiadosť o funkciu",
+    "typeBugReport": "Hlásenie chyby"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Spätná väzba",
     "featureRequest": "Žiadosť o funkciu",
-    "bugReport": "Hlásenie chyby"
+    "bugReport": "Hlásenie chyby",
+    "feature_request": "Žiadosť o funkciu",
+    "bug_report": "Hlásenie chyby"
   },
   "comments": {
     "writeReply": "Napíšte odpoveď…",

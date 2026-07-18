@@ -114,7 +114,8 @@
     "back": "Takaisin",
     "next": "Seuraava",
     "submit": "Lähetä",
-    "learnMore": "Lue lisää"
+    "learnMore": "Lue lisää",
+    "clear": "Tyhjennä"
   },
   "dashboard": {
     "welcomeBack": "Tervetuloa takaisin"
@@ -185,7 +186,8 @@
     "endsOptional": "Päättyy (valinnainen)",
     "once": "Kerran",
     "repeating": "Toistuva",
-    "forever": "Ikuisesti"
+    "forever": "Ikuisesti",
+    "statusChangedTo": "Tilaksi asetettu {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Suunniteltu",
     "in_progress": "Käynnissä",
     "completed": "Valmis",
-    "rejected": "Hylätty"
+    "rejected": "Hylätty",
+    "closed": "Suljettu"
   },
   "feedback": {
     "searchPlaceholder": "Hae palautetta...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Anna lisätietoja palautteestasi...",
     "selectType": "Valitse tyyppi",
     "attachments": "Liitteet",
-    "postNotFound": "Julkaisua ei löytynyt"
+    "postNotFound": "Julkaisua ei löytynyt",
+    "typeFeedback": "Palaute",
+    "typeFeature": "Ominaisuus",
+    "typeBug": "Vika",
+    "typeFeatureRequest": "Ominaisuuspyyntö",
+    "typeBugReport": "Vikaraportti"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Palaute",
     "featureRequest": "Ominaisuuspyyntö",
-    "bugReport": "Virheraportti"
+    "bugReport": "Virheraportti",
+    "feature_request": "Ominaisuuspyyntö",
+    "bug_report": "Vikaraportti"
   },
   "comments": {
     "writeReply": "Kirjoita vastaus…",

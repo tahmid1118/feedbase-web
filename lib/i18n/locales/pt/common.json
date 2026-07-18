@@ -114,7 +114,8 @@
     "back": "Voltar",
     "next": "Seguinte",
     "submit": "Enviar",
-    "learnMore": "Saber mais"
+    "learnMore": "Saber mais",
+    "clear": "Limpar"
   },
   "dashboard": {
     "welcomeBack": "Bem-vindo de volta"
@@ -185,7 +186,8 @@
     "endsOptional": "Fim (opcional)",
     "once": "Uma vez",
     "repeating": "Recorrente",
-    "forever": "Para sempre"
+    "forever": "Para sempre",
+    "statusChangedTo": "Estado definido como {{status}}"
   },
   "auth": {
     "login": {
@@ -220,7 +222,8 @@
     "planned": "Planeado",
     "in_progress": "Em curso",
     "completed": "Concluído",
-    "rejected": "Rejeitado"
+    "rejected": "Rejeitado",
+    "closed": "Fechado"
   },
   "feedback": {
     "searchPlaceholder": "Pesquisar feedback...",
@@ -242,7 +245,12 @@
     "descPlaceholder2": "Forneça mais detalhes sobre o seu feedback...",
     "selectType": "Selecionar tipo",
     "attachments": "Anexos",
-    "postNotFound": "Publicação não encontrada"
+    "postNotFound": "Publicação não encontrada",
+    "typeFeedback": "Feedback",
+    "typeFeature": "Funcionalidade",
+    "typeBug": "Erro",
+    "typeFeatureRequest": "Pedido de funcionalidade",
+    "typeBugReport": "Relatório de erro"
   },
   "page": {
     "feedback": {
@@ -293,7 +301,9 @@
   "type": {
     "feedback": "Feedback",
     "featureRequest": "Pedido de funcionalidade",
-    "bugReport": "Relatório de erro"
+    "bugReport": "Relatório de erro",
+    "feature_request": "Pedido de funcionalidade",
+    "bug_report": "Relatório de erro"
   },
   "comments": {
     "writeReply": "Escreva uma resposta…",
