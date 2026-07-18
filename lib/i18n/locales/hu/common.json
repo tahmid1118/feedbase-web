@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Csatlakozzon a Feedbase-hez, és gyűjtsön termék-visszajelzést átláthatóan.",
     "subtitle": "Építse fel csapata munkaterületét kevesebb mint egy perc alatt, majd rangsorolja a felhasználók legfontosabb igényeit egy biztonságos és skálázható alapon."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Minden, amire szüksége van a visszajelzések gyűjtésének elkezdéséhez."
+    },
+    "pro": {
+      "blurb": "Növekvő csapatoknak, akiknek saját márkára és eszközökre van szükségük."
+    },
+    "business": {
+      "blurb": "Bevált termékekhez, amelyeknek skálázniuk kell a támogatást."
+    },
+    "feat": {
+      "workspace1": "1 munkaterület",
+      "publicBoard": "Nyilvános visszajelzési tábla",
+      "roadmapChangelog": "Ütemterv és változásnapló",
+      "unlimitedPosts": "Korlátlan bejegyzés és szavazat",
+      "upTo2Members": "Legfeljebb 2 csapattag",
+      "oneSession": "Egyszerre egy aktív munkamenet",
+      "everythingFree": "Minden a Free csomagban",
+      "upTo3Workspaces": "Legfeljebb 3 munkaterület",
+      "photoVideo": "Fénykép és videó a visszajelzésen",
+      "contactSubmitters": "Visszajelzést küldők értesítése és megkeresése",
+      "deletePosts": "Visszajelzési bejegyzések törlése",
+      "upTo5Members": "Legfeljebb 5 csapattag",
+      "everythingPro": "Minden a Pro csomagban",
+      "unlimitedWorkspaces": "Korlátlan munkaterület",
+      "unlimitedMembers": "Korlátlan csapattag",
+      "multiDevice": "Bejelentkezés több eszközön",
+      "prioritySupport": "Elsőbbségi támogatás"
+    }
+  },
+  "pricing": {
+    "freeForever": "Örökké ingyenes",
+    "billedMonthly": "havi számlázás",
+    "billedAnnually": "éves számlázás ({{total}}/év)",
+    "getStartedFree": "Kezdje ingyen",
+    "choose": "{{plan}} kiválasztása",
+    "ends": "eddig: {{date}}",
+    "limitedOffer": "Korlátozott ideig tartó ajánlat",
+    "perMoBilledAnnually": "≈ {{price}}/hó, éves számlázás"
+  },
+  "toggle": {
+    "monthly": "Havi",
+    "yearly": "Éves"
   }
 }

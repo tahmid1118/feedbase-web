@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Liituge Feedbase'iga ja koguge tootetagasisidet selgelt.",
     "subtitle": "Looge meeskonna tööruum vähem kui minutiga, seejärel seadke prioriteediks kasutajate olulisemad vajadused turvalisel ja skaleeritaval alusel."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Kõik, mida vajate tagasiside kogumise alustamiseks."
+    },
+    "pro": {
+      "blurb": "Kasvavatele meeskondadele, kes vajavad oma brändi ja tööriistu."
+    },
+    "business": {
+      "blurb": "Väljakujunenud toodetele, mis peavad tuge skaleerima."
+    },
+    "feat": {
+      "workspace1": "1 tööruum",
+      "publicBoard": "Avalik tagasiside tahvel",
+      "roadmapChangelog": "Teekaart ja muudatuste logi",
+      "unlimitedPosts": "Piiramatud postitused ja hääled",
+      "upTo2Members": "Kuni 2 meeskonnaliiget",
+      "oneSession": "Üks aktiivne seanss korraga",
+      "everythingFree": "Kõik Free-s",
+      "upTo3Workspaces": "Kuni 3 tööruumi",
+      "photoVideo": "Foto ja video tagasisidel",
+      "contactSubmitters": "Võtke ühendust ja teavitage tagasiside esitajaid",
+      "deletePosts": "Tagasiside postituste kustutamine",
+      "upTo5Members": "Kuni 5 meeskonnaliiget",
+      "everythingPro": "Kõik Pro-s",
+      "unlimitedWorkspaces": "Piiramatud tööruumid",
+      "unlimitedMembers": "Piiramatud meeskonnaliikmed",
+      "multiDevice": "Sisselogimine mitmes seadmes",
+      "prioritySupport": "Prioriteetne tugi"
+    }
+  },
+  "pricing": {
+    "freeForever": "Igavesti tasuta",
+    "billedMonthly": "arveldatakse kuus",
+    "billedAnnually": "arveldatakse aastas ({{total}}/a)",
+    "getStartedFree": "Alusta tasuta",
+    "choose": "Vali {{plan}}",
+    "ends": "lõpeb {{date}}",
+    "limitedOffer": "Piiratud aja pakkumine",
+    "perMoBilledAnnually": "≈ {{price}}/kuus, arveldatakse aastas"
+  },
+  "toggle": {
+    "monthly": "Kuus",
+    "yearly": "Aastas"
   }
 }

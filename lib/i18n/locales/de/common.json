@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Werden Sie Teil von Feedbase und sammeln Sie Produktfeedback mit Klarheit.",
     "subtitle": "Erstellen Sie Ihren Team-Arbeitsbereich in unter einer Minute und priorisieren Sie dann die wichtigsten Nutzerbedürfnisse auf einer sicheren, skalierbaren Grundlage."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Alles, was Sie brauchen, um Feedback zu sammeln."
+    },
+    "pro": {
+      "blurb": "Für wachsende Teams, die eine eigene Marke und Tools benötigen."
+    },
+    "business": {
+      "blurb": "Für etablierte Produkte, die ihren Support skalieren müssen."
+    },
+    "feat": {
+      "workspace1": "1 Arbeitsbereich",
+      "publicBoard": "Öffentliches Feedback-Board",
+      "roadmapChangelog": "Roadmap & Änderungsprotokoll",
+      "unlimitedPosts": "Unbegrenzte Beiträge & Stimmen",
+      "upTo2Members": "Bis zu 2 Teammitglieder",
+      "oneSession": "Eine aktive Sitzung gleichzeitig",
+      "everythingFree": "Alles aus Free",
+      "upTo3Workspaces": "Bis zu 3 Arbeitsbereiche",
+      "photoVideo": "Foto & Video beim Feedback",
+      "contactSubmitters": "Feedback-Einreicher kontaktieren & benachrichtigen",
+      "deletePosts": "Feedback-Beiträge löschen",
+      "upTo5Members": "Bis zu 5 Teammitglieder",
+      "everythingPro": "Alles aus Pro",
+      "unlimitedWorkspaces": "Unbegrenzte Arbeitsbereiche",
+      "unlimitedMembers": "Unbegrenzte Teammitglieder",
+      "multiDevice": "Anmeldung auf mehreren Geräten",
+      "prioritySupport": "Priorisierter Support"
+    }
+  },
+  "pricing": {
+    "freeForever": "Für immer kostenlos",
+    "billedMonthly": "monatlich abgerechnet",
+    "billedAnnually": "jährlich abgerechnet ({{total}}/Jahr)",
+    "getStartedFree": "Kostenlos starten",
+    "choose": "{{plan}} wählen",
+    "ends": "endet am {{date}}",
+    "limitedOffer": "Zeitlich begrenztes Angebot",
+    "perMoBilledAnnually": "≈ {{price}}/Monat, jährlich abgerechnet"
+  },
+  "toggle": {
+    "monthly": "Monatlich",
+    "yearly": "Jährlich"
   }
 }

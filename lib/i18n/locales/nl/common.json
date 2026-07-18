@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Sluit u aan bij Feedbase en verzamel productfeedback met helderheid.",
     "subtitle": "Bouw uw teamwerkruimte in minder dan een minuut en prioriteer vervolgens wat gebruikers het meest nodig hebben op een veilige, schaalbare basis."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Alles wat u nodig hebt om feedback te verzamelen."
+    },
+    "pro": {
+      "blurb": "Voor groeiende teams die hun eigen merk en tools nodig hebben."
+    },
+    "business": {
+      "blurb": "Voor gevestigde producten die hun support moeten opschalen."
+    },
+    "feat": {
+      "workspace1": "1 werkruimte",
+      "publicBoard": "Openbaar feedbackbord",
+      "roadmapChangelog": "Roadmap en wijzigingslogboek",
+      "unlimitedPosts": "Onbeperkte berichten en stemmen",
+      "upTo2Members": "Tot 2 teamleden",
+      "oneSession": "Eén actieve sessie tegelijk",
+      "everythingFree": "Alles in Free",
+      "upTo3Workspaces": "Tot 3 werkruimtes",
+      "photoVideo": "Foto en video bij feedback",
+      "contactSubmitters": "Feedbackindieners contacteren en informeren",
+      "deletePosts": "Feedbackberichten verwijderen",
+      "upTo5Members": "Tot 5 teamleden",
+      "everythingPro": "Alles in Pro",
+      "unlimitedWorkspaces": "Onbeperkte werkruimtes",
+      "unlimitedMembers": "Onbeperkte teamleden",
+      "multiDevice": "Inloggen op meerdere apparaten",
+      "prioritySupport": "Prioriteitsondersteuning"
+    }
+  },
+  "pricing": {
+    "freeForever": "Voor altijd gratis",
+    "billedMonthly": "maandelijks gefactureerd",
+    "billedAnnually": "jaarlijks gefactureerd ({{total}}/jaar)",
+    "getStartedFree": "Gratis aan de slag",
+    "choose": "Kies {{plan}}",
+    "ends": "eindigt op {{date}}",
+    "limitedOffer": "Tijdelijke aanbieding",
+    "perMoBilledAnnually": "≈ {{price}}/maand, jaarlijks gefactureerd"
+  },
+  "toggle": {
+    "monthly": "Maandelijks",
+    "yearly": "Jaarlijks"
   }
 }

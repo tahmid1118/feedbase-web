@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Pievienojieties Feedbase un skaidri vāciet produktu atsauksmes.",
     "subtitle": "Izveidojiet komandas darbvietu mazāk nekā minūtē, pēc tam nosakiet prioritātes lietotāju svarīgākajām vajadzībām uz drošas un mērogojamas bāzes."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Viss nepieciešamais, lai sāktu vākt atsauksmes."
+    },
+    "pro": {
+      "blurb": "Augošām komandām, kurām nepieciešams savs zīmols un rīki."
+    },
+    "business": {
+      "blurb": "Nostabilizējušiem produktiem, kuriem nepieciešams mērogot atbalstu."
+    },
+    "feat": {
+      "workspace1": "1 darbvieta",
+      "publicBoard": "Publiska atsauksmju tāfele",
+      "roadmapChangelog": "Ceļvedis un izmaiņu žurnāls",
+      "unlimitedPosts": "Neierobežoti ieraksti un balsojumi",
+      "upTo2Members": "Līdz 2 komandas locekļiem",
+      "oneSession": "Viena aktīva sesija vienlaikus",
+      "everythingFree": "Viss no Free",
+      "upTo3Workspaces": "Līdz 3 darbvietām",
+      "photoVideo": "Foto un video atsauksmēs",
+      "contactSubmitters": "Sazinieties un informējiet atsauksmju iesniedzējus",
+      "deletePosts": "Atsauksmju ierakstu dzēšana",
+      "upTo5Members": "Līdz 5 komandas locekļiem",
+      "everythingPro": "Viss no Pro",
+      "unlimitedWorkspaces": "Neierobežotas darbvietas",
+      "unlimitedMembers": "Neierobežoti komandas locekļi",
+      "multiDevice": "Pieteikšanās vairākās ierīcēs",
+      "prioritySupport": "Prioritārs atbalsts"
+    }
+  },
+  "pricing": {
+    "freeForever": "Bezmaksas mūžīgi",
+    "billedMonthly": "norēķini reizi mēnesī",
+    "billedAnnually": "norēķini reizi gadā ({{total}}/gadā)",
+    "getStartedFree": "Sāciet bez maksas",
+    "choose": "Izvēlēties {{plan}}",
+    "ends": "beidzas {{date}}",
+    "limitedOffer": "Ierobežota laika piedāvājums",
+    "perMoBilledAnnually": "≈ {{price}}/mēn., norēķini reizi gadā"
+  },
+  "toggle": {
+    "monthly": "Mēnesī",
+    "yearly": "Gadā"
   }
 }

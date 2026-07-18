@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Unisciti a Feedbase e raccogli feedback sui prodotti con chiarezza.",
     "subtitle": "Crea lo spazio di lavoro del tuo team in meno di un minuto, poi assegna priorità alle esigenze degli utenti su una base sicura e scalabile."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Tutto ciò che ti serve per iniziare a raccogliere feedback."
+    },
+    "pro": {
+      "blurb": "Per team in crescita che necessitano di un proprio marchio e strumenti."
+    },
+    "business": {
+      "blurb": "Per prodotti consolidati che devono scalare il supporto."
+    },
+    "feat": {
+      "workspace1": "1 spazio di lavoro",
+      "publicBoard": "Bacheca di feedback pubblica",
+      "roadmapChangelog": "Roadmap e registro modifiche",
+      "unlimitedPosts": "Post e voti illimitati",
+      "upTo2Members": "Fino a 2 membri del team",
+      "oneSession": "Una sessione attiva alla volta",
+      "everythingFree": "Tutto ciò che è in Free",
+      "upTo3Workspaces": "Fino a 3 spazi di lavoro",
+      "photoVideo": "Foto e video nel feedback",
+      "contactSubmitters": "Contatta e notifica chi invia feedback",
+      "deletePosts": "Elimina i post di feedback",
+      "upTo5Members": "Fino a 5 membri del team",
+      "everythingPro": "Tutto ciò che è in Pro",
+      "unlimitedWorkspaces": "Spazi di lavoro illimitati",
+      "unlimitedMembers": "Membri del team illimitati",
+      "multiDevice": "Accedi su più dispositivi",
+      "prioritySupport": "Assistenza prioritaria"
+    }
+  },
+  "pricing": {
+    "freeForever": "Gratis per sempre",
+    "billedMonthly": "fatturato mensilmente",
+    "billedAnnually": "fatturato annualmente ({{total}}/anno)",
+    "getStartedFree": "Inizia gratis",
+    "choose": "Scegli {{plan}}",
+    "ends": "termina il {{date}}",
+    "limitedOffer": "Offerta a tempo limitato",
+    "perMoBilledAnnually": "≈ {{price}}/mese, fatturato annualmente"
+  },
+  "toggle": {
+    "monthly": "Mensile",
+    "yearly": "Annuale"
   }
 }

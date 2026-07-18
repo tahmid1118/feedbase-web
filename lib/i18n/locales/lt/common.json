@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Prisijunkite prie Feedbase ir aiškiai rinkite produktų atsiliepimus.",
     "subtitle": "Sukurkite komandos darbo sritį per mažiau nei minutę, tada suteikite pirmenybę svarbiausiems vartotojų poreikiams saugiu ir keičiamo dydžio pagrindu."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Viskas, ko reikia, kad pradėtumėte rinkti atsiliepimus."
+    },
+    "pro": {
+      "blurb": "Augančioms komandoms, kurioms reikia savo prekės ženklo ir įrankių."
+    },
+    "business": {
+      "blurb": "Įsitvirtinusiems produktams, kuriems reikia plėsti palaikymą."
+    },
+    "feat": {
+      "workspace1": "1 darbo sritis",
+      "publicBoard": "Vieša atsiliepimų lenta",
+      "roadmapChangelog": "Planas ir pakeitimų žurnalas",
+      "unlimitedPosts": "Neriboti įrašai ir balsai",
+      "upTo2Members": "Iki 2 komandos narių",
+      "oneSession": "Vienas aktyvus seansas vienu metu",
+      "everythingFree": "Viskas iš Free",
+      "upTo3Workspaces": "Iki 3 darbo sričių",
+      "photoVideo": "Nuotraukos ir vaizdo įrašai atsiliepimuose",
+      "contactSubmitters": "Susisiekite ir praneškite atsiliepimų teikėjams",
+      "deletePosts": "Atsiliepimų įrašų trynimas",
+      "upTo5Members": "Iki 5 komandos narių",
+      "everythingPro": "Viskas iš Pro",
+      "unlimitedWorkspaces": "Neribotos darbo sritys",
+      "unlimitedMembers": "Neriboti komandos nariai",
+      "multiDevice": "Prisijungimas keliuose įrenginiuose",
+      "prioritySupport": "Prioritetinė pagalba"
+    }
+  },
+  "pricing": {
+    "freeForever": "Nemokamai amžinai",
+    "billedMonthly": "atsiskaitoma kas mėnesį",
+    "billedAnnually": "atsiskaitoma kasmet ({{total}}/m.)",
+    "getStartedFree": "Pradėkite nemokamai",
+    "choose": "Pasirinkti {{plan}}",
+    "ends": "baigiasi {{date}}",
+    "limitedOffer": "Riboto laiko pasiūlymas",
+    "perMoBilledAnnually": "≈ {{price}}/mėn., atsiskaitoma kasmet"
+  },
+  "toggle": {
+    "monthly": "Kas mėnesį",
+    "yearly": "Kasmet"
   }
 }

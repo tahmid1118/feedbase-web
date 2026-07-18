@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Ingħaqad ma' Feedbase u iġbor feedback tal-prodott b'ċarezza.",
     "subtitle": "Ibni l-ispazju tax-xogħol tat-tim tiegħek f'inqas minn minuta, imbagħad agħti prijorità lil dak li l-utenti jeħtieġu l-aktar fuq bażi sigura u skalabbli."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Dak kollu li teħtieġ biex tibda tiġbor feedback."
+    },
+    "pro": {
+      "blurb": "Għal timijiet li qed jikbru li jeħtieġu l-brand u l-għodod tagħhom stess."
+    },
+    "business": {
+      "blurb": "Għal prodotti stabbiliti li jeħtieġu jiskalaw l-appoġġ."
+    },
+    "feat": {
+      "workspace1": "1 spazju tax-xogħol",
+      "publicBoard": "Bord tal-feedback pubbliku",
+      "roadmapChangelog": "Pjan u reġistru tal-bidliet",
+      "unlimitedPosts": "Posts u voti bla limitu",
+      "upTo2Members": "Sa 2 membri tat-tim",
+      "oneSession": "Sessjoni attiva waħda kull darba",
+      "everythingFree": "Kollox f'Free",
+      "upTo3Workspaces": "Sa 3 spazji tax-xogħol",
+      "photoVideo": "Ritratt u video fuq il-feedback",
+      "contactSubmitters": "Ikkuntattja u avża lil min jissottometti feedback",
+      "deletePosts": "Ħassar posts tal-feedback",
+      "upTo5Members": "Sa 5 membri tat-tim",
+      "everythingPro": "Kollox f'Pro",
+      "unlimitedWorkspaces": "Spazji tax-xogħol bla limitu",
+      "unlimitedMembers": "Membri tat-tim bla limitu",
+      "multiDevice": "Idħol fuq diversi apparati",
+      "prioritySupport": "Appoġġ ta' prijorità"
+    }
+  },
+  "pricing": {
+    "freeForever": "B'xejn għal dejjem",
+    "billedMonthly": "iffatturat kull xahar",
+    "billedAnnually": "iffatturat kull sena ({{total}}/sena)",
+    "getStartedFree": "Ibda b'xejn",
+    "choose": "Agħżel {{plan}}",
+    "ends": "tispiċċa {{date}}",
+    "limitedOffer": "Offerta għal żmien limitat",
+    "perMoBilledAnnually": "≈ {{price}}/xahar, iffatturat kull sena"
+  },
+  "toggle": {
+    "monthly": "Kull xahar",
+    "yearly": "Kull sena"
   }
 }

@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { BillingInterval } from "@/lib/api";
+import { useTranslation } from "@/lib/i18n/client";
 
 /**
  * Monthly / Yearly segmented toggle. Yearly carries a "Save N%" badge. Shared by
@@ -22,6 +23,7 @@ export function IntervalToggle({
   showSave?: boolean;
   className?: string;
 }) {
+  const { t } = useTranslation();
   return (
     <div
       className={cn(
@@ -39,7 +41,7 @@ export function IntervalToggle({
             : "text-[#1c0a0c]/70 hover:text-[#c74959]"
         )}
       >
-        Monthly
+        {t("toggle.monthly")}
       </button>
       <button
         type="button"
@@ -51,7 +53,7 @@ export function IntervalToggle({
             : "text-[#1c0a0c]/70 hover:text-[#c74959]"
         )}
       >
-        Yearly
+        {t("toggle.yearly")}
         {showSave && (
           <span
             className={cn(

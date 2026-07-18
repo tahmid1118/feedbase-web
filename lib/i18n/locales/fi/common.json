@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Liity Feedbaseen ja kerää tuotepalautetta selkeästi.",
     "subtitle": "Rakenna tiimisi työtila alle minuutissa ja priorisoi sitten käyttäjien tärkeimmät tarpeet turvallisella ja skaalautuvalla pohjalla."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Kaikki, mitä tarvitset palautteen keräämisen aloittamiseen."
+    },
+    "pro": {
+      "blurb": "Kasvaville tiimeille, jotka tarvitsevat oman brändin ja työkalut."
+    },
+    "business": {
+      "blurb": "Vakiintuneille tuotteille, joiden on skaalattava tukea."
+    },
+    "feat": {
+      "workspace1": "1 työtila",
+      "publicBoard": "Julkinen palautetaulu",
+      "roadmapChangelog": "Etenemissuunnitelma ja muutosloki",
+      "unlimitedPosts": "Rajattomat julkaisut ja äänet",
+      "upTo2Members": "Enintään 2 tiimin jäsentä",
+      "oneSession": "Yksi aktiivinen istunto kerrallaan",
+      "everythingFree": "Kaikki Free-tasossa",
+      "upTo3Workspaces": "Enintään 3 työtilaa",
+      "photoVideo": "Kuva ja video palautteessa",
+      "contactSubmitters": "Ota yhteyttä ja ilmoita palautteen lähettäjille",
+      "deletePosts": "Poista palautejulkaisut",
+      "upTo5Members": "Enintään 5 tiimin jäsentä",
+      "everythingPro": "Kaikki Pro-tasossa",
+      "unlimitedWorkspaces": "Rajattomat työtilat",
+      "unlimitedMembers": "Rajattomat tiimin jäsenet",
+      "multiDevice": "Kirjaudu useilla laitteilla",
+      "prioritySupport": "Ensisijainen tuki"
+    }
+  },
+  "pricing": {
+    "freeForever": "Ilmainen ikuisesti",
+    "billedMonthly": "laskutetaan kuukausittain",
+    "billedAnnually": "laskutetaan vuosittain ({{total}}/v)",
+    "getStartedFree": "Aloita ilmaiseksi",
+    "choose": "Valitse {{plan}}",
+    "ends": "päättyy {{date}}",
+    "limitedOffer": "Rajoitetun ajan tarjous",
+    "perMoBilledAnnually": "≈ {{price}}/kk, laskutetaan vuosittain"
+  },
+  "toggle": {
+    "monthly": "Kuukausittain",
+    "yearly": "Vuosittain"
   }
 }

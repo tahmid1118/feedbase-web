@@ -7,6 +7,7 @@ import { PLANS, planPricing, formatPrice } from "@/lib/plans";
 import type { OfferMap, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
+import { useTranslation } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils";
 
 /**
@@ -21,6 +22,7 @@ export function PricingCards({
   offers: OfferMap;
   ctaHref?: string;
 }) {
+  const { t } = useTranslation();
   const [interval, setInterval] = useState<BillingInterval>("month");
 
   // A yearly offer replaces the flat 20% yearly saving for that plan, so hide
@@ -65,7 +67,7 @@ export function PricingCards({
                 </div>
                 {plan.highlighted && !offer && !showYearly && (
                   <span className="rounded-full bg-[#c74959]/10 px-3 py-1 text-xs font-medium text-[#c74959]">
-                    Recommended
+                    {t("billing.recommended")}
                   </span>
                 )}
               </div>
@@ -101,34 +103,31 @@ export function PricingCards({
                   <>
                     {interval === "year" ? (
                       <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                        ≈ {formatPrice(offer.offerPrice / 12)}/mo, billed annually
+                        {t("pricing.perMoBilledAnnually", { price: formatPrice(offer.offerPrice / 12) })}
                       </p>
                     ) : null}
                     {offer.label || offer.endsAt ? (
                       <p className="mt-1 text-xs font-medium text-green-700">
-                        {offer.label || "Limited-time offer"}
+                        {offer.label || t("pricing.limitedOffer")}
                         {offer.endsAt
-                          ? ` · ends ${new Date(offer.endsAt).toLocaleDateString(
-                              undefined,
-                              { month: "long", day: "numeric", year: "numeric" }
-                            )}`
+                          ? ` · ${t("pricing.ends", { date: new Date(offer.endsAt).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" }) })}`
                           : ""}
                       </p>
                     ) : null}
                   </>
                 ) : (
                   <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                    {pricing.billedNote}
+                    {t(pricing.billedNoteKey, pricing.billedNoteParams)}
                   </p>
                 )}
               </div>
-              <p className="mt-2 text-sm text-[#1c0a0c]/60">{plan.blurb}</p>
+              <p className="mt-2 text-sm text-[#1c0a0c]/60">{t(plan.blurbKey)}</p>
 
               <ul className="mt-5 flex-1 space-y-2.5 text-sm text-[#1c0a0c]/80">
-                {plan.features.map((f) => (
+                {plan.featureKeys.map((f) => (
                   <li key={f} className="flex items-start gap-2">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#c74959]" />
-                    {f}
+                    {t(f)}
                   </li>
                 ))}
               </ul>
@@ -142,7 +141,7 @@ export function PricingCards({
                       : "border border-[#c74959] bg-transparent text-[#c74959] hover:bg-[#c74959] hover:text-white"
                   )}
                 >
-                  {plan.key === "free" ? "Get started free" : `Choose ${plan.name}`}
+                  {plan.key === "free" ? t("pricing.getStartedFree") : t("pricing.choose", { plan: plan.name })}
                 </Button>
               </Link>
             </div>

@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Rejoignez Feedbase et recueillez les retours produit en toute clarté.",
     "subtitle": "Créez l'espace de travail de votre équipe en moins d'une minute, puis priorisez les besoins des utilisateurs sur une base sécurisée et évolutive."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Tout ce dont vous avez besoin pour commencer à recueillir des retours."
+    },
+    "pro": {
+      "blurb": "Pour les équipes en croissance qui ont besoin de leur propre marque et de leurs outils."
+    },
+    "business": {
+      "blurb": "Pour les produits établis qui doivent faire évoluer leur support."
+    },
+    "feat": {
+      "workspace1": "1 espace de travail",
+      "publicBoard": "Tableau de retours public",
+      "roadmapChangelog": "Feuille de route et journal des modifications",
+      "unlimitedPosts": "Publications et votes illimités",
+      "upTo2Members": "Jusqu'à 2 membres d'équipe",
+      "oneSession": "Une session active à la fois",
+      "everythingFree": "Tout ce qui est inclus dans Free",
+      "upTo3Workspaces": "Jusqu'à 3 espaces de travail",
+      "photoVideo": "Photo et vidéo sur les retours",
+      "contactSubmitters": "Contactez et notifiez les auteurs de retours",
+      "deletePosts": "Supprimer les publications de retours",
+      "upTo5Members": "Jusqu'à 5 membres d'équipe",
+      "everythingPro": "Tout ce qui est inclus dans Pro",
+      "unlimitedWorkspaces": "Espaces de travail illimités",
+      "unlimitedMembers": "Membres d'équipe illimités",
+      "multiDevice": "Connexion sur plusieurs appareils",
+      "prioritySupport": "Support prioritaire"
+    }
+  },
+  "pricing": {
+    "freeForever": "Gratuit pour toujours",
+    "billedMonthly": "facturé mensuellement",
+    "billedAnnually": "facturé annuellement ({{total}}/an)",
+    "getStartedFree": "Commencer gratuitement",
+    "choose": "Choisir {{plan}}",
+    "ends": "se termine le {{date}}",
+    "limitedOffer": "Offre à durée limitée",
+    "perMoBilledAnnually": "≈ {{price}}/mois, facturé annuellement"
+  },
+  "toggle": {
+    "monthly": "Mensuel",
+    "yearly": "Annuel"
   }
 }

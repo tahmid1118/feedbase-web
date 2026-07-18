@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Dołącz do Feedbase i zbieraj opinie o produkcie z jasnością.",
     "subtitle": "Zbuduj przestrzeń roboczą zespołu w niecałą minutę, a następnie ustal priorytety potrzeb użytkowników na bezpiecznej i skalowalnej podstawie."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Wszystko, czego potrzebujesz, aby zacząć zbierać opinie."
+    },
+    "pro": {
+      "blurb": "Dla rozwijających się zespołów, które potrzebują własnej marki i narzędzi."
+    },
+    "business": {
+      "blurb": "Dla ugruntowanych produktów, które muszą skalować wsparcie."
+    },
+    "feat": {
+      "workspace1": "1 przestrzeń robocza",
+      "publicBoard": "Publiczna tablica opinii",
+      "roadmapChangelog": "Plan działań i dziennik zmian",
+      "unlimitedPosts": "Nieograniczone wpisy i głosy",
+      "upTo2Members": "Do 2 członków zespołu",
+      "oneSession": "Jedna aktywna sesja naraz",
+      "everythingFree": "Wszystko z Free",
+      "upTo3Workspaces": "Do 3 przestrzeni roboczych",
+      "photoVideo": "Zdjęcia i wideo w opiniach",
+      "contactSubmitters": "Kontaktuj i powiadamiaj autorów opinii",
+      "deletePosts": "Usuwanie wpisów z opiniami",
+      "upTo5Members": "Do 5 członków zespołu",
+      "everythingPro": "Wszystko z Pro",
+      "unlimitedWorkspaces": "Nieograniczone przestrzenie robocze",
+      "unlimitedMembers": "Nieograniczeni członkowie zespołu",
+      "multiDevice": "Logowanie na wielu urządzeniach",
+      "prioritySupport": "Priorytetowe wsparcie"
+    }
+  },
+  "pricing": {
+    "freeForever": "Za darmo na zawsze",
+    "billedMonthly": "rozliczane miesięcznie",
+    "billedAnnually": "rozliczane rocznie ({{total}}/rok)",
+    "getStartedFree": "Zacznij za darmo",
+    "choose": "Wybierz {{plan}}",
+    "ends": "kończy się {{date}}",
+    "limitedOffer": "Oferta ograniczona czasowo",
+    "perMoBilledAnnually": "≈ {{price}}/mies., rozliczane rocznie"
+  },
+  "toggle": {
+    "monthly": "Miesięcznie",
+    "yearly": "Rocznie"
   }
 }

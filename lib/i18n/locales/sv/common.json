@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Gå med i Feedbase och samla produktfeedback med tydlighet.",
     "subtitle": "Bygg din teamarbetsyta på under en minut och prioritera sedan vad användarna behöver mest på en säker och skalbar grund."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Allt du behöver för att börja samla feedback."
+    },
+    "pro": {
+      "blurb": "För växande team som behöver eget varumärke och egna verktyg."
+    },
+    "business": {
+      "blurb": "För etablerade produkter som behöver skala upp supporten."
+    },
+    "feat": {
+      "workspace1": "1 arbetsyta",
+      "publicBoard": "Offentlig feedbacktavla",
+      "roadmapChangelog": "Färdplan och ändringslogg",
+      "unlimitedPosts": "Obegränsade inlägg och röster",
+      "upTo2Members": "Upp till 2 teammedlemmar",
+      "oneSession": "En aktiv session åt gången",
+      "everythingFree": "Allt i Free",
+      "upTo3Workspaces": "Upp till 3 arbetsytor",
+      "photoVideo": "Foto och video i feedback",
+      "contactSubmitters": "Kontakta och meddela feedbackavsändare",
+      "deletePosts": "Ta bort feedbackinlägg",
+      "upTo5Members": "Upp till 5 teammedlemmar",
+      "everythingPro": "Allt i Pro",
+      "unlimitedWorkspaces": "Obegränsade arbetsytor",
+      "unlimitedMembers": "Obegränsade teammedlemmar",
+      "multiDevice": "Logga in på flera enheter",
+      "prioritySupport": "Prioriterad support"
+    }
+  },
+  "pricing": {
+    "freeForever": "Gratis för alltid",
+    "billedMonthly": "faktureras månadsvis",
+    "billedAnnually": "faktureras årligen ({{total}}/år)",
+    "getStartedFree": "Kom igång gratis",
+    "choose": "Välj {{plan}}",
+    "ends": "slutar {{date}}",
+    "limitedOffer": "Tidsbegränsat erbjudande",
+    "perMoBilledAnnually": "≈ {{price}}/mån, faktureras årligen"
+  },
+  "toggle": {
+    "monthly": "Månadsvis",
+    "yearly": "Årsvis"
   }
 }

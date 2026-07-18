@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Pridružite se Feedbaseu i prikupljajte povratne informacije o proizvodu s jasnoćom.",
     "subtitle": "Izgradite radni prostor tima za manje od minute, zatim odredite prioritete potreba korisnika na sigurnom i skalabilnom temelju."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Sve što vam treba za početak prikupljanja povratnih informacija."
+    },
+    "pro": {
+      "blurb": "Za rastuće timove kojima trebaju vlastiti brend i alati."
+    },
+    "business": {
+      "blurb": "Za etablirane proizvode koji trebaju skalirati podršku."
+    },
+    "feat": {
+      "workspace1": "1 radni prostor",
+      "publicBoard": "Javna ploča povratnih informacija",
+      "roadmapChangelog": "Plan razvoja i dnevnik promjena",
+      "unlimitedPosts": "Neograničene objave i glasovi",
+      "upTo2Members": "Do 2 člana tima",
+      "oneSession": "Jedna aktivna sesija istovremeno",
+      "everythingFree": "Sve u Free",
+      "upTo3Workspaces": "Do 3 radna prostora",
+      "photoVideo": "Fotografija i videozapis na povratnim informacijama",
+      "contactSubmitters": "Kontaktirajte i obavijestite pošiljatelje povratnih informacija",
+      "deletePosts": "Brisanje objava povratnih informacija",
+      "upTo5Members": "Do 5 članova tima",
+      "everythingPro": "Sve u Pro",
+      "unlimitedWorkspaces": "Neograničeni radni prostori",
+      "unlimitedMembers": "Neograničeni članovi tima",
+      "multiDevice": "Prijava na više uređaja",
+      "prioritySupport": "Prioritetna podrška"
+    }
+  },
+  "pricing": {
+    "freeForever": "Besplatno zauvijek",
+    "billedMonthly": "naplaćuje se mjesečno",
+    "billedAnnually": "naplaćuje se godišnje ({{total}}/god.)",
+    "getStartedFree": "Započnite besplatno",
+    "choose": "Odaberite {{plan}}",
+    "ends": "završava {{date}}",
+    "limitedOffer": "Ponuda ograničenog trajanja",
+    "perMoBilledAnnually": "≈ {{price}}/mj., naplaćuje se godišnje"
+  },
+  "toggle": {
+    "monthly": "Mjesečno",
+    "yearly": "Godišnje"
   }
 }

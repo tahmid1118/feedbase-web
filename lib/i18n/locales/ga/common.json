@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Bí páirteach le Feedbase agus bailigh aiseolas táirge go soiléir.",
     "subtitle": "Tóg spás oibre d'fhoirne i níos lú ná nóiméad, ansin tabhair tosaíocht don rud is mó a theastaíonn ó úsáideoirí ar bhonn slán inscálaithe."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Gach a bhfuil uait chun tosú ag bailiú aiseolais."
+    },
+    "pro": {
+      "blurb": "Do fhoirne atá ag fás a bhfuil a mbranda agus a n-uirlisí féin uathu."
+    },
+    "business": {
+      "blurb": "Do tháirgí seanbhunaithe a chaithfidh tacaíocht a scálú."
+    },
+    "feat": {
+      "workspace1": "1 spás oibre",
+      "publicBoard": "Clár aiseolais poiblí",
+      "roadmapChangelog": "Treochlár & logáil athruithe",
+      "unlimitedPosts": "Postálacha & vótaí gan teorainn",
+      "upTo2Members": "Suas le 2 bhall foirne",
+      "oneSession": "Seisiún gníomhach amháin ag an am",
+      "everythingFree": "Gach rud in Free",
+      "upTo3Workspaces": "Suas le 3 spás oibre",
+      "photoVideo": "Grianghraf & físeán ar aiseolas",
+      "contactSubmitters": "Déan teagmháil le seoltóirí aiseolais agus cuir in iúl dóibh",
+      "deletePosts": "Scrios postálacha aiseolais",
+      "upTo5Members": "Suas le 5 bhall foirne",
+      "everythingPro": "Gach rud in Pro",
+      "unlimitedWorkspaces": "Spásanna oibre gan teorainn",
+      "unlimitedMembers": "Baill foirne gan teorainn",
+      "multiDevice": "Sínigh isteach ar ilghléasanna",
+      "prioritySupport": "Tacaíocht tosaíochta"
+    }
+  },
+  "pricing": {
+    "freeForever": "Saor in aisce go deo",
+    "billedMonthly": "billeáilte go míosúil",
+    "billedAnnually": "billeáilte go bliantúil ({{total}}/bl)",
+    "getStartedFree": "Tosaigh saor in aisce",
+    "choose": "Roghnaigh {{plan}}",
+    "ends": "críochnaíonn {{date}}",
+    "limitedOffer": "Tairiscint tréimhse theoranta",
+    "perMoBilledAnnually": "≈ {{price}}/mí, billeáilte go bliantúil"
+  },
+  "toggle": {
+    "monthly": "Míosúil",
+    "yearly": "Bliantúil"
   }
 }

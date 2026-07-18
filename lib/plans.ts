@@ -21,8 +21,10 @@ export interface PlanDisplay {
   name: string;
   /** Monthly list price in whole dollars. Yearly is derived from this. */
   monthlyPrice: number;
-  blurb: string;
-  features: string[];
+  /** i18n key for the plan blurb (translate with t()). */
+  blurbKey: string;
+  /** i18n keys for the feature bullets (translate each with t()). */
+  featureKeys: string[];
   highlighted?: boolean;
 }
 
@@ -31,42 +33,42 @@ export const PLANS: PlanDisplay[] = [
     key: "free",
     name: "Free",
     monthlyPrice: 0,
-    blurb: "Everything you need to start collecting feedback.",
-    features: [
-      "1 workspace",
-      "Public feedback board",
-      "Roadmap & changelog",
-      "Unlimited posts & votes",
-      "Up to 2 team members",
-      "One active session at a time",
+    blurbKey: "plan.free.blurb",
+    featureKeys: [
+      "plan.feat.workspace1",
+      "plan.feat.publicBoard",
+      "plan.feat.roadmapChangelog",
+      "plan.feat.unlimitedPosts",
+      "plan.feat.upTo2Members",
+      "plan.feat.oneSession",
     ],
   },
   {
     key: "pro",
     name: "Pro",
     monthlyPrice: 10,
-    blurb: "For growing teams that need their own brand and tools.",
-    features: [
-      "Everything in Free",
-      "Up to 3 workspaces",
-      "Photo & video on feedback",
-      "Contact & notify feedback submitters",
-      "Delete feedback posts",
-      "Up to 5 team members",
-      "One active session at a time",
+    blurbKey: "plan.pro.blurb",
+    featureKeys: [
+      "plan.feat.everythingFree",
+      "plan.feat.upTo3Workspaces",
+      "plan.feat.photoVideo",
+      "plan.feat.contactSubmitters",
+      "plan.feat.deletePosts",
+      "plan.feat.upTo5Members",
+      "plan.feat.oneSession",
     ],
   },
   {
     key: "business",
     name: "Business",
     monthlyPrice: 15,
-    blurb: "For established products that need to scale support.",
-    features: [
-      "Everything in Pro",
-      "Unlimited workspaces",
-      "Unlimited team members",
-      "Sign in on multiple devices",
-      "Priority support",
+    blurbKey: "plan.business.blurb",
+    featureKeys: [
+      "plan.feat.everythingPro",
+      "plan.feat.unlimitedWorkspaces",
+      "plan.feat.unlimitedMembers",
+      "plan.feat.multiDevice",
+      "plan.feat.prioritySupport",
     ],
     highlighted: true,
   },
@@ -99,7 +101,9 @@ export function planPricing(plan: PlanDisplay, interval: BillingInterval) {
       perMonth: monthly,
       perMonthLabel: `${formatPrice(monthly)}`,
       suffix: "/mo",
-      billedNote: monthly === 0 ? "Free forever" : "billed monthly",
+      // i18n: render with t(billedNoteKey, billedNoteParams).
+      billedNoteKey: monthly === 0 ? "pricing.freeForever" : "pricing.billedMonthly",
+      billedNoteParams: {} as Record<string, string>,
       yearlyTotal: null as number | null,
       savingsPercent: 0,
     };
@@ -113,7 +117,8 @@ export function planPricing(plan: PlanDisplay, interval: BillingInterval) {
     perMonth,
     perMonthLabel: formatPrice(perMonth),
     suffix: "/mo",
-    billedNote: `billed annually (${formatPrice(yearlyTotal)}/yr)`,
+    billedNoteKey: "pricing.billedAnnually",
+    billedNoteParams: { total: formatPrice(yearlyTotal) },
     yearlyTotal,
     savingsPercent: Math.round(YEARLY_DISCOUNT * 100),
   };

@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Pridružite se Feedbaseu in zbirajte povratne informacije o izdelku z jasnostjo.",
     "subtitle": "Zgradite delovni prostor ekipe v manj kot minuti, nato razvrstite najpomembnejše potrebe uporabnikov na varnem in razširljivem temelju."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Vse, kar potrebujete za začetek zbiranja povratnih informacij."
+    },
+    "pro": {
+      "blurb": "Za rastoče ekipe, ki potrebujejo lastno znamko in orodja."
+    },
+    "business": {
+      "blurb": "Za uveljavljene izdelke, ki morajo povečati podporo."
+    },
+    "feat": {
+      "workspace1": "1 delovni prostor",
+      "publicBoard": "Javna tabla povratnih informacij",
+      "roadmapChangelog": "Načrt in dnevnik sprememb",
+      "unlimitedPosts": "Neomejene objave in glasovi",
+      "upTo2Members": "Do 2 člana ekipe",
+      "oneSession": "Ena aktivna seja hkrati",
+      "everythingFree": "Vse v Free",
+      "upTo3Workspaces": "Do 3 delovni prostori",
+      "photoVideo": "Fotografija in video pri povratnih informacijah",
+      "contactSubmitters": "Stik in obveščanje pošiljateljev povratnih informacij",
+      "deletePosts": "Brisanje objav povratnih informacij",
+      "upTo5Members": "Do 5 članov ekipe",
+      "everythingPro": "Vse v Pro",
+      "unlimitedWorkspaces": "Neomejeni delovni prostori",
+      "unlimitedMembers": "Neomejeni člani ekipe",
+      "multiDevice": "Prijava na več napravah",
+      "prioritySupport": "Prednostna podpora"
+    }
+  },
+  "pricing": {
+    "freeForever": "Brezplačno za vedno",
+    "billedMonthly": "zaračunano mesečno",
+    "billedAnnually": "zaračunano letno ({{total}}/leto)",
+    "getStartedFree": "Začnite brezplačno",
+    "choose": "Izberite {{plan}}",
+    "ends": "konča se {{date}}",
+    "limitedOffer": "Časovno omejena ponudba",
+    "perMoBilledAnnually": "≈ {{price}}/mes., zaračunano letno"
+  },
+  "toggle": {
+    "monthly": "Mesečno",
+    "yearly": "Letno"
   }
 }

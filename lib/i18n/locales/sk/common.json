@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Pripojte sa k Feedbase a zbierajte spätnú väzbu k produktu s prehľadom.",
     "subtitle": "Vytvorte pracovný priestor svojho tímu za menej ako minútu a potom uprednostnite to, čo používatelia najviac potrebujú, na bezpečnom a škálovateľnom základe."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Všetko, čo potrebujete na začatie zberu spätnej väzby."
+    },
+    "pro": {
+      "blurb": "Pre rastúce tímy, ktoré potrebujú vlastnú značku a nástroje."
+    },
+    "business": {
+      "blurb": "Pre zavedené produkty, ktoré potrebujú škálovať podporu."
+    },
+    "feat": {
+      "workspace1": "1 pracovný priestor",
+      "publicBoard": "Verejná nástenka spätnej väzby",
+      "roadmapChangelog": "Plán a zoznam zmien",
+      "unlimitedPosts": "Neobmedzené príspevky a hlasy",
+      "upTo2Members": "Až 2 členovia tímu",
+      "oneSession": "Jedna aktívna relácia naraz",
+      "everythingFree": "Všetko vo Free",
+      "upTo3Workspaces": "Až 3 pracovné priestory",
+      "photoVideo": "Foto a video v spätnej väzbe",
+      "contactSubmitters": "Kontaktujte a upozornite odosielateľov spätnej väzby",
+      "deletePosts": "Odstránenie príspevkov spätnej väzby",
+      "upTo5Members": "Až 5 členov tímu",
+      "everythingPro": "Všetko v Pro",
+      "unlimitedWorkspaces": "Neobmedzené pracovné priestory",
+      "unlimitedMembers": "Neobmedzení členovia tímu",
+      "multiDevice": "Prihlásenie na viacerých zariadeniach",
+      "prioritySupport": "Prioritná podpora"
+    }
+  },
+  "pricing": {
+    "freeForever": "Zadarmo navždy",
+    "billedMonthly": "účtované mesačne",
+    "billedAnnually": "účtované ročne ({{total}}/rok)",
+    "getStartedFree": "Začať zadarmo",
+    "choose": "Vybrať {{plan}}",
+    "ends": "končí {{date}}",
+    "limitedOffer": "Časovo obmedzená ponuka",
+    "perMoBilledAnnually": "≈ {{price}}/mes., účtované ročne"
+  },
+  "toggle": {
+    "monthly": "Mesačne",
+    "yearly": "Ročne"
   }
 }

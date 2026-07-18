@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Join Feedbase and collect product feedback with clarity.",
     "subtitle": "Build your team workspace in under a minute, then prioritize what users need most with a secure and scalable foundation."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Everything you need to start collecting feedback."
+    },
+    "pro": {
+      "blurb": "For growing teams that need their own brand and tools."
+    },
+    "business": {
+      "blurb": "For established products that need to scale support."
+    },
+    "feat": {
+      "workspace1": "1 workspace",
+      "publicBoard": "Public feedback board",
+      "roadmapChangelog": "Roadmap & changelog",
+      "unlimitedPosts": "Unlimited posts & votes",
+      "upTo2Members": "Up to 2 team members",
+      "oneSession": "One active session at a time",
+      "everythingFree": "Everything in Free",
+      "upTo3Workspaces": "Up to 3 workspaces",
+      "photoVideo": "Photo & video on feedback",
+      "contactSubmitters": "Contact & notify feedback submitters",
+      "deletePosts": "Delete feedback posts",
+      "upTo5Members": "Up to 5 team members",
+      "everythingPro": "Everything in Pro",
+      "unlimitedWorkspaces": "Unlimited workspaces",
+      "unlimitedMembers": "Unlimited team members",
+      "multiDevice": "Sign in on multiple devices",
+      "prioritySupport": "Priority support"
+    }
+  },
+  "pricing": {
+    "freeForever": "Free forever",
+    "billedMonthly": "billed monthly",
+    "billedAnnually": "billed annually ({{total}}/yr)",
+    "getStartedFree": "Get started free",
+    "choose": "Choose {{plan}}",
+    "ends": "ends {{date}}",
+    "limitedOffer": "Limited-time offer",
+    "perMoBilledAnnually": "≈ {{price}}/mo, billed annually"
+  },
+  "toggle": {
+    "monthly": "Monthly",
+    "yearly": "Yearly"
   }
 }

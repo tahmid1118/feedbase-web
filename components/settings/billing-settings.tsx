@@ -345,33 +345,30 @@ export function BillingSettings() {
                 <>
                   {interval === "year" ? (
                     <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                      ≈ {formatPrice(offer.offerPrice / 12)}/mo, billed annually
+                      {t("pricing.perMoBilledAnnually", { price: formatPrice(offer.offerPrice / 12) })}
                     </p>
                   ) : null}
                   {offer.label || offer.endsAt ? (
                     <p className="mt-1 text-xs font-medium text-green-700">
-                      {offer.label || "Limited-time offer"}
+                      {offer.label || t("pricing.limitedOffer")}
                       {offer.endsAt
-                        ? ` · ends ${new Date(offer.endsAt).toLocaleDateString(
-                            undefined,
-                            { month: "long", day: "numeric", year: "numeric" }
-                          )}`
+                        ? ` · ${t("pricing.ends", { date: new Date(offer.endsAt).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" }) })}`
                         : ""}
                     </p>
                   ) : null}
                 </>
               ) : (
                 <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                  {pricing.billedNote}
+                  {t(pricing.billedNoteKey, pricing.billedNoteParams)}
                 </p>
               )}
             </div>
-            <p className="mt-2 text-sm text-[#1c0a0c]/60">{plan.blurb}</p>
+            <p className="mt-2 text-sm text-[#1c0a0c]/60">{t(plan.blurbKey)}</p>
             <ul className="mt-4 flex-1 space-y-2 text-sm text-[#1c0a0c]/80">
-              {plan.features.map((f) => (
+              {plan.featureKeys.map((f) => (
                 <li key={f} className="flex items-start gap-2">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#c74959]" />
-                  {f}
+                  {t(f)}
                 </li>
               ))}
             </ul>

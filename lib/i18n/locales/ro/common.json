@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Alăturați-vă Feedbase și colectați feedback de produs cu claritate.",
     "subtitle": "Construiți spațiul de lucru al echipei în mai puțin de un minut, apoi prioritizați nevoile utilizatorilor pe o bază sigură și scalabilă."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Tot ce aveți nevoie pentru a începe să colectați feedback."
+    },
+    "pro": {
+      "blurb": "Pentru echipe în creștere care au nevoie de propriul brand și instrumente."
+    },
+    "business": {
+      "blurb": "Pentru produse consacrate care trebuie să scaleze asistența."
+    },
+    "feat": {
+      "workspace1": "1 spațiu de lucru",
+      "publicBoard": "Panou public de feedback",
+      "roadmapChangelog": "Foaie de parcurs și jurnal de modificări",
+      "unlimitedPosts": "Postări și voturi nelimitate",
+      "upTo2Members": "Până la 2 membri ai echipei",
+      "oneSession": "O sesiune activă la un moment dat",
+      "everythingFree": "Tot din Free",
+      "upTo3Workspaces": "Până la 3 spații de lucru",
+      "photoVideo": "Foto și video pe feedback",
+      "contactSubmitters": "Contactați și notificați cei care trimit feedback",
+      "deletePosts": "Ștergeți postările de feedback",
+      "upTo5Members": "Până la 5 membri ai echipei",
+      "everythingPro": "Tot din Pro",
+      "unlimitedWorkspaces": "Spații de lucru nelimitate",
+      "unlimitedMembers": "Membri ai echipei nelimitați",
+      "multiDevice": "Autentificare pe mai multe dispozitive",
+      "prioritySupport": "Asistență prioritară"
+    }
+  },
+  "pricing": {
+    "freeForever": "Gratuit pentru totdeauna",
+    "billedMonthly": "facturat lunar",
+    "billedAnnually": "facturat anual ({{total}}/an)",
+    "getStartedFree": "Începeți gratuit",
+    "choose": "Alegeți {{plan}}",
+    "ends": "se termină la {{date}}",
+    "limitedOffer": "Ofertă pe timp limitat",
+    "perMoBilledAnnually": "≈ {{price}}/lună, facturat anual"
+  },
+  "toggle": {
+    "monthly": "Lunar",
+    "yearly": "Anual"
   }
 }

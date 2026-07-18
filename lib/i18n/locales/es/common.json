@@ -462,5 +462,49 @@
   "signupPage": {
     "heading": "Únete a Feedbase y recopila comentarios de producto con claridad.",
     "subtitle": "Crea el espacio de trabajo de tu equipo en menos de un minuto y prioriza lo que más necesitan los usuarios sobre una base segura y escalable."
+  },
+  "plan": {
+    "free": {
+      "blurb": "Todo lo que necesitas para empezar a recopilar comentarios."
+    },
+    "pro": {
+      "blurb": "Para equipos en crecimiento que necesitan su propia marca y herramientas."
+    },
+    "business": {
+      "blurb": "Para productos consolidados que necesitan escalar el soporte."
+    },
+    "feat": {
+      "workspace1": "1 espacio de trabajo",
+      "publicBoard": "Tablero de comentarios público",
+      "roadmapChangelog": "Hoja de ruta y registro de cambios",
+      "unlimitedPosts": "Publicaciones y votos ilimitados",
+      "upTo2Members": "Hasta 2 miembros del equipo",
+      "oneSession": "Una sesión activa a la vez",
+      "everythingFree": "Todo lo de Free",
+      "upTo3Workspaces": "Hasta 3 espacios de trabajo",
+      "photoVideo": "Foto y vídeo en los comentarios",
+      "contactSubmitters": "Contacta y notifica a quienes envían comentarios",
+      "deletePosts": "Eliminar publicaciones de comentarios",
+      "upTo5Members": "Hasta 5 miembros del equipo",
+      "everythingPro": "Todo lo de Pro",
+      "unlimitedWorkspaces": "Espacios de trabajo ilimitados",
+      "unlimitedMembers": "Miembros del equipo ilimitados",
+      "multiDevice": "Inicia sesión en varios dispositivos",
+      "prioritySupport": "Soporte prioritario"
+    }
+  },
+  "pricing": {
+    "freeForever": "Gratis para siempre",
+    "billedMonthly": "facturado mensualmente",
+    "billedAnnually": "facturado anualmente ({{total}}/año)",
+    "getStartedFree": "Empezar gratis",
+    "choose": "Elegir {{plan}}",
+    "ends": "finaliza el {{date}}",
+    "limitedOffer": "Oferta por tiempo limitado",
+    "perMoBilledAnnually": "≈ {{price}}/mes, facturado anualmente"
+  },
+  "toggle": {
+    "monthly": "Mensual",
+    "yearly": "Anual"
   }
 }
