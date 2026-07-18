@@ -296,7 +296,22 @@
     "anonymous": "Anónimo",
     "submitFeedback": "Enviar comentario",
     "giveFeedback": "Dar tu opinión",
-    "details": "Detalles"
+    "details": "Detalles",
+    "boardTitle": "Tablero de comentarios",
+    "boardSubtitle": "Comparte una idea o informa de un problema — y descubre lo que está planificado.",
+    "noFeedbackYet": "Aún no se ha publicado ningún comentario.",
+    "openPost": "Abrir {{title}}",
+    "nComments_one": "{{count}} comentario",
+    "nComments_other": "{{count}} comentarios",
+    "backToBoard": "Volver al tablero",
+    "byAuthor": "por {{name}}",
+    "commentsHeading": "Comentarios ({{count}})",
+    "poweredBy": "Con tecnología de Feedbase",
+    "postNotFound": "Publicación no encontrada",
+    "changelogSubtitle": "Las últimas novedades y mejoras",
+    "noUpdates": "Aún no se ha publicado ninguna novedad.",
+    "recently": "Recientemente",
+    "backToChangelog": "Volver al registro de cambios"
   },
   "type": {
     "feedback": "Comentario",
@@ -537,5 +552,8 @@
     "peakPerDay": "pico {{count}}/día",
     "noNewFeedback": "Sin comentarios nuevos en los últimos 30 días.",
     "backendUnreachable": "No se puede conectar con la API backend en el puerto 4560. Mostrando métricas vacías."
+  },
+  "time": {
+    "justNow": "ahora mismo"
   }
 }

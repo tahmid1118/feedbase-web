@@ -41,7 +41,10 @@ export async function generateMetadata({
     publicApi.getTenant(decoded),
   ]);
 
-  if (!post) return { title: "Post not found" };
+  if (!post) {
+    const { t } = await getTranslation();
+    return { title: t("portal.postNotFound") };
+  }
 
   const siteName = info?.name || "Feedback";
   const title = `${post.title} · ${siteName}`;
@@ -120,7 +123,7 @@ export default async function PortalPostPage({
         className="inline-flex items-center gap-1 text-sm text-[#1c0a0c]/60 hover:text-[#1c0a0c]"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to board
+        {t("portal.backToBoard")}
       </Link>
 
       <Card className="p-6">
@@ -163,7 +166,7 @@ export default async function PortalPostPage({
             <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">
               <span className="flex items-center gap-1">
                 <MessageSquare className="h-4 w-4" />
-                {post.comment_count} comments
+                {t("portal.nComments", { count: post.comment_count ?? 0 })}
               </span>
               <span className="flex items-center gap-1.5">
                 {author.avatar ? (
@@ -185,7 +188,7 @@ export default async function PortalPostPage({
                     )}
                   </span>
                 )}
-                by {author.name}
+                {t("portal.byAuthor", { name: author.name })}
               </span>
               {post.created_at && (
                 <span className="flex items-center gap-1">
@@ -214,7 +217,7 @@ export default async function PortalPostPage({
 
       <Card className="p-6">
         <h2 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
-          Comments ({post.comments?.length ?? 0})
+          {t("portal.commentsHeading", { count: post.comments?.length ?? 0 })}
         </h2>
         <PortalComments
           tenant={decoded}

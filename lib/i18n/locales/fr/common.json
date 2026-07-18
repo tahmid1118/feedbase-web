@@ -296,7 +296,22 @@
     "anonymous": "Anonyme",
     "submitFeedback": "Envoyer un avis",
     "giveFeedback": "Donner un avis",
-    "details": "Détails"
+    "details": "Détails",
+    "boardTitle": "Tableau de retours",
+    "boardSubtitle": "Partagez une idée ou signalez un problème — et découvrez ce qui est prévu.",
+    "noFeedbackYet": "Aucun retour n'a encore été publié.",
+    "openPost": "Ouvrir {{title}}",
+    "nComments_one": "{{count}} commentaire",
+    "nComments_other": "{{count}} commentaires",
+    "backToBoard": "Retour au tableau",
+    "byAuthor": "par {{name}}",
+    "commentsHeading": "Commentaires ({{count}})",
+    "poweredBy": "Propulsé par Feedbase",
+    "postNotFound": "Publication introuvable",
+    "changelogSubtitle": "Les dernières mises à jour et améliorations",
+    "noUpdates": "Aucune mise à jour n'a encore été publiée.",
+    "recently": "Récemment",
+    "backToChangelog": "Retour au journal des modifications"
   },
   "type": {
     "feedback": "Retour",
@@ -537,5 +552,8 @@
     "peakPerDay": "pic {{count}}/jour",
     "noNewFeedback": "Aucun nouveau retour au cours des 30 derniers jours.",
     "backendUnreachable": "Impossible d'atteindre l'API backend sur le port 4560. Affichage de métriques vides."
+  },
+  "time": {
+    "justNow": "à l'instant"
   }
 }

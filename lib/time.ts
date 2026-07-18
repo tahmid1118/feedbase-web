@@ -14,15 +14,20 @@ const DIVISIONS: { amount: number; unit: Intl.RelativeTimeFormatUnit }[] = [
   { amount: Number.POSITIVE_INFINITY, unit: "year" },
 ];
 
-/** e.g. "just now" → "5 minutes ago" → "3 weeks ago" (localized). */
+/**
+ * e.g. "just now" → "5 minutes ago" → "3 weeks ago" (localized).
+ * `justNowLabel` is passed in already translated — this module has no access to
+ * the i18n dictionary, and it's the only string here Intl can't produce.
+ */
 export function formatRelativeTime(
   fromMs: number,
   nowMs: number,
-  locale?: string
+  locale?: string,
+  justNowLabel = "just now"
 ): string {
   let duration = (fromMs - nowMs) / 1000; // seconds; negative = past
   // Anything under a minute reads as "just now" (no seconds-level noise).
-  if (Math.abs(duration) < 60) return "just now";
+  if (Math.abs(duration) < 60) return justNowLabel;
 
   const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   for (const division of DIVISIONS) {

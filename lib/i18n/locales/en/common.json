@@ -296,7 +296,22 @@
     "anonymous": "Anonymous",
     "submitFeedback": "Submit feedback",
     "giveFeedback": "Give Feedback",
-    "details": "Details"
+    "details": "Details",
+    "boardTitle": "Feedback Board",
+    "boardSubtitle": "Share an idea or report an issue — and see what's planned.",
+    "noFeedbackYet": "No feedback has been posted yet.",
+    "openPost": "Open {{title}}",
+    "nComments_one": "{{count}} comment",
+    "nComments_other": "{{count}} comments",
+    "backToBoard": "Back to board",
+    "byAuthor": "by {{name}}",
+    "commentsHeading": "Comments ({{count}})",
+    "poweredBy": "Powered by Feedbase",
+    "postNotFound": "Post not found",
+    "changelogSubtitle": "The latest updates and improvements",
+    "noUpdates": "No updates have been published yet.",
+    "recently": "Recently",
+    "backToChangelog": "Back to changelog"
   },
   "type": {
     "feedback": "Feedback",
@@ -537,5 +552,8 @@
     "peakPerDay": "peak {{count}}/day",
     "noNewFeedback": "No new feedback in the last 30 days.",
     "backendUnreachable": "Unable to reach the backend API on port 4560. Showing empty metrics."
+  },
+  "time": {
+    "justNow": "just now"
   }
 }

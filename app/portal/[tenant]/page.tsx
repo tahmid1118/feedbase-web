@@ -48,9 +48,11 @@ export default async function PortalBoardPage({
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[#1c0a0c]">Feedback Board</h1>
+          <h1 className="text-2xl font-bold text-[#1c0a0c]">
+            {t("portal.boardTitle")}
+          </h1>
           <p className="text-sm text-[#1c0a0c]/60">
-            Share an idea or report an issue — and see what&apos;s planned.
+            {t("portal.boardSubtitle")}
           </p>
         </div>
         <FeedbackSubmit
@@ -62,7 +64,7 @@ export default async function PortalBoardPage({
 
       {posts.length === 0 ? (
         <div className="rounded-xl border border-black/5 bg-white p-12 text-center text-[#1c0a0c]/60">
-          No feedback has been posted yet.
+          {t("portal.noFeedbackYet")}
         </div>
       ) : (
         <div className="space-y-3">
@@ -76,7 +78,7 @@ export default async function PortalBoardPage({
             >
               <Link
                 href={`/portal/${decoded}/post/${post.id}`}
-                aria-label={`Open ${post.title}`}
+                aria-label={t("portal.openPost", { title: post.title })}
                 className="absolute inset-0 z-[1] rounded-xl"
               />
               <div className="flex items-start gap-4">
@@ -110,7 +112,7 @@ export default async function PortalBoardPage({
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#1c0a0c]/60">
                     <span className="flex items-center gap-1">
                       <MessageSquare className="h-3 w-3" />
-                      {post.comment_count} comments
+                      {t("portal.nComments", { count: post.comment_count ?? 0 })}
                     </span>
                     {(post.attachment_count ?? 0) > 0 && (
                       <span className="flex items-center gap-1">

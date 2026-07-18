@@ -5,6 +5,7 @@ import { PortalLogo } from "@/components/portal/portal-logo";
 import { PortalNav } from "@/components/portal/portal-nav";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { resolveUploadUrl } from "@/lib/avatar";
+import { getTranslation } from "@/lib/i18n/server";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -22,6 +23,7 @@ export default async function PortalLayout({
   params: Promise<{ tenant: string }>;
 }) {
   const { tenant } = await params;
+  const { t } = await getTranslation();
   const info = await publicApi.getTenant(decodeURIComponent(tenant));
 
   if (!info) notFound();
@@ -57,7 +59,7 @@ export default async function PortalLayout({
       <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
 
       <footer className="border-t border-black/5 py-6 text-center text-xs text-[#1c0a0c]/40">
-        Powered by Feedbase
+        {t("portal.poweredBy")}
       </footer>
     </div>
   );

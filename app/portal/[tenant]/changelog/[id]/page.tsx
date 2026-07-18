@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar } from "lucide-react";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
 import { Markdown } from "@/components/ui/markdown";
+import { getTranslation } from "@/lib/i18n/server";
 
 export default async function PortalChangelogDetailPage({
   params,
@@ -12,6 +13,7 @@ export default async function PortalChangelogDetailPage({
 }) {
   const { tenant, id } = await params;
   const decoded = decodeURIComponent(tenant);
+  const { t, lng } = await getTranslation();
   const entry = await publicApi.getChangelog(decoded, id);
 
   if (!entry) notFound();
@@ -23,7 +25,7 @@ export default async function PortalChangelogDetailPage({
         className="inline-flex items-center gap-1 text-sm text-[#1c0a0c]/60 hover:text-[#1c0a0c]"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to changelog
+        {t("portal.backToChangelog")}
       </Link>
 
       <Card className="p-8">
@@ -34,9 +36,11 @@ export default async function PortalChangelogDetailPage({
         <div className="mt-4 flex items-center gap-2 border-b border-black/5 pb-6 text-sm text-[#1c0a0c]/60">
           <Calendar className="h-4 w-4" />
           {entry.created_at
-            ? new Date(entry.created_at).toLocaleDateString()
-            : "Recently"}
-          {entry.created_by_name && <span>· by {entry.created_by_name}</span>}
+            ? new Date(entry.created_at).toLocaleDateString(lng)
+            : t("portal.recently")}
+          {entry.created_by_name && (
+            <span>· {t("portal.byAuthor", { name: entry.created_by_name })}</span>
+          )}
         </div>
         <div className="mt-6">
           <Markdown content={entry.content || ""} />

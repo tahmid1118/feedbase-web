@@ -296,7 +296,22 @@
     "anonymous": "Anonim",
     "submitFeedback": "Wyślij opinię",
     "giveFeedback": "Prześlij opinię",
-    "details": "Szczegóły"
+    "details": "Szczegóły",
+    "boardTitle": "Tablica opinii",
+    "boardSubtitle": "Podziel się pomysłem lub zgłoś problem — i zobacz, co jest planowane.",
+    "noFeedbackYet": "Nie opublikowano jeszcze żadnych opinii.",
+    "openPost": "Otwórz {{title}}",
+    "nComments_one": "{{count}} komentarz",
+    "nComments_other": "{{count}} komentarzy",
+    "backToBoard": "Powrót do tablicy",
+    "byAuthor": "przez {{name}}",
+    "commentsHeading": "Komentarze ({{count}})",
+    "poweredBy": "Obsługiwane przez Feedbase",
+    "postNotFound": "Nie znaleziono wpisu",
+    "changelogSubtitle": "Najnowsze aktualizacje i ulepszenia",
+    "noUpdates": "Nie opublikowano jeszcze żadnych aktualizacji.",
+    "recently": "Niedawno",
+    "backToChangelog": "Powrót do dziennika zmian"
   },
   "type": {
     "feedback": "Opinia",
@@ -537,5 +552,8 @@
     "peakPerDay": "szczyt {{count}}/dzień",
     "noNewFeedback": "Brak nowych opinii w ciągu ostatnich 30 dni.",
     "backendUnreachable": "Nie można połączyć się z API zaplecza na porcie 4560. Wyświetlanie pustych wskaźników."
+  },
+  "time": {
+    "justNow": "przed chwilą"
   }
 }

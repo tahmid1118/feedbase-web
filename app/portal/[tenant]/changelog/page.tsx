@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Calendar } from "lucide-react";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
+import { getTranslation } from "@/lib/i18n/server";
 
 export default async function PortalChangelogPage({
   params,
@@ -10,21 +11,24 @@ export default async function PortalChangelogPage({
 }) {
   const { tenant } = await params;
   const decoded = decodeURIComponent(tenant);
+  const { t, lng } = await getTranslation();
   const data = await publicApi.getChangelogList(decoded);
   const changelogs = data?.changelogs ?? [];
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-[#1c0a0c]">Changelog</h1>
+        <h1 className="text-2xl font-bold text-[#1c0a0c]">
+          {t("nav.changelog")}
+        </h1>
         <p className="text-sm text-[#1c0a0c]/60">
-          The latest updates and improvements
+          {t("portal.changelogSubtitle")}
         </p>
       </div>
 
       {changelogs.length === 0 ? (
         <div className="rounded-xl border border-black/5 bg-white p-12 text-center text-[#1c0a0c]/60">
-          No updates have been published yet.
+          {t("portal.noUpdates")}
         </div>
       ) : (
         <div className="space-y-4">
@@ -42,8 +46,8 @@ export default async function PortalChangelogPage({
               <div className="mt-4 flex items-center gap-2 text-xs text-[#1c0a0c]/60">
                 <Calendar className="h-3 w-3" />
                 {entry.created_at
-                  ? new Date(entry.created_at).toLocaleDateString()
-                  : "Recently"}
+                  ? new Date(entry.created_at).toLocaleDateString(lng)
+                  : t("portal.recently")}
               </div>
             </Card>
           ))}

@@ -296,7 +296,22 @@
     "anonymous": "Anónimo",
     "submitFeedback": "Enviar feedback",
     "giveFeedback": "Dar feedback",
-    "details": "Detalhes"
+    "details": "Detalhes",
+    "boardTitle": "Painel de feedback",
+    "boardSubtitle": "Partilhe uma ideia ou reporte um problema — e veja o que está planeado.",
+    "noFeedbackYet": "Ainda não foi publicado nenhum feedback.",
+    "openPost": "Abrir {{title}}",
+    "nComments_one": "{{count}} comentário",
+    "nComments_other": "{{count}} comentários",
+    "backToBoard": "Voltar ao painel",
+    "byAuthor": "por {{name}}",
+    "commentsHeading": "Comentários ({{count}})",
+    "poweredBy": "Fornecido por Feedbase",
+    "postNotFound": "Publicação não encontrada",
+    "changelogSubtitle": "As últimas atualizações e melhorias",
+    "noUpdates": "Ainda não foram publicadas atualizações.",
+    "recently": "Recentemente",
+    "backToChangelog": "Voltar ao registo de alterações"
   },
   "type": {
     "feedback": "Feedback",
@@ -537,5 +552,8 @@
     "peakPerDay": "pico {{count}}/dia",
     "noNewFeedback": "Sem novo feedback nos últimos 30 dias.",
     "backendUnreachable": "Não é possível aceder à API backend na porta 4560. A mostrar métricas vazias."
+  },
+  "time": {
+    "justNow": "agora mesmo"
   }
 }

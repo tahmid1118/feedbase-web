@@ -296,7 +296,22 @@
     "anonymous": "Anoniem",
     "submitFeedback": "Feedback verzenden",
     "giveFeedback": "Geef feedback",
-    "details": "Details"
+    "details": "Details",
+    "boardTitle": "Feedbackbord",
+    "boardSubtitle": "Deel een idee of meld een probleem — en bekijk wat er gepland staat.",
+    "noFeedbackYet": "Er is nog geen feedback geplaatst.",
+    "openPost": "{{title}} openen",
+    "nComments_one": "{{count}} reactie",
+    "nComments_other": "{{count}} reacties",
+    "backToBoard": "Terug naar bord",
+    "byAuthor": "door {{name}}",
+    "commentsHeading": "Reacties ({{count}})",
+    "poweredBy": "Mogelijk gemaakt door Feedbase",
+    "postNotFound": "Bericht niet gevonden",
+    "changelogSubtitle": "De nieuwste updates en verbeteringen",
+    "noUpdates": "Er zijn nog geen updates gepubliceerd.",
+    "recently": "Onlangs",
+    "backToChangelog": "Terug naar changelog"
   },
   "type": {
     "feedback": "Feedback",
@@ -537,5 +552,8 @@
     "peakPerDay": "piek {{count}}/dag",
     "noNewFeedback": "Geen nieuwe feedback in de afgelopen 30 dagen.",
     "backendUnreachable": "Kan de backend-API op poort 4560 niet bereiken. Lege statistieken worden weergegeven."
+  },
+  "time": {
+    "justNow": "zojuist"
   }
 }
