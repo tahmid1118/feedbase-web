@@ -48,9 +48,9 @@ export function BrandingSettings() {
       .then((res) => {
         if (res.data) applyTenant(res.data);
       })
-      .catch(() => toast.error("Failed to load workspace"))
+      .catch(() => toast.error(t("branding.loadFailed")))
       .finally(() => setLoading(false));
-  }, [token]);
+  }, [token, t]);
 
   const applyTenant = (t: Tenant) => {
     setTenant(t);
@@ -69,7 +69,7 @@ export function BrandingSettings() {
       setLogoUrl(res.filePath);
       toast.success(t("toast.logoUploaded"));
     } catch {
-      toast.error("Failed to upload logo");
+      toast.error(t("branding.logoUploadFailed"));
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -104,7 +104,7 @@ export function BrandingSettings() {
     return (
       <Card className="p-6">
         <div className="py-8 text-center text-[#1c0a0c]/60">
-          Loading workspace...
+          {t("branding.loading")}
         </div>
       </Card>
     );
@@ -114,7 +114,7 @@ export function BrandingSettings() {
     return (
       <Card className="p-6">
         <div className="py-8 text-center text-[#1c0a0c]/60">
-          No workspace available to manage.
+          {t("branding.noWorkspace")}
         </div>
       </Card>
     );
@@ -124,7 +124,7 @@ export function BrandingSettings() {
     <Card className="p-6">
       <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("branding.title")}</h3>
       <p className="text-sm text-[#1c0a0c]/60">
-        Customize how your feedback portal appears to users
+        {t("branding.subtitle")}
       </p>
 
       <div className="mt-6 space-y-2">
@@ -164,7 +164,7 @@ export function BrandingSettings() {
               ) : (
                 <Upload className="h-4 w-4" />
               )}
-              Upload logo
+              {t("branding.uploadLogo")}
             </Button>
             {logoUrl && (
               <Button
@@ -174,7 +174,7 @@ export function BrandingSettings() {
                 onClick={() => setLogoUrl("")}
                 disabled={uploading}
               >
-                Remove
+                {t("common.remove")}
               </Button>
             )}
           </div>

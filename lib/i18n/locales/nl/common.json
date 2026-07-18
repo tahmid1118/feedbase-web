@@ -116,7 +116,12 @@
     "submit": "Verzenden",
     "learnMore": "Meer informatie",
     "clear": "Wissen",
-    "add": "Toevoegen"
+    "add": "Toevoegen",
+    "saving": "Opslaan…",
+    "updating": "Bijwerken…",
+    "remove": "Verwijderen",
+    "name": "Naam",
+    "role": "Rol"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -380,7 +385,17 @@
   "team": {
     "inviteTeammate": "Nodig een teamlid uit",
     "teamMembers": "Teamleden",
-    "expired": "Verlopen"
+    "expired": "Verlopen",
+    "loadFailed": "Kan team niet laden",
+    "inviteCreated": "Uitnodiging aangemaakt",
+    "seatLimit": "U hebt de teamlimiet van uw abonnement bereikt",
+    "revokeFailed": "Kan uitnodiging niet intrekken",
+    "sendInvite": "Uitnodiging verzenden",
+    "pendingInvitations": "Openstaande uitnodigingen",
+    "revoke": "Intrekken",
+    "loadingMembers": "Leden laden…",
+    "noMembers": "Geen teamleden gevonden.",
+    "emailPlaceholder": "collega@bedrijf.nl"
   },
   "role": {
     "owner": "Eigenaar",
@@ -396,11 +411,27 @@
     "addTag": "Label",
     "noneCreated": "Nog geen labels aangemaakt.",
     "removeTag": "{{name}} verwijderen",
-    "updateFailed": "Kan labels niet bijwerken"
+    "updateFailed": "Kan labels niet bijwerken",
+    "loadFailed": "Kan labels niet laden",
+    "saveFailed": "Kan label niet opslaan",
+    "deleteFailed": "Kan label niet verwijderen",
+    "subtitle": "Feedbackberichten ordenen en categoriseren",
+    "newTag": "Nieuw label",
+    "loading": "Labels laden…",
+    "empty": "Nog geen labels. Maak er een om feedback te categoriseren.",
+    "dialogDesc": "Labels helpen feedback te categoriseren en filteren.",
+    "namePlaceholder": "bijv. ui"
   },
   "branding": {
     "title": "Werkruimte & branding",
-    "companyLogo": "Bedrijfslogo"
+    "companyLogo": "Bedrijfslogo",
+    "loadFailed": "Kan werkruimte niet laden",
+    "logoUploadFailed": "Kan logo niet uploaden",
+    "loading": "Werkruimte laden…",
+    "noWorkspace": "Geen werkruimte beschikbaar om te beheren.",
+    "subtitle": "Pas aan hoe uw feedbackportaal er voor gebruikers uitziet",
+    "logoHint": "Weergegeven in de koptekst van uw openbare bord. Een vierkante PNG of SVG werkt het best.",
+    "uploadLogo": "Logo uploaden"
   },
   "delete": {
     "dangerZone": "Gevarenzone",
@@ -419,7 +450,12 @@
     "current": "Huidig",
     "recommended": "Aanbevolen",
     "included": "Inbegrepen",
-    "upgradeTo": "Upgraden naar {{plan}}"
+    "upgradeTo": "Upgraden naar {{plan}}",
+    "loadFailed": "Kan factuurgegevens niet laden",
+    "checkoutCancelled": "Afrekenen geannuleerd.",
+    "checkoutFailed": "Kan afrekenen niet starten",
+    "portalFailed": "Kan factuurportaal niet openen",
+    "redeemHint": "Wissel een code in voor korting of een gratis abonnement."
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",
@@ -668,5 +704,30 @@
     "marked": "Gemarkeerd als duplicaat",
     "cleared": "Duplicaatmarkering gewist",
     "updateFailed": "Kan duplicaatstatus niet bijwerken"
+  },
+  "profile": {
+    "loadFailed": "Kan profiel niet laden",
+    "uploadFailed": "Kan afbeelding niet uploaden",
+    "updateFailed": "Kan profiel niet bijwerken",
+    "passwordTooShort": "Het nieuwe wachtwoord moet minstens 8 tekens bevatten",
+    "passwordMismatch": "Wachtwoorden komen niet overeen",
+    "passwordUpdateFailed": "Kan wachtwoord niet bijwerken. Controleer uw huidige wachtwoord.",
+    "subtitle": "Werk uw persoonlijke gegevens bij",
+    "changePhoto": "Foto wijzigen",
+    "passwordSubtitle": "Wijzig het wachtwoord van uw account"
+  },
+  "deleteAccount": {
+    "loadFailed": "Kan accountgegevens niet laden",
+    "button": "Account verwijderen",
+    "title": "Uw account permanent verwijderen?",
+    "warn": "Dit kan niet ongedaan worden gemaakt. Lees dit zorgvuldig.",
+    "ownedErased": "Al hun feedback, reacties, roadmap en changelog worden gewist, elk lid verliest toegang en een actief abonnement wordt geannuleerd."
+  },
+  "apiStatus": {
+    "checking": "API-verbinding controleren…",
+    "verifying": "Beschikbaarheid van backend-API controleren",
+    "notAvailable": "Backend-API niet beschikbaar",
+    "startServer": "Start de backend-API-server op poort 4560",
+    "connected": "API verbonden"
   }
 }

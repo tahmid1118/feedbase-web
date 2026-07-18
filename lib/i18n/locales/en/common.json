@@ -40,7 +40,12 @@
     "pin": "Pin",
     "status": "Status",
     "clear": "Clear",
-    "add": "Add"
+    "add": "Add",
+    "saving": "Saving…",
+    "updating": "Updating…",
+    "remove": "Remove",
+    "name": "Name",
+    "role": "Role"
   },
   "landing": {
     "hero": {
@@ -380,7 +385,17 @@
   "team": {
     "inviteTeammate": "Invite a teammate",
     "teamMembers": "Team Members",
-    "expired": "Expired"
+    "expired": "Expired",
+    "loadFailed": "Failed to load team",
+    "inviteCreated": "Invitation created",
+    "seatLimit": "You've reached your plan's team limit",
+    "revokeFailed": "Failed to revoke invitation",
+    "sendInvite": "Send invite",
+    "pendingInvitations": "Pending invitations",
+    "revoke": "Revoke",
+    "loadingMembers": "Loading members…",
+    "noMembers": "No team members found.",
+    "emailPlaceholder": "teammate@company.com"
   },
   "role": {
     "owner": "Owner",
@@ -396,11 +411,27 @@
     "addTag": "Tag",
     "noneCreated": "No tags created yet.",
     "removeTag": "Remove {{name}}",
-    "updateFailed": "Failed to update tags"
+    "updateFailed": "Failed to update tags",
+    "loadFailed": "Failed to load tags",
+    "saveFailed": "Failed to save tag",
+    "deleteFailed": "Failed to delete tag",
+    "subtitle": "Organize and categorize feedback posts",
+    "newTag": "New Tag",
+    "loading": "Loading tags…",
+    "empty": "No tags yet. Create one to start categorizing feedback.",
+    "dialogDesc": "Tags help categorize and filter feedback.",
+    "namePlaceholder": "e.g. ui"
   },
   "branding": {
     "title": "Workspace & Branding",
-    "companyLogo": "Company logo"
+    "companyLogo": "Company logo",
+    "loadFailed": "Failed to load workspace",
+    "logoUploadFailed": "Failed to upload logo",
+    "loading": "Loading workspace…",
+    "noWorkspace": "No workspace available to manage.",
+    "subtitle": "Customize how your feedback portal appears to users",
+    "logoHint": "Shown in the header of your public board. A square PNG or SVG works best.",
+    "uploadLogo": "Upload logo"
   },
   "delete": {
     "dangerZone": "Danger zone",
@@ -419,7 +450,12 @@
     "current": "Current",
     "recommended": "Recommended",
     "included": "Included",
-    "upgradeTo": "Upgrade to {{plan}}"
+    "upgradeTo": "Upgrade to {{plan}}",
+    "loadFailed": "Failed to load billing info",
+    "checkoutCancelled": "Checkout cancelled.",
+    "checkoutFailed": "Could not start checkout",
+    "portalFailed": "Could not open billing portal",
+    "redeemHint": "Redeem a code to unlock a discount or a free plan."
   },
   "switcher": {
     "addWorkspace": "Add Workspace",
@@ -668,5 +704,30 @@
     "marked": "Marked as duplicate",
     "cleared": "Duplicate mark cleared",
     "updateFailed": "Failed to update duplicate status"
+  },
+  "profile": {
+    "loadFailed": "Failed to load profile",
+    "uploadFailed": "Failed to upload image",
+    "updateFailed": "Failed to update profile",
+    "passwordTooShort": "New password must be at least 8 characters",
+    "passwordMismatch": "Passwords do not match",
+    "passwordUpdateFailed": "Failed to update password. Check your current password.",
+    "subtitle": "Update your personal information",
+    "changePhoto": "Change photo",
+    "passwordSubtitle": "Change your account password"
+  },
+  "deleteAccount": {
+    "loadFailed": "Could not load account details",
+    "button": "Delete account",
+    "title": "Delete your account permanently?",
+    "warn": "This cannot be undone. Please read carefully.",
+    "ownedErased": "All of their feedback, comments, roadmap and changelog will be erased, every member loses access, and any active subscription is cancelled."
+  },
+  "apiStatus": {
+    "checking": "Checking API connection…",
+    "verifying": "Verifying backend API availability",
+    "notAvailable": "Backend API Not Available",
+    "startServer": "Please start the backend API server on port 4560",
+    "connected": "API Connected"
   }
 }

@@ -54,9 +54,9 @@ export function BillingSettings() {
     billingApi
       .getStatus(token)
       .then((res) => setStatus(res.data ?? null))
-      .catch(() => toast.error("Failed to load billing info"))
+      .catch(() => toast.error(t("billing.loadFailed")))
       .finally(() => setLoading(false));
-  }, [token]);
+  }, [token, t]);
 
   useEffect(() => {
     load();
@@ -66,7 +66,7 @@ export function BillingSettings() {
   useEffect(() => {
     const c = params.get("checkout");
     if (c === "success") toast.success(t("toast.subscriptionUpdated"));
-    else if (c === "cancelled") toast("Checkout cancelled.");
+    else if (c === "cancelled") toast(t("billing.checkoutCancelled"));
   }, [params, t]);
 
   const upgrade = async (plan: PlanKey) => {
@@ -78,7 +78,7 @@ export function BillingSettings() {
         promotionCode: discount?.promotionCode,
       });
       if (res.data?.url) window.location.assign(res.data.url);
-      else toast.error("Could not start checkout");
+      else toast.error(t("billing.checkoutFailed"));
     } catch (e) {
       toast.error((e as Error)?.message || "Could not start checkout");
     } finally {
@@ -118,7 +118,7 @@ export function BillingSettings() {
     try {
       const res = await billingApi.portal(token);
       if (res.data?.url) window.location.assign(res.data.url);
-      else toast.error("Could not open billing portal");
+      else toast.error(t("billing.portalFailed"));
     } catch (e) {
       toast.error((e as Error)?.message || "Could not open billing portal");
     } finally {
@@ -237,7 +237,7 @@ export function BillingSettings() {
           <div className="flex-1 space-y-1">
             <p className="text-sm font-medium text-[#1c0a0c]">{t("billing.havePromoCode")}</p>
             <p className="text-xs text-[#1c0a0c]/60">
-              Redeem a code to unlock a discount or a free plan.
+              {t("billing.redeemHint")}
             </p>
           </div>
           <div className="flex gap-2">

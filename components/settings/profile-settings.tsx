@@ -44,8 +44,8 @@ export function ProfileSettings() {
           setAvatarPath(res.data.avatar_url ?? null);
         }
       })
-      .catch(() => toast.error("Failed to load profile"));
-  }, [token]);
+      .catch(() => toast.error(t("profile.loadFailed")));
+  }, [token, t]);
 
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -56,7 +56,7 @@ export function ProfileSettings() {
       setAvatarPath(res.filePath);
       toast.success(t("toast.imageUploaded"));
     } catch {
-      toast.error("Failed to upload image");
+      toast.error(t("profile.uploadFailed"));
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -83,7 +83,7 @@ export function ProfileSettings() {
       });
       toast.success(t("toast.profileUpdated"));
     } catch {
-      toast.error("Failed to update profile");
+      toast.error(t("profile.updateFailed"));
     } finally {
       setSavingProfile(false);
     }
@@ -92,11 +92,11 @@ export function ProfileSettings() {
   const savePassword = async () => {
     if (!token) return;
     if (newPassword.length < 8) {
-      toast.error("New password must be at least 8 characters");
+      toast.error(t("profile.passwordTooShort"));
       return;
     }
     if (newPassword !== confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error(t("profile.passwordMismatch"));
       return;
     }
     setSavingPassword(true);
@@ -107,7 +107,7 @@ export function ProfileSettings() {
       setNewPassword("");
       setConfirmPassword("");
     } catch {
-      toast.error("Failed to update password. Check your current password.");
+      toast.error(t("profile.passwordUpdateFailed"));
     } finally {
       setSavingPassword(false);
     }
@@ -125,7 +125,7 @@ export function ProfileSettings() {
       <Card className="p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("user.profile")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
-          Update your personal information
+          {t("profile.subtitle")}
         </p>
 
         <div className="mt-6 flex items-center gap-4">
@@ -154,7 +154,7 @@ export function ProfileSettings() {
               ) : (
                 <Upload className="h-4 w-4" />
               )}
-              Change photo
+              {t("profile.changePhoto")}
             </Button>
           </div>
         </div>
@@ -212,7 +212,7 @@ export function ProfileSettings() {
       <Card className="p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("settings.password")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
-          Change your account password
+          {t("profile.passwordSubtitle")}
         </p>
 
         <div className="mt-6 grid gap-4 sm:max-w-md">

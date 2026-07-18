@@ -116,7 +116,12 @@
     "submit": "Wyślij",
     "learnMore": "Dowiedz się więcej",
     "clear": "Wyczyść",
-    "add": "Dodaj"
+    "add": "Dodaj",
+    "saving": "Zapisywanie…",
+    "updating": "Aktualizowanie…",
+    "remove": "Usuń",
+    "name": "Nazwa",
+    "role": "Rola"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -386,7 +391,17 @@
   "team": {
     "inviteTeammate": "Zaproś członka zespołu",
     "teamMembers": "Członkowie zespołu",
-    "expired": "Wygasło"
+    "expired": "Wygasło",
+    "loadFailed": "Nie udało się załadować zespołu",
+    "inviteCreated": "Utworzono zaproszenie",
+    "seatLimit": "Osiągnięto limit zespołu w Twoim planie",
+    "revokeFailed": "Nie udało się cofnąć zaproszenia",
+    "sendInvite": "Wyślij zaproszenie",
+    "pendingInvitations": "Oczekujące zaproszenia",
+    "revoke": "Cofnij",
+    "loadingMembers": "Ładowanie członków…",
+    "noMembers": "Nie znaleziono członków zespołu.",
+    "emailPlaceholder": "wspolpracownik@firma.pl"
   },
   "role": {
     "owner": "Właściciel",
@@ -402,11 +417,27 @@
     "addTag": "Tag",
     "noneCreated": "Nie utworzono jeszcze tagów.",
     "removeTag": "Usuń {{name}}",
-    "updateFailed": "Nie udało się zaktualizować tagów"
+    "updateFailed": "Nie udało się zaktualizować tagów",
+    "loadFailed": "Nie udało się załadować tagów",
+    "saveFailed": "Nie udało się zapisać tagu",
+    "deleteFailed": "Nie udało się usunąć tagu",
+    "subtitle": "Organizuj i kategoryzuj wpisy z opiniami",
+    "newTag": "Nowy tag",
+    "loading": "Ładowanie tagów…",
+    "empty": "Brak tagów. Utwórz jeden, aby kategoryzować opinie.",
+    "dialogDesc": "Tagi pomagają kategoryzować i filtrować opinie.",
+    "namePlaceholder": "np. ui"
   },
   "branding": {
     "title": "Przestrzeń robocza i marka",
-    "companyLogo": "Logo firmy"
+    "companyLogo": "Logo firmy",
+    "loadFailed": "Nie udało się załadować obszaru roboczego",
+    "logoUploadFailed": "Nie udało się przesłać logo",
+    "loading": "Ładowanie obszaru roboczego…",
+    "noWorkspace": "Brak obszaru roboczego do zarządzania.",
+    "subtitle": "Dostosuj wygląd swojego portalu opinii",
+    "logoHint": "Wyświetlane w nagłówku Twojej publicznej tablicy. Najlepiej sprawdzi się kwadratowy PNG lub SVG.",
+    "uploadLogo": "Prześlij logo"
   },
   "delete": {
     "dangerZone": "Strefa zagrożenia",
@@ -425,7 +456,12 @@
     "current": "Bieżący",
     "recommended": "Zalecane",
     "included": "W zestawie",
-    "upgradeTo": "Przejdź na {{plan}}"
+    "upgradeTo": "Przejdź na {{plan}}",
+    "loadFailed": "Nie udało się załadować danych rozliczeniowych",
+    "checkoutCancelled": "Płatność anulowana.",
+    "checkoutFailed": "Nie udało się rozpocząć płatności",
+    "portalFailed": "Nie udało się otworzyć portalu rozliczeń",
+    "redeemHint": "Zrealizuj kod, aby odblokować zniżkę lub darmowy plan."
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",
@@ -678,5 +714,30 @@
     "marked": "Oznaczono jako duplikat",
     "cleared": "Usunięto oznaczenie duplikatu",
     "updateFailed": "Nie udało się zaktualizować statusu duplikatu"
+  },
+  "profile": {
+    "loadFailed": "Nie udało się załadować profilu",
+    "uploadFailed": "Nie udało się przesłać obrazu",
+    "updateFailed": "Nie udało się zaktualizować profilu",
+    "passwordTooShort": "Nowe hasło musi mieć co najmniej 8 znaków",
+    "passwordMismatch": "Hasła nie są zgodne",
+    "passwordUpdateFailed": "Nie udało się zaktualizować hasła. Sprawdź swoje obecne hasło.",
+    "subtitle": "Zaktualizuj swoje dane osobowe",
+    "changePhoto": "Zmień zdjęcie",
+    "passwordSubtitle": "Zmień hasło do swojego konta"
+  },
+  "deleteAccount": {
+    "loadFailed": "Nie udało się załadować danych konta",
+    "button": "Usuń konto",
+    "title": "Trwale usunąć Twoje konto?",
+    "warn": "Tej operacji nie można cofnąć. Przeczytaj uważnie.",
+    "ownedErased": "Wszystkie opinie, komentarze, plan działań i dziennik zmian zostaną usunięte, wszyscy członkowie stracą dostęp, a aktywna subskrypcja zostanie anulowana."
+  },
+  "apiStatus": {
+    "checking": "Sprawdzanie połączenia z API…",
+    "verifying": "Weryfikacja dostępności API zaplecza",
+    "notAvailable": "API zaplecza niedostępne",
+    "startServer": "Uruchom serwer API zaplecza na porcie 4560",
+    "connected": "API połączone"
   }
 }

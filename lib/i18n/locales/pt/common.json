@@ -116,7 +116,12 @@
     "submit": "Enviar",
     "learnMore": "Saber mais",
     "clear": "Limpar",
-    "add": "Adicionar"
+    "add": "Adicionar",
+    "saving": "A guardar…",
+    "updating": "A atualizar…",
+    "remove": "Remover",
+    "name": "Nome",
+    "role": "Função"
   },
   "dashboard": {
     "welcomeBack": "Bem-vindo de volta"
@@ -380,7 +385,17 @@
   "team": {
     "inviteTeammate": "Convidar um colega de equipa",
     "teamMembers": "Membros da equipa",
-    "expired": "Expirado"
+    "expired": "Expirado",
+    "loadFailed": "Não foi possível carregar a equipa",
+    "inviteCreated": "Convite criado",
+    "seatLimit": "Atingiu o limite de equipa do seu plano",
+    "revokeFailed": "Não foi possível revogar o convite",
+    "sendInvite": "Enviar convite",
+    "pendingInvitations": "Convites pendentes",
+    "revoke": "Revogar",
+    "loadingMembers": "A carregar membros…",
+    "noMembers": "Não foram encontrados membros da equipa.",
+    "emailPlaceholder": "colega@empresa.com"
   },
   "role": {
     "owner": "Proprietário",
@@ -396,11 +411,27 @@
     "addTag": "Etiqueta",
     "noneCreated": "Ainda não foram criadas etiquetas.",
     "removeTag": "Remover {{name}}",
-    "updateFailed": "Não foi possível atualizar as etiquetas"
+    "updateFailed": "Não foi possível atualizar as etiquetas",
+    "loadFailed": "Não foi possível carregar as etiquetas",
+    "saveFailed": "Não foi possível guardar a etiqueta",
+    "deleteFailed": "Não foi possível eliminar a etiqueta",
+    "subtitle": "Organize e categorize as publicações de feedback",
+    "newTag": "Nova etiqueta",
+    "loading": "A carregar etiquetas…",
+    "empty": "Ainda não há etiquetas. Crie uma para começar a categorizar o feedback.",
+    "dialogDesc": "As etiquetas ajudam a categorizar e filtrar o feedback.",
+    "namePlaceholder": "p. ex. ui"
   },
   "branding": {
     "title": "Espaço de trabalho e marca",
-    "companyLogo": "Logótipo da empresa"
+    "companyLogo": "Logótipo da empresa",
+    "loadFailed": "Não foi possível carregar o espaço de trabalho",
+    "logoUploadFailed": "Não foi possível carregar o logótipo",
+    "loading": "A carregar espaço de trabalho…",
+    "noWorkspace": "Não há nenhum espaço de trabalho para gerir.",
+    "subtitle": "Personalize o aspeto do seu portal de feedback",
+    "logoHint": "Apresentado no cabeçalho do seu painel público. Um PNG ou SVG quadrado funciona melhor.",
+    "uploadLogo": "Carregar logótipo"
   },
   "delete": {
     "dangerZone": "Zona de perigo",
@@ -419,7 +450,12 @@
     "current": "Atual",
     "recommended": "Recomendado",
     "included": "Incluído",
-    "upgradeTo": "Atualizar para {{plan}}"
+    "upgradeTo": "Atualizar para {{plan}}",
+    "loadFailed": "Não foi possível carregar os dados de faturação",
+    "checkoutCancelled": "Pagamento cancelado.",
+    "checkoutFailed": "Não foi possível iniciar o pagamento",
+    "portalFailed": "Não foi possível abrir o portal de faturação",
+    "redeemHint": "Resgate um código para obter um desconto ou um plano gratuito."
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",
@@ -668,5 +704,30 @@
     "marked": "Marcado como duplicado",
     "cleared": "Marca de duplicado removida",
     "updateFailed": "Não foi possível atualizar o estado de duplicado"
+  },
+  "profile": {
+    "loadFailed": "Não foi possível carregar o perfil",
+    "uploadFailed": "Não foi possível carregar a imagem",
+    "updateFailed": "Não foi possível atualizar o perfil",
+    "passwordTooShort": "A nova palavra-passe deve ter pelo menos 8 caracteres",
+    "passwordMismatch": "As palavras-passe não coincidem",
+    "passwordUpdateFailed": "Não foi possível atualizar a palavra-passe. Verifique a sua palavra-passe atual.",
+    "subtitle": "Atualize as suas informações pessoais",
+    "changePhoto": "Alterar foto",
+    "passwordSubtitle": "Altere a palavra-passe da sua conta"
+  },
+  "deleteAccount": {
+    "loadFailed": "Não foi possível carregar os detalhes da conta",
+    "button": "Eliminar conta",
+    "title": "Eliminar permanentemente a sua conta?",
+    "warn": "Esta ação não pode ser anulada. Leia com atenção.",
+    "ownedErased": "Todo o feedback, comentários, roteiro e registo de alterações serão apagados, todos os membros perdem o acesso e qualquer subscrição ativa é cancelada."
+  },
+  "apiStatus": {
+    "checking": "A verificar a ligação à API…",
+    "verifying": "A verificar a disponibilidade da API backend",
+    "notAvailable": "API backend indisponível",
+    "startServer": "Inicie o servidor da API backend na porta 4560",
+    "connected": "API ligada"
   }
 }

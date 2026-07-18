@@ -47,9 +47,9 @@ export function DeleteAccount() {
     usersApi
       .getDeletionSummary(token)
       .then((res) => setSummary(res.data ?? null))
-      .catch(() => toast.error("Could not load account details"))
+      .catch(() => toast.error(t("deleteAccount.loadFailed")))
       .finally(() => setLoaded(true));
-  }, [open, token, loaded]);
+  }, [open, token, loaded, t]);
 
   const loading = open && !loaded;
 
@@ -89,7 +89,7 @@ export function DeleteAccount() {
             onClick={() => setOpen(true)}
           >
             <Trash2 className="h-4 w-4" />
-            Delete account
+            {t("deleteAccount.button")}
           </Button>
         </div>
       </Card>
@@ -107,10 +107,10 @@ export function DeleteAccount() {
         <DialogContent className="sm:max-w-[520px]">
           <DialogHeader>
             <DialogTitle className="text-red-700">
-              Delete your account permanently?
+              {t("deleteAccount.title")}
             </DialogTitle>
             <DialogDescription>
-              This cannot be undone. Please read carefully.
+              {t("deleteAccount.warn")}
             </DialogDescription>
           </DialogHeader>
 
@@ -140,9 +140,7 @@ export function DeleteAccount() {
                     ))}
                   </ul>
                   <p className="mt-2 text-xs text-red-700/80">
-                    All of their feedback, comments, roadmap and changelog will be
-                    erased, every member loses access, and any active subscription
-                    is cancelled.
+                    {t("deleteAccount.ownedErased")}
                   </p>
                 </div>
               )}

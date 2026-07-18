@@ -51,11 +51,11 @@ export function TagsSettings() {
       const res = await tagsApi.list(token);
       setTags(extractRows<Tag>(res.data, "tags"));
     } catch {
-      toast.error("Failed to load tags");
+      toast.error(t("tags.loadFailed"));
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [token, t]);
 
   useEffect(() => {
     load();
@@ -89,7 +89,7 @@ export function TagsSettings() {
       setDialogOpen(false);
       await load();
     } catch {
-      toast.error("Failed to save tag");
+      toast.error(t("tags.saveFailed"));
     } finally {
       setBusy(false);
     }
@@ -102,7 +102,7 @@ export function TagsSettings() {
       setTags((prev) => prev.filter((t) => t.id !== id));
       toast.success(t("toast.tagDeleted"));
     } catch {
-      toast.error("Failed to delete tag");
+      toast.error(t("tags.deleteFailed"));
     }
   };
 
@@ -112,7 +112,7 @@ export function TagsSettings() {
         <div>
           <h3 className="text-lg font-semibold text-[#1c0a0c]">Tags</h3>
           <p className="text-sm text-[#1c0a0c]/60">
-            Organize and categorize feedback posts
+            {t("tags.subtitle")}
           </p>
         </div>
         <Button
@@ -120,18 +120,18 @@ export function TagsSettings() {
           onClick={openCreate}
         >
           <Plus className="h-4 w-4" />
-          New Tag
+          {t("tags.newTag")}
         </Button>
       </div>
 
       <div className="mt-6">
         {loading ? (
           <div className="py-8 text-center text-[#1c0a0c]/60">
-            Loading tags...
+            {t("tags.loading")}
           </div>
         ) : tags.length === 0 ? (
           <div className="py-8 text-center text-[#1c0a0c]/60">
-            No tags yet. Create one to start categorizing feedback.
+            {t("tags.empty")}
           </div>
         ) : (
           <div className="space-y-2">
@@ -205,7 +205,7 @@ export function TagsSettings() {
           <DialogHeader>
             <DialogTitle>{editing ? t("tags.editTagTitle") : "New Tag"}</DialogTitle>
             <DialogDescription>
-              Tags help categorize and filter feedback.
+              {t("tags.dialogDesc")}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
@@ -215,7 +215,7 @@ export function TagsSettings() {
                 id="tag-name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. ui"
+                placeholder={t("tags.namePlaceholder")}
               />
             </div>
             <div className="space-y-2">

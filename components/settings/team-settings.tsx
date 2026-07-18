@@ -53,11 +53,11 @@ export function TeamSettings() {
       setUsers(extractRows<User>(membersRes.data, "users"));
       setInvites(invitesRes?.data?.rows ?? []);
     } catch {
-      toast.error("Failed to load team");
+      toast.error(t("team.loadFailed"));
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [token, t]);
 
   useEffect(() => {
     load();
@@ -72,7 +72,7 @@ export function TeamSettings() {
       if (res.data?.emailSent) {
         toast.success(`Invitation sent to ${res.data.email}`);
       } else {
-        toast.success("Invitation created", {
+        toast.success(t("team.inviteCreated"), {
           description:
             "No email provider is configured yet, so the invite link was logged on the server instead of emailed.",
         });
@@ -81,7 +81,7 @@ export function TeamSettings() {
     } catch (e) {
       // 402 = the plan's seat limit is reached.
       if (e instanceof ApiError && e.status === 402) {
-        toast("You've reached your plan's team limit", {
+        toast(t("team.seatLimit"), {
           description: e.message,
           action: {
             label: "Upgrade",
@@ -103,7 +103,7 @@ export function TeamSettings() {
       setInvites((prev) => prev.filter((i) => i.id !== inv.id));
       toast.success(t("toast.invitationRevoked"));
     } catch {
-      toast.error("Failed to revoke invitation");
+      toast.error(t("team.revokeFailed"));
     }
   };
 
@@ -139,7 +139,7 @@ export function TeamSettings() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="teammate@company.com"
+                placeholder={t("team.emailPlaceholder")}
                 className="pl-9"
               />
             </div>
@@ -153,7 +153,7 @@ export function TeamSettings() {
               ) : (
                 <>
                   <Send className="h-4 w-4" />
-                  Send invite
+                  {t("team.sendInvite")}
                 </>
               )}
             </Button>
@@ -162,7 +162,7 @@ export function TeamSettings() {
           {invites.length > 0 && (
             <div className="mt-5">
               <p className="mb-2 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
-                Pending invitations
+                {t("team.pendingInvitations")}
               </p>
               <div className="space-y-2">
                 {invites.map((inv) => (
@@ -191,7 +191,7 @@ export function TeamSettings() {
                       onClick={() => revoke(inv)}
                     >
                       <X className="h-4 w-4" />
-                      Revoke
+                      {t("team.revoke")}
                     </Button>
                   </div>
                 ))}
@@ -212,11 +212,11 @@ export function TeamSettings() {
         <div className="mt-6">
           {loading ? (
             <div className="py-8 text-center text-[#1c0a0c]/60">
-              Loading members...
+              {t("team.loadingMembers")}
             </div>
           ) : users.length === 0 ? (
             <div className="py-8 text-center text-[#1c0a0c]/60">
-              No team members found.
+              {t("team.noMembers")}
             </div>
           ) : (
             <Table>

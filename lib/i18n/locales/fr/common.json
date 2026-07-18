@@ -116,7 +116,12 @@
     "submit": "Envoyer",
     "learnMore": "En savoir plus",
     "clear": "Effacer",
-    "add": "Ajouter"
+    "add": "Ajouter",
+    "saving": "Enregistrement…",
+    "updating": "Mise à jour…",
+    "remove": "Supprimer",
+    "name": "Nom",
+    "role": "Rôle"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -380,7 +385,17 @@
   "team": {
     "inviteTeammate": "Inviter un coéquipier",
     "teamMembers": "Membres de l'équipe",
-    "expired": "Expiré"
+    "expired": "Expiré",
+    "loadFailed": "Échec du chargement de l'équipe",
+    "inviteCreated": "Invitation créée",
+    "seatLimit": "Vous avez atteint la limite d'équipe de votre forfait",
+    "revokeFailed": "Échec de la révocation de l'invitation",
+    "sendInvite": "Envoyer l'invitation",
+    "pendingInvitations": "Invitations en attente",
+    "revoke": "Révoquer",
+    "loadingMembers": "Chargement des membres…",
+    "noMembers": "Aucun membre d'équipe trouvé.",
+    "emailPlaceholder": "collegue@entreprise.com"
   },
   "role": {
     "owner": "Propriétaire",
@@ -396,11 +411,27 @@
     "addTag": "Étiquette",
     "noneCreated": "Aucune étiquette créée pour le moment.",
     "removeTag": "Supprimer {{name}}",
-    "updateFailed": "Échec de la mise à jour des étiquettes"
+    "updateFailed": "Échec de la mise à jour des étiquettes",
+    "loadFailed": "Échec du chargement des étiquettes",
+    "saveFailed": "Échec de l'enregistrement de l'étiquette",
+    "deleteFailed": "Échec de la suppression de l'étiquette",
+    "subtitle": "Organisez et catégorisez les publications de retours",
+    "newTag": "Nouvelle étiquette",
+    "loading": "Chargement des étiquettes…",
+    "empty": "Aucune étiquette pour le moment. Créez-en une pour catégoriser les retours.",
+    "dialogDesc": "Les étiquettes aident à catégoriser et filtrer les retours.",
+    "namePlaceholder": "p. ex. ui"
   },
   "branding": {
     "title": "Espace de travail et image de marque",
-    "companyLogo": "Logo de l'entreprise"
+    "companyLogo": "Logo de l'entreprise",
+    "loadFailed": "Échec du chargement de l'espace de travail",
+    "logoUploadFailed": "Échec du téléversement du logo",
+    "loading": "Chargement de l'espace de travail…",
+    "noWorkspace": "Aucun espace de travail à gérer.",
+    "subtitle": "Personnalisez l'apparence de votre portail de retours",
+    "logoHint": "Affiché dans l'en-tête de votre tableau public. Un PNG ou SVG carré est idéal.",
+    "uploadLogo": "Téléverser un logo"
   },
   "delete": {
     "dangerZone": "Zone de danger",
@@ -419,7 +450,12 @@
     "current": "Actuel",
     "recommended": "Recommandé",
     "included": "Inclus",
-    "upgradeTo": "Passer à {{plan}}"
+    "upgradeTo": "Passer à {{plan}}",
+    "loadFailed": "Échec du chargement des informations de facturation",
+    "checkoutCancelled": "Paiement annulé.",
+    "checkoutFailed": "Impossible de démarrer le paiement",
+    "portalFailed": "Impossible d'ouvrir le portail de facturation",
+    "redeemHint": "Utilisez un code pour débloquer une remise ou un forfait gratuit."
   },
   "switcher": {
     "addWorkspace": "Ajouter un espace de travail",
@@ -668,5 +704,30 @@
     "marked": "Marqué comme doublon",
     "cleared": "Marque de doublon supprimée",
     "updateFailed": "Échec de la mise à jour du statut de doublon"
+  },
+  "profile": {
+    "loadFailed": "Échec du chargement du profil",
+    "uploadFailed": "Échec du téléversement de l'image",
+    "updateFailed": "Échec de la mise à jour du profil",
+    "passwordTooShort": "Le nouveau mot de passe doit comporter au moins 8 caractères",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordUpdateFailed": "Échec de la mise à jour du mot de passe. Vérifiez votre mot de passe actuel.",
+    "subtitle": "Mettez à jour vos informations personnelles",
+    "changePhoto": "Changer la photo",
+    "passwordSubtitle": "Modifiez le mot de passe de votre compte"
+  },
+  "deleteAccount": {
+    "loadFailed": "Impossible de charger les détails du compte",
+    "button": "Supprimer le compte",
+    "title": "Supprimer définitivement votre compte ?",
+    "warn": "Cette action est irréversible. Veuillez lire attentivement.",
+    "ownedErased": "Tous leurs retours, commentaires, feuille de route et journal des modifications seront effacés, chaque membre perd l'accès et tout abonnement actif est annulé."
+  },
+  "apiStatus": {
+    "checking": "Vérification de la connexion à l'API…",
+    "verifying": "Vérification de la disponibilité de l'API backend",
+    "notAvailable": "API backend indisponible",
+    "startServer": "Veuillez démarrer le serveur d'API backend sur le port 4560",
+    "connected": "API connectée"
   }
 }

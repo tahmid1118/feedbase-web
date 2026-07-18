@@ -116,7 +116,12 @@
     "submit": "Enviar",
     "learnMore": "Más información",
     "clear": "Borrar",
-    "add": "Añadir"
+    "add": "Añadir",
+    "saving": "Guardando…",
+    "updating": "Actualizando…",
+    "remove": "Quitar",
+    "name": "Nombre",
+    "role": "Rol"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -380,7 +385,17 @@
   "team": {
     "inviteTeammate": "Invita a un compañero",
     "teamMembers": "Miembros del equipo",
-    "expired": "Caducado"
+    "expired": "Caducado",
+    "loadFailed": "No se pudo cargar el equipo",
+    "inviteCreated": "Invitación creada",
+    "seatLimit": "Has alcanzado el límite de equipo de tu plan",
+    "revokeFailed": "No se pudo revocar la invitación",
+    "sendInvite": "Enviar invitación",
+    "pendingInvitations": "Invitaciones pendientes",
+    "revoke": "Revocar",
+    "loadingMembers": "Cargando miembros…",
+    "noMembers": "No se encontraron miembros del equipo.",
+    "emailPlaceholder": "companero@empresa.com"
   },
   "role": {
     "owner": "Propietario",
@@ -396,11 +411,27 @@
     "addTag": "Etiqueta",
     "noneCreated": "Aún no se han creado etiquetas.",
     "removeTag": "Quitar {{name}}",
-    "updateFailed": "No se pudieron actualizar las etiquetas"
+    "updateFailed": "No se pudieron actualizar las etiquetas",
+    "loadFailed": "No se pudieron cargar las etiquetas",
+    "saveFailed": "No se pudo guardar la etiqueta",
+    "deleteFailed": "No se pudo eliminar la etiqueta",
+    "subtitle": "Organiza y categoriza las publicaciones de comentarios",
+    "newTag": "Nueva etiqueta",
+    "loading": "Cargando etiquetas…",
+    "empty": "Aún no hay etiquetas. Crea una para empezar a categorizar los comentarios.",
+    "dialogDesc": "Las etiquetas ayudan a categorizar y filtrar los comentarios.",
+    "namePlaceholder": "p. ej. ui"
   },
   "branding": {
     "title": "Espacio de trabajo y marca",
-    "companyLogo": "Logotipo de la empresa"
+    "companyLogo": "Logotipo de la empresa",
+    "loadFailed": "No se pudo cargar el espacio de trabajo",
+    "logoUploadFailed": "No se pudo subir el logotipo",
+    "loading": "Cargando espacio de trabajo…",
+    "noWorkspace": "No hay ningún espacio de trabajo para gestionar.",
+    "subtitle": "Personaliza cómo se ve tu portal de comentarios",
+    "logoHint": "Se muestra en la cabecera de tu tablero público. Un PNG o SVG cuadrado funciona mejor.",
+    "uploadLogo": "Subir logotipo"
   },
   "delete": {
     "dangerZone": "Zona de peligro",
@@ -419,7 +450,12 @@
     "current": "Actual",
     "recommended": "Recomendado",
     "included": "Incluido",
-    "upgradeTo": "Cambiar a {{plan}}"
+    "upgradeTo": "Cambiar a {{plan}}",
+    "loadFailed": "No se pudo cargar la información de facturación",
+    "checkoutCancelled": "Pago cancelado.",
+    "checkoutFailed": "No se pudo iniciar el pago",
+    "portalFailed": "No se pudo abrir el portal de facturación",
+    "redeemHint": "Canjea un código para obtener un descuento o un plan gratuito."
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",
@@ -668,5 +704,30 @@
     "marked": "Marcado como duplicado",
     "cleared": "Marca de duplicado eliminada",
     "updateFailed": "No se pudo actualizar el estado de duplicado"
+  },
+  "profile": {
+    "loadFailed": "No se pudo cargar el perfil",
+    "uploadFailed": "No se pudo subir la imagen",
+    "updateFailed": "No se pudo actualizar el perfil",
+    "passwordTooShort": "La nueva contraseña debe tener al menos 8 caracteres",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "passwordUpdateFailed": "No se pudo actualizar la contraseña. Comprueba tu contraseña actual.",
+    "subtitle": "Actualiza tu información personal",
+    "changePhoto": "Cambiar foto",
+    "passwordSubtitle": "Cambia la contraseña de tu cuenta"
+  },
+  "deleteAccount": {
+    "loadFailed": "No se pudieron cargar los detalles de la cuenta",
+    "button": "Eliminar cuenta",
+    "title": "¿Eliminar tu cuenta permanentemente?",
+    "warn": "Esto no se puede deshacer. Léelo con atención.",
+    "ownedErased": "Se borrarán todos sus comentarios, la hoja de ruta y el registro de cambios, todos los miembros perderán el acceso y se cancelará cualquier suscripción activa."
+  },
+  "apiStatus": {
+    "checking": "Comprobando la conexión con la API…",
+    "verifying": "Verificando la disponibilidad de la API backend",
+    "notAvailable": "API backend no disponible",
+    "startServer": "Inicia el servidor de la API backend en el puerto 4560",
+    "connected": "API conectada"
   }
 }
