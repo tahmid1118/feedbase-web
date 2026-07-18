@@ -45,7 +45,8 @@
     "optional": "opțional",
     "active": "Activ",
     "share": "Distribuiți",
-    "pin": "Fixați"
+    "pin": "Fixați",
+    "status": "Stare"
   },
   "dashboard": {
     "welcomeBack": "Bine ați revenit"
@@ -78,7 +79,45 @@
     "noUsers": "Niciun utilizator.",
     "noWorkspaces": "Niciun spațiu de lucru.",
     "noPromoCodes": "Încă niciun cod promoțional.",
-    "noOffers": "Încă nicio ofertă."
+    "noOffers": "Încă nicio ofertă.",
+    "th": {
+      "workspace": "Spațiu de lucru",
+      "owner": "Proprietar",
+      "plan": "Plan",
+      "members": "Membri",
+      "posts": "Postări",
+      "created": "Creat",
+      "user": "Utilizator",
+      "role": "Rol",
+      "admin": "Administrator",
+      "lastLogin": "Ultima autentificare",
+      "code": "Cod",
+      "benefit": "Beneficiu",
+      "redeemed": "Valorificat",
+      "price": "Preț",
+      "billing": "Facturare",
+      "label": "Etichetă",
+      "window": "Perioadă",
+      "post": "Postare",
+      "author": "Autor",
+      "activity": "Activitate"
+    },
+    "code": "Cod",
+    "percentOff": "Procent reducere",
+    "percentageOff": "Reducere procentuală",
+    "freePlanComp": "Plan gratuit (comp)",
+    "appliesTo": "Se aplică la",
+    "anyPlan": "Orice plan",
+    "months": "Luni",
+    "maxRedemptions": "Valorificări max",
+    "expires": "Expiră",
+    "billingCycle": "Ciclu de facturare",
+    "labelOptional": "Etichetă (opțional)",
+    "startsOptional": "Începe (opțional)",
+    "endsOptional": "Se termină (opțional)",
+    "once": "O dată",
+    "repeating": "Recurent",
+    "forever": "Pentru totdeauna"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Eliminați atașamentul",
     "uploading": "Se încarcă…",
     "addMedia": "Adăugați o fotografie sau un videoclip"
+  },
+  "support": {
+    "selectConversation": "Selectați o conversație pentru a o vizualiza.",
+    "closeChat": "Închideți conversația",
+    "closeThisChat": "Închideți această conversație?",
+    "typeReply": "Introduceți un răspuns…"
   }
 }

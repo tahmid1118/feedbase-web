@@ -94,7 +94,7 @@ export default function AdminAdminsPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">Admins</h2>
+          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.admins")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             Platform operators with full access. Only admins can create admins.
           </p>
@@ -112,9 +112,9 @@ export default function AdminAdminsPage() {
           <table className="w-full min-w-[620px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
-                <th className="px-4 py-3">Admin</th>
-                <th className="px-4 py-3">Last login</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">{t("admin.th.admin")}</th>
+                <th className="px-4 py-3">{t("admin.th.lastLogin")}</th>
+                <th className="px-4 py-3">{t("common.status")}</th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>
@@ -190,7 +190,7 @@ export default function AdminAdminsPage() {
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="a-name">Full name</Label>
+              <Label htmlFor="a-name">{t("auth.fullName")}</Label>
               <Input
                 id="a-name"
                 value={form.fullName}
@@ -198,7 +198,7 @@ export default function AdminAdminsPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="a-email">Email</Label>
+              <Label htmlFor="a-email">{t("auth.email")}</Label>
               <Input
                 id="a-email"
                 type="email"
@@ -207,7 +207,7 @@ export default function AdminAdminsPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="a-pw">Password</Label>
+              <Label htmlFor="a-pw">{t("auth.password")}</Label>
               <Input
                 id="a-pw"
                 type="text"

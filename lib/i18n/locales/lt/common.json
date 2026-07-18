@@ -45,7 +45,8 @@
     "optional": "nebūtina",
     "active": "Aktyvus",
     "share": "Bendrinti",
-    "pin": "Prisegti"
+    "pin": "Prisegti",
+    "status": "Būsena"
   },
   "dashboard": {
     "welcomeBack": "Sveiki sugrįžę"
@@ -78,7 +79,45 @@
     "noUsers": "Nėra vartotojų.",
     "noWorkspaces": "Nėra darbo sričių.",
     "noPromoCodes": "Kol kas nėra reklamos kodų.",
-    "noOffers": "Kol kas nėra pasiūlymų."
+    "noOffers": "Kol kas nėra pasiūlymų.",
+    "th": {
+      "workspace": "Darbo sritis",
+      "owner": "Savininkas",
+      "plan": "Planas",
+      "members": "Nariai",
+      "posts": "Įrašai",
+      "created": "Sukurta",
+      "user": "Vartotojas",
+      "role": "Vaidmuo",
+      "admin": "Administratorius",
+      "lastLogin": "Paskutinis prisijungimas",
+      "code": "Kodas",
+      "benefit": "Nauda",
+      "redeemed": "Panaudota",
+      "price": "Kaina",
+      "billing": "Atsiskaitymas",
+      "label": "Etiketė",
+      "window": "Laikotarpis",
+      "post": "Įrašas",
+      "author": "Autorius",
+      "activity": "Veikla"
+    },
+    "code": "Kodas",
+    "percentOff": "Nuolaidos procentas",
+    "percentageOff": "Procentinė nuolaida",
+    "freePlanComp": "Nemokamas planas (comp)",
+    "appliesTo": "Taikoma",
+    "anyPlan": "Bet koks planas",
+    "months": "Mėnesiai",
+    "maxRedemptions": "Maks. panaudojimų",
+    "expires": "Baigiasi",
+    "billingCycle": "Atsiskaitymo ciklas",
+    "labelOptional": "Etiketė (nebūtina)",
+    "startsOptional": "Prasideda (nebūtina)",
+    "endsOptional": "Baigiasi (nebūtina)",
+    "once": "Vieną kartą",
+    "repeating": "Pasikartojantis",
+    "forever": "Amžinai"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Pašalinti priedą",
     "uploading": "Įkeliama…",
     "addMedia": "Pridėti nuotrauką ar vaizdo įrašą"
+  },
+  "support": {
+    "selectConversation": "Pasirinkite pokalbį, kad jį peržiūrėtumėte.",
+    "closeChat": "Uždaryti pokalbį",
+    "closeThisChat": "Uždaryti šį pokalbį?",
+    "typeReply": "Įveskite atsakymą…"
   }
 }

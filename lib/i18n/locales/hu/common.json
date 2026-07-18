@@ -45,7 +45,8 @@
     "optional": "opcionális",
     "active": "Aktív",
     "share": "Megosztás",
-    "pin": "Rögzítés"
+    "pin": "Rögzítés",
+    "status": "Állapot"
   },
   "dashboard": {
     "welcomeBack": "Üdvözöljük újra"
@@ -78,7 +79,45 @@
     "noUsers": "Nincsenek felhasználók.",
     "noWorkspaces": "Nincsenek munkaterületek.",
     "noPromoCodes": "Még nincsenek promóciós kódok.",
-    "noOffers": "Még nincsenek ajánlatok."
+    "noOffers": "Még nincsenek ajánlatok.",
+    "th": {
+      "workspace": "Munkaterület",
+      "owner": "Tulajdonos",
+      "plan": "Csomag",
+      "members": "Tagok",
+      "posts": "Bejegyzések",
+      "created": "Létrehozva",
+      "user": "Felhasználó",
+      "role": "Szerep",
+      "admin": "Adminisztrátor",
+      "lastLogin": "Utolsó bejelentkezés",
+      "code": "Kód",
+      "benefit": "Előny",
+      "redeemed": "Beváltva",
+      "price": "Ár",
+      "billing": "Számlázás",
+      "label": "Címke",
+      "window": "Időszak",
+      "post": "Bejegyzés",
+      "author": "Szerző",
+      "activity": "Tevékenység"
+    },
+    "code": "Kód",
+    "percentOff": "Kedvezmény százaléka",
+    "percentageOff": "Százalékos kedvezmény",
+    "freePlanComp": "Ingyenes csomag (comp)",
+    "appliesTo": "Erre vonatkozik",
+    "anyPlan": "Bármely csomag",
+    "months": "Hónapok",
+    "maxRedemptions": "Max. beváltás",
+    "expires": "Lejár",
+    "billingCycle": "Számlázási ciklus",
+    "labelOptional": "Címke (opcionális)",
+    "startsOptional": "Kezdet (opcionális)",
+    "endsOptional": "Vége (opcionális)",
+    "once": "Egyszer",
+    "repeating": "Ismétlődő",
+    "forever": "Örökre"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Melléklet eltávolítása",
     "uploading": "Feltöltés…",
     "addMedia": "Fénykép vagy videó hozzáadása"
+  },
+  "support": {
+    "selectConversation": "Válasszon egy beszélgetést a megtekintéshez.",
+    "closeChat": "Csevegés bezárása",
+    "closeThisChat": "Bezárja ezt a csevegést?",
+    "typeReply": "Írjon választ…"
   }
 }

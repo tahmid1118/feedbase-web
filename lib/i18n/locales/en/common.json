@@ -37,7 +37,8 @@
     "optional": "optional",
     "active": "Active",
     "share": "Share",
-    "pin": "Pin"
+    "pin": "Pin",
+    "status": "Status"
   },
   "landing": {
     "hero": {
@@ -146,7 +147,45 @@
     "noUsers": "No users.",
     "noWorkspaces": "No workspaces.",
     "noPromoCodes": "No promo codes yet.",
-    "noOffers": "No offers yet."
+    "noOffers": "No offers yet.",
+    "th": {
+      "workspace": "Workspace",
+      "owner": "Owner",
+      "plan": "Plan",
+      "members": "Members",
+      "posts": "Posts",
+      "created": "Created",
+      "user": "User",
+      "role": "Role",
+      "admin": "Admin",
+      "lastLogin": "Last login",
+      "code": "Code",
+      "benefit": "Benefit",
+      "redeemed": "Redeemed",
+      "price": "Price",
+      "billing": "Billing",
+      "label": "Label",
+      "window": "Window",
+      "post": "Post",
+      "author": "Author",
+      "activity": "Activity"
+    },
+    "code": "Code",
+    "percentOff": "Percent off",
+    "percentageOff": "Percentage off",
+    "freePlanComp": "Free plan (comp)",
+    "appliesTo": "Applies to",
+    "anyPlan": "Any plan",
+    "months": "Months",
+    "maxRedemptions": "Max redemptions",
+    "expires": "Expires",
+    "billingCycle": "Billing cycle",
+    "labelOptional": "Label (optional)",
+    "startsOptional": "Starts (optional)",
+    "endsOptional": "Ends (optional)",
+    "once": "Once",
+    "repeating": "Repeating",
+    "forever": "Forever"
   },
   "auth": {
     "login": {
@@ -354,5 +393,11 @@
     "remove": "Remove attachment",
     "uploading": "Uploading…",
     "addMedia": "Add photo or video"
+  },
+  "support": {
+    "selectConversation": "Select a conversation to view it.",
+    "closeChat": "Close chat",
+    "closeThisChat": "Close this chat?",
+    "typeReply": "Type a reply…"
   }
 }

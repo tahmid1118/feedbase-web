@@ -45,7 +45,8 @@
     "optional": "facoltativo",
     "active": "Attivo",
     "share": "Condividi",
-    "pin": "Fissa"
+    "pin": "Fissa",
+    "status": "Stato"
   },
   "dashboard": {
     "welcomeBack": "Bentornato"
@@ -78,7 +79,45 @@
     "noUsers": "Nessun utente.",
     "noWorkspaces": "Nessuno spazio di lavoro.",
     "noPromoCodes": "Ancora nessun codice promozionale.",
-    "noOffers": "Ancora nessuna offerta."
+    "noOffers": "Ancora nessuna offerta.",
+    "th": {
+      "workspace": "Spazio di lavoro",
+      "owner": "Proprietario",
+      "plan": "Piano",
+      "members": "Membri",
+      "posts": "Post",
+      "created": "Creato",
+      "user": "Utente",
+      "role": "Ruolo",
+      "admin": "Amministratore",
+      "lastLogin": "Ultimo accesso",
+      "code": "Codice",
+      "benefit": "Vantaggio",
+      "redeemed": "Riscattato",
+      "price": "Prezzo",
+      "billing": "Fatturazione",
+      "label": "Etichetta",
+      "window": "Periodo",
+      "post": "Post",
+      "author": "Autore",
+      "activity": "Attività"
+    },
+    "code": "Codice",
+    "percentOff": "Percentuale di sconto",
+    "percentageOff": "Sconto percentuale",
+    "freePlanComp": "Piano gratuito (comp)",
+    "appliesTo": "Si applica a",
+    "anyPlan": "Qualsiasi piano",
+    "months": "Mesi",
+    "maxRedemptions": "Riscatti max",
+    "expires": "Scade",
+    "billingCycle": "Ciclo di fatturazione",
+    "labelOptional": "Etichetta (facoltativa)",
+    "startsOptional": "Inizia (facoltativo)",
+    "endsOptional": "Termina (facoltativo)",
+    "once": "Una volta",
+    "repeating": "Ricorrente",
+    "forever": "Per sempre"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Rimuovi allegato",
     "uploading": "Caricamento…",
     "addMedia": "Aggiungi foto o video"
+  },
+  "support": {
+    "selectConversation": "Seleziona una conversazione per visualizzarla.",
+    "closeChat": "Chiudi chat",
+    "closeThisChat": "Chiudere questa chat?",
+    "typeReply": "Scrivi una risposta…"
   }
 }

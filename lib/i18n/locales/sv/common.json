@@ -45,7 +45,8 @@
     "optional": "valfritt",
     "active": "Aktiv",
     "share": "Dela",
-    "pin": "Fäst"
+    "pin": "Fäst",
+    "status": "Status"
   },
   "dashboard": {
     "welcomeBack": "Välkommen tillbaka"
@@ -78,7 +79,45 @@
     "noUsers": "Inga användare.",
     "noWorkspaces": "Inga arbetsytor.",
     "noPromoCodes": "Inga kampanjkoder än.",
-    "noOffers": "Inga erbjudanden än."
+    "noOffers": "Inga erbjudanden än.",
+    "th": {
+      "workspace": "Arbetsyta",
+      "owner": "Ägare",
+      "plan": "Plan",
+      "members": "Medlemmar",
+      "posts": "Inlägg",
+      "created": "Skapad",
+      "user": "Användare",
+      "role": "Roll",
+      "admin": "Administratör",
+      "lastLogin": "Senaste inloggning",
+      "code": "Kod",
+      "benefit": "Förmån",
+      "redeemed": "Inlöst",
+      "price": "Pris",
+      "billing": "Fakturering",
+      "label": "Etikett",
+      "window": "Period",
+      "post": "Inlägg",
+      "author": "Författare",
+      "activity": "Aktivitet"
+    },
+    "code": "Kod",
+    "percentOff": "Procent rabatt",
+    "percentageOff": "Procentuell rabatt",
+    "freePlanComp": "Gratis plan (comp)",
+    "appliesTo": "Gäller för",
+    "anyPlan": "Valfri plan",
+    "months": "Månader",
+    "maxRedemptions": "Max inlösningar",
+    "expires": "Upphör",
+    "billingCycle": "Faktureringscykel",
+    "labelOptional": "Etikett (valfritt)",
+    "startsOptional": "Börjar (valfritt)",
+    "endsOptional": "Slutar (valfritt)",
+    "once": "En gång",
+    "repeating": "Återkommande",
+    "forever": "För alltid"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Ta bort bilaga",
     "uploading": "Laddar upp…",
     "addMedia": "Lägg till foto eller video"
+  },
+  "support": {
+    "selectConversation": "Välj en konversation för att visa den.",
+    "closeChat": "Stäng chatt",
+    "closeThisChat": "Stäng denna chatt?",
+    "typeReply": "Skriv ett svar…"
   }
 }

@@ -45,7 +45,8 @@
     "optional": "optional",
     "active": "Aktiv",
     "share": "Teilen",
-    "pin": "Anheften"
+    "pin": "Anheften",
+    "status": "Status"
   },
   "dashboard": {
     "welcomeBack": "Willkommen zurück"
@@ -78,7 +79,45 @@
     "noUsers": "Keine Benutzer.",
     "noWorkspaces": "Keine Arbeitsbereiche.",
     "noPromoCodes": "Noch keine Aktionscodes.",
-    "noOffers": "Noch keine Angebote."
+    "noOffers": "Noch keine Angebote.",
+    "th": {
+      "workspace": "Arbeitsbereich",
+      "owner": "Eigentümer",
+      "plan": "Tarif",
+      "members": "Mitglieder",
+      "posts": "Beiträge",
+      "created": "Erstellt",
+      "user": "Benutzer",
+      "role": "Rolle",
+      "admin": "Administrator",
+      "lastLogin": "Letzte Anmeldung",
+      "code": "Code",
+      "benefit": "Vorteil",
+      "redeemed": "Eingelöst",
+      "price": "Preis",
+      "billing": "Abrechnung",
+      "label": "Bezeichnung",
+      "window": "Zeitraum",
+      "post": "Beitrag",
+      "author": "Autor",
+      "activity": "Aktivität"
+    },
+    "code": "Code",
+    "percentOff": "Prozent Rabatt",
+    "percentageOff": "Prozentualer Rabatt",
+    "freePlanComp": "Kostenloser Tarif (comp)",
+    "appliesTo": "Gilt für",
+    "anyPlan": "Jeder Tarif",
+    "months": "Monate",
+    "maxRedemptions": "Max. Einlösungen",
+    "expires": "Läuft ab",
+    "billingCycle": "Abrechnungszeitraum",
+    "labelOptional": "Bezeichnung (optional)",
+    "startsOptional": "Beginn (optional)",
+    "endsOptional": "Ende (optional)",
+    "once": "Einmalig",
+    "repeating": "Wiederkehrend",
+    "forever": "Für immer"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Anhang entfernen",
     "uploading": "Wird hochgeladen…",
     "addMedia": "Foto oder Video hinzufügen"
+  },
+  "support": {
+    "selectConversation": "Wählen Sie eine Unterhaltung, um sie anzuzeigen.",
+    "closeChat": "Chat schließen",
+    "closeThisChat": "Diesen Chat schließen?",
+    "typeReply": "Antwort eingeben…"
   }
 }

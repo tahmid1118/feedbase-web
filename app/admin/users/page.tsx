@@ -112,7 +112,7 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">Users</h2>
+        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.users")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           Every user across all workspaces. Change roles, reset passwords, or remove.
         </p>
@@ -144,10 +144,10 @@ export default function AdminUsersPage() {
           <table className="w-full min-w-[780px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
-                <th className="px-4 py-3">User</th>
-                <th className="px-4 py-3">Workspace</th>
-                <th className="px-4 py-3">Role</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">{t("admin.th.user")}</th>
+                <th className="px-4 py-3">{t("admin.th.workspace")}</th>
+                <th className="px-4 py-3">{t("admin.th.role")}</th>
+                <th className="px-4 py-3">{t("common.status")}</th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>

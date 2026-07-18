@@ -99,7 +99,7 @@ export default function AdminPromoCodesPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">Promo Codes</h2>
+          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.promoCodes")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             Generate discount and free-plan codes to share with customers.
           </p>
@@ -119,11 +119,11 @@ export default function AdminPromoCodesPage() {
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
-                <th className="px-4 py-3">Code</th>
-                <th className="px-4 py-3">Benefit</th>
+                <th className="px-4 py-3">{t("admin.th.code")}</th>
+                <th className="px-4 py-3">{t("admin.th.benefit")}</th>
                 <th className="px-4 py-3">{t("admin.duration")}</th>
-                <th className="px-4 py-3">Redeemed</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">{t("admin.th.redeemed")}</th>
+                <th className="px-4 py-3">{t("common.status")}</th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>
@@ -178,7 +178,7 @@ export default function AdminPromoCodesPage() {
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="p-code">Code</Label>
+              <Label htmlFor="p-code">{t("admin.code")}</Label>
               <Input
                 id="p-code"
                 value={form.code}
@@ -189,14 +189,14 @@ export default function AdminPromoCodesPage() {
             </div>
 
             <div className="space-y-2">
-              <Label>Type</Label>
+              <Label>{t("portal.type")}</Label>
               <Select value={form.type} onValueChange={(v) => set({ type: v as CreatePromoInput["type"] })}>
                 <SelectTrigger className="w-full">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="percent_off">Percentage off</SelectItem>
-                  <SelectItem value="free_plan">Free plan (comp)</SelectItem>
+                  <SelectItem value="percent_off">{t("admin.percentageOff")}</SelectItem>
+                  <SelectItem value="free_plan">{t("admin.freePlanComp")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -204,7 +204,7 @@ export default function AdminPromoCodesPage() {
             {form.type === "percent_off" ? (
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-2">
-                  <Label htmlFor="p-pct">Percent off</Label>
+                  <Label htmlFor="p-pct">{t("admin.percentOff")}</Label>
                   <Input
                     id="p-pct"
                     type="number"
@@ -215,13 +215,13 @@ export default function AdminPromoCodesPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Applies to</Label>
+                  <Label>{t("admin.appliesTo")}</Label>
                   <Select value={form.appliesToPlan} onValueChange={(v) => set({ appliesToPlan: v })}>
                     <SelectTrigger className="w-full capitalize">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="any">Any plan</SelectItem>
+                      <SelectItem value="any">{t("admin.anyPlan")}</SelectItem>
                       <SelectItem value="pro">Pro</SelectItem>
                       <SelectItem value="business">Business</SelectItem>
                     </SelectContent>
@@ -230,7 +230,7 @@ export default function AdminPromoCodesPage() {
               </div>
             ) : (
               <div className="space-y-2">
-                <Label>Grant plan</Label>
+                <Label>{t("admin.grantPlan")}</Label>
                 <Select value={form.planGrant} onValueChange={(v) => set({ planGrant: v })}>
                   <SelectTrigger className="w-full capitalize">
                     <SelectValue />
@@ -251,15 +251,15 @@ export default function AdminPromoCodesPage() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="once">Once</SelectItem>
-                    <SelectItem value="repeating">Repeating</SelectItem>
-                    <SelectItem value="forever">Forever</SelectItem>
+                    <SelectItem value="once">{t("admin.once")}</SelectItem>
+                    <SelectItem value="repeating">{t("admin.repeating")}</SelectItem>
+                    <SelectItem value="forever">{t("admin.forever")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               {form.duration === "repeating" && (
                 <div className="space-y-2">
-                  <Label htmlFor="p-months">Months</Label>
+                  <Label htmlFor="p-months">{t("admin.months")}</Label>
                   <Input
                     id="p-months"
                     type="number"
@@ -273,7 +273,7 @@ export default function AdminPromoCodesPage() {
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="p-max">Max redemptions</Label>
+                <Label htmlFor="p-max">{t("admin.maxRedemptions")}</Label>
                 <Input
                   id="p-max"
                   type="number"
@@ -286,7 +286,7 @@ export default function AdminPromoCodesPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="p-exp">Expires</Label>
+                <Label htmlFor="p-exp">{t("admin.expires")}</Label>
                 <Input
                   id="p-exp"
                   type="date"

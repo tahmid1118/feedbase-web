@@ -45,7 +45,8 @@
     "optional": "neobligāti",
     "active": "Aktīvs",
     "share": "Kopīgot",
-    "pin": "Piespraust"
+    "pin": "Piespraust",
+    "status": "Statuss"
   },
   "dashboard": {
     "welcomeBack": "Laipni lūdzam atpakaļ"
@@ -78,7 +79,45 @@
     "noUsers": "Nav lietotāju.",
     "noWorkspaces": "Nav darbvietu.",
     "noPromoCodes": "Vēl nav akcijas kodu.",
-    "noOffers": "Vēl nav piedāvājumu."
+    "noOffers": "Vēl nav piedāvājumu.",
+    "th": {
+      "workspace": "Darbvieta",
+      "owner": "Īpašnieks",
+      "plan": "Plāns",
+      "members": "Locekļi",
+      "posts": "Ieraksti",
+      "created": "Izveidots",
+      "user": "Lietotājs",
+      "role": "Loma",
+      "admin": "Administrators",
+      "lastLogin": "Pēdējā pieteikšanās",
+      "code": "Kods",
+      "benefit": "Priekšrocība",
+      "redeemed": "Izmantots",
+      "price": "Cena",
+      "billing": "Norēķini",
+      "label": "Etiķete",
+      "window": "Periods",
+      "post": "Ieraksts",
+      "author": "Autors",
+      "activity": "Aktivitāte"
+    },
+    "code": "Kods",
+    "percentOff": "Atlaides procents",
+    "percentageOff": "Procentuālā atlaide",
+    "freePlanComp": "Bezmaksas plāns (comp)",
+    "appliesTo": "Attiecas uz",
+    "anyPlan": "Jebkurš plāns",
+    "months": "Mēneši",
+    "maxRedemptions": "Maks. izmantošanas",
+    "expires": "Beidzas",
+    "billingCycle": "Norēķinu cikls",
+    "labelOptional": "Etiķete (neobligāti)",
+    "startsOptional": "Sākas (neobligāti)",
+    "endsOptional": "Beidzas (neobligāti)",
+    "once": "Vienreiz",
+    "repeating": "Atkārtojošs",
+    "forever": "Mūžīgi"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Noņemt pielikumu",
     "uploading": "Augšupielāde…",
     "addMedia": "Pievienot fotoattēlu vai video"
+  },
+  "support": {
+    "selectConversation": "Atlasiet sarunu, lai to skatītu.",
+    "closeChat": "Aizvērt tērzēšanu",
+    "closeThisChat": "Aizvērt šo tērzēšanu?",
+    "typeReply": "Ierakstiet atbildi…"
   }
 }

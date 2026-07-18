@@ -45,7 +45,8 @@
     "optional": "valgfrit",
     "active": "Aktiv",
     "share": "Del",
-    "pin": "Fastgør"
+    "pin": "Fastgør",
+    "status": "Status"
   },
   "dashboard": {
     "welcomeBack": "Velkommen tilbage"
@@ -78,7 +79,45 @@
     "noUsers": "Ingen brugere.",
     "noWorkspaces": "Ingen arbejdsområder.",
     "noPromoCodes": "Ingen rabatkoder endnu.",
-    "noOffers": "Ingen tilbud endnu."
+    "noOffers": "Ingen tilbud endnu.",
+    "th": {
+      "workspace": "Arbejdsområde",
+      "owner": "Ejer",
+      "plan": "Plan",
+      "members": "Medlemmer",
+      "posts": "Opslag",
+      "created": "Oprettet",
+      "user": "Bruger",
+      "role": "Rolle",
+      "admin": "Administrator",
+      "lastLogin": "Seneste login",
+      "code": "Kode",
+      "benefit": "Fordel",
+      "redeemed": "Indløst",
+      "price": "Pris",
+      "billing": "Fakturering",
+      "label": "Etiket",
+      "window": "Periode",
+      "post": "Opslag",
+      "author": "Forfatter",
+      "activity": "Aktivitet"
+    },
+    "code": "Kode",
+    "percentOff": "Procent rabat",
+    "percentageOff": "Procentvis rabat",
+    "freePlanComp": "Gratis plan (comp)",
+    "appliesTo": "Gælder for",
+    "anyPlan": "Enhver plan",
+    "months": "Måneder",
+    "maxRedemptions": "Maks. indløsninger",
+    "expires": "Udløber",
+    "billingCycle": "Faktureringscyklus",
+    "labelOptional": "Etiket (valgfrit)",
+    "startsOptional": "Starter (valgfrit)",
+    "endsOptional": "Slutter (valgfrit)",
+    "once": "Én gang",
+    "repeating": "Gentagende",
+    "forever": "For altid"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Fjern vedhæftning",
     "uploading": "Uploader…",
     "addMedia": "Tilføj foto eller video"
+  },
+  "support": {
+    "selectConversation": "Vælg en samtale for at se den.",
+    "closeChat": "Luk chat",
+    "closeThisChat": "Luk denne chat?",
+    "typeReply": "Skriv et svar…"
   }
 }

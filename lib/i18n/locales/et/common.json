@@ -45,7 +45,8 @@
     "optional": "valikuline",
     "active": "Aktiivne",
     "share": "Jaga",
-    "pin": "Kinnita"
+    "pin": "Kinnita",
+    "status": "Olek"
   },
   "dashboard": {
     "welcomeBack": "Tere tulemast tagasi"
@@ -78,7 +79,45 @@
     "noUsers": "Kasutajaid pole.",
     "noWorkspaces": "Tööruume pole.",
     "noPromoCodes": "Sooduskoode veel pole.",
-    "noOffers": "Pakkumisi veel pole."
+    "noOffers": "Pakkumisi veel pole.",
+    "th": {
+      "workspace": "Tööruum",
+      "owner": "Omanik",
+      "plan": "Plaan",
+      "members": "Liikmed",
+      "posts": "Postitused",
+      "created": "Loodud",
+      "user": "Kasutaja",
+      "role": "Roll",
+      "admin": "Administraator",
+      "lastLogin": "Viimane sisselogimine",
+      "code": "Kood",
+      "benefit": "Hüve",
+      "redeemed": "Lunastatud",
+      "price": "Hind",
+      "billing": "Arveldus",
+      "label": "Silt",
+      "window": "Periood",
+      "post": "Postitus",
+      "author": "Autor",
+      "activity": "Tegevus"
+    },
+    "code": "Kood",
+    "percentOff": "Allahindluse protsent",
+    "percentageOff": "Protsentuaalne allahindlus",
+    "freePlanComp": "Tasuta plaan (comp)",
+    "appliesTo": "Kehtib",
+    "anyPlan": "Iga plaan",
+    "months": "Kuud",
+    "maxRedemptions": "Maks. lunastusi",
+    "expires": "Aegub",
+    "billingCycle": "Arveldustsükkel",
+    "labelOptional": "Silt (valikuline)",
+    "startsOptional": "Algab (valikuline)",
+    "endsOptional": "Lõpeb (valikuline)",
+    "once": "Üks kord",
+    "repeating": "Korduv",
+    "forever": "Igavesti"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Eemalda manus",
     "uploading": "Üleslaadimine…",
     "addMedia": "Lisa foto või video"
+  },
+  "support": {
+    "selectConversation": "Valige vestlus selle vaatamiseks.",
+    "closeChat": "Sulge vestlus",
+    "closeThisChat": "Sulgeda see vestlus?",
+    "typeReply": "Kirjutage vastus…"
   }
 }

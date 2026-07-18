@@ -45,7 +45,8 @@
     "optional": "opcional",
     "active": "Ativo",
     "share": "Partilhar",
-    "pin": "Fixar"
+    "pin": "Fixar",
+    "status": "Estado"
   },
   "dashboard": {
     "welcomeBack": "Bem-vindo de volta"
@@ -78,7 +79,45 @@
     "noUsers": "Sem utilizadores.",
     "noWorkspaces": "Sem espaços de trabalho.",
     "noPromoCodes": "Ainda sem códigos promocionais.",
-    "noOffers": "Ainda sem ofertas."
+    "noOffers": "Ainda sem ofertas.",
+    "th": {
+      "workspace": "Espaço de trabalho",
+      "owner": "Proprietário",
+      "plan": "Plano",
+      "members": "Membros",
+      "posts": "Publicações",
+      "created": "Criado",
+      "user": "Utilizador",
+      "role": "Função",
+      "admin": "Administrador",
+      "lastLogin": "Último início de sessão",
+      "code": "Código",
+      "benefit": "Benefício",
+      "redeemed": "Resgatado",
+      "price": "Preço",
+      "billing": "Faturação",
+      "label": "Etiqueta",
+      "window": "Período",
+      "post": "Publicação",
+      "author": "Autor",
+      "activity": "Atividade"
+    },
+    "code": "Código",
+    "percentOff": "Percentagem de desconto",
+    "percentageOff": "Desconto percentual",
+    "freePlanComp": "Plano gratuito (comp)",
+    "appliesTo": "Aplica-se a",
+    "anyPlan": "Qualquer plano",
+    "months": "Meses",
+    "maxRedemptions": "Máx. resgates",
+    "expires": "Expira",
+    "billingCycle": "Ciclo de faturação",
+    "labelOptional": "Etiqueta (opcional)",
+    "startsOptional": "Início (opcional)",
+    "endsOptional": "Fim (opcional)",
+    "once": "Uma vez",
+    "repeating": "Recorrente",
+    "forever": "Para sempre"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Remover anexo",
     "uploading": "A carregar…",
     "addMedia": "Adicionar foto ou vídeo"
+  },
+  "support": {
+    "selectConversation": "Selecione uma conversa para a ver.",
+    "closeChat": "Fechar conversa",
+    "closeThisChat": "Fechar esta conversa?",
+    "typeReply": "Escreva uma resposta…"
   }
 }

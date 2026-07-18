@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { adminApi, type AdminPost, type AdminComment } from "@/lib/api";
 import { Card } from "@/components/ui/card";
+import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -58,6 +59,7 @@ const byPinnedThenNewest = (a: AdminPost, b: AdminPost) =>
   new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
 
 export default function AdminWorkspacePostsPage() {
+  const { t } = useTranslation();
   const params = useParams();
   const id = Number(params.id);
   const { data: session } = useSession();
@@ -234,11 +236,11 @@ export default function AdminWorkspacePostsPage() {
           <table className="w-full min-w-[820px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
-                <th className="px-4 py-3">Post</th>
-                <th className="px-4 py-3">Author</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Activity</th>
-                <th className="px-4 py-3">Created</th>
+                <th className="px-4 py-3">{t("admin.th.post")}</th>
+                <th className="px-4 py-3">{t("admin.th.author")}</th>
+                <th className="px-4 py-3">{t("common.status")}</th>
+                <th className="px-4 py-3">{t("admin.th.activity")}</th>
+                <th className="px-4 py-3">{t("admin.th.created")}</th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>

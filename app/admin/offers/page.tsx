@@ -111,7 +111,7 @@ export default function AdminOffersPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">Offers</h2>
+          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.offers")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             Put a promotional price on a paid plan. Active offers show a discounted
             price in every workspace&apos;s Billing tab and apply at checkout.
@@ -132,12 +132,12 @@ export default function AdminOffersPage() {
           <table className="w-full min-w-[720px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
-                <th className="px-4 py-3">Plan</th>
-                <th className="px-4 py-3">Billing</th>
-                <th className="px-4 py-3">Price</th>
-                <th className="px-4 py-3">Label</th>
-                <th className="px-4 py-3">Window</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">{t("admin.th.plan")}</th>
+                <th className="px-4 py-3">{t("admin.th.billing")}</th>
+                <th className="px-4 py-3">{t("admin.th.price")}</th>
+                <th className="px-4 py-3">{t("admin.th.label")}</th>
+                <th className="px-4 py-3">{t("admin.th.window")}</th>
+                <th className="px-4 py-3">{t("common.status")}</th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>
@@ -199,11 +199,11 @@ export default function AdminOffersPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[440px]">
           <DialogHeader>
-            <DialogTitle>New offer</DialogTitle>
+            <DialogTitle>{t("admin.newOffer")}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label>Plan</Label>
+              <Label>{t("admin.th.plan")}</Label>
               <Select
                 value={form.plan}
                 onValueChange={(v) => {
@@ -221,7 +221,7 @@ export default function AdminOffersPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label>Billing cycle</Label>
+              <Label>{t("admin.billingCycle")}</Label>
               <Select
                 value={form.interval}
                 onValueChange={(v) => {
@@ -258,7 +258,7 @@ export default function AdminOffersPage() {
               </p>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="o-label">Label (optional)</Label>
+              <Label htmlFor="o-label">{t("admin.labelOptional")}</Label>
               <Input
                 id="o-label"
                 value={form.label ?? ""}
@@ -268,7 +268,7 @@ export default function AdminOffersPage() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label htmlFor="o-start">Starts (optional)</Label>
+                <Label htmlFor="o-start">{t("admin.startsOptional")}</Label>
                 <Input
                   id="o-start"
                   type="datetime-local"
@@ -277,7 +277,7 @@ export default function AdminOffersPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="o-end">Ends (optional)</Label>
+                <Label htmlFor="o-end">{t("admin.endsOptional")}</Label>
                 <Input
                   id="o-end"
                   type="datetime-local"

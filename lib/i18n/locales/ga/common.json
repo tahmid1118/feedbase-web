@@ -45,7 +45,8 @@
     "optional": "roghnach",
     "active": "Gníomhach",
     "share": "Roinn",
-    "pin": "Bioráil"
+    "pin": "Bioráil",
+    "status": "Stádas"
   },
   "dashboard": {
     "welcomeBack": "Fáilte ar ais"
@@ -78,7 +79,45 @@
     "noUsers": "Níl aon úsáideoir ann.",
     "noWorkspaces": "Níl aon spás oibre ann.",
     "noPromoCodes": "Níl aon chód bolscaireachta ann fós.",
-    "noOffers": "Níl aon tairiscint ann fós."
+    "noOffers": "Níl aon tairiscint ann fós.",
+    "th": {
+      "workspace": "Spás oibre",
+      "owner": "Úinéir",
+      "plan": "Plean",
+      "members": "Baill",
+      "posts": "Postálacha",
+      "created": "Cruthaithe",
+      "user": "Úsáideoir",
+      "role": "Ról",
+      "admin": "Riarthóir",
+      "lastLogin": "Logáil isteach dheireanach",
+      "code": "Cód",
+      "benefit": "Sochar",
+      "redeemed": "Fuascailte",
+      "price": "Praghas",
+      "billing": "Billeáil",
+      "label": "Lipéad",
+      "window": "Fuinneog",
+      "post": "Postáil",
+      "author": "Údar",
+      "activity": "Gníomhaíocht"
+    },
+    "code": "Cód",
+    "percentOff": "Céatadán lascaine",
+    "percentageOff": "Lascaine chéatadánach",
+    "freePlanComp": "Plean saor (comp)",
+    "appliesTo": "Baineann le",
+    "anyPlan": "Aon phlean",
+    "months": "Míonna",
+    "maxRedemptions": "Uas-fhuascailtí",
+    "expires": "As feidhm",
+    "billingCycle": "Timthriall billeála",
+    "labelOptional": "Lipéad (roghnach)",
+    "startsOptional": "Tosaíonn (roghnach)",
+    "endsOptional": "Críochnaíonn (roghnach)",
+    "once": "Uair amháin",
+    "repeating": "Athtarlaitheach",
+    "forever": "Go deo"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Bain ceangaltán",
     "uploading": "Á uaslódáil…",
     "addMedia": "Cuir grianghraf nó físeán leis"
+  },
+  "support": {
+    "selectConversation": "Roghnaigh comhrá chun é a fheiceáil.",
+    "closeChat": "Dún comhrá",
+    "closeThisChat": "Dún an comhrá seo?",
+    "typeReply": "Clóscríobh freagra…"
   }
 }

@@ -45,7 +45,8 @@
     "optional": "opcional",
     "active": "Activo",
     "share": "Compartir",
-    "pin": "Fijar"
+    "pin": "Fijar",
+    "status": "Estado"
   },
   "dashboard": {
     "welcomeBack": "Bienvenido de nuevo"
@@ -78,7 +79,45 @@
     "noUsers": "Sin usuarios.",
     "noWorkspaces": "Sin espacios de trabajo.",
     "noPromoCodes": "Aún no hay códigos promocionales.",
-    "noOffers": "Aún no hay ofertas."
+    "noOffers": "Aún no hay ofertas.",
+    "th": {
+      "workspace": "Espacio de trabajo",
+      "owner": "Propietario",
+      "plan": "Plan",
+      "members": "Miembros",
+      "posts": "Publicaciones",
+      "created": "Creado",
+      "user": "Usuario",
+      "role": "Rol",
+      "admin": "Administrador",
+      "lastLogin": "Último acceso",
+      "code": "Código",
+      "benefit": "Beneficio",
+      "redeemed": "Canjeado",
+      "price": "Precio",
+      "billing": "Facturación",
+      "label": "Etiqueta",
+      "window": "Periodo",
+      "post": "Publicación",
+      "author": "Autor",
+      "activity": "Actividad"
+    },
+    "code": "Código",
+    "percentOff": "Porcentaje de descuento",
+    "percentageOff": "Descuento porcentual",
+    "freePlanComp": "Plan gratuito (comp)",
+    "appliesTo": "Se aplica a",
+    "anyPlan": "Cualquier plan",
+    "months": "Meses",
+    "maxRedemptions": "Máx. canjes",
+    "expires": "Caduca",
+    "billingCycle": "Ciclo de facturación",
+    "labelOptional": "Etiqueta (opcional)",
+    "startsOptional": "Comienza (opcional)",
+    "endsOptional": "Termina (opcional)",
+    "once": "Una vez",
+    "repeating": "Recurrente",
+    "forever": "Para siempre"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Eliminar adjunto",
     "uploading": "Subiendo…",
     "addMedia": "Añadir foto o vídeo"
+  },
+  "support": {
+    "selectConversation": "Selecciona una conversación para verla.",
+    "closeChat": "Cerrar chat",
+    "closeThisChat": "¿Cerrar este chat?",
+    "typeReply": "Escribe una respuesta…"
   }
 }

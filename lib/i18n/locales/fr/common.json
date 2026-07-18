@@ -45,7 +45,8 @@
     "optional": "facultatif",
     "active": "Actif",
     "share": "Partager",
-    "pin": "Épingler"
+    "pin": "Épingler",
+    "status": "Statut"
   },
   "dashboard": {
     "welcomeBack": "Bon retour"
@@ -78,7 +79,45 @@
     "noUsers": "Aucun utilisateur.",
     "noWorkspaces": "Aucun espace de travail.",
     "noPromoCodes": "Aucun code promo pour l'instant.",
-    "noOffers": "Aucune offre pour l'instant."
+    "noOffers": "Aucune offre pour l'instant.",
+    "th": {
+      "workspace": "Espace de travail",
+      "owner": "Propriétaire",
+      "plan": "Forfait",
+      "members": "Membres",
+      "posts": "Publications",
+      "created": "Créé",
+      "user": "Utilisateur",
+      "role": "Rôle",
+      "admin": "Administrateur",
+      "lastLogin": "Dernière connexion",
+      "code": "Code",
+      "benefit": "Avantage",
+      "redeemed": "Utilisé",
+      "price": "Prix",
+      "billing": "Facturation",
+      "label": "Libellé",
+      "window": "Période",
+      "post": "Publication",
+      "author": "Auteur",
+      "activity": "Activité"
+    },
+    "code": "Code",
+    "percentOff": "Pourcentage de réduction",
+    "percentageOff": "Réduction en pourcentage",
+    "freePlanComp": "Forfait gratuit (comp)",
+    "appliesTo": "S'applique à",
+    "anyPlan": "Tout forfait",
+    "months": "Mois",
+    "maxRedemptions": "Utilisations max",
+    "expires": "Expire",
+    "billingCycle": "Cycle de facturation",
+    "labelOptional": "Libellé (facultatif)",
+    "startsOptional": "Début (facultatif)",
+    "endsOptional": "Fin (facultatif)",
+    "once": "Une fois",
+    "repeating": "Récurrent",
+    "forever": "Pour toujours"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Supprimer la pièce jointe",
     "uploading": "Téléchargement…",
     "addMedia": "Ajouter une photo ou une vidéo"
+  },
+  "support": {
+    "selectConversation": "Sélectionnez une conversation pour l'afficher.",
+    "closeChat": "Fermer le chat",
+    "closeThisChat": "Fermer ce chat ?",
+    "typeReply": "Saisissez une réponse…"
   }
 }

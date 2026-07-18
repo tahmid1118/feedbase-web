@@ -45,7 +45,8 @@
     "optional": "opcjonalnie",
     "active": "Aktywny",
     "share": "Udostępnij",
-    "pin": "Przypnij"
+    "pin": "Przypnij",
+    "status": "Status"
   },
   "dashboard": {
     "welcomeBack": "Witaj ponownie"
@@ -78,7 +79,45 @@
     "noUsers": "Brak użytkowników.",
     "noWorkspaces": "Brak przestrzeni roboczych.",
     "noPromoCodes": "Brak kodów promocyjnych.",
-    "noOffers": "Brak ofert."
+    "noOffers": "Brak ofert.",
+    "th": {
+      "workspace": "Przestrzeń robocza",
+      "owner": "Właściciel",
+      "plan": "Plan",
+      "members": "Członkowie",
+      "posts": "Wpisy",
+      "created": "Utworzono",
+      "user": "Użytkownik",
+      "role": "Rola",
+      "admin": "Administrator",
+      "lastLogin": "Ostatnie logowanie",
+      "code": "Kod",
+      "benefit": "Korzyść",
+      "redeemed": "Wykorzystano",
+      "price": "Cena",
+      "billing": "Rozliczenia",
+      "label": "Etykieta",
+      "window": "Okres",
+      "post": "Wpis",
+      "author": "Autor",
+      "activity": "Aktywność"
+    },
+    "code": "Kod",
+    "percentOff": "Procent zniżki",
+    "percentageOff": "Zniżka procentowa",
+    "freePlanComp": "Plan darmowy (comp)",
+    "appliesTo": "Dotyczy",
+    "anyPlan": "Dowolny plan",
+    "months": "Miesiące",
+    "maxRedemptions": "Maks. wykorzystań",
+    "expires": "Wygasa",
+    "billingCycle": "Cykl rozliczeniowy",
+    "labelOptional": "Etykieta (opcjonalnie)",
+    "startsOptional": "Rozpoczyna się (opcjonalnie)",
+    "endsOptional": "Kończy się (opcjonalnie)",
+    "once": "Raz",
+    "repeating": "Powtarzające się",
+    "forever": "Na zawsze"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Usuń załącznik",
     "uploading": "Przesyłanie…",
     "addMedia": "Dodaj zdjęcie lub wideo"
+  },
+  "support": {
+    "selectConversation": "Wybierz rozmowę, aby ją wyświetlić.",
+    "closeChat": "Zamknij czat",
+    "closeThisChat": "Zamknąć ten czat?",
+    "typeReply": "Wpisz odpowiedź…"
   }
 }

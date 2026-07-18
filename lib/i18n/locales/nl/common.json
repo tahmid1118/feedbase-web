@@ -45,7 +45,8 @@
     "optional": "optioneel",
     "active": "Actief",
     "share": "Delen",
-    "pin": "Vastmaken"
+    "pin": "Vastmaken",
+    "status": "Status"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"
@@ -78,7 +79,45 @@
     "noUsers": "Geen gebruikers.",
     "noWorkspaces": "Geen werkruimtes.",
     "noPromoCodes": "Nog geen promocodes.",
-    "noOffers": "Nog geen aanbiedingen."
+    "noOffers": "Nog geen aanbiedingen.",
+    "th": {
+      "workspace": "Werkruimte",
+      "owner": "Eigenaar",
+      "plan": "Abonnement",
+      "members": "Leden",
+      "posts": "Berichten",
+      "created": "Aangemaakt",
+      "user": "Gebruiker",
+      "role": "Rol",
+      "admin": "Beheerder",
+      "lastLogin": "Laatste login",
+      "code": "Code",
+      "benefit": "Voordeel",
+      "redeemed": "Ingewisseld",
+      "price": "Prijs",
+      "billing": "Facturering",
+      "label": "Label",
+      "window": "Periode",
+      "post": "Bericht",
+      "author": "Auteur",
+      "activity": "Activiteit"
+    },
+    "code": "Code",
+    "percentOff": "Procent korting",
+    "percentageOff": "Procentuele korting",
+    "freePlanComp": "Gratis abonnement (comp)",
+    "appliesTo": "Van toepassing op",
+    "anyPlan": "Elk abonnement",
+    "months": "Maanden",
+    "maxRedemptions": "Max. inwisselingen",
+    "expires": "Verloopt",
+    "billingCycle": "Factureringscyclus",
+    "labelOptional": "Label (optioneel)",
+    "startsOptional": "Begint (optioneel)",
+    "endsOptional": "Eindigt (optioneel)",
+    "once": "Eén keer",
+    "repeating": "Herhalend",
+    "forever": "Voor altijd"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Bijlage verwijderen",
     "uploading": "Uploaden…",
     "addMedia": "Foto of video toevoegen"
+  },
+  "support": {
+    "selectConversation": "Selecteer een gesprek om het te bekijken.",
+    "closeChat": "Chat sluiten",
+    "closeThisChat": "Deze chat sluiten?",
+    "typeReply": "Typ een antwoord…"
   }
 }

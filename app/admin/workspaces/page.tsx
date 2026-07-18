@@ -135,7 +135,7 @@ export default function AdminWorkspacesPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">Workspaces</h2>
+        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.workspaces")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           Every workspace across the platform. Grant plans, deactivate, or delete.
         </p>
@@ -167,13 +167,13 @@ export default function AdminWorkspacesPage() {
           <table className="w-full min-w-[820px] text-sm">
             <thead className="border-b border-[#e399a3]/20 text-left text-xs uppercase tracking-wide text-[#1c0a0c]/50">
               <tr>
-                <th className="px-4 py-3">Workspace</th>
-                <th className="px-4 py-3">Owner</th>
-                <th className="px-4 py-3">Plan</th>
-                <th className="px-4 py-3">Members</th>
-                <th className="px-4 py-3">Posts</th>
-                <th className="px-4 py-3">Created</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">{t("admin.th.workspace")}</th>
+                <th className="px-4 py-3">{t("admin.th.owner")}</th>
+                <th className="px-4 py-3">{t("admin.th.plan")}</th>
+                <th className="px-4 py-3">{t("admin.th.members")}</th>
+                <th className="px-4 py-3">{t("admin.th.posts")}</th>
+                <th className="px-4 py-3">{t("admin.th.created")}</th>
+                <th className="px-4 py-3">{t("common.status")}</th>
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>

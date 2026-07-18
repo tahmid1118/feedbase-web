@@ -45,7 +45,8 @@
     "optional": "valinnainen",
     "active": "Aktiivinen",
     "share": "Jaa",
-    "pin": "Kiinnitä"
+    "pin": "Kiinnitä",
+    "status": "Tila"
   },
   "dashboard": {
     "welcomeBack": "Tervetuloa takaisin"
@@ -78,7 +79,45 @@
     "noUsers": "Ei käyttäjiä.",
     "noWorkspaces": "Ei työtiloja.",
     "noPromoCodes": "Ei vielä tarjouskoodeja.",
-    "noOffers": "Ei vielä tarjouksia."
+    "noOffers": "Ei vielä tarjouksia.",
+    "th": {
+      "workspace": "Työtila",
+      "owner": "Omistaja",
+      "plan": "Tilaus",
+      "members": "Jäsenet",
+      "posts": "Julkaisut",
+      "created": "Luotu",
+      "user": "Käyttäjä",
+      "role": "Rooli",
+      "admin": "Ylläpitäjä",
+      "lastLogin": "Viimeisin kirjautuminen",
+      "code": "Koodi",
+      "benefit": "Etu",
+      "redeemed": "Lunastettu",
+      "price": "Hinta",
+      "billing": "Laskutus",
+      "label": "Nimike",
+      "window": "Ajanjakso",
+      "post": "Julkaisu",
+      "author": "Tekijä",
+      "activity": "Toiminta"
+    },
+    "code": "Koodi",
+    "percentOff": "Alennusprosentti",
+    "percentageOff": "Prosentuaalinen alennus",
+    "freePlanComp": "Ilmainen tilaus (comp)",
+    "appliesTo": "Koskee",
+    "anyPlan": "Mikä tahansa tilaus",
+    "months": "Kuukaudet",
+    "maxRedemptions": "Enimmäislunastukset",
+    "expires": "Vanhenee",
+    "billingCycle": "Laskutusjakso",
+    "labelOptional": "Nimike (valinnainen)",
+    "startsOptional": "Alkaa (valinnainen)",
+    "endsOptional": "Päättyy (valinnainen)",
+    "once": "Kerran",
+    "repeating": "Toistuva",
+    "forever": "Ikuisesti"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Poista liite",
     "uploading": "Ladataan…",
     "addMedia": "Lisää kuva tai video"
+  },
+  "support": {
+    "selectConversation": "Valitse keskustelu nähdäksesi sen.",
+    "closeChat": "Sulje keskustelu",
+    "closeThisChat": "Suljetaanko tämä keskustelu?",
+    "typeReply": "Kirjoita vastaus…"
   }
 }

@@ -192,7 +192,7 @@ export default function AdminSupportPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">Support</h2>
+        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.support")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           Live chat with workspace users. Close a chat when it&apos;s resolved —
           the user loses access but the transcript stays here.
@@ -281,7 +281,7 @@ export default function AdminSupportPage() {
           {selected === null ? (
             <div className="flex h-full flex-col items-center justify-center gap-2 text-[#1c0a0c]/40">
               <Headset className="h-10 w-10 text-[#e399a3]" />
-              <p className="text-sm">Select a conversation to view it.</p>
+              <p className="text-sm">{t("support.selectConversation")}</p>
             </div>
           ) : (
             <>
@@ -300,12 +300,12 @@ export default function AdminSupportPage() {
                     <AlertDialogTrigger asChild>
                       <Button variant="outline" size="sm">
                         <CheckCircle2 className="h-4 w-4" />
-                        Close chat
+                        {t("support.closeChat")}
                       </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Close this chat?</AlertDialogTitle>
+                        <AlertDialogTitle>{t("support.closeThisChat")}</AlertDialogTitle>
                         <AlertDialogDescription>
                           The user will no longer see this conversation and can&apos;t
                           reply to it. You keep the full transcript here. They can
@@ -318,7 +318,7 @@ export default function AdminSupportPage() {
                           onClick={closeSession}
                           className="bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"
                         >
-                          Close chat
+                          {t("support.closeChat")}
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
@@ -379,7 +379,7 @@ export default function AdminSupportPage() {
                         }
                       }}
                       rows={1}
-                      placeholder="Type a reply…"
+                      placeholder={t("support.typeReply")}
                       className="max-h-28 flex-1 resize-none rounded-lg border border-[#e399a3]/40 bg-white px-3 py-2 text-sm text-[#1c0a0c] outline-none focus:border-[#c74959] focus:ring-1 focus:ring-[#c74959]/30"
                     />
                     <button

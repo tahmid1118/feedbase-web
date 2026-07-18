@@ -45,7 +45,8 @@
     "optional": "voliteľné",
     "active": "Aktívny",
     "share": "Zdieľať",
-    "pin": "Pripnúť"
+    "pin": "Pripnúť",
+    "status": "Stav"
   },
   "dashboard": {
     "welcomeBack": "Vitajte späť"
@@ -78,7 +79,45 @@
     "noUsers": "Žiadni používatelia.",
     "noWorkspaces": "Žiadne pracovné priestory.",
     "noPromoCodes": "Zatiaľ žiadne promo kódy.",
-    "noOffers": "Zatiaľ žiadne ponuky."
+    "noOffers": "Zatiaľ žiadne ponuky.",
+    "th": {
+      "workspace": "Pracovný priestor",
+      "owner": "Vlastník",
+      "plan": "Plán",
+      "members": "Členovia",
+      "posts": "Príspevky",
+      "created": "Vytvorené",
+      "user": "Používateľ",
+      "role": "Rola",
+      "admin": "Administrátor",
+      "lastLogin": "Posledné prihlásenie",
+      "code": "Kód",
+      "benefit": "Výhoda",
+      "redeemed": "Uplatnené",
+      "price": "Cena",
+      "billing": "Fakturácia",
+      "label": "Štítok",
+      "window": "Obdobie",
+      "post": "Príspevok",
+      "author": "Autor",
+      "activity": "Aktivita"
+    },
+    "code": "Kód",
+    "percentOff": "Percento zľavy",
+    "percentageOff": "Percentuálna zľava",
+    "freePlanComp": "Plán zdarma (comp)",
+    "appliesTo": "Vzťahuje sa na",
+    "anyPlan": "Akýkoľvek plán",
+    "months": "Mesiace",
+    "maxRedemptions": "Max. uplatnení",
+    "expires": "Vyprší",
+    "billingCycle": "Fakturačný cyklus",
+    "labelOptional": "Štítok (voliteľné)",
+    "startsOptional": "Začína (voliteľné)",
+    "endsOptional": "Končí (voliteľné)",
+    "once": "Raz",
+    "repeating": "Opakujúce sa",
+    "forever": "Navždy"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Odstrániť prílohu",
     "uploading": "Nahráva sa…",
     "addMedia": "Pridať fotku alebo video"
+  },
+  "support": {
+    "selectConversation": "Vyberte konverzáciu na zobrazenie.",
+    "closeChat": "Zavrieť chat",
+    "closeThisChat": "Zavrieť tento chat?",
+    "typeReply": "Napíšte odpoveď…"
   }
 }

@@ -45,7 +45,8 @@
     "optional": "neobvezno",
     "active": "Aktivno",
     "share": "Deli",
-    "pin": "Pripni"
+    "pin": "Pripni",
+    "status": "Stanje"
   },
   "dashboard": {
     "welcomeBack": "Dobrodošli nazaj"
@@ -78,7 +79,45 @@
     "noUsers": "Ni uporabnikov.",
     "noWorkspaces": "Ni delovnih prostorov.",
     "noPromoCodes": "Še ni promocijskih kod.",
-    "noOffers": "Še ni ponudb."
+    "noOffers": "Še ni ponudb.",
+    "th": {
+      "workspace": "Delovni prostor",
+      "owner": "Lastnik",
+      "plan": "Načrt",
+      "members": "Člani",
+      "posts": "Objave",
+      "created": "Ustvarjeno",
+      "user": "Uporabnik",
+      "role": "Vloga",
+      "admin": "Skrbnik",
+      "lastLogin": "Zadnja prijava",
+      "code": "Koda",
+      "benefit": "Ugodnost",
+      "redeemed": "Unovčeno",
+      "price": "Cena",
+      "billing": "Zaračunavanje",
+      "label": "Oznaka",
+      "window": "Obdobje",
+      "post": "Objava",
+      "author": "Avtor",
+      "activity": "Aktivnost"
+    },
+    "code": "Koda",
+    "percentOff": "Odstotek popusta",
+    "percentageOff": "Odstotni popust",
+    "freePlanComp": "Brezplačni načrt (comp)",
+    "appliesTo": "Velja za",
+    "anyPlan": "Kateri koli načrt",
+    "months": "Meseci",
+    "maxRedemptions": "Najv. unovčenj",
+    "expires": "Poteče",
+    "billingCycle": "Obračunski cikel",
+    "labelOptional": "Oznaka (neobvezno)",
+    "startsOptional": "Začne se (neobvezno)",
+    "endsOptional": "Konča se (neobvezno)",
+    "once": "Enkrat",
+    "repeating": "Ponavljajoče",
+    "forever": "Za vedno"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Odstrani prilogo",
     "uploading": "Nalaganje…",
     "addMedia": "Dodaj fotografijo ali video"
+  },
+  "support": {
+    "selectConversation": "Izberite pogovor za ogled.",
+    "closeChat": "Zapri klepet",
+    "closeThisChat": "Zaprem ta klepet?",
+    "typeReply": "Vnesite odgovor…"
   }
 }

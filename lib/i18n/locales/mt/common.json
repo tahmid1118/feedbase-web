@@ -45,7 +45,8 @@
     "optional": "mhux obbligatorju",
     "active": "Attiv",
     "share": "Aqsam",
-    "pin": "Waħħal"
+    "pin": "Waħħal",
+    "status": "Status"
   },
   "dashboard": {
     "welcomeBack": "Merħba lura"
@@ -78,7 +79,45 @@
     "noUsers": "L-ebda utent.",
     "noWorkspaces": "L-ebda spazju tax-xogħol.",
     "noPromoCodes": "Għad m'hemm l-ebda kodiċi promozzjonali.",
-    "noOffers": "Għad m'hemm l-ebda offerta."
+    "noOffers": "Għad m'hemm l-ebda offerta.",
+    "th": {
+      "workspace": "Spazju tax-xogħol",
+      "owner": "Sid",
+      "plan": "Pjan",
+      "members": "Membri",
+      "posts": "Posts",
+      "created": "Maħluq",
+      "user": "Utent",
+      "role": "Rwol",
+      "admin": "Amministratur",
+      "lastLogin": "L-aħħar dħul",
+      "code": "Kodiċi",
+      "benefit": "Benefiċċju",
+      "redeemed": "Mifdi",
+      "price": "Prezz",
+      "billing": "Fatturazzjoni",
+      "label": "Tikketta",
+      "window": "Perjodu",
+      "post": "Post",
+      "author": "Awtur",
+      "activity": "Attività"
+    },
+    "code": "Kodiċi",
+    "percentOff": "Perċentwal skont",
+    "percentageOff": "Skont perċentwali",
+    "freePlanComp": "Pjan b'xejn (comp)",
+    "appliesTo": "Japplika għal",
+    "anyPlan": "Kwalunkwe pjan",
+    "months": "Xhur",
+    "maxRedemptions": "Fdiwiet massimi",
+    "expires": "Jiskadi",
+    "billingCycle": "Ċiklu tal-fatturazzjoni",
+    "labelOptional": "Tikketta (mhux obbligatorja)",
+    "startsOptional": "Jibda (mhux obbligatorju)",
+    "endsOptional": "Jispiċċa (mhux obbligatorju)",
+    "once": "Darba",
+    "repeating": "Ripetut",
+    "forever": "Għal dejjem"
   },
   "auth": {
     "login": {
@@ -286,5 +325,11 @@
     "remove": "Neħħi l-mehmuż",
     "uploading": "Qed jittella'…",
     "addMedia": "Żid ritratt jew video"
+  },
+  "support": {
+    "selectConversation": "Agħżel konversazzjoni biex tarah.",
+    "closeChat": "Agħlaq iċ-chat",
+    "closeThisChat": "Tagħlaq dan iċ-chat?",
+    "typeReply": "Ikteb tweġiba…"
   }
 }
