@@ -475,13 +475,28 @@ Version 1.2
 --------------------------------------------------------------------------------
 
 5.1 Performance .... Interactions feel instant; route transitions stream a
-                     skeleton; API responses are compressed.
+                     skeleton; API responses are compressed. Database access is
+                     pooled, hot read-only lookups are cached in-process with a
+                     short expiry, and list endpoints aggregate related counts in
+                     batched queries rather than per row.
 5.2 Security ....... HTTPS; JWT authentication; server-side validation; strict
                      tenant isolation; no private fields (e.g. emails) on public
-                     routes.
+                     routes; hardened HTTP response headers.
 5.3 Scalability .... Stateless API over a connection-pooled database; designed
-                     for many tenants and wildcard-subdomain routing.
-5.4 Availability ... Target 99.9% uptime.
+                     for many tenants and wildcard-subdomain routing. The API
+                     runs as multiple worker processes behind a load balancer to
+                     use all available CPU cores.
+5.4 Availability ... Target 99.9% uptime. Workers restart automatically on
+                     failure; shutdown is graceful (in-flight requests complete
+                     and database connections are released) so deploys and
+                     restarts do not drop traffic.
+5.6 Abuse
+    resistance ..... Request rates are limited per client, with stricter limits
+                     on sign-in attempts, unauthenticated submissions, and
+                     actions that send email or contact payment providers.
+                     Request size, page size, and connection lifetime are all
+                     bounded so that no single request or slow client can
+                     exhaust server memory or connections.
 5.5 Usability ...... Light-only theme; one type family; a rose product palette
                      with a per-tenant brand color on each portal; consistent
                      forms, dialogs, and dropdowns.
