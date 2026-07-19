@@ -193,7 +193,8 @@
     "once": "Einmalig",
     "repeating": "Wiederkehrend",
     "forever": "Für immer",
-    "statusChangedTo": "Status auf {{status}} gesetzt"
+    "statusChangedTo": "Status auf {{status}} gesetzt",
+    "closeChatDesc": "Der Nutzer sieht diese Unterhaltung nicht mehr und kann nicht mehr darauf antworten. Sie behalten hier das vollständige Protokoll. Er kann jederzeit einen neuen Chat starten."
   },
   "auth": {
     "login": {
@@ -331,7 +332,10 @@
     "changelogSubtitle": "Die neuesten Updates und Verbesserungen",
     "noUpdates": "Es wurden noch keine Updates veröffentlicht.",
     "recently": "Kürzlich",
-    "backToChangelog": "Zurück zum Änderungsprotokoll"
+    "backToChangelog": "Zurück zum Änderungsprotokoll",
+    "submitDesc": "Sagen Sie uns, was Sie sich wünschen. Über Ihre E-Mail-Adresse halten wir Sie auf dem Laufenden; Ihr Name ist optional.",
+    "workspaceNotFound": "Arbeitsbereich nicht gefunden",
+    "notFoundDesc": "Dieses Feedback-Portal existiert nicht oder ist nicht mehr aktiv. Bitte überprüfen Sie die Adresse und versuchen Sie es erneut."
   },
   "type": {
     "feedback": "Feedback",
@@ -380,7 +384,8 @@
   },
   "invite": {
     "createPassword": "Passwort erstellen",
-    "atLeast8": "Mindestens 8 Zeichen"
+    "atLeast8": "Mindestens 8 Zeichen",
+    "createAndJoin": "Konto erstellen & beitreten"
   },
   "team": {
     "inviteTeammate": "Teammitglied einladen",
@@ -398,7 +403,8 @@
     "emailPlaceholder": "kollege@firma.de",
     "subtitle": "Alle in diesem Arbeitsbereich. Ein Arbeitsbereich hat genau einen Eigentümer; alle anderen sind Mitglieder.",
     "inviteFailed": "Einladung konnte nicht gesendet werden",
-    "expires": "Läuft ab"
+    "expires": "Läuft ab",
+    "inviteDesc": "Sie erhalten eine E-Mail mit einem sicheren Link, um diesem Arbeitsbereich als Mitglied beizutreten. Der Link läuft nach 7 Tagen ab und kann nur einmal verwendet werden."
   },
   "role": {
     "owner": "Eigentümer",

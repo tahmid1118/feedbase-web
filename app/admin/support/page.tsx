@@ -307,9 +307,7 @@ export default function AdminSupportPage() {
                       <AlertDialogHeader>
                         <AlertDialogTitle>{t("support.closeThisChat")}</AlertDialogTitle>
                         <AlertDialogDescription>
-                          The user will no longer see this conversation and can&apos;t
-                          reply to it. You keep the full transcript here. They can
-                          always start a new chat.
+                          {t("admin.closeChatDesc")}
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>

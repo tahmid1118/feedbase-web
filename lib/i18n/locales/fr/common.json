@@ -193,7 +193,8 @@
     "once": "Une fois",
     "repeating": "Récurrent",
     "forever": "Pour toujours",
-    "statusChangedTo": "Statut défini sur {{status}}"
+    "statusChangedTo": "Statut défini sur {{status}}",
+    "closeChatDesc": "L'utilisateur ne verra plus cette conversation et ne pourra plus y répondre. Vous conservez ici la transcription complète. Il peut à tout moment démarrer une nouvelle discussion."
   },
   "auth": {
     "login": {
@@ -331,7 +332,10 @@
     "changelogSubtitle": "Les dernières mises à jour et améliorations",
     "noUpdates": "Aucune mise à jour n'a encore été publiée.",
     "recently": "Récemment",
-    "backToChangelog": "Retour au journal des modifications"
+    "backToChangelog": "Retour au journal des modifications",
+    "submitDesc": "Dites-nous ce que vous aimeriez voir. Votre e-mail nous permet de vous tenir informé ; votre nom est facultatif.",
+    "workspaceNotFound": "Espace de travail introuvable",
+    "notFoundDesc": "Ce portail de retours n'existe pas ou n'est plus actif. Veuillez vérifier l'adresse et réessayer."
   },
   "type": {
     "feedback": "Retour",
@@ -380,7 +384,8 @@
   },
   "invite": {
     "createPassword": "Créez un mot de passe",
-    "atLeast8": "Au moins 8 caractères"
+    "atLeast8": "Au moins 8 caractères",
+    "createAndJoin": "Créer un compte et rejoindre"
   },
   "team": {
     "inviteTeammate": "Inviter un coéquipier",
@@ -398,7 +403,8 @@
     "emailPlaceholder": "collegue@entreprise.com",
     "subtitle": "Toutes les personnes de cet espace de travail. Un espace de travail a un seul propriétaire ; tous les autres sont des membres.",
     "inviteFailed": "Échec de l'envoi de l'invitation",
-    "expires": "Expire le"
+    "expires": "Expire le",
+    "inviteDesc": "Cette personne recevra un e-mail contenant un lien sécurisé pour rejoindre cet espace de travail en tant que membre. Le lien expire au bout de 7 jours et ne peut être utilisé qu'une seule fois."
   },
   "role": {
     "owner": "Propriétaire",

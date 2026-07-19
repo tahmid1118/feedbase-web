@@ -122,8 +122,7 @@ export function TeamSettings() {
         <Card className="p-6">
           <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("team.inviteTeammate")}</h3>
           <p className="text-sm text-[#1c0a0c]/60">
-            They&apos;ll get an email with a secure link to join this workspace as a
-            member. The link expires in 7 days and can only be used once.
+            {t("team.inviteDesc")}
           </p>
 
           <form

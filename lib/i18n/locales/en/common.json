@@ -193,7 +193,8 @@
     "once": "Once",
     "repeating": "Repeating",
     "forever": "Forever",
-    "statusChangedTo": "Status set to {{status}}"
+    "statusChangedTo": "Status set to {{status}}",
+    "closeChatDesc": "The user will no longer see this conversation and can't reply to it. You keep the full transcript here. They can always start a new chat."
   },
   "auth": {
     "login": {
@@ -331,7 +332,10 @@
     "changelogSubtitle": "The latest updates and improvements",
     "noUpdates": "No updates have been published yet.",
     "recently": "Recently",
-    "backToChangelog": "Back to changelog"
+    "backToChangelog": "Back to changelog",
+    "submitDesc": "Tell us what you'd like to see. Your email lets us keep you posted; your name is optional.",
+    "workspaceNotFound": "Workspace not found",
+    "notFoundDesc": "This feedback portal doesn't exist or is no longer active. Please check the address and try again."
   },
   "type": {
     "feedback": "Feedback",
@@ -380,7 +384,8 @@
   },
   "invite": {
     "createPassword": "Create a password",
-    "atLeast8": "At least 8 characters"
+    "atLeast8": "At least 8 characters",
+    "createAndJoin": "Create account & join"
   },
   "team": {
     "inviteTeammate": "Invite a teammate",
@@ -398,7 +403,8 @@
     "emailPlaceholder": "teammate@company.com",
     "subtitle": "Everyone in this workspace. A workspace has one owner; everybody else is a member.",
     "inviteFailed": "Failed to send invitation",
-    "expires": "Expires"
+    "expires": "Expires",
+    "inviteDesc": "They'll get an email with a secure link to join this workspace as a member. The link expires in 7 days and can only be used once."
   },
   "role": {
     "owner": "Owner",

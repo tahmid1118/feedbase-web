@@ -193,7 +193,8 @@
     "once": "Una vez",
     "repeating": "Recurrente",
     "forever": "Para siempre",
-    "statusChangedTo": "Estado establecido en {{status}}"
+    "statusChangedTo": "Estado establecido en {{status}}",
+    "closeChatDesc": "El usuario ya no verá esta conversación y no podrá responder. Tú conservas aquí la transcripción completa. Siempre puede iniciar un chat nuevo."
   },
   "auth": {
     "login": {
@@ -331,7 +332,10 @@
     "changelogSubtitle": "Las últimas novedades y mejoras",
     "noUpdates": "Aún no se ha publicado ninguna novedad.",
     "recently": "Recientemente",
-    "backToChangelog": "Volver al registro de cambios"
+    "backToChangelog": "Volver al registro de cambios",
+    "submitDesc": "Cuéntanos qué te gustaría ver. Tu correo nos permite mantenerte al tanto; tu nombre es opcional.",
+    "workspaceNotFound": "Espacio de trabajo no encontrado",
+    "notFoundDesc": "Este portal de comentarios no existe o ya no está activo. Comprueba la dirección e inténtalo de nuevo."
   },
   "type": {
     "feedback": "Comentario",
@@ -380,7 +384,8 @@
   },
   "invite": {
     "createPassword": "Crea una contraseña",
-    "atLeast8": "Al menos 8 caracteres"
+    "atLeast8": "Al menos 8 caracteres",
+    "createAndJoin": "Crear cuenta y unirse"
   },
   "team": {
     "inviteTeammate": "Invita a un compañero",
@@ -398,7 +403,8 @@
     "emailPlaceholder": "companero@empresa.com",
     "subtitle": "Todas las personas de este espacio de trabajo. Un espacio de trabajo tiene un único propietario; los demás son miembros.",
     "inviteFailed": "No se pudo enviar la invitación",
-    "expires": "Caduca"
+    "expires": "Caduca",
+    "inviteDesc": "Recibirá un correo con un enlace seguro para unirse a este espacio de trabajo como miembro. El enlace caduca a los 7 días y solo se puede usar una vez."
   },
   "role": {
     "owner": "Propietario",

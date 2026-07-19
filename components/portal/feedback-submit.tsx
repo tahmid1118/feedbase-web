@@ -169,8 +169,7 @@ export function FeedbackSubmit({
               <DialogHeader>
                 <DialogTitle>{t("portal.shareFeedback")}</DialogTitle>
                 <DialogDescription>
-                  Tell us what you&apos;d like to see. Your email lets us keep you
-                  posted; your name is optional.
+                  {t("portal.submitDesc")}
                 </DialogDescription>
               </DialogHeader>
 

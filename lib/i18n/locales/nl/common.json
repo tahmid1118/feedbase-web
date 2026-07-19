@@ -193,7 +193,8 @@
     "once": "Eén keer",
     "repeating": "Herhalend",
     "forever": "Voor altijd",
-    "statusChangedTo": "Status ingesteld op {{status}}"
+    "statusChangedTo": "Status ingesteld op {{status}}",
+    "closeChatDesc": "De gebruiker ziet dit gesprek niet meer en kan er niet meer op reageren. U behoudt hier het volledige transcript. Diegene kan altijd een nieuwe chat starten."
   },
   "auth": {
     "login": {
@@ -331,7 +332,10 @@
     "changelogSubtitle": "De nieuwste updates en verbeteringen",
     "noUpdates": "Er zijn nog geen updates gepubliceerd.",
     "recently": "Onlangs",
-    "backToChangelog": "Terug naar changelog"
+    "backToChangelog": "Terug naar changelog",
+    "submitDesc": "Vertel ons wat u graag zou zien. Met uw e-mailadres houden we u op de hoogte; uw naam is optioneel.",
+    "workspaceNotFound": "Werkruimte niet gevonden",
+    "notFoundDesc": "Dit feedbackportaal bestaat niet of is niet meer actief. Controleer het adres en probeer het opnieuw."
   },
   "type": {
     "feedback": "Feedback",
@@ -380,7 +384,8 @@
   },
   "invite": {
     "createPassword": "Maak een wachtwoord",
-    "atLeast8": "Minstens 8 tekens"
+    "atLeast8": "Minstens 8 tekens",
+    "createAndJoin": "Account aanmaken en deelnemen"
   },
   "team": {
     "inviteTeammate": "Nodig een teamlid uit",
@@ -398,7 +403,8 @@
     "emailPlaceholder": "collega@bedrijf.nl",
     "subtitle": "Iedereen in deze werkruimte. Een werkruimte heeft één eigenaar; alle anderen zijn lid.",
     "inviteFailed": "Kan uitnodiging niet verzenden",
-    "expires": "Verloopt"
+    "expires": "Verloopt",
+    "inviteDesc": "Diegene ontvangt een e-mail met een beveiligde link om als lid deel te nemen aan deze werkruimte. De link verloopt na 7 dagen en kan maar één keer worden gebruikt."
   },
   "role": {
     "owner": "Eigenaar",
