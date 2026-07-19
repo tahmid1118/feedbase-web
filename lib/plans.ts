@@ -25,6 +25,12 @@ export interface PlanDisplay {
   blurbKey: string;
   /** i18n keys for the feature bullets (translate each with t()). */
   featureKeys: string[];
+  /**
+   * i18n key for the small pill beside the plan name ("Popular" / "Best").
+   * Purely a merchandising label — it is always shown, unlike the price
+   * "SAVE X%" badge which depends on the active offer/interval.
+   */
+  badgeKey?: string;
   highlighted?: boolean;
 }
 
@@ -48,6 +54,7 @@ export const PLANS: PlanDisplay[] = [
     name: "Pro",
     monthlyPrice: 10,
     blurbKey: "plan.pro.blurb",
+    badgeKey: "plan.badge.popular",
     featureKeys: [
       "plan.feat.everythingFree",
       "plan.feat.upTo3Workspaces",
@@ -63,6 +70,7 @@ export const PLANS: PlanDisplay[] = [
     name: "Business",
     monthlyPrice: 15,
     blurbKey: "plan.business.blurb",
+    badgeKey: "plan.badge.best",
     featureKeys: [
       "plan.feat.everythingPro",
       "plan.feat.unlimitedWorkspaces",

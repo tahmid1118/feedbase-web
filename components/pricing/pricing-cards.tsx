@@ -78,10 +78,15 @@ export function PricingCards({
               )}
             >
               <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <h3 className="text-xl font-semibold text-[#1c0a0c]">
                     {plan.name}
                   </h3>
+                  {plan.badgeKey && (
+                    <span className="rounded-full bg-[#c74959]/10 px-2 py-0.5 text-[11px] font-semibold text-[#c74959]">
+                      {t(plan.badgeKey)}
+                    </span>
+                  )}
                   {offer ? (
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
                       {t("billing.save", { percent: offerPercent })}
@@ -92,11 +97,6 @@ export function PricingCards({
                     </span>
                   ) : null}
                 </div>
-                {plan.highlighted && !offer && !showYearly && (
-                  <span className="rounded-full bg-[#c74959]/10 px-3 py-1 text-xs font-medium text-[#c74959]">
-                    {t("billing.recommended")}
-                  </span>
-                )}
               </div>
 
               <div className="mt-3">

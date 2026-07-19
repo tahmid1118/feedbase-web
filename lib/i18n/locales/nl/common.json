@@ -458,7 +458,6 @@
     "havePromoCode": "Heeft u een promocode?",
     "enterCode": "Voer code in",
     "current": "Huidig",
-    "recommended": "Aanbevolen",
     "included": "Inbegrepen",
     "upgradeTo": "Upgraden naar {{plan}}",
     "loadFailed": "Kan factuurgegevens niet laden",
@@ -645,6 +644,10 @@
       "unlimitedMembers": "Onbeperkte teamleden",
       "multiDevice": "Inloggen op meerdere apparaten",
       "prioritySupport": "Prioriteitsondersteuning"
+    },
+    "badge": {
+      "popular": "Populair",
+      "best": "Beste keuze"
     }
   },
   "pricing": {

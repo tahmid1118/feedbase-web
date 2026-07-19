@@ -458,7 +458,6 @@
     "havePromoCode": "Haben Sie einen Aktionscode?",
     "enterCode": "Code eingeben",
     "current": "Aktuell",
-    "recommended": "Empfohlen",
     "included": "Enthalten",
     "upgradeTo": "Upgrade auf {{plan}}",
     "loadFailed": "Abrechnungsdaten konnten nicht geladen werden",
@@ -645,6 +644,10 @@
       "unlimitedMembers": "Unbegrenzte Teammitglieder",
       "multiDevice": "Anmeldung auf mehreren Geräten",
       "prioritySupport": "Priorisierter Support"
+    },
+    "badge": {
+      "popular": "Beliebt",
+      "best": "Beste Wahl"
     }
   },
   "pricing": {

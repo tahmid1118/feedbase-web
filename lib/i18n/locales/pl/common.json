@@ -464,7 +464,6 @@
     "havePromoCode": "Masz kod promocyjny?",
     "enterCode": "Wprowadź kod",
     "current": "Bieżący",
-    "recommended": "Zalecane",
     "included": "W zestawie",
     "upgradeTo": "Przejdź na {{plan}}",
     "loadFailed": "Nie udało się załadować danych rozliczeniowych",
@@ -653,6 +652,10 @@
       "unlimitedMembers": "Nieograniczeni członkowie zespołu",
       "multiDevice": "Logowanie na wielu urządzeniach",
       "prioritySupport": "Priorytetowe wsparcie"
+    },
+    "badge": {
+      "popular": "Popularny",
+      "best": "Najlepszy wybór"
     }
   },
   "pricing": {

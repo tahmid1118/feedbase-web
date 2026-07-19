@@ -458,7 +458,6 @@
     "havePromoCode": "Tem um código promocional?",
     "enterCode": "Introduza o código",
     "current": "Atual",
-    "recommended": "Recomendado",
     "included": "Incluído",
     "upgradeTo": "Atualizar para {{plan}}",
     "loadFailed": "Não foi possível carregar os dados de faturação",
@@ -645,6 +644,10 @@
       "unlimitedMembers": "Membros da equipa ilimitados",
       "multiDevice": "Inicie sessão em vários dispositivos",
       "prioritySupport": "Suporte prioritário"
+    },
+    "badge": {
+      "popular": "Popular",
+      "best": "Melhor escolha"
     }
   },
   "pricing": {

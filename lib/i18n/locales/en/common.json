@@ -458,7 +458,6 @@
     "havePromoCode": "Have a promo code?",
     "enterCode": "Enter code",
     "current": "Current",
-    "recommended": "Recommended",
     "included": "Included",
     "upgradeTo": "Upgrade to {{plan}}",
     "loadFailed": "Failed to load billing info",
@@ -645,6 +644,10 @@
       "unlimitedMembers": "Unlimited team members",
       "multiDevice": "Sign in on multiple devices",
       "prioritySupport": "Priority support"
+    },
+    "badge": {
+      "popular": "Popular",
+      "best": "Best"
     }
   },
   "pricing": {
