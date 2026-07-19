@@ -655,7 +655,6 @@
     "choose": "Scegli {{plan}}",
     "ends": "termina il {{date}}",
     "limitedOffer": "Offerta a tempo limitato",
-    "perMoBilledAnnually": "≈ {{price}}/mese, fatturato annualmente",
     "perMo": "/mese",
     "perYr": "/anno"
   },

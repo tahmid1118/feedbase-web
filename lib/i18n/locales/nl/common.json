@@ -655,7 +655,6 @@
     "choose": "Kies {{plan}}",
     "ends": "eindigt op {{date}}",
     "limitedOffer": "Tijdelijke aanbieding",
-    "perMoBilledAnnually": "≈ {{price}}/maand, jaarlijks gefactureerd",
     "perMo": "/mnd",
     "perYr": "/jr"
   },

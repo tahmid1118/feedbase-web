@@ -663,7 +663,6 @@
     "choose": "Wybierz {{plan}}",
     "ends": "kończy się {{date}}",
     "limitedOffer": "Oferta ograniczona czasowo",
-    "perMoBilledAnnually": "≈ {{price}}/mies., rozliczane rocznie",
     "perMo": "/mies.",
     "perYr": "/rok"
   },

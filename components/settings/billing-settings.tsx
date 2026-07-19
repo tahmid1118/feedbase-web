@@ -287,6 +287,19 @@ export function BillingSettings() {
           const offer = status?.offers?.[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
+          // On the yearly interval an offer is quoted PER MONTH, exactly like a
+          // non-offer card — the annual total belongs in the "billed annually"
+          // note underneath, not in the headline.
+          const offerStrike = offer
+            ? interval === "year"
+              ? offer.originalPrice / 12
+              : offer.originalPrice
+            : 0;
+          const offerPerMonth = offer
+            ? interval === "year"
+              ? offer.offerPrice / 12
+              : offer.offerPrice
+            : 0;
           return (
           <Card
             key={plan.key}
@@ -327,13 +340,13 @@ export function BillingSettings() {
                         "linear-gradient(to top right, transparent calc(50% - 1px), #c74959 calc(50% - 1px), #c74959 calc(50% + 1px), transparent calc(50% + 1px))",
                     }}
                   >
-                    {formatPrice(offer.originalPrice)}
+                    {formatPrice(offerStrike)}
                   </span>
                   <span className="text-3xl font-bold text-green-600">
-                    {formatPrice(offer.offerPrice)}
+                    {formatPrice(offerPerMonth)}
                   </span>
                   <span className="text-sm text-[#1c0a0c]/50">
-                    {t(interval === "year" ? "pricing.perYr" : "pricing.perMo")}
+                    {t("pricing.perMo")}
                   </span>
                 </div>
               ) : (
@@ -348,11 +361,13 @@ export function BillingSettings() {
               )}
               {offer ? (
                 <>
-                  {interval === "year" ? (
-                    <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                      {t("pricing.perMoBilledAnnually", { price: formatPrice(offer.offerPrice / 12) })}
-                    </p>
-                  ) : null}
+                  <p className="mt-1 text-xs text-[#1c0a0c]/50">
+                    {interval === "year"
+                      ? t("pricing.billedAnnually", {
+                          total: formatPrice(offer.offerPrice),
+                        })
+                      : t("pricing.billedMonthly")}
+                  </p>
                   {offer.label || offer.endsAt ? (
                     <p className="mt-1 text-xs font-medium text-green-700">
                       {offer.label || t("pricing.limitedOffer")}
