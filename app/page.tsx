@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Bell, CheckCircle2, GitBranch, MessageSquare, Star, TrendingUp, Users, Vote, Zap } from "lucide-react";
+import { ArrowRight, BarChart3, Bell, CheckCircle2, GitBranch, MessageSquare, MessageSquarePlus, Star, TrendingUp, Users, Vote, Zap } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -8,6 +8,7 @@ import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
+import { officialBoardUrl } from "@/lib/official-board";
 
 export default async function HomePage() {
   const session = await auth();
@@ -287,8 +288,17 @@ export default async function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-[#e399a3]/20 bg-white py-8">
-        <div className="container mx-auto px-4 text-center text-sm text-[#1c0a0c]/70">
+        <div className="container mx-auto flex flex-col items-center gap-2 px-4 text-center text-sm text-[#1c0a0c]/70">
           <p>{t("landing.footer.rights")}</p>
+          {/* Our own board — reachable without an account, so logged-out
+              visitors can report bugs and request features too. */}
+          <a
+            href={officialBoardUrl()}
+            className="inline-flex items-center gap-1.5 font-medium text-[#c74959] hover:underline"
+          >
+            <MessageSquarePlus className="h-4 w-4" />
+            {t("landing.footer.giveFeedback")}
+          </a>
         </div>
       </footer>
     </div>

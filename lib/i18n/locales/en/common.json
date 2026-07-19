@@ -13,7 +13,8 @@
     "changelog": "Changelog",
     "notifications": "Notifications",
     "settings": "Settings",
-    "publicBoard": "Public Board"
+    "publicBoard": "Public Board",
+    "giveFeedback": "Give feedback"
   },
   "common": {
     "save": "Save",
@@ -120,7 +121,8 @@
       "subheading": "Join thousands of teams using Feedbase to understand their customers"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. All rights reserved."
+      "rights": "© 2026 Feedbase. All rights reserved.",
+      "giveFeedback": "Give feedback on Feedbase"
     }
   },
   "dashboard": {

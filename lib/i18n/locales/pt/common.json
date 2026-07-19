@@ -13,7 +13,8 @@
     "changelog": "Registo de alterações",
     "notifications": "Notificações",
     "settings": "Definições",
-    "publicBoard": "Quadro público"
+    "publicBoard": "Quadro público",
+    "giveFeedback": "Dar feedback"
   },
   "landing": {
     "hero": {
@@ -88,7 +89,8 @@
       "subheading": "Comece grátis, atualize à medida que cresce"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Todos os direitos reservados."
+      "rights": "© 2026 Feedbase. Todos os direitos reservados.",
+      "giveFeedback": "Dar feedback sobre o Feedbase"
     }
   },
   "common": {

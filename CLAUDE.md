@@ -64,6 +64,12 @@ Dashboard pages are `"use client"` and read the access token from `useSession()`
 - **Timestamps.** `components/local-time.tsx` (`LocalTime`) renders timestamps in the **viewer's** locale/timezone — `relative` gives a live "time ago" label (via `Intl.RelativeTimeFormat`, refreshed each minute, absolute date/time on hover), else an absolute localized date/time (`Intl.DateTimeFormat`). Formatting lives in `lib/time.ts`. It's client-only (with `suppressHydrationWarning`) so it localizes per viewer. Used on board cards, comments/replies, and the post detail.
 - Local testing: visit `http://<tenant>.localhost:3000` (Chrome resolves `*.localhost`) or `/portal/<tenant>` directly. **For *logged-in* portal actions, use `http://localhost:3000/portal/<tenant>`, or switch to a dotted loopback domain (`NEXT_PUBLIC_ROOT_DOMAIN=lvh.me:3000` → `http://<tenant>.lvh.me:3000`)** — a `*.localhost` subdomain can't receive the login cookie in dev (see the logged-in-users note above).
 
+### Feedbase's own feedback board (dogfooding)
+
+- Feedbase collects feedback about **itself** on an ordinary tenant portal — **not** a special-cased surface. A workspace with subdomain `NEXT_PUBLIC_FEEDBACK_SUBDOMAIN` (default `feedback`) is owned by the **platform admin's own `users` account**, created by the backend's `scripts/create-official-board.js` (idempotent). The `admins` table is a separate identity and can't own a workspace, so the script copies the existing `users` row for the admin's email — the admin signs in normally and finds it in the workspace switcher, and can also moderate it at `/admin/workspaces/<id>` like any other workspace. It's comped to **Business** so the board itself has every capability.
+- **`lib/official-board.ts`** is the single source of the link. `officialBoardUrl()` returns `https://<sub>.<root>` in production, but the direct `/portal/<sub>` path on a single-label host (`localhost`, a bare IP) — a `*.localhost` subdomain can't receive the auth cookie in dev, so the direct path is the only form that keeps a signed-in developer signed in.
+- **Access points**: the dashboard sidebar ("Give feedback", below the tenant's own "Public board" link) for signed-in users, and the landing-page footer for signed-out visitors. Both audiences are already handled by the portal itself — a guest posts anonymously (contact email required), a signed-in user is attributed to their account and can edit their own posts.
+
 ### Internationalization (i18n)
 
 - **Stack**: `i18next` + `react-i18next`, **cookie-based** (no `[lng]` URL segment — that would fight the subdomain proxy). Config in `lib/i18n/`: `settings.ts` (the **8 major EU languages** — English, German, French, Spanish, Italian, Portuguese, Dutch, Polish — English default/fallback, `cookieName = "i18next"`, native-name `languageOptions`), `client.ts` (browser singleton — **deliberately no `LanguageDetector`**), `server.ts` (`getLanguage()` reads the cookie via `next/headers`; `getTranslation(lng?, ns?)` for Server Components). `components/providers/i18n-provider.tsx` wraps the app in the root layout (seeded with the server-resolved language; sets `<html lang>`).
@@ -179,6 +185,7 @@ AUTH_SECRET                        # NextAuth secret
 FEEDBASE_API_BASE_URL              # Server-side API URL (default: http://localhost:4560)
 NEXT_PUBLIC_FEEDBASE_API_BASE_URL  # Client-side API URL (same)
 NEXT_PUBLIC_ROOT_DOMAIN            # Root domain for subdomain routing (default: localhost:3000)
+NEXT_PUBLIC_FEEDBACK_SUBDOMAIN     # Subdomain of Feedbase own feedback board (default: feedback)
 ```
 
 Configured in `.env.local` (already present, not committed).

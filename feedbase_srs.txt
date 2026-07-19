@@ -403,6 +403,24 @@ Version 1.1
                           session when resolved. Closed sessions stay readable as
                           history (see FR-SC1–FR-SC4).
 
+
+3.13 PRODUCT FEEDBACK (SELF-HOSTED BOARD)
+--------------------------------------------------------------------------------
+
+    FR-PF1 Own board .... Feedbase operates a public feedback board for the
+                          product itself. It is a standard workspace (no special
+                          casing), owned by the platform administrator's own
+                          account, so it is managed with the same dashboard and
+                          moderation tools as any customer workspace.
+    FR-PF2 Open access .. Any visitor may submit product feedback, comment, and
+                          vote without an account; a contact email is required
+                          so the team can respond. A signed-in user's submission
+                          is attributed to their account and stays editable by
+                          them.
+    FR-PF3 Entry points . Signed-in users reach the board from a Give feedback
+                          item in the dashboard sidebar; signed-out visitors
+                          reach it from a link in the marketing site footer.
+
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES
 --------------------------------------------------------------------------------

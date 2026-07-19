@@ -13,7 +13,8 @@
     "changelog": "Registro modifiche",
     "notifications": "Notifiche",
     "settings": "Impostazioni",
-    "publicBoard": "Bacheca pubblica"
+    "publicBoard": "Bacheca pubblica",
+    "giveFeedback": "Lascia un feedback"
   },
   "landing": {
     "hero": {
@@ -88,7 +89,8 @@
       "subheading": "Inizia gratis, esegui l'upgrade quando cresci"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Tutti i diritti riservati."
+      "rights": "© 2026 Feedbase. Tutti i diritti riservati.",
+      "giveFeedback": "Lascia un feedback su Feedbase"
     }
   },
   "common": {

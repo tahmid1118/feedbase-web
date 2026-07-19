@@ -13,7 +13,8 @@
     "changelog": "Änderungsprotokoll",
     "notifications": "Benachrichtigungen",
     "settings": "Einstellungen",
-    "publicBoard": "Öffentliche Pinnwand"
+    "publicBoard": "Öffentliche Pinnwand",
+    "giveFeedback": "Feedback geben"
   },
   "landing": {
     "hero": {
@@ -88,7 +89,8 @@
       "subheading": "Kostenlos starten, upgraden, wenn Sie wachsen"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Alle Rechte vorbehalten."
+      "rights": "© 2026 Feedbase. Alle Rechte vorbehalten.",
+      "giveFeedback": "Feedback zu Feedbase geben"
     }
   },
   "common": {

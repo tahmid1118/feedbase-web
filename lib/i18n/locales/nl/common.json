@@ -13,7 +13,8 @@
     "changelog": "Wijzigingslogboek",
     "notifications": "Meldingen",
     "settings": "Instellingen",
-    "publicBoard": "Openbaar bord"
+    "publicBoard": "Openbaar bord",
+    "giveFeedback": "Feedback geven"
   },
   "landing": {
     "hero": {
@@ -88,7 +89,8 @@
       "subheading": "Begin gratis, upgrade naarmate u groeit"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Alle rechten voorbehouden."
+      "rights": "© 2026 Feedbase. Alle rechten voorbehouden.",
+      "giveFeedback": "Feedback geven over Feedbase"
     }
   },
   "common": {

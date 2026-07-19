@@ -12,10 +12,12 @@ import {
   Bell,
   Settings,
   ExternalLink,
+  MessageSquarePlus,
 } from "lucide-react";
 import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/client";
+import { officialBoardUrl } from "@/lib/official-board";
 import { Logo } from "@/components/ui/logo";
 import { WorkspaceSwitcher } from "@/components/dashboard/workspace-switcher";
 
@@ -105,6 +107,17 @@ export function Sidebar() {
               {t("nav.publicBoard")}
             </a>
           )}
+
+          {/* Feedbase's OWN board — feedback about this app, not the tenant's. */}
+          <a
+            href={officialBoardUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#1c0a0c]/70 transition-colors hover:bg-[#fdf8f9] hover:text-[#c74959]"
+          >
+            <MessageSquarePlus className="h-5 w-5" />
+            {t("nav.giveFeedback")}
+          </a>
         </nav>
       </div>
     </aside>
