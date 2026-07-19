@@ -729,5 +729,24 @@
     "notAvailable": "Backend-API nicht verfügbar",
     "startServer": "Bitte starten Sie den Backend-API-Server auf Port 4560",
     "connected": "API verbunden"
+  },
+  "notif": {
+    "allCaughtUp": "Alles erledigt!",
+    "nUnread_one": "{{count}} ungelesen",
+    "nUnread_other": "{{count}} ungelesen",
+    "markAllAsRead": "Alle als gelesen markieren",
+    "clearAll": "Alle löschen",
+    "clearAllConfirm": "Alle Benachrichtigungen löschen?",
+    "clearAllDesc_one": "Dadurch wird {{count}} Benachrichtigung auf dieser Seite dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden.",
+    "clearAllDesc_other": "Dadurch werden alle {{count}} Benachrichtigungen auf dieser Seite dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden.",
+    "markAsRead": "Als gelesen markieren",
+    "deleteNotification": "Benachrichtigung löschen",
+    "deleteFailed": "Benachrichtigung konnte nicht gelöscht werden",
+    "markReadFailed": "Konnte nicht als gelesen markiert werden",
+    "markAllFailed": "Es konnten nicht alle als gelesen markiert werden",
+    "clearFailed": "Benachrichtigungen konnten nicht gelöscht werden",
+    "commentTitle": "Neuer Kommentar zu „{{postTitle}}“",
+    "commentMessage": "{{who}}: „{{body}}“",
+    "someone": "Jemand"
   }
 }

@@ -729,5 +729,24 @@
     "notAvailable": "API backend indisponible",
     "startServer": "Veuillez démarrer le serveur d'API backend sur le port 4560",
     "connected": "API connectée"
+  },
+  "notif": {
+    "allCaughtUp": "Tout est à jour !",
+    "nUnread_one": "{{count}} non lue",
+    "nUnread_other": "{{count}} non lues",
+    "markAllAsRead": "Tout marquer comme lu",
+    "clearAll": "Tout effacer",
+    "clearAllConfirm": "Effacer toutes les notifications ?",
+    "clearAllDesc_one": "Cela supprime définitivement {{count}} notification sur cette page. Cette action est irréversible.",
+    "clearAllDesc_other": "Cela supprime définitivement les {{count}} notifications de cette page. Cette action est irréversible.",
+    "markAsRead": "Marquer comme lu",
+    "deleteNotification": "Supprimer la notification",
+    "deleteFailed": "Échec de la suppression de la notification",
+    "markReadFailed": "Échec du marquage comme lu",
+    "markAllFailed": "Échec du marquage de tout comme lu",
+    "clearFailed": "Échec de l'effacement des notifications",
+    "commentTitle": "Nouveau commentaire sur « {{postTitle}} »",
+    "commentMessage": "{{who}} : « {{body}} »",
+    "someone": "Quelqu'un"
   }
 }

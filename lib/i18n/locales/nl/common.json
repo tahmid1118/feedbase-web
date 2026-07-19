@@ -729,5 +729,24 @@
     "notAvailable": "Backend-API niet beschikbaar",
     "startServer": "Start de backend-API-server op poort 4560",
     "connected": "API verbonden"
+  },
+  "notif": {
+    "allCaughtUp": "Helemaal bij!",
+    "nUnread_one": "{{count}} ongelezen",
+    "nUnread_other": "{{count}} ongelezen",
+    "markAllAsRead": "Alles als gelezen markeren",
+    "clearAll": "Alles wissen",
+    "clearAllConfirm": "Alle meldingen wissen?",
+    "clearAllDesc_one": "Hiermee wordt {{count}} melding op deze pagina permanent verwijderd. Dit kan niet ongedaan worden gemaakt.",
+    "clearAllDesc_other": "Hiermee worden alle {{count}} meldingen op deze pagina permanent verwijderd. Dit kan niet ongedaan worden gemaakt.",
+    "markAsRead": "Als gelezen markeren",
+    "deleteNotification": "Melding verwijderen",
+    "deleteFailed": "Kan melding niet verwijderen",
+    "markReadFailed": "Kan niet als gelezen markeren",
+    "markAllFailed": "Kan niet alles als gelezen markeren",
+    "clearFailed": "Kan meldingen niet wissen",
+    "commentTitle": "Nieuwe reactie op ‘{{postTitle}}’",
+    "commentMessage": "{{who}}: ‘{{body}}’",
+    "someone": "Iemand"
   }
 }

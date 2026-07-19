@@ -194,11 +194,26 @@ export interface CreateChangelogData {
 // Notification types
 export type NotificationType = "post_status" | "comment_reply" | "mention" | "changelog" | "system";
 
+/**
+ * Structured pieces of a notification's text. `title`/`message` are frozen
+ * English (written when the event happened), so they can't be translated on
+ * read — `meta` carries the parts and the client renders them via i18n in the
+ * reader's language. Absent on rows written before the column existed.
+ */
+export interface NotificationMeta {
+  key: "comment";
+  postTitle?: string;
+  who?: string;
+  body?: string;
+}
+
 export interface Notification {
   id: number;
   notification_type: NotificationType;
   title: string;
   message: string;
+  /** May arrive as a JSON string from MySQL — run through parseJsonField. */
+  meta?: NotificationMeta | string | null;
   reference_type?: string | null;
   reference_id?: number | null;
   is_read: number;

@@ -729,5 +729,24 @@
     "notAvailable": "API backend non disponibile",
     "startServer": "Avvia il server API backend sulla porta 4560",
     "connected": "API connessa"
+  },
+  "notif": {
+    "allCaughtUp": "Tutto in ordine!",
+    "nUnread_one": "{{count}} non letta",
+    "nUnread_other": "{{count}} non lette",
+    "markAllAsRead": "Segna tutto come letto",
+    "clearAll": "Cancella tutto",
+    "clearAllConfirm": "Cancellare tutte le notifiche?",
+    "clearAllDesc_one": "Questa operazione elimina definitivamente {{count}} notifica in questa pagina. Non può essere annullata.",
+    "clearAllDesc_other": "Questa operazione elimina definitivamente tutte le {{count}} notifiche in questa pagina. Non può essere annullata.",
+    "markAsRead": "Segna come letto",
+    "deleteNotification": "Elimina notifica",
+    "deleteFailed": "Impossibile eliminare la notifica",
+    "markReadFailed": "Impossibile segnare come letto",
+    "markAllFailed": "Impossibile segnare tutto come letto",
+    "clearFailed": "Impossibile cancellare le notifiche",
+    "commentTitle": "Nuovo commento su «{{postTitle}}»",
+    "commentMessage": "{{who}}: «{{body}}»",
+    "someone": "Qualcuno"
   }
 }

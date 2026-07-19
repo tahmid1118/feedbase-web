@@ -4,7 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Bell, Check, Trash2 } from "lucide-react";
-import { notificationsApi, extractRows, type Notification } from "@/lib/api";
+import {
+  notificationsApi,
+  extractRows,
+  parseJsonField,
+  type Notification,
+  type NotificationMeta,
+} from "@/lib/api";
 import { emitNotificationsChanged } from "@/lib/notifications-events";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
@@ -21,6 +27,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+import { LocalTime } from "@/components/local-time";
 
 /** Resolve a deep link for a notification from its reference, when possible. */
 function notificationHref(notification: Notification): string | null {
@@ -79,7 +86,7 @@ export default function NotificationsPage() {
       emitNotificationsChanged(); // deleting an unread one changes the count
       toast.success(t("toast.notifDeleted"));
     } catch {
-      toast.error("Failed to delete notification");
+      toast.error(t("notif.deleteFailed"));
     }
   };
 
@@ -93,7 +100,7 @@ export default function NotificationsPage() {
       emitNotificationsChanged();
       toast.success(t("toast.markedRead"));
     } catch {
-      toast.error("Failed to mark as read");
+      toast.error(t("notif.markReadFailed"));
     }
   };
 
@@ -105,7 +112,7 @@ export default function NotificationsPage() {
       emitNotificationsChanged();
       toast.success(t("toast.allNotifsRead"));
     } catch {
-      toast.error("Failed to mark all as read");
+      toast.error(t("notif.markAllFailed"));
     }
   };
 
@@ -118,7 +125,7 @@ export default function NotificationsPage() {
       emitNotificationsChanged();
       toast.success(t("toast.allNotifsCleared"));
     } catch {
-      toast.error("Failed to clear notifications");
+      toast.error(t("notif.clearFailed"));
     } finally {
       setClearing(false);
     }
@@ -134,13 +141,40 @@ export default function NotificationsPage() {
 
   const unreadCount = notifications.filter((n) => n.is_read === 0).length;
 
+  // `title`/`message` are frozen English from when the event happened. When the
+  // row carries structured `meta` we re-render the text in the reader's
+  // language; older rows (written before `meta` existed) fall back to the
+  // stored English.
+  const metaOf = (n: Notification): NotificationMeta | null =>
+    parseJsonField<NotificationMeta | null>(n.meta, null);
+
+  const notificationTitle = (n: Notification) => {
+    const meta = metaOf(n);
+    if (meta?.key === "comment" && meta.postTitle) {
+      return t("notif.commentTitle", { postTitle: meta.postTitle });
+    }
+    return n.title;
+  };
+
+  const notificationMessage = (n: Notification) => {
+    const meta = metaOf(n);
+    if (meta?.key === "comment" && meta.body) {
+      // "Someone" is the backend's placeholder for an unidentified commenter.
+      const who = !meta.who || meta.who === "Someone" ? t("notif.someone") : meta.who;
+      return t("notif.commentMessage", { who, body: meta.body });
+    }
+    return n.message;
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("nav.notifications")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
-            {unreadCount > 0 ? `${unreadCount} unread` : "All caught up!"}
+            {unreadCount > 0
+              ? t("notif.nUnread", { count: unreadCount })
+              : t("notif.allCaughtUp")}
           </p>
         </div>
         {notifications.length > 0 && (
@@ -153,7 +187,7 @@ export default function NotificationsPage() {
                 className="text-[#c74959]"
               >
                 <Check className="h-4 w-4" />
-                Mark all as read
+                {t("notif.markAllAsRead")}
               </Button>
             )}
             <AlertDialog>
@@ -164,24 +198,19 @@ export default function NotificationsPage() {
                   className="text-[#1c0a0c]/60 hover:border-red-300 hover:text-red-600"
                 >
                   <Trash2 className="h-4 w-4" />
-                  Clear all
+                  {t("notif.clearAll")}
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Clear all notifications?</AlertDialogTitle>
+                  <AlertDialogTitle>{t("notif.clearAllConfirm")}</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This permanently deletes all{" "}
-                    {notifications.length}{" "}
-                    {notifications.length === 1
-                      ? "notification"
-                      : "notifications"}{" "}
-                    on this page. This can&apos;t be undone.
+                    {t("notif.clearAllDesc", { count: notifications.length })}
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel disabled={clearing}>
-                    Cancel
+                    {t("common.cancel")}
                   </AlertDialogCancel>
                   <AlertDialogAction
                     onClick={clearAll}
@@ -215,7 +244,7 @@ export default function NotificationsPage() {
                     const href = notificationHref(notification);
                     const title = (
                       <h4 className="font-medium text-[#1c0a0c]">
-                        {notification.title}
+                        {notificationTitle(notification)}
                       </h4>
                     );
                     return href ? (
@@ -234,12 +263,14 @@ export default function NotificationsPage() {
                     );
                   })()}
                   <p className="mt-1 text-sm text-[#1c0a0c]/70">
-                    {notification.message}
+                    {notificationMessage(notification)}
                   </p>
                   <p className="mt-2 text-xs text-[#1c0a0c]/50">
-                    {notification.created_at
-                      ? new Date(notification.created_at).toLocaleString()
-                      : "Recently"}
+                    {notification.created_at ? (
+                      <LocalTime date={notification.created_at} />
+                    ) : (
+                      t("portal.recently")
+                    )}
                   </p>
                 </div>
                 <div className="flex items-center gap-1">
@@ -248,7 +279,7 @@ export default function NotificationsPage() {
                       variant="ghost"
                       size="icon"
                       onClick={() => markAsRead(notification.id)}
-                      aria-label="Mark as read"
+                      aria-label={t("notif.markAsRead")}
                     >
                       <Check className="h-4 w-4" />
                     </Button>
@@ -257,7 +288,7 @@ export default function NotificationsPage() {
                     variant="ghost"
                     size="icon"
                     onClick={() => deleteNotification(notification.id)}
-                    aria-label="Delete notification"
+                    aria-label={t("notif.deleteNotification")}
                     className="text-[#1c0a0c]/50 hover:text-red-600"
                   >
                     <Trash2 className="h-4 w-4" />

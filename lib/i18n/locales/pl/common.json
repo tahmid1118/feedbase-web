@@ -739,5 +739,28 @@
     "notAvailable": "API zaplecza niedostępne",
     "startServer": "Uruchom serwer API zaplecza na porcie 4560",
     "connected": "API połączone"
+  },
+  "notif": {
+    "allCaughtUp": "Wszystko przeczytane!",
+    "nUnread_one": "{{count}} nieprzeczytane",
+    "nUnread_other": "{{count}} nieprzeczytanych",
+    "nUnread_few": "{{count}} nieprzeczytane",
+    "nUnread_many": "{{count}} nieprzeczytanych",
+    "markAllAsRead": "Oznacz wszystkie jako przeczytane",
+    "clearAll": "Wyczyść wszystko",
+    "clearAllConfirm": "Wyczyścić wszystkie powiadomienia?",
+    "clearAllDesc_one": "Spowoduje to trwałe usunięcie {{count}} powiadomienia na tej stronie. Tej operacji nie można cofnąć.",
+    "clearAllDesc_other": "Spowoduje to trwałe usunięcie wszystkich {{count}} powiadomień na tej stronie. Tej operacji nie można cofnąć.",
+    "clearAllDesc_few": "Spowoduje to trwałe usunięcie wszystkich {{count}} powiadomień na tej stronie. Tej operacji nie można cofnąć.",
+    "clearAllDesc_many": "Spowoduje to trwałe usunięcie wszystkich {{count}} powiadomień na tej stronie. Tej operacji nie można cofnąć.",
+    "markAsRead": "Oznacz jako przeczytane",
+    "deleteNotification": "Usuń powiadomienie",
+    "deleteFailed": "Nie udało się usunąć powiadomienia",
+    "markReadFailed": "Nie udało się oznaczyć jako przeczytane",
+    "markAllFailed": "Nie udało się oznaczyć wszystkich jako przeczytane",
+    "clearFailed": "Nie udało się wyczyścić powiadomień",
+    "commentTitle": "Nowy komentarz do „{{postTitle}}”",
+    "commentMessage": "{{who}}: „{{body}}”",
+    "someone": "Ktoś"
   }
 }

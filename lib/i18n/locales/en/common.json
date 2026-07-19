@@ -729,5 +729,24 @@
     "notAvailable": "Backend API Not Available",
     "startServer": "Please start the backend API server on port 4560",
     "connected": "API Connected"
+  },
+  "notif": {
+    "allCaughtUp": "All caught up!",
+    "nUnread_one": "{{count}} unread",
+    "nUnread_other": "{{count}} unread",
+    "markAllAsRead": "Mark all as read",
+    "clearAll": "Clear all",
+    "clearAllConfirm": "Clear all notifications?",
+    "clearAllDesc_one": "This permanently deletes {{count}} notification on this page. This can't be undone.",
+    "clearAllDesc_other": "This permanently deletes all {{count}} notifications on this page. This can't be undone.",
+    "markAsRead": "Mark as read",
+    "deleteNotification": "Delete notification",
+    "deleteFailed": "Failed to delete notification",
+    "markReadFailed": "Failed to mark as read",
+    "markAllFailed": "Failed to mark all as read",
+    "clearFailed": "Failed to clear notifications",
+    "commentTitle": "New comment on “{{postTitle}}”",
+    "commentMessage": "{{who}}: “{{body}}”",
+    "someone": "Someone"
   }
 }
