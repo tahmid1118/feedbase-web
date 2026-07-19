@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Ils demandent",
-        "desc": "Un utilisateur publie une idée sur votre tableau public. Aucun compte requis — juste un e-mail pour que vous puissiez répondre."
-      },
-      "prioritize": {
-        "title": "Les autres votent",
-        "desc": "Les votes transforment les avis en classement : la voix la plus forte ne décide plus de votre feuille de route."
+        "title": "Vos utilisateurs demandent",
+        "desc": "Ils publient des idées sur votre tableau public et votent pour celles des autres — sans compte. La demande devient visible."
       },
       "build": {
-        "title": "Vous construisez",
-        "desc": "Glissez-la sur votre feuille de route. Le statut se met à jour sur le tableau public en même temps."
+        "title": "Votre équipe construit",
+        "desc": "Vous triez avec des étiquettes et des statuts, puis glissez les gagnants sur la feuille de route. Le tableau public se met à jour tout seul."
       },
       "announce": {
-        "title": "Ils sont informés",
-        "desc": "Livrez, publiez une note de version et envoyez un e-mail à la personne qui l'a demandé. Rien ne tombe dans le vide."
+        "title": "Tout le monde est informé",
+        "desc": "Livrez, publiez une note de version, et la personne qui l'a demandé reçoit un e-mail. Rien ne disparaît dans le vide."
       },
-      "votes": "votes",
-      "shipped": "dans le journal",
       "loop": "…et ils reviennent avec la prochaine idée"
+    },
+    "info": {
+      "exampleBoard": "Ce qui arrive sur un tableau",
+      "notified": "Notifié",
+      "link1": "idées et votes",
+      "link2": "mises à jour livrées"
     }
   },
   "common": {

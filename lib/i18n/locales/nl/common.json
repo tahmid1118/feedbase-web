@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Zij vragen",
-        "desc": "Een gebruiker plaatst een idee op uw openbare bord. Geen account nodig — alleen een e-mailadres zodat u kunt reageren."
-      },
-      "prioritize": {
-        "title": "Anderen stemmen",
-        "desc": "Stemmen maken van meningen een rangorde, zodat de luidste stem niet langer uw roadmap bepaalt."
+        "title": "Uw gebruikers vragen",
+        "desc": "Ze plaatsen ideeën op uw openbare bord en stemmen op die van anderen — zonder account. De vraag wordt zichtbaar."
       },
       "build": {
-        "title": "U bouwt",
-        "desc": "Sleep het naar uw roadmap. De status wordt tegelijk bijgewerkt op het openbare bord."
+        "title": "Uw team bouwt",
+        "desc": "U sorteert met labels en statussen en sleept de winnaars naar de roadmap. Het openbare bord werkt zichzelf bij."
       },
       "announce": {
-        "title": "Zij horen het terug",
-        "desc": "Lever het op, publiceer een changelog-item en mail degene die erom vroeg. Niets verdwijnt in het niets."
+        "title": "Iedereen hoort het terug",
+        "desc": "Lever het op, publiceer een changelog-item en wie erom vroeg krijgt een e-mail. Niets verdwijnt in het niets."
       },
-      "votes": "stemmen",
-      "shipped": "in changelog",
       "loop": "…en ze komen terug met het volgende idee"
+    },
+    "info": {
+      "exampleBoard": "Wat er op een bord binnenkomt",
+      "notified": "Gemeld",
+      "link1": "ideeën & stemmen",
+      "link2": "opgeleverde updates"
     }
   },
   "common": {

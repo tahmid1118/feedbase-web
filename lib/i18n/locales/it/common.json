@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Loro chiedono",
-        "desc": "Un utente pubblica un'idea sulla tua bacheca pubblica. Nessun account richiesto — solo un'e-mail per poterti rispondere."
-      },
-      "prioritize": {
-        "title": "Gli altri votano",
-        "desc": "I voti trasformano le opinioni in una classifica, così la voce più forte non decide più la tua roadmap."
+        "title": "I tuoi utenti chiedono",
+        "desc": "Pubblicano idee sulla tua bacheca pubblica e votano quelle degli altri — senza account. La domanda diventa visibile."
       },
       "build": {
-        "title": "Tu costruisci",
-        "desc": "Trascinala nella tua roadmap. Lo stato si aggiorna contemporaneamente sulla bacheca pubblica."
+        "title": "Il tuo team costruisce",
+        "desc": "Organizzi con etichette e stati, poi trascini le vincenti nella roadmap. La bacheca pubblica si aggiorna da sola."
       },
       "announce": {
-        "title": "Ricevono risposta",
-        "desc": "Rilascialo, pubblica una voce nel changelog e scrivi a chi l'ha chiesto. Niente finisce nel vuoto."
+        "title": "Tutti ricevono risposta",
+        "desc": "Rilascialo, pubblica una voce nel changelog e chi l'ha chiesto riceve un'e-mail. Niente sparisce nel vuoto."
       },
-      "votes": "voti",
-      "shipped": "nel changelog",
       "loop": "…e tornano con l'idea successiva"
+    },
+    "info": {
+      "exampleBoard": "Cosa arriva su una bacheca",
+      "notified": "Notificato",
+      "link1": "idee e voti",
+      "link2": "aggiornamenti rilasciati"
     }
   },
   "common": {

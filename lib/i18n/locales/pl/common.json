@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Oni proszą",
-        "desc": "Użytkownik zgłasza pomysł na Twojej publicznej tablicy. Bez konta — wystarczy e-mail, byś mógł odpowiedzieć."
-      },
-      "prioritize": {
-        "title": "Inni głosują",
-        "desc": "Głosy zamieniają opinie w ranking, więc najgłośniejszy głos przestaje decydować o Twoim planie."
+        "title": "Twoi użytkownicy proszą",
+        "desc": "Zgłaszają pomysły na Twojej publicznej tablicy i głosują na cudze — bez konta. Popyt staje się widoczny."
       },
       "build": {
-        "title": "Ty budujesz",
-        "desc": "Przeciągnij go do planu działań. Status na publicznej tablicy zmienia się w tym samym czasie."
+        "title": "Twój zespół buduje",
+        "desc": "Porządkujesz tagami i statusami, a zwycięzców przeciągasz do planu działań. Publiczna tablica aktualizuje się sama."
       },
       "announce": {
-        "title": "Oni dostają odpowiedź",
-        "desc": "Wdróż, opublikuj wpis w dzienniku zmian i napisz do osoby, która o to prosiła. Nic nie ginie."
+        "title": "Wszyscy dostają odpowiedź",
+        "desc": "Wdróż, opublikuj wpis w dzienniku zmian, a osoba, która prosiła, dostaje e-mail. Nic nie znika."
       },
-      "votes": "głosów",
-      "shipped": "w dzienniku zmian",
       "loop": "…i wracają z kolejnym pomysłem"
+    },
+    "info": {
+      "exampleBoard": "Co trafia na tablicę",
+      "notified": "Powiadomiono",
+      "link1": "pomysły i głosy",
+      "link2": "wdrożone zmiany"
     }
   },
   "common": {

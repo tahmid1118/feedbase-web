@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Ellos piden",
-        "desc": "Un usuario publica una idea en tu tablero público. Sin cuenta: solo un correo para que puedas responder."
-      },
-      "prioritize": {
-        "title": "Otros votan",
-        "desc": "Los votos convierten las opiniones en un ranking, así la voz más alta deja de decidir tu hoja de ruta."
+        "title": "Tus usuarios piden",
+        "desc": "Publican ideas en tu tablero público y votan las de los demás, sin cuenta. La demanda se hace visible."
       },
       "build": {
-        "title": "Tú construyes",
-        "desc": "Arrástrala a tu hoja de ruta. El estado se actualiza en el tablero público al mismo tiempo."
+        "title": "Tu equipo construye",
+        "desc": "Clasificas con etiquetas y estados, y arrastras las ganadoras a la hoja de ruta. El tablero público se actualiza solo."
       },
       "announce": {
-        "title": "Reciben respuesta",
-        "desc": "Publícalo, añade una nota de versión y escribe a quien lo pidió. Nada cae en el vacío."
+        "title": "Todos reciben respuesta",
+        "desc": "Publícalo, añade una nota de versión y quien lo pidió recibe un correo. Nada desaparece en el vacío."
       },
-      "votes": "votos",
-      "shipped": "en el registro",
       "loop": "…y vuelven con la siguiente idea"
+    },
+    "info": {
+      "exampleBoard": "Lo que llega a un tablero",
+      "notified": "Notificado",
+      "link1": "ideas y votos",
+      "link2": "novedades publicadas"
     }
   },
   "common": {

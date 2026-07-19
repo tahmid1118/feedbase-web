@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Sie fragen",
-        "desc": "Ein Nutzer postet eine Idee auf Ihrer öffentlichen Pinnwand. Kein Konto nötig — nur eine E-Mail, damit Sie antworten können."
-      },
-      "prioritize": {
-        "title": "Andere stimmen ab",
-        "desc": "Stimmen machen aus Meinungen eine Rangfolge — die lauteste Stimme bestimmt nicht mehr Ihre Roadmap."
+        "title": "Ihre Nutzer fragen",
+        "desc": "Sie posten Ideen auf Ihrer öffentlichen Pinnwand und stimmen für die der anderen — ohne Konto. Die Nachfrage wird sichtbar."
       },
       "build": {
-        "title": "Sie entwickeln",
-        "desc": "Ziehen Sie sie auf Ihre Roadmap. Der Status auf der öffentlichen Pinnwand aktualisiert sich gleichzeitig."
+        "title": "Ihr Team entwickelt",
+        "desc": "Sie sortieren mit Schlagwörtern und Status und ziehen die Gewinner auf die Roadmap. Die öffentliche Pinnwand aktualisiert sich selbst."
       },
       "announce": {
-        "title": "Sie hören zurück",
-        "desc": "Veröffentlichen Sie es, schreiben Sie einen Änderungsprotokoll-Eintrag und mailen Sie der Person, die gefragt hat. Nichts verschwindet im Nichts."
+        "title": "Alle hören zurück",
+        "desc": "Veröffentlichen Sie es, schreiben Sie einen Änderungsprotokoll-Eintrag — und wer gefragt hat, bekommt eine E-Mail. Nichts verschwindet im Nichts."
       },
-      "votes": "Stimmen",
-      "shipped": "im Änderungsprotokoll",
       "loop": "…und sie kommen mit der nächsten Idee zurück"
+    },
+    "info": {
+      "exampleBoard": "Was auf einer Pinnwand ankommt",
+      "notified": "Benachrichtigt",
+      "link1": "Ideen & Stimmen",
+      "link2": "veröffentlichte Updates"
     }
   },
   "common": {

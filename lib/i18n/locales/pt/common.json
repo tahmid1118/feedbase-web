@@ -121,24 +121,24 @@
     },
     "flow": {
       "collect": {
-        "title": "Eles pedem",
-        "desc": "Um utilizador publica uma ideia no seu painel público. Sem conta — apenas um e-mail para poder responder."
-      },
-      "prioritize": {
-        "title": "Outros votam",
-        "desc": "Os votos transformam opiniões num ranking, para que a voz mais alta deixe de decidir o seu roteiro."
+        "title": "Os seus utilizadores pedem",
+        "desc": "Publicam ideias no seu painel público e votam nas dos outros — sem conta. A procura torna-se visível."
       },
       "build": {
-        "title": "Você constrói",
-        "desc": "Arraste-a para o seu roteiro. O estado é atualizado no painel público ao mesmo tempo."
+        "title": "A sua equipa constrói",
+        "desc": "Organiza com etiquetas e estados e arrasta as vencedoras para o roteiro. O painel público atualiza-se sozinho."
       },
       "announce": {
-        "title": "Recebem resposta",
-        "desc": "Lance, publique uma nota no registo de alterações e envie um e-mail a quem pediu. Nada cai no vazio."
+        "title": "Todos recebem resposta",
+        "desc": "Lance, publique uma nota no registo de alterações e quem pediu recebe um e-mail. Nada desaparece no vazio."
       },
-      "votes": "votos",
-      "shipped": "no registo",
       "loop": "…e voltam com a próxima ideia"
+    },
+    "info": {
+      "exampleBoard": "O que chega a um painel",
+      "notified": "Notificado",
+      "link1": "ideias e votos",
+      "link2": "atualizações lançadas"
     }
   },
   "common": {

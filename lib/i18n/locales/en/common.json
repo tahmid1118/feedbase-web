@@ -153,24 +153,24 @@
     },
     "flow": {
       "collect": {
-        "title": "They ask",
-        "desc": "A user posts an idea on your public board. No account needed — just an email so you can reply."
-      },
-      "prioritize": {
-        "title": "Others vote",
-        "desc": "Upvotes turn opinions into a ranking, so the loudest voice stops deciding your roadmap."
+        "title": "Your users ask",
+        "desc": "They post ideas on your public board and upvote each other's — no account needed. Demand becomes visible."
       },
       "build": {
-        "title": "You build",
-        "desc": "Drag it onto your roadmap. The status updates on the public board at the same time."
+        "title": "Your team builds",
+        "desc": "You triage with tags and statuses, then drag the winners onto the roadmap. The public board updates itself."
       },
       "announce": {
-        "title": "They hear back",
-        "desc": "Ship it, publish a changelog entry, and email the person who asked. Nothing goes into a void."
+        "title": "Everyone hears back",
+        "desc": "Ship it, publish a changelog entry, and the person who asked gets an email. Nothing disappears into a void."
       },
-      "votes": "votes",
-      "shipped": "in changelog",
       "loop": "…and they come back with the next idea"
+    },
+    "info": {
+      "exampleBoard": "What lands on a board",
+      "notified": "Notified",
+      "link1": "ideas & votes",
+      "link2": "shipped updates"
     }
   },
   "dashboard": {
