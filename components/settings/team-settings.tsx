@@ -89,7 +89,7 @@ export function TeamSettings() {
           },
         });
       } else {
-        toast.error(e instanceof ApiError ? e.message : "Failed to send invitation");
+        toast.error(e instanceof ApiError ? e.message : t("team.inviteFailed"));
       }
     } finally {
       setSending(false);
@@ -179,7 +179,7 @@ export function TeamSettings() {
                           <span className="text-red-600">{t("team.expired")}</span>
                         ) : (
                           <>
-                            Expires <LocalTime date={inv.expires_at} relative />
+                            {t("team.expires")} <LocalTime date={inv.expires_at} relative />
                           </>
                         )}
                       </p>
@@ -205,8 +205,7 @@ export function TeamSettings() {
       <Card className="p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("team.teamMembers")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
-          Everyone in this workspace. A workspace has one owner; everybody else is
-          a member.
+          {t("team.subtitle")}
         </p>
 
         <div className="mt-6">
@@ -224,7 +223,7 @@ export function TeamSettings() {
                 <TableRow>
                   <TableHead>{t("role.member")}</TableHead>
                   <TableHead>{t("auth.email")}</TableHead>
-                  <TableHead className="w-[120px]">Role</TableHead>
+                  <TableHead className="w-[120px]">{t("common.role")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

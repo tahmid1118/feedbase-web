@@ -395,7 +395,10 @@
     "revoke": "Revoca",
     "loadingMembers": "Caricamento dei membri…",
     "noMembers": "Nessun membro del team trovato.",
-    "emailPlaceholder": "collega@azienda.com"
+    "emailPlaceholder": "collega@azienda.com",
+    "subtitle": "Tutti in questo spazio di lavoro. Uno spazio di lavoro ha un solo proprietario; tutti gli altri sono membri.",
+    "inviteFailed": "Impossibile inviare l'invito",
+    "expires": "Scade"
   },
   "role": {
     "owner": "Proprietario",
@@ -431,7 +434,8 @@
     "noWorkspace": "Nessuno spazio di lavoro da gestire.",
     "subtitle": "Personalizza l'aspetto del tuo portale di feedback",
     "logoHint": "Mostrato nell'intestazione della tua bacheca pubblica. Un PNG o SVG quadrato è ideale.",
-    "uploadLogo": "Carica logo"
+    "uploadLogo": "Carica logo",
+    "portalUrl": "Il tuo portale: {{url}}"
   },
   "delete": {
     "dangerZone": "Zona pericolosa",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Pagamento annullato.",
     "checkoutFailed": "Impossibile avviare il pagamento",
     "portalFailed": "Impossibile aprire il portale di fatturazione",
-    "redeemHint": "Riscatta un codice per ottenere uno sconto o un piano gratuito."
+    "redeemHint": "Riscatta un codice per ottenere uno sconto o un piano gratuito.",
+    "apply": "Applica",
+    "renews": "Si rinnova il {{date}}",
+    "save": "RISPARMIA {{percent}}%",
+    "status": {
+      "active": "Attivo",
+      "trialing": "Prova",
+      "past_due": "Scaduto",
+      "canceled": "Annullato",
+      "incomplete": "Incompleto",
+      "unpaid": "Non pagato"
+    }
   },
   "switcher": {
     "addWorkspace": "Aggiungi spazio di lavoro",
@@ -634,7 +649,9 @@
     "choose": "Scegli {{plan}}",
     "ends": "termina il {{date}}",
     "limitedOffer": "Offerta a tempo limitato",
-    "perMoBilledAnnually": "≈ {{price}}/mese, fatturato annualmente"
+    "perMoBilledAnnually": "≈ {{price}}/mese, fatturato annualmente",
+    "perMo": "/mese",
+    "perYr": "/anno"
   },
   "toggle": {
     "monthly": "Mensile",

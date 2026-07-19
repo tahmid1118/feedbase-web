@@ -395,7 +395,10 @@
     "revoke": "Intrekken",
     "loadingMembers": "Leden laden…",
     "noMembers": "Geen teamleden gevonden.",
-    "emailPlaceholder": "collega@bedrijf.nl"
+    "emailPlaceholder": "collega@bedrijf.nl",
+    "subtitle": "Iedereen in deze werkruimte. Een werkruimte heeft één eigenaar; alle anderen zijn lid.",
+    "inviteFailed": "Kan uitnodiging niet verzenden",
+    "expires": "Verloopt"
   },
   "role": {
     "owner": "Eigenaar",
@@ -431,7 +434,8 @@
     "noWorkspace": "Geen werkruimte beschikbaar om te beheren.",
     "subtitle": "Pas aan hoe uw feedbackportaal er voor gebruikers uitziet",
     "logoHint": "Weergegeven in de koptekst van uw openbare bord. Een vierkante PNG of SVG werkt het best.",
-    "uploadLogo": "Logo uploaden"
+    "uploadLogo": "Logo uploaden",
+    "portalUrl": "Uw portaal: {{url}}"
   },
   "delete": {
     "dangerZone": "Gevarenzone",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Afrekenen geannuleerd.",
     "checkoutFailed": "Kan afrekenen niet starten",
     "portalFailed": "Kan factuurportaal niet openen",
-    "redeemHint": "Wissel een code in voor korting of een gratis abonnement."
+    "redeemHint": "Wissel een code in voor korting of een gratis abonnement.",
+    "apply": "Toepassen",
+    "renews": "Wordt verlengd op {{date}}",
+    "save": "BESPAAR {{percent}}%",
+    "status": {
+      "active": "Actief",
+      "trialing": "Proefperiode",
+      "past_due": "Achterstallig",
+      "canceled": "Geannuleerd",
+      "incomplete": "Onvolledig",
+      "unpaid": "Onbetaald"
+    }
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",
@@ -634,7 +649,9 @@
     "choose": "Kies {{plan}}",
     "ends": "eindigt op {{date}}",
     "limitedOffer": "Tijdelijke aanbieding",
-    "perMoBilledAnnually": "≈ {{price}}/maand, jaarlijks gefactureerd"
+    "perMoBilledAnnually": "≈ {{price}}/maand, jaarlijks gefactureerd",
+    "perMo": "/mnd",
+    "perYr": "/jr"
   },
   "toggle": {
     "monthly": "Maandelijks",

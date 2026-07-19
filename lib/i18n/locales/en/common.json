@@ -395,7 +395,10 @@
     "revoke": "Revoke",
     "loadingMembers": "Loading members…",
     "noMembers": "No team members found.",
-    "emailPlaceholder": "teammate@company.com"
+    "emailPlaceholder": "teammate@company.com",
+    "subtitle": "Everyone in this workspace. A workspace has one owner; everybody else is a member.",
+    "inviteFailed": "Failed to send invitation",
+    "expires": "Expires"
   },
   "role": {
     "owner": "Owner",
@@ -431,7 +434,8 @@
     "noWorkspace": "No workspace available to manage.",
     "subtitle": "Customize how your feedback portal appears to users",
     "logoHint": "Shown in the header of your public board. A square PNG or SVG works best.",
-    "uploadLogo": "Upload logo"
+    "uploadLogo": "Upload logo",
+    "portalUrl": "Your portal: {{url}}"
   },
   "delete": {
     "dangerZone": "Danger zone",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Checkout cancelled.",
     "checkoutFailed": "Could not start checkout",
     "portalFailed": "Could not open billing portal",
-    "redeemHint": "Redeem a code to unlock a discount or a free plan."
+    "redeemHint": "Redeem a code to unlock a discount or a free plan.",
+    "apply": "Apply",
+    "renews": "Renews {{date}}",
+    "save": "SAVE {{percent}}%",
+    "status": {
+      "active": "Active",
+      "trialing": "Trial",
+      "past_due": "Past due",
+      "canceled": "Canceled",
+      "incomplete": "Incomplete",
+      "unpaid": "Unpaid"
+    }
   },
   "switcher": {
     "addWorkspace": "Add Workspace",
@@ -634,7 +649,9 @@
     "choose": "Choose {{plan}}",
     "ends": "ends {{date}}",
     "limitedOffer": "Limited-time offer",
-    "perMoBilledAnnually": "≈ {{price}}/mo, billed annually"
+    "perMoBilledAnnually": "≈ {{price}}/mo, billed annually",
+    "perMo": "/mo",
+    "perYr": "/yr"
   },
   "toggle": {
     "monthly": "Monthly",

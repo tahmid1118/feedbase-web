@@ -395,7 +395,10 @@
     "revoke": "Révoquer",
     "loadingMembers": "Chargement des membres…",
     "noMembers": "Aucun membre d'équipe trouvé.",
-    "emailPlaceholder": "collegue@entreprise.com"
+    "emailPlaceholder": "collegue@entreprise.com",
+    "subtitle": "Toutes les personnes de cet espace de travail. Un espace de travail a un seul propriétaire ; tous les autres sont des membres.",
+    "inviteFailed": "Échec de l'envoi de l'invitation",
+    "expires": "Expire le"
   },
   "role": {
     "owner": "Propriétaire",
@@ -431,7 +434,8 @@
     "noWorkspace": "Aucun espace de travail à gérer.",
     "subtitle": "Personnalisez l'apparence de votre portail de retours",
     "logoHint": "Affiché dans l'en-tête de votre tableau public. Un PNG ou SVG carré est idéal.",
-    "uploadLogo": "Téléverser un logo"
+    "uploadLogo": "Téléverser un logo",
+    "portalUrl": "Votre portail : {{url}}"
   },
   "delete": {
     "dangerZone": "Zone de danger",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Paiement annulé.",
     "checkoutFailed": "Impossible de démarrer le paiement",
     "portalFailed": "Impossible d'ouvrir le portail de facturation",
-    "redeemHint": "Utilisez un code pour débloquer une remise ou un forfait gratuit."
+    "redeemHint": "Utilisez un code pour débloquer une remise ou un forfait gratuit.",
+    "apply": "Appliquer",
+    "renews": "Se renouvelle le {{date}}",
+    "save": "ÉCONOMISEZ {{percent}} %",
+    "status": {
+      "active": "Actif",
+      "trialing": "Essai",
+      "past_due": "En retard",
+      "canceled": "Annulé",
+      "incomplete": "Incomplet",
+      "unpaid": "Impayé"
+    }
   },
   "switcher": {
     "addWorkspace": "Ajouter un espace de travail",
@@ -634,7 +649,9 @@
     "choose": "Choisir {{plan}}",
     "ends": "se termine le {{date}}",
     "limitedOffer": "Offre à durée limitée",
-    "perMoBilledAnnually": "≈ {{price}}/mois, facturé annuellement"
+    "perMoBilledAnnually": "≈ {{price}}/mois, facturé annuellement",
+    "perMo": "/mois",
+    "perYr": "/an"
   },
   "toggle": {
     "monthly": "Mensuel",

@@ -8,6 +8,7 @@ import type { OfferMap, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
 import { useTranslation } from "@/lib/i18n/client";
+import { useLanguage } from "@/components/providers/i18n-provider";
 import { cn } from "@/lib/utils";
 
 /**
@@ -23,6 +24,7 @@ export function PricingCards({
   ctaHref?: string;
 }) {
   const { t } = useTranslation();
+  const lng = useLanguage();
   const [interval, setInterval] = useState<BillingInterval>("month");
 
   // A yearly offer replaces the flat 20% yearly saving for that plan, so hide
@@ -57,11 +59,11 @@ export function PricingCards({
                   </h3>
                   {offer ? (
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
-                      SAVE {offer.percentOff}%
+                      {t("billing.save", { percent: offer.percentOff })}
                     </span>
                   ) : showYearly ? (
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
-                      SAVE {pricing.savingsPercent}%
+                      {t("billing.save", { percent: pricing.savingsPercent })}
                     </span>
                   ) : null}
                 </div>
@@ -88,7 +90,7 @@ export function PricingCards({
                       {formatPrice(offer.offerPrice)}
                     </span>
                     <span className="text-[#1c0a0c]/50">
-                      {interval === "year" ? "/yr" : "/mo"}
+                      {t(interval === "year" ? "pricing.perYr" : "pricing.perMo")}
                     </span>
                   </div>
                 ) : (
@@ -110,7 +112,7 @@ export function PricingCards({
                       <p className="mt-1 text-xs font-medium text-green-700">
                         {offer.label || t("pricing.limitedOffer")}
                         {offer.endsAt
-                          ? ` · ${t("pricing.ends", { date: new Date(offer.endsAt).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" }) })}`
+                          ? ` · ${t("pricing.ends", { date: new Date(offer.endsAt).toLocaleDateString(lng, { month: "long", day: "numeric", year: "numeric" }) })}`
                           : ""}
                       </p>
                     ) : null}

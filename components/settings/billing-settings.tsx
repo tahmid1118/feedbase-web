@@ -12,6 +12,7 @@ import {
 } from "@/lib/api";
 import { PLANS, planPricing, formatPrice } from "@/lib/plans";
 import { useTranslation } from "@/lib/i18n/client";
+import { useLanguage } from "@/components/providers/i18n-provider";
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,18 +21,21 @@ import { Input } from "@/components/ui/input";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
 import { toast } from "sonner";
 
-const STATUS_LABEL: Record<string, string> = {
-  active: "Active",
-  trialing: "Trial",
-  past_due: "Past due",
-  canceled: "Canceled",
-  incomplete: "Incomplete",
-  unpaid: "Unpaid",
-  comped: "Active",
+// Stripe subscription status -> i18n key. 'comped' (an admin-granted plan) is
+// deliberately shown as "Active" so it never reads as charity to the customer.
+const STATUS_KEY: Record<string, string> = {
+  active: "billing.status.active",
+  trialing: "billing.status.trialing",
+  past_due: "billing.status.past_due",
+  canceled: "billing.status.canceled",
+  incomplete: "billing.status.incomplete",
+  unpaid: "billing.status.unpaid",
+  comped: "billing.status.active",
 };
 
 export function BillingSettings() {
   const { t } = useTranslation();
+  const lng = useLanguage();
   const { data: session } = useSession();
   const token = session?.user?.accessToken;
   const params = useSearchParams();
@@ -138,7 +142,7 @@ export function BillingSettings() {
   const hasSub = status?.hasSubscription ?? false;
   const currentPlan = PLANS.find((p) => p.key === current);
   const renewal = status?.currentPeriodEnd
-    ? new Date(status.currentPeriodEnd).toLocaleDateString()
+    ? new Date(status.currentPeriodEnd).toLocaleDateString(lng)
     : null;
 
   const manageButton = (
@@ -203,8 +207,9 @@ export function BillingSettings() {
               </span>
               {status?.subscriptionStatus && (
                 <Badge variant="outline">
-                  {STATUS_LABEL[status.subscriptionStatus] ??
-                    status.subscriptionStatus}
+                  {STATUS_KEY[status.subscriptionStatus]
+                    ? t(STATUS_KEY[status.subscriptionStatus])
+                    : status.subscriptionStatus}
                 </Badge>
               )}
             </div>
@@ -216,7 +221,7 @@ export function BillingSettings() {
                     ? t("billing.billedMonthly")
                     : null}
                 {status?.billingInterval && renewal ? " · " : ""}
-                {renewal ? `Renews ${renewal}` : ""}
+                {renewal ? t("billing.renews", { date: renewal }) : ""}
               </p>
             )}
           </div>
@@ -252,7 +257,7 @@ export function BillingSettings() {
               onClick={redeem}
               disabled={redeeming || !promoInput.trim()}
             >
-              {redeeming ? <Loader2 className="h-4 w-4 animate-spin" /> : "Apply"}
+              {redeeming ? <Loader2 className="h-4 w-4 animate-spin" /> : t("billing.apply")}
             </Button>
           </div>
         </div>
@@ -297,11 +302,11 @@ export function BillingSettings() {
                 </h3>
                 {offer ? (
                   <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
-                    SAVE {offer.percentOff}%
+                    {t("billing.save", { percent: offer.percentOff })}
                   </span>
                 ) : showYearly ? (
                   <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
-                    SAVE {pricing.savingsPercent}%
+                    {t("billing.save", { percent: pricing.savingsPercent })}
                   </span>
                 ) : null}
               </div>
@@ -328,7 +333,7 @@ export function BillingSettings() {
                     {formatPrice(offer.offerPrice)}
                   </span>
                   <span className="text-sm text-[#1c0a0c]/50">
-                    {interval === "year" ? "/yr" : "/mo"}
+                    {t(interval === "year" ? "pricing.perYr" : "pricing.perMo")}
                   </span>
                 </div>
               ) : (
@@ -352,7 +357,7 @@ export function BillingSettings() {
                     <p className="mt-1 text-xs font-medium text-green-700">
                       {offer.label || t("pricing.limitedOffer")}
                       {offer.endsAt
-                        ? ` · ${t("pricing.ends", { date: new Date(offer.endsAt).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" }) })}`
+                        ? ` · ${t("pricing.ends", { date: new Date(offer.endsAt).toLocaleDateString(lng, { month: "long", day: "numeric", year: "numeric" }) })}`
                         : ""}
                     </p>
                   ) : null}

@@ -130,7 +130,7 @@ export function BrandingSettings() {
       <div className="mt-6 space-y-2">
         <Label>{t("branding.companyLogo")}</Label>
         <p className="text-xs text-[#1c0a0c]/50">
-          Shown in the header of your public board. A square PNG or SVG works best.
+          {t("branding.logoHint")}
         </p>
         <div className="flex items-center gap-4">
           <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#e399a3]/30 bg-[#fdf8f9]">
@@ -206,7 +206,9 @@ export function BrandingSettings() {
             <SubdomainStatusHint status={subStatus} />
           ) : (
             <p className="text-xs text-[#1c0a0c]/50">
-              Your portal: {subdomain || "…"}.{ROOT_DOMAIN.split(":")[0]}
+              {t("branding.portalUrl", {
+                url: `${subdomain || "…"}.${ROOT_DOMAIN.split(":")[0]}`,
+              })}
             </p>
           )}
         </div>
@@ -221,7 +223,7 @@ export function BrandingSettings() {
           {saving ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" />
-              Saving...
+              {t("common.saving")}
             </>
           ) : (
             t("common.saveChanges")

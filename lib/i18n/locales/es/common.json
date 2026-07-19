@@ -395,7 +395,10 @@
     "revoke": "Revocar",
     "loadingMembers": "Cargando miembros…",
     "noMembers": "No se encontraron miembros del equipo.",
-    "emailPlaceholder": "companero@empresa.com"
+    "emailPlaceholder": "companero@empresa.com",
+    "subtitle": "Todas las personas de este espacio de trabajo. Un espacio de trabajo tiene un único propietario; los demás son miembros.",
+    "inviteFailed": "No se pudo enviar la invitación",
+    "expires": "Caduca"
   },
   "role": {
     "owner": "Propietario",
@@ -431,7 +434,8 @@
     "noWorkspace": "No hay ningún espacio de trabajo para gestionar.",
     "subtitle": "Personaliza cómo se ve tu portal de comentarios",
     "logoHint": "Se muestra en la cabecera de tu tablero público. Un PNG o SVG cuadrado funciona mejor.",
-    "uploadLogo": "Subir logotipo"
+    "uploadLogo": "Subir logotipo",
+    "portalUrl": "Tu portal: {{url}}"
   },
   "delete": {
     "dangerZone": "Zona de peligro",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Pago cancelado.",
     "checkoutFailed": "No se pudo iniciar el pago",
     "portalFailed": "No se pudo abrir el portal de facturación",
-    "redeemHint": "Canjea un código para obtener un descuento o un plan gratuito."
+    "redeemHint": "Canjea un código para obtener un descuento o un plan gratuito.",
+    "apply": "Aplicar",
+    "renews": "Se renueva el {{date}}",
+    "save": "AHORRA {{percent}} %",
+    "status": {
+      "active": "Activo",
+      "trialing": "Prueba",
+      "past_due": "Vencido",
+      "canceled": "Cancelado",
+      "incomplete": "Incompleto",
+      "unpaid": "Sin pagar"
+    }
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",
@@ -634,7 +649,9 @@
     "choose": "Elegir {{plan}}",
     "ends": "finaliza el {{date}}",
     "limitedOffer": "Oferta por tiempo limitado",
-    "perMoBilledAnnually": "≈ {{price}}/mes, facturado anualmente"
+    "perMoBilledAnnually": "≈ {{price}}/mes, facturado anualmente",
+    "perMo": "/mes",
+    "perYr": "/año"
   },
   "toggle": {
     "monthly": "Mensual",

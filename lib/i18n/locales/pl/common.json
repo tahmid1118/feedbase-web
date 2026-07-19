@@ -401,7 +401,10 @@
     "revoke": "Cofnij",
     "loadingMembers": "Ładowanie członków…",
     "noMembers": "Nie znaleziono członków zespołu.",
-    "emailPlaceholder": "wspolpracownik@firma.pl"
+    "emailPlaceholder": "wspolpracownik@firma.pl",
+    "subtitle": "Wszyscy w tym obszarze roboczym. Obszar roboczy ma jednego właściciela; pozostali są członkami.",
+    "inviteFailed": "Nie udało się wysłać zaproszenia",
+    "expires": "Wygasa"
   },
   "role": {
     "owner": "Właściciel",
@@ -437,7 +440,8 @@
     "noWorkspace": "Brak obszaru roboczego do zarządzania.",
     "subtitle": "Dostosuj wygląd swojego portalu opinii",
     "logoHint": "Wyświetlane w nagłówku Twojej publicznej tablicy. Najlepiej sprawdzi się kwadratowy PNG lub SVG.",
-    "uploadLogo": "Prześlij logo"
+    "uploadLogo": "Prześlij logo",
+    "portalUrl": "Twój portal: {{url}}"
   },
   "delete": {
     "dangerZone": "Strefa zagrożenia",
@@ -461,7 +465,18 @@
     "checkoutCancelled": "Płatność anulowana.",
     "checkoutFailed": "Nie udało się rozpocząć płatności",
     "portalFailed": "Nie udało się otworzyć portalu rozliczeń",
-    "redeemHint": "Zrealizuj kod, aby odblokować zniżkę lub darmowy plan."
+    "redeemHint": "Zrealizuj kod, aby odblokować zniżkę lub darmowy plan.",
+    "apply": "Zastosuj",
+    "renews": "Odnawia się {{date}}",
+    "save": "OSZCZĘDŹ {{percent}}%",
+    "status": {
+      "active": "Aktywny",
+      "trialing": "Okres próbny",
+      "past_due": "Zaległe",
+      "canceled": "Anulowane",
+      "incomplete": "Niekompletne",
+      "unpaid": "Nieopłacone"
+    }
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",
@@ -642,7 +657,9 @@
     "choose": "Wybierz {{plan}}",
     "ends": "kończy się {{date}}",
     "limitedOffer": "Oferta ograniczona czasowo",
-    "perMoBilledAnnually": "≈ {{price}}/mies., rozliczane rocznie"
+    "perMoBilledAnnually": "≈ {{price}}/mies., rozliczane rocznie",
+    "perMo": "/mies.",
+    "perYr": "/rok"
   },
   "toggle": {
     "monthly": "Miesięcznie",

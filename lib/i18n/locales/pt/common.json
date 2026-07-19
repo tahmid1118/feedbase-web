@@ -395,7 +395,10 @@
     "revoke": "Revogar",
     "loadingMembers": "A carregar membros…",
     "noMembers": "Não foram encontrados membros da equipa.",
-    "emailPlaceholder": "colega@empresa.com"
+    "emailPlaceholder": "colega@empresa.com",
+    "subtitle": "Todas as pessoas neste espaço de trabalho. Um espaço de trabalho tem um único proprietário; todos os outros são membros.",
+    "inviteFailed": "Não foi possível enviar o convite",
+    "expires": "Expira"
   },
   "role": {
     "owner": "Proprietário",
@@ -431,7 +434,8 @@
     "noWorkspace": "Não há nenhum espaço de trabalho para gerir.",
     "subtitle": "Personalize o aspeto do seu portal de feedback",
     "logoHint": "Apresentado no cabeçalho do seu painel público. Um PNG ou SVG quadrado funciona melhor.",
-    "uploadLogo": "Carregar logótipo"
+    "uploadLogo": "Carregar logótipo",
+    "portalUrl": "O seu portal: {{url}}"
   },
   "delete": {
     "dangerZone": "Zona de perigo",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Pagamento cancelado.",
     "checkoutFailed": "Não foi possível iniciar o pagamento",
     "portalFailed": "Não foi possível abrir o portal de faturação",
-    "redeemHint": "Resgate um código para obter um desconto ou um plano gratuito."
+    "redeemHint": "Resgate um código para obter um desconto ou um plano gratuito.",
+    "apply": "Aplicar",
+    "renews": "Renova a {{date}}",
+    "save": "POUPE {{percent}}%",
+    "status": {
+      "active": "Ativo",
+      "trialing": "Teste",
+      "past_due": "Em atraso",
+      "canceled": "Cancelado",
+      "incomplete": "Incompleto",
+      "unpaid": "Por pagar"
+    }
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",
@@ -634,7 +649,9 @@
     "choose": "Escolher {{plan}}",
     "ends": "termina a {{date}}",
     "limitedOffer": "Oferta por tempo limitado",
-    "perMoBilledAnnually": "≈ {{price}}/mês, faturado anualmente"
+    "perMoBilledAnnually": "≈ {{price}}/mês, faturado anualmente",
+    "perMo": "/mês",
+    "perYr": "/ano"
   },
   "toggle": {
     "monthly": "Mensal",

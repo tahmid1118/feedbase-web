@@ -395,7 +395,10 @@
     "revoke": "Widerrufen",
     "loadingMembers": "Mitglieder werden geladen…",
     "noMembers": "Keine Teammitglieder gefunden.",
-    "emailPlaceholder": "kollege@firma.de"
+    "emailPlaceholder": "kollege@firma.de",
+    "subtitle": "Alle in diesem Arbeitsbereich. Ein Arbeitsbereich hat genau einen Eigentümer; alle anderen sind Mitglieder.",
+    "inviteFailed": "Einladung konnte nicht gesendet werden",
+    "expires": "Läuft ab"
   },
   "role": {
     "owner": "Eigentümer",
@@ -431,7 +434,8 @@
     "noWorkspace": "Kein Arbeitsbereich zur Verwaltung verfügbar.",
     "subtitle": "Passen Sie an, wie Ihr Feedback-Portal für Nutzer aussieht",
     "logoHint": "Wird in der Kopfzeile Ihrer öffentlichen Pinnwand angezeigt. Ein quadratisches PNG oder SVG eignet sich am besten.",
-    "uploadLogo": "Logo hochladen"
+    "uploadLogo": "Logo hochladen",
+    "portalUrl": "Ihr Portal: {{url}}"
   },
   "delete": {
     "dangerZone": "Gefahrenzone",
@@ -455,7 +459,18 @@
     "checkoutCancelled": "Bezahlvorgang abgebrochen.",
     "checkoutFailed": "Bezahlvorgang konnte nicht gestartet werden",
     "portalFailed": "Abrechnungsportal konnte nicht geöffnet werden",
-    "redeemHint": "Lösen Sie einen Code ein, um einen Rabatt oder einen kostenlosen Tarif freizuschalten."
+    "redeemHint": "Lösen Sie einen Code ein, um einen Rabatt oder einen kostenlosen Tarif freizuschalten.",
+    "apply": "Anwenden",
+    "renews": "Verlängert sich am {{date}}",
+    "save": "{{percent}} % SPAREN",
+    "status": {
+      "active": "Aktiv",
+      "trialing": "Testphase",
+      "past_due": "Überfällig",
+      "canceled": "Gekündigt",
+      "incomplete": "Unvollständig",
+      "unpaid": "Unbezahlt"
+    }
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",
@@ -634,7 +649,9 @@
     "choose": "{{plan}} wählen",
     "ends": "endet am {{date}}",
     "limitedOffer": "Zeitlich begrenztes Angebot",
-    "perMoBilledAnnually": "≈ {{price}}/Monat, jährlich abgerechnet"
+    "perMoBilledAnnually": "≈ {{price}}/Monat, jährlich abgerechnet",
+    "perMo": "/Mon.",
+    "perYr": "/Jahr"
   },
   "toggle": {
     "monthly": "Monatlich",

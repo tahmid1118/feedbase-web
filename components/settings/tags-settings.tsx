@@ -110,7 +110,7 @@ export function TagsSettings() {
     <Card className="p-6">
       <div className="flex items-start justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-[#1c0a0c]">Tags</h3>
+          <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("settings.tab.tags")}</h3>
           <p className="text-sm text-[#1c0a0c]/60">
             {t("tags.subtitle")}
           </p>
@@ -188,7 +188,7 @@ export function TagsSettings() {
                           variant="destructive"
                           onClick={() => remove(tag.id)}
                         >
-                          Delete
+                          {t("common.delete")}
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
@@ -203,14 +203,14 @@ export function TagsSettings() {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-[420px]">
           <DialogHeader>
-            <DialogTitle>{editing ? t("tags.editTagTitle") : "New Tag"}</DialogTitle>
+            <DialogTitle>{t(editing ? "tags.editTagTitle" : "tags.newTag")}</DialogTitle>
             <DialogDescription>
               {t("tags.dialogDesc")}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="tag-name">Name</Label>
+              <Label htmlFor="tag-name">{t("common.name")}</Label>
               <Input
                 id="tag-name"
                 value={name}
@@ -238,14 +238,14 @@ export function TagsSettings() {
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDialogOpen(false)}>
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
               onClick={save}
               disabled={busy || !name.trim()}
             >
-              {editing ? "Save" : "Create"}
+              {t(editing ? "common.save" : "common.create")}
             </Button>
           </DialogFooter>
         </DialogContent>
