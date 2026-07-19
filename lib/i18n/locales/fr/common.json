@@ -721,7 +721,19 @@
     "button": "Supprimer le compte",
     "title": "Supprimer définitivement votre compte ?",
     "warn": "Cette action est irréversible. Veuillez lire attentivement.",
-    "ownedErased": "Tous leurs retours, commentaires, feuille de route et journal des modifications seront effacés, chaque membre perd l'accès et tout abonnement actif est annulé."
+    "ownedErased": "Tous leurs retours, commentaires, feuille de route et journal des modifications seront effacés, chaque membre perd l'accès et tout abonnement actif est annulé.",
+    "dangerDesc": "Supprimez définitivement votre compte. Les espaces de travail que vous possédez sont supprimés avec lui, ainsi que tous leurs retours, leur feuille de route et leur journal des modifications. Cette action est irréversible.",
+    "ownedCount_one": "{{count}} espace de travail que vous possédez sera supprimé",
+    "ownedCount_other": "{{count}} espaces de travail que vous possédez seront supprimés",
+    "posts_one": "{{count}} publication",
+    "posts_other": "{{count}} publications",
+    "members_one": "{{count}} membre",
+    "members_other": "{{count}} membres",
+    "joinedCount_one": "Vous serez retiré de {{count}} espace de travail partagé",
+    "joinedCount_other": "Vous serez retiré de {{count}} espaces de travail partagés",
+    "joinedKeep": "{{names}} — ces espaces de travail conservent leurs données ; vos publications et commentaires y restent mais deviennent anonymes.",
+    "typeToConfirm": "Saisissez {{word}} pour confirmer",
+    "deleteFailed": "Échec de la suppression du compte"
   },
   "apiStatus": {
     "checking": "Vérification de la connexion à l'API…",

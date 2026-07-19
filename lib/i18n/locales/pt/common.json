@@ -721,7 +721,19 @@
     "button": "Eliminar conta",
     "title": "Eliminar permanentemente a sua conta?",
     "warn": "Esta ação não pode ser anulada. Leia com atenção.",
-    "ownedErased": "Todo o feedback, comentários, roteiro e registo de alterações serão apagados, todos os membros perdem o acesso e qualquer subscrição ativa é cancelada."
+    "ownedErased": "Todo o feedback, comentários, roteiro e registo de alterações serão apagados, todos os membros perdem o acesso e qualquer subscrição ativa é cancelada.",
+    "dangerDesc": "Elimine permanentemente a sua conta. Os espaços de trabalho que possui são eliminados com ela, juntamente com todo o feedback, o roteiro e o registo de alterações. Esta ação não pode ser anulada.",
+    "ownedCount_one": "{{count}} espaço de trabalho que possui será eliminado",
+    "ownedCount_other": "{{count}} espaços de trabalho que possui serão eliminados",
+    "posts_one": "{{count}} publicação",
+    "posts_other": "{{count}} publicações",
+    "members_one": "{{count}} membro",
+    "members_other": "{{count}} membros",
+    "joinedCount_one": "Será removido de {{count}} espaço de trabalho partilhado",
+    "joinedCount_other": "Será removido de {{count}} espaços de trabalho partilhados",
+    "joinedKeep": "{{names}} — estes espaços de trabalho mantêm os seus dados; as suas publicações e comentários permanecem, mas tornam-se anónimos.",
+    "typeToConfirm": "Escreva {{word}} para confirmar",
+    "deleteFailed": "Não foi possível eliminar a conta"
   },
   "apiStatus": {
     "checking": "A verificar a ligação à API…",

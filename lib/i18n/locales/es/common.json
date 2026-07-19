@@ -721,7 +721,19 @@
     "button": "Eliminar cuenta",
     "title": "¿Eliminar tu cuenta permanentemente?",
     "warn": "Esto no se puede deshacer. Léelo con atención.",
-    "ownedErased": "Se borrarán todos sus comentarios, la hoja de ruta y el registro de cambios, todos los miembros perderán el acceso y se cancelará cualquier suscripción activa."
+    "ownedErased": "Se borrarán todos sus comentarios, la hoja de ruta y el registro de cambios, todos los miembros perderán el acceso y se cancelará cualquier suscripción activa.",
+    "dangerDesc": "Elimina tu cuenta de forma permanente. Los espacios de trabajo que posees se eliminan con ella, junto con todos sus comentarios, su hoja de ruta y su registro de cambios. Esto no se puede deshacer.",
+    "ownedCount_one": "Se eliminará {{count}} espacio de trabajo de tu propiedad",
+    "ownedCount_other": "Se eliminarán {{count}} espacios de trabajo de tu propiedad",
+    "posts_one": "{{count}} publicación",
+    "posts_other": "{{count}} publicaciones",
+    "members_one": "{{count}} miembro",
+    "members_other": "{{count}} miembros",
+    "joinedCount_one": "Se te eliminará de {{count}} espacio de trabajo compartido",
+    "joinedCount_other": "Se te eliminará de {{count}} espacios de trabajo compartidos",
+    "joinedKeep": "{{names}}: estos espacios de trabajo conservan sus datos; tus publicaciones y comentarios allí permanecen, pero se vuelven anónimos.",
+    "typeToConfirm": "Escribe {{word}} para confirmar",
+    "deleteFailed": "No se pudo eliminar la cuenta"
   },
   "apiStatus": {
     "checking": "Comprobando la conexión con la API…",

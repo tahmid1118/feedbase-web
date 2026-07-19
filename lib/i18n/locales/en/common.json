@@ -721,7 +721,19 @@
     "button": "Delete account",
     "title": "Delete your account permanently?",
     "warn": "This cannot be undone. Please read carefully.",
-    "ownedErased": "All of their feedback, comments, roadmap and changelog will be erased, every member loses access, and any active subscription is cancelled."
+    "ownedErased": "All of their feedback, comments, roadmap and changelog will be erased, every member loses access, and any active subscription is cancelled.",
+    "dangerDesc": "Permanently delete your account. Workspaces you own are deleted with it, along with all of their feedback, roadmap, and changelog. This cannot be undone.",
+    "ownedCount_one": "{{count}} workspace you own will be deleted",
+    "ownedCount_other": "{{count}} workspaces you own will be deleted",
+    "posts_one": "{{count}} post",
+    "posts_other": "{{count}} posts",
+    "members_one": "{{count}} member",
+    "members_other": "{{count}} members",
+    "joinedCount_one": "You'll be removed from {{count}} shared workspace",
+    "joinedCount_other": "You'll be removed from {{count}} shared workspaces",
+    "joinedKeep": "{{names}} — these workspaces keep their data; your posts and comments there stay but become anonymous.",
+    "typeToConfirm": "Type {{word}} to confirm",
+    "deleteFailed": "Failed to delete the account"
   },
   "apiStatus": {
     "checking": "Checking API connection…",

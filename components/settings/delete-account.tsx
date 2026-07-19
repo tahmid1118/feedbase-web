@@ -67,7 +67,7 @@ export function DeleteAccount() {
       await signOut({ callbackUrl: "/" });
     } catch (e) {
       toast.error(
-        e instanceof ApiError ? e.message : "Failed to delete the account"
+        e instanceof ApiError ? e.message : t("deleteAccount.deleteFailed")
       );
       setBusy(false);
     }
@@ -78,9 +78,7 @@ export function DeleteAccount() {
       <Card className="border-red-200 p-6">
         <h3 className="text-lg font-semibold text-red-700">{t("delete.dangerZone")}</h3>
         <p className="mt-1 text-sm text-[#1c0a0c]/60">
-          Permanently delete your account. Workspaces you own are deleted with it,
-          along with all of their feedback, roadmap, and changelog. This cannot be
-          undone.
+          {t("deleteAccount.dangerDesc")}
         </p>
         <div className="mt-4">
           <Button
@@ -124,17 +122,15 @@ export function DeleteAccount() {
                 <div className="rounded-lg border border-red-200 bg-red-50 p-3">
                   <p className="flex items-center gap-1.5 text-sm font-semibold text-red-700">
                     <AlertTriangle className="h-4 w-4" />
-                    {owned.length === 1
-                      ? "1 workspace you own will be deleted"
-                      : `${owned.length} workspaces you own will be deleted`}
+                    {t("deleteAccount.ownedCount", { count: owned.length })}
                   </p>
                   <ul className="mt-2 space-y-1">
                     {owned.map((w) => (
                       <li key={w.id} className="text-sm text-red-700/90">
                         <span className="font-medium">{w.name}</span>{" "}
                         <span className="text-red-700/70">
-                          — {w.postCount} post{w.postCount === 1 ? "" : "s"},{" "}
-                          {w.memberCount} member{w.memberCount === 1 ? "" : "s"}
+                          — {t("deleteAccount.posts", { count: w.postCount })},{" "}
+                          {t("deleteAccount.members", { count: w.memberCount })}
                         </span>
                       </li>
                     ))}
@@ -148,13 +144,12 @@ export function DeleteAccount() {
               {joined.length > 0 && (
                 <div className="rounded-lg border border-[#e399a3]/30 bg-[#fdf8f9] p-3">
                   <p className="text-sm font-medium text-[#1c0a0c]">
-                    You&apos;ll be removed from {joined.length} shared workspace
-                    {joined.length === 1 ? "" : "s"}
+                    {t("deleteAccount.joinedCount", { count: joined.length })}
                   </p>
                   <p className="mt-1 text-xs text-[#1c0a0c]/60">
-                    {joined.map((w) => w.name).join(", ")} — these workspaces keep
-                    their data; your posts and comments there stay but become
-                    anonymous.
+                    {t("deleteAccount.joinedKeep", {
+                      names: joined.map((w) => w.name).join(", "),
+                    })}
                   </p>
                 </div>
               )}
@@ -171,9 +166,10 @@ export function DeleteAccount() {
               </div>
 
               <div className="space-y-2">
+                {/* Interpolated rather than split into prefix/suffix: the word's
+                    position varies by language (German puts it near the end). */}
                 <Label htmlFor="da-confirm">
-                  Type <span className="font-mono font-semibold">{CONFIRM_WORD}</span>{" "}
-                  to confirm
+                  {t("deleteAccount.typeToConfirm", { word: CONFIRM_WORD })}
                 </Label>
                 <Input
                   id="da-confirm"
@@ -188,7 +184,7 @@ export function DeleteAccount() {
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>
-              Cancel
+              {t("common.cancel")}
             </Button>
             <Button
               variant="destructive"

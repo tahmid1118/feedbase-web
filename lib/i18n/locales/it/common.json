@@ -721,7 +721,19 @@
     "button": "Elimina account",
     "title": "Eliminare definitivamente il tuo account?",
     "warn": "L'operazione non può essere annullata. Leggi attentamente.",
-    "ownedErased": "Tutti i feedback, i commenti, la roadmap e il changelog verranno cancellati, ogni membro perderà l'accesso e ogni abbonamento attivo verrà annullato."
+    "ownedErased": "Tutti i feedback, i commenti, la roadmap e il changelog verranno cancellati, ogni membro perderà l'accesso e ogni abbonamento attivo verrà annullato.",
+    "dangerDesc": "Elimina definitivamente il tuo account. Gli spazi di lavoro di tua proprietà vengono eliminati insieme a tutti i loro feedback, alla roadmap e al changelog. L'operazione non può essere annullata.",
+    "ownedCount_one": "{{count}} spazio di lavoro di tua proprietà verrà eliminato",
+    "ownedCount_other": "{{count}} spazi di lavoro di tua proprietà verranno eliminati",
+    "posts_one": "{{count}} post",
+    "posts_other": "{{count}} post",
+    "members_one": "{{count}} membro",
+    "members_other": "{{count}} membri",
+    "joinedCount_one": "Verrai rimosso da {{count}} spazio di lavoro condiviso",
+    "joinedCount_other": "Verrai rimosso da {{count}} spazi di lavoro condivisi",
+    "joinedKeep": "{{names}} — questi spazi di lavoro mantengono i loro dati; i tuoi post e commenti restano ma diventano anonimi.",
+    "typeToConfirm": "Digita {{word}} per confermare",
+    "deleteFailed": "Impossibile eliminare l'account"
   },
   "apiStatus": {
     "checking": "Verifica della connessione all'API…",

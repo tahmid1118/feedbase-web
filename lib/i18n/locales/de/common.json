@@ -721,7 +721,19 @@
     "button": "Konto löschen",
     "title": "Ihr Konto dauerhaft löschen?",
     "warn": "Dies kann nicht rückgängig gemacht werden. Bitte sorgfältig lesen.",
-    "ownedErased": "Sämtliches Feedback, Kommentare, Roadmap und Änderungsprotokoll werden gelöscht, alle Mitglieder verlieren den Zugriff und ein aktives Abonnement wird gekündigt."
+    "ownedErased": "Sämtliches Feedback, Kommentare, Roadmap und Änderungsprotokoll werden gelöscht, alle Mitglieder verlieren den Zugriff und ein aktives Abonnement wird gekündigt.",
+    "dangerDesc": "Löschen Sie Ihr Konto dauerhaft. Arbeitsbereiche, die Ihnen gehören, werden mitsamt allem Feedback, der Roadmap und dem Änderungsprotokoll gelöscht. Dies kann nicht rückgängig gemacht werden.",
+    "ownedCount_one": "{{count}} Arbeitsbereich in Ihrem Besitz wird gelöscht",
+    "ownedCount_other": "{{count}} Arbeitsbereiche in Ihrem Besitz werden gelöscht",
+    "posts_one": "{{count}} Beitrag",
+    "posts_other": "{{count}} Beiträge",
+    "members_one": "{{count}} Mitglied",
+    "members_other": "{{count}} Mitglieder",
+    "joinedCount_one": "Sie werden aus {{count}} geteilten Arbeitsbereich entfernt",
+    "joinedCount_other": "Sie werden aus {{count}} geteilten Arbeitsbereichen entfernt",
+    "joinedKeep": "{{names}} — diese Arbeitsbereiche behalten ihre Daten; Ihre Beiträge und Kommentare dort bleiben erhalten, werden aber anonymisiert.",
+    "typeToConfirm": "Geben Sie zur Bestätigung {{word}} ein",
+    "deleteFailed": "Konto konnte nicht gelöscht werden"
   },
   "apiStatus": {
     "checking": "API-Verbindung wird geprüft…",

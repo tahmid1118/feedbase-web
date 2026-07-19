@@ -721,7 +721,19 @@
     "button": "Account verwijderen",
     "title": "Uw account permanent verwijderen?",
     "warn": "Dit kan niet ongedaan worden gemaakt. Lees dit zorgvuldig.",
-    "ownedErased": "Al hun feedback, reacties, roadmap en changelog worden gewist, elk lid verliest toegang en een actief abonnement wordt geannuleerd."
+    "ownedErased": "Al hun feedback, reacties, roadmap en changelog worden gewist, elk lid verliest toegang en een actief abonnement wordt geannuleerd.",
+    "dangerDesc": "Verwijder uw account permanent. Werkruimten die u bezit worden mee verwijderd, samen met alle feedback, de roadmap en de changelog. Dit kan niet ongedaan worden gemaakt.",
+    "ownedCount_one": "{{count}} werkruimte die u bezit wordt verwijderd",
+    "ownedCount_other": "{{count}} werkruimten die u bezit worden verwijderd",
+    "posts_one": "{{count}} bericht",
+    "posts_other": "{{count}} berichten",
+    "members_one": "{{count}} lid",
+    "members_other": "{{count}} leden",
+    "joinedCount_one": "U wordt verwijderd uit {{count}} gedeelde werkruimte",
+    "joinedCount_other": "U wordt verwijderd uit {{count}} gedeelde werkruimten",
+    "joinedKeep": "{{names}} — deze werkruimten behouden hun gegevens; uw berichten en reacties daar blijven staan maar worden anoniem.",
+    "typeToConfirm": "Typ {{word}} om te bevestigen",
+    "deleteFailed": "Kan account niet verwijderen"
   },
   "apiStatus": {
     "checking": "API-verbinding controleren…",
