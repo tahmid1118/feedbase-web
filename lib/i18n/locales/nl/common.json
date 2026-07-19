@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Zet klantfeedback om in",
       "titleHighlight": "productsucces",
-      "subtitle": "Verzamel, organiseer en prioriteer feedback moeiteloos. Bouw producten die uw klanten echt willen.",
+      "subtitle": "Een app, een winkel, een game, een dienst — geef uw gebruikers één plek om zich uit te spreken, te stemmen en te zien dat u luistert. Bouw wat ze echt willen.",
       "startTrial": "Start gratis proefperiode",
-      "watchDemo": "Bekijk demo",
-      "badge": "Vertrouwd door 300K+ gebruikers wereldwijd"
+      "badge": "Verzamel feedback over alles wat u maakt",
+      "seeLive": "Bekijk een live bord"
     },
     "features": {
       "heading": "Alles wat u nodig hebt",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Multi-tenant-ondersteuning",
         "desc": "Beheer meerdere werkruimtes met aangepaste domeinen en branding"
+      },
+      "attachments": {
+        "title": "Foto- en videobewijs",
+        "desc": "Gebruikers voegen screenshots en korte clips toe aan hun feedback, zodat uw team precies ziet wat ze bedoelen."
+      },
+      "languages": {
+        "title": "Spreekt 8 talen",
+        "desc": "Uw bord, dashboard en e-mails werken in 8 grote Europese talen — uw gebruikers kiezen de hunne met één klik."
       }
     },
     "cta": {
       "heading": "Klaar om betere producten te bouwen?",
       "subheading": "Sluit u aan bij duizenden teams die Feedbase gebruiken om hun klanten te begrijpen"
-    },
-    "stats": {
-      "activeUsers": "Actieve gebruikers",
-      "pluginUsers": "Plugin-gebruikers",
-      "productHunt": "ProductHunt-upvotes"
     },
     "how": {
       "heading": "Hoe werkt het?",
@@ -74,16 +77,6 @@
       "step4Title": "Analyseer en onderneem actie",
       "step4Desc": "Exporteer gegevens in verschillende formaten, integreer uw tools en bouw betere producten"
     },
-    "testimonials": {
-      "heading": "Geliefd bij productteams",
-      "subheading": "Wat mensen zeggen over Feedbase",
-      "quote1": "Feedbase heeft veranderd hoe we gebruikersfeedback verzamelen en prioriteren. Het stemsysteem is briljant!",
-      "role1": "Productmanager",
-      "quote2": "De installatie duurde minder dan 5 minuten. De interface is strak en onze klanten zijn er dol op!",
-      "role2": "Startup-oprichter",
-      "quote3": "Het analysedashboard geeft ons inzichten die we nooit eerder hadden. Sterk aanbevolen!",
-      "role3": "UX-ontwerper"
-    },
     "pricing": {
       "heading": "Eenvoudige, transparante prijzen",
       "subheading": "Begin gratis, upgrade naarmate u groeit"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Alle rechten voorbehouden.",
       "giveFeedback": "Feedback geven over Feedbase"
+    },
+    "mock": {
+      "post1": "Donkere modus toevoegen",
+      "post2": "Een mobiele app, graag!",
+      "post3": "Snellere zoekresultaten"
+    },
+    "uses": {
+      "heading": "Gemaakt voor elk soort product",
+      "subheading": "Als mensen het gebruiken, kunt u er feedback over verzamelen.",
+      "saas": "SaaS & webapps",
+      "mobile": "Mobiele apps",
+      "ecommerce": "Webwinkels",
+      "games": "Games",
+      "agencies": "Bureaus & klanten",
+      "hardware": "Hardware",
+      "services": "Diensten",
+      "communities": "Community's"
+    },
+    "benefits": {
+      "hearTitle": "Hoor alles",
+      "hearDesc": "Elk idee, verzoek en elke bug komt op één openbaar bord terecht — niet verspreid over inboxen en chats.",
+      "decideTitle": "Beslis met stemmen",
+      "decideDesc": "Gebruikers stemmen op wat zij belangrijk vinden, dus u weet altijd wat u hierna moet bouwen — zonder gissen.",
+      "showTitle": "Laat zien dat u luistert",
+      "showDesc": "Een openbare roadmap en changelog maken de cirkel rond — gebruikers zien hun ideeën werkelijkheid worden en komen terug."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "om uw bord te lanceren",
+      "langValue": "8",
+      "langLabel": "talen standaard inbegrepen",
+      "priceValue": "$ 0",
+      "priceLabel": "om te beginnen",
+      "postsValue": "Onbeperkt",
+      "postsLabel": "berichten & stemmen in elk abonnement"
+    },
+    "types": {
+      "heading": "Elk soort input, één inbox",
+      "subheading": "Uw gebruikers kiezen wat ze sturen — u handelt alles op één plek af.",
+      "featureDesc": "\"Het zou geweldig zijn als…\" — ideeën waar uw gebruikers voor zouden betalen, gerangschikt op hun eigen stemmen.",
+      "bugDesc": "\"Er is iets kapot\" — met screenshots en clips erbij, rechtstreeks van de mensen die het tegenkwamen.",
+      "feedbackDesc": "\"Dit vind ik ervan\" — eerlijke meningen en complimenten die vertellen hoe uw product echt aanvoelt."
     }
   },
   "common": {

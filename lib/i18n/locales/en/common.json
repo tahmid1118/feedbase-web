@@ -50,12 +50,12 @@
   },
   "landing": {
     "hero": {
-      "badge": "Trusted by 300K+ users worldwide",
+      "badge": "Collect feedback on anything you build",
       "titleLead": "Turn Customer Feedback Into",
       "titleHighlight": "Product Success",
-      "subtitle": "Collect, organize, and prioritize user feedback effortlessly. Build products your customers actually want with our all-in-one feedback management platform.",
+      "subtitle": "An app, a store, a game, a service — give your users one place to speak, vote, and see you listen. Build what they actually want.",
       "startTrial": "Start Free Trial",
-      "watchDemo": "Watch Demo"
+      "seeLive": "See a live board"
     },
     "features": {
       "heading": "Everything You Need",
@@ -83,12 +83,15 @@
       "multitenant": {
         "title": "Multi-Tenant Support",
         "desc": "Manage multiple workspaces with custom domains and branding"
+      },
+      "attachments": {
+        "title": "Photo & Video Proof",
+        "desc": "Users attach screenshots and short clips to their feedback, so your team sees exactly what they mean."
+      },
+      "languages": {
+        "title": "Speaks 8 Languages",
+        "desc": "Your board, dashboard, and emails work in 8 major European languages — your users pick theirs in one click."
       }
-    },
-    "stats": {
-      "activeUsers": "Active Users",
-      "pluginUsers": "Plugin Users",
-      "productHunt": "ProductHunt Upvotes"
     },
     "how": {
       "heading": "How Does it Work?",
@@ -102,16 +105,6 @@
       "step4Title": "Analyze and take action",
       "step4Desc": "Export data in various formats, integrate with your tools, and build better products"
     },
-    "testimonials": {
-      "heading": "Loved by Product Teams",
-      "subheading": "What people are saying about Feedbase",
-      "quote1": "Feedbase transformed how we collect and prioritize user feedback. The voting system is brilliant!",
-      "role1": "Product Manager",
-      "quote2": "Setup took less than 5 minutes. The interface is clean and our customers love it!",
-      "role2": "Startup Founder",
-      "quote3": "The analytics dashboard gives us insights we never had before. Highly recommend!",
-      "role3": "UX Designer"
-    },
     "pricing": {
       "heading": "Simple, Transparent Pricing",
       "subheading": "Start free, upgrade when you grow"
@@ -123,6 +116,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. All rights reserved.",
       "giveFeedback": "Give feedback on Feedbase"
+    },
+    "mock": {
+      "post1": "Add dark mode",
+      "post2": "Mobile app, please!",
+      "post3": "Faster search results"
+    },
+    "uses": {
+      "heading": "Made for any kind of product",
+      "subheading": "If people use it, you can collect feedback on it.",
+      "saas": "SaaS & web apps",
+      "mobile": "Mobile apps",
+      "ecommerce": "Online stores",
+      "games": "Games",
+      "agencies": "Agencies & clients",
+      "hardware": "Hardware",
+      "services": "Services",
+      "communities": "Communities"
+    },
+    "benefits": {
+      "hearTitle": "Hear everything",
+      "hearDesc": "Every idea, request, and bug lands on one public board — not scattered across inboxes and chats.",
+      "decideTitle": "Decide with votes",
+      "decideDesc": "Users upvote what matters to them, so you always know what to build next — no guessing.",
+      "showTitle": "Show you listen",
+      "showDesc": "A public roadmap and changelog close the loop — users see their ideas ship, and they keep coming back."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "to launch your board",
+      "langValue": "8",
+      "langLabel": "languages out of the box",
+      "priceValue": "$0",
+      "priceLabel": "to get started",
+      "postsValue": "Unlimited",
+      "postsLabel": "posts & votes on every plan"
+    },
+    "types": {
+      "heading": "Every kind of input, one inbox",
+      "subheading": "Your users choose what they're sending — you triage it all in one place.",
+      "featureDesc": "\"It would be great if…\" — ideas your users would pay for, ranked by their own votes.",
+      "bugDesc": "\"Something's broken\" — with screenshots and clips attached, straight from the people who hit it.",
+      "feedbackDesc": "\"Here's what I think\" — honest opinions and praise that tell you how your product really feels."
     }
   },
   "dashboard": {

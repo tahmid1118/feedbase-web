@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Transformez les retours clients en",
       "titleHighlight": "succès produit",
-      "subtitle": "Collectez, organisez et priorisez les retours sans effort. Créez des produits que vos clients veulent vraiment.",
+      "subtitle": "Une appli, une boutique, un jeu, un service — offrez à vos utilisateurs un lieu unique pour s'exprimer, voter et constater que vous écoutez. Créez ce qu'ils veulent vraiment.",
       "startTrial": "Essai gratuit",
-      "watchDemo": "Voir la démo",
-      "badge": "Adopté par plus de 300 000 utilisateurs dans le monde"
+      "badge": "Recueillez des retours sur tout ce que vous créez",
+      "seeLive": "Voir un tableau en direct"
     },
     "features": {
       "heading": "Tout ce dont vous avez besoin",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Prise en charge multi-locataires",
         "desc": "Gérez plusieurs espaces de travail avec des domaines et une image de marque personnalisés"
+      },
+      "attachments": {
+        "title": "Preuves photo et vidéo",
+        "desc": "Les utilisateurs joignent captures d'écran et courts clips à leurs retours : votre équipe voit exactement de quoi il s'agit."
+      },
+      "languages": {
+        "title": "Parle 8 langues",
+        "desc": "Tableau, tableau de bord et e-mails fonctionnent en 8 grandes langues européennes : vos utilisateurs choisissent la leur en un clic."
       }
     },
     "cta": {
       "heading": "Prêt à créer de meilleurs produits ?",
       "subheading": "Rejoignez des milliers d'équipes qui utilisent Feedbase pour comprendre leurs clients"
-    },
-    "stats": {
-      "activeUsers": "Utilisateurs actifs",
-      "pluginUsers": "Utilisateurs du plugin",
-      "productHunt": "Votes ProductHunt"
     },
     "how": {
       "heading": "Comment ça marche ?",
@@ -74,16 +77,6 @@
       "step4Title": "Analysez et passez à l'action",
       "step4Desc": "Exportez les données dans divers formats, intégrez vos outils et créez de meilleurs produits"
     },
-    "testimonials": {
-      "heading": "Adoré par les équipes produit",
-      "subheading": "Ce que les gens disent de Feedbase",
-      "quote1": "Feedbase a transformé notre façon de recueillir et de prioriser les retours des utilisateurs. Le système de vote est génial !",
-      "role1": "Responsable produit",
-      "quote2": "La configuration a pris moins de 5 minutes. L'interface est épurée et nos clients l'adorent !",
-      "role2": "Fondateur de startup",
-      "quote3": "Le tableau de bord d'analyse nous donne des informations que nous n'avions jamais eues auparavant. Vivement recommandé !",
-      "role3": "Designer UX"
-    },
     "pricing": {
       "heading": "Tarification simple et transparente",
       "subheading": "Commencez gratuitement, évoluez au fil de votre croissance"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Tous droits réservés.",
       "giveFeedback": "Donner votre avis sur Feedbase"
+    },
+    "mock": {
+      "post1": "Ajouter le mode sombre",
+      "post2": "Une appli mobile, svp !",
+      "post3": "Des résultats de recherche plus rapides"
+    },
+    "uses": {
+      "heading": "Conçu pour tout type de produit",
+      "subheading": "Si des gens l'utilisent, vous pouvez recueillir des retours dessus.",
+      "saas": "SaaS et applis web",
+      "mobile": "Applis mobiles",
+      "ecommerce": "Boutiques en ligne",
+      "games": "Jeux",
+      "agencies": "Agences et clients",
+      "hardware": "Matériel",
+      "services": "Services",
+      "communities": "Communautés"
+    },
+    "benefits": {
+      "hearTitle": "Tout entendre",
+      "hearDesc": "Chaque idée, demande et bogue atterrit sur un tableau public unique — au lieu d'être éparpillé entre boîtes mail et messageries.",
+      "decideTitle": "Décider avec les votes",
+      "decideDesc": "Les utilisateurs votent pour ce qui compte pour eux : vous savez toujours quoi construire ensuite, sans deviner.",
+      "showTitle": "Montrer que vous écoutez",
+      "showDesc": "Feuille de route et journal des modifications publics bouclent la boucle : les utilisateurs voient leurs idées aboutir et reviennent."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "pour lancer votre tableau",
+      "langValue": "8",
+      "langLabel": "langues incluses d'office",
+      "priceValue": "0 $",
+      "priceLabel": "pour commencer",
+      "postsValue": "Illimité",
+      "postsLabel": "publications et votes sur chaque forfait"
+    },
+    "types": {
+      "heading": "Tous les types de retours, une seule boîte",
+      "subheading": "Vos utilisateurs choisissent ce qu'ils envoient — vous triez tout au même endroit.",
+      "featureDesc": "« Ce serait génial si… » — des idées que vos utilisateurs paieraient, classées par leurs propres votes.",
+      "bugDesc": "« Quelque chose est cassé » — avec captures et clips joints, directement des personnes concernées.",
+      "feedbackDesc": "« Voici ce que j'en pense » — avis sincères et compliments qui révèlent ce que votre produit inspire vraiment."
     }
   },
   "common": {

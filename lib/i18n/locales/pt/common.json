@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Transforme o feedback dos clientes em",
       "titleHighlight": "sucesso do produto",
-      "subtitle": "Recolha, organize e priorize o feedback sem esforço. Crie produtos que os seus clientes realmente querem.",
+      "subtitle": "Uma app, uma loja, um jogo, um serviço — dê aos seus utilizadores um único lugar para opinar, votar e ver que os ouve. Construa o que eles realmente querem.",
       "startTrial": "Iniciar teste gratuito",
-      "watchDemo": "Ver demonstração",
-      "badge": "Com a confiança de mais de 300 000 utilizadores em todo o mundo"
+      "badge": "Recolha feedback sobre tudo o que constrói",
+      "seeLive": "Ver um painel ao vivo"
     },
     "features": {
       "heading": "Tudo o que precisa",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Suporte multi-inquilino",
         "desc": "Faça a gestão de vários espaços de trabalho com domínios e marca personalizados"
+      },
+      "attachments": {
+        "title": "Provas em foto e vídeo",
+        "desc": "Os utilizadores anexam capturas de ecrã e clipes curtos ao feedback, para a sua equipa ver exatamente o que querem dizer."
+      },
+      "languages": {
+        "title": "Fala 8 idiomas",
+        "desc": "O painel, o dashboard e os e-mails funcionam em 8 grandes idiomas europeus — os seus utilizadores escolhem o deles com um clique."
       }
     },
     "cta": {
       "heading": "Pronto para criar produtos melhores?",
       "subheading": "Junte-se a milhares de equipas que usam o Feedbase para perceber os seus clientes"
-    },
-    "stats": {
-      "activeUsers": "Utilizadores ativos",
-      "pluginUsers": "Utilizadores do plugin",
-      "productHunt": "Votos no ProductHunt"
     },
     "how": {
       "heading": "Como funciona?",
@@ -74,16 +77,6 @@
       "step4Title": "Analise e aja",
       "step4Desc": "Exporte dados em vários formatos, integre as suas ferramentas e crie produtos melhores"
     },
-    "testimonials": {
-      "heading": "Adorado pelas equipas de produto",
-      "subheading": "O que dizem sobre o Feedbase",
-      "quote1": "O Feedbase transformou a forma como recolhemos e priorizamos o feedback dos utilizadores. O sistema de votação é brilhante!",
-      "role1": "Gestor de produto",
-      "quote2": "A configuração demorou menos de 5 minutos. A interface é limpa e os nossos clientes adoram!",
-      "role2": "Fundador de startup",
-      "quote3": "O painel de análise dá-nos informações que nunca tivemos. Altamente recomendado!",
-      "role3": "Designer de UX"
-    },
     "pricing": {
       "heading": "Preços simples e transparentes",
       "subheading": "Comece grátis, atualize à medida que cresce"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Todos os direitos reservados.",
       "giveFeedback": "Dar feedback sobre o Feedbase"
+    },
+    "mock": {
+      "post1": "Adicionar modo escuro",
+      "post2": "Uma app móvel, por favor!",
+      "post3": "Resultados de pesquisa mais rápidos"
+    },
+    "uses": {
+      "heading": "Feito para qualquer tipo de produto",
+      "subheading": "Se as pessoas o usam, pode recolher feedback sobre ele.",
+      "saas": "SaaS e apps web",
+      "mobile": "Apps móveis",
+      "ecommerce": "Lojas online",
+      "games": "Jogos",
+      "agencies": "Agências e clientes",
+      "hardware": "Hardware",
+      "services": "Serviços",
+      "communities": "Comunidades"
+    },
+    "benefits": {
+      "hearTitle": "Ouça tudo",
+      "hearDesc": "Cada ideia, pedido e erro chega a um único painel público — em vez de se dispersar por e-mails e chats.",
+      "decideTitle": "Decida com votos",
+      "decideDesc": "Os utilizadores votam no que lhes importa — sabe sempre o que construir a seguir, sem adivinhar.",
+      "showTitle": "Mostre que ouve",
+      "showDesc": "O roteiro e o registo de alterações públicos fecham o ciclo — os utilizadores veem as suas ideias concretizadas e voltam sempre."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "para lançar o seu painel",
+      "langValue": "8",
+      "langLabel": "idiomas de origem",
+      "priceValue": "0 $",
+      "priceLabel": "para começar",
+      "postsValue": "Ilimitados",
+      "postsLabel": "publicações e votos em todos os planos"
+    },
+    "types": {
+      "heading": "Todo o tipo de contributos, uma única caixa",
+      "subheading": "Os seus utilizadores escolhem o que enviam — e você tria tudo num só lugar.",
+      "featureDesc": "«Seria ótimo se…» — ideias pelas quais os seus utilizadores pagariam, ordenadas pelos votos deles.",
+      "bugDesc": "«Algo está avariado» — com capturas e clipes anexados, diretamente de quem o encontrou.",
+      "feedbackDesc": "«Eis o que penso» — opiniões sinceras e elogios que mostram como o seu produto é realmente sentido."
     }
   },
   "common": {

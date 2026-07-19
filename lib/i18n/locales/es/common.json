@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Convierte los comentarios de clientes en",
       "titleHighlight": "éxito del producto",
-      "subtitle": "Recopila, organiza y prioriza los comentarios sin esfuerzo. Crea productos que tus clientes realmente quieren.",
+      "subtitle": "Una app, una tienda, un juego, un servicio: dales a tus usuarios un solo lugar para opinar, votar y ver que escuchas. Construye lo que de verdad quieren.",
       "startTrial": "Iniciar prueba gratuita",
-      "watchDemo": "Ver demo",
-      "badge": "Con la confianza de más de 300 000 usuarios en todo el mundo"
+      "badge": "Recoge comentarios sobre todo lo que construyas",
+      "seeLive": "Ver un tablero real"
     },
     "features": {
       "heading": "Todo lo que necesitas",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Compatibilidad multiinquilino",
         "desc": "Gestiona varios espacios de trabajo con dominios y marca personalizados"
+      },
+      "attachments": {
+        "title": "Pruebas en foto y vídeo",
+        "desc": "Los usuarios adjuntan capturas y clips cortos a sus comentarios, y tu equipo ve exactamente a qué se refieren."
+      },
+      "languages": {
+        "title": "Habla 8 idiomas",
+        "desc": "Tu tablero, panel y correos funcionan en 8 grandes idiomas europeos: tus usuarios eligen el suyo con un clic."
       }
     },
     "cta": {
       "heading": "¿Listo para crear mejores productos?",
       "subheading": "Únete a miles de equipos que usan Feedbase para entender a sus clientes"
-    },
-    "stats": {
-      "activeUsers": "Usuarios activos",
-      "pluginUsers": "Usuarios del plugin",
-      "productHunt": "Votos en ProductHunt"
     },
     "how": {
       "heading": "¿Cómo funciona?",
@@ -74,16 +77,6 @@
       "step4Title": "Analiza y actúa",
       "step4Desc": "Exporta datos en varios formatos, integra tus herramientas y crea mejores productos"
     },
-    "testimonials": {
-      "heading": "Adorado por los equipos de producto",
-      "subheading": "Lo que la gente dice de Feedbase",
-      "quote1": "Feedbase transformó cómo recopilamos y priorizamos los comentarios de los usuarios. ¡El sistema de votación es brillante!",
-      "role1": "Gerente de producto",
-      "quote2": "La configuración llevó menos de 5 minutos. La interfaz es limpia y ¡a nuestros clientes les encanta!",
-      "role2": "Fundador de startup",
-      "quote3": "El panel de análisis nos da información que nunca antes teníamos. ¡Muy recomendable!",
-      "role3": "Diseñador UX"
-    },
     "pricing": {
       "heading": "Precios sencillos y transparentes",
       "subheading": "Empieza gratis, mejora cuando crezcas"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Todos los derechos reservados.",
       "giveFeedback": "Enviar comentarios sobre Feedbase"
+    },
+    "mock": {
+      "post1": "Añadir modo oscuro",
+      "post2": "¡Una app móvil, por favor!",
+      "post3": "Resultados de búsqueda más rápidos"
+    },
+    "uses": {
+      "heading": "Hecho para cualquier tipo de producto",
+      "subheading": "Si la gente lo usa, puedes recoger comentarios sobre ello.",
+      "saas": "SaaS y apps web",
+      "mobile": "Apps móviles",
+      "ecommerce": "Tiendas online",
+      "games": "Juegos",
+      "agencies": "Agencias y clientes",
+      "hardware": "Hardware",
+      "services": "Servicios",
+      "communities": "Comunidades"
+    },
+    "benefits": {
+      "hearTitle": "Escúchalo todo",
+      "hearDesc": "Cada idea, petición y error llega a un único tablero público, en lugar de dispersarse entre correos y chats.",
+      "decideTitle": "Decide con votos",
+      "decideDesc": "Los usuarios votan lo que les importa, así siempre sabes qué construir después. Sin adivinar.",
+      "showTitle": "Demuestra que escuchas",
+      "showDesc": "La hoja de ruta y el registro de cambios públicos cierran el círculo: los usuarios ven sus ideas hechas realidad y vuelven."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "para lanzar tu tablero",
+      "langValue": "8",
+      "langLabel": "idiomas de serie",
+      "priceValue": "0 $",
+      "priceLabel": "para empezar",
+      "postsValue": "Ilimitados",
+      "postsLabel": "publicaciones y votos en todos los planes"
+    },
+    "types": {
+      "heading": "Todo tipo de aportes, una sola bandeja",
+      "subheading": "Tus usuarios eligen qué envían y tú lo gestionas todo en un solo lugar.",
+      "featureDesc": "«Estaría genial que…»: ideas por las que tus usuarios pagarían, ordenadas por sus propios votos.",
+      "bugDesc": "«Algo está roto»: con capturas y clips adjuntos, directamente de quien lo sufrió.",
+      "feedbackDesc": "«Esto es lo que opino»: opiniones sinceras y elogios que te dicen cómo se siente de verdad tu producto."
     }
   },
   "common": {

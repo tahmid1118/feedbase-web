@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Trasforma il feedback dei clienti in",
       "titleHighlight": "successo di prodotto",
-      "subtitle": "Raccogli, organizza e assegna priorità al feedback senza sforzo. Crea prodotti che i tuoi clienti desiderano davvero.",
+      "subtitle": "Un'app, un negozio, un gioco, un servizio — dai ai tuoi utenti un unico posto per esprimersi, votare e vedere che li ascolti. Costruisci ciò che vogliono davvero.",
       "startTrial": "Prova gratuita",
-      "watchDemo": "Guarda la demo",
-      "badge": "Scelto da oltre 300.000 utenti nel mondo"
+      "badge": "Raccogli feedback su qualsiasi cosa tu crei",
+      "seeLive": "Guarda una bacheca dal vivo"
     },
     "features": {
       "heading": "Tutto ciò di cui hai bisogno",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Supporto multi-tenant",
         "desc": "Gestisci più spazi di lavoro con domini e branding personalizzati"
+      },
+      "attachments": {
+        "title": "Prove foto e video",
+        "desc": "Gli utenti allegano screenshot e brevi clip al loro feedback, così il tuo team vede esattamente cosa intendono."
+      },
+      "languages": {
+        "title": "Parla 8 lingue",
+        "desc": "Bacheca, dashboard ed e-mail funzionano in 8 grandi lingue europee: i tuoi utenti scelgono la loro con un clic."
       }
     },
     "cta": {
       "heading": "Pronto a creare prodotti migliori?",
       "subheading": "Unisciti a migliaia di team che usano Feedbase per capire i propri clienti"
-    },
-    "stats": {
-      "activeUsers": "Utenti attivi",
-      "pluginUsers": "Utenti del plugin",
-      "productHunt": "Voti su ProductHunt"
     },
     "how": {
       "heading": "Come funziona?",
@@ -74,16 +77,6 @@
       "step4Title": "Analizza e agisci",
       "step4Desc": "Esporta i dati in vari formati, integra i tuoi strumenti e crea prodotti migliori"
     },
-    "testimonials": {
-      "heading": "Amato dai team di prodotto",
-      "subheading": "Cosa dicono di Feedbase",
-      "quote1": "Feedbase ha trasformato il modo in cui raccogliamo e diamo priorità al feedback degli utenti. Il sistema di voto è geniale!",
-      "role1": "Product manager",
-      "quote2": "La configurazione ha richiesto meno di 5 minuti. L'interfaccia è pulita e i nostri clienti la adorano!",
-      "role2": "Fondatore di startup",
-      "quote3": "La dashboard di analisi ci offre informazioni che non avevamo mai avuto. Consigliatissimo!",
-      "role3": "UX designer"
-    },
     "pricing": {
       "heading": "Prezzi semplici e trasparenti",
       "subheading": "Inizia gratis, esegui l'upgrade quando cresci"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Tutti i diritti riservati.",
       "giveFeedback": "Lascia un feedback su Feedbase"
+    },
+    "mock": {
+      "post1": "Aggiungere la modalità scura",
+      "post2": "Un'app mobile, per favore!",
+      "post3": "Risultati di ricerca più veloci"
+    },
+    "uses": {
+      "heading": "Fatto per ogni tipo di prodotto",
+      "subheading": "Se le persone lo usano, puoi raccogliere feedback al riguardo.",
+      "saas": "SaaS e app web",
+      "mobile": "App mobili",
+      "ecommerce": "Negozi online",
+      "games": "Giochi",
+      "agencies": "Agenzie e clienti",
+      "hardware": "Hardware",
+      "services": "Servizi",
+      "communities": "Community"
+    },
+    "benefits": {
+      "hearTitle": "Ascolta tutto",
+      "hearDesc": "Ogni idea, richiesta e bug arriva su un'unica bacheca pubblica — invece di disperdersi tra e-mail e chat.",
+      "decideTitle": "Decidi con i voti",
+      "decideDesc": "Gli utenti votano ciò che conta per loro: sai sempre cosa costruire dopo, senza indovinare.",
+      "showTitle": "Dimostra che ascolti",
+      "showDesc": "Roadmap e changelog pubblici chiudono il cerchio: gli utenti vedono le loro idee realizzate e continuano a tornare."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "per lanciare la tua bacheca",
+      "langValue": "8",
+      "langLabel": "lingue incluse",
+      "priceValue": "0 $",
+      "priceLabel": "per iniziare",
+      "postsValue": "Illimitati",
+      "postsLabel": "post e voti in ogni piano"
+    },
+    "types": {
+      "heading": "Ogni tipo di contributo, un'unica casella",
+      "subheading": "I tuoi utenti scelgono cosa inviare — tu smisti tutto in un unico posto.",
+      "featureDesc": "«Sarebbe fantastico se…» — idee per cui i tuoi utenti pagherebbero, ordinate dai loro stessi voti.",
+      "bugDesc": "«Qualcosa è rotto» — con screenshot e clip allegati, direttamente da chi l'ha riscontrato.",
+      "feedbackDesc": "«Ecco cosa ne penso» — opinioni sincere ed elogi che ti dicono come viene percepito davvero il tuo prodotto."
     }
   },
   "common": {

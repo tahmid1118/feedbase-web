@@ -1,7 +1,7 @@
 ================================================================================
 SOFTWARE REQUIREMENTS SPECIFICATION
 Feedbase - Multi-Tenant Feedback & Roadmap Platform
-Version 1.1
+Version 1.2
 ================================================================================
 
 --------------------------------------------------------------------------------
@@ -243,7 +243,7 @@ Version 1.1
                           public board (see FR-P3). Comments are likewise
                           authored, replied to, edited, and deleted on the public
                           board (see FR-P5/P7), not from the dashboard.
-    FR-F8  Promote ...... From the Open tab, select one, several, or all posts
+    FR-F10 Promote ...... From the Open tab, select one, several, or all posts
                           and add them to a chosen roadmap column in a single
                           action (with an optional target date). Adding a post to
                           a status column also sets its status; posts already on
@@ -274,6 +274,8 @@ Version 1.1
 3.6 Notifications
     FR-N1  In-app notifications with an unread count and deep links to the
            referenced post or changelog; mark read, mark all read, and delete.
+           Notification text is rendered in the READER's interface language,
+           not the language in effect when the event occurred (see 3.12).
     FR-N3  In-app activity — every team member of a workspace receives an in-app
            notification when new feedback is posted on the public board and when
            a comment is added to feedback, each deep-linking to the post. The
@@ -292,7 +294,7 @@ Version 1.1
     updating workspace settings is restricted to the workspace's own owner.
 
 3.8 Analytics
-    FR-A1  Overview of totals, status/type breakdowns, and a recent-activity trend.
+    FR-AN1 Overview of totals, status/type breakdowns, and a recent-activity trend.
 
 3.9 Platform Services
     File uploads (avatars, workspace logo, and feedback photo/video attachments)
@@ -325,8 +327,12 @@ Version 1.1
                           equivalent (Pro $8/mo = $96/yr, Business $12/mo =
                           $144/yr). Tiers and features are
                           presented on a public pricing page and on the dashboard
-                          Billing tab, each with a Monthly/Yearly toggle that
-                          shows the yearly saving.
+                          Billing tab, each with a Monthly/Yearly toggle. The
+                          headline figure is ALWAYS a per-month price — on the
+                          yearly interval, the per-month equivalent with a
+                          "billed annually" note — never the annual total.
+                          Pro and Business carry a small merchandising label
+                          ("Popular" / "Best") beside the plan name.
     FR-B2  Upgrade ...... An owner/admin upgrades from the Billing tab via Stripe
                           Checkout, choosing the monthly or yearly interval; on
                           success the workspace's plan and interval are updated,
@@ -365,12 +371,16 @@ Version 1.1
                           billing cycle — MONTHLY or YEARLY (see 3.11) — optionally
                           time-bounded, and the price may include cents. A monthly
                           offer discounts the monthly price; a yearly offer discounts
-                          the yearly total. While an offer is active, the Billing tab
-                          and public pricing cards, when showing that interval, draw
-                          the list price with a diagonal strikethrough beside the
-                          lower offer price and a "save %" badge, and the exact
-                          discount is applied automatically at checkout. One active
-                          offer per plan and cycle.
+                          the yearly total and REPLACES the built-in yearly discount
+                          (it does not stack on it). While an offer is active, the
+                          Billing tab and public pricing cards, when showing that
+                          interval, draw the reference price with a diagonal
+                          strikethrough beside the lower offer price (both quoted
+                          per month — a yearly offer is struck through the plain
+                          monthly list price) and a "save %" badge computed from
+                          the two displayed figures, and the exact discount is
+                          applied automatically at checkout. One active offer per
+                          plan and cycle.
 
 3.11 Platform Administration (Admin Panel)
     A platform admin manages the entire platform from a dedicated panel.
@@ -403,6 +413,29 @@ Version 1.1
                           session when resolved. Closed sessions stay readable as
                           history (see FR-SC1–FR-SC4).
 
+
+3.12 LOCALIZATION (INTERNATIONALIZATION)
+--------------------------------------------------------------------------------
+
+    FR-L1  Languages .... The entire user interface — marketing site, dashboard,
+                          public portals, and Admin Panel — is available in 8
+                          major EU languages: English, German, French, Spanish,
+                          Italian, Portuguese, Dutch, and Polish. English is the
+                          default and the fallback for any untranslated string.
+    FR-L2  Selection .... A language selector appears in every navigation bar,
+                          including the public portal header (portal visitors get
+                          their own control, tinted with the tenant's brand
+                          color). The choice persists across visits and applies
+                          immediately without a reload of context.
+    FR-L3  Depth ........ Localization covers static text, validation and error
+                          messages (including API responses), dates and times
+                          (formatted per the selected language, in the viewer's
+                          timezone), and grammatical plurals — including
+                          languages with plural categories English lacks.
+    FR-L4  Stored text .. Text generated when an event occurs (e.g. an activity
+                          notification) is stored with its structured parts so it
+                          can be rendered later in whatever language its READER
+                          uses, with English as the fallback for legacy records.
 
 3.13 PRODUCT FEEDBACK (SELF-HOSTED BOARD)
 --------------------------------------------------------------------------------
@@ -460,12 +493,15 @@ Version 1.1
     tenants, users (role owner/user), invitations, posts (with guest submitter
     fields), post_attachments (photo/video on feedback, Pro+), votes
     (supporting guest voting), comments, tags, post_tags,
-    roadmap_columns, roadmap_items, changelog_entries, notifications, api_keys,
-    audit_logs, integrations, oauth_accounts. All feature tables are scoped by
-    tenant. user_sessions records the active device sessions behind an account
-    and backs single-session login (FR-S1). Platform-level (not tenant-scoped):
-    admins (separate operator accounts), promo_codes, promo_redemptions, and
-    offers.
+    roadmap_columns, roadmap_items, changelog_entries, notifications (with
+    structured, reader-language-renderable text — FR-L4), support_sessions and
+    support_messages (FR-SC1..SC4), oauth_accounts. All feature tables are
+    scoped by tenant. user_sessions records the active device sessions behind
+    an account and backs single-session login (FR-S1). Platform-level (not
+    tenant-scoped): admins (separate operator accounts), promo_codes,
+    promo_redemptions, and offers. (api_keys, audit_logs, and integrations
+    exist in the schema but back no current feature — the third-party
+    integrations feature was cancelled; see 8. Future Enhancements.)
 
 --------------------------------------------------------------------------------
 7. DEPLOYMENT

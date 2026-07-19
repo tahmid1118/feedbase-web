@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Verwandeln Sie Kundenfeedback in",
       "titleHighlight": "Produkterfolg",
-      "subtitle": "Sammeln, organisieren und priorisieren Sie Feedback mühelos. Entwickeln Sie Produkte, die Ihre Kunden wirklich wollen.",
+      "subtitle": "Eine App, ein Shop, ein Spiel, ein Service — geben Sie Ihren Nutzern einen Ort, um sich zu äußern, abzustimmen und zu sehen, dass Sie zuhören. Entwickeln Sie, was sie wirklich wollen.",
       "startTrial": "Kostenlos testen",
-      "watchDemo": "Demo ansehen",
-      "badge": "Vertraut von über 300.000 Nutzern weltweit"
+      "badge": "Sammeln Sie Feedback zu allem, was Sie entwickeln",
+      "seeLive": "Live-Board ansehen"
     },
     "features": {
       "heading": "Alles, was Sie brauchen",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Mandantenfähigkeit",
         "desc": "Verwalten Sie mehrere Arbeitsbereiche mit benutzerdefinierten Domains und Branding"
+      },
+      "attachments": {
+        "title": "Foto- & Videobelege",
+        "desc": "Nutzer hängen Screenshots und kurze Clips an ihr Feedback an — Ihr Team sieht genau, was gemeint ist."
+      },
+      "languages": {
+        "title": "Spricht 8 Sprachen",
+        "desc": "Pinnwand, Dashboard und E-Mails funktionieren in 8 großen europäischen Sprachen — Ihre Nutzer wählen ihre mit einem Klick."
       }
     },
     "cta": {
       "heading": "Bereit, bessere Produkte zu entwickeln?",
       "subheading": "Schließen Sie sich Tausenden von Teams an, die Feedbase nutzen, um ihre Kunden zu verstehen"
-    },
-    "stats": {
-      "activeUsers": "Aktive Nutzer",
-      "pluginUsers": "Plugin-Nutzer",
-      "productHunt": "ProductHunt-Upvotes"
     },
     "how": {
       "heading": "Wie funktioniert es?",
@@ -74,16 +77,6 @@
       "step4Title": "Analysieren und handeln",
       "step4Desc": "Exportieren Sie Daten in verschiedenen Formaten, integrieren Sie Ihre Tools und entwickeln Sie bessere Produkte"
     },
-    "testimonials": {
-      "heading": "Beliebt bei Produktteams",
-      "subheading": "Was die Leute über Feedbase sagen",
-      "quote1": "Feedbase hat verändert, wie wir Nutzerfeedback sammeln und priorisieren. Das Abstimmungssystem ist brillant!",
-      "role1": "Produktmanager",
-      "quote2": "Die Einrichtung dauerte weniger als 5 Minuten. Die Oberfläche ist übersichtlich und unsere Kunden lieben sie!",
-      "role2": "Startup-Gründer",
-      "quote3": "Das Analyse-Dashboard liefert uns Erkenntnisse, die wir zuvor nie hatten. Sehr empfehlenswert!",
-      "role3": "UX-Designer"
-    },
     "pricing": {
       "heading": "Einfache, transparente Preise",
       "subheading": "Kostenlos starten, upgraden, wenn Sie wachsen"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Alle Rechte vorbehalten.",
       "giveFeedback": "Feedback zu Feedbase geben"
+    },
+    "mock": {
+      "post1": "Dunkelmodus hinzufügen",
+      "post2": "Bitte eine Mobile-App!",
+      "post3": "Schnellere Suchergebnisse"
+    },
+    "uses": {
+      "heading": "Gemacht für jede Art von Produkt",
+      "subheading": "Wenn Menschen es nutzen, können Sie Feedback dazu sammeln.",
+      "saas": "SaaS & Web-Apps",
+      "mobile": "Mobile Apps",
+      "ecommerce": "Online-Shops",
+      "games": "Spiele",
+      "agencies": "Agenturen & Kunden",
+      "hardware": "Hardware",
+      "services": "Dienstleistungen",
+      "communities": "Communitys"
+    },
+    "benefits": {
+      "hearTitle": "Alles hören",
+      "hearDesc": "Jede Idee, jeder Wunsch und jeder Fehler landet auf einer öffentlichen Pinnwand — statt verstreut in Postfächern und Chats.",
+      "decideTitle": "Mit Stimmen entscheiden",
+      "decideDesc": "Nutzer stimmen für das, was ihnen wichtig ist — Sie wissen immer, was als Nächstes zu bauen ist. Kein Raten.",
+      "showTitle": "Zeigen, dass Sie zuhören",
+      "showDesc": "Öffentliche Roadmap und Änderungsprotokoll schließen den Kreis — Nutzer sehen ihre Ideen umgesetzt und kommen wieder."
+    },
+    "facts": {
+      "launchValue": "3 Min.",
+      "launchLabel": "bis Ihre Pinnwand live ist",
+      "langValue": "8",
+      "langLabel": "Sprachen ab Werk",
+      "priceValue": "0 $",
+      "priceLabel": "für den Einstieg",
+      "postsValue": "Unbegrenzt",
+      "postsLabel": "Beiträge & Stimmen in jedem Tarif"
+    },
+    "types": {
+      "heading": "Jede Art von Rückmeldung, ein Eingang",
+      "subheading": "Ihre Nutzer wählen, was sie senden — Sie sichten alles an einem Ort.",
+      "featureDesc": "„Es wäre toll, wenn …“ — Ideen, für die Ihre Nutzer zahlen würden, sortiert nach ihren eigenen Stimmen.",
+      "bugDesc": "„Etwas ist kaputt“ — mit Screenshots und Clips, direkt von den Betroffenen.",
+      "feedbackDesc": "„Das denke ich“ — ehrliche Meinungen und Lob, die zeigen, wie sich Ihr Produkt wirklich anfühlt."
     }
   },
   "common": {

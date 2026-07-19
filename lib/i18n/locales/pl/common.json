@@ -20,10 +20,10 @@
     "hero": {
       "titleLead": "Zamień opinie klientów w",
       "titleHighlight": "sukces produktu",
-      "subtitle": "Bez wysiłku zbieraj, organizuj i ustalaj priorytety opinii. Twórz produkty, których naprawdę chcą Twoi klienci.",
+      "subtitle": "Aplikacja, sklep, gra, usługa — daj swoim użytkownikom jedno miejsce, by mówić, głosować i widzieć, że słuchasz. Twórz to, czego naprawdę chcą.",
       "startTrial": "Rozpocznij darmowy okres próbny",
-      "watchDemo": "Obejrzyj demo",
-      "badge": "Zaufało nam ponad 300 tys. użytkowników na całym świecie"
+      "badge": "Zbieraj opinie o wszystkim, co tworzysz",
+      "seeLive": "Zobacz działającą tablicę"
     },
     "features": {
       "heading": "Wszystko, czego potrzebujesz",
@@ -51,16 +51,19 @@
       "multitenant": {
         "title": "Obsługa wielu środowisk",
         "desc": "Zarządzaj wieloma przestrzeniami roboczymi z niestandardowymi domenami i marką"
+      },
+      "attachments": {
+        "title": "Dowody w postaci zdjęć i wideo",
+        "desc": "Użytkownicy dołączają zrzuty ekranu i krótkie klipy do opinii, więc Twój zespół widzi dokładnie, o co chodzi."
+      },
+      "languages": {
+        "title": "Mówi w 8 językach",
+        "desc": "Twoja tablica, pulpit i e-maile działają w 8 głównych językach europejskich — użytkownicy wybierają swój jednym kliknięciem."
       }
     },
     "cta": {
       "heading": "Gotowy na tworzenie lepszych produktów?",
       "subheading": "Dołącz do tysięcy zespołów, które używają Feedbase, aby zrozumieć swoich klientów"
-    },
-    "stats": {
-      "activeUsers": "Aktywni użytkownicy",
-      "pluginUsers": "Użytkownicy wtyczki",
-      "productHunt": "Głosy na ProductHunt"
     },
     "how": {
       "heading": "Jak to działa?",
@@ -74,16 +77,6 @@
       "step4Title": "Analizuj i działaj",
       "step4Desc": "Eksportuj dane w różnych formatach, integruj narzędzia i twórz lepsze produkty"
     },
-    "testimonials": {
-      "heading": "Uwielbiane przez zespoły produktowe",
-      "subheading": "Co ludzie mówią o Feedbase",
-      "quote1": "Feedbase zmienił sposób, w jaki zbieramy i ustalamy priorytety opinii użytkowników. System głosowania jest genialny!",
-      "role1": "Menedżer produktu",
-      "quote2": "Konfiguracja zajęła mniej niż 5 minut. Interfejs jest przejrzysty, a nasi klienci go uwielbiają!",
-      "role2": "Założyciel startupu",
-      "quote3": "Panel analityczny daje nam wgląd, jakiego wcześniej nie mieliśmy. Gorąco polecam!",
-      "role3": "Projektant UX"
-    },
     "pricing": {
       "heading": "Proste, przejrzyste ceny",
       "subheading": "Zacznij za darmo, ulepszaj w miarę rozwoju"
@@ -91,6 +84,48 @@
     "footer": {
       "rights": "© 2026 Feedbase. Wszelkie prawa zastrzeżone.",
       "giveFeedback": "Prześlij opinię o Feedbase"
+    },
+    "mock": {
+      "post1": "Dodać tryb ciemny",
+      "post2": "Poproszę aplikację mobilną!",
+      "post3": "Szybsze wyniki wyszukiwania"
+    },
+    "uses": {
+      "heading": "Stworzony dla każdego rodzaju produktu",
+      "subheading": "Jeśli ludzie z tego korzystają, możesz zbierać o tym opinie.",
+      "saas": "SaaS i aplikacje webowe",
+      "mobile": "Aplikacje mobilne",
+      "ecommerce": "Sklepy internetowe",
+      "games": "Gry",
+      "agencies": "Agencje i klienci",
+      "hardware": "Sprzęt",
+      "services": "Usługi",
+      "communities": "Społeczności"
+    },
+    "benefits": {
+      "hearTitle": "Usłysz wszystko",
+      "hearDesc": "Każdy pomysł, prośba i błąd trafia na jedną publiczną tablicę — zamiast ginąć w skrzynkach i czatach.",
+      "decideTitle": "Decyduj głosami",
+      "decideDesc": "Użytkownicy głosują na to, co jest dla nich ważne — zawsze wiesz, co budować dalej. Bez zgadywania.",
+      "showTitle": "Pokaż, że słuchasz",
+      "showDesc": "Publiczny plan działań i dziennik zmian zamykają obieg — użytkownicy widzą, że ich pomysły są wdrażane, i wracają."
+    },
+    "facts": {
+      "launchValue": "3 min",
+      "launchLabel": "aby uruchomić tablicę",
+      "langValue": "8",
+      "langLabel": "języków od ręki",
+      "priceValue": "0 $",
+      "priceLabel": "na start",
+      "postsValue": "Bez limitu",
+      "postsLabel": "wpisów i głosów w każdym planie"
+    },
+    "types": {
+      "heading": "Każdy rodzaj uwag, jedna skrzynka",
+      "subheading": "Użytkownicy wybierają, co wysyłają — Ty porządkujesz wszystko w jednym miejscu.",
+      "featureDesc": "„Byłoby świetnie, gdyby…” — pomysły, za które Twoi użytkownicy by zapłacili, uszeregowane ich głosami.",
+      "bugDesc": "„Coś nie działa” — ze zrzutami ekranu i klipami, prosto od osób, które na to trafiły.",
+      "feedbackDesc": "„Oto co myślę” — szczere opinie i pochwały, które mówią, jak naprawdę odbierany jest Twój produkt."
     }
   },
   "common": {
