@@ -288,11 +288,12 @@ export function BillingSettings() {
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
           // On the yearly interval an offer is quoted PER MONTH, exactly like a
-          // non-offer card — the annual total belongs in the "billed annually"
-          // note underneath, not in the headline.
+          // non-offer card. The struck price is the plain monthly list price: an
+          // offer REPLACES the built-in 20% yearly discount rather than stacking
+          // on top of it.
           const offerStrike = offer
             ? interval === "year"
-              ? offer.originalPrice / 12
+              ? plan.monthlyPrice
               : offer.originalPrice
             : 0;
           const offerPerMonth = offer
@@ -300,6 +301,12 @@ export function BillingSettings() {
               ? offer.offerPrice / 12
               : offer.offerPrice
             : 0;
+          // Derive the badge from the two figures actually on the card; the
+          // backend percentOff is measured against the discounted yearly list.
+          const offerPercent =
+            offer && offerStrike > 0
+              ? Math.round(((offerStrike - offerPerMonth) / offerStrike) * 100)
+              : (offer?.percentOff ?? 0);
           return (
           <Card
             key={plan.key}
@@ -315,7 +322,7 @@ export function BillingSettings() {
                 </h3>
                 {offer ? (
                   <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
-                    {t("billing.save", { percent: offer.percentOff })}
+                    {t("billing.save", { percent: offerPercent })}
                   </span>
                 ) : showYearly ? (
                   <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
@@ -362,11 +369,7 @@ export function BillingSettings() {
               {offer ? (
                 <>
                   <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                    {interval === "year"
-                      ? t("pricing.billedAnnually", {
-                          total: formatPrice(offer.offerPrice),
-                        })
-                      : t("pricing.billedMonthly")}
+                    {t(interval === "year" ? "pricing.billedAnnually" : "pricing.billedMonthly")}
                   </p>
                   {offer.label || offer.endsAt ? (
                     <p className="mt-1 text-xs font-medium text-green-700">

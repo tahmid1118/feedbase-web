@@ -650,7 +650,7 @@
   "pricing": {
     "freeForever": "Für immer kostenlos",
     "billedMonthly": "monatlich abgerechnet",
-    "billedAnnually": "jährlich abgerechnet ({{total}}/Jahr)",
+    "billedAnnually": "jährlich abgerechnet",
     "getStartedFree": "Kostenlos starten",
     "choose": "{{plan}} wählen",
     "ends": "endet am {{date}}",

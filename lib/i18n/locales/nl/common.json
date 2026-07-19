@@ -650,7 +650,7 @@
   "pricing": {
     "freeForever": "Voor altijd gratis",
     "billedMonthly": "maandelijks gefactureerd",
-    "billedAnnually": "jaarlijks gefactureerd ({{total}}/jaar)",
+    "billedAnnually": "jaarlijks gefactureerd",
     "getStartedFree": "Gratis aan de slag",
     "choose": "Kies {{plan}}",
     "ends": "eindigt op {{date}}",

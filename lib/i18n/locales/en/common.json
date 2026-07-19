@@ -650,7 +650,7 @@
   "pricing": {
     "freeForever": "Free forever",
     "billedMonthly": "billed monthly",
-    "billedAnnually": "billed annually ({{total}}/yr)",
+    "billedAnnually": "billed annually",
     "getStartedFree": "Get started free",
     "choose": "Choose {{plan}}",
     "ends": "ends {{date}}",

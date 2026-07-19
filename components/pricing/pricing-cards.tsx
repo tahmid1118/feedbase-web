@@ -14,9 +14,10 @@ import { cn } from "@/lib/utils";
 /**
  * Public, display-only pricing cards with a Monthly/Yearly toggle. The headline
  * figure is ALWAYS a per-month price — on the yearly interval that's the
- * ~20%-cheaper per-month equivalent, with the annual total in the "billed
- * annually" note beneath. An admin promotional offer can target either
- * interval and follows the same rule. No payment here — CTAs route to signup.
+ * ~20%-cheaper per-month equivalent, with "billed annually" beneath. An admin
+ * promotional offer can target either interval; on yearly it is struck through
+ * the plain monthly list price (the 20% yearly discount is replaced, not
+ * stacked). No payment here — CTAs route to signup.
  */
 export function PricingCards({
   offers,
@@ -45,11 +46,13 @@ export function PricingCards({
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
           // On the yearly interval an offer is quoted PER MONTH, exactly like a
-          // non-offer card — the annual total belongs in the "billed annually"
-          // note underneath, not in the headline.
+          // non-offer card. The struck price is the plain monthly list price:
+          // an offer REPLACES the built-in 20% yearly discount rather than
+          // stacking on top of it, so the comparison is against the standard
+          // monthly rate, not the already-discounted yearly one.
           const offerStrike = offer
             ? interval === "year"
-              ? offer.originalPrice / 12
+              ? plan.monthlyPrice
               : offer.originalPrice
             : 0;
           const offerPerMonth = offer
@@ -57,6 +60,13 @@ export function PricingCards({
               ? offer.offerPrice / 12
               : offer.offerPrice
             : 0;
+          // Derive the badge from the two figures actually on the card. The
+          // backend's percentOff is measured against the discounted yearly
+          // list, so on a yearly offer it would contradict what's shown.
+          const offerPercent =
+            offer && offerStrike > 0
+              ? Math.round(((offerStrike - offerPerMonth) / offerStrike) * 100)
+              : (offer?.percentOff ?? 0);
           return (
             <div
               key={plan.key}
@@ -74,7 +84,7 @@ export function PricingCards({
                   </h3>
                   {offer ? (
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
-                      {t("billing.save", { percent: offer.percentOff })}
+                      {t("billing.save", { percent: offerPercent })}
                     </span>
                   ) : showYearly ? (
                     <span className="rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700">
@@ -119,11 +129,7 @@ export function PricingCards({
                 {offer ? (
                   <>
                     <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                      {interval === "year"
-                        ? t("pricing.billedAnnually", {
-                            total: formatPrice(offer.offerPrice),
-                          })
-                        : t("pricing.billedMonthly")}
+                      {t(interval === "year" ? "pricing.billedAnnually" : "pricing.billedMonthly")}
                     </p>
                     {offer.label || offer.endsAt ? (
                       <p className="mt-1 text-xs font-medium text-green-700">
