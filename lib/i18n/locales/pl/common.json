@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "Jak to działa?",
-      "subheading": "Uzyskaj spersonalizowany portal opinii w 4 krokach",
-      "step1Title": "Zarejestruj się i utwórz przestrzeń roboczą",
-      "step1Desc": "Zacznij od naszego magicznego kreatora konfiguracji, aby przygotować portal opinii w kilka minut",
-      "step2Title": "Dostosuj swoją markę",
-      "step2Desc": "Wybierz kolory podstawowy i dodatkowy, dodaj logo i uczyń go swoim",
-      "step3Title": "Zaproś swój zespół i klientów",
-      "step3Desc": "Udostępnij link do tablicy opinii i zacznij zbierać cenne informacje",
-      "step4Title": "Analizuj i działaj",
-      "step4Desc": "Eksportuj dane w różnych formatach, integruj narzędzia i twórz lepsze produkty"
+      "subheading": "Jeden cykl: użytkownicy mówią, Ty budujesz, oni dostają odpowiedź."
     },
     "pricing": {
       "heading": "Proste, przejrzyste ceny",
@@ -126,6 +118,27 @@
       "featureDesc": "„Byłoby świetnie, gdyby…” — pomysły, za które Twoi użytkownicy by zapłacili, uszeregowane ich głosami.",
       "bugDesc": "„Coś nie działa” — ze zrzutami ekranu i klipami, prosto od osób, które na to trafiły.",
       "feedbackDesc": "„Oto co myślę” — szczere opinie i pochwały, które mówią, jak naprawdę odbierany jest Twój produkt."
+    },
+    "flow": {
+      "collect": {
+        "title": "Oni proszą",
+        "desc": "Użytkownik zgłasza pomysł na Twojej publicznej tablicy. Bez konta — wystarczy e-mail, byś mógł odpowiedzieć."
+      },
+      "prioritize": {
+        "title": "Inni głosują",
+        "desc": "Głosy zamieniają opinie w ranking, więc najgłośniejszy głos przestaje decydować o Twoim planie."
+      },
+      "build": {
+        "title": "Ty budujesz",
+        "desc": "Przeciągnij go do planu działań. Status na publicznej tablicy zmienia się w tym samym czasie."
+      },
+      "announce": {
+        "title": "Oni dostają odpowiedź",
+        "desc": "Wdróż, opublikuj wpis w dzienniku zmian i napisz do osoby, która o to prosiła. Nic nie ginie."
+      },
+      "votes": "głosów",
+      "shipped": "w dzienniku zmian",
+      "loop": "…i wracają z kolejnym pomysłem"
     }
   },
   "common": {

@@ -94,16 +94,8 @@
       }
     },
     "how": {
-      "heading": "How Does it Work?",
-      "subheading": "Get your personalized feedback portal in 4 steps",
-      "step1Title": "Sign up and create your workspace",
-      "step1Desc": "Start with our magical setup wizard to get your feedback portal ready in minutes",
-      "step2Title": "Customize your branding",
-      "step2Desc": "Choose your primary and secondary colors, add your logo, and make it yours",
-      "step3Title": "Invite your team and customers",
-      "step3Desc": "Share your feedback board link and start collecting valuable insights",
-      "step4Title": "Analyze and take action",
-      "step4Desc": "Export data in various formats, integrate with your tools, and build better products"
+      "heading": "How does it work?",
+      "subheading": "One loop: your users speak, you build, they hear back."
     },
     "pricing": {
       "heading": "Simple, Transparent Pricing",
@@ -158,6 +150,27 @@
       "featureDesc": "\"It would be great if…\" — ideas your users would pay for, ranked by their own votes.",
       "bugDesc": "\"Something's broken\" — with screenshots and clips attached, straight from the people who hit it.",
       "feedbackDesc": "\"Here's what I think\" — honest opinions and praise that tell you how your product really feels."
+    },
+    "flow": {
+      "collect": {
+        "title": "They ask",
+        "desc": "A user posts an idea on your public board. No account needed — just an email so you can reply."
+      },
+      "prioritize": {
+        "title": "Others vote",
+        "desc": "Upvotes turn opinions into a ranking, so the loudest voice stops deciding your roadmap."
+      },
+      "build": {
+        "title": "You build",
+        "desc": "Drag it onto your roadmap. The status updates on the public board at the same time."
+      },
+      "announce": {
+        "title": "They hear back",
+        "desc": "Ship it, publish a changelog entry, and email the person who asked. Nothing goes into a void."
+      },
+      "votes": "votes",
+      "shipped": "in changelog",
+      "loop": "…and they come back with the next idea"
     }
   },
   "dashboard": {

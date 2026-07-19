@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "Come funziona?",
-      "subheading": "Ottieni il tuo portale di feedback personalizzato in 4 passaggi",
-      "step1Title": "Registrati e crea il tuo spazio di lavoro",
-      "step1Desc": "Inizia con la nostra procedura guidata di configurazione per preparare il portale di feedback in pochi minuti",
-      "step2Title": "Personalizza il tuo branding",
-      "step2Desc": "Scegli i colori principale e secondario, aggiungi il logo e rendilo tuo",
-      "step3Title": "Invita il tuo team e i clienti",
-      "step3Desc": "Condividi il link della tua bacheca di feedback e inizia a raccogliere informazioni preziose",
-      "step4Title": "Analizza e agisci",
-      "step4Desc": "Esporta i dati in vari formati, integra i tuoi strumenti e crea prodotti migliori"
+      "subheading": "Un ciclo: i tuoi utenti parlano, tu costruisci, loro ricevono risposta."
     },
     "pricing": {
       "heading": "Prezzi semplici e trasparenti",
@@ -126,6 +118,27 @@
       "featureDesc": "«Sarebbe fantastico se…» — idee per cui i tuoi utenti pagherebbero, ordinate dai loro stessi voti.",
       "bugDesc": "«Qualcosa è rotto» — con screenshot e clip allegati, direttamente da chi l'ha riscontrato.",
       "feedbackDesc": "«Ecco cosa ne penso» — opinioni sincere ed elogi che ti dicono come viene percepito davvero il tuo prodotto."
+    },
+    "flow": {
+      "collect": {
+        "title": "Loro chiedono",
+        "desc": "Un utente pubblica un'idea sulla tua bacheca pubblica. Nessun account richiesto — solo un'e-mail per poterti rispondere."
+      },
+      "prioritize": {
+        "title": "Gli altri votano",
+        "desc": "I voti trasformano le opinioni in una classifica, così la voce più forte non decide più la tua roadmap."
+      },
+      "build": {
+        "title": "Tu costruisci",
+        "desc": "Trascinala nella tua roadmap. Lo stato si aggiorna contemporaneamente sulla bacheca pubblica."
+      },
+      "announce": {
+        "title": "Ricevono risposta",
+        "desc": "Rilascialo, pubblica una voce nel changelog e scrivi a chi l'ha chiesto. Niente finisce nel vuoto."
+      },
+      "votes": "voti",
+      "shipped": "nel changelog",
+      "loop": "…e tornano con l'idea successiva"
     }
   },
   "common": {

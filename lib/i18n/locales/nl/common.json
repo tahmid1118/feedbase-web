@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "Hoe werkt het?",
-      "subheading": "Krijg uw gepersonaliseerde feedbackportaal in 4 stappen",
-      "step1Title": "Registreer en maak uw werkruimte",
-      "step1Desc": "Begin met onze magische installatiewizard om uw feedbackportaal in enkele minuten klaar te hebben",
-      "step2Title": "Pas uw branding aan",
-      "step2Desc": "Kies uw primaire en secundaire kleuren, voeg uw logo toe en maak het van u",
-      "step3Title": "Nodig uw team en klanten uit",
-      "step3Desc": "Deel de link naar uw feedbackbord en begin met het verzamelen van waardevolle inzichten",
-      "step4Title": "Analyseer en onderneem actie",
-      "step4Desc": "Exporteer gegevens in verschillende formaten, integreer uw tools en bouw betere producten"
+      "subheading": "Eén cyclus: uw gebruikers spreken, u bouwt, zij horen het terug."
     },
     "pricing": {
       "heading": "Eenvoudige, transparante prijzen",
@@ -126,6 +118,27 @@
       "featureDesc": "\"Het zou geweldig zijn als…\" — ideeën waar uw gebruikers voor zouden betalen, gerangschikt op hun eigen stemmen.",
       "bugDesc": "\"Er is iets kapot\" — met screenshots en clips erbij, rechtstreeks van de mensen die het tegenkwamen.",
       "feedbackDesc": "\"Dit vind ik ervan\" — eerlijke meningen en complimenten die vertellen hoe uw product echt aanvoelt."
+    },
+    "flow": {
+      "collect": {
+        "title": "Zij vragen",
+        "desc": "Een gebruiker plaatst een idee op uw openbare bord. Geen account nodig — alleen een e-mailadres zodat u kunt reageren."
+      },
+      "prioritize": {
+        "title": "Anderen stemmen",
+        "desc": "Stemmen maken van meningen een rangorde, zodat de luidste stem niet langer uw roadmap bepaalt."
+      },
+      "build": {
+        "title": "U bouwt",
+        "desc": "Sleep het naar uw roadmap. De status wordt tegelijk bijgewerkt op het openbare bord."
+      },
+      "announce": {
+        "title": "Zij horen het terug",
+        "desc": "Lever het op, publiceer een changelog-item en mail degene die erom vroeg. Niets verdwijnt in het niets."
+      },
+      "votes": "stemmen",
+      "shipped": "in changelog",
+      "loop": "…en ze komen terug met het volgende idee"
     }
   },
   "common": {

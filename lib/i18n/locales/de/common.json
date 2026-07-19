@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "Wie funktioniert es?",
-      "subheading": "Erstellen Sie Ihr personalisiertes Feedback-Portal in 4 Schritten",
-      "step1Title": "Registrieren und Arbeitsbereich erstellen",
-      "step1Desc": "Beginnen Sie mit unserem magischen Einrichtungsassistenten, um Ihr Feedback-Portal in Minuten bereitzustellen",
-      "step2Title": "Passen Sie Ihr Branding an",
-      "step2Desc": "Wählen Sie Ihre Primär- und Sekundärfarben, fügen Sie Ihr Logo hinzu und machen Sie es zu Ihrem",
-      "step3Title": "Laden Sie Ihr Team und Ihre Kunden ein",
-      "step3Desc": "Teilen Sie den Link zu Ihrer Feedback-Pinnwand und beginnen Sie, wertvolle Erkenntnisse zu sammeln",
-      "step4Title": "Analysieren und handeln",
-      "step4Desc": "Exportieren Sie Daten in verschiedenen Formaten, integrieren Sie Ihre Tools und entwickeln Sie bessere Produkte"
+      "subheading": "Ein Kreislauf: Ihre Nutzer sprechen, Sie entwickeln, sie hören zurück."
     },
     "pricing": {
       "heading": "Einfache, transparente Preise",
@@ -126,6 +118,27 @@
       "featureDesc": "„Es wäre toll, wenn …“ — Ideen, für die Ihre Nutzer zahlen würden, sortiert nach ihren eigenen Stimmen.",
       "bugDesc": "„Etwas ist kaputt“ — mit Screenshots und Clips, direkt von den Betroffenen.",
       "feedbackDesc": "„Das denke ich“ — ehrliche Meinungen und Lob, die zeigen, wie sich Ihr Produkt wirklich anfühlt."
+    },
+    "flow": {
+      "collect": {
+        "title": "Sie fragen",
+        "desc": "Ein Nutzer postet eine Idee auf Ihrer öffentlichen Pinnwand. Kein Konto nötig — nur eine E-Mail, damit Sie antworten können."
+      },
+      "prioritize": {
+        "title": "Andere stimmen ab",
+        "desc": "Stimmen machen aus Meinungen eine Rangfolge — die lauteste Stimme bestimmt nicht mehr Ihre Roadmap."
+      },
+      "build": {
+        "title": "Sie entwickeln",
+        "desc": "Ziehen Sie sie auf Ihre Roadmap. Der Status auf der öffentlichen Pinnwand aktualisiert sich gleichzeitig."
+      },
+      "announce": {
+        "title": "Sie hören zurück",
+        "desc": "Veröffentlichen Sie es, schreiben Sie einen Änderungsprotokoll-Eintrag und mailen Sie der Person, die gefragt hat. Nichts verschwindet im Nichts."
+      },
+      "votes": "Stimmen",
+      "shipped": "im Änderungsprotokoll",
+      "loop": "…und sie kommen mit der nächsten Idee zurück"
     }
   },
   "common": {

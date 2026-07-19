@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "Comment ça marche ?",
-      "subheading": "Obtenez votre portail de retours personnalisé en 4 étapes",
-      "step1Title": "Inscrivez-vous et créez votre espace de travail",
-      "step1Desc": "Commencez avec notre assistant de configuration magique pour préparer votre portail de retours en quelques minutes",
-      "step2Title": "Personnalisez votre image de marque",
-      "step2Desc": "Choisissez vos couleurs principale et secondaire, ajoutez votre logo et personnalisez-le",
-      "step3Title": "Invitez votre équipe et vos clients",
-      "step3Desc": "Partagez le lien de votre tableau de retours et commencez à recueillir des informations précieuses",
-      "step4Title": "Analysez et passez à l'action",
-      "step4Desc": "Exportez les données dans divers formats, intégrez vos outils et créez de meilleurs produits"
+      "subheading": "Une boucle : vos utilisateurs s'expriment, vous construisez, ils sont informés."
     },
     "pricing": {
       "heading": "Tarification simple et transparente",
@@ -126,6 +118,27 @@
       "featureDesc": "« Ce serait génial si… » — des idées que vos utilisateurs paieraient, classées par leurs propres votes.",
       "bugDesc": "« Quelque chose est cassé » — avec captures et clips joints, directement des personnes concernées.",
       "feedbackDesc": "« Voici ce que j'en pense » — avis sincères et compliments qui révèlent ce que votre produit inspire vraiment."
+    },
+    "flow": {
+      "collect": {
+        "title": "Ils demandent",
+        "desc": "Un utilisateur publie une idée sur votre tableau public. Aucun compte requis — juste un e-mail pour que vous puissiez répondre."
+      },
+      "prioritize": {
+        "title": "Les autres votent",
+        "desc": "Les votes transforment les avis en classement : la voix la plus forte ne décide plus de votre feuille de route."
+      },
+      "build": {
+        "title": "Vous construisez",
+        "desc": "Glissez-la sur votre feuille de route. Le statut se met à jour sur le tableau public en même temps."
+      },
+      "announce": {
+        "title": "Ils sont informés",
+        "desc": "Livrez, publiez une note de version et envoyez un e-mail à la personne qui l'a demandé. Rien ne tombe dans le vide."
+      },
+      "votes": "votes",
+      "shipped": "dans le journal",
+      "loop": "…et ils reviennent avec la prochaine idée"
     }
   },
   "common": {

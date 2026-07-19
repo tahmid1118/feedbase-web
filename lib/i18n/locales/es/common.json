@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "¿Cómo funciona?",
-      "subheading": "Obtén tu portal de comentarios personalizado en 4 pasos",
-      "step1Title": "Regístrate y crea tu espacio de trabajo",
-      "step1Desc": "Empieza con nuestro asistente de configuración mágico para tener tu portal de comentarios listo en minutos",
-      "step2Title": "Personaliza tu marca",
-      "step2Desc": "Elige tus colores principal y secundario, añade tu logotipo y hazlo tuyo",
-      "step3Title": "Invita a tu equipo y clientes",
-      "step3Desc": "Comparte el enlace de tu tablero de comentarios y empieza a recopilar información valiosa",
-      "step4Title": "Analiza y actúa",
-      "step4Desc": "Exporta datos en varios formatos, integra tus herramientas y crea mejores productos"
+      "subheading": "Un ciclo: tus usuarios hablan, tú construyes, ellos reciben respuesta."
     },
     "pricing": {
       "heading": "Precios sencillos y transparentes",
@@ -126,6 +118,27 @@
       "featureDesc": "«Estaría genial que…»: ideas por las que tus usuarios pagarían, ordenadas por sus propios votos.",
       "bugDesc": "«Algo está roto»: con capturas y clips adjuntos, directamente de quien lo sufrió.",
       "feedbackDesc": "«Esto es lo que opino»: opiniones sinceras y elogios que te dicen cómo se siente de verdad tu producto."
+    },
+    "flow": {
+      "collect": {
+        "title": "Ellos piden",
+        "desc": "Un usuario publica una idea en tu tablero público. Sin cuenta: solo un correo para que puedas responder."
+      },
+      "prioritize": {
+        "title": "Otros votan",
+        "desc": "Los votos convierten las opiniones en un ranking, así la voz más alta deja de decidir tu hoja de ruta."
+      },
+      "build": {
+        "title": "Tú construyes",
+        "desc": "Arrástrala a tu hoja de ruta. El estado se actualiza en el tablero público al mismo tiempo."
+      },
+      "announce": {
+        "title": "Reciben respuesta",
+        "desc": "Publícalo, añade una nota de versión y escribe a quien lo pidió. Nada cae en el vacío."
+      },
+      "votes": "votos",
+      "shipped": "en el registro",
+      "loop": "…y vuelven con la siguiente idea"
     }
   },
   "common": {

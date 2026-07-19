@@ -67,15 +67,7 @@
     },
     "how": {
       "heading": "Como funciona?",
-      "subheading": "Obtenha o seu portal de feedback personalizado em 4 passos",
-      "step1Title": "Registe-se e crie o seu espaço de trabalho",
-      "step1Desc": "Comece com o nosso assistente de configuração mágico para ter o portal de feedback pronto em minutos",
-      "step2Title": "Personalize a sua marca",
-      "step2Desc": "Escolha as cores principal e secundária, adicione o seu logótipo e torne-o seu",
-      "step3Title": "Convide a sua equipa e clientes",
-      "step3Desc": "Partilhe o link do seu quadro de feedback e comece a recolher informações valiosas",
-      "step4Title": "Analise e aja",
-      "step4Desc": "Exporte dados em vários formatos, integre as suas ferramentas e crie produtos melhores"
+      "subheading": "Um ciclo: os seus utilizadores falam, você constrói, eles recebem resposta."
     },
     "pricing": {
       "heading": "Preços simples e transparentes",
@@ -126,6 +118,27 @@
       "featureDesc": "«Seria ótimo se…» — ideias pelas quais os seus utilizadores pagariam, ordenadas pelos votos deles.",
       "bugDesc": "«Algo está avariado» — com capturas e clipes anexados, diretamente de quem o encontrou.",
       "feedbackDesc": "«Eis o que penso» — opiniões sinceras e elogios que mostram como o seu produto é realmente sentido."
+    },
+    "flow": {
+      "collect": {
+        "title": "Eles pedem",
+        "desc": "Um utilizador publica uma ideia no seu painel público. Sem conta — apenas um e-mail para poder responder."
+      },
+      "prioritize": {
+        "title": "Outros votam",
+        "desc": "Os votos transformam opiniões num ranking, para que a voz mais alta deixe de decidir o seu roteiro."
+      },
+      "build": {
+        "title": "Você constrói",
+        "desc": "Arraste-a para o seu roteiro. O estado é atualizado no painel público ao mesmo tempo."
+      },
+      "announce": {
+        "title": "Recebem resposta",
+        "desc": "Lance, publique uma nota no registo de alterações e envie um e-mail a quem pediu. Nada cai no vazio."
+      },
+      "votes": "votos",
+      "shipped": "no registo",
+      "loop": "…e voltam com a próxima ideia"
     }
   },
   "common": {

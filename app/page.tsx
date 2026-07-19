@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
+import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 import { officialBoardUrl } from "@/lib/official-board";
@@ -260,45 +261,19 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">{t("landing.how.heading")}</h2>
-          <p className="text-lg text-[#1c0a0c]/70">{t("landing.how.subheading")}</p>
-        </div>
+      {/* How It Works — the feedback loop, drawn as a flow */}
+      <section className="relative overflow-hidden py-20">
+        {/* Soft wash so the diagram reads as its own surface, not another card row. */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/70" />
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e399a3]/10 blur-3xl" />
 
-        <div className="mx-auto max-w-4xl space-y-8">
-          <div className="flex gap-6 rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:border-[#c74959]/40 hover:shadow-md">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c74959] text-xl font-bold text-white">1</div>
-            <div>
-              <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.how.step1Title")}</h3>
-              <p className="text-[#1c0a0c]/70">{t("landing.how.step1Desc")}</p>
-            </div>
+        <div className="container relative mx-auto px-4">
+          <div className="mb-14 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">{t("landing.how.heading")}</h2>
+            <p className="text-lg text-[#1c0a0c]/70">{t("landing.how.subheading")}</p>
           </div>
 
-          <div className="flex gap-6 rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:border-[#c74959]/40 hover:shadow-md">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#da6a78] text-xl font-bold text-white">2</div>
-            <div>
-              <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.how.step2Title")}</h3>
-              <p className="text-[#1c0a0c]/70">{t("landing.how.step2Desc")}</p>
-            </div>
-          </div>
-
-          <div className="flex gap-6 rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:border-[#c74959]/40 hover:shadow-md">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#c74959] text-xl font-bold text-white">3</div>
-            <div>
-              <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.how.step3Title")}</h3>
-              <p className="text-[#1c0a0c]/70">{t("landing.how.step3Desc")}</p>
-            </div>
-          </div>
-
-          <div className="flex gap-6 rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:border-[#c74959]/40 hover:shadow-md">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#da6a78] text-xl font-bold text-white">4</div>
-            <div>
-              <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.how.step4Title")}</h3>
-              <p className="text-[#1c0a0c]/70">{t("landing.how.step4Desc")}</p>
-            </div>
-          </div>
+          <FeedbackLoopFlow />
         </div>
       </section>
 
