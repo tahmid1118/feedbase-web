@@ -154,7 +154,10 @@
       "shippedTo": "aan {{count}} mensen die het vroegen",
       "shippedBody": "Donkere modus staat nu live — bedankt voor het zetje.",
       "loopMobileTitle": "…en ze komen terug",
-      "loopMobileSub": "met het volgende idee — de cyclus begint opnieuw."
+      "loopMobileSub": "met het volgende idee — de cyclus begint opnieuw.",
+      "exampleCsv": "CSV-export",
+      "exampleSlack": "Slack-meldingen",
+      "exampleSso": "SSO-aanmelding"
     }
   },
   "common": {

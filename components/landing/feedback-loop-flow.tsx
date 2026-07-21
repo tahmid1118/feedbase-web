@@ -367,8 +367,8 @@ export function FeedbackLoopFlow() {
                   <div style={{ marginTop: 11, display: "flex", flexDirection: "column", gap: 9 }}>
                     {[
                       { label: t("landing.mock.post1"), n: "128", w: "100%", c: "#c74959", strong: true },
-                      { label: "CSV export", n: "64", w: "52%", c: "#da6a78" },
-                      { label: "Slack alerts", n: "39", w: "32%", c: "#e399a3" },
+                      { label: t("landing.flow.exampleCsv"), n: "64", w: "52%", c: "#da6a78" },
+                      { label: t("landing.flow.exampleSlack"), n: "39", w: "32%", c: "#e399a3" },
                     ].map((row) => (
                       <div key={row.label}>
                         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, fontWeight: 600 }}>
@@ -415,7 +415,7 @@ export function FeedbackLoopFlow() {
                     </div>
                   </div>
                   <div style={{ marginTop: 8, background: "#fdf8f9", border: "1px solid rgba(227,153,163,.3)", borderRadius: 12, padding: "9px 10px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-                    <span style={{ fontSize: 13, fontWeight: 600 }}>SSO login</span>
+                    <span style={{ fontSize: 13, fontWeight: 600 }}>{t("landing.flow.exampleSso")}</span>
                     <span style={statusPill("#f3e8ff", "#7e22ce")}>{t("status.planned")}</span>
                   </div>
                 </div>
@@ -534,7 +534,7 @@ function MobileTimeline({ t }: { t: (k: string, o?: Record<string, unknown>) => 
             </div>
             {[
               { label: t("landing.mock.post1"), n: "128", w: "100%", c: "#c74959", strong: true },
-              { label: "CSV export", n: "64", w: "52%", c: "#da6a78" },
+              { label: t("landing.flow.exampleCsv"), n: "64", w: "52%", c: "#da6a78" },
             ].map((row) => (
               <div key={row.label} style={{ marginTop: 8 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, fontWeight: 600 }}>
@@ -567,7 +567,7 @@ function MobileTimeline({ t }: { t: (k: string, o?: Record<string, unknown>) => 
               <span style={statusPill("#fef9c3", "#a16207")}>{t("status.in_progress")}</span>
             </div>
             <div style={{ marginTop: 8, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-              <span style={{ fontSize: 13, fontWeight: 600 }}>SSO login</span>
+              <span style={{ fontSize: 13, fontWeight: 600 }}>{t("landing.flow.exampleSso")}</span>
               <span style={statusPill("#f3e8ff", "#7e22ce")}>{t("status.planned")}</span>
             </div>
           </MobileCard>

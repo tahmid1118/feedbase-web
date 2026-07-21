@@ -154,7 +154,10 @@
       "shippedTo": "a {{count}} pessoas que pediram",
       "shippedBody": "O modo escuro já está disponível — obrigado pela sugestão.",
       "loopMobileTitle": "…e voltam",
-      "loopMobileSub": "com a próxima ideia — o ciclo recomeça."
+      "loopMobileSub": "com a próxima ideia — o ciclo recomeça.",
+      "exampleCsv": "Exportação CSV",
+      "exampleSlack": "Alertas do Slack",
+      "exampleSso": "Início de sessão SSO"
     }
   },
   "common": {

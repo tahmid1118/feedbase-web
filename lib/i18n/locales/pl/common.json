@@ -154,7 +154,10 @@
       "shippedTo": "do {{count}} osób, które prosiły",
       "shippedBody": "Tryb ciemny jest już dostępny — dzięki za podpowiedź.",
       "loopMobileTitle": "…i wracają",
-      "loopMobileSub": "z kolejnym pomysłem — cykl zaczyna się od nowa."
+      "loopMobileSub": "z kolejnym pomysłem — cykl zaczyna się od nowa.",
+      "exampleCsv": "Eksport CSV",
+      "exampleSlack": "Powiadomienia Slack",
+      "exampleSso": "Logowanie SSO"
     }
   },
   "common": {

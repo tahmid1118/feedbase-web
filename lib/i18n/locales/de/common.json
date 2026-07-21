@@ -154,7 +154,10 @@
       "shippedTo": "an {{count}} Personen, die gefragt haben",
       "shippedBody": "Der Dunkelmodus ist jetzt live — danke für den Anstoß.",
       "loopMobileTitle": "…und sie kommen wieder",
-      "loopMobileSub": "mit der nächsten Idee — der Kreislauf beginnt von vorn."
+      "loopMobileSub": "mit der nächsten Idee — der Kreislauf beginnt von vorn.",
+      "exampleCsv": "CSV-Export",
+      "exampleSlack": "Slack-Benachrichtigungen",
+      "exampleSso": "SSO-Anmeldung"
     }
   },
   "common": {

@@ -154,7 +154,10 @@
       "shippedTo": "à {{count}} personnes qui l'ont demandé",
       "shippedBody": "Le mode sombre est en ligne — merci pour la suggestion.",
       "loopMobileTitle": "…et ils reviennent",
-      "loopMobileSub": "avec la prochaine idée — la boucle recommence."
+      "loopMobileSub": "avec la prochaine idée — la boucle recommence.",
+      "exampleCsv": "Export CSV",
+      "exampleSlack": "Alertes Slack",
+      "exampleSso": "Connexion SSO"
     }
   },
   "common": {

@@ -186,7 +186,10 @@
       "shippedTo": "to {{count}} people who asked",
       "shippedBody": "Dark mode is now live — thanks for the nudge.",
       "loopMobileTitle": "…and they come back",
-      "loopMobileSub": "with the next idea — the loop starts again."
+      "loopMobileSub": "with the next idea — the loop starts again.",
+      "exampleCsv": "CSV export",
+      "exampleSlack": "Slack alerts",
+      "exampleSso": "SSO login"
     }
   },
   "dashboard": {

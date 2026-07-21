@@ -154,7 +154,10 @@
       "shippedTo": "a {{count}} persone che l'hanno chiesto",
       "shippedBody": "La modalità scura è ora attiva — grazie per lo spunto.",
       "loopMobileTitle": "…e tornano",
-      "loopMobileSub": "con l'idea successiva — il ciclo ricomincia."
+      "loopMobileSub": "con l'idea successiva — il ciclo ricomincia.",
+      "exampleCsv": "Esportazione CSV",
+      "exampleSlack": "Avvisi Slack",
+      "exampleSso": "Accesso SSO"
     }
   },
   "common": {
