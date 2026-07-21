@@ -66,8 +66,9 @@
       "subheading": "Únete a miles de equipos que usan Feedbase para entender a sus clientes"
     },
     "how": {
-      "heading": "¿Cómo funciona?",
-      "subheading": "Un ciclo: tus usuarios hablan, tú construyes, ellos reciben respuesta."
+      "heading": "Escuchado. Construido. Publicado. Y el ciclo vuelve a empezar.",
+      "subheading": "Cinco pasos, un ciclo cerrado. Tus usuarios piden, la comunidad vota, tu equipo prioriza y publica, y todos los que preguntaron reciben respuesta.",
+      "eyebrow": "Cómo funciona"
     },
     "pricing": {
       "heading": "Precios sencillos y transparentes",
@@ -120,25 +121,40 @@
       "feedbackDesc": "«Esto es lo que opino»: opiniones sinceras y elogios que te dicen cómo se siente de verdad tu producto."
     },
     "flow": {
-      "collect": {
-        "title": "Tus usuarios piden",
-        "desc": "Publican ideas en tu tablero público y votan las de los demás, sin cuenta. La demanda se hace visible."
+      "loop": "…y vuelven con la siguiente idea",
+      "ask": {
+        "title": "Los usuarios piden",
+        "body": "Publican ideas en tu tablero público y votan lo que hay, sin necesidad de cuenta."
       },
-      "build": {
-        "title": "Tu equipo construye",
-        "desc": "Clasificas con etiquetas y estados, y arrastras las ganadoras a la hoja de ruta. El tablero público se actualiza solo."
+      "vote": {
+        "title": "La comunidad vota",
+        "body": "La comunidad vota lo más importante. La demanda se hace visible y ordenable."
       },
-      "announce": {
+      "triage": {
+        "title": "Tu equipo prioriza",
+        "body": "Etiquetas, defines estados y arrastras las ganadoras a una hoja de ruta. El tablero se actualiza solo."
+      },
+      "ship": {
+        "title": "Tú lo publicas",
+        "body": "Publicas y añades una nota de versión. Nada desaparece en el vacío."
+      },
+      "hear": {
         "title": "Todos reciben respuesta",
-        "desc": "Publícalo, añade una nota de versión y quien lo pidió recibe un correo. Nada desaparece en el vacío."
+        "body": "Todos los que preguntaron reciben un correo. Quien lo sugirió es escuchado."
       },
-      "loop": "…y vuelven con la siguiente idea"
-    },
-    "info": {
-      "exampleBoard": "Lo que llega a un tablero",
-      "notified": "Notificado",
-      "link1": "ideas y votos",
-      "link2": "novedades publicadas"
+      "featureRequest": "Solicitud de función",
+      "darkModeSub": "Más cómodo para la vista de noche.",
+      "noAccount": "Sin cuenta",
+      "mostWanted": "Lo más pedido",
+      "demandVisible": "La demanda se hace visible",
+      "now": "AHORA",
+      "boardUpdates": "El tablero se actualiza solo",
+      "nowLive": "Ya disponible para todos: actívalo en Ajustes.",
+      "shippedTitle": "¡Publicamos tu idea!",
+      "shippedTo": "a {{count}} personas que lo pidieron",
+      "shippedBody": "El modo oscuro ya está disponible: gracias por la sugerencia.",
+      "loopMobileTitle": "…y vuelven",
+      "loopMobileSub": "con la siguiente idea: el ciclo empieza de nuevo."
     }
   },
   "common": {

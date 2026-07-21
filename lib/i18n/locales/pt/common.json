@@ -66,8 +66,9 @@
       "subheading": "Junte-se a milhares de equipas que usam o Feedbase para perceber os seus clientes"
     },
     "how": {
-      "heading": "Como funciona?",
-      "subheading": "Um ciclo: os seus utilizadores falam, você constrói, eles recebem resposta."
+      "heading": "Ouvido. Construído. Lançado. E o ciclo recomeça.",
+      "subheading": "Cinco passos, um ciclo fechado. Os seus utilizadores pedem, a comunidade vota, a sua equipa organiza e lança — e todos os que pediram recebem resposta.",
+      "eyebrow": "Como funciona"
     },
     "pricing": {
       "heading": "Preços simples e transparentes",
@@ -120,25 +121,40 @@
       "feedbackDesc": "«Eis o que penso» — opiniões sinceras e elogios que mostram como o seu produto é realmente sentido."
     },
     "flow": {
-      "collect": {
-        "title": "Os seus utilizadores pedem",
-        "desc": "Publicam ideias no seu painel público e votam nas dos outros — sem conta. A procura torna-se visível."
+      "loop": "…e voltam com a próxima ideia",
+      "ask": {
+        "title": "Os utilizadores pedem",
+        "body": "Publicam ideias no seu painel público e votam no que existe — sem conta."
       },
-      "build": {
-        "title": "A sua equipa constrói",
-        "desc": "Organiza com etiquetas e estados e arrasta as vencedoras para o roteiro. O painel público atualiza-se sozinho."
+      "vote": {
+        "title": "A comunidade vota",
+        "body": "A comunidade vota no que mais importa. A procura torna-se visível e ordenável."
       },
-      "announce": {
+      "triage": {
+        "title": "A sua equipa organiza",
+        "body": "Etiqueta, define estados e arrasta as vencedoras para um roteiro. O painel atualiza-se sozinho."
+      },
+      "ship": {
+        "title": "Você lança",
+        "body": "Lança e publica uma nota no registo de alterações. Nada desaparece no vazio."
+      },
+      "hear": {
         "title": "Todos recebem resposta",
-        "desc": "Lance, publique uma nota no registo de alterações e quem pediu recebe um e-mail. Nada desaparece no vazio."
+        "body": "Todos os que pediram recebem um e-mail. Quem sugeriu é ouvido."
       },
-      "loop": "…e voltam com a próxima ideia"
-    },
-    "info": {
-      "exampleBoard": "O que chega a um painel",
-      "notified": "Notificado",
-      "link1": "ideias e votos",
-      "link2": "atualizações lançadas"
+      "featureRequest": "Pedido de funcionalidade",
+      "darkModeSub": "Mais suave para os olhos à noite.",
+      "noAccount": "Sem conta",
+      "mostWanted": "Mais pedidos",
+      "demandVisible": "A procura torna-se visível",
+      "now": "AGORA",
+      "boardUpdates": "O painel atualiza-se sozinho",
+      "nowLive": "Já disponível para todos — ative nas Definições.",
+      "shippedTitle": "Concretizámos a sua ideia!",
+      "shippedTo": "a {{count}} pessoas que pediram",
+      "shippedBody": "O modo escuro já está disponível — obrigado pela sugestão.",
+      "loopMobileTitle": "…e voltam",
+      "loopMobileSub": "com a próxima ideia — o ciclo recomeça."
     }
   },
   "common": {

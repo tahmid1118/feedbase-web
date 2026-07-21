@@ -94,8 +94,9 @@
       }
     },
     "how": {
-      "heading": "How does it work?",
-      "subheading": "One loop: your users speak, you build, they hear back."
+      "heading": "Heard. Built. Shipped. Then it comes back around.",
+      "subheading": "Five steps, one closed loop. Your users ask, the crowd votes, your team triages and ships — and everyone who asked hears back.",
+      "eyebrow": "How it works"
     },
     "pricing": {
       "heading": "Simple, Transparent Pricing",
@@ -152,25 +153,40 @@
       "feedbackDesc": "\"Here's what I think\" — honest opinions and praise that tell you how your product really feels."
     },
     "flow": {
-      "collect": {
-        "title": "Your users ask",
-        "desc": "They post ideas on your public board and upvote each other's — no account needed. Demand becomes visible."
+      "loop": "…and they come back with the next idea",
+      "ask": {
+        "title": "Users ask",
+        "body": "They post ideas on your public board and upvote what's there — no account required."
       },
-      "build": {
-        "title": "Your team builds",
-        "desc": "You triage with tags and statuses, then drag the winners onto the roadmap. The public board updates itself."
+      "vote": {
+        "title": "The crowd votes",
+        "body": "The community upvotes what matters most. Demand becomes visible and rankable."
       },
-      "announce": {
+      "triage": {
+        "title": "Your team triages",
+        "body": "You tag, set statuses, and drag the winners onto a roadmap. The board updates itself."
+      },
+      "ship": {
+        "title": "You ship it",
+        "body": "You ship and publish a changelog entry. Nothing disappears into a void."
+      },
+      "hear": {
         "title": "Everyone hears back",
-        "desc": "Ship it, publish a changelog entry, and the person who asked gets an email. Nothing disappears into a void."
+        "body": "Everyone who asked gets an email. The person who suggested it is heard."
       },
-      "loop": "…and they come back with the next idea"
-    },
-    "info": {
-      "exampleBoard": "What lands on a board",
-      "notified": "Notified",
-      "link1": "ideas & votes",
-      "link2": "shipped updates"
+      "featureRequest": "Feature request",
+      "darkModeSub": "Easier on the eyes at night.",
+      "noAccount": "No account needed",
+      "mostWanted": "Most wanted",
+      "demandVisible": "Demand becomes visible",
+      "now": "NOW",
+      "boardUpdates": "Board updates itself",
+      "nowLive": "Now live for everyone — toggle it in Settings.",
+      "shippedTitle": "We shipped your idea!",
+      "shippedTo": "to {{count}} people who asked",
+      "shippedBody": "Dark mode is now live — thanks for the nudge.",
+      "loopMobileTitle": "…and they come back",
+      "loopMobileSub": "with the next idea — the loop starts again."
     }
   },
   "dashboard": {

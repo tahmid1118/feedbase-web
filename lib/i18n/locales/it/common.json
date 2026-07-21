@@ -66,8 +66,9 @@
       "subheading": "Unisciti a migliaia di team che usano Feedbase per capire i propri clienti"
     },
     "how": {
-      "heading": "Come funziona?",
-      "subheading": "Un ciclo: i tuoi utenti parlano, tu costruisci, loro ricevono risposta."
+      "heading": "Ascoltato. Costruito. Rilasciato. E il ciclo ricomincia.",
+      "subheading": "Cinque passaggi, un ciclo chiuso. I tuoi utenti chiedono, la community vota, il tuo team organizza e rilascia — e tutti quelli che hanno chiesto ricevono risposta.",
+      "eyebrow": "Come funziona"
     },
     "pricing": {
       "heading": "Prezzi semplici e trasparenti",
@@ -120,25 +121,40 @@
       "feedbackDesc": "«Ecco cosa ne penso» — opinioni sincere ed elogi che ti dicono come viene percepito davvero il tuo prodotto."
     },
     "flow": {
-      "collect": {
-        "title": "I tuoi utenti chiedono",
-        "desc": "Pubblicano idee sulla tua bacheca pubblica e votano quelle degli altri — senza account. La domanda diventa visibile."
+      "loop": "…e tornano con l'idea successiva",
+      "ask": {
+        "title": "Gli utenti chiedono",
+        "body": "Pubblicano idee sulla tua bacheca pubblica e votano ciò che c'è — senza account."
       },
-      "build": {
-        "title": "Il tuo team costruisce",
-        "desc": "Organizzi con etichette e stati, poi trascini le vincenti nella roadmap. La bacheca pubblica si aggiorna da sola."
+      "vote": {
+        "title": "La community vota",
+        "body": "La community vota ciò che conta di più. La domanda diventa visibile e ordinabile."
       },
-      "announce": {
+      "triage": {
+        "title": "Il tuo team organizza",
+        "body": "Assegni etichette, imposti stati e trascini le vincenti in una roadmap. La bacheca si aggiorna da sola."
+      },
+      "ship": {
+        "title": "Tu lo rilasci",
+        "body": "Rilasci e pubblichi una voce nel changelog. Niente sparisce nel vuoto."
+      },
+      "hear": {
         "title": "Tutti ricevono risposta",
-        "desc": "Rilascialo, pubblica una voce nel changelog e chi l'ha chiesto riceve un'e-mail. Niente sparisce nel vuoto."
+        "body": "Tutti quelli che hanno chiesto ricevono un'e-mail. Chi l'ha proposto viene ascoltato."
       },
-      "loop": "…e tornano con l'idea successiva"
-    },
-    "info": {
-      "exampleBoard": "Cosa arriva su una bacheca",
-      "notified": "Notificato",
-      "link1": "idee e voti",
-      "link2": "aggiornamenti rilasciati"
+      "featureRequest": "Richiesta di funzionalità",
+      "darkModeSub": "Più riposante per gli occhi di notte.",
+      "noAccount": "Nessun account",
+      "mostWanted": "I più richiesti",
+      "demandVisible": "La domanda diventa visibile",
+      "now": "ORA",
+      "boardUpdates": "La bacheca si aggiorna da sola",
+      "nowLive": "Ora attivo per tutti — attivalo nelle Impostazioni.",
+      "shippedTitle": "Abbiamo realizzato la tua idea!",
+      "shippedTo": "a {{count}} persone che l'hanno chiesto",
+      "shippedBody": "La modalità scura è ora attiva — grazie per lo spunto.",
+      "loopMobileTitle": "…e tornano",
+      "loopMobileSub": "con l'idea successiva — il ciclo ricomincia."
     }
   },
   "common": {

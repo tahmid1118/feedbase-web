@@ -66,8 +66,9 @@
       "subheading": "Schließen Sie sich Tausenden von Teams an, die Feedbase nutzen, um ihre Kunden zu verstehen"
     },
     "how": {
-      "heading": "Wie funktioniert es?",
-      "subheading": "Ein Kreislauf: Ihre Nutzer sprechen, Sie entwickeln, sie hören zurück."
+      "heading": "Gehört. Gebaut. Veröffentlicht. Und dann geht es von vorn los.",
+      "subheading": "Fünf Schritte, ein geschlossener Kreislauf. Ihre Nutzer fragen, die Menge stimmt ab, Ihr Team priorisiert und liefert — und alle, die gefragt haben, hören zurück.",
+      "eyebrow": "So funktioniert es"
     },
     "pricing": {
       "heading": "Einfache, transparente Preise",
@@ -120,25 +121,40 @@
       "feedbackDesc": "„Das denke ich“ — ehrliche Meinungen und Lob, die zeigen, wie sich Ihr Produkt wirklich anfühlt."
     },
     "flow": {
-      "collect": {
-        "title": "Ihre Nutzer fragen",
-        "desc": "Sie posten Ideen auf Ihrer öffentlichen Pinnwand und stimmen für die der anderen — ohne Konto. Die Nachfrage wird sichtbar."
+      "loop": "…und sie kommen mit der nächsten Idee zurück",
+      "ask": {
+        "title": "Nutzer fragen",
+        "body": "Sie posten Ideen auf Ihrer öffentlichen Pinnwand und stimmen für Vorhandenes — ohne Konto."
       },
-      "build": {
-        "title": "Ihr Team entwickelt",
-        "desc": "Sie sortieren mit Schlagwörtern und Status und ziehen die Gewinner auf die Roadmap. Die öffentliche Pinnwand aktualisiert sich selbst."
+      "vote": {
+        "title": "Die Menge stimmt ab",
+        "body": "Die Community stimmt für das Wichtigste. Die Nachfrage wird sichtbar und sortierbar."
       },
-      "announce": {
+      "triage": {
+        "title": "Ihr Team priorisiert",
+        "body": "Sie vergeben Schlagwörter, setzen Status und ziehen die Gewinner auf eine Roadmap. Die Pinnwand aktualisiert sich selbst."
+      },
+      "ship": {
+        "title": "Sie liefern",
+        "body": "Sie veröffentlichen und schreiben einen Änderungsprotokoll-Eintrag. Nichts verschwindet im Nichts."
+      },
+      "hear": {
         "title": "Alle hören zurück",
-        "desc": "Veröffentlichen Sie es, schreiben Sie einen Änderungsprotokoll-Eintrag — und wer gefragt hat, bekommt eine E-Mail. Nichts verschwindet im Nichts."
+        "body": "Alle, die gefragt haben, erhalten eine E-Mail. Wer den Vorschlag gemacht hat, wird gehört."
       },
-      "loop": "…und sie kommen mit der nächsten Idee zurück"
-    },
-    "info": {
-      "exampleBoard": "Was auf einer Pinnwand ankommt",
-      "notified": "Benachrichtigt",
-      "link1": "Ideen & Stimmen",
-      "link2": "veröffentlichte Updates"
+      "featureRequest": "Funktionswunsch",
+      "darkModeSub": "Nachts angenehmer für die Augen.",
+      "noAccount": "Kein Konto nötig",
+      "mostWanted": "Am meisten gewünscht",
+      "demandVisible": "Nachfrage wird sichtbar",
+      "now": "JETZT",
+      "boardUpdates": "Pinnwand aktualisiert sich selbst",
+      "nowLive": "Ab sofort für alle verfügbar — in den Einstellungen aktivierbar.",
+      "shippedTitle": "Wir haben Ihre Idee umgesetzt!",
+      "shippedTo": "an {{count}} Personen, die gefragt haben",
+      "shippedBody": "Der Dunkelmodus ist jetzt live — danke für den Anstoß.",
+      "loopMobileTitle": "…und sie kommen wieder",
+      "loopMobileSub": "mit der nächsten Idee — der Kreislauf beginnt von vorn."
     }
   },
   "common": {

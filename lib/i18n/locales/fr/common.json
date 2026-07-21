@@ -66,8 +66,9 @@
       "subheading": "Rejoignez des milliers d'équipes qui utilisent Feedbase pour comprendre leurs clients"
     },
     "how": {
-      "heading": "Comment ça marche ?",
-      "subheading": "Une boucle : vos utilisateurs s'expriment, vous construisez, ils sont informés."
+      "heading": "Écouté. Construit. Livré. Puis la boucle recommence.",
+      "subheading": "Cinq étapes, une boucle fermée. Vos utilisateurs demandent, la communauté vote, votre équipe trie et livre — et tous ceux qui ont demandé sont informés.",
+      "eyebrow": "Comment ça marche"
     },
     "pricing": {
       "heading": "Tarification simple et transparente",
@@ -120,25 +121,40 @@
       "feedbackDesc": "« Voici ce que j'en pense » — avis sincères et compliments qui révèlent ce que votre produit inspire vraiment."
     },
     "flow": {
-      "collect": {
-        "title": "Vos utilisateurs demandent",
-        "desc": "Ils publient des idées sur votre tableau public et votent pour celles des autres — sans compte. La demande devient visible."
+      "loop": "…et ils reviennent avec la prochaine idée",
+      "ask": {
+        "title": "Les utilisateurs demandent",
+        "body": "Ils publient des idées sur votre tableau public et votent pour l'existant — sans compte."
       },
-      "build": {
-        "title": "Votre équipe construit",
-        "desc": "Vous triez avec des étiquettes et des statuts, puis glissez les gagnants sur la feuille de route. Le tableau public se met à jour tout seul."
+      "vote": {
+        "title": "La communauté vote",
+        "body": "La communauté vote pour l'essentiel. La demande devient visible et classable."
       },
-      "announce": {
+      "triage": {
+        "title": "Votre équipe trie",
+        "body": "Vous étiquetez, définissez des statuts et glissez les gagnants sur une feuille de route. Le tableau se met à jour tout seul."
+      },
+      "ship": {
+        "title": "Vous livrez",
+        "body": "Vous livrez et publiez une note de version. Rien ne disparaît dans le vide."
+      },
+      "hear": {
         "title": "Tout le monde est informé",
-        "desc": "Livrez, publiez une note de version, et la personne qui l'a demandé reçoit un e-mail. Rien ne disparaît dans le vide."
+        "body": "Tous ceux qui ont demandé reçoivent un e-mail. La personne qui l'a suggéré est entendue."
       },
-      "loop": "…et ils reviennent avec la prochaine idée"
-    },
-    "info": {
-      "exampleBoard": "Ce qui arrive sur un tableau",
-      "notified": "Notifié",
-      "link1": "idées et votes",
-      "link2": "mises à jour livrées"
+      "featureRequest": "Demande de fonctionnalité",
+      "darkModeSub": "Plus reposant pour les yeux la nuit.",
+      "noAccount": "Aucun compte requis",
+      "mostWanted": "Les plus demandés",
+      "demandVisible": "La demande devient visible",
+      "now": "EN COURS",
+      "boardUpdates": "Le tableau se met à jour seul",
+      "nowLive": "Désormais disponible pour tous — activez-le dans les Paramètres.",
+      "shippedTitle": "Nous avons livré votre idée !",
+      "shippedTo": "à {{count}} personnes qui l'ont demandé",
+      "shippedBody": "Le mode sombre est en ligne — merci pour la suggestion.",
+      "loopMobileTitle": "…et ils reviennent",
+      "loopMobileSub": "avec la prochaine idée — la boucle recommence."
     }
   },
   "common": {

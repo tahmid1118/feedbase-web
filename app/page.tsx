@@ -261,21 +261,9 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* How It Works — the feedback loop, drawn as a flow */}
-      <section className="relative overflow-hidden py-20">
-        {/* Soft wash so the diagram reads as its own surface, not another card row. */}
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/70" />
-        <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e399a3]/10 blur-3xl" />
-
-        <div className="container relative mx-auto px-4">
-          <div className="mb-14 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">{t("landing.how.heading")}</h2>
-            <p className="text-lg text-[#1c0a0c]/70">{t("landing.how.subheading")}</p>
-          </div>
-
-          <FeedbackLoopFlow />
-        </div>
-      </section>
+      {/* How It Works — the feedback loop as a flat-design infographic.
+          Self-contained: renders its own section, heading and background. */}
+      <FeedbackLoopFlow />
 
       {/* Every kind of input (replaces the invented testimonials) */}
       <section className="bg-[#fdf8f9] py-20">

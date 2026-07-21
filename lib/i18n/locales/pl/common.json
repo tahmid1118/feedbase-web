@@ -66,8 +66,9 @@
       "subheading": "Dołącz do tysięcy zespołów, które używają Feedbase, aby zrozumieć swoich klientów"
     },
     "how": {
-      "heading": "Jak to działa?",
-      "subheading": "Jeden cykl: użytkownicy mówią, Ty budujesz, oni dostają odpowiedź."
+      "heading": "Wysłuchane. Zbudowane. Wdrożone. A potem cykl zaczyna się od nowa.",
+      "subheading": "Pięć kroków, jeden zamknięty cykl. Użytkownicy proszą, społeczność głosuje, zespół segreguje i wdraża — a wszyscy, którzy prosili, dostają odpowiedź.",
+      "eyebrow": "Jak to działa"
     },
     "pricing": {
       "heading": "Proste, przejrzyste ceny",
@@ -120,25 +121,40 @@
       "feedbackDesc": "„Oto co myślę” — szczere opinie i pochwały, które mówią, jak naprawdę odbierany jest Twój produkt."
     },
     "flow": {
-      "collect": {
-        "title": "Twoi użytkownicy proszą",
-        "desc": "Zgłaszają pomysły na Twojej publicznej tablicy i głosują na cudze — bez konta. Popyt staje się widoczny."
+      "loop": "…i wracają z kolejnym pomysłem",
+      "ask": {
+        "title": "Użytkownicy proszą",
+        "body": "Zgłaszają pomysły na Twojej publicznej tablicy i głosują na już istniejące — bez konta."
       },
-      "build": {
-        "title": "Twój zespół buduje",
-        "desc": "Porządkujesz tagami i statusami, a zwycięzców przeciągasz do planu działań. Publiczna tablica aktualizuje się sama."
+      "vote": {
+        "title": "Społeczność głosuje",
+        "body": "Społeczność głosuje na to, co najważniejsze. Popyt staje się widoczny i można go uszeregować."
       },
-      "announce": {
+      "triage": {
+        "title": "Zespół segreguje",
+        "body": "Nadajesz tagi, ustawiasz statusy i przeciągasz zwycięzców do planu działań. Tablica aktualizuje się sama."
+      },
+      "ship": {
+        "title": "Ty to wdrażasz",
+        "body": "Wdrażasz i publikujesz wpis w dzienniku zmian. Nic nie znika w próżni."
+      },
+      "hear": {
         "title": "Wszyscy dostają odpowiedź",
-        "desc": "Wdróż, opublikuj wpis w dzienniku zmian, a osoba, która prosiła, dostaje e-mail. Nic nie znika."
+        "body": "Każdy, kto prosił, dostaje e-mail. Osoba, która to zaproponowała, zostaje wysłuchana."
       },
-      "loop": "…i wracają z kolejnym pomysłem"
-    },
-    "info": {
-      "exampleBoard": "Co trafia na tablicę",
-      "notified": "Powiadomiono",
-      "link1": "pomysły i głosy",
-      "link2": "wdrożone zmiany"
+      "featureRequest": "Prośba o funkcję",
+      "darkModeSub": "Łagodniejszy dla oczu w nocy.",
+      "noAccount": "Bez konta",
+      "mostWanted": "Najbardziej pożądane",
+      "demandVisible": "Popyt staje się widoczny",
+      "now": "TERAZ",
+      "boardUpdates": "Tablica aktualizuje się sama",
+      "nowLive": "Już dostępne dla wszystkich — włącz to w Ustawieniach.",
+      "shippedTitle": "Wdrożyliśmy Twój pomysł!",
+      "shippedTo": "do {{count}} osób, które prosiły",
+      "shippedBody": "Tryb ciemny jest już dostępny — dzięki za podpowiedź.",
+      "loopMobileTitle": "…i wracają",
+      "loopMobileSub": "z kolejnym pomysłem — cykl zaczyna się od nowa."
     }
   },
   "common": {

@@ -66,8 +66,9 @@
       "subheading": "Sluit u aan bij duizenden teams die Feedbase gebruiken om hun klanten te begrijpen"
     },
     "how": {
-      "heading": "Hoe werkt het?",
-      "subheading": "Eén cyclus: uw gebruikers spreken, u bouwt, zij horen het terug."
+      "heading": "Gehoord. Gebouwd. Uitgebracht. En dan begint het opnieuw.",
+      "subheading": "Vijf stappen, één gesloten cyclus. Uw gebruikers vragen, de groep stemt, uw team sorteert en levert — en iedereen die vroeg, hoort het terug.",
+      "eyebrow": "Hoe het werkt"
     },
     "pricing": {
       "heading": "Eenvoudige, transparante prijzen",
@@ -120,25 +121,40 @@
       "feedbackDesc": "\"Dit vind ik ervan\" — eerlijke meningen en complimenten die vertellen hoe uw product echt aanvoelt."
     },
     "flow": {
-      "collect": {
-        "title": "Uw gebruikers vragen",
-        "desc": "Ze plaatsen ideeën op uw openbare bord en stemmen op die van anderen — zonder account. De vraag wordt zichtbaar."
+      "loop": "…en ze komen terug met het volgende idee",
+      "ask": {
+        "title": "Gebruikers vragen",
+        "body": "Ze plaatsen ideeën op uw openbare bord en stemmen op wat er is — geen account nodig."
       },
-      "build": {
-        "title": "Uw team bouwt",
-        "desc": "U sorteert met labels en statussen en sleept de winnaars naar de roadmap. Het openbare bord werkt zichzelf bij."
+      "vote": {
+        "title": "De groep stemt",
+        "body": "De community stemt op wat het belangrijkst is. De vraag wordt zichtbaar en rangschikbaar."
       },
-      "announce": {
+      "triage": {
+        "title": "Uw team sorteert",
+        "body": "U labelt, stelt statussen in en sleept de winnaars naar een roadmap. Het bord werkt zichzelf bij."
+      },
+      "ship": {
+        "title": "U levert het op",
+        "body": "U levert op en publiceert een changelog-item. Niets verdwijnt in het niets."
+      },
+      "hear": {
         "title": "Iedereen hoort het terug",
-        "desc": "Lever het op, publiceer een changelog-item en wie erom vroeg krijgt een e-mail. Niets verdwijnt in het niets."
+        "body": "Iedereen die vroeg, krijgt een e-mail. Wie het voorstelde, wordt gehoord."
       },
-      "loop": "…en ze komen terug met het volgende idee"
-    },
-    "info": {
-      "exampleBoard": "Wat er op een bord binnenkomt",
-      "notified": "Gemeld",
-      "link1": "ideeën & stemmen",
-      "link2": "opgeleverde updates"
+      "featureRequest": "Functieverzoek",
+      "darkModeSub": "'s Nachts prettiger voor de ogen.",
+      "noAccount": "Geen account nodig",
+      "mostWanted": "Meest gewild",
+      "demandVisible": "Vraag wordt zichtbaar",
+      "now": "NU",
+      "boardUpdates": "Bord werkt zichzelf bij",
+      "nowLive": "Nu beschikbaar voor iedereen — schakel het in bij Instellingen.",
+      "shippedTitle": "We hebben uw idee opgeleverd!",
+      "shippedTo": "aan {{count}} mensen die het vroegen",
+      "shippedBody": "Donkere modus staat nu live — bedankt voor het zetje.",
+      "loopMobileTitle": "…en ze komen terug",
+      "loopMobileSub": "met het volgende idee — de cyclus begint opnieuw."
     }
   },
   "common": {
