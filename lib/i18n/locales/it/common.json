@@ -405,7 +405,10 @@
     "backToChangelog": "Torna al changelog",
     "submitDesc": "Dicci cosa vorresti vedere. La tua e-mail ci permette di tenerti aggiornato; il nome è facoltativo.",
     "workspaceNotFound": "Spazio di lavoro non trovato",
-    "notFoundDesc": "Questo portale di feedback non esiste o non è più attivo. Controlla l'indirizzo e riprova."
+    "notFoundDesc": "Questo portale di feedback non esiste o non è più attivo. Controlla l'indirizzo e riprova.",
+    "ownBoardTitle": "Vuoi la tua bacheca dei feedback?",
+    "ownBoardSubtitle": "Raccogli feedback, dai priorità con i voti e condividi una roadmap pubblica — inizi gratis.",
+    "ownBoardCta": "Unisciti alla community"
   },
   "type": {
     "feedback": "Feedback",

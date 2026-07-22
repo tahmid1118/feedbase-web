@@ -405,7 +405,10 @@
     "backToChangelog": "Volver al registro de cambios",
     "submitDesc": "Cuéntanos qué te gustaría ver. Tu correo nos permite mantenerte al tanto; tu nombre es opcional.",
     "workspaceNotFound": "Espacio de trabajo no encontrado",
-    "notFoundDesc": "Este portal de comentarios no existe o ya no está activo. Comprueba la dirección e inténtalo de nuevo."
+    "notFoundDesc": "Este portal de comentarios no existe o ya no está activo. Comprueba la dirección e inténtalo de nuevo.",
+    "ownBoardTitle": "¿Quieres tu propio tablero de comentarios?",
+    "ownBoardSubtitle": "Recoge comentarios, prioriza por votos y comparte una hoja de ruta pública: empieza gratis.",
+    "ownBoardCta": "Únete a nuestra comunidad"
   },
   "type": {
     "feedback": "Comentario",

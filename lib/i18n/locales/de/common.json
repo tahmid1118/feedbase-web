@@ -405,7 +405,10 @@
     "backToChangelog": "Zurück zum Änderungsprotokoll",
     "submitDesc": "Sagen Sie uns, was Sie sich wünschen. Über Ihre E-Mail-Adresse halten wir Sie auf dem Laufenden; Ihr Name ist optional.",
     "workspaceNotFound": "Arbeitsbereich nicht gefunden",
-    "notFoundDesc": "Dieses Feedback-Portal existiert nicht oder ist nicht mehr aktiv. Bitte überprüfen Sie die Adresse und versuchen Sie es erneut."
+    "notFoundDesc": "Dieses Feedback-Portal existiert nicht oder ist nicht mehr aktiv. Bitte überprüfen Sie die Adresse und versuchen Sie es erneut.",
+    "ownBoardTitle": "Möchten Sie Ihre eigene Feedback-Pinnwand?",
+    "ownBoardSubtitle": "Sammeln Sie Feedback, priorisieren Sie per Abstimmung und teilen Sie eine öffentliche Roadmap — kostenlos starten.",
+    "ownBoardCta": "Werden Sie Teil unserer Community"
   },
   "type": {
     "feedback": "Feedback",

@@ -405,7 +405,10 @@
     "backToChangelog": "Back to changelog",
     "submitDesc": "Tell us what you'd like to see. Your email lets us keep you posted; your name is optional.",
     "workspaceNotFound": "Workspace not found",
-    "notFoundDesc": "This feedback portal doesn't exist or is no longer active. Please check the address and try again."
+    "notFoundDesc": "This feedback portal doesn't exist or is no longer active. Please check the address and try again.",
+    "ownBoardTitle": "Want your own feedback board?",
+    "ownBoardSubtitle": "Collect feedback, prioritize by votes, and share a public roadmap — free to start.",
+    "ownBoardCta": "Join our community"
   },
   "type": {
     "feedback": "Feedback",

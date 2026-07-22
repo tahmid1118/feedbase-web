@@ -405,7 +405,10 @@
     "backToChangelog": "Terug naar changelog",
     "submitDesc": "Vertel ons wat u graag zou zien. Met uw e-mailadres houden we u op de hoogte; uw naam is optioneel.",
     "workspaceNotFound": "Werkruimte niet gevonden",
-    "notFoundDesc": "Dit feedbackportaal bestaat niet of is niet meer actief. Controleer het adres en probeer het opnieuw."
+    "notFoundDesc": "Dit feedbackportaal bestaat niet of is niet meer actief. Controleer het adres en probeer het opnieuw.",
+    "ownBoardTitle": "Wilt u uw eigen feedbackbord?",
+    "ownBoardSubtitle": "Verzamel feedback, prioriteer op stemmen en deel een openbare roadmap — gratis te starten.",
+    "ownBoardCta": "Word lid van onze community"
   },
   "type": {
     "feedback": "Feedback",

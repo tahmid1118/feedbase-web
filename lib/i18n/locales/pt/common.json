@@ -405,7 +405,10 @@
     "backToChangelog": "Voltar ao registo de alterações",
     "submitDesc": "Diga-nos o que gostaria de ver. O seu e-mail permite-nos mantê-lo informado; o nome é opcional.",
     "workspaceNotFound": "Espaço de trabalho não encontrado",
-    "notFoundDesc": "Este portal de feedback não existe ou já não está ativo. Verifique o endereço e tente novamente."
+    "notFoundDesc": "Este portal de feedback não existe ou já não está ativo. Verifique o endereço e tente novamente.",
+    "ownBoardTitle": "Quer o seu próprio painel de feedback?",
+    "ownBoardSubtitle": "Recolha feedback, priorize por votos e partilhe um roteiro público — comece gratuitamente.",
+    "ownBoardCta": "Junte-se à nossa comunidade"
   },
   "type": {
     "feedback": "Feedback",

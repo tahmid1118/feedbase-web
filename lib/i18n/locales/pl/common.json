@@ -411,7 +411,10 @@
     "nComments_many": "{{count}} komentarzy",
     "submitDesc": "Powiedz nam, co chciałbyś zobaczyć. Dzięki adresowi e-mail będziemy Cię informować; imię jest opcjonalne.",
     "workspaceNotFound": "Nie znaleziono obszaru roboczego",
-    "notFoundDesc": "Ten portal opinii nie istnieje lub nie jest już aktywny. Sprawdź adres i spróbuj ponownie."
+    "notFoundDesc": "Ten portal opinii nie istnieje lub nie jest już aktywny. Sprawdź adres i spróbuj ponownie.",
+    "ownBoardTitle": "Chcesz własną tablicę opinii?",
+    "ownBoardSubtitle": "Zbieraj opinie, ustalaj priorytety głosami i udostępniaj publiczny plan działań — zacznij za darmo.",
+    "ownBoardCta": "Dołącz do naszej społeczności"
   },
   "type": {
     "feedback": "Opinia",

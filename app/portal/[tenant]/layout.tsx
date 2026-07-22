@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { publicApi } from "@/lib/api/public";
 import { PortalLogo } from "@/components/portal/portal-logo";
 import { PortalNav } from "@/components/portal/portal-nav";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { getTranslation } from "@/lib/i18n/server";
+import { appUrl } from "@/lib/app-url";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -58,8 +60,39 @@ export default async function PortalLayout({
 
       <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
 
-      <footer className="border-t border-black/5 py-6 text-center text-xs text-[#1c0a0c]/40">
-        {t("portal.poweredBy")}
+      <footer className="border-t border-black/5 bg-white">
+        {/* Feedbase promo — a visitor here is a prospect for their own board.
+            Uses Feedbase's own rose, not the tenant brand: this is clearly our
+            space, cordoned off in the footer, not part of the tenant's content.
+            Links to the app on the root domain (absolute — see appUrl). */}
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#c74959]/10 text-[#c74959]">
+              <Sparkles className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-[#1c0a0c]">
+                {t("portal.ownBoardTitle")}
+              </p>
+              <p className="text-xs text-[#1c0a0c]/55">
+                {t("portal.ownBoardSubtitle")}
+              </p>
+            </div>
+          </div>
+          <a
+            href={appUrl("/signup")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#c74959] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#b03f4d]"
+          >
+            {t("portal.ownBoardCta")}
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+
+        <div className="border-t border-black/5 py-4 text-center text-xs text-[#1c0a0c]/40">
+          {t("portal.poweredBy")}
+        </div>
       </footer>
     </div>
   );

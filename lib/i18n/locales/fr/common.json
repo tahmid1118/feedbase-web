@@ -405,7 +405,10 @@
     "backToChangelog": "Retour au journal des modifications",
     "submitDesc": "Dites-nous ce que vous aimeriez voir. Votre e-mail nous permet de vous tenir informé ; votre nom est facultatif.",
     "workspaceNotFound": "Espace de travail introuvable",
-    "notFoundDesc": "Ce portail de retours n'existe pas ou n'est plus actif. Veuillez vérifier l'adresse et réessayer."
+    "notFoundDesc": "Ce portail de retours n'existe pas ou n'est plus actif. Veuillez vérifier l'adresse et réessayer.",
+    "ownBoardTitle": "Vous voulez votre propre tableau de retours ?",
+    "ownBoardSubtitle": "Recueillez des retours, priorisez par votes et partagez une feuille de route publique — gratuit au départ.",
+    "ownBoardCta": "Rejoindre notre communauté"
   },
   "type": {
     "feedback": "Retour",
