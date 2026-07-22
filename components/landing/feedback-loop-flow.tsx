@@ -382,8 +382,8 @@ export function FeedbackLoopFlow() {
                     ))}
                   </div>
                 </div>
-                <div style={{ ...pill, position: "absolute", top: 352, left: 8, zIndex: 3, animation: "flf-floatY2 6.4s ease-in-out infinite .3s" }}>{t("landing.flow.demandVisible")}</div>
-                <div style={{ position: "absolute", left: 96, bottom: 100, width: 110, height: 180 }}><Figure id="figB" w={110} h={180} style={{ animation: "flf-driftY 8.4s ease-in-out infinite .2s" }} /></div>
+                <div style={{ ...pill, position: "absolute", top: 372, left: 8, zIndex: 3, animation: "flf-floatY2 6.4s ease-in-out infinite .3s" }}>{t("landing.flow.demandVisible")}</div>
+                <div style={{ position: "absolute", left: 96, bottom: 80, width: 110, height: 180 }}><Figure id="figB" w={110} h={180} style={{ animation: "flf-driftY 8.4s ease-in-out infinite .2s" }} /></div>
               </div>
 
               {/* ACT 3 — Your team triages */}
