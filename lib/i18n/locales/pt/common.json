@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Já tem uma conta?",
     "signInInstead": "Iniciar sessão em vez disso",
     "creatingAccount": "A criar conta...",
-    "createAccountCta": "Criar conta"
+    "createAccountCta": "Criar conta",
+    "forgotPassword": "Esqueceu a palavra-passe?"
   },
   "status": {
     "all": "Todos",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Inicie sessão e continue a tomar melhores decisões.",
-    "subtitle": "Aceda aos seus fluxos de feedback, quadros de roteiro, registo de alterações e notificações a partir de um único local seguro."
+    "subtitle": "Aceda aos seus fluxos de feedback, quadros de roteiro, registo de alterações e notificações a partir de um único local seguro.",
+    "resetSuccess": "A sua palavra-passe foi reposta. Inicie sessão com a nova palavra-passe."
   },
   "signupPage": {
     "heading": "Junte-se ao Feedbase e recolha feedback de produto com clareza.",
@@ -854,5 +856,27 @@
     "commentTitle": "Novo comentário em «{{postTitle}}»",
     "commentMessage": "{{who}}: «{{body}}»",
     "someone": "Alguém"
+  },
+  "forgotPage": {
+    "eyebrow": "Repor palavra-passe",
+    "heading": "Esqueceu a sua palavra-passe?",
+    "subtitle": "Introduza o e-mail da sua conta e enviar-lhe-emos uma ligação para definir uma nova palavra-passe.",
+    "submit": "Enviar ligação",
+    "sending": "A enviar…",
+    "sentTitle": "Verifique a sua caixa de entrada",
+    "sentBody": "Se existir uma conta para esse e-mail, enviámos uma ligação para repor a sua palavra-passe. A ligação é válida por 1 hora.",
+    "backToLogin": "Voltar ao início de sessão",
+    "tryAgain": "Usar outro e-mail"
+  },
+  "resetPage": {
+    "eyebrow": "Repor palavra-passe",
+    "heading": "Escolha uma nova palavra-passe",
+    "subtitle": "Defina uma nova palavra-passe para {{email}}.",
+    "newPassword": "Nova palavra-passe",
+    "submit": "Repor palavra-passe",
+    "resetting": "A repor…",
+    "invalidTitle": "Esta ligação é inválida ou expirou",
+    "invalidBody": "As ligações de reposição são válidas por 1 hora e só podem ser usadas uma vez. Peça uma nova para continuar.",
+    "requestNew": "Pedir uma nova ligação"
   }
 }

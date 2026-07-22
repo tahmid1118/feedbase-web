@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "signInInstead": "Connectez-vous plutôt",
     "creatingAccount": "Création du compte...",
-    "createAccountCta": "Créer un compte"
+    "createAccountCta": "Créer un compte",
+    "forgotPassword": "Mot de passe oublié ?"
   },
   "status": {
     "all": "Tout",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Connectez-vous et continuez à prendre de meilleures décisions.",
-    "subtitle": "Accédez à vos flux de retours, tableaux de feuille de route, journal des modifications et notifications depuis un espace sécurisé."
+    "subtitle": "Accédez à vos flux de retours, tableaux de feuille de route, journal des modifications et notifications depuis un espace sécurisé.",
+    "resetSuccess": "Votre mot de passe a été réinitialisé. Connectez-vous avec votre nouveau mot de passe."
   },
   "signupPage": {
     "heading": "Rejoignez Feedbase et recueillez les retours produit en toute clarté.",
@@ -854,5 +856,27 @@
     "commentTitle": "Nouveau commentaire sur « {{postTitle}} »",
     "commentMessage": "{{who}} : « {{body}} »",
     "someone": "Quelqu'un"
+  },
+  "forgotPage": {
+    "eyebrow": "Réinitialisation du mot de passe",
+    "heading": "Mot de passe oublié ?",
+    "subtitle": "Saisissez l'e-mail de votre compte et nous vous enverrons un lien pour définir un nouveau mot de passe.",
+    "submit": "Envoyer le lien",
+    "sending": "Envoi…",
+    "sentTitle": "Vérifiez votre boîte de réception",
+    "sentBody": "Si un compte existe pour cet e-mail, nous avons envoyé un lien pour réinitialiser votre mot de passe. Le lien est valable 1 heure.",
+    "backToLogin": "Retour à la connexion",
+    "tryAgain": "Utiliser un autre e-mail"
+  },
+  "resetPage": {
+    "eyebrow": "Réinitialisation du mot de passe",
+    "heading": "Choisissez un nouveau mot de passe",
+    "subtitle": "Définissez un nouveau mot de passe pour {{email}}.",
+    "newPassword": "Nouveau mot de passe",
+    "submit": "Réinitialiser le mot de passe",
+    "resetting": "Réinitialisation…",
+    "invalidTitle": "Ce lien est invalide ou a expiré",
+    "invalidBody": "Les liens de réinitialisation sont valables 1 heure et ne peuvent être utilisés qu'une fois. Demandez-en un nouveau pour continuer.",
+    "requestNew": "Demander un nouveau lien"
   }
 }

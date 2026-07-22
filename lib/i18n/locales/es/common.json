@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "signInInstead": "Inicia sesión en su lugar",
     "creatingAccount": "Creando cuenta...",
-    "createAccountCta": "Crear cuenta"
+    "createAccountCta": "Crear cuenta",
+    "forgotPassword": "¿Olvidaste tu contraseña?"
   },
   "status": {
     "all": "Todos",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Inicia sesión y sigue tomando mejores decisiones.",
-    "subtitle": "Accede a tus flujos de comentarios, tableros de hoja de ruta, registro de cambios y notificaciones desde un solo lugar seguro."
+    "subtitle": "Accede a tus flujos de comentarios, tableros de hoja de ruta, registro de cambios y notificaciones desde un solo lugar seguro.",
+    "resetSuccess": "Tu contraseña se ha restablecido. Inicia sesión con tu nueva contraseña."
   },
   "signupPage": {
     "heading": "Únete a Feedbase y recopila comentarios de producto con claridad.",
@@ -854,5 +856,27 @@
     "commentTitle": "Nuevo comentario en «{{postTitle}}»",
     "commentMessage": "{{who}}: «{{body}}»",
     "someone": "Alguien"
+  },
+  "forgotPage": {
+    "eyebrow": "Restablecer contraseña",
+    "heading": "¿Olvidaste tu contraseña?",
+    "subtitle": "Introduce el correo de tu cuenta y te enviaremos un enlace para establecer una nueva contraseña.",
+    "submit": "Enviar enlace",
+    "sending": "Enviando…",
+    "sentTitle": "Revisa tu bandeja de entrada",
+    "sentBody": "Si existe una cuenta para ese correo, hemos enviado un enlace para restablecer tu contraseña. El enlace es válido durante 1 hora.",
+    "backToLogin": "Volver a iniciar sesión",
+    "tryAgain": "Usar otro correo"
+  },
+  "resetPage": {
+    "eyebrow": "Restablecer contraseña",
+    "heading": "Elige una nueva contraseña",
+    "subtitle": "Establece una nueva contraseña para {{email}}.",
+    "newPassword": "Nueva contraseña",
+    "submit": "Restablecer contraseña",
+    "resetting": "Restableciendo…",
+    "invalidTitle": "Este enlace no es válido o ha caducado",
+    "invalidBody": "Los enlaces de restablecimiento son válidos durante 1 hora y solo se pueden usar una vez. Solicita uno nuevo para continuar.",
+    "requestNew": "Solicitar un enlace nuevo"
   }
 }

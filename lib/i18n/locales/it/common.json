@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Hai già un account?",
     "signInInstead": "Accedi invece",
     "creatingAccount": "Creazione account...",
-    "createAccountCta": "Crea account"
+    "createAccountCta": "Crea account",
+    "forgotPassword": "Password dimenticata?"
   },
   "status": {
     "all": "Tutti",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Accedi e continua a prendere decisioni migliori.",
-    "subtitle": "Accedi ai tuoi flussi di feedback, bacheche roadmap, registro modifiche e notifiche da un unico luogo sicuro."
+    "subtitle": "Accedi ai tuoi flussi di feedback, bacheche roadmap, registro modifiche e notifiche da un unico luogo sicuro.",
+    "resetSuccess": "La tua password è stata reimpostata. Accedi con la nuova password."
   },
   "signupPage": {
     "heading": "Unisciti a Feedbase e raccogli feedback sui prodotti con chiarezza.",
@@ -854,5 +856,27 @@
     "commentTitle": "Nuovo commento su «{{postTitle}}»",
     "commentMessage": "{{who}}: «{{body}}»",
     "someone": "Qualcuno"
+  },
+  "forgotPage": {
+    "eyebrow": "Reimposta password",
+    "heading": "Hai dimenticato la password?",
+    "subtitle": "Inserisci l'e-mail del tuo account e ti invieremo un link per impostare una nuova password.",
+    "submit": "Invia il link",
+    "sending": "Invio…",
+    "sentTitle": "Controlla la tua casella di posta",
+    "sentBody": "Se esiste un account per quell'e-mail, abbiamo inviato un link per reimpostare la password. Il link è valido per 1 ora.",
+    "backToLogin": "Torna all'accesso",
+    "tryAgain": "Usa un'altra e-mail"
+  },
+  "resetPage": {
+    "eyebrow": "Reimposta password",
+    "heading": "Scegli una nuova password",
+    "subtitle": "Imposta una nuova password per {{email}}.",
+    "newPassword": "Nuova password",
+    "submit": "Reimposta password",
+    "resetting": "Reimpostazione…",
+    "invalidTitle": "Questo link non è valido o è scaduto",
+    "invalidBody": "I link di reimpostazione sono validi per 1 ora e possono essere usati una sola volta. Richiedine uno nuovo per continuare.",
+    "requestNew": "Richiedi un nuovo link"
   }
 }

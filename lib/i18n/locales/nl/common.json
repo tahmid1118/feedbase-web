@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Heeft u al een account?",
     "signInInstead": "Log in plaats daarvan in",
     "creatingAccount": "Account aanmaken...",
-    "createAccountCta": "Account aanmaken"
+    "createAccountCta": "Account aanmaken",
+    "forgotPassword": "Wachtwoord vergeten?"
   },
   "status": {
     "all": "Alle",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Log in en blijf betere beslissingen nemen.",
-    "subtitle": "Krijg vanaf één beveiligde plek toegang tot uw feedbackstromen, roadmapborden, wijzigingslogboek en meldingen."
+    "subtitle": "Krijg vanaf één beveiligde plek toegang tot uw feedbackstromen, roadmapborden, wijzigingslogboek en meldingen.",
+    "resetSuccess": "Uw wachtwoord is opnieuw ingesteld. Log in met uw nieuwe wachtwoord."
   },
   "signupPage": {
     "heading": "Sluit u aan bij Feedbase en verzamel productfeedback met helderheid.",
@@ -854,5 +856,27 @@
     "commentTitle": "Nieuwe reactie op ‘{{postTitle}}’",
     "commentMessage": "{{who}}: ‘{{body}}’",
     "someone": "Iemand"
+  },
+  "forgotPage": {
+    "eyebrow": "Wachtwoord opnieuw instellen",
+    "heading": "Wachtwoord vergeten?",
+    "subtitle": "Voer het e-mailadres van uw account in en we sturen u een link om een nieuw wachtwoord in te stellen.",
+    "submit": "Link verzenden",
+    "sending": "Verzenden…",
+    "sentTitle": "Controleer uw inbox",
+    "sentBody": "Als er een account bestaat voor dat e-mailadres, hebben we een link gestuurd om uw wachtwoord opnieuw in te stellen. De link is 1 uur geldig.",
+    "backToLogin": "Terug naar inloggen",
+    "tryAgain": "Ander e-mailadres gebruiken"
+  },
+  "resetPage": {
+    "eyebrow": "Wachtwoord opnieuw instellen",
+    "heading": "Kies een nieuw wachtwoord",
+    "subtitle": "Stel een nieuw wachtwoord in voor {{email}}.",
+    "newPassword": "Nieuw wachtwoord",
+    "submit": "Wachtwoord opnieuw instellen",
+    "resetting": "Opnieuw instellen…",
+    "invalidTitle": "Deze link is ongeldig of verlopen",
+    "invalidBody": "Resetlinks zijn 1 uur geldig en kunnen maar één keer worden gebruikt. Vraag een nieuwe aan om door te gaan.",
+    "requestNew": "Nieuwe link aanvragen"
   }
 }

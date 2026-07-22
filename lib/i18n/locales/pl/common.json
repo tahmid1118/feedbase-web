@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Masz już konto?",
     "signInInstead": "Zaloguj się zamiast tego",
     "creatingAccount": "Tworzenie konta...",
-    "createAccountCta": "Utwórz konto"
+    "createAccountCta": "Utwórz konto",
+    "forgotPassword": "Nie pamiętasz hasła?"
   },
   "status": {
     "all": "Wszystkie",
@@ -687,7 +688,8 @@
   },
   "loginPage": {
     "heading": "Zaloguj się i podejmuj lepsze decyzje.",
-    "subtitle": "Uzyskaj dostęp do strumieni opinii, tablic planu działań, dziennika zmian i powiadomień z jednego bezpiecznego miejsca."
+    "subtitle": "Uzyskaj dostęp do strumieni opinii, tablic planu działań, dziennika zmian i powiadomień z jednego bezpiecznego miejsca.",
+    "resetSuccess": "Twoje hasło zostało zresetowane. Zaloguj się nowym hasłem."
   },
   "signupPage": {
     "heading": "Dołącz do Feedbase i zbieraj opinie o produkcie z jasnością.",
@@ -876,5 +878,27 @@
     "commentTitle": "Nowy komentarz do „{{postTitle}}”",
     "commentMessage": "{{who}}: „{{body}}”",
     "someone": "Ktoś"
+  },
+  "forgotPage": {
+    "eyebrow": "Resetowanie hasła",
+    "heading": "Nie pamiętasz hasła?",
+    "subtitle": "Podaj adres e-mail swojego konta, a wyślemy Ci link do ustawienia nowego hasła.",
+    "submit": "Wyślij link",
+    "sending": "Wysyłanie…",
+    "sentTitle": "Sprawdź swoją skrzynkę odbiorczą",
+    "sentBody": "Jeśli istnieje konto dla tego adresu e-mail, wysłaliśmy link do zresetowania hasła. Link jest ważny przez 1 godzinę.",
+    "backToLogin": "Powrót do logowania",
+    "tryAgain": "Użyj innego adresu e-mail"
+  },
+  "resetPage": {
+    "eyebrow": "Resetowanie hasła",
+    "heading": "Wybierz nowe hasło",
+    "subtitle": "Ustaw nowe hasło dla {{email}}.",
+    "newPassword": "Nowe hasło",
+    "submit": "Zresetuj hasło",
+    "resetting": "Resetowanie…",
+    "invalidTitle": "Ten link jest nieprawidłowy lub wygasł",
+    "invalidBody": "Linki do resetowania są ważne przez 1 godzinę i można ich użyć tylko raz. Poproś o nowy, aby kontynuować.",
+    "requestNew": "Poproś o nowy link"
   }
 }

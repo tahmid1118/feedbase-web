@@ -54,6 +54,32 @@ export const registerPayloadSchema = signupBaseSchema.omit({
   confirmPassword: true,
 });
 
+export const forgotPasswordSchema = z.object({
+  email: z.string().trim().email("Enter a valid email address."),
+  lg: languageSchema,
+});
+
+export const resetPasswordSchema = z
+  .object({
+    password: strongPasswordSchema,
+    confirmPassword: z.string().min(1, "Please confirm your password."),
+    lg: languageSchema,
+  })
+  .refine((value) => value.password === value.confirmPassword, {
+    message: "Passwords do not match.",
+    path: ["confirmPassword"],
+  });
+
+/** What the reset API route accepts (token + new password, no confirm). */
+export const resetPayloadSchema = z.object({
+  token: z.string().trim().min(16).max(256),
+  password: strongPasswordSchema,
+  lg: languageSchema,
+});
+
 export type LoginFormValues = z.infer<typeof loginSchema>;
 export type SignupFormValues = z.infer<typeof signupSchema>;
 export type RegisterPayload = z.infer<typeof registerPayloadSchema>;
+export type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
+export type ResetPasswordFormValues = z.infer<typeof resetPasswordSchema>;
+export type ResetPayload = z.infer<typeof resetPayloadSchema>;

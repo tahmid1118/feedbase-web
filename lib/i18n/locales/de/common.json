@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
     "signInInstead": "Stattdessen anmelden",
     "creatingAccount": "Konto wird erstellt...",
-    "createAccountCta": "Konto erstellen"
+    "createAccountCta": "Konto erstellen",
+    "forgotPassword": "Passwort vergessen?"
   },
   "status": {
     "all": "Alle",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Melden Sie sich an und treffen Sie weiterhin bessere Entscheidungen.",
-    "subtitle": "Greifen Sie von einem sicheren Ort auf Ihre Feedback-Streams, Roadmap-Übersichten, Änderungsprotokolle und Benachrichtigungen zu."
+    "subtitle": "Greifen Sie von einem sicheren Ort auf Ihre Feedback-Streams, Roadmap-Übersichten, Änderungsprotokolle und Benachrichtigungen zu.",
+    "resetSuccess": "Ihr Passwort wurde zurückgesetzt. Melden Sie sich mit Ihrem neuen Passwort an."
   },
   "signupPage": {
     "heading": "Werden Sie Teil von Feedbase und sammeln Sie Produktfeedback mit Klarheit.",
@@ -854,5 +856,27 @@
     "commentTitle": "Neuer Kommentar zu „{{postTitle}}“",
     "commentMessage": "{{who}}: „{{body}}“",
     "someone": "Jemand"
+  },
+  "forgotPage": {
+    "eyebrow": "Passwort zurücksetzen",
+    "heading": "Passwort vergessen?",
+    "subtitle": "Geben Sie die E-Mail-Adresse Ihres Kontos ein und wir senden Ihnen einen Link, um ein neues Passwort festzulegen.",
+    "submit": "Link senden",
+    "sending": "Wird gesendet…",
+    "sentTitle": "Prüfen Sie Ihren Posteingang",
+    "sentBody": "Falls ein Konto mit dieser E-Mail existiert, haben wir einen Link zum Zurücksetzen Ihres Passworts gesendet. Der Link ist 1 Stunde gültig.",
+    "backToLogin": "Zurück zur Anmeldung",
+    "tryAgain": "Andere E-Mail-Adresse verwenden"
+  },
+  "resetPage": {
+    "eyebrow": "Passwort zurücksetzen",
+    "heading": "Neues Passwort wählen",
+    "subtitle": "Legen Sie ein neues Passwort für {{email}} fest.",
+    "newPassword": "Neues Passwort",
+    "submit": "Passwort zurücksetzen",
+    "resetting": "Wird zurückgesetzt…",
+    "invalidTitle": "Dieser Link ist ungültig oder abgelaufen",
+    "invalidBody": "Links zum Zurücksetzen des Passworts sind 1 Stunde gültig und können nur einmal verwendet werden. Fordern Sie einen neuen an, um fortzufahren.",
+    "requestNew": "Neuen Link anfordern"
   }
 }

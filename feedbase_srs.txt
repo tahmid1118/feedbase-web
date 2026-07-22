@@ -77,6 +77,16 @@ Version 1.2
     - Email/password authentication using JWT bearer tokens (OAuth-ready).
     - The session carries the user identity, tenant, and role.
     - Profile management: name, contact, avatar upload, and password change.
+    FR-PR1 Password reset  A user who has forgotten their password can request a
+                          reset from the sign-in page by entering their email. The
+                          system responds identically whether or not the email is
+                          registered (it never reveals which addresses have
+                          accounts) and, when it matches an account, emails a
+                          single-use link valid for one hour. Opening the link
+                          lets the user set a new password; the link cannot be
+                          reused or used after it expires. Completing a reset
+                          signs the account out of all devices, so it must be
+                          signed in again with the new password.
     FR-D1  Delete account  A user may permanently delete their account from
                           Settings. Before anything happens they are shown exactly
                           what will be lost, and must re-enter their password and

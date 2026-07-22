@@ -40,6 +40,8 @@ export function LoginForm() {
   // Set when the API client signs the user out because their device session was
   // revoked (signed out elsewhere, or taken over by a newer login).
   const wasSignedOut = searchParams.get("reason") === "session_ended";
+  // Set after a successful password reset redirects here.
+  const didResetPassword = searchParams.get("reset") === "success";
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -132,9 +134,17 @@ export function LoginForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                  {t("auth.password")}
-                </FormLabel>
+                <div className="flex items-center justify-between gap-2">
+                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
+                    {t("auth.password")}
+                  </FormLabel>
+                  <Link
+                    href="/forgot-password"
+                    className="text-xs font-semibold text-[#c74959] hover:text-[#b03f4d]"
+                  >
+                    {t("auth.forgotPassword")}
+                  </Link>
+                </div>
                 <FormControl>
                   <div className="relative">
                     <Input
@@ -176,6 +186,10 @@ export function LoginForm() {
                   This is me — sign out other devices and sign in here
                 </button>
               )}
+            </div>
+          ) : didResetPassword ? (
+            <div className="rounded-xl border border-green-300/70 bg-green-50 px-3 py-2 text-sm text-green-800">
+              {t("loginPage.resetSuccess")}
             </div>
           ) : wasSignedOut ? (
             <div className="rounded-xl border border-[#e399a3]/60 bg-[#fdf8f9] px-3 py-2 text-sm text-[#1c0a0c]/75">

@@ -290,7 +290,8 @@
     "alreadyHaveAccount": "Already have an account?",
     "signInInstead": "Sign in instead",
     "creatingAccount": "Creating account...",
-    "createAccountCta": "Create account"
+    "createAccountCta": "Create account",
+    "forgotPassword": "Forgot password?"
   },
   "status": {
     "all": "All",
@@ -679,7 +680,8 @@
   },
   "loginPage": {
     "heading": "Sign in and continue shipping better decisions.",
-    "subtitle": "Access your feedback streams, roadmap boards, changelog pipeline, and notifications from one secure place."
+    "subtitle": "Access your feedback streams, roadmap boards, changelog pipeline, and notifications from one secure place.",
+    "resetSuccess": "Your password has been reset. Sign in with your new password."
   },
   "signupPage": {
     "heading": "Join Feedbase and collect product feedback with clarity.",
@@ -854,5 +856,27 @@
     "commentTitle": "New comment on “{{postTitle}}”",
     "commentMessage": "{{who}}: “{{body}}”",
     "someone": "Someone"
+  },
+  "forgotPage": {
+    "eyebrow": "Password reset",
+    "heading": "Forgot your password?",
+    "subtitle": "Enter the email for your account and we'll send you a link to set a new password.",
+    "submit": "Send reset link",
+    "sending": "Sending…",
+    "sentTitle": "Check your inbox",
+    "sentBody": "If an account exists for that email, we've sent a link to reset your password. The link is valid for 1 hour.",
+    "backToLogin": "Back to sign in",
+    "tryAgain": "Use a different email"
+  },
+  "resetPage": {
+    "eyebrow": "Password reset",
+    "heading": "Choose a new password",
+    "subtitle": "Set a new password for {{email}}.",
+    "newPassword": "New password",
+    "submit": "Reset password",
+    "resetting": "Resetting…",
+    "invalidTitle": "This link is invalid or has expired",
+    "invalidBody": "Password reset links are valid for 1 hour and can be used only once. Request a new one to continue.",
+    "requestNew": "Request a new link"
   }
 }

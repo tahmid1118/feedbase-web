@@ -120,6 +120,35 @@ Sample Response:
 {"status":"success","message":"Sign up is successful"}
 ```
 
+### POST /users/password/forgot
+Unauthenticated. Request a password-reset link. **Always** returns success (no account enumeration); emails a 1-hour, single-use link only when the email matches an active account.
+Sample Body:
+```json
+{"lg":"en","email":"jane@acme.test"}
+```
+Sample Response:
+```json
+{"status":"success","message":"If an account exists for that email, we've sent a reset link.","data":{"emailSent":true,"mailConfigured":true}}
+```
+
+### GET /users/password/reset/:token
+Unauthenticated. Validate a reset token so the reset page can render. Needs `?lg=`. Returns a **masked** email on success, `404` when invalid/expired.
+Sample Response:
+```json
+{"status":"success","message":"Success","data":{"email":"ja***@acme.test"}}
+```
+
+### POST /users/password/reset
+Unauthenticated. Consume a token and set the new password on **all** `users` rows for the account email; revokes every device session.
+Sample Body:
+```json
+{"lg":"en","token":"<raw-token-from-email-link>","password":"NewSecurePass123!"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Your password has been reset. You can now sign in."}
+```
+
 ### GET /users/personal-data
 Sample Body:
 ```json

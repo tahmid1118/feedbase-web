@@ -122,6 +122,18 @@ export const publicApi = {
       `/public/invitations/${encodeURIComponent(token)}`
     ),
 
+  /**
+   * Validate a password-reset token for the /reset-password/[token] page.
+   * Returns `{ email }` (masked) when the token is live, or null when it's
+   * invalid/expired — the page renders an error state in that case. GET, so it
+   * needs `?lg=` (languageValidator requires a language).
+   */
+  validateResetToken: (token: string, lg: string) =>
+    publicFetch<{ email: string }>(
+      `/users/password/reset/${encodeURIComponent(token)}?lg=${encodeURIComponent(lg)}`,
+      { method: "GET" }
+    ),
+
   getBoard: (
     identifier: string,
     filters?: PostListFilters,

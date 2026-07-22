@@ -11,3 +11,8 @@ export const REGISTER_RATE_LIMIT = {
   maxAttempts: 6,
   windowMs: 60_000,
 } as const;
+
+export const FORGOT_PASSWORD_RATE_LIMIT = {
+  maxAttempts: 5,
+  windowMs: 60_000,
+} as const;

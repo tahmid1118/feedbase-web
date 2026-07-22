@@ -111,3 +111,44 @@ export async function registerWithCredentials(
 
   return response;
 }
+
+type MessageResponse = { status: string; message: string };
+
+/**
+ * Ask for a password-reset link. The backend never reveals whether the email
+ * exists, so this resolves for any input; the caller shows a neutral message.
+ */
+export async function requestPasswordReset(input: {
+  email: string;
+  lg: string;
+}): Promise<MessageResponse> {
+  return requestJson<MessageResponse>("/users/password/forgot", {
+    method: "POST",
+    body: JSON.stringify({ email: input.email, lg: input.lg }),
+  });
+}
+
+/**
+ * Consume a reset token and set a new password. Throws AuthApiError on an
+ * invalid/expired token or a weak password (surfaced by requestJson on non-2xx).
+ */
+export async function submitPasswordReset(input: {
+  token: string;
+  password: string;
+  lg: string;
+}): Promise<MessageResponse> {
+  const response = await requestJson<MessageResponse>("/users/password/reset", {
+    method: "POST",
+    body: JSON.stringify({
+      token: input.token,
+      password: input.password,
+      lg: input.lg,
+    }),
+  });
+
+  if (!isSuccess(response.status)) {
+    throw new AuthApiError(response.message || "Password reset failed.", 400, response);
+  }
+
+  return response;
+}
