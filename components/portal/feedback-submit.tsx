@@ -29,7 +29,7 @@ import {
 } from "@/components/ui/select";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 const TYPES = [
   { value: "feedback", emoji: "💬", key: "type.feedback" },

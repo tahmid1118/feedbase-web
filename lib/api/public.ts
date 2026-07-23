@@ -19,8 +19,8 @@ import type {
 } from "./types";
 
 const API_BASE_URL =
-  process.env.FEEDBASE_API_BASE_URL ||
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL ||
+  process.env.FEEDBOARD_API_BASE_URL ||
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL ||
   "http://localhost:4560";
 
 export interface PublicTenant {

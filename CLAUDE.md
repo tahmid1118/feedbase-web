@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > **Keep this file current.** Whenever you change architecture, conventions, env vars, auth/session behavior, the API surface, the design system, or dependencies, update the relevant section here *in the same change*. A drifted CLAUDE.md is a bug. Prefer concise, additive edits.
 
-> **Keep the SRS current.** Whenever you implement or modify a user-facing feature, update `feedbase_srs.txt` (project root) *in the same change*. Keep it clean and professional — a well-structured requirements spec that accurately reflects what's built, not a changelog or a dump of implementation detail.
+> **Keep the SRS current.** Whenever you implement or modify a user-facing feature, update `feedboard_srs.txt` (project root) *in the same change*. Keep it clean and professional — a well-structured requirements spec that accurately reflects what's built, not a changelog or a dump of implementation detail.
 
 > **Keep `API_FULL_LIST.md` current.** Whenever you add, remove, or change a backend endpoint (path, method, request/response shape, or auth), update `API_FULL_LIST.md` (project root) *in the same change* — add new endpoints under the right numbered section, and delete entries for routes you remove. This is the **single canonical** API reference for both repos (the backend repo intentionally has no copy). A drifted list is a bug.
 
@@ -183,8 +183,8 @@ Conventions:
 
 ```
 AUTH_SECRET                        # NextAuth secret
-FEEDBASE_API_BASE_URL              # Server-side API URL (default: http://localhost:4560)
-NEXT_PUBLIC_FEEDBASE_API_BASE_URL  # Client-side API URL (same)
+FEEDBOARD_API_BASE_URL              # Server-side API URL (default: http://localhost:4560)
+NEXT_PUBLIC_FEEDBOARD_API_BASE_URL  # Client-side API URL (same)
 NEXT_PUBLIC_ROOT_DOMAIN            # Root domain for subdomain routing (default: localhost:3000)
 NEXT_PUBLIC_FEEDBACK_SUBDOMAIN     # Subdomain of FeedBoard own feedback board (default: feedback)
 ```

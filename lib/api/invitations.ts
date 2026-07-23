@@ -5,7 +5,7 @@ import { apiClient } from "./client";
 import type { ApiResponse, WorkspaceAuth } from "./types";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 /**
  * Accept an invitation as a NEW user (unauthenticated — the emailed link is the

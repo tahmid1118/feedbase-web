@@ -2,7 +2,7 @@
  * API health check utility
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 export async function checkApiHealth(): Promise<{
   isHealthy: boolean;

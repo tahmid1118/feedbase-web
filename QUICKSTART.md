@@ -17,8 +17,8 @@ npm install
 The `.env.local` file is already configured:
 ```env
 AUTH_SECRET=4oQtbMxfAeYQU9d4h7uYeMWwLG9xgGL9PzyXuIjLM9U=
-FEEDBASE_API_BASE_URL=http://localhost:4560
-NEXT_PUBLIC_FEEDBASE_API_BASE_URL=http://localhost:4560
+FEEDBOARD_API_BASE_URL=http://localhost:4560
+NEXT_PUBLIC_FEEDBOARD_API_BASE_URL=http://localhost:4560
 ```
 
 ### Step 4: Start Development Server
@@ -223,7 +223,7 @@ For detailed troubleshooting, see `TROUBLESHOOTING.md`
 - **Troubleshooting Guide**: See `TROUBLESHOOTING.md` for detailed solutions
 - **Full Documentation**: See `IMPLEMENTATION.md`
 - **API Reference**: See `API_FULL_LIST.md`
-- **Requirements**: See `feedbase_srs.txt`
+- **Requirements**: See `feedboard_srs.txt`
 - **Next.js Docs**: `node_modules/next/dist/docs/`
 
 ---

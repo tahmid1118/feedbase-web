@@ -10,7 +10,7 @@ import { ApiError } from "./client";
 import type { UploadResult, PostAttachment } from "./types";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 const UPLOAD_TIMEOUT_MS = 60000;
 // Videos are larger than avatars and slower to upload — give them room.
 const ATTACHMENT_TIMEOUT_MS = 180000;

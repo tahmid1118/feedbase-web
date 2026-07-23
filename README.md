@@ -35,8 +35,8 @@ A modern, multi-tenant SaaS platform for collecting, managing, and prioritizing 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/feedbase.git
-cd feedbase
+git clone https://github.com/yourusername/feedboard.git
+cd feedboard
 ```
 
 2. Install dependencies:
@@ -51,8 +51,8 @@ yarn install
 3. Environment variables are already configured in `.env.local`:
 ```env
 AUTH_SECRET=4oQtbMxfAeYQU9d4h7uYeMWwLG9xgGL9PzyXuIjLM9U=
-FEEDBASE_API_BASE_URL=http://localhost:4560
-NEXT_PUBLIC_FEEDBASE_API_BASE_URL=http://localhost:4560
+FEEDBOARD_API_BASE_URL=http://localhost:4560
+NEXT_PUBLIC_FEEDBOARD_API_BASE_URL=http://localhost:4560
 ```
 
 4. Ensure the backend API is running on port 4560
@@ -150,8 +150,8 @@ feedbase/
 Required environment variables (already configured in `.env.local`):
 
 - `AUTH_SECRET` - Secret key for authentication (pre-configured)
-- `FEEDBASE_API_BASE_URL` - Backend API URL (http://localhost:4560)
-- `NEXT_PUBLIC_FEEDBASE_API_BASE_URL` - Public API URL for client-side calls
+- `FEEDBOARD_API_BASE_URL` - Backend API URL (http://localhost:4560)
+- `NEXT_PUBLIC_FEEDBOARD_API_BASE_URL` - Public API URL for client-side calls
 
 ## API Documentation
 
@@ -180,7 +180,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-For support, email support@feedbase.com or open an issue in the GitHub repository.
+For support, email support@feedboard.com or open an issue in the GitHub repository.
 
 ---
 

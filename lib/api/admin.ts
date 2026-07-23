@@ -4,7 +4,7 @@
  * tenant `apiClient` because these are true REST GET/PUT/DELETE endpoints.
  */
 const API_BASE =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 export interface AdminResult<T = unknown> {
   ok: boolean;

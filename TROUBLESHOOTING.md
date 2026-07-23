@@ -52,8 +52,8 @@ lsof -i :4560
 #### Check Environment Variables
 Verify `.env.local` has correct API URL:
 ```env
-FEEDBASE_API_BASE_URL=http://localhost:4560
-NEXT_PUBLIC_FEEDBASE_API_BASE_URL=http://localhost:4560
+FEEDBOARD_API_BASE_URL=http://localhost:4560
+NEXT_PUBLIC_FEEDBOARD_API_BASE_URL=http://localhost:4560
 ```
 
 #### Firewall/Antivirus
@@ -341,7 +341,7 @@ When reporting issues, include:
 - **Implementation Guide**: `IMPLEMENTATION.md`
 - **API Documentation**: `API_FULL_LIST.md`
 - **Quick Start**: `QUICKSTART.md`
-- **Requirements**: `feedbase_srs.txt`
+- **Requirements**: `feedboard_srs.txt`
 
 ---
 

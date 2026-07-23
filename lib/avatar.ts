@@ -6,8 +6,8 @@
  * origin, not the frontend. Absolute URLs (seed/CDN/OAuth) are returned as-is.
  */
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL ||
-  process.env.FEEDBASE_API_BASE_URL ||
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL ||
+  process.env.FEEDBOARD_API_BASE_URL ||
   "http://localhost:4560";
 
 export function resolveUploadUrl(path?: string | null): string | undefined {

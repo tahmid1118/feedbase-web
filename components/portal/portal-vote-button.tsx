@@ -5,7 +5,7 @@ import { ThumbsUp } from "lucide-react";
 import { getGuestId, getVotedSet, setVotedLocal } from "@/lib/portal/guest";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 interface PortalVoteButtonProps {
   tenant: string;

@@ -4,7 +4,7 @@
  * token is sent); edit/delete require a token and are owner-only server-side.
  */
 const API_BASE =
-  process.env.NEXT_PUBLIC_FEEDBASE_API_BASE_URL || "http://localhost:4560";
+  process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 export interface ActionResult {
   ok: boolean;

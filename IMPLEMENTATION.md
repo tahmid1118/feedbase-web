@@ -199,8 +199,8 @@ feedbase/
 Required in `.env.local`:
 ```env
 AUTH_SECRET=your-secret-key
-FEEDBASE_API_BASE_URL=http://localhost:4560
-NEXT_PUBLIC_FEEDBASE_API_BASE_URL=http://localhost:4560
+FEEDBOARD_API_BASE_URL=http://localhost:4560
+NEXT_PUBLIC_FEEDBOARD_API_BASE_URL=http://localhost:4560
 ```
 
 ## Getting Started
@@ -344,7 +344,7 @@ const response = await postsApi.create(
 
 For issues or questions:
 1. Check the API documentation in `API_FULL_LIST.md`
-2. Review the SRS in `feedbase_srs.txt`
+2. Review the SRS in `feedboard_srs.txt`
 3. Check Next.js docs in `node_modules/next/dist/docs/`
 4. Review component implementations
 

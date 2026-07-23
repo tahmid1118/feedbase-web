@@ -1136,11 +1136,11 @@ Mounted at `/admin`. All routes except `/admin/auth/login` require an **admin** 
 ### POST /admin/auth/login
 Sample Body:
 ```json
-{"lg":"en","userData":{"email":"admin@feedbase.app","password":"Test123!"}}
+{"lg":"en","userData":{"email":"admin@feedboard.app","password":"Test123!"}}
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Admin logged in successfully","admin":{"token":"eyJ...","id":1,"fullName":"Platform Admin","email":"admin@feedbase.app"}}
+{"status":"success","message":"Admin logged in successfully","admin":{"token":"eyJ...","id":1,"fullName":"Platform Admin","email":"admin@feedboard.app"}}
 ```
 
 ### Remaining admin endpoints
