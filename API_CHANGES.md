@@ -2,7 +2,7 @@
 
 ## Updated API Integration (2026-04-14)
 
-The Feedbase API has been updated with the following changes. All API services have been updated to match the new specifications.
+The FeedBoard API has been updated with the following changes. All API services have been updated to match the new specifications.
 
 ## Key Changes
 

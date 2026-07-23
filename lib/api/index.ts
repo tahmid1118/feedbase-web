@@ -1,5 +1,5 @@
 /**
- * Feedbase API client exports
+ * FeedBoard API client exports
  */
 
 export * from "./types";

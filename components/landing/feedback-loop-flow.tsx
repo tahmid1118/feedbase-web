@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useTranslation } from "@/lib/i18n/client";
 
 /**
- * "How it works" — a flat-design process infographic of the Feedbase feedback
+ * "How it works" — a flat-design process infographic of the FeedBoard feedback
  * loop. Ported from a Claude Design document; the visual composition, figures
  * and connector geometry are that design's, adapted to a React client component
  * and wired through the app's i18n.

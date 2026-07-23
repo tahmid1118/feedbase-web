@@ -20,7 +20,7 @@ const fontMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Feedbase",
+  title: "FeedBoard",
   description: "Collect, prioritize, and ship product feedback with confidence.",
 };
 

@@ -6,7 +6,7 @@ import { Logo } from "@/components/ui/logo";
 import { AdminLoginForm } from "@/components/auth/admin-login-form";
 
 export const metadata = {
-  title: "Admin sign in · Feedbase",
+  title: "Admin sign in · FeedBoard",
 };
 
 export default async function AdminLoginPage() {
@@ -39,7 +39,7 @@ export default async function AdminLoginPage() {
             </h1>
             <p className="text-sm text-[#1c0a0c]/60">
               Sign in to manage all workspaces, users, subscriptions, and promo
-              codes. This is separate from a normal Feedbase account.
+              codes. This is separate from a normal FeedBoard account.
             </p>
           </header>
 

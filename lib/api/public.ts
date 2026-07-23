@@ -45,7 +45,7 @@ export interface PublicInvitation {
   reason: "not_found" | "expired" | "revoked" | "already_accepted" | null;
   email?: string;
   workspaceName?: string;
-  /** True when this email already has a Feedbase account (→ log in, no signup). */
+  /** True when this email already has a FeedBoard account (→ log in, no signup). */
   hasAccount?: boolean;
 }
 

@@ -1,4 +1,4 @@
-# Feedbase Quick Start Guide
+# FeedBoard Quick Start Guide
 
 ## 🚀 Get Running in 5 Minutes
 

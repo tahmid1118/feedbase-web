@@ -63,7 +63,7 @@
     },
     "cta": {
       "heading": "Pronto a creare prodotti migliori?",
-      "subheading": "Unisciti a migliaia di team che usano Feedbase per capire i propri clienti"
+      "subheading": "Unisciti a migliaia di team che usano FeedBoard per capire i propri clienti"
     },
     "how": {
       "heading": "Ascoltato. Costruito. Rilasciato. E il ciclo ricomincia.",
@@ -75,8 +75,8 @@
       "subheading": "Inizia gratis, esegui l'upgrade quando cresci"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Tutti i diritti riservati.",
-      "giveFeedback": "Lascia un feedback su Feedbase"
+      "rights": "© 2026 FeedBoard. Tutti i diritti riservati.",
+      "giveFeedback": "Lascia un feedback su FeedBoard"
     },
     "mock": {
       "post1": "Aggiungere la modalità scura",
@@ -279,7 +279,7 @@
     "showPassword": "Mostra password",
     "hidePassword": "Nascondi password",
     "signingIn": "Accesso in corso...",
-    "newToFeedbase": "Nuovo su Feedbase?",
+    "newToFeedBoard": "Nuovo su FeedBoard?",
     "createAccount": "Crea il tuo account",
     "fullName": "Nome completo",
     "contact": "Contatto",
@@ -397,7 +397,7 @@
     "backToBoard": "Torna alla bacheca",
     "byAuthor": "di {{name}}",
     "commentsHeading": "Commenti ({{count}})",
-    "poweredBy": "Realizzato con Feedbase",
+    "poweredBy": "Realizzato con FeedBoard",
     "postNotFound": "Post non trovato",
     "changelogSubtitle": "Gli ultimi aggiornamenti e miglioramenti",
     "noUpdates": "Non è ancora stato pubblicato alcun aggiornamento.",
@@ -673,7 +673,7 @@
   "authAside": {
     "badge": "Piattaforma di feedback sui prodotti",
     "heading": "Trasforma il feedback degli utenti nel tuo vantaggio competitivo.",
-    "subtitle": "Unisciti a migliaia di team di prodotto che usano Feedbase per capire cosa vogliono davvero i clienti e creare prodotti vincenti.",
+    "subtitle": "Unisciti a migliaia di team di prodotto che usano FeedBoard per capire cosa vogliono davvero i clienti e creare prodotti vincenti.",
     "centralizeTitle": "Centralizza il feedback",
     "centralizeDesc": "Raccogli richieste di funzionalità, segnalazioni di bug e idee in uno spazio organizzato accessibile in qualsiasi momento.",
     "prioritizeTitle": "Assegna priorità con i voti",
@@ -687,7 +687,7 @@
     "resetSuccess": "La tua password è stata reimpostata. Accedi con la nuova password."
   },
   "signupPage": {
-    "heading": "Unisciti a Feedbase e raccogli feedback sui prodotti con chiarezza.",
+    "heading": "Unisciti a FeedBoard e raccogli feedback sui prodotti con chiarezza.",
     "subtitle": "Crea lo spazio di lavoro del tuo team in meno di un minuto, poi assegna priorità alle esigenze degli utenti su una base sicura e scalabile."
   },
   "plan": {

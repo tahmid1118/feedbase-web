@@ -59,7 +59,7 @@ export function AdminSidebar() {
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
           <Logo className="h-8 w-8" />
           <div className="flex flex-col leading-tight">
-            <span className="text-lg font-bold text-[#1c0a0c]">Feedbase</span>
+            <span className="text-lg font-bold text-[#1c0a0c]">FeedBoard</span>
             <span className="text-[10px] font-semibold uppercase tracking-widest text-[#c74959]">
               Admin
             </span>

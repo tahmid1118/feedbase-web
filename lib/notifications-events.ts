@@ -5,7 +5,7 @@
  * the moment notifications change elsewhere in the app (e.g. marking one read on
  * the Notifications page) — without waiting for the header's periodic poll.
  */
-const EVENT = "feedbase:notifications-changed";
+const EVENT = "feedboard:notifications-changed";
 
 /** Fire after any change to notifications (mark read, mark all read, delete). */
 export function emitNotificationsChanged() {

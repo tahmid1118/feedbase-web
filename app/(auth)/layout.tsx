@@ -26,7 +26,7 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
             <div className="space-y-8">
               <Link href="/" className="inline-flex items-center gap-2.5 text-sm tracking-[0.22em]">
                 <Logo className="h-7 w-7" />
-                FEEDBASE
+                FEEDBOARD
               </Link>
 
               <div className="space-y-4">

@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
  *
  * Business (multiDevice) skips this entirely.
  */
-const CHANNEL = "feedbase-tabs";
+const CHANNEL = "feedboard-tabs";
 
 type TabMessage =
   | { type: "claim"; from: string; at: number }
@@ -130,10 +130,10 @@ export function SingleTabGuard({ multiDevice }: { multiDevice: boolean }) {
           <MonitorSmartphone className="h-6 w-6 text-[#c74959]" />
         </div>
         <h2 className="mb-2 font-heading text-lg font-semibold text-[#1c0a0c]">
-          Feedbase is already open
+          FeedBoard is already open
         </h2>
         <p className="mb-6 text-sm text-[#1c0a0c]/70">
-          Your plan allows one session at a time, and Feedbase is already open in
+          Your plan allows one session at a time, and FeedBoard is already open in
           another tab or window. Head back to it and close this one — or upgrade
           to Business to work across several tabs and devices.
         </p>

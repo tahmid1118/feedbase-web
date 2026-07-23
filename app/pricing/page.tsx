@@ -6,7 +6,7 @@ import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 
 export const metadata = {
-  title: "Pricing — Feedbase",
+  title: "Pricing — FeedBoard",
   description: "Simple, transparent pricing. Start free, upgrade as you grow.",
 };
 
@@ -18,7 +18,7 @@ export default async function PricingPage() {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link href="/" className="flex items-center gap-2">
             <Logo className="h-8 w-8" />
-            <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
+            <span className="text-xl font-bold text-[#1c0a0c]">FeedBoard</span>
           </Link>
           <div className="flex items-center gap-3">
             <LanguageSelector />

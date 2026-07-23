@@ -1,5 +1,5 @@
 /**
- * Base API client for Feedbase backend
+ * Base API client for FeedBoard backend
  * Handles authentication, error handling, and request/response formatting
  */
 

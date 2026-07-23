@@ -104,11 +104,11 @@
     },
     "cta": {
       "heading": "Ready to Build Better Products?",
-      "subheading": "Join thousands of teams using Feedbase to understand their customers"
+      "subheading": "Join thousands of teams using FeedBoard to understand their customers"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. All rights reserved.",
-      "giveFeedback": "Give feedback on Feedbase"
+      "rights": "© 2026 FeedBoard. All rights reserved.",
+      "giveFeedback": "Give feedback on FeedBoard"
     },
     "mock": {
       "post1": "Add dark mode",
@@ -279,7 +279,7 @@
     "showPassword": "Show password",
     "hidePassword": "Hide password",
     "signingIn": "Signing in...",
-    "newToFeedbase": "New to Feedbase?",
+    "newToFeedBoard": "New to FeedBoard?",
     "createAccount": "Create your account",
     "fullName": "Full name",
     "contact": "Contact",
@@ -397,7 +397,7 @@
     "backToBoard": "Back to board",
     "byAuthor": "by {{name}}",
     "commentsHeading": "Comments ({{count}})",
-    "poweredBy": "Powered by Feedbase",
+    "poweredBy": "Powered by FeedBoard",
     "postNotFound": "Post not found",
     "changelogSubtitle": "The latest updates and improvements",
     "noUpdates": "No updates have been published yet.",
@@ -673,7 +673,7 @@
   "authAside": {
     "badge": "Product Feedback Platform",
     "heading": "Turn user feedback into your competitive advantage.",
-    "subtitle": "Join thousands of product teams who use Feedbase to understand what their customers really want and build products that win.",
+    "subtitle": "Join thousands of product teams who use FeedBoard to understand what their customers really want and build products that win.",
     "centralizeTitle": "Centralize feedback",
     "centralizeDesc": "Collect feature requests, bug reports, and ideas in one organized space your team can access anytime.",
     "prioritizeTitle": "Prioritize with votes",
@@ -687,7 +687,7 @@
     "resetSuccess": "Your password has been reset. Sign in with your new password."
   },
   "signupPage": {
-    "heading": "Join Feedbase and collect product feedback with clarity.",
+    "heading": "Join FeedBoard and collect product feedback with clarity.",
     "subtitle": "Build your team workspace in under a minute, then prioritize what users need most with a secure and scalable foundation."
   },
   "plan": {

@@ -1,4 +1,4 @@
-# Feedbase Implementation Summary
+# FeedBoard Implementation Summary
 
 ## Overview
 A complete multi-tenant SaaS feedback management platform built with Next.js 16, TypeScript, and Tailwind CSS. The application integrates with a backend API running on `http://localhost:4560`.
@@ -234,7 +234,7 @@ npm start
 
 ## API Integration
 
-The app connects to the Feedbase backend API with full TypeScript support:
+The app connects to the FeedBoard backend API with full TypeScript support:
 
 ```typescript
 import { postsApi } from "@/lib/api";

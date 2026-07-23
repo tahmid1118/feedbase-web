@@ -63,7 +63,7 @@ export function Sidebar() {
         {/* Logo */}
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
           <Logo className="h-8 w-8" />
-          <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
+          <span className="text-xl font-bold text-[#1c0a0c]">FeedBoard</span>
         </div>
 
         {/* Workspace switcher */}
@@ -108,7 +108,7 @@ export function Sidebar() {
             </a>
           )}
 
-          {/* Feedbase's OWN board — feedback about this app, not the tenant's. */}
+          {/* FeedBoard's OWN board — feedback about this app, not the tenant's. */}
           <a
             href={officialBoardUrl()}
             target="_blank"

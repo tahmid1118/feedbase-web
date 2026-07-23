@@ -1,4 +1,4 @@
-# Feedbase Full API List
+# FeedBoard Full API List
 
 ## Base URL
 

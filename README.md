@@ -1,4 +1,4 @@
-# Feedbase
+# FeedBoard
 
 A modern, multi-tenant SaaS platform for collecting, managing, and prioritizing product feedback. Built with Next.js, TypeScript, and Tailwind CSS.
 
@@ -184,4 +184,4 @@ For support, email support@feedbase.com or open an issue in the GitHub repositor
 
 ---
 
-Made with ❤️ by the Feedbase team
+Made with ❤️ by the FeedBoard team

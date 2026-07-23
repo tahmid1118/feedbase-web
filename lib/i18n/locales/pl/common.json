@@ -63,7 +63,7 @@
     },
     "cta": {
       "heading": "Gotowy na tworzenie lepszych produktów?",
-      "subheading": "Dołącz do tysięcy zespołów, które używają Feedbase, aby zrozumieć swoich klientów"
+      "subheading": "Dołącz do tysięcy zespołów, które używają FeedBoard, aby zrozumieć swoich klientów"
     },
     "how": {
       "heading": "Wysłuchane. Zbudowane. Wdrożone. A potem cykl zaczyna się od nowa.",
@@ -75,8 +75,8 @@
       "subheading": "Zacznij za darmo, ulepszaj w miarę rozwoju"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Wszelkie prawa zastrzeżone.",
-      "giveFeedback": "Prześlij opinię o Feedbase"
+      "rights": "© 2026 FeedBoard. Wszelkie prawa zastrzeżone.",
+      "giveFeedback": "Prześlij opinię o FeedBoard"
     },
     "mock": {
       "post1": "Dodać tryb ciemny",
@@ -279,7 +279,7 @@
     "showPassword": "Pokaż hasło",
     "hidePassword": "Ukryj hasło",
     "signingIn": "Logowanie...",
-    "newToFeedbase": "Nowy w Feedbase?",
+    "newToFeedBoard": "Nowy w FeedBoard?",
     "createAccount": "Utwórz konto",
     "fullName": "Imię i nazwisko",
     "contact": "Kontakt",
@@ -401,7 +401,7 @@
     "backToBoard": "Powrót do tablicy",
     "byAuthor": "przez {{name}}",
     "commentsHeading": "Komentarze ({{count}})",
-    "poweredBy": "Obsługiwane przez Feedbase",
+    "poweredBy": "Obsługiwane przez FeedBoard",
     "postNotFound": "Nie znaleziono wpisu",
     "changelogSubtitle": "Najnowsze aktualizacje i ulepszenia",
     "noUpdates": "Nie opublikowano jeszcze żadnych aktualizacji.",
@@ -681,7 +681,7 @@
   "authAside": {
     "badge": "Platforma opinii o produkcie",
     "heading": "Zamień opinie użytkowników w przewagę konkurencyjną.",
-    "subtitle": "Dołącz do tysięcy zespołów produktowych, które używają Feedbase, aby zrozumieć, czego naprawdę chcą ich klienci, i tworzyć zwycięskie produkty.",
+    "subtitle": "Dołącz do tysięcy zespołów produktowych, które używają FeedBoard, aby zrozumieć, czego naprawdę chcą ich klienci, i tworzyć zwycięskie produkty.",
     "centralizeTitle": "Scentralizuj opinie",
     "centralizeDesc": "Zbieraj prośby o funkcje, zgłoszenia błędów i pomysły w jednym uporządkowanym miejscu, dostępnym dla zespołu o każdej porze.",
     "prioritizeTitle": "Ustalaj priorytety za pomocą głosów",
@@ -695,7 +695,7 @@
     "resetSuccess": "Twoje hasło zostało zresetowane. Zaloguj się nowym hasłem."
   },
   "signupPage": {
-    "heading": "Dołącz do Feedbase i zbieraj opinie o produkcie z jasnością.",
+    "heading": "Dołącz do FeedBoard i zbieraj opinie o produkcie z jasnością.",
     "subtitle": "Zbuduj przestrzeń roboczą zespołu w niecałą minutę, a następnie ustal priorytety potrzeb użytkowników na bezpiecznej i skalowalnej podstawie."
   },
   "plan": {

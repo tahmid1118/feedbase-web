@@ -99,7 +99,7 @@ export function LoginForm() {
   return (
     <div className="auth-reveal space-y-5">
       <div className="rounded-xl border border-[#e399a3]/45 bg-[#fdf8f9] p-3 text-xs leading-relaxed text-[#1c0a0c]/78">
-        {t("auth.newToFeedbase")}{" "}
+        {t("auth.newToFeedBoard")}{" "}
         <Link href="/signup" className="font-semibold text-[#c74959] hover:text-[#b03f4d]">
           {t("auth.createAccount")}
         </Link>

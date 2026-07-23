@@ -1,5 +1,5 @@
 /**
- * Feedbase logo mark.
+ * FeedBoard logo mark.
  *
  * A speech bubble (feedback) with an upvote chevron (voting) on the brand
  * rose→secondary gradient. Self-contained and scalable — size it with a
@@ -11,7 +11,7 @@ export function Logo({ className = "h-8 w-8" }: { className?: string }) {
       viewBox="0 0 32 32"
       className={className}
       role="img"
-      aria-label="Feedbase"
+      aria-label="FeedBoard"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

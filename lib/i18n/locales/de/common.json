@@ -63,7 +63,7 @@
     },
     "cta": {
       "heading": "Bereit, bessere Produkte zu entwickeln?",
-      "subheading": "Schließen Sie sich Tausenden von Teams an, die Feedbase nutzen, um ihre Kunden zu verstehen"
+      "subheading": "Schließen Sie sich Tausenden von Teams an, die FeedBoard nutzen, um ihre Kunden zu verstehen"
     },
     "how": {
       "heading": "Gehört. Gebaut. Veröffentlicht. Und dann geht es von vorn los.",
@@ -75,8 +75,8 @@
       "subheading": "Kostenlos starten, upgraden, wenn Sie wachsen"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Alle Rechte vorbehalten.",
-      "giveFeedback": "Feedback zu Feedbase geben"
+      "rights": "© 2026 FeedBoard. Alle Rechte vorbehalten.",
+      "giveFeedback": "Feedback zu FeedBoard geben"
     },
     "mock": {
       "post1": "Dunkelmodus hinzufügen",
@@ -279,7 +279,7 @@
     "showPassword": "Passwort anzeigen",
     "hidePassword": "Passwort verbergen",
     "signingIn": "Anmeldung...",
-    "newToFeedbase": "Neu bei Feedbase?",
+    "newToFeedBoard": "Neu bei FeedBoard?",
     "createAccount": "Konto erstellen",
     "fullName": "Vollständiger Name",
     "contact": "Kontakt",
@@ -397,7 +397,7 @@
     "backToBoard": "Zurück zur Pinnwand",
     "byAuthor": "von {{name}}",
     "commentsHeading": "Kommentare ({{count}})",
-    "poweredBy": "Bereitgestellt von Feedbase",
+    "poweredBy": "Bereitgestellt von FeedBoard",
     "postNotFound": "Beitrag nicht gefunden",
     "changelogSubtitle": "Die neuesten Updates und Verbesserungen",
     "noUpdates": "Es wurden noch keine Updates veröffentlicht.",
@@ -673,7 +673,7 @@
   "authAside": {
     "badge": "Produkt-Feedback-Plattform",
     "heading": "Machen Sie Nutzerfeedback zu Ihrem Wettbewerbsvorteil.",
-    "subtitle": "Schließen Sie sich Tausenden von Produktteams an, die Feedbase nutzen, um zu verstehen, was ihre Kunden wirklich wollen, und erfolgreiche Produkte zu entwickeln.",
+    "subtitle": "Schließen Sie sich Tausenden von Produktteams an, die FeedBoard nutzen, um zu verstehen, was ihre Kunden wirklich wollen, und erfolgreiche Produkte zu entwickeln.",
     "centralizeTitle": "Feedback zentralisieren",
     "centralizeDesc": "Sammeln Sie Funktionswünsche, Fehlerberichte und Ideen an einem organisierten Ort, auf den Ihr Team jederzeit zugreifen kann.",
     "prioritizeTitle": "Mit Stimmen priorisieren",
@@ -687,7 +687,7 @@
     "resetSuccess": "Ihr Passwort wurde zurückgesetzt. Melden Sie sich mit Ihrem neuen Passwort an."
   },
   "signupPage": {
-    "heading": "Werden Sie Teil von Feedbase und sammeln Sie Produktfeedback mit Klarheit.",
+    "heading": "Werden Sie Teil von FeedBoard und sammeln Sie Produktfeedback mit Klarheit.",
     "subtitle": "Erstellen Sie Ihren Team-Arbeitsbereich in unter einer Minute und priorisieren Sie dann die wichtigsten Nutzerbedürfnisse auf einer sicheren, skalierbaren Grundlage."
   },
   "plan": {

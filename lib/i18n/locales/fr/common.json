@@ -63,7 +63,7 @@
     },
     "cta": {
       "heading": "Prêt à créer de meilleurs produits ?",
-      "subheading": "Rejoignez des milliers d'équipes qui utilisent Feedbase pour comprendre leurs clients"
+      "subheading": "Rejoignez des milliers d'équipes qui utilisent FeedBoard pour comprendre leurs clients"
     },
     "how": {
       "heading": "Écouté. Construit. Livré. Puis la boucle recommence.",
@@ -75,8 +75,8 @@
       "subheading": "Commencez gratuitement, évoluez au fil de votre croissance"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Tous droits réservés.",
-      "giveFeedback": "Donner votre avis sur Feedbase"
+      "rights": "© 2026 FeedBoard. Tous droits réservés.",
+      "giveFeedback": "Donner votre avis sur FeedBoard"
     },
     "mock": {
       "post1": "Ajouter le mode sombre",
@@ -279,7 +279,7 @@
     "showPassword": "Afficher le mot de passe",
     "hidePassword": "Masquer le mot de passe",
     "signingIn": "Connexion...",
-    "newToFeedbase": "Nouveau sur Feedbase ?",
+    "newToFeedBoard": "Nouveau sur FeedBoard ?",
     "createAccount": "Créez votre compte",
     "fullName": "Nom complet",
     "contact": "Contact",
@@ -397,7 +397,7 @@
     "backToBoard": "Retour au tableau",
     "byAuthor": "par {{name}}",
     "commentsHeading": "Commentaires ({{count}})",
-    "poweredBy": "Propulsé par Feedbase",
+    "poweredBy": "Propulsé par FeedBoard",
     "postNotFound": "Publication introuvable",
     "changelogSubtitle": "Les dernières mises à jour et améliorations",
     "noUpdates": "Aucune mise à jour n'a encore été publiée.",
@@ -673,7 +673,7 @@
   "authAside": {
     "badge": "Plateforme de retours produit",
     "heading": "Transformez les retours des utilisateurs en avantage concurrentiel.",
-    "subtitle": "Rejoignez des milliers d'équipes produit qui utilisent Feedbase pour comprendre ce que leurs clients veulent vraiment et créer des produits gagnants.",
+    "subtitle": "Rejoignez des milliers d'équipes produit qui utilisent FeedBoard pour comprendre ce que leurs clients veulent vraiment et créer des produits gagnants.",
     "centralizeTitle": "Centralisez les retours",
     "centralizeDesc": "Rassemblez les demandes de fonctionnalités, les rapports de bogues et les idées dans un espace organisé accessible à tout moment.",
     "prioritizeTitle": "Priorisez avec les votes",
@@ -687,7 +687,7 @@
     "resetSuccess": "Votre mot de passe a été réinitialisé. Connectez-vous avec votre nouveau mot de passe."
   },
   "signupPage": {
-    "heading": "Rejoignez Feedbase et recueillez les retours produit en toute clarté.",
+    "heading": "Rejoignez FeedBoard et recueillez les retours produit en toute clarté.",
     "subtitle": "Créez l'espace de travail de votre équipe en moins d'une minute, puis priorisez les besoins des utilisateurs sur une base sécurisée et évolutive."
   },
   "plan": {

@@ -63,7 +63,7 @@
     },
     "cta": {
       "heading": "¿Listo para crear mejores productos?",
-      "subheading": "Únete a miles de equipos que usan Feedbase para entender a sus clientes"
+      "subheading": "Únete a miles de equipos que usan FeedBoard para entender a sus clientes"
     },
     "how": {
       "heading": "Escuchado. Construido. Publicado. Y el ciclo vuelve a empezar.",
@@ -75,8 +75,8 @@
       "subheading": "Empieza gratis, mejora cuando crezcas"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Todos los derechos reservados.",
-      "giveFeedback": "Enviar comentarios sobre Feedbase"
+      "rights": "© 2026 FeedBoard. Todos los derechos reservados.",
+      "giveFeedback": "Enviar comentarios sobre FeedBoard"
     },
     "mock": {
       "post1": "Añadir modo oscuro",
@@ -279,7 +279,7 @@
     "showPassword": "Mostrar contraseña",
     "hidePassword": "Ocultar contraseña",
     "signingIn": "Iniciando sesión...",
-    "newToFeedbase": "¿Nuevo en Feedbase?",
+    "newToFeedBoard": "¿Nuevo en FeedBoard?",
     "createAccount": "Crea tu cuenta",
     "fullName": "Nombre completo",
     "contact": "Contacto",
@@ -397,7 +397,7 @@
     "backToBoard": "Volver al tablero",
     "byAuthor": "por {{name}}",
     "commentsHeading": "Comentarios ({{count}})",
-    "poweredBy": "Con tecnología de Feedbase",
+    "poweredBy": "Con tecnología de FeedBoard",
     "postNotFound": "Publicación no encontrada",
     "changelogSubtitle": "Las últimas novedades y mejoras",
     "noUpdates": "Aún no se ha publicado ninguna novedad.",
@@ -673,7 +673,7 @@
   "authAside": {
     "badge": "Plataforma de comentarios de producto",
     "heading": "Convierte los comentarios de los usuarios en tu ventaja competitiva.",
-    "subtitle": "Únete a miles de equipos de producto que usan Feedbase para entender lo que sus clientes realmente quieren y crear productos ganadores.",
+    "subtitle": "Únete a miles de equipos de producto que usan FeedBoard para entender lo que sus clientes realmente quieren y crear productos ganadores.",
     "centralizeTitle": "Centraliza los comentarios",
     "centralizeDesc": "Reúne solicitudes de funciones, informes de errores e ideas en un espacio organizado al que tu equipo puede acceder en cualquier momento.",
     "prioritizeTitle": "Prioriza con votos",
@@ -687,7 +687,7 @@
     "resetSuccess": "Tu contraseña se ha restablecido. Inicia sesión con tu nueva contraseña."
   },
   "signupPage": {
-    "heading": "Únete a Feedbase y recopila comentarios de producto con claridad.",
+    "heading": "Únete a FeedBoard y recopila comentarios de producto con claridad.",
     "subtitle": "Crea el espacio de trabajo de tu equipo en menos de un minuto y prioriza lo que más necesitan los usuarios sobre una base segura y escalable."
   },
   "plan": {

@@ -1,6 +1,6 @@
 ================================================================================
 SOFTWARE REQUIREMENTS SPECIFICATION
-Feedbase - Multi-Tenant Feedback & Roadmap Platform
+FeedBoard - Multi-Tenant Feedback & Roadmap Platform
 Version 1.2
 ================================================================================
 
@@ -9,7 +9,7 @@ Version 1.2
 --------------------------------------------------------------------------------
 
 1.1 Purpose
-    This document specifies the requirements for Feedbase, a multi-tenant SaaS
+    This document specifies the requirements for FeedBoard, a multi-tenant SaaS
     platform that lets companies collect product feedback from their users,
     prioritize it through voting, and communicate progress through a public
     roadmap and changelog.
@@ -450,7 +450,7 @@ Version 1.2
 3.13 PRODUCT FEEDBACK (SELF-HOSTED BOARD)
 --------------------------------------------------------------------------------
 
-    FR-PF1 Own board .... Feedbase operates a public feedback board for the
+    FR-PF1 Own board .... FeedBoard operates a public feedback board for the
                           product itself. It is a standard workspace (no special
                           casing), owned by the platform administrator's own
                           account, so it is managed with the same dashboard and

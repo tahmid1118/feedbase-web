@@ -19,7 +19,7 @@ import type {
 
 export const usersApi = {
   /**
-   * Exchange a verified OAuth identity for a Feedbase JWT. The provider
+   * Exchange a verified OAuth identity for a FeedBoard JWT. The provider
    * handshake happens on the frontend; this posts the resulting identity.
    * Public endpoint — no bearer token required.
    */

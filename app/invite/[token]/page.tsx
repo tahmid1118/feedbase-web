@@ -6,7 +6,7 @@ import { Logo } from "@/components/ui/logo";
 import { InviteAccept } from "@/components/invite/invite-accept";
 
 export const metadata = {
-  title: "Workspace invitation · Feedbase",
+  title: "Workspace invitation · FeedBoard",
 };
 
 const REASON_COPY: Record<string, { title: string; body: string }> = {
@@ -41,7 +41,7 @@ export default async function InvitePage({
       <div className="w-full max-w-md">
         <div className="mb-6 flex items-center justify-center gap-2">
           <Logo className="h-8 w-8" />
-          <span className="text-xl font-bold text-[#1c0a0c]">Feedbase</span>
+          <span className="text-xl font-bold text-[#1c0a0c]">FeedBoard</span>
         </div>
         <div className="rounded-2xl border border-[#e399a3]/35 bg-white p-8 shadow-[0_30px_70px_-45px_rgba(28,10,12,0.5)]">
           {children}

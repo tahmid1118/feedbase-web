@@ -1,5 +1,5 @@
 /**
- * Feedbase's own public feedback board — where users of *this* app report bugs
+ * FeedBoard's own public feedback board — where users of *this* app report bugs
  * and request features (we dogfood the product).
  *
  * It is an ordinary tenant portal, not a special case: a workspace whose

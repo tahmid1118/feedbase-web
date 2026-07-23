@@ -21,7 +21,7 @@ import {
  *
  * `iconColor` tints the globe — the public portal passes the tenant's brand
  * colour so the control doesn't clash with their branding; elsewhere it
- * defaults to the Feedbase rose.
+ * defaults to the FeedBoard rose.
  */
 export function LanguageSelector({
   className,

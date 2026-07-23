@@ -61,8 +61,8 @@ export default async function PortalLayout({
       <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
 
       <footer className="border-t border-black/5 bg-white">
-        {/* Feedbase promo — a visitor here is a prospect for their own board.
-            Uses Feedbase's own rose, not the tenant brand: this is clearly our
+        {/* FeedBoard promo — a visitor here is a prospect for their own board.
+            Uses FeedBoard's own rose, not the tenant brand: this is clearly our
             space, cordoned off in the footer, not part of the tenant's content.
             Links to the app on the root domain (absolute — see appUrl). */}
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-8 text-center sm:flex-row sm:justify-between sm:text-left">

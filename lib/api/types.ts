@@ -1,5 +1,5 @@
 /**
- * TypeScript types for Feedbase API
+ * TypeScript types for FeedBoard API
  */
 
 export interface ApiResponse<T = unknown> {

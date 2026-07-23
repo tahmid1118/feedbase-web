@@ -122,7 +122,7 @@ export function InviteAccept({
         <>
           {header}
           <p className="mb-5 rounded-lg bg-[#fdf8f9] px-3 py-2.5 text-sm text-[#1c0a0c]/70">
-            You already have a Feedbase account. Sign in as{" "}
+            You already have a FeedBoard account. Sign in as{" "}
             <span className="font-medium text-[#1c0a0c]">{email}</span> to join this
             workspace.
           </p>

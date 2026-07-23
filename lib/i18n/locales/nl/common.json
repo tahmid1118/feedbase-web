@@ -63,7 +63,7 @@
     },
     "cta": {
       "heading": "Klaar om betere producten te bouwen?",
-      "subheading": "Sluit u aan bij duizenden teams die Feedbase gebruiken om hun klanten te begrijpen"
+      "subheading": "Sluit u aan bij duizenden teams die FeedBoard gebruiken om hun klanten te begrijpen"
     },
     "how": {
       "heading": "Gehoord. Gebouwd. Uitgebracht. En dan begint het opnieuw.",
@@ -75,8 +75,8 @@
       "subheading": "Begin gratis, upgrade naarmate u groeit"
     },
     "footer": {
-      "rights": "© 2026 Feedbase. Alle rechten voorbehouden.",
-      "giveFeedback": "Feedback geven over Feedbase"
+      "rights": "© 2026 FeedBoard. Alle rechten voorbehouden.",
+      "giveFeedback": "Feedback geven over FeedBoard"
     },
     "mock": {
       "post1": "Donkere modus toevoegen",
@@ -279,7 +279,7 @@
     "showPassword": "Wachtwoord tonen",
     "hidePassword": "Wachtwoord verbergen",
     "signingIn": "Bezig met inloggen...",
-    "newToFeedbase": "Nieuw bij Feedbase?",
+    "newToFeedBoard": "Nieuw bij FeedBoard?",
     "createAccount": "Maak uw account aan",
     "fullName": "Volledige naam",
     "contact": "Contact",
@@ -397,7 +397,7 @@
     "backToBoard": "Terug naar bord",
     "byAuthor": "door {{name}}",
     "commentsHeading": "Reacties ({{count}})",
-    "poweredBy": "Mogelijk gemaakt door Feedbase",
+    "poweredBy": "Mogelijk gemaakt door FeedBoard",
     "postNotFound": "Bericht niet gevonden",
     "changelogSubtitle": "De nieuwste updates en verbeteringen",
     "noUpdates": "Er zijn nog geen updates gepubliceerd.",
@@ -673,7 +673,7 @@
   "authAside": {
     "badge": "Platform voor productfeedback",
     "heading": "Maak van gebruikersfeedback uw concurrentievoordeel.",
-    "subtitle": "Sluit u aan bij duizenden productteams die Feedbase gebruiken om te begrijpen wat hun klanten echt willen en winnende producten te bouwen.",
+    "subtitle": "Sluit u aan bij duizenden productteams die FeedBoard gebruiken om te begrijpen wat hun klanten echt willen en winnende producten te bouwen.",
     "centralizeTitle": "Centraliseer feedback",
     "centralizeDesc": "Verzamel functieverzoeken, bugrapporten en ideeën in één georganiseerde ruimte die uw team altijd kan raadplegen.",
     "prioritizeTitle": "Prioriteer met stemmen",
@@ -687,7 +687,7 @@
     "resetSuccess": "Uw wachtwoord is opnieuw ingesteld. Log in met uw nieuwe wachtwoord."
   },
   "signupPage": {
-    "heading": "Sluit u aan bij Feedbase en verzamel productfeedback met helderheid.",
+    "heading": "Sluit u aan bij FeedBoard en verzamel productfeedback met helderheid.",
     "subtitle": "Bouw uw teamwerkruimte in minder dan een minuut en prioriteer vervolgens wat gebruikers het meest nodig hebben op een veilige, schaalbare basis."
   },
   "plan": {
