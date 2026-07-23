@@ -63,7 +63,7 @@ export function IntervalToggle({
                 : "bg-green-100 text-green-700"
             )}
           >
-            Save {savePercent}%
+            {t("billing.save", { percent: savePercent })}
           </span>
         )}
       </button>
