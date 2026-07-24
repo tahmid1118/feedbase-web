@@ -266,7 +266,9 @@
     "statusChangedTo": "Status auf {{status}} gesetzt",
     "closeChatDesc": "Der Nutzer sieht diese Unterhaltung nicht mehr und kann nicht mehr darauf antworten. Sie behalten hier das vollständige Protokoll. Er kann jederzeit einen neuen Chat starten.",
     "openInDashboard": "Im Dashboard öffnen",
-    "openInDashboardFailed": "Dashboard konnte nicht geöffnet werden."
+    "openInDashboardFailed": "Dashboard konnte nicht geöffnet werden.",
+    "adminModeBanner": "Sie verwalten diesen Workspace als Plattform-Administrator.",
+    "backToAdmin": "Zurück zum Admin-Bereich"
   },
   "auth": {
     "login": {

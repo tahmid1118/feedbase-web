@@ -266,7 +266,9 @@
     "statusChangedTo": "Estado establecido en {{status}}",
     "closeChatDesc": "El usuario ya no verá esta conversación y no podrá responder. Tú conservas aquí la transcripción completa. Siempre puede iniciar un chat nuevo.",
     "openInDashboard": "Abrir en el panel",
-    "openInDashboardFailed": "No se pudo abrir el panel."
+    "openInDashboardFailed": "No se pudo abrir el panel.",
+    "adminModeBanner": "Estás gestionando este espacio de trabajo como administrador de la plataforma.",
+    "backToAdmin": "Volver al panel de administración"
   },
   "auth": {
     "login": {

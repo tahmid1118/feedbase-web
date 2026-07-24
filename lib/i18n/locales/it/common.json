@@ -266,7 +266,9 @@
     "statusChangedTo": "Stato impostato su {{status}}",
     "closeChatDesc": "L'utente non vedrà più questa conversazione e non potrà rispondere. Qui conservi la trascrizione completa. Potrà sempre avviare una nuova chat.",
     "openInDashboard": "Apri nella dashboard",
-    "openInDashboardFailed": "Impossibile aprire la dashboard."
+    "openInDashboardFailed": "Impossibile aprire la dashboard.",
+    "adminModeBanner": "Stai gestendo questo spazio di lavoro come amministratore della piattaforma.",
+    "backToAdmin": "Torna al pannello di amministrazione"
   },
   "auth": {
     "login": {

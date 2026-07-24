@@ -218,6 +218,8 @@
     "grantPlan": "Grant plan",
     "openInDashboard": "Open in dashboard",
     "openInDashboardFailed": "Couldn't open the dashboard.",
+    "adminModeBanner": "You're managing this workspace as a platform admin.",
+    "backToAdmin": "Back to admin panel",
     "resetPassword": "Reset password",
     "duration": "Duration",
     "planBreakdown": "Plan breakdown",

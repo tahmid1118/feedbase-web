@@ -266,7 +266,9 @@
     "statusChangedTo": "Statut défini sur {{status}}",
     "closeChatDesc": "L'utilisateur ne verra plus cette conversation et ne pourra plus y répondre. Vous conservez ici la transcription complète. Il peut à tout moment démarrer une nouvelle discussion.",
     "openInDashboard": "Ouvrir dans le tableau de bord",
-    "openInDashboardFailed": "Impossible d'ouvrir le tableau de bord."
+    "openInDashboardFailed": "Impossible d'ouvrir le tableau de bord.",
+    "adminModeBanner": "Vous gérez cet espace de travail en tant qu'administrateur de la plateforme.",
+    "backToAdmin": "Retour au panneau d'administration"
   },
   "auth": {
     "login": {

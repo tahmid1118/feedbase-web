@@ -47,6 +47,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { LocalTime } from "@/components/local-time";
 import { cn } from "@/lib/utils";
+import { resolveAvatarUrl } from "@/lib/avatar";
 import { toast } from "sonner";
 
 const STATUSES = ["open", "planned", "in_progress", "completed", "closed"];
@@ -104,17 +105,27 @@ export default function AdminWorkspacePostsPage() {
       return;
     }
     const u = res.data.user;
-    // Swap the NextAuth session from admin → this workspace's user identity.
+    // Swap the NextAuth session from admin → this workspace's user identity, but
+    // stash the admin identity so the dashboard can offer a one-click return
+    // (the admin never has to sign in again).
     await update({
       accessToken: res.data.token,
       tenantId: String(u.tenantId),
       role: u.role,
       userId: String(u.id),
       name: u.fullName,
-      image: u.imageUrl ?? null,
+      image: resolveAvatarUrl(u.imageUrl) ?? null,
       email: u.email,
       isAdmin: false,
       adminId: null,
+      savedAdmin: {
+        accessToken: token,
+        adminId: session?.user?.adminId ?? null,
+        userId: session?.user?.userId ?? "",
+        name: session?.user?.name ?? null,
+        email: session?.user?.email ?? "",
+        image: session?.user?.image ?? null,
+      },
     });
     // Hard navigation so the just-written session cookie is used (a soft refresh
     // races the cookie write — see the workspace-switcher note in CLAUDE.md).

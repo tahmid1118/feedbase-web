@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { Header } from "@/components/dashboard/header";
 import { Sidebar } from "@/components/dashboard/sidebar";
+import { AdminReturnBanner } from "@/components/dashboard/admin-return-banner";
 import { SingleTabGuard } from "@/components/dashboard/single-tab-guard";
 import { SupportChatWidget } from "@/components/support/support-chat-widget";
 import { Toaster } from "@/components/ui/sonner";
@@ -55,6 +56,7 @@ export default async function DashboardLayout({
       <Sidebar />
       <Header user={session.user} />
       <main className="ml-64 pt-16">
+        <AdminReturnBanner />
         <div className="p-6">{children}</div>
       </main>
       {/* A 2nd tab reuses the session cookie, so only the browser can catch it. */}

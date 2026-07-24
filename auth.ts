@@ -6,6 +6,7 @@ import {
   LOGIN_RATE_LIMIT,
 } from "@/lib/auth/constants";
 import { loginWithCredentials, loginAsAdmin } from "@/lib/auth/auth-service";
+import type { SavedAdminIdentity } from "@/types/next-auth";
 import { AuthApiError } from "@/lib/auth/errors";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
 import { loginSchema } from "@/lib/auth/schemas";
@@ -153,6 +154,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           email?: string;
           isAdmin?: boolean;
           adminId?: string | null;
+          savedAdmin?: SavedAdminIdentity | null;
         };
         if (next.name !== undefined) token.name = next.name;
         if (next.image !== undefined) token.image = next.image;
@@ -162,10 +164,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (next.userId !== undefined) token.userId = next.userId;
         if (next.email !== undefined) token.email = next.email;
         // Admin → user handoff ("Open in dashboard"): the admin drops into a
-        // workspace they own, so the session must stop being an admin one or the
-        // dashboard would bounce it back to /admin.
+        // workspace they own, so the session temporarily stops being an admin one
+        // (or the dashboard would bounce it back to /admin). `savedAdmin` keeps a
+        // snapshot of the admin identity so "Back to admin" restores it with no
+        // re-login; it's cleared (null) on the way back.
         if (next.isAdmin !== undefined) token.isAdmin = next.isAdmin;
         if (next.adminId !== undefined) token.adminId = next.adminId;
+        if (next.savedAdmin !== undefined) token.savedAdmin = next.savedAdmin;
       }
 
       return token;
@@ -193,6 +198,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.isAdmin = token.isAdmin === true;
         session.user.adminId =
           typeof token.adminId === "string" ? token.adminId : null;
+        session.user.savedAdmin =
+          (token.savedAdmin as SavedAdminIdentity | null | undefined) ?? null;
       }
 
       return session;
