@@ -16,6 +16,24 @@ const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 /** Subdomain of the official board, e.g. "feedback". */
 export const officialBoardSubdomain = SUBDOMAIN;
 
+/** True when the root host can't share a cookie onto its subdomains — a
+ * single-label host (`localhost`) or a bare IP. */
+const isSingleLabelHost = () =>
+  !ROOT_DOMAIN.split(":")[0].includes(".") ||
+  /^\d+\.\d+\.\d+\.\d+(:|$)/.test(ROOT_DOMAIN);
+
+/**
+ * Host-aware URL to any tenant's public board. On a real dotted domain this is
+ * the branded `<sub>.<root>` subdomain (protocol-relative). On a single-label
+ * host it's the same-origin `/portal/<sub>` path instead — the ONLY form where a
+ * signed-in user's cookie reaches the portal in dev, so logged-in actions (the
+ * verified tick, the admin's anonymous-mode toggle) actually work locally.
+ */
+export function portalUrlForSubdomain(subdomain: string): string {
+  if (isSingleLabelHost()) return `/portal/${subdomain}`;
+  return `//${subdomain}.${ROOT_DOMAIN}`;
+}
+
 /**
  * Link to the official board.
  *

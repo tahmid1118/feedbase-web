@@ -16,10 +16,10 @@ import {
 import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/client";
+import { portalUrlForSubdomain } from "@/lib/official-board";
 import { Logo } from "@/components/ui/logo";
 import { WorkspaceSwitcher } from "@/components/dashboard/workspace-switcher";
 
-const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
 const navigation = [
   { key: "nav.dashboard", href: "/dashboard", icon: LayoutDashboard },
@@ -46,8 +46,9 @@ export function Sidebar() {
       .getMine(token)
       .then((res) => {
         const sub = res.data?.subdomain;
-        // Protocol-relative so it works in dev (http) and prod (https) alike.
-        if (active && sub) setPortalUrl(`//${sub}.${ROOT_DOMAIN}`);
+        // Host-aware: same-origin /portal/<sub> in dev (so the login carries to
+        // the portal), the branded subdomain in production.
+        if (active && sub) setPortalUrl(portalUrlForSubdomain(sub));
       })
       .catch(() => {});
     return () => {
