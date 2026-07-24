@@ -194,6 +194,13 @@ Version 1.2
     FR-P7  Own content .. A logged-in user may edit or delete their own posts and
                           comments from the public portal (owner-only; enforced
                           server-side). Guests cannot edit/delete.
+    FR-P8  Get a board .. Every tenant portal carries a FeedBoard growth CTA
+                          inviting visitors to create their own feedback board
+                          (links to sign-up): a prominent banner at the very top
+                          of every portal page, plus a matching card in the
+                          footer. It is styled in FeedBoard's own brand so it
+                          reads as our promotion, distinct from the tenant's
+                          content.
     FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
                           FR-B5), a feedback post may carry up to three photo or
                           short-video attachments. Attaching is offered on both

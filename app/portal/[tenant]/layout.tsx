@@ -34,6 +34,28 @@ export default async function PortalLayout({
 
   return (
     <div className="min-h-screen bg-[#fdf8f9]">
+      {/* First-glance growth CTA. A slim bar at the very top of every portal
+          page so a visitor sees "get your own board" immediately — not only in
+          the footer. FeedBoard's own rose (not the tenant brand): clearly our
+          promo. Links to signup on the root domain (absolute — see appUrl). */}
+      <a
+        href={appUrl("/signup")}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group block bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"
+      >
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 py-2 text-center text-sm">
+          <span className="inline-flex items-center gap-1.5 font-medium">
+            <Sparkles className="h-4 w-4" />
+            {t("portal.ownBoardTitle")}
+          </span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 font-semibold transition-colors group-hover:bg-white/25">
+            {t("portal.ownBoardCta")}
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </a>
+
       <header className="border-b border-black/5 bg-white">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
           <Link
