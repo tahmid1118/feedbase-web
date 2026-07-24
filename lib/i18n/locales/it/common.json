@@ -435,7 +435,8 @@
     "none": "Ancora nessun commento.",
     "edited": "Modificato",
     "verifiedAdmin": "Amministratore verificato",
-    "postFailed": "Impossibile pubblicare il commento."
+    "postFailed": "Impossibile pubblicare il commento.",
+    "commentAnonymously": "Commenta in modo anonimo"
   },
   "share": {
     "title": "Condividi questo post",

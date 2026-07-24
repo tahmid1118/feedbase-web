@@ -435,7 +435,8 @@
     "none": "No comments yet.",
     "edited": "Edited",
     "verifiedAdmin": "Verified admin",
-    "postFailed": "Couldn't post your comment."
+    "postFailed": "Couldn't post your comment.",
+    "commentAnonymously": "Comment anonymously"
   },
   "share": {
     "title": "Share this post",

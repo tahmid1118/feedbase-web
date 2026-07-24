@@ -25,6 +25,7 @@ declare module "next-auth" {
       accessToken: string;
       isAdmin?: boolean;
       adminId?: string | null;
+      isPlatformAdmin?: boolean;
       savedAdmin?: SavedAdminIdentity | null;
     };
   }
@@ -36,6 +37,7 @@ declare module "next-auth" {
     accessToken: string;
     isAdmin?: boolean;
     adminId?: string | null;
+    isPlatformAdmin?: boolean;
   }
 }
 
@@ -48,6 +50,7 @@ declare module "next-auth/jwt" {
     image?: string | null;
     isAdmin?: boolean;
     adminId?: string | null;
+    isPlatformAdmin?: boolean;
     savedAdmin?: SavedAdminIdentity | null;
   }
 }

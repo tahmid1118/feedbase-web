@@ -36,6 +36,7 @@ export interface LoginApiUser {
   fullName: string;
   email: string;
   imageUrl?: string | null;
+  isPlatformAdmin?: boolean;
 }
 
 export interface LoginApiResponse extends ApiMessageResponse {
@@ -73,9 +74,12 @@ export interface SessionUserProfile {
   email: string;
   image: string | null;
   accessToken: string;
-  // Platform operator (admins table). Absent/false for ordinary tenant users.
+  // True when signed in through the admin door (admin session).
   isAdmin?: boolean;
   adminId?: string | null;
+  // True when the ACCOUNT holds the platform-admin role — carried on the normal
+  // user session too, so the portal can offer the admin an anonymous-mode toggle.
+  isPlatformAdmin?: boolean;
 }
 
 export interface AuthRouteErrorResponse {

@@ -138,6 +138,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.image = user.image;
         token.isAdmin = user.isAdmin ?? false;
         token.adminId = user.adminId ?? null;
+        token.isPlatformAdmin = user.isPlatformAdmin ?? false;
       }
 
       // Client `update(...)` refreshes the session in place: profile edits send
@@ -198,6 +199,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.isAdmin = token.isAdmin === true;
         session.user.adminId =
           typeof token.adminId === "string" ? token.adminId : null;
+        session.user.isPlatformAdmin = token.isPlatformAdmin === true;
         session.user.savedAdmin =
           (token.savedAdmin as SavedAdminIdentity | null | undefined) ?? null;
       }

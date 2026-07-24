@@ -435,7 +435,8 @@
     "none": "Aucun commentaire pour le moment.",
     "edited": "Modifié",
     "verifiedAdmin": "Administrateur vérifié",
-    "postFailed": "Impossible de publier votre commentaire."
+    "postFailed": "Impossible de publier votre commentaire.",
+    "commentAnonymously": "Commenter anonymement"
   },
   "share": {
     "title": "Partager cette publication",

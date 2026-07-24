@@ -41,6 +41,8 @@ interface Viewer {
   name: string | null;
   image: string | null;
   isLoggedIn: boolean;
+  /** Account holds the platform-admin role → gets the anonymous-mode toggle. */
+  isPlatformAdmin: boolean;
 }
 
 function Avatar({
@@ -171,6 +173,8 @@ function CommentForm({
   onCancel,
   compact,
   autoFocus,
+  anonymous,
+  onToggleAnonymous,
 }: {
   brand: string;
   viewer: Viewer;
@@ -179,6 +183,8 @@ function CommentForm({
   onCancel?: () => void;
   compact?: boolean;
   autoFocus?: boolean;
+  anonymous?: boolean;
+  onToggleAnonymous?: (v: boolean) => void;
 }) {
   const { t } = useTranslation();
   const [body, setBody] = useState("");
@@ -190,12 +196,14 @@ function CommentForm({
   const [guestId, setGuestId] = useState("");
 
   useEffect(() => {
-    if (viewer.isLoggedIn) return;
     /* eslint-disable react-hooks/set-state-in-effect */
+    // Resolve the guest id for everyone — an admin in anonymous mode needs the
+    // same stable pseudonym preview a guest gets.
+    setGuestId(getGuestId());
+    if (viewer.isLoggedIn) return;
     setName(readLocal(NAME_KEY));
     setEmail(readLocal(EMAIL_KEY));
     setEditingIdentity(readLocal(COMMENTED_KEY) !== "1");
-    setGuestId(getGuestId());
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [viewer.isLoggedIn]);
 
@@ -247,16 +255,44 @@ function CommentForm({
 
       <div className="flex items-center gap-2">
         {viewer.isLoggedIn ? (
-          <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
-            <Avatar
-              name={viewer.name || "You"}
-              src={viewer.image}
-              color={colorFor(viewer.name || "you")}
-              size={20}
-            />
-            {t("comments.commentingAs")}{" "}
-            <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
-          </p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            {anonymous ? (
+              <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
+                <Avatar
+                  name={guestPseudonym?.name || t("portal.anonymous")}
+                  color={guestPseudonym?.color || "#c74959"}
+                  anonymous
+                  size={20}
+                />
+                {t("comments.commentingAs")}{" "}
+                <span className="font-medium text-[#1c0a0c]/70">
+                  {guestPseudonym?.name || t("portal.anonymous")}
+                </span>
+              </p>
+            ) : (
+              <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
+                <Avatar
+                  name={viewer.name || "You"}
+                  src={viewer.image}
+                  color={colorFor(viewer.name || "you")}
+                  size={20}
+                />
+                {t("comments.commentingAs")}{" "}
+                <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
+              </p>
+            )}
+            {viewer.isPlatformAdmin && onToggleAnonymous && (
+              <label className="flex cursor-pointer select-none items-center gap-1.5 text-xs text-[#1c0a0c]/50">
+                <input
+                  type="checkbox"
+                  className="h-3.5 w-3.5 accent-[#c74959]"
+                  checked={!!anonymous}
+                  onChange={(e) => onToggleAnonymous(e.target.checked)}
+                />
+                {t("comments.commentAnonymously")}
+              </label>
+            )}
+          </div>
         ) : (
           !editingIdentity &&
           (() => {
@@ -550,6 +586,9 @@ export function PortalComments({
   const [replyTo, setReplyTo] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Platform-admin only: comment as an anonymous guest instead of the verified
+  // admin. Applies to the top comment and any replies in this session.
+  const [anonymous, setAnonymous] = useState(false);
 
   const viewer: Viewer = useMemo(() => {
     const token = session?.user?.accessToken || undefined;
@@ -560,26 +599,31 @@ export function PortalComments({
       name: session?.user?.name ?? null,
       image: session?.user?.image ?? null,
       isLoggedIn: Boolean(token && userId),
+      isPlatformAdmin: Boolean(session?.user?.isPlatformAdmin),
     };
   }, [session]);
 
   const onChanged = () => router.refresh();
 
   // name/email are ignored by the backend when a token is sent (logged-in).
+  // An admin in anonymous mode submits WITHOUT the token, so it's stored as a
+  // guest (no author_id) — no name and no verified tick.
   const submit: Submit = async (body, parentId) => {
     setSubmitting(true);
     setError(null);
+    const postAsGuest = anonymous && viewer.isPlatformAdmin;
+    const useAuth = viewer.isLoggedIn && !postAsGuest;
     const res = await portalActions.createComment(
       tenant,
       postId,
       {
         body,
         parentCommentId: parentId ?? undefined,
-        submitterName: viewer.isLoggedIn ? undefined : readLocal(NAME_KEY) || undefined,
-        submitterEmail: viewer.isLoggedIn ? undefined : readLocal(EMAIL_KEY) || undefined,
-        guestId: viewer.isLoggedIn ? undefined : getGuestId() || undefined,
+        submitterName: useAuth || postAsGuest ? undefined : readLocal(NAME_KEY) || undefined,
+        submitterEmail: useAuth || postAsGuest ? undefined : readLocal(EMAIL_KEY) || undefined,
+        guestId: useAuth ? undefined : getGuestId() || undefined,
       },
-      viewer.token
+      useAuth ? viewer.token : undefined
     );
     setSubmitting(false);
     if (!res.ok) {
@@ -598,6 +642,8 @@ export function PortalComments({
         viewer={viewer}
         submitting={submitting}
         onSubmit={(body) => submit(body, null)}
+        anonymous={anonymous}
+        onToggleAnonymous={setAnonymous}
       />
 
       {error && (

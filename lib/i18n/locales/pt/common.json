@@ -435,7 +435,8 @@
     "none": "Ainda não há comentários.",
     "edited": "Editado",
     "verifiedAdmin": "Administrador verificado",
-    "postFailed": "Não foi possível publicar o seu comentário."
+    "postFailed": "Não foi possível publicar o seu comentário.",
+    "commentAnonymously": "Comentar anonimamente"
   },
   "share": {
     "title": "Partilhar esta publicação",

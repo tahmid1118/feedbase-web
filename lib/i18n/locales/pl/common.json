@@ -441,7 +441,8 @@
     "none": "Brak komentarzy.",
     "edited": "Edytowano",
     "verifiedAdmin": "Zweryfikowany administrator",
-    "postFailed": "Nie udało się opublikować komentarza."
+    "postFailed": "Nie udało się opublikować komentarza.",
+    "commentAnonymously": "Skomentuj anonimowo"
   },
   "share": {
     "title": "Udostępnij ten wpis",

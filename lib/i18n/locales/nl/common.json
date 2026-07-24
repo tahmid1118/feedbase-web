@@ -435,7 +435,8 @@
     "none": "Nog geen reacties.",
     "edited": "Bewerkt",
     "verifiedAdmin": "Geverifieerde beheerder",
-    "postFailed": "Kan je reactie niet plaatsen."
+    "postFailed": "Kan je reactie niet plaatsen.",
+    "commentAnonymously": "Anoniem reageren"
   },
   "share": {
     "title": "Deel dit bericht",

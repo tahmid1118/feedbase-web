@@ -49,6 +49,7 @@ export async function loginWithCredentials(
     email: response.user.email,
     image: resolveAvatarUrl(response.user.imageUrl) ?? null,
     accessToken: response.user.token,
+    isPlatformAdmin: Boolean(response.user.isPlatformAdmin),
   };
 }
 
@@ -84,6 +85,7 @@ export async function loginAsAdmin(
     accessToken: response.admin.token,
     isAdmin: true,
     adminId,
+    isPlatformAdmin: true,
   };
 }
 
