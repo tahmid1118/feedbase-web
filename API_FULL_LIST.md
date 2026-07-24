@@ -1032,7 +1032,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId
-Public post detail with its comment thread (no author emails).
+Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — used to render a verified tick; based on the `admins` table, never a name/role).
 Sample Body:
 ```json
 {"lg":"en"}

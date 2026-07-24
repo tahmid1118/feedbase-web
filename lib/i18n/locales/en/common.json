@@ -433,7 +433,8 @@
     "deleteConfirm": "Delete this comment?",
     "empty": "No comments yet — start the conversation.",
     "none": "No comments yet.",
-    "edited": "Edited"
+    "edited": "Edited",
+    "verifiedAdmin": "Verified admin"
   },
   "share": {
     "title": "Share this post",

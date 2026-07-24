@@ -439,7 +439,8 @@
     "deleteConfirm": "Usunąć ten komentarz?",
     "empty": "Brak komentarzy — rozpocznij rozmowę.",
     "none": "Brak komentarzy.",
-    "edited": "Edytowano"
+    "edited": "Edytowano",
+    "verifiedAdmin": "Zweryfikowany administrator"
   },
   "share": {
     "title": "Udostępnij ten wpis",

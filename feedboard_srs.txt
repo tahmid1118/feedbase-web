@@ -201,6 +201,12 @@ Version 1.2
                           footer. It is styled in FeedBoard's own brand so it
                           reads as our promotion, distinct from the tenant's
                           content.
+    FR-P9  Verified ..... A post or comment authored by a platform administrator
+                          shows a verified tick beside the name on the public
+                          portal, so visitors can recognise an official reply
+                          from the platform's team. The mark is derived from the
+                          administrator registry, not from a display name or a
+                          workspace role.
     FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
                           FR-B5), a feedback post may carry up to three photo or
                           short-video attachments. Attaching is offered on both

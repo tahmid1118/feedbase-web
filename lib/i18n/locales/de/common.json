@@ -433,7 +433,8 @@
     "deleteConfirm": "Diesen Kommentar löschen?",
     "empty": "Noch keine Kommentare — starten Sie die Unterhaltung.",
     "none": "Noch keine Kommentare.",
-    "edited": "Bearbeitet"
+    "edited": "Bearbeitet",
+    "verifiedAdmin": "Verifizierter Admin"
   },
   "share": {
     "title": "Diesen Beitrag teilen",

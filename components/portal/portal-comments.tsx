@@ -13,6 +13,7 @@ import { portalActions } from "@/lib/portal/actions";
 import { getGuestId } from "@/lib/portal/guest";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
 import { IncognitoIcon } from "@/components/portal/incognito-icon";
+import { VerifiedBadge } from "@/components/portal/verified-badge";
 import { resolveUploadUrl } from "@/lib/avatar";
 import type { Comment } from "@/lib/api/types";
 
@@ -366,6 +367,7 @@ function CommentCard({
             size={24}
           />
           <span className="font-medium text-[#1c0a0c]">{display.name}</span>
+          {comment.author_is_admin ? <VerifiedBadge /> : null}
           {comment.is_edited ? (
             <span className="text-xs text-[#1c0a0c]/40">(edited)</span>
           ) : null}

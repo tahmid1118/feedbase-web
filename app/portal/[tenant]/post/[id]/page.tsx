@@ -14,6 +14,7 @@ import { LocalTime } from "@/components/local-time";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
 import { IncognitoIcon } from "@/components/portal/incognito-icon";
+import { VerifiedBadge } from "@/components/portal/verified-badge";
 import { getTranslation } from "@/lib/i18n/server";
 
 const DEFAULT_BRAND = "#c74959";
@@ -189,6 +190,7 @@ export default async function PortalPostPage({
                   </span>
                 )}
                 {t("portal.byAuthor", { name: author.name })}
+                {post.author_is_admin ? <VerifiedBadge size={14} /> : null}
               </span>
               {post.created_at && (
                 <span className="flex items-center gap-1">

@@ -74,6 +74,8 @@ export interface Post {
   author_id?: number | null;
   author_avatar?: string | null;
   guest_id?: string | null;
+  /** 1 when the author's account is a platform admin (verified). */
+  author_is_admin?: number;
   vote_count: number;
   comment_count: number;
   is_pinned?: number;
@@ -124,6 +126,8 @@ export interface Comment {
   author_email: string;
   author_avatar?: string | null;
   guest_id?: string | null;
+  /** 1 when the author's account is a platform admin (verified). */
+  author_is_admin?: number;
   parent_comment_id?: number | null;
   created_at?: string;
 }

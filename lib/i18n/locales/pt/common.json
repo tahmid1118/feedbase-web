@@ -433,7 +433,8 @@
     "deleteConfirm": "Eliminar este comentário?",
     "empty": "Ainda não há comentários — inicie a conversa.",
     "none": "Ainda não há comentários.",
-    "edited": "Editado"
+    "edited": "Editado",
+    "verifiedAdmin": "Administrador verificado"
   },
   "share": {
     "title": "Partilhar esta publicação",

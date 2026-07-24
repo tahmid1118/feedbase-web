@@ -433,7 +433,8 @@
     "deleteConfirm": "Deze reactie verwijderen?",
     "empty": "Nog geen reacties — begin het gesprek.",
     "none": "Nog geen reacties.",
-    "edited": "Bewerkt"
+    "edited": "Bewerkt",
+    "verifiedAdmin": "Geverifieerde beheerder"
   },
   "share": {
     "title": "Deel dit bericht",
