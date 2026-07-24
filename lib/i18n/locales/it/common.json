@@ -434,7 +434,8 @@
     "empty": "Ancora nessun commento — inizia la conversazione.",
     "none": "Ancora nessun commento.",
     "edited": "Modificato",
-    "verifiedAdmin": "Amministratore verificato"
+    "verifiedAdmin": "Amministratore verificato",
+    "postFailed": "Impossibile pubblicare il commento."
   },
   "share": {
     "title": "Condividi questo post",

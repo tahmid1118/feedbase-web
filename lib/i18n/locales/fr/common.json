@@ -434,7 +434,8 @@
     "empty": "Aucun commentaire pour l'instant — lancez la conversation.",
     "none": "Aucun commentaire pour le moment.",
     "edited": "Modifié",
-    "verifiedAdmin": "Administrateur vérifié"
+    "verifiedAdmin": "Administrateur vérifié",
+    "postFailed": "Impossible de publier votre commentaire."
   },
   "share": {
     "title": "Partager cette publication",

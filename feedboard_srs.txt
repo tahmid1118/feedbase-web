@@ -258,14 +258,14 @@ Version 1.2
     FR-F4  Pin .......... Pin important posts to the top.
     FR-F5  Tags ......... Assign or remove tags.
     FR-F6  Duplicates ... Mark a post as a duplicate, with suggested matches.
-    FR-F7  Engage ....... Full post view with tags, duplicates, and a read-only
-                          view of the post's discussion. The team cannot upvote:
-                          vote counts are shown as a read-only tally on both the
-                          list and the post view, because votes measure demand
-                          among the workspace's users and are cast only from the
-                          public board (see FR-P3). Comments are likewise
-                          authored, replied to, edited, and deleted on the public
-                          board (see FR-P5/P7), not from the dashboard.
+    FR-F7  Engage ....... Full post view with tags, duplicates, and the post's
+                          discussion, where a team member can post a comment or a
+                          threaded reply (attributed to their account; a platform
+                          administrator's reply carries the verified mark of
+                          FR-P9). The team cannot upvote: vote counts are shown as
+                          a read-only tally on both the list and the post view,
+                          because votes measure demand among the workspace's users
+                          and are cast only from the public board (see FR-P3).
     FR-F10 Promote ...... From the Open tab, select one, several, or all posts
                           and add them to a chosen roadmap column in a single
                           action (with an optional target date). Adding a post to

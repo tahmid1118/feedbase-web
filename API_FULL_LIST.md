@@ -449,8 +449,9 @@ Sample Body:
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Comments retrieved successfully","data":[{"id":401,"post_id":101,"author_id":3,"body":"Great request. We need this soon.","is_edited":0,"author_name":"Jane Product","author_email":"jane@acme.test"}]}
+{"status":"success","message":"Comments retrieved successfully","data":[{"id":401,"post_id":101,"author_id":3,"body":"Great request. We need this soon.","is_edited":0,"author_name":"Jane Product","author_email":"jane@acme.test","author_is_admin":0}]}
 ```
+Each comment includes `author_is_admin` (1 when the author's account is a platform admin — renders a verified tick). The dashboard comment thread also lets a signed-in team member post/reply via `POST /comments/create`.
 
 ---
 

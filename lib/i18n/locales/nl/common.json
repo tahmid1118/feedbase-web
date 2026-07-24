@@ -434,7 +434,8 @@
     "empty": "Nog geen reacties — begin het gesprek.",
     "none": "Nog geen reacties.",
     "edited": "Bewerkt",
-    "verifiedAdmin": "Geverifieerde beheerder"
+    "verifiedAdmin": "Geverifieerde beheerder",
+    "postFailed": "Kan je reactie niet plaatsen."
   },
   "share": {
     "title": "Deel dit bericht",

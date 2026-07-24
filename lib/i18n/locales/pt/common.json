@@ -434,7 +434,8 @@
     "empty": "Ainda não há comentários — inicie a conversa.",
     "none": "Ainda não há comentários.",
     "edited": "Editado",
-    "verifiedAdmin": "Administrador verificado"
+    "verifiedAdmin": "Administrador verificado",
+    "postFailed": "Não foi possível publicar o seu comentário."
   },
   "share": {
     "title": "Partilhar esta publicação",

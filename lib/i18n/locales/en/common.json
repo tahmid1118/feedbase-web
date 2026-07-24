@@ -434,7 +434,8 @@
     "empty": "No comments yet — start the conversation.",
     "none": "No comments yet.",
     "edited": "Edited",
-    "verifiedAdmin": "Verified admin"
+    "verifiedAdmin": "Verified admin",
+    "postFailed": "Couldn't post your comment."
   },
   "share": {
     "title": "Share this post",

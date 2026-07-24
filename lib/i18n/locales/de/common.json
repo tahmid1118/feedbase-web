@@ -434,7 +434,8 @@
     "empty": "Noch keine Kommentare — starten Sie die Unterhaltung.",
     "none": "Noch keine Kommentare.",
     "edited": "Bearbeitet",
-    "verifiedAdmin": "Verifizierter Admin"
+    "verifiedAdmin": "Verifizierter Admin",
+    "postFailed": "Kommentar konnte nicht gepostet werden."
   },
   "share": {
     "title": "Diesen Beitrag teilen",

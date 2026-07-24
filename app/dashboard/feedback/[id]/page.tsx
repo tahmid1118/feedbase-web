@@ -496,12 +496,14 @@ export default function PostDetailPage() {
           <h3 className="text-lg font-semibold text-[#1c0a0c]">
             {t("postDetail.commentsHeading", { count: comments.length })}
           </h3>
-          <span className="text-xs text-[#1c0a0c]/50">
-            {t("postDetail.discussionNote")}
-          </span>
         </div>
 
-        <CommentThread comments={comments} />
+        <CommentThread
+          comments={comments}
+          postId={post.id}
+          token={token}
+          onPosted={loadPostData}
+        />
       </Card>
     </div>
   );
