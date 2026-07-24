@@ -1132,7 +1132,7 @@ Sample Response:
 
 ## 18) Admin (Platform) APIs
 
-Mounted at `/admin`. All routes except `/admin/auth/login` require an **admin** Bearer token (issued by `/admin/auth/login`; a JWT with `scope:'admin'`), distinct from tenant user tokens. Admins are a separate `admins` table.
+Mounted at `/admin`. All routes except `/admin/auth/login` require an **admin** Bearer token (issued by `/admin/auth/login`; a JWT with `scope:'admin'`), distinct from tenant user tokens. Platform admin is a **role flag on a `users` account** (`users.is_platform_admin`) — the same account can sign in normally (`/login`, user session) or as admin (`/admin-login`, admin session). `/admin/auth/login` checks the account's `users` password **and** the admin flag.
 
 ### POST /admin/auth/login
 Sample Body:
@@ -1167,10 +1167,11 @@ Users (across tenants):
 - `PUT  /admin/users/:id/password` — reset password.
 - `DELETE /admin/users/:id` — delete.
 
-Admins:
-- `GET  /admin/admins` · `POST /admin/admins` — list / create (bcrypt).
-- `PUT  /admin/admins/:id/active` — activate/deactivate (self-guarded).
-- `DELETE /admin/admins/:id` — delete.
+Admins (grant/revoke the `users.is_platform_admin` role — the user account is never deleted):
+- `GET  /admin/admins` — list admin accounts (one row per email).
+- `POST /admin/admins` — grant the role to an account by email (creates a pending user with the given password if the email is new).
+- `PUT  /admin/admins/:id/active` — grant/revoke the role (self-guarded).
+- `DELETE /admin/admins/:id` — revoke the role (does not delete the user).
 
 Promo codes:
 - `GET  /admin/promo-codes` · `POST /admin/promo-codes` — list / generate (percent-off → Stripe coupon + promotion code; free-plan → app record).

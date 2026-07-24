@@ -39,7 +39,8 @@ export default async function AdminLoginPage() {
             </h1>
             <p className="text-sm text-[#1c0a0c]/60">
               Sign in to manage all workspaces, users, subscriptions, and promo
-              codes. This is separate from a normal FeedBoard account.
+              codes. Use your FeedBoard account — this door gives it admin
+              powers; the normal sign-in gives it your workspaces.
             </p>
           </header>
 
