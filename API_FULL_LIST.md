@@ -1154,6 +1154,7 @@ Workspaces (any tenant):
 - `PUT    /admin/workspaces/:id` — update workspace fields.
 - `PUT    /admin/workspaces/:id/plan` — grant / comp / revoke a plan. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live Stripe subscription first. Comped: no Stripe subscription.
 - `DELETE /admin/workspaces/:id` — delete a workspace.
+- `POST   /admin/workspaces/:id/enter` — "Open in dashboard": mint a tenant-scoped **user** token for the admin's OWN account in this workspace (returns `{ token, user }`, same shape as login/switch). `403 admin_not_member` if the admin has no active member row there; `409 already_logged_in_elsewhere` on a single-device plan with a live session. Used for the official dogfood board the admin owns.
 - `GET    /admin/workspaces/:id/posts` — list a workspace's posts (moderation view).
 - `PUT    /admin/workspaces/:id/posts/:postId/status` · `.../pin` — moderate status (roadmap-synced) / pin.
 - `DELETE /admin/workspaces/:id/posts/:postId` — delete a post.

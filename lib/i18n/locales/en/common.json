@@ -216,6 +216,8 @@
     "newPromoCode": "New promo code",
     "newOffer": "New offer",
     "grantPlan": "Grant plan",
+    "openInDashboard": "Open in dashboard",
+    "openInDashboardFailed": "Couldn't open the dashboard.",
     "resetPassword": "Reset password",
     "duration": "Duration",
     "planBreakdown": "Plan breakdown",

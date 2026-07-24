@@ -264,7 +264,9 @@
     "repeating": "Recorrente",
     "forever": "Para sempre",
     "statusChangedTo": "Estado definido como {{status}}",
-    "closeChatDesc": "O utilizador deixará de ver esta conversa e não poderá responder. Mantém aqui a transcrição completa. Pode sempre iniciar um novo chat."
+    "closeChatDesc": "O utilizador deixará de ver esta conversa e não poderá responder. Mantém aqui a transcrição completa. Pode sempre iniciar um novo chat.",
+    "openInDashboard": "Abrir no painel",
+    "openInDashboardFailed": "Não foi possível abrir o painel."
   },
   "auth": {
     "login": {

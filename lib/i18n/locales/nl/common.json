@@ -264,7 +264,9 @@
     "repeating": "Herhalend",
     "forever": "Voor altijd",
     "statusChangedTo": "Status ingesteld op {{status}}",
-    "closeChatDesc": "De gebruiker ziet dit gesprek niet meer en kan er niet meer op reageren. U behoudt hier het volledige transcript. Diegene kan altijd een nieuwe chat starten."
+    "closeChatDesc": "De gebruiker ziet dit gesprek niet meer en kan er niet meer op reageren. U behoudt hier het volledige transcript. Diegene kan altijd een nieuwe chat starten.",
+    "openInDashboard": "Openen in dashboard",
+    "openInDashboardFailed": "Kon het dashboard niet openen."
   },
   "auth": {
     "login": {

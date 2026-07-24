@@ -13,6 +13,7 @@ import {
   Search,
   CornerDownRight,
   Loader2,
+  LayoutDashboard,
 } from "lucide-react";
 import { adminApi, type AdminPost, type AdminComment } from "@/lib/api";
 import { Card } from "@/components/ui/card";
@@ -60,22 +61,65 @@ export default function AdminWorkspacePostsPage() {
   const { t } = useTranslation();
   const params = useParams();
   const id = Number(params.id);
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
   const token = session?.user?.accessToken;
+  const adminEmail = session?.user?.email?.toLowerCase();
 
   const [workspaceName, setWorkspaceName] = useState<string>("");
   const [posts, setPosts] = useState<AdminPost[]>([]);
   const [status, setStatus] = useState("all");
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  // Whether the admin can jump into this workspace's real dashboard — true only
+  // when the admin has their OWN active member account here (e.g. the official
+  // board they own). Server-enforced too; this just gates showing the button.
+  const [canEnter, setCanEnter] = useState(false);
+  const [entering, setEntering] = useState(false);
 
   useEffect(() => {
     if (!token || !id) return;
     adminApi.getWorkspace(token, id).then((res) => {
-      const t = res.data?.tenant as { name?: string } | undefined;
-      if (t?.name) setWorkspaceName(t.name);
+      const tenant = res.data?.tenant as { name?: string } | undefined;
+      if (tenant?.name) setWorkspaceName(tenant.name);
+      const members = (res.data?.members ?? []) as {
+        email: string;
+        is_active: number;
+      }[];
+      setCanEnter(
+        !!adminEmail &&
+          members.some(
+            (m) => m.is_active && m.email?.toLowerCase() === adminEmail
+          )
+      );
     });
-  }, [token, id]);
+  }, [token, id, adminEmail]);
+
+  const openInDashboard = async () => {
+    if (!token || entering) return;
+    setEntering(true);
+    const res = await adminApi.enterWorkspace(token, id);
+    if (!res.ok || !res.data?.token) {
+      setEntering(false);
+      toast.error(res.message || t("admin.openInDashboardFailed"));
+      return;
+    }
+    const u = res.data.user;
+    // Swap the NextAuth session from admin → this workspace's user identity.
+    await update({
+      accessToken: res.data.token,
+      tenantId: String(u.tenantId),
+      role: u.role,
+      userId: String(u.id),
+      name: u.fullName,
+      image: u.imageUrl ?? null,
+      email: u.email,
+      isAdmin: false,
+      adminId: null,
+    });
+    // Hard navigation so the just-written session cookie is used (a soft refresh
+    // races the cookie write — see the workspace-switcher note in CLAUDE.md).
+    window.location.assign("/dashboard/feedback");
+  };
 
   const load = useCallback(
     async (st?: string, q?: string) => {
@@ -172,20 +216,32 @@ export default function AdminWorkspacePostsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <Link
-          href="/admin/workspaces"
-          className="inline-flex items-center gap-1 text-sm text-[#1c0a0c]/60 hover:text-[#1c0a0c]"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          All workspaces
-        </Link>
-        <h2 className="mt-2 text-2xl font-bold text-[#1c0a0c]">
-          {workspaceName || "Workspace"} · Posts
-        </h2>
-        <p className="text-sm text-[#1c0a0c]/60">
-          Moderate this workspace&apos;s feedback — change status, pin, or delete.
-        </p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <Link
+            href="/admin/workspaces"
+            className="inline-flex items-center gap-1 text-sm text-[#1c0a0c]/60 hover:text-[#1c0a0c]"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            All workspaces
+          </Link>
+          <h2 className="mt-2 text-2xl font-bold text-[#1c0a0c]">
+            {workspaceName || "Workspace"} · Posts
+          </h2>
+          <p className="text-sm text-[#1c0a0c]/60">
+            Moderate this workspace&apos;s feedback — change status, pin, or delete.
+          </p>
+        </div>
+        {canEnter && (
+          <Button onClick={openInDashboard} disabled={entering} className="shrink-0">
+            {entering ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <LayoutDashboard className="h-4 w-4" />
+            )}
+            {t("admin.openInDashboard")}
+          </Button>
+        )}
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">

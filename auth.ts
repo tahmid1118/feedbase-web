@@ -150,6 +150,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           tenantId?: string | null;
           role?: string | null;
           userId?: string;
+          email?: string;
+          isAdmin?: boolean;
+          adminId?: string | null;
         };
         if (next.name !== undefined) token.name = next.name;
         if (next.image !== undefined) token.image = next.image;
@@ -157,6 +160,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (next.tenantId !== undefined) token.tenantId = next.tenantId;
         if (next.role !== undefined) token.role = next.role;
         if (next.userId !== undefined) token.userId = next.userId;
+        if (next.email !== undefined) token.email = next.email;
+        // Admin → user handoff ("Open in dashboard"): the admin drops into a
+        // workspace they own, so the session must stop being an admin one or the
+        // dashboard would bounce it back to /admin.
+        if (next.isAdmin !== undefined) token.isAdmin = next.isAdmin;
+        if (next.adminId !== undefined) token.adminId = next.adminId;
       }
 
       return token;

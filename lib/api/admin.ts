@@ -207,6 +207,20 @@ export const adminApi = {
     request(`/workspaces/${id}/plan`, "PUT", token, { plan, durationMonths }),
   deleteWorkspace: (token: string | undefined, id: number) =>
     request(`/workspaces/${id}`, "DELETE", token),
+  // "Open in dashboard": returns a tenant-scoped USER token for the admin's own
+  // account in this workspace (403 if the admin isn't a member there).
+  enterWorkspace: (token: string | undefined, id: number) =>
+    request<{
+      token: string;
+      user: {
+        id: number;
+        tenantId: number;
+        role: string | null;
+        fullName: string;
+        email: string;
+        imageUrl: string | null;
+      };
+    }>(`/workspaces/${id}/enter`, "POST", token),
 
   // Post moderation within a workspace
   listWorkspacePosts: (

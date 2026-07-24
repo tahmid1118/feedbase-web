@@ -264,7 +264,9 @@
     "repeating": "Powtarzające się",
     "forever": "Na zawsze",
     "statusChangedTo": "Ustawiono status na {{status}}",
-    "closeChatDesc": "Użytkownik nie będzie już widzieć tej rozmowy ani nie będzie mógł na nią odpowiedzieć. Zachowujesz tu pełny zapis. Zawsze może rozpocząć nowy czat."
+    "closeChatDesc": "Użytkownik nie będzie już widzieć tej rozmowy ani nie będzie mógł na nią odpowiedzieć. Zachowujesz tu pełny zapis. Zawsze może rozpocząć nowy czat.",
+    "openInDashboard": "Otwórz w panelu",
+    "openInDashboardFailed": "Nie udało się otworzyć panelu."
   },
   "auth": {
     "login": {

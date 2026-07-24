@@ -264,7 +264,9 @@
     "repeating": "Ricorrente",
     "forever": "Per sempre",
     "statusChangedTo": "Stato impostato su {{status}}",
-    "closeChatDesc": "L'utente non vedrà più questa conversazione e non potrà rispondere. Qui conservi la trascrizione completa. Potrà sempre avviare una nuova chat."
+    "closeChatDesc": "L'utente non vedrà più questa conversazione e non potrà rispondere. Qui conservi la trascrizione completa. Potrà sempre avviare una nuova chat.",
+    "openInDashboard": "Apri nella dashboard",
+    "openInDashboardFailed": "Impossibile aprire la dashboard."
   },
   "auth": {
     "login": {
