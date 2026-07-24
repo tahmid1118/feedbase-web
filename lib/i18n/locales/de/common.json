@@ -209,7 +209,8 @@
       "users": "Benutzer",
       "admins": "Administratoren",
       "promoCodes": "Aktionscodes",
-      "offers": "Angebote"
+      "offers": "Angebote",
+      "feedbackBoard": "Unser Feedback-Board"
     },
     "newAdmin": "Neuer Administrator",
     "newPromoCode": "Neuer Aktionscode",

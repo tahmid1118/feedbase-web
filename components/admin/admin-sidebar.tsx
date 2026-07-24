@@ -12,11 +12,13 @@ import {
   Ticket,
   Tag,
   Headset,
+  MessagesSquare,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/client";
 import { Logo } from "@/components/ui/logo";
 import { adminApi } from "@/lib/api";
+import { officialBoardSubdomain } from "@/lib/official-board";
 
 const navigation = [
   { key: "admin.nav.overview", href: "/admin", icon: LayoutDashboard, exact: true },
@@ -36,6 +38,11 @@ export function AdminSidebar() {
   const { t } = useTranslation();
   const token = session?.user?.accessToken;
   const [supportUnread, setSupportUnread] = useState(0);
+  // FeedBoard's own feedback board is an ordinary workspace owned by the admin's
+  // user account — but the admin session can't reach the tenant dashboard, so we
+  // deep-link to its admin moderation page here. Resolve its id by subdomain
+  // (never hardcode) so it tracks NEXT_PUBLIC_FEEDBACK_SUBDOMAIN across envs.
+  const [boardId, setBoardId] = useState<number | null>(null);
 
   // Poll the support inbox so the sidebar shows waiting conversations.
   useEffect(() => {
@@ -52,6 +59,27 @@ export function AdminSidebar() {
       clearInterval(t);
     };
   }, [token, pathname]);
+
+  // Resolve the official board's id once (it doesn't change during a session).
+  useEffect(() => {
+    if (!token) return;
+    let active = true;
+    const resolveBoard = async () => {
+      const res = await adminApi.listWorkspaces(token, officialBoardSubdomain);
+      if (!active || !res.ok) return;
+      const board = res.data?.rows?.find(
+        (w) => w.subdomain === officialBoardSubdomain
+      );
+      setBoardId(board?.id ?? null);
+    };
+    resolveBoard();
+    return () => {
+      active = false;
+    };
+  }, [token]);
+
+  const onBoardPage =
+    boardId != null && pathname.startsWith(`/admin/workspaces/${boardId}`);
 
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-[#e399a3]/20 bg-white">
@@ -70,7 +98,11 @@ export function AdminSidebar() {
           {navigation.map((item) => {
             const isActive = item.exact
               ? pathname === item.href
-              : pathname.startsWith(item.href);
+              : item.href === "/admin/workspaces"
+                ? // Don't also light up "Workspaces" when the dedicated board
+                  // shortcut owns the current page.
+                  pathname.startsWith(item.href) && !onBoardPage
+                : pathname.startsWith(item.href);
             const badge = item.href === "/admin/support" ? supportUnread : 0;
             return (
               <Link
@@ -98,6 +130,24 @@ export function AdminSidebar() {
               </Link>
             );
           })}
+
+          {boardId != null && (
+            <>
+              <div className="my-2 border-t border-[#e399a3]/20" />
+              <Link
+                href={`/admin/workspaces/${boardId}`}
+                className={cn(
+                  "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                  onBoardPage
+                    ? "bg-[#c74959] text-white"
+                    : "text-[#1c0a0c]/70 hover:bg-[#fdf8f9] hover:text-[#c74959]"
+                )}
+              >
+                <MessagesSquare className="h-5 w-5" />
+                <span className="flex-1">{t("admin.nav.feedbackBoard")}</span>
+              </Link>
+            </>
+          )}
         </nav>
       </div>
     </aside>
