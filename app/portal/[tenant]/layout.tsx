@@ -33,7 +33,7 @@ export default async function PortalLayout({
   const brand = info.branding_primary_color || DEFAULT_BRAND;
 
   return (
-    <div className="min-h-screen bg-[#fdf8f9]">
+    <div className="flex min-h-screen flex-col bg-[#fdf8f9]">
       {/* First-glance growth CTA. A slim bar at the very top of every portal
           page so a visitor sees "get your own board" immediately — not only in
           the footer. FeedBoard's own rose (not the tenant brand): clearly our
@@ -80,9 +80,10 @@ export default async function PortalLayout({
         </div>
       </header>
 
-      <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
+      {/* flex-1 pushes the footer to the bottom of the viewport on short pages. */}
+      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-8">{children}</main>
 
-      <footer className="border-t border-black/5 bg-white">
+      <footer className="mt-auto border-t border-black/5 bg-white">
         {/* FeedBoard promo — a visitor here is a prospect for their own board.
             Uses FeedBoard's own rose, not the tenant brand: this is clearly our
             space, cordoned off in the footer, not part of the tenant's content.
