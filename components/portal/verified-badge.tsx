@@ -8,13 +8,20 @@ import { useTranslation } from "@/lib/i18n/client";
  * author's account is a platform admin (the app's own team). Signals to visitors
  * that the reply is an official response — styled in FeedBoard's own rose.
  */
-export function VerifiedBadge({ size = 15 }: { size?: number }) {
+export function VerifiedBadge({
+  size = 15,
+  label,
+}: {
+  size?: number;
+  /** Tooltip/aria label; defaults to "Verified admin". */
+  label?: string;
+}) {
   const { t } = useTranslation();
-  const label = t("comments.verifiedAdmin");
+  const resolved = label ?? t("comments.verifiedAdmin");
   return (
     <span
-      title={label}
-      aria-label={label}
+      title={resolved}
+      aria-label={resolved}
       role="img"
       className="inline-flex shrink-0"
     >

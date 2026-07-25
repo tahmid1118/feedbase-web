@@ -42,9 +42,14 @@ interface Viewer {
   image: string | null;
   isLoggedIn: boolean;
   /** May post anonymously instead of as themselves — a platform admin (on any
-   *  board) or the OWNER of this board — so they get the anonymous-mode toggle. */
+   *  board) or the OWNER of this board. */
   canAnonymize: boolean;
+  /** Owner of THIS board — additionally offered the "Owner" display identity. */
+  ownsBoard: boolean;
 }
+
+/** Which identity a privileged commenter posts under. */
+type CommentAs = "self" | "owner" | "anonymous";
 
 function Avatar({
   name,
@@ -103,7 +108,11 @@ interface Display {
  *    so all of one guest's comments match; falls back to the comment id for
  *    older rows that predate guest_id capture)
  */
-function commentDisplay(comment: Comment): Display {
+function commentDisplay(comment: Comment, ownerLabel: string): Display {
+  // Owner chose to show as "Owner" — real name/avatar were hidden server-side.
+  if (comment.author_as_owner) {
+    return { name: ownerLabel, avatar: null, color: "#c74959", anonymous: false };
+  }
   if (comment.author_id != null) {
     return {
       name: comment.author_name,
@@ -174,8 +183,8 @@ function CommentForm({
   onCancel,
   compact,
   autoFocus,
-  anonymous,
-  onToggleAnonymous,
+  commentAs = "self",
+  onChangeCommentAs,
 }: {
   brand: string;
   viewer: Viewer;
@@ -184,8 +193,8 @@ function CommentForm({
   onCancel?: () => void;
   compact?: boolean;
   autoFocus?: boolean;
-  anonymous?: boolean;
-  onToggleAnonymous?: (v: boolean) => void;
+  commentAs?: CommentAs;
+  onChangeCommentAs?: (v: CommentAs) => void;
 }) {
   const { t } = useTranslation();
   const [body, setBody] = useState("");
@@ -209,6 +218,24 @@ function CommentForm({
   }, [viewer.isLoggedIn]);
 
   const guestPseudonym = guestId ? guestIdentity(guestId) : null;
+
+  // How the logged-in commenter previews per their chosen identity.
+  const previewIdentity =
+    commentAs === "anonymous"
+      ? {
+          name: guestPseudonym?.name || t("portal.anonymous"),
+          avatar: null as string | null,
+          color: guestPseudonym?.color || "#c74959",
+          anonymous: true,
+        }
+      : commentAs === "owner"
+        ? { name: t("comments.owner"), avatar: null as string | null, color: brand, anonymous: false }
+        : {
+            name: viewer.name || "You",
+            avatar: viewer.image,
+            color: colorFor(viewer.name || "you"),
+            anonymous: false,
+          };
 
   const handle = async () => {
     if (!body.trim()) return;
@@ -256,42 +283,32 @@ function CommentForm({
 
       <div className="flex items-center gap-2">
         {viewer.isLoggedIn ? (
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            {anonymous ? (
-              <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
-                <Avatar
-                  name={guestPseudonym?.name || t("portal.anonymous")}
-                  color={guestPseudonym?.color || "#c74959"}
-                  anonymous
-                  size={20}
-                />
-                {t("comments.commentingAs")}{" "}
-                <span className="font-medium text-[#1c0a0c]/70">
-                  {guestPseudonym?.name || t("portal.anonymous")}
-                </span>
-              </p>
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#1c0a0c]/50">
+            <Avatar
+              name={previewIdentity.name}
+              src={previewIdentity.avatar}
+              color={previewIdentity.color}
+              anonymous={previewIdentity.anonymous}
+              size={20}
+            />
+            <span>{t("comments.commentingAs")}</span>
+            {viewer.canAnonymize && onChangeCommentAs ? (
+              <>
+                <select
+                  value={commentAs}
+                  onChange={(e) => onChangeCommentAs(e.target.value as CommentAs)}
+                  className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
+                >
+                  <option value="self">{viewer.name || t("comments.asYourName")}</option>
+                  {viewer.ownsBoard && <option value="owner">{t("comments.owner")}</option>}
+                  <option value="anonymous">{t("portal.anonymous")}</option>
+                </select>
+                {commentAs === "owner" && (
+                  <VerifiedBadge size={14} label={t("comments.verifiedOwner")} />
+                )}
+              </>
             ) : (
-              <p className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
-                <Avatar
-                  name={viewer.name || "You"}
-                  src={viewer.image}
-                  color={colorFor(viewer.name || "you")}
-                  size={20}
-                />
-                {t("comments.commentingAs")}{" "}
-                <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
-              </p>
-            )}
-            {viewer.canAnonymize && onToggleAnonymous && (
-              <label className="flex cursor-pointer select-none items-center gap-1.5 text-xs text-[#1c0a0c]/50">
-                <input
-                  type="checkbox"
-                  className="h-3.5 w-3.5 accent-[#c74959]"
-                  checked={!!anonymous}
-                  onChange={(e) => onToggleAnonymous(e.target.checked)}
-                />
-                {t("comments.commentAnonymously")}
-              </label>
+              <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
             )}
           </div>
         ) : (
@@ -366,7 +383,7 @@ function CommentCard({
     comment.author_id != null &&
     Number(comment.author_id) === viewer.userId;
 
-  const display = commentDisplay(comment);
+  const display = commentDisplay(comment, t("comments.owner"));
 
   const saveEdit = async () => {
     if (!editBody.trim() || !viewer.token) return;
@@ -404,7 +421,11 @@ function CommentCard({
             size={24}
           />
           <span className="font-medium text-[#1c0a0c]">{display.name}</span>
-          {comment.author_is_admin ? <VerifiedBadge /> : null}
+          {comment.author_as_owner ? (
+            <VerifiedBadge label={t("comments.verifiedOwner")} />
+          ) : comment.author_is_admin ? (
+            <VerifiedBadge />
+          ) : null}
           {comment.is_edited ? (
             <span className="text-xs text-[#1c0a0c]/40">(edited)</span>
           ) : null}
@@ -590,9 +611,9 @@ export function PortalComments({
   const [replyTo, setReplyTo] = useState<number | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // Platform-admin only: comment as an anonymous guest instead of the verified
-  // admin. Applies to the top comment and any replies in this session.
-  const [anonymous, setAnonymous] = useState(false);
+  // Identity a privileged commenter (admin / board owner) posts under. Applies
+  // to the top comment and any replies in this session.
+  const [commentAs, setCommentAs] = useState<CommentAs>("self");
 
   const viewer: Viewer = useMemo(() => {
     const token = session?.user?.accessToken || undefined;
@@ -613,18 +634,21 @@ export function PortalComments({
       image: session?.user?.image ?? null,
       isLoggedIn,
       canAnonymize: isLoggedIn && (isPlatformAdmin || ownsBoard),
+      ownsBoard: Boolean(ownsBoard),
     };
   }, [session, boardTenantId]);
 
   const onChanged = () => router.refresh();
 
   // name/email are ignored by the backend when a token is sent (logged-in).
-  // An admin in anonymous mode submits WITHOUT the token, so it's stored as a
-  // guest (no author_id) — no name and no verified tick.
+  // "anonymous" submits WITHOUT the token → stored as a guest (no author_id, no
+  // name, no tick). "owner" submits authenticated with asOwner so it shows as
+  // "Owner" + tick with the real name hidden.
   const submit: Submit = async (body, parentId) => {
     setSubmitting(true);
     setError(null);
-    const postAsGuest = anonymous && viewer.canAnonymize;
+    const postAsGuest = commentAs === "anonymous" && viewer.canAnonymize;
+    const asOwner = commentAs === "owner" && viewer.ownsBoard;
     const useAuth = viewer.isLoggedIn && !postAsGuest;
     const res = await portalActions.createComment(
       tenant,
@@ -635,6 +659,7 @@ export function PortalComments({
         submitterName: useAuth || postAsGuest ? undefined : readLocal(NAME_KEY) || undefined,
         submitterEmail: useAuth || postAsGuest ? undefined : readLocal(EMAIL_KEY) || undefined,
         guestId: useAuth ? undefined : getGuestId() || undefined,
+        asOwner: asOwner || undefined,
       },
       useAuth ? viewer.token : undefined
     );
@@ -655,8 +680,8 @@ export function PortalComments({
         viewer={viewer}
         submitting={submitting}
         onSubmit={(body) => submit(body, null)}
-        anonymous={anonymous}
-        onToggleAnonymous={setAnonymous}
+        commentAs={commentAs}
+        onChangeCommentAs={setCommentAs}
       />
 
       {error && (

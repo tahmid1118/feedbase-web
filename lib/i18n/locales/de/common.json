@@ -436,7 +436,10 @@
     "edited": "Bearbeitet",
     "verifiedAdmin": "Verifizierter Admin",
     "postFailed": "Kommentar konnte nicht gepostet werden.",
-    "commentAnonymously": "Anonym kommentieren"
+    "commentAnonymously": "Anonym kommentieren",
+    "owner": "Inhaber",
+    "verifiedOwner": "Verifizierter Inhaber",
+    "asYourName": "Ihr Name"
   },
   "share": {
     "title": "Diesen Beitrag teilen",

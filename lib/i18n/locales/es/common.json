@@ -436,7 +436,10 @@
     "edited": "Editado",
     "verifiedAdmin": "Administrador verificado",
     "postFailed": "No se pudo publicar tu comentario.",
-    "commentAnonymously": "Comentar de forma anónima"
+    "commentAnonymously": "Comentar de forma anónima",
+    "owner": "Propietario",
+    "verifiedOwner": "Propietario verificado",
+    "asYourName": "Tu nombre"
   },
   "share": {
     "title": "Compartir esta publicación",

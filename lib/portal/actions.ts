@@ -46,6 +46,8 @@ export const portalActions = {
       submitterName?: string;
       submitterEmail?: string;
       guestId?: string;
+      /** Owner-only: show as "Owner" (+ tick) instead of the real name. */
+      asOwner?: boolean;
     },
     token?: string
   ) => request(`/public/${enc(tenant)}/posts/${postId}/comments`, "POST", token, payload),

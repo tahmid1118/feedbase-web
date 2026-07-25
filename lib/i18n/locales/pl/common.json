@@ -442,7 +442,10 @@
     "edited": "Edytowano",
     "verifiedAdmin": "Zweryfikowany administrator",
     "postFailed": "Nie udało się opublikować komentarza.",
-    "commentAnonymously": "Skomentuj anonimowo"
+    "commentAnonymously": "Skomentuj anonimowo",
+    "owner": "Właściciel",
+    "verifiedOwner": "Zweryfikowany właściciel",
+    "asYourName": "Twoje imię"
   },
   "share": {
     "title": "Udostępnij ten wpis",

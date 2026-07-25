@@ -451,7 +451,7 @@ Sample Response:
 ```json
 {"status":"success","message":"Comments retrieved successfully","data":[{"id":401,"post_id":101,"author_id":3,"body":"Great request. We need this soon.","is_edited":0,"author_name":"Jane Product","author_email":"jane@acme.test","author_is_admin":0}]}
 ```
-Each comment includes `author_is_admin` (1 when the author's account is a platform admin — renders a verified tick). The dashboard comment thread also lets a signed-in team member post/reply via `POST /comments/create`.
+Each comment includes `author_is_admin` (platform-admin verified tick) and `author_as_owner` (1 when a board owner chose to show as "Owner"; real name withheld). The dashboard comment thread also lets a signed-in team member post/reply via `POST /comments/create` — which accepts `commentData.asOwner` (owner-only: show as "Owner" + tick).
 
 ---
 
@@ -1033,7 +1033,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId
-Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — used to render a verified tick; based on the `admins` table, never a name/role).
+Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — `users.is_platform_admin`, renders a "Verified admin" tick). Each comment also includes `author_as_owner` (1 when a board owner chose to show as "Owner" — the real name/avatar are withheld and the client renders "Owner" + a verified-owner tick).
 Sample Body:
 ```json
 {"lg":"en"}
@@ -1078,7 +1078,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId/comments
-Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer).
+Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer). A logged-in **board owner** may pass `asOwner:true` to show as "Owner" (+ verified tick) with their real name hidden (honored only when the Bearer account owns this board).
 Sample Body:
 ```json
 {"lg":"en","body":"Great idea","parentCommentId":null,"submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12"}

@@ -128,6 +128,8 @@ export interface Comment {
   guest_id?: string | null;
   /** 1 when the author's account is a platform admin (verified). */
   author_is_admin?: number;
+  /** 1 when a board owner chose to show as "Owner" (real name hidden). */
+  author_as_owner?: number;
   parent_comment_id?: number | null;
   created_at?: string;
 }
@@ -136,6 +138,8 @@ export interface CreateCommentData {
   postId: number;
   body: string;
   parentCommentId?: number | null;
+  /** Owner-only: show as "Owner" (+ tick) instead of the real name. */
+  asOwner?: boolean;
 }
 
 // Tag types

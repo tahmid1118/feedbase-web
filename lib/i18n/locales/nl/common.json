@@ -436,7 +436,10 @@
     "edited": "Bewerkt",
     "verifiedAdmin": "Geverifieerde beheerder",
     "postFailed": "Kan je reactie niet plaatsen.",
-    "commentAnonymously": "Anoniem reageren"
+    "commentAnonymously": "Anoniem reageren",
+    "owner": "Eigenaar",
+    "verifiedOwner": "Geverifieerde eigenaar",
+    "asYourName": "Uw naam"
   },
   "share": {
     "title": "Deel dit bericht",

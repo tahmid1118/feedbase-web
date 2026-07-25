@@ -436,7 +436,10 @@
     "edited": "Edited",
     "verifiedAdmin": "Verified admin",
     "postFailed": "Couldn't post your comment.",
-    "commentAnonymously": "Comment anonymously"
+    "commentAnonymously": "Comment anonymously",
+    "owner": "Owner",
+    "verifiedOwner": "Verified owner",
+    "asYourName": "Your name"
   },
   "share": {
     "title": "Share this post",

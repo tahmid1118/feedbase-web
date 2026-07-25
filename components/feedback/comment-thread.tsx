@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSession } from "next-auth/react";
 import { CornerDownRight, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -56,16 +57,25 @@ export function CommentThread({
   onPosted,
 }: CommentThreadProps) {
   const { t } = useTranslation();
+  const { data: session } = useSession();
+  const isOwner = session?.user?.role === "owner";
   const tree = useMemo(() => buildTree(comments), [comments]);
   const [body, setBody] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  // Owners may reply showing as "Owner" (+ tick) instead of their real name.
+  const [commentAs, setCommentAs] = useState<"self" | "owner">("self");
 
   const post = async (text: string, parentCommentId: number | null) => {
     if (!text.trim() || !token) return false;
     setSubmitting(true);
     try {
       await commentsApi.create(
-        { postId, body: text.trim(), parentCommentId: parentCommentId ?? undefined },
+        {
+          postId,
+          body: text.trim(),
+          parentCommentId: parentCommentId ?? undefined,
+          asOwner: isOwner && commentAs === "owner",
+        },
         token
       );
       onPosted?.();
@@ -88,7 +98,20 @@ export function CommentThread({
           placeholder={t("comments.addComment")}
           className="min-h-[80px]"
         />
-        <div className="flex justify-end">
+        <div className="flex items-center justify-end gap-2">
+          {isOwner && (
+            <label className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
+              {t("comments.commentingAs")}
+              <select
+                value={commentAs}
+                onChange={(e) => setCommentAs(e.target.value as "self" | "owner")}
+                className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
+              >
+                <option value="self">{session?.user?.name || t("comments.asYourName")}</option>
+                <option value="owner">{t("comments.owner")}</option>
+              </select>
+            </label>
+          )}
           <Button
             size="sm"
             disabled={submitting || !body.trim()}
@@ -147,8 +170,14 @@ function CommentItem({
       <div className="rounded-lg border border-[#e399a3]/20 bg-[#fdf8f9] p-4">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-[#1c0a0c]">{node.author_name}</span>
-            {node.author_is_admin ? <VerifiedBadge /> : null}
+            <span className="font-medium text-[#1c0a0c]">
+              {node.author_as_owner ? t("comments.owner") : node.author_name}
+            </span>
+            {node.author_as_owner ? (
+              <VerifiedBadge label={t("comments.verifiedOwner")} />
+            ) : node.author_is_admin ? (
+              <VerifiedBadge />
+            ) : null}
             {node.is_edited === 1 && (
               <Badge variant="outline" className="text-xs">
                 {t("comments.edited")}
