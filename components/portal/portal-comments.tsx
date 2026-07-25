@@ -195,6 +195,7 @@ function CommentForm({
   autoFocus,
   commentAs = "self",
   onChangeCommentAs,
+  identityOptions = [],
 }: {
   brand: string;
   viewer: Viewer;
@@ -205,6 +206,7 @@ function CommentForm({
   autoFocus?: boolean;
   commentAs?: CommentAs;
   onChangeCommentAs?: (v: CommentAs) => void;
+  identityOptions?: CommentAs[];
 }) {
   const { t } = useTranslation();
   const [body, setBody] = useState("");
@@ -253,6 +255,14 @@ function CommentForm({
               color: colorFor(viewer.name || "you"),
               anonymous: false,
             };
+
+  const optionLabel = (opt: CommentAs) => {
+    const yourName = viewer.name || t("comments.asYourName");
+    if (opt === "owner_named") return `${yourName} (${t("comments.owner")})`;
+    if (opt === "owner_hidden") return t("comments.owner");
+    if (opt === "anonymous") return t("portal.anonymous");
+    return yourName;
+  };
 
   const handle = async () => {
     if (!body.trim()) return;
@@ -309,33 +319,23 @@ function CommentForm({
               size={20}
             />
             <span>{t("comments.commentingAs")}</span>
-            {(viewer.ownerBadge || viewer.ownerPrivacy || viewer.canAnonymize) &&
-            onChangeCommentAs ? (
-              <>
-                <select
-                  value={commentAs}
-                  onChange={(e) => onChangeCommentAs(e.target.value as CommentAs)}
-                  className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
-                >
-                  <option value="self">{viewer.name || t("comments.asYourName")}</option>
-                  {viewer.ownerBadge && (
-                    <option value="owner_named">
-                      {`${viewer.name || t("comments.asYourName")} (${t("comments.owner")})`}
-                    </option>
-                  )}
-                  {viewer.ownerPrivacy && (
-                    <option value="owner_hidden">{t("comments.owner")}</option>
-                  )}
-                  {viewer.canAnonymize && (
-                    <option value="anonymous">{t("portal.anonymous")}</option>
-                  )}
-                </select>
-                {(commentAs === "owner_named" || commentAs === "owner_hidden") && (
-                  <VerifiedBadge size={14} label={t("comments.verifiedOwner")} />
-                )}
-              </>
+            {identityOptions.length > 1 && onChangeCommentAs ? (
+              <select
+                value={commentAs}
+                onChange={(e) => onChangeCommentAs(e.target.value as CommentAs)}
+                className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
+              >
+                {identityOptions.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {optionLabel(opt)}
+                  </option>
+                ))}
+              </select>
             ) : (
-              <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
+              <span className="font-medium text-[#1c0a0c]/70">{previewIdentity.name}</span>
+            )}
+            {(commentAs === "owner_named" || commentAs === "owner_hidden") && (
+              <VerifiedBadge size={14} label={t("comments.verifiedOwner")} />
             )}
           </div>
         ) : (
@@ -674,6 +674,22 @@ export function PortalComments({
     };
   }, [session, boardTenantId, boardOwnerBadge, boardOwnerPrivacy]);
 
+  // The identities this commenter may post under. An owner with the named badge
+  // does NOT get a redundant plain-name option — "Name (Owner)" replaces it.
+  const identityOptions = useMemo<CommentAs[]>(() => {
+    const opts: CommentAs[] = [];
+    if (viewer.ownerBadge) opts.push("owner_named");
+    else if (viewer.isLoggedIn) opts.push("self");
+    if (viewer.ownerPrivacy) opts.push("owner_hidden");
+    if (viewer.canAnonymize) opts.push("anonymous");
+    return opts;
+  }, [viewer]);
+  // Effective choice — coerce into the available options (so a stale "self"
+  // default lands on the first real option, e.g. "owner_named" for an owner).
+  const commentAsEff: CommentAs = identityOptions.includes(commentAs)
+    ? commentAs
+    : identityOptions[0] ?? "self";
+
   const onChanged = () => router.refresh();
 
   // name/email are ignored when a token is sent (logged-in). "anonymous" submits
@@ -682,11 +698,11 @@ export function PortalComments({
   const submit: Submit = async (body, parentId) => {
     setSubmitting(true);
     setError(null);
-    const postAsGuest = commentAs === "anonymous" && viewer.canAnonymize;
+    const postAsGuest = commentAsEff === "anonymous" && viewer.canAnonymize;
     const ownerMode =
-      commentAs === "owner_named" && viewer.ownerBadge
+      commentAsEff === "owner_named" && viewer.ownerBadge
         ? "named"
-        : commentAs === "owner_hidden" && viewer.ownerPrivacy
+        : commentAsEff === "owner_hidden" && viewer.ownerPrivacy
           ? "hidden"
           : undefined;
     const useAuth = viewer.isLoggedIn && !postAsGuest;
@@ -720,8 +736,9 @@ export function PortalComments({
         viewer={viewer}
         submitting={submitting}
         onSubmit={(body) => submit(body, null)}
-        commentAs={commentAs}
+        commentAs={commentAsEff}
         onChangeCommentAs={setCommentAs}
+        identityOptions={identityOptions}
       />
 
       {error && (

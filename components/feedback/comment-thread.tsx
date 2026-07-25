@@ -65,21 +65,28 @@ export function CommentThread({
   const { t } = useTranslation();
   const { data: session } = useSession();
   const isOwner = session?.user?.role === "owner";
-  const canPickOwner = isOwner && (ownerBadge || ownerPrivacy);
   const tree = useMemo(() => buildTree(comments), [comments]);
   const [body, setBody] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  // Owners may reply as "Name (Owner)" or (Business) hidden "Owner".
+  // Owners reply as "Name (Owner)" or (Business) hidden "Owner" — no plain-name
+  // option once a badge is available.
   const [commentAs, setCommentAs] = useState<"self" | "owner_named" | "owner_hidden">("self");
+  const ownerOptions: ("owner_named" | "owner_hidden")[] = [];
+  if (ownerBadge) ownerOptions.push("owner_named");
+  if (ownerPrivacy) ownerOptions.push("owner_hidden");
+  const canPickOwner = isOwner && ownerOptions.length > 0;
+  const commentAsEff = ownerOptions.includes(commentAs as "owner_named" | "owner_hidden")
+    ? commentAs
+    : ownerOptions[0] ?? "self";
 
   const post = async (text: string, parentCommentId: number | null) => {
     if (!text.trim() || !token) return false;
     setSubmitting(true);
     try {
       const ownerMode =
-        commentAs === "owner_named" && ownerBadge
+        canPickOwner && commentAsEff === "owner_named" && ownerBadge
           ? "named"
-          : commentAs === "owner_hidden" && ownerPrivacy
+          : canPickOwner && commentAsEff === "owner_hidden" && ownerPrivacy
             ? "hidden"
             : undefined;
       await commentsApi.create(
@@ -115,21 +122,29 @@ export function CommentThread({
           {canPickOwner && (
             <label className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/50">
               {t("comments.commentingAs")}
-              <select
-                value={commentAs}
-                onChange={(e) =>
-                  setCommentAs(e.target.value as "self" | "owner_named" | "owner_hidden")
-                }
-                className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
-              >
-                <option value="self">{session?.user?.name || t("comments.asYourName")}</option>
-                {ownerBadge && (
-                  <option value="owner_named">
-                    {`${session?.user?.name || t("comments.asYourName")} (${t("comments.owner")})`}
-                  </option>
-                )}
-                {ownerPrivacy && <option value="owner_hidden">{t("comments.owner")}</option>}
-              </select>
+              {ownerOptions.length > 1 ? (
+                <select
+                  value={commentAsEff}
+                  onChange={(e) =>
+                    setCommentAs(e.target.value as "owner_named" | "owner_hidden")
+                  }
+                  className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
+                >
+                  {ownerOptions.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt === "owner_named"
+                        ? `${session?.user?.name || t("comments.asYourName")} (${t("comments.owner")})`
+                        : t("comments.owner")}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <span className="font-medium text-[#1c0a0c]/70">
+                  {commentAsEff === "owner_hidden"
+                    ? t("comments.owner")
+                    : `${session?.user?.name || t("comments.asYourName")} (${t("comments.owner")})`}
+                </span>
+              )}
             </label>
           )}
           <Button
