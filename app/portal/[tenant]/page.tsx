@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { MessageSquare, Paperclip } from "lucide-react";
-import { publicApi, normalizeBoardSort } from "@/lib/api/public";
+import { publicApi, normalizeBoardSort, normalizeBoardStatus } from "@/lib/api/public";
+import type { PostStatus } from "@/lib/api/types";
 import { Badge } from "@/components/ui/badge";
 import { FeedbackSubmit } from "@/components/portal/feedback-submit";
 import { PortalVoteButton } from "@/components/portal/portal-vote-button";
 import { BoardSort } from "@/components/portal/board-sort";
+import { BoardTabs } from "@/components/portal/board-tabs";
 import { LocalTime } from "@/components/local-time";
 import { getTranslation } from "@/lib/i18n/server";
 
@@ -30,15 +32,19 @@ export default async function PortalBoardPage({
   searchParams,
 }: {
   params: Promise<{ tenant: string }>;
-  searchParams: Promise<{ sort?: string }>;
+  searchParams: Promise<{ sort?: string; status?: string }>;
 }) {
   const { tenant } = await params;
   const decoded = decodeURIComponent(tenant);
   const { t } = await getTranslation();
-  const sort = normalizeBoardSort((await searchParams)?.sort);
+  const sp = await searchParams;
+  const sort = normalizeBoardSort(sp?.sort);
+  const status = normalizeBoardStatus(sp?.status);
+  const filters =
+    status === "all" ? undefined : { status: status as PostStatus };
   // getTenant is React-cached, so this shares the layout's tenant lookup.
   const [data, info] = await Promise.all([
-    publicApi.getBoard(decoded, undefined, 100, sort),
+    publicApi.getBoard(decoded, filters, 100, sort),
     publicApi.getTenant(decoded),
   ]);
   const posts = data?.posts ?? [];
@@ -62,16 +68,18 @@ export default async function PortalBoardPage({
         />
       </div>
 
-      {posts.length === 0 ? (
-        <div className="rounded-xl border border-black/5 bg-white p-12 text-center text-[#1c0a0c]/60">
-          {t("portal.noFeedbackYet")}
+      <div className="space-y-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <BoardTabs value={status} />
+          <BoardSort value={sort} />
         </div>
-      ) : (
-        <div className="space-y-3">
-          <div className="flex justify-end">
-            <BoardSort value={sort} />
+
+        {posts.length === 0 ? (
+          <div className="rounded-xl border border-black/5 bg-white p-12 text-center text-[#1c0a0c]/60">
+            {t(status === "all" ? "portal.noFeedbackYet" : "portal.noMatchingPosts")}
           </div>
-          {posts.map((post) => (
+        ) : (
+          posts.map((post) => (
             <div
               key={post.id}
               className="relative isolate rounded-xl border border-black/5 bg-white p-4 transition-shadow hover:shadow-md"
@@ -140,9 +148,9 @@ export default async function PortalBoardPage({
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 }

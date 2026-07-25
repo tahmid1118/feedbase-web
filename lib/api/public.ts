@@ -71,6 +71,21 @@ export const BOARD_SORTS: BoardSort[] = [
 export const normalizeBoardSort = (v?: string | null): BoardSort =>
   (BOARD_SORTS as string[]).includes(v ?? "") ? (v as BoardSort) : "newest";
 
+// Status filter tabs shown on the public board. "rejected" is intentionally
+// absent — rejected posts are always excluded from public reads server-side.
+export const PUBLIC_BOARD_STATUSES = [
+  "all",
+  "open",
+  "planned",
+  "in_progress",
+  "completed",
+] as const;
+export type PublicBoardStatus = (typeof PUBLIC_BOARD_STATUSES)[number];
+export const normalizeBoardStatus = (v?: string | null): PublicBoardStatus =>
+  (PUBLIC_BOARD_STATUSES as readonly string[]).includes(v ?? "")
+    ? (v as PublicBoardStatus)
+    : "all";
+
 interface ApiEnvelope<T> {
   status: string;
   message: string;

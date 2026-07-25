@@ -396,6 +396,7 @@
     "boardTitle": "Feedback Board",
     "boardSubtitle": "Share an idea or report an issue — and see what's planned.",
     "noFeedbackYet": "No feedback has been posted yet.",
+    "noMatchingPosts": "No posts in this view.",
     "openPost": "Open {{title}}",
     "nComments_one": "{{count}} comment",
     "nComments_other": "{{count}} comments",

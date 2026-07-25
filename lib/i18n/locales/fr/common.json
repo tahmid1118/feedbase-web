@@ -413,7 +413,8 @@
     "notFoundDesc": "Ce portail de retours n'existe pas ou n'est plus actif. Veuillez vérifier l'adresse et réessayer.",
     "ownBoardTitle": "Vous voulez votre propre tableau de retours ?",
     "ownBoardSubtitle": "Recueillez des retours, priorisez par votes et partagez une feuille de route publique — gratuit au départ.",
-    "ownBoardCta": "Rejoindre notre communauté"
+    "ownBoardCta": "Rejoindre notre communauté",
+    "noMatchingPosts": "Aucune publication dans cette vue."
   },
   "type": {
     "feedback": "Retour",

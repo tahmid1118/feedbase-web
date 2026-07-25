@@ -161,6 +161,9 @@ Version 1.2
     FR-P1  Board ........ Browse feedback posts with vote counts, tags, status,
                           and comment counts. Sortable by newest, oldest, most
                           upvoted, or least upvoted (pinned posts stay on top).
+                          Filterable by status via tabs — All, Open, Planned, In
+                          Progress, Completed. Rejected posts are never listed
+                          publicly, so there is no Rejected tab.
     FR-P2  Submit ....... Any visitor may create a post (title and a contact
                           email required; details, type and name optional). The
                           email is mandatory so the team can reach the submitter
