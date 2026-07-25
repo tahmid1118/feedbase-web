@@ -188,13 +188,34 @@ Add the TXT record it prints in Hostinger DNS, finish, then point the `ssl_certi
 
 ---
 
-## 8. Stripe webhook
+## 8. Stripe — go LIVE (real payments)
 
-In the Stripe Dashboard → Developers → Webhooks, add an endpoint:
-```
-https://api.feedboardapp.com/webhooks/stripe
-```
-Subscribe to `checkout.session.completed` and `customer.subscription.*`. Copy the **Signing secret** into the backend `.env` as `STRIPE_WEBHOOK_SECRET`, then `pm2 reload feedboard-server`.
+The app code is mode-agnostic: it uses whatever key you set. **Test and live are
+separate universes** — keys, prices, coupons, and webhooks all differ. To take
+real payments:
+
+1. **Activate** your Stripe account (Dashboard → business details + bank account), then flip the dashboard toggle to **Live mode**.
+2. Get the **live secret key** (`sk_live_…`, Developers → API keys) and set it in the backend `.env`:
+   ```
+   STRIPE_SECRET_KEY=sk_live_...
+   ```
+3. **Create the live prices** (test price IDs won't work with a live key):
+   ```bash
+   node scripts/stripe-setup.js      # prints "Stripe LIVE mode" then the price IDs
+   ```
+   Paste the printed `STRIPE_PRICE_PRO / _PRO_YEARLY / _BUSINESS / _BUSINESS_YEARLY` into `.env`.
+4. **Create the live webhook** (Developers → Webhooks → *Add endpoint*, in **Live** mode):
+   ```
+   https://api.feedboardapp.com/webhooks/stripe
+   ```
+   Events: `checkout.session.completed`, `customer.subscription.created`, `.updated`, `.deleted`. Copy the **Signing secret** (`whsec_…`) into `.env` as `STRIPE_WEBHOOK_SECRET`.
+5. Ensure `NODE_ENV=production`, then `pm2 reload feedboard-server`.
+
+**Verify the mode:** on boot the API logs `Stripe configured in LIVE mode.` If it
+logs a **TEST-mode-in-production** warning, you're still on sandbox keys. (It also
+warns if a live key is used outside production, so you can't charge real cards from
+a dev box.) Do a real test purchase with a live card, then refund it in the
+dashboard.
 
 ---
 
