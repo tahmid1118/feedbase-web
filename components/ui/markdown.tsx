@@ -6,6 +6,19 @@ import { Fragment, type ReactNode } from "react";
  * and paragraphs. It intentionally does not handle the full spec.
  */
 
+/**
+ * Only allow safe link schemes. A markdown link like `[x](javascript:alert(1))`
+ * would otherwise be a clickable XSS (React does not sanitize href schemes).
+ * Permits http(s), mailto, and relative/anchor links; everything else is dropped
+ * (rendered as plain text, no anchor).
+ */
+function safeHref(href: string): string | null {
+  const h = href.trim();
+  if (/^(https?:|mailto:)/i.test(h)) return h;
+  if (/^(\/|#|\.)/.test(h)) return h; // relative or in-page anchor
+  return null;
+}
+
 function renderInline(text: string, keyPrefix: string): ReactNode[] {
   // Order matters: process code spans first so their contents are left intact.
   const tokens: ReactNode[] = [];
@@ -42,16 +55,22 @@ function renderInline(text: string, keyPrefix: string): ReactNode[] {
     } else if (token.startsWith("[")) {
       const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(token);
       if (linkMatch) {
+        const href = safeHref(linkMatch[2]);
         tokens.push(
-          <a
-            key={`${keyPrefix}-l-${i}`}
-            href={linkMatch[2]}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#c74959] underline"
-          >
-            {linkMatch[1]}
-          </a>
+          href ? (
+            <a
+              key={`${keyPrefix}-l-${i}`}
+              href={href}
+              target="_blank"
+              rel="noreferrer nofollow"
+              className="text-[#c74959] underline"
+            >
+              {linkMatch[1]}
+            </a>
+          ) : (
+            // Unsafe scheme (e.g. javascript:) — render the label as plain text.
+            <Fragment key={`${keyPrefix}-l-${i}`}>{linkMatch[1]}</Fragment>
+          )
         );
       }
     }
