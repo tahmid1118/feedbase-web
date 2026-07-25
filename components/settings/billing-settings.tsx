@@ -277,8 +277,17 @@ export function BillingSettings() {
       return manageButton; // cancel to Free via portal
     }
 
-    // Free user (no live sub) upgrading a paid plan → fresh Checkout.
+    // No live Stripe subscription (Free, or a COMPED paid plan with no sub).
     if (!hasSub) {
+      // The account's current (comped) plan is not an "upgrade" target.
+      if (planKey === current) {
+        return (
+          <Button variant="outline" disabled className="w-full">
+            {t("billing.currentPlan")}
+          </Button>
+        );
+      }
+      // A different paid plan → fresh Checkout (nothing to prorate against).
       return (
         <Button
           className="w-full bg-[#c74959] text-white hover:bg-[#b03f4d]"
