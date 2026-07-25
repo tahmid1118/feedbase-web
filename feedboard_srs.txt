@@ -208,15 +208,15 @@ Version 1.2
                           The mark is derived from the platform-admin role on the
                           account, not from a display name.
     FR-P10 Identity ..... When commenting, a privileged author may choose the
-                          identity the comment is shown under: (a) their own name;
-                          (b) for a board OWNER, a generic "Owner" with a verified
-                          tick — the real name and avatar are then withheld
-                          server-side; or (c) anonymous, posted as a guest with a
-                          stable pseudonym. The choice applies to the comment and
-                          its replies. The "Owner" identity is available on the
-                          public portal and the dashboard; "anonymous" on the
-                          portal. Anonymous is offered to platform admins and board
-                          owners; "Owner" only to the board's owner.
+                          identity the comment is shown under. For a board OWNER
+                          this is PLAN-GATED: (a) their own name (any plan); (b) on
+                          Pro and above, "Name (Owner)" with a verified tick; (c)
+                          on Business, a generic "Owner" with a tick (real name and
+                          avatar withheld) or fully anonymous. Platform admins may
+                          always post anonymously. The plan gate is enforced
+                          server-side, not just in the UI. The choice applies to
+                          the comment and its replies, on both the public portal
+                          and (except anonymous) the dashboard.
     FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
                           FR-B5), a feedback post may carry up to three photo or
                           short-video attachments. Attaching is offered on both

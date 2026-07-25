@@ -107,6 +107,9 @@ export default function PostDetailPage() {
   const [canDeleteFeedback, setCanDeleteFeedback] = useState(false);
   // Seeing the submitter's email + notifying them on completion is Pro+ too.
   const [canContactSubmitter, setCanContactSubmitter] = useState(false);
+  // Owner comment identity: badge (Pro+) / privacy-hidden (Business).
+  const [ownerBadge, setOwnerBadge] = useState(false);
+  const [ownerPrivacy, setOwnerPrivacy] = useState(false);
   const [notifying, setNotifying] = useState(false);
   // Local override so the "notified" state updates immediately after a send.
   const [notifiedOverride, setNotifiedOverride] = useState<string | null>(null);
@@ -121,6 +124,8 @@ export default function PostDetailPage() {
       .then((res) => {
         setCanDeleteFeedback(Boolean(res.data?.limits?.deleteFeedback));
         setCanContactSubmitter(Boolean(res.data?.limits?.contactSubmitter));
+        setOwnerBadge(Boolean(res.data?.limits?.ownerBadge));
+        setOwnerPrivacy(Boolean(res.data?.limits?.ownerPrivacy));
       })
       .catch(() => {});
   }, [token, isOwner]);
@@ -503,6 +508,8 @@ export default function PostDetailPage() {
           postId={post.id}
           token={token}
           onPosted={loadPostData}
+          ownerBadge={ownerBadge}
+          ownerPrivacy={ownerPrivacy}
         />
       </Card>
     </div>

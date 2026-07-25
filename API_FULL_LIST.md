@@ -451,7 +451,7 @@ Sample Response:
 ```json
 {"status":"success","message":"Comments retrieved successfully","data":[{"id":401,"post_id":101,"author_id":3,"body":"Great request. We need this soon.","is_edited":0,"author_name":"Jane Product","author_email":"jane@acme.test","author_is_admin":0}]}
 ```
-Each comment includes `author_is_admin` (platform-admin verified tick) and `author_as_owner` (1 when a board owner chose to show as "Owner"; real name withheld). The dashboard comment thread also lets a signed-in team member post/reply via `POST /comments/create` — which accepts `commentData.asOwner` (owner-only: show as "Owner" + tick).
+Each comment includes `author_is_admin` (platform-admin verified tick) and `author_as_owner` (owner display mode: 0 none, 1 "Name (Owner)", 2 "Owner" only with name withheld). `POST /comments/create` accepts `commentData.ownerMode` (`"named"` = Pro+, `"hidden"` = Business) — the mode is plan-gated server-side.
 
 ---
 
@@ -990,7 +990,7 @@ Sample Response:
 Unauthenticated, mounted at `/public`. The tenant is resolved from the `:subdomain` param (matches `subdomain` OR `custom_domain`). Comment/feedback/vote routes use optional auth: a Bearer token attributes the action to that user, otherwise it's a guest (identified by `guestId`). Rejected posts and author emails are never exposed here.
 
 ### GET /public/tenant
-Resolve a tenant by subdomain (or `?domain=`) for the portal. `attachments_enabled` reflects whether the workspace's plan allows attachments. Query: `?subdomain=acme&lg=en`.
+Resolve a tenant by subdomain (or `?domain=`) for the portal. Plan-derived booleans: `attachments_enabled` (Pro+), `owner_badge_enabled` (Pro+ — owner may comment as "Name (Owner)"), `owner_privacy_enabled` (Business — owner may comment as "Owner" only / anonymously). Query: `?subdomain=acme&lg=en`.
 Sample Response:
 ```json
 {"status":"success","message":"Tenant retrieved successfully","data":{"id":1,"name":"Acme Labs","subdomain":"acme","custom_domain":null,"branding_logo_url":null,"branding_primary_color":"#c74959","attachments_enabled":true}}
@@ -1033,7 +1033,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId
-Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — `users.is_platform_admin`, renders a "Verified admin" tick). Each comment also includes `author_as_owner` (1 when a board owner chose to show as "Owner" — the real name/avatar are withheld and the client renders "Owner" + a verified-owner tick).
+Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — `users.is_platform_admin`, renders a "Verified admin" tick). Each comment also includes `author_as_owner` (owner display mode: 0 none, 1 "Name (Owner)" + tick, 2 "Owner" only with the real name/avatar withheld).
 Sample Body:
 ```json
 {"lg":"en"}
@@ -1078,7 +1078,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId/comments
-Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer). A logged-in **board owner** may pass `asOwner:true` to show as "Owner" (+ verified tick) with their real name hidden (honored only when the Bearer account owns this board).
+Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer). A logged-in **board owner** may pass `ownerMode` — `"named"` ("Name (Owner)" + tick, Pro+) or `"hidden"` ("Owner" only, name withheld, Business) — honored only when the Bearer account owns this board and the plan permits it.
 Sample Body:
 ```json
 {"lg":"en","body":"Great idea","parentCommentId":null,"submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12"}

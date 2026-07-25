@@ -728,7 +728,9 @@
       "unlimitedWorkspaces": "Unbegrenzte Arbeitsbereiche",
       "unlimitedMembers": "Unbegrenzte Teammitglieder",
       "multiDevice": "Anmeldung auf mehreren Geräten",
-      "prioritySupport": "Priorisierter Support"
+      "prioritySupport": "Priorisierter Support",
+      "commentAsOwner": "Als verifizierter Inhaber antworten",
+      "ownerPrivacy": "Namen verbergen – als „Inhaber\" oder anonym antworten"
     },
     "badge": {
       "popular": "Beliebt",

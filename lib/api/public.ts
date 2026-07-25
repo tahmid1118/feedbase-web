@@ -33,6 +33,10 @@ export interface PublicTenant {
   branding_primary_color?: string | null;
   /** Whether this workspace's plan (Pro+) allows photo/video on feedback. */
   attachments_enabled?: boolean;
+  /** Owner may comment as "Name (Owner)" + tick (Pro+). */
+  owner_badge_enabled?: boolean;
+  /** Owner may hide their name ("Owner" only) or comment anonymously (Business). */
+  owner_privacy_enabled?: boolean;
 }
 
 export interface PublicPostDetail extends Post {

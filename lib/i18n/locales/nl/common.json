@@ -728,7 +728,9 @@
       "unlimitedWorkspaces": "Onbeperkte werkruimtes",
       "unlimitedMembers": "Onbeperkte teamleden",
       "multiDevice": "Inloggen op meerdere apparaten",
-      "prioritySupport": "Prioriteitsondersteuning"
+      "prioritySupport": "Prioriteitsondersteuning",
+      "commentAsOwner": "Reageer als geverifieerde eigenaar",
+      "ownerPrivacy": "Verberg je naam – reageer als \"Eigenaar\" of anoniem"
     },
     "badge": {
       "popular": "Populair",

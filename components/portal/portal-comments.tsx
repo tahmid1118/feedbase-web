@@ -41,15 +41,16 @@ interface Viewer {
   name: string | null;
   image: string | null;
   isLoggedIn: boolean;
-  /** May post anonymously instead of as themselves — a platform admin (on any
-   *  board) or the OWNER of this board. */
+  /** May post anonymously — a platform admin, or a Business board owner. */
   canAnonymize: boolean;
-  /** Owner of THIS board — additionally offered the "Owner" display identity. */
-  ownsBoard: boolean;
+  /** Owner of this board on a Pro+ plan → "Name (Owner)" identity. */
+  ownerBadge: boolean;
+  /** Owner of this board on Business → "Owner" (hidden) + anonymous. */
+  ownerPrivacy: boolean;
 }
 
 /** Which identity a privileged commenter posts under. */
-type CommentAs = "self" | "owner" | "anonymous";
+type CommentAs = "self" | "owner_named" | "owner_hidden" | "anonymous";
 
 function Avatar({
   name,
@@ -109,9 +110,18 @@ interface Display {
  *    older rows that predate guest_id capture)
  */
 function commentDisplay(comment: Comment, ownerLabel: string): Display {
-  // Owner chose to show as "Owner" — real name/avatar were hidden server-side.
-  if (comment.author_as_owner) {
+  // Owner "hidden" mode (2): real name/avatar were withheld server-side.
+  if (comment.author_as_owner === 2) {
     return { name: ownerLabel, avatar: null, color: "#c74959", anonymous: false };
+  }
+  // Owner "named" mode (1): real name kept, suffixed with "(Owner)".
+  if (comment.author_as_owner === 1) {
+    return {
+      name: `${comment.author_name} (${ownerLabel})`,
+      avatar: comment.author_avatar ?? null,
+      color: colorFor(comment.author_name || "owner"),
+      anonymous: false,
+    };
   }
   if (comment.author_id != null) {
     return {
@@ -228,14 +238,21 @@ function CommentForm({
           color: guestPseudonym?.color || "#c74959",
           anonymous: true,
         }
-      : commentAs === "owner"
+      : commentAs === "owner_hidden"
         ? { name: t("comments.owner"), avatar: null as string | null, color: brand, anonymous: false }
-        : {
-            name: viewer.name || "You",
-            avatar: viewer.image,
-            color: colorFor(viewer.name || "you"),
-            anonymous: false,
-          };
+        : commentAs === "owner_named"
+          ? {
+              name: `${viewer.name || "You"} (${t("comments.owner")})`,
+              avatar: viewer.image,
+              color: colorFor(viewer.name || "you"),
+              anonymous: false,
+            }
+          : {
+              name: viewer.name || "You",
+              avatar: viewer.image,
+              color: colorFor(viewer.name || "you"),
+              anonymous: false,
+            };
 
   const handle = async () => {
     if (!body.trim()) return;
@@ -292,7 +309,8 @@ function CommentForm({
               size={20}
             />
             <span>{t("comments.commentingAs")}</span>
-            {viewer.canAnonymize && onChangeCommentAs ? (
+            {(viewer.ownerBadge || viewer.ownerPrivacy || viewer.canAnonymize) &&
+            onChangeCommentAs ? (
               <>
                 <select
                   value={commentAs}
@@ -300,10 +318,19 @@ function CommentForm({
                   className="rounded-md border border-[#e399a3]/50 bg-white px-1.5 py-0.5 font-medium text-[#1c0a0c]/70 outline-none focus:ring-1 focus:ring-[#c74959]/40"
                 >
                   <option value="self">{viewer.name || t("comments.asYourName")}</option>
-                  {viewer.ownsBoard && <option value="owner">{t("comments.owner")}</option>}
-                  <option value="anonymous">{t("portal.anonymous")}</option>
+                  {viewer.ownerBadge && (
+                    <option value="owner_named">
+                      {`${viewer.name || t("comments.asYourName")} (${t("comments.owner")})`}
+                    </option>
+                  )}
+                  {viewer.ownerPrivacy && (
+                    <option value="owner_hidden">{t("comments.owner")}</option>
+                  )}
+                  {viewer.canAnonymize && (
+                    <option value="anonymous">{t("portal.anonymous")}</option>
+                  )}
                 </select>
-                {commentAs === "owner" && (
+                {(commentAs === "owner_named" || commentAs === "owner_hidden") && (
                   <VerifiedBadge size={14} label={t("comments.verifiedOwner")} />
                 )}
               </>
@@ -596,6 +623,8 @@ export function PortalComments({
   comments,
   brand,
   boardTenantId,
+  boardOwnerBadge,
+  boardOwnerPrivacy,
 }: {
   tenant: string;
   postId: number;
@@ -603,6 +632,9 @@ export function PortalComments({
   brand: string;
   /** Tenant id of this board — used to detect "you are this board's owner". */
   boardTenantId?: number;
+  /** Board plan flags (from publicApi.getTenant) — gate the owner identities. */
+  boardOwnerBadge?: boolean;
+  boardOwnerPrivacy?: boolean;
 }) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -627,28 +659,36 @@ export function PortalComments({
       session?.user?.role === "owner" &&
       boardTenantId != null &&
       String(session?.user?.tenantId) === String(boardTenantId);
+    const ownerBadge = Boolean(ownsBoard && boardOwnerBadge);
+    const ownerPrivacy = Boolean(ownsBoard && boardOwnerPrivacy);
     return {
       token,
       userId,
       name: session?.user?.name ?? null,
       image: session?.user?.image ?? null,
       isLoggedIn,
-      canAnonymize: isLoggedIn && (isPlatformAdmin || ownsBoard),
-      ownsBoard: Boolean(ownsBoard),
+      // Anonymous: platform admins always; owners only on Business (ownerPrivacy).
+      canAnonymize: isLoggedIn && (isPlatformAdmin || ownerPrivacy),
+      ownerBadge,
+      ownerPrivacy,
     };
-  }, [session, boardTenantId]);
+  }, [session, boardTenantId, boardOwnerBadge, boardOwnerPrivacy]);
 
   const onChanged = () => router.refresh();
 
-  // name/email are ignored by the backend when a token is sent (logged-in).
-  // "anonymous" submits WITHOUT the token → stored as a guest (no author_id, no
-  // name, no tick). "owner" submits authenticated with asOwner so it shows as
-  // "Owner" + tick with the real name hidden.
+  // name/email are ignored when a token is sent (logged-in). "anonymous" submits
+  // WITHOUT the token → a guest (no author_id/name/tick). "owner_named"/"owner_
+  // hidden" submit authenticated with the ownerMode (plan-gated server-side).
   const submit: Submit = async (body, parentId) => {
     setSubmitting(true);
     setError(null);
     const postAsGuest = commentAs === "anonymous" && viewer.canAnonymize;
-    const asOwner = commentAs === "owner" && viewer.ownsBoard;
+    const ownerMode =
+      commentAs === "owner_named" && viewer.ownerBadge
+        ? "named"
+        : commentAs === "owner_hidden" && viewer.ownerPrivacy
+          ? "hidden"
+          : undefined;
     const useAuth = viewer.isLoggedIn && !postAsGuest;
     const res = await portalActions.createComment(
       tenant,
@@ -659,7 +699,7 @@ export function PortalComments({
         submitterName: useAuth || postAsGuest ? undefined : readLocal(NAME_KEY) || undefined,
         submitterEmail: useAuth || postAsGuest ? undefined : readLocal(EMAIL_KEY) || undefined,
         guestId: useAuth ? undefined : getGuestId() || undefined,
-        asOwner: asOwner || undefined,
+        ownerMode: useAuth ? ownerMode : undefined,
       },
       useAuth ? viewer.token : undefined
     );

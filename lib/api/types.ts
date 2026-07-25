@@ -128,18 +128,21 @@ export interface Comment {
   guest_id?: string | null;
   /** 1 when the author's account is a platform admin (verified). */
   author_is_admin?: number;
-  /** 1 when a board owner chose to show as "Owner" (real name hidden). */
+  /** Owner display mode: 0 none, 1 named ("Name (Owner)"), 2 hidden ("Owner"). */
   author_as_owner?: number;
   parent_comment_id?: number | null;
   created_at?: string;
 }
 
+/** Owner comment identity: named = "Name (Owner)" (Pro+), hidden = "Owner" (Business). */
+export type OwnerMode = "named" | "hidden";
+
 export interface CreateCommentData {
   postId: number;
   body: string;
   parentCommentId?: number | null;
-  /** Owner-only: show as "Owner" (+ tick) instead of the real name. */
-  asOwner?: boolean;
+  /** Owner-only: how to badge the comment (plan-gated server-side). */
+  ownerMode?: OwnerMode;
 }
 
 // Tag types
@@ -367,6 +370,10 @@ export interface PlanLimits {
   contactSubmitter: boolean;
   /** May the account be signed in on several devices/browsers/tabs at once. */
   multiDevice: boolean;
+  /** Owner may comment showing "Name (Owner)" + verified tick (Pro+). */
+  ownerBadge?: boolean;
+  /** Owner may hide their name ("Owner" only) or comment anonymously (Business). */
+  ownerPrivacy?: boolean;
 }
 
 export interface ActiveOffer {
