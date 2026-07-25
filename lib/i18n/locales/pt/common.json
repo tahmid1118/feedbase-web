@@ -210,7 +210,8 @@
       "admins": "Administradores",
       "promoCodes": "Códigos promocionais",
       "offers": "Ofertas",
-      "feedbackBoard": "O nosso painel de feedback"
+      "feedbackBoard": "O nosso painel de feedback",
+      "accounts": "Contas"
     },
     "newAdmin": "Novo administrador",
     "newPromoCode": "Novo código promocional",
@@ -245,7 +246,10 @@
       "window": "Período",
       "post": "Publicação",
       "author": "Autor",
-      "activity": "Atividade"
+      "activity": "Atividade",
+      "account": "Conta",
+      "workspaces": "Workspaces",
+      "renews": "Renova / termina"
     },
     "code": "Código",
     "percentOff": "Percentagem de desconto",
@@ -268,7 +272,22 @@
     "openInDashboard": "Abrir no painel",
     "openInDashboardFailed": "Não foi possível abrir o painel.",
     "adminModeBanner": "Está a gerir este espaço de trabalho como administrador da plataforma.",
-    "backToAdmin": "Voltar ao painel de administração"
+    "backToAdmin": "Voltar ao painel de administração",
+    "durationLifetime": "Vitalício (nunca expira)",
+    "durationM1": "1 mês",
+    "durationM3": "3 meses",
+    "durationM6": "6 meses",
+    "durationM12": "12 meses",
+    "searchAccounts": "Buscar e-mail ou nome…",
+    "noAccounts": "Nenhuma conta.",
+    "workspacesSubtitle": "Todos os workspaces da plataforma. Os planos são definidos por conta na aba Contas.",
+    "accountsSubtitle": "Contas de cobrança. Uma assinatura é por conta e cobre todos os workspaces que a conta possui.",
+    "planUpdated": "Plano atualizado.",
+    "planUpdateFailed": "Falha ao atualizar o plano.",
+    "nWorkspaces_one": "{{count}} workspace",
+    "nWorkspaces_other": "{{count}} workspaces",
+    "grantToAccount": "Conceder {{plan}} a {{account}}",
+    "grantAccountDesc": "Isto oferece a conta (e seus {{count}} workspaces) sem custo; qualquer assinatura Stripe ativa é cancelada. Escolha a duração — depois volta para Free automaticamente."
   },
   "auth": {
     "login": {
@@ -584,7 +603,8 @@
     "renewsOn": "Renova em {{date}} — você será cobrado novamente então.",
     "endsOn": "Sua assinatura termina em {{date}} — sem novas cobranças.",
     "compedUntil": "Acesso cortesia até {{date}}.",
-    "compedLifetime": "Acesso cortesia — sem expiração."
+    "compedLifetime": "Acesso cortesia — sem expiração.",
+    "accountWide": "Aplica-se a toda a sua conta — todos os workspaces que você possui."
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",

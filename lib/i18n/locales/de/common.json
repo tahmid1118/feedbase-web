@@ -210,7 +210,8 @@
       "admins": "Administratoren",
       "promoCodes": "Aktionscodes",
       "offers": "Angebote",
-      "feedbackBoard": "Unser Feedback-Board"
+      "feedbackBoard": "Unser Feedback-Board",
+      "accounts": "Konten"
     },
     "newAdmin": "Neuer Administrator",
     "newPromoCode": "Neuer Aktionscode",
@@ -245,7 +246,10 @@
       "window": "Zeitraum",
       "post": "Beitrag",
       "author": "Autor",
-      "activity": "Aktivität"
+      "activity": "Aktivität",
+      "account": "Konto",
+      "workspaces": "Workspaces",
+      "renews": "Verlängert / endet"
     },
     "code": "Code",
     "percentOff": "Prozent Rabatt",
@@ -268,7 +272,22 @@
     "openInDashboard": "Im Dashboard öffnen",
     "openInDashboardFailed": "Dashboard konnte nicht geöffnet werden.",
     "adminModeBanner": "Sie verwalten diesen Workspace als Plattform-Administrator.",
-    "backToAdmin": "Zurück zum Admin-Bereich"
+    "backToAdmin": "Zurück zum Admin-Bereich",
+    "durationLifetime": "Lebenslang (läuft nie ab)",
+    "durationM1": "1 Monat",
+    "durationM3": "3 Monate",
+    "durationM6": "6 Monate",
+    "durationM12": "12 Monate",
+    "searchAccounts": "E-Mail oder Name suchen…",
+    "noAccounts": "Keine Konten.",
+    "workspacesSubtitle": "Alle Workspaces der Plattform. Pläne werden pro Konto im Tab „Konten“ festgelegt.",
+    "accountsSubtitle": "Abrechnungskonten. Ein Abo gilt pro Konto und deckt jeden Workspace ab, den das Konto besitzt.",
+    "planUpdated": "Plan aktualisiert.",
+    "planUpdateFailed": "Plan konnte nicht aktualisiert werden.",
+    "nWorkspaces_one": "{{count}} Workspace",
+    "nWorkspaces_other": "{{count}} Workspaces",
+    "grantToAccount": "{{plan}} an {{account}} vergeben",
+    "grantAccountDesc": "Dies stellt das Konto (und alle {{count}} zugehörigen Workspaces) kostenlos frei; ein laufendes Stripe-Abo wird gekündigt. Wähle die Dauer — danach wird automatisch auf Free zurückgesetzt."
   },
   "auth": {
     "login": {
@@ -584,7 +603,8 @@
     "renewsOn": "Verlängert sich am {{date}} — dann wird erneut abgebucht.",
     "endsOn": "Dein Abo endet am {{date}} — keine weiteren Abbuchungen.",
     "compedUntil": "Kostenloser Zugang bis {{date}}.",
-    "compedLifetime": "Kostenloser Zugang — ohne Ablaufdatum."
+    "compedLifetime": "Kostenloser Zugang — ohne Ablaufdatum.",
+    "accountWide": "Gilt für dein gesamtes Konto — jeden Workspace, den du besitzt."
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",

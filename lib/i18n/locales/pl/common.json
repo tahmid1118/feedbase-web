@@ -210,7 +210,8 @@
       "admins": "Administratorzy",
       "promoCodes": "Kody promocyjne",
       "offers": "Oferty",
-      "feedbackBoard": "Nasza tablica opinii"
+      "feedbackBoard": "Nasza tablica opinii",
+      "accounts": "Konta"
     },
     "newAdmin": "Nowy administrator",
     "newPromoCode": "Nowy kod promocyjny",
@@ -245,7 +246,10 @@
       "window": "Okres",
       "post": "Wpis",
       "author": "Autor",
-      "activity": "Aktywność"
+      "activity": "Aktywność",
+      "account": "Konto",
+      "workspaces": "Przestrzenie",
+      "renews": "Odnawia / kończy"
     },
     "code": "Kod",
     "percentOff": "Procent zniżki",
@@ -268,7 +272,24 @@
     "openInDashboard": "Otwórz w panelu",
     "openInDashboardFailed": "Nie udało się otworzyć panelu.",
     "adminModeBanner": "Zarządzasz tym obszarem roboczym jako administrator platformy.",
-    "backToAdmin": "Powrót do panelu administratora"
+    "backToAdmin": "Powrót do panelu administratora",
+    "durationLifetime": "Dożywotnio (nigdy nie wygasa)",
+    "durationM1": "1 miesiąc",
+    "durationM3": "3 miesiące",
+    "durationM6": "6 miesięcy",
+    "durationM12": "12 miesięcy",
+    "searchAccounts": "Szukaj e-maila lub nazwy…",
+    "noAccounts": "Brak kont.",
+    "workspacesSubtitle": "Wszystkie przestrzenie na platformie. Plany ustawia się per konto w zakładce Konta.",
+    "accountsSubtitle": "Konta rozliczeniowe. Subskrypcja jest per konto i obejmuje każdą przestrzeń, którą konto posiada.",
+    "planUpdated": "Zaktualizowano plan.",
+    "planUpdateFailed": "Nie udało się zaktualizować planu.",
+    "nWorkspaces_one": "{{count}} przestrzeń",
+    "nWorkspaces_other": "{{count}} przestrzeni",
+    "nWorkspaces_few": "{{count}} przestrzenie",
+    "nWorkspaces_many": "{{count}} przestrzeni",
+    "grantToAccount": "Przyznaj {{plan}} dla {{account}}",
+    "grantAccountDesc": "To bezpłatnie udostępnia konto (i wszystkie {{count}} należące do niego przestrzenie); aktywna subskrypcja Stripe zostaje anulowana. Wybierz czas trwania — potem automatyczny powrót do Free."
   },
   "auth": {
     "login": {
@@ -590,7 +611,8 @@
     "renewsOn": "Odnawia się {{date}} — wtedy nastąpi kolejne obciążenie.",
     "endsOn": "Twoja subskrypcja kończy się {{date}} — bez dalszych opłat.",
     "compedUntil": "Dostęp gratisowy do {{date}}.",
-    "compedLifetime": "Dostęp gratisowy — bez wygaśnięcia."
+    "compedLifetime": "Dostęp gratisowy — bez wygaśnięcia.",
+    "accountWide": "Dotyczy całego konta — każdej przestrzeni, którą posiadasz."
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",

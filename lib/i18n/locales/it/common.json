@@ -210,7 +210,8 @@
       "admins": "Amministratori",
       "promoCodes": "Codici promozionali",
       "offers": "Offerte",
-      "feedbackBoard": "La nostra bacheca dei feedback"
+      "feedbackBoard": "La nostra bacheca dei feedback",
+      "accounts": "Account"
     },
     "newAdmin": "Nuovo amministratore",
     "newPromoCode": "Nuovo codice promozionale",
@@ -245,7 +246,10 @@
       "window": "Periodo",
       "post": "Post",
       "author": "Autore",
-      "activity": "Attività"
+      "activity": "Attività",
+      "account": "Account",
+      "workspaces": "Spazi",
+      "renews": "Si rinnova / termina"
     },
     "code": "Codice",
     "percentOff": "Percentuale di sconto",
@@ -268,7 +272,22 @@
     "openInDashboard": "Apri nella dashboard",
     "openInDashboardFailed": "Impossibile aprire la dashboard.",
     "adminModeBanner": "Stai gestendo questo spazio di lavoro come amministratore della piattaforma.",
-    "backToAdmin": "Torna al pannello di amministrazione"
+    "backToAdmin": "Torna al pannello di amministrazione",
+    "durationLifetime": "A vita (non scade mai)",
+    "durationM1": "1 mese",
+    "durationM3": "3 mesi",
+    "durationM6": "6 mesi",
+    "durationM12": "12 mesi",
+    "searchAccounts": "Cerca email o nome…",
+    "noAccounts": "Nessun account.",
+    "workspacesSubtitle": "Tutti gli spazi della piattaforma. I piani si impostano per account nella scheda Account.",
+    "accountsSubtitle": "Account di fatturazione. Un abbonamento è per account e copre ogni spazio posseduto dall’account.",
+    "planUpdated": "Piano aggiornato.",
+    "planUpdateFailed": "Impossibile aggiornare il piano.",
+    "nWorkspaces_one": "{{count}} spazio",
+    "nWorkspaces_other": "{{count}} spazi",
+    "grantToAccount": "Assegna {{plan}} a {{account}}",
+    "grantAccountDesc": "Questo offre l’account (e i suoi {{count}} spazi) gratuitamente; ogni abbonamento Stripe attivo viene annullato. Scegli la durata — poi torna automaticamente a Free."
   },
   "auth": {
     "login": {
@@ -584,7 +603,8 @@
     "renewsOn": "Si rinnova il {{date}} — ti verrà addebitato di nuovo allora.",
     "endsOn": "Il tuo abbonamento termina il {{date}} — nessun altro addebito.",
     "compedUntil": "Accesso gratuito fino al {{date}}.",
-    "compedLifetime": "Accesso gratuito — senza scadenza."
+    "compedLifetime": "Accesso gratuito — senza scadenza.",
+    "accountWide": "Vale per l’intero account — ogni spazio che possiedi."
   },
   "switcher": {
     "addWorkspace": "Aggiungi spazio di lavoro",

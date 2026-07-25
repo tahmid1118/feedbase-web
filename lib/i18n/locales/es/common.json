@@ -210,7 +210,8 @@
       "admins": "Administradores",
       "promoCodes": "Códigos promocionales",
       "offers": "Ofertas",
-      "feedbackBoard": "Nuestro tablero de comentarios"
+      "feedbackBoard": "Nuestro tablero de comentarios",
+      "accounts": "Cuentas"
     },
     "newAdmin": "Nuevo administrador",
     "newPromoCode": "Nuevo código promocional",
@@ -245,7 +246,10 @@
       "window": "Periodo",
       "post": "Publicación",
       "author": "Autor",
-      "activity": "Actividad"
+      "activity": "Actividad",
+      "account": "Cuenta",
+      "workspaces": "Espacios",
+      "renews": "Renueva / termina"
     },
     "code": "Código",
     "percentOff": "Porcentaje de descuento",
@@ -268,7 +272,22 @@
     "openInDashboard": "Abrir en el panel",
     "openInDashboardFailed": "No se pudo abrir el panel.",
     "adminModeBanner": "Estás gestionando este espacio de trabajo como administrador de la plataforma.",
-    "backToAdmin": "Volver al panel de administración"
+    "backToAdmin": "Volver al panel de administración",
+    "durationLifetime": "De por vida (nunca caduca)",
+    "durationM1": "1 mes",
+    "durationM3": "3 meses",
+    "durationM6": "6 meses",
+    "durationM12": "12 meses",
+    "searchAccounts": "Buscar correo o nombre…",
+    "noAccounts": "Sin cuentas.",
+    "workspacesSubtitle": "Todos los espacios de la plataforma. Los planes se definen por cuenta en la pestaña Cuentas.",
+    "accountsSubtitle": "Cuentas de facturación. Una suscripción es por cuenta y cubre todos los espacios que posee.",
+    "planUpdated": "Plan actualizado.",
+    "planUpdateFailed": "No se pudo actualizar el plan.",
+    "nWorkspaces_one": "{{count}} espacio",
+    "nWorkspaces_other": "{{count}} espacios",
+    "grantToAccount": "Conceder {{plan}} a {{account}}",
+    "grantAccountDesc": "Esto ofrece la cuenta (y sus {{count}} espacios) sin coste; se cancela cualquier suscripción de Stripe activa. Elige la duración; después vuelve a Free automáticamente."
   },
   "auth": {
     "login": {
@@ -584,7 +603,8 @@
     "renewsOn": "Se renueva el {{date}} — se te volverá a cobrar entonces.",
     "endsOn": "Tu suscripción termina el {{date}} — sin más cargos.",
     "compedUntil": "Acceso de cortesía hasta el {{date}}.",
-    "compedLifetime": "Acceso de cortesía — sin caducidad."
+    "compedLifetime": "Acceso de cortesía — sin caducidad.",
+    "accountWide": "Se aplica a toda tu cuenta: cada espacio que posees."
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",

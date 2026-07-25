@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import {
   LayoutDashboard,
   Building2,
+  CreditCard,
   Users,
   ShieldCheck,
   Ticket,
@@ -23,6 +24,7 @@ import { officialBoardSubdomain } from "@/lib/official-board";
 const navigation = [
   { key: "admin.nav.overview", href: "/admin", icon: LayoutDashboard, exact: true },
   { key: "admin.nav.workspaces", href: "/admin/workspaces", icon: Building2 },
+  { key: "admin.nav.accounts", href: "/admin/accounts", icon: CreditCard },
   { key: "admin.nav.support", href: "/admin/support", icon: Headset },
   { key: "admin.nav.users", href: "/admin/users", icon: Users },
   { key: "admin.nav.admins", href: "/admin/admins", icon: ShieldCheck },

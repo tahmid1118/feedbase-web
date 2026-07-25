@@ -210,7 +210,8 @@
       "admins": "Administrateurs",
       "promoCodes": "Codes promo",
       "offers": "Offres",
-      "feedbackBoard": "Notre tableau de retours"
+      "feedbackBoard": "Notre tableau de retours",
+      "accounts": "Comptes"
     },
     "newAdmin": "Nouvel administrateur",
     "newPromoCode": "Nouveau code promo",
@@ -245,7 +246,10 @@
       "window": "Période",
       "post": "Publication",
       "author": "Auteur",
-      "activity": "Activité"
+      "activity": "Activité",
+      "account": "Compte",
+      "workspaces": "Espaces",
+      "renews": "Renouvelle / se termine"
     },
     "code": "Code",
     "percentOff": "Pourcentage de réduction",
@@ -268,7 +272,22 @@
     "openInDashboard": "Ouvrir dans le tableau de bord",
     "openInDashboardFailed": "Impossible d'ouvrir le tableau de bord.",
     "adminModeBanner": "Vous gérez cet espace de travail en tant qu'administrateur de la plateforme.",
-    "backToAdmin": "Retour au panneau d'administration"
+    "backToAdmin": "Retour au panneau d'administration",
+    "durationLifetime": "À vie (n’expire jamais)",
+    "durationM1": "1 mois",
+    "durationM3": "3 mois",
+    "durationM6": "6 mois",
+    "durationM12": "12 mois",
+    "searchAccounts": "Rechercher un e-mail ou un nom…",
+    "noAccounts": "Aucun compte.",
+    "workspacesSubtitle": "Tous les espaces de la plateforme. Les forfaits se définissent par compte dans l’onglet Comptes.",
+    "accountsSubtitle": "Comptes de facturation. Un abonnement est par compte et couvre chaque espace que ce compte possède.",
+    "planUpdated": "Forfait mis à jour.",
+    "planUpdateFailed": "Échec de la mise à jour du forfait.",
+    "nWorkspaces_one": "{{count}} espace",
+    "nWorkspaces_other": "{{count}} espaces",
+    "grantToAccount": "Attribuer {{plan}} à {{account}}",
+    "grantAccountDesc": "Ceci offre le compte (et ses {{count}} espaces) gratuitement ; tout abonnement Stripe actif est annulé. Choisissez la durée — ensuite, retour automatique à Free."
   },
   "auth": {
     "login": {
@@ -584,7 +603,8 @@
     "renewsOn": "Se renouvelle le {{date}} — vous serez alors débité à nouveau.",
     "endsOn": "Votre abonnement se termine le {{date}} — aucun autre prélèvement.",
     "compedUntil": "Accès offert jusqu'au {{date}}.",
-    "compedLifetime": "Accès offert — sans expiration."
+    "compedLifetime": "Accès offert — sans expiration.",
+    "accountWide": "S’applique à tout votre compte — chaque espace que vous possédez."
   },
   "switcher": {
     "addWorkspace": "Ajouter un espace de travail",

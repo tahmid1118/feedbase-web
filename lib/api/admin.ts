@@ -63,6 +63,20 @@ export interface AdminWorkspace {
   post_count: number;
 }
 
+/** A billing account (email). Subscriptions are per account; the plan covers all owned workspaces. */
+export interface AdminAccount {
+  email: string;
+  name: string | null;
+  owned_count: number;
+  /** Comma-separated subdomains of the workspaces this account owns. */
+  workspaces: string | null;
+  plan_name: string;
+  subscription_status: string | null;
+  billing_interval: string | null;
+  current_period_end: string | null;
+  is_platform_admin: number;
+}
+
 export interface AdminUserRow {
   id: number;
   email: string;
@@ -197,14 +211,6 @@ export const adminApi = {
     id: number,
     data: { name?: string; isActive?: boolean }
   ) => request(`/workspaces/${id}`, "PUT", token, data),
-  setWorkspacePlan: (
-    token: string | undefined,
-    id: number,
-    plan: string,
-    // Comp duration: omit / 0 = lifetime, else the comp expires after N months.
-    durationMonths?: number
-  ) =>
-    request(`/workspaces/${id}/plan`, "PUT", token, { plan, durationMonths }),
   deleteWorkspace: (token: string | undefined, id: number) =>
     request(`/workspaces/${id}`, "DELETE", token),
   // "Open in dashboard": returns a tenant-scoped USER token for the admin's own
@@ -221,6 +227,22 @@ export const adminApi = {
         imageUrl: string | null;
       };
     }>(`/workspaces/${id}/enter`, "POST", token),
+
+  // Accounts — subscriptions are per account (email); the plan covers every
+  // workspace the account owns.
+  listAccounts: (token?: string, search?: string) =>
+    request<{ rows: AdminAccount[] }>(`/accounts${qs(search)}`, "GET", token),
+  setAccountPlan: (
+    token: string | undefined,
+    email: string,
+    plan: string,
+    // Comp duration: omit / 0 = lifetime, else the comp expires after N months.
+    durationMonths?: number
+  ) =>
+    request(`/accounts/${encodeURIComponent(email)}/plan`, "PUT", token, {
+      plan,
+      durationMonths,
+    }),
 
   // Post moderation within a workspace
   listWorkspacePosts: (

@@ -210,7 +210,8 @@
       "admins": "Beheerders",
       "promoCodes": "Promocodes",
       "offers": "Aanbiedingen",
-      "feedbackBoard": "Ons feedbackbord"
+      "feedbackBoard": "Ons feedbackbord",
+      "accounts": "Accounts"
     },
     "newAdmin": "Nieuwe beheerder",
     "newPromoCode": "Nieuwe promocode",
@@ -245,7 +246,10 @@
       "window": "Periode",
       "post": "Bericht",
       "author": "Auteur",
-      "activity": "Activiteit"
+      "activity": "Activiteit",
+      "account": "Account",
+      "workspaces": "Workspaces",
+      "renews": "Verlengt / eindigt"
     },
     "code": "Code",
     "percentOff": "Procent korting",
@@ -268,7 +272,22 @@
     "openInDashboard": "Openen in dashboard",
     "openInDashboardFailed": "Kon het dashboard niet openen.",
     "adminModeBanner": "U beheert deze werkruimte als platformbeheerder.",
-    "backToAdmin": "Terug naar adminpaneel"
+    "backToAdmin": "Terug naar adminpaneel",
+    "durationLifetime": "Levenslang (verloopt nooit)",
+    "durationM1": "1 maand",
+    "durationM3": "3 maanden",
+    "durationM6": "6 maanden",
+    "durationM12": "12 maanden",
+    "searchAccounts": "Zoek e-mail of naam…",
+    "noAccounts": "Geen accounts.",
+    "workspacesSubtitle": "Alle workspaces op het platform. Plannen worden per account ingesteld op het tabblad Accounts.",
+    "accountsSubtitle": "Facturatieaccounts. Een abonnement is per account en dekt elke workspace die het account bezit.",
+    "planUpdated": "Plan bijgewerkt.",
+    "planUpdateFailed": "Bijwerken van plan mislukt.",
+    "nWorkspaces_one": "{{count}} workspace",
+    "nWorkspaces_other": "{{count}} workspaces",
+    "grantToAccount": "{{plan}} toekennen aan {{account}}",
+    "grantAccountDesc": "Dit geeft het account (en alle {{count}} workspaces) gratis; een actief Stripe-abonnement wordt geannuleerd. Kies de duur — daarna automatisch terug naar Free."
   },
   "auth": {
     "login": {
@@ -584,7 +603,8 @@
     "renewsOn": "Verlengt op {{date}} — dan wordt er opnieuw afgeschreven.",
     "endsOn": "Je abonnement eindigt op {{date}} — geen verdere kosten.",
     "compedUntil": "Gratis toegang tot {{date}}.",
-    "compedLifetime": "Gratis toegang — zonder vervaldatum."
+    "compedLifetime": "Gratis toegang — zonder vervaldatum.",
+    "accountWide": "Geldt voor je hele account — elke workspace die je bezit."
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",

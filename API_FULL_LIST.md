@@ -887,10 +887,10 @@ Sample Response:
 
 ## 15) Billing APIs
 
-Owner-only (Stripe hosted Checkout + Customer Portal — no card data touches this API).
+Owner-only (Stripe hosted Checkout + Customer Portal — no card data touches this API). **Subscriptions are per ACCOUNT (the caller's email), not per workspace** — one subscription covers every workspace the account owns, so all `/billing/*` routes operate on the account (`billing_accounts`) regardless of which workspace the token is scoped to.
 
 ### POST /billing/status
-Reconciles from Stripe, then returns the current subscription state + the plan's enforced limits (and any active promotional offers).
+Reconciles the ACCOUNT from Stripe, then returns its subscription state + the plan's enforced limits (and any active promotional offers).
 Sample Body:
 ```json
 {"lg":"en"}
@@ -1171,14 +1171,17 @@ Platform overview:
 
 Workspaces (any tenant):
 - `GET    /admin/workspaces` · `GET /admin/workspaces/:id` — list / detail (name, subdomain, owner email, plan, counts).
-- `PUT    /admin/workspaces/:id` — update workspace fields.
-- `PUT    /admin/workspaces/:id/plan` — grant / comp / revoke a plan. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live Stripe subscription first. Comped: no Stripe subscription.
+- `PUT    /admin/workspaces/:id` — update workspace fields. (Plan is **read-only** here — set it per account, below.)
 - `DELETE /admin/workspaces/:id` — delete a workspace.
 - `POST   /admin/workspaces/:id/enter` — "Open in dashboard": mint a tenant-scoped **user** token for the admin's OWN account in this workspace (returns `{ token, user }`, same shape as login/switch). `403 admin_not_member` if the admin has no active member row there; `409 already_logged_in_elsewhere` on a single-device plan with a live session. Used for the official dogfood board the admin owns.
 - `GET    /admin/workspaces/:id/posts` — list a workspace's posts (moderation view).
 - `PUT    /admin/workspaces/:id/posts/:postId/status` · `.../pin` — moderate status (roadmap-synced) / pin.
 - `DELETE /admin/workspaces/:id/posts/:postId` — delete a post.
 - `GET    /admin/workspaces/:id/posts/:postId/comments` · `DELETE /admin/workspaces/:id/comments/:commentId` — view / delete comments (no editing).
+
+Accounts (subscriptions are per **account** — the plan covers every workspace the account owns):
+- `GET  /admin/accounts` — list billing accounts (`?search=`): `{ rows: [{ email, name, owned_count, workspaces, plan_name, subscription_status, billing_interval, current_period_end, is_platform_admin }] }`.
+- `PUT  /admin/accounts/:email/plan` — grant / comp / revoke a plan for the whole account. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live account Stripe subscription first, then mirrors the plan onto every workspace the account owns.
 
 Users (across tenants):
 - `GET  /admin/users` — list/search.

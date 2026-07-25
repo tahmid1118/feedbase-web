@@ -382,6 +382,9 @@ export function BillingSettings() {
                 {periodNote && <p>{periodNote}</p>}
               </div>
             )}
+            <p className="mt-1 text-xs text-[#1c0a0c]/45">
+              {t("billing.accountWide")}
+            </p>
           </div>
           {hasSub && (
             <Button variant="outline" onClick={manage} disabled={busy !== null}>

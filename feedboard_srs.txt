@@ -145,14 +145,14 @@ Version 1.2
                           Each workspace subdomain must be unique; the create
                           forms validate availability live before submission.
     FR-W2  Workspace .... The number of workspaces an account may OWN and be a
-           limits ....... MEMBER of is capped by the account's tier — the highest
-                          plan among the workspaces it owns (an account that owns
-                          none is treated as Free). Free may own 1 and join 1, Pro
+           limits ....... MEMBER of is capped by the account's tier — its own
+                          subscription plan (an account that never subscribed is
+                          treated as Free). Free may own 1 and join 1, Pro
                           own 3 and join 3, and Business unlimited of each. A first
                           workspace is always allowed (an account owns none yet);
                           beyond the cap, creating or accepting an invitation is
-                          refused with an upgrade prompt. To raise the cap, upgrade
-                          a workspace you own to Pro or Business.
+                          refused with an upgrade prompt. To raise the cap,
+                          upgrade the account to Pro or Business.
 
 3.2 Public Portal (Visitors)
     The portal is the primary channel for collecting feedback.
@@ -365,8 +365,11 @@ Version 1.2
                           deletes their account.
 
 3.10 Billing & Subscriptions
-    Each workspace is on a subscription plan; payment is handled by Stripe
-    (hosted Checkout + Customer Portal — no card data is stored by the platform).
+    A subscription belongs to the USER ACCOUNT, not an individual workspace:
+    a user pays once and the plan covers EVERY workspace they own (a new
+    workspace an account creates inherits the account's current plan). Team-size
+    (seat) limits still apply per workspace. Payment is handled by Stripe (hosted
+    Checkout + Customer Portal — no card data is stored by the platform).
     FR-B1  Plans ........ Three tiers: Free ($0), Pro ($10/mo), and Business
                           ($15/mo). Paid tiers may be billed MONTHLY or YEARLY;
                           yearly is ~20% cheaper, priced at a whole-dollar monthly
@@ -393,9 +396,11 @@ Version 1.2
                           cancelled. Applies equally to monthly and yearly, and to
                           switching interval on the same tier.
     FR-B3  Manage ....... The Stripe Customer Portal is used to update the card or
-                          cancel; cancellation returns the workspace to Free.
-    FR-B4  Sync ......... A Stripe webhook keeps the workspace plan and status in
-                          sync with the subscription lifecycle.
+                          cancel; cancellation returns the account (and all the
+                          workspaces it owns) to Free.
+    FR-B4  Sync ......... A Stripe webhook keeps the account plan and status in
+                          sync with the subscription lifecycle, mirrored to every
+                          workspace the account owns.
     FR-B5  Enforcement .. Paid capabilities are gated by plan: a Free workspace
                           cannot delete feedback posts, attach photos/video to
                           feedback, or contact/notify submitters, and is prompted
@@ -443,17 +448,21 @@ Version 1.2
                           an admin session (no workspace, routed to the Admin
                           Panel); the normal sign-in yields the user session.
     FR-AD2 Workspaces .. View every workspace (owner, plan, status, member/post
-                          counts); rename, activate/deactivate, delete, and
-                          grant/revoke a plan (a comp — a paid plan with no
-                          charge). A grant lets the admin choose a duration —
+                          counts); rename, activate/deactivate, or delete. The
+                          plan is shown READ-ONLY here (it is set per account —
+                          see FR-AD2a). Open any workspace to moderate its feedback
+                          posts — change status, pin/unpin, or delete — and delete
+                          any of a post's comments (comment text is not editable —
+                          it belongs to its author).
+    FR-AD2a Accounts ... View every billing account (email, owner name, the
+                          workspaces it owns, and its plan); grant/revoke a plan
+                          (a comp — a paid plan with no charge) for the WHOLE
+                          account, so it applies to every workspace the account
+                          owns. A grant lets the admin choose a duration —
                           Lifetime or a fixed number of months, after which the
-                          workspace automatically reverts to Free. Granting a comp
-                          also cancels any live paid subscription so the workspace
-                          is no longer charged for its previous plan. Open any
-                          workspace to moderate its feedback posts — change status,
-                          pin/unpin, or delete — and delete any of a post's
-                          comments (comment text is not editable — it belongs to
-                          its author).
+                          account automatically reverts to Free. Granting a comp
+                          also cancels any live paid subscription so the account is
+                          no longer charged for its previous plan.
     FR-AD3 Users ....... View and search all users across workspaces; change role
                           (owner/user), reset password, activate/deactivate, or
                           delete.
