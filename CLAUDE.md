@@ -205,4 +205,6 @@ NEXT_PUBLIC_ROOT_DOMAIN            # Root domain for subdomain routing (default:
 NEXT_PUBLIC_FEEDBACK_SUBDOMAIN     # Subdomain of FeedBoard own feedback board (default: feedback)
 ```
 
-Configured in `.env.local` (already present, not committed).
+Configured in `.env.local` (not committed). **`.env.example` is the committed template** — copy it. Full list + host setup in **`DEPLOYMENT.md`** (Hostinger VPS: Nginx wildcard-subdomain reverse proxy, PM2, MySQL, wildcard TLS, Stripe webhook).
+
+The **`dev` script** raises the Node heap (`cross-env NODE_OPTIONS=--max-old-space-size=4096 next dev`) so the dev server's memory-threshold auto-restart (Next recycles the worker past 80% of the heap limit during long editing sessions) triggers far less often. Production (`build`/`start`) is unaffected.
