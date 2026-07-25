@@ -41,8 +41,9 @@ interface Viewer {
   name: string | null;
   image: string | null;
   isLoggedIn: boolean;
-  /** Account holds the platform-admin role → gets the anonymous-mode toggle. */
-  isPlatformAdmin: boolean;
+  /** May post anonymously instead of as themselves — a platform admin (on any
+   *  board) or the OWNER of this board — so they get the anonymous-mode toggle. */
+  canAnonymize: boolean;
 }
 
 function Avatar({
@@ -281,7 +282,7 @@ function CommentForm({
                 <span className="font-medium text-[#1c0a0c]/70">{viewer.name}</span>
               </p>
             )}
-            {viewer.isPlatformAdmin && onToggleAnonymous && (
+            {viewer.canAnonymize && onToggleAnonymous && (
               <label className="flex cursor-pointer select-none items-center gap-1.5 text-xs text-[#1c0a0c]/50">
                 <input
                   type="checkbox"
@@ -573,11 +574,14 @@ export function PortalComments({
   postId,
   comments,
   brand,
+  boardTenantId,
 }: {
   tenant: string;
   postId: number;
   comments: Comment[];
   brand: string;
+  /** Tenant id of this board — used to detect "you are this board's owner". */
+  boardTenantId?: number;
 }) {
   const { t } = useTranslation();
   const router = useRouter();
@@ -593,15 +597,24 @@ export function PortalComments({
   const viewer: Viewer = useMemo(() => {
     const token = session?.user?.accessToken || undefined;
     const userId = session?.user?.id ? Number(session.user.id) : null;
+    const isLoggedIn = Boolean(token && userId);
+    // A platform admin can go anonymous on any board; a workspace owner can on
+    // THEIR OWN board (their active tenant matches this board's tenant).
+    const isPlatformAdmin = Boolean(session?.user?.isPlatformAdmin);
+    const ownsBoard =
+      isLoggedIn &&
+      session?.user?.role === "owner" &&
+      boardTenantId != null &&
+      String(session?.user?.tenantId) === String(boardTenantId);
     return {
       token,
       userId,
       name: session?.user?.name ?? null,
       image: session?.user?.image ?? null,
-      isLoggedIn: Boolean(token && userId),
-      isPlatformAdmin: Boolean(session?.user?.isPlatformAdmin),
+      isLoggedIn,
+      canAnonymize: isLoggedIn && (isPlatformAdmin || ownsBoard),
     };
-  }, [session]);
+  }, [session, boardTenantId]);
 
   const onChanged = () => router.refresh();
 
@@ -611,7 +624,7 @@ export function PortalComments({
   const submit: Submit = async (body, parentId) => {
     setSubmitting(true);
     setError(null);
-    const postAsGuest = anonymous && viewer.isPlatformAdmin;
+    const postAsGuest = anonymous && viewer.canAnonymize;
     const useAuth = viewer.isLoggedIn && !postAsGuest;
     const res = await portalActions.createComment(
       tenant,

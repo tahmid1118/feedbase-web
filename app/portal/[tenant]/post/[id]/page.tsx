@@ -226,6 +226,7 @@ export default async function PortalPostPage({
           postId={post.id}
           comments={post.comments ?? []}
           brand={brand}
+          boardTenantId={info?.id}
         />
       </Card>
     </div>
