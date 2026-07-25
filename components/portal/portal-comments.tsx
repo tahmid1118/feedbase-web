@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { CornerDownRight, Loader2, Pencil, Trash2 } from "lucide-react";
@@ -69,12 +69,25 @@ function Avatar({
 }) {
   const url = resolveUploadUrl(src);
   const dims = { width: size, height: size };
-  if (url) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [errored, setErrored] = useState(false);
+
+  // Reset on src change, and catch an image that already failed before hydration
+  // (server-rendered <img> can finish loading — and fail — before onError attaches).
+  useEffect(() => {
+    const img = imgRef.current;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setErrored(Boolean(img && img.complete && img.naturalWidth === 0));
+  }, [url]);
+
+  if (url && !errored) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
+        ref={imgRef}
         src={url}
         alt={name}
+        onError={() => setErrored(true)}
         className="shrink-0 rounded-full object-cover"
         style={dims}
       />
