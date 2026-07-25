@@ -8,9 +8,10 @@ import {
   billingApi,
   type BillingInterval,
   type BillingStatus,
+  type PlanChangePreview,
   type PlanKey,
 } from "@/lib/api";
-import { PLANS, planPricing, formatPrice } from "@/lib/plans";
+import { PLANS, PLAN_ORDER, planPricing, formatPrice } from "@/lib/plans";
 import { useTranslation } from "@/lib/i18n/client";
 import { useLanguage } from "@/components/providers/i18n-provider";
 import { cn } from "@/lib/utils";
@@ -19,7 +20,32 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
+
+/** upgrade / downgrade / same — mirrors the backend directionOf. */
+function changeDirection(
+  curPlan: PlanKey,
+  curInterval: BillingInterval | null,
+  newPlan: PlanKey,
+  newInterval: BillingInterval
+): "upgrade" | "downgrade" | "same" {
+  const ci = curInterval ?? "month";
+  if (curPlan === newPlan && ci === newInterval) return "same";
+  const rank = (p: PlanKey) => PLAN_ORDER.indexOf(p);
+  if (rank(newPlan) > rank(curPlan)) return "upgrade";
+  if (rank(newPlan) < rank(curPlan)) return "downgrade";
+  return newInterval === "year" ? "upgrade" : "downgrade";
+}
 
 // Stripe subscription status -> i18n key. 'comped' (an admin-granted plan) is
 // deliberately shown as "Active" so it never reads as charity to the customer.
@@ -52,6 +78,15 @@ export function BillingSettings() {
     percentOff?: number;
     appliesToPlan?: string;
   } | null>(null);
+  // In-app plan-change flow (prorated). The dialog previews the exact charge.
+  const [changeTarget, setChangeTarget] = useState<{
+    plan: PlanKey;
+    interval: BillingInterval;
+    direction: "upgrade" | "downgrade";
+  } | null>(null);
+  const [preview, setPreview] = useState<PlanChangePreview | null>(null);
+  const [previewLoading, setPreviewLoading] = useState(false);
+  const [applying, setApplying] = useState(false);
 
   const load = useCallback(() => {
     if (!token) return;
@@ -130,6 +165,69 @@ export function BillingSettings() {
     }
   };
 
+  // Open the change dialog and fetch the exact prorated preview for that target.
+  const openChange = async (plan: PlanKey, planInterval: BillingInterval) => {
+    if (!token || !status) return;
+    const direction = changeDirection(status.planName, status.billingInterval, plan, planInterval);
+    if (direction === "same") return;
+    setChangeTarget({ plan, interval: planInterval, direction });
+    setPreview(null);
+    setPreviewLoading(true);
+    try {
+      const res = await billingApi.changePreview(plan, token, { interval: planInterval });
+      setPreview(res.data ?? null);
+    } catch (e) {
+      toast.error((e as Error)?.message || t("billing.changeFailed"));
+      setChangeTarget(null);
+    } finally {
+      setPreviewLoading(false);
+    }
+  };
+
+  const confirmChange = async () => {
+    if (!token || !changeTarget) return;
+    setApplying(true);
+    try {
+      const res = await billingApi.changePlan(changeTarget.plan, token, {
+        interval: changeTarget.interval,
+      });
+      toast.success(
+        res.data?.direction === "downgrade"
+          ? t("billing.changeScheduledToast")
+          : t("billing.changedToast")
+      );
+      setChangeTarget(null);
+      load();
+    } catch (e) {
+      toast.error((e as Error)?.message || t("billing.changeFailed"));
+    } finally {
+      setApplying(false);
+    }
+  };
+
+  const cancelPending = async () => {
+    if (!token) return;
+    setBusy("cancel-pending");
+    try {
+      await billingApi.cancelChange(token);
+      toast.success(t("billing.changeCancelledToast"));
+      load();
+    } catch (e) {
+      toast.error((e as Error)?.message || t("billing.changeFailed"));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  // Localized money from cents.
+  const fmtCents = (cents: number, currency: string) => {
+    try {
+      return new Intl.NumberFormat(lng, { style: "currency", currency }).format(cents / 100);
+    } catch {
+      return `$${(cents / 100).toFixed(2)}`;
+    }
+  };
+
   if (loading) {
     return (
       <Card className="p-6">
@@ -160,37 +258,72 @@ export function BillingSettings() {
     </Button>
   );
 
+  const curInterval = status?.billingInterval ?? null;
+
   const renderCta = (planKey: PlanKey, planName: string) => {
-    if (planKey === current) {
+    // Free card: subscribers cancel via the portal; free users see "Included".
+    if (planKey === "free") {
+      if (!hasSub) {
+        return current === "free" ? (
+          <Button variant="outline" disabled className="w-full">
+            {t("billing.currentPlan")}
+          </Button>
+        ) : (
+          <Button variant="outline" disabled className="w-full">
+            {t("billing.included")}
+          </Button>
+        );
+      }
+      return manageButton; // cancel to Free via portal
+    }
+
+    // Free user (no live sub) upgrading a paid plan → fresh Checkout.
+    if (!hasSub) {
+      return (
+        <Button
+          className="w-full bg-[#c74959] text-white hover:bg-[#b03f4d]"
+          onClick={() => upgrade(planKey)}
+          disabled={busy !== null}
+        >
+          {busy === planKey ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            t("billing.upgradeTo", { plan: planName })
+          )}
+        </Button>
+      );
+    }
+
+    // Subscriber: in-app prorated change to (planKey @ toggled interval).
+    const direction = changeDirection(current, curInterval, planKey, interval);
+    if (direction === "same") {
       return (
         <Button variant="outline" disabled className="w-full">
           {t("billing.currentPlan")}
         </Button>
       );
     }
-    if (planKey === "free") {
-      return hasSub ? (
-        manageButton
-      ) : (
-        <Button variant="outline" disabled className="w-full">
-          {t("billing.included")}
-        </Button>
-      );
-    }
-    // Paid plan, not current: subscribers change tiers via the Stripe portal;
-    // free users start a fresh Checkout.
-    if (hasSub) return manageButton;
+    const sameTier = planKey === current;
+    const label = sameTier
+      ? interval === "year"
+        ? t("billing.switchToYearly")
+        : t("billing.switchToMonthly")
+      : direction === "upgrade"
+        ? t("billing.upgradeTo", { plan: planName })
+        : t("billing.downgradeTo", { plan: planName });
     return (
       <Button
-        className="w-full bg-[#c74959] text-white hover:bg-[#b03f4d]"
-        onClick={() => upgrade(planKey)}
-        disabled={busy !== null}
-      >
-        {busy === planKey ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
-        ) : (
-          t("billing.upgradeTo", { plan: planName })
+        className={cn(
+          "w-full",
+          direction === "upgrade"
+            ? "bg-[#c74959] text-white hover:bg-[#b03f4d]"
+            : ""
         )}
+        variant={direction === "upgrade" ? "default" : "outline"}
+        onClick={() => openChange(planKey, interval)}
+        disabled={busy !== null || applying}
+      >
+        {label}
       </Button>
     );
   };
@@ -236,6 +369,33 @@ export function BillingSettings() {
           )}
         </div>
       </Card>
+
+      {status?.pendingPlan && (
+        <Card className="border-[#c74959]/30 bg-[#c74959]/5 p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-sm text-[#1c0a0c]/80">
+              {t("billing.pendingChange", {
+                plan: PLANS.find((p) => p.key === status.pendingPlan)?.name ?? status.pendingPlan,
+                date: status.pendingEffectiveAt
+                  ? new Date(status.pendingEffectiveAt).toLocaleDateString(lng)
+                  : "",
+              })}
+            </p>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={cancelPending}
+              disabled={busy !== null}
+            >
+              {busy === "cancel-pending" ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                t("billing.cancelChange")
+              )}
+            </Button>
+          </div>
+        </Card>
+      )}
 
       <Card className="p-6">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -403,6 +563,74 @@ export function BillingSettings() {
           );
         })}
       </div>
+
+      {/* Prorated plan-change confirmation. Upgrades show the exact charge now;
+          downgrades take effect at period end (no charge). */}
+      <AlertDialog
+        open={!!changeTarget}
+        onOpenChange={(o) => {
+          if (!o && !applying) setChangeTarget(null);
+        }}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              {changeTarget?.direction === "upgrade"
+                ? t("billing.confirmUpgradeTitle")
+                : t("billing.confirmDowngradeTitle")}
+            </AlertDialogTitle>
+            <AlertDialogDescription asChild>
+              <div className="space-y-2 text-sm text-[#1c0a0c]/70">
+                {previewLoading || !preview ? (
+                  <span className="inline-flex items-center gap-2">
+                    <Loader2 className="h-4 w-4 animate-spin" /> {t("billing.calculating")}
+                  </span>
+                ) : preview.direction === "upgrade" ? (
+                  <>
+                    <span className="block">
+                      {t("billing.upgradeChargeNow", {
+                        amount: fmtCents(preview.amountDueNow, preview.currency),
+                      })}
+                    </span>
+                    <span className="block text-xs text-[#1c0a0c]/50">
+                      {t("billing.upgradeProrationNote")}
+                    </span>
+                  </>
+                ) : (
+                  <span className="block">
+                    {t("billing.downgradeNote", {
+                      date: preview.effectiveAt
+                        ? new Date(preview.effectiveAt).toLocaleDateString(lng)
+                        : "",
+                    })}
+                  </span>
+                )}
+              </div>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={applying}>{t("common.cancel")}</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={(e) => {
+                e.preventDefault();
+                confirmChange();
+              }}
+              disabled={applying || previewLoading || !preview}
+              className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+            >
+              {applying ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : preview?.direction === "upgrade" ? (
+                t("billing.payAndUpgrade", {
+                  amount: preview ? fmtCents(preview.amountDueNow, preview.currency) : "",
+                })
+              ) : (
+                t("billing.scheduleChange")
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

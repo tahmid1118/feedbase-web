@@ -399,9 +399,24 @@ export interface BillingStatus {
   billingInterval: BillingInterval | null;
   currentPeriodEnd: string | null;
   hasSubscription: boolean;
+  /** A scheduled downgrade that takes effect at period end, if any. */
+  pendingPlan?: PlanKey | null;
+  pendingInterval?: BillingInterval | null;
+  pendingEffectiveAt?: string | null;
   limits: PlanLimits;
   // Active promotional offers keyed by plan, then interval: offers[plan]?.[interval].
   offers?: OfferMap;
+}
+
+/** Result of previewing a plan change (billingApi.changePreview). */
+export interface PlanChangePreview {
+  direction: "upgrade" | "downgrade";
+  /** Exact amount charged now, in cents (0 for a downgrade). */
+  amountDueNow: number;
+  currency: string;
+  /** For a downgrade: when it takes effect (ISO). */
+  effectiveAt?: string | null;
+  immediate: boolean;
 }
 
 // API Key types

@@ -366,14 +366,21 @@ Version 1.2
                           "billed annually" note — never the annual total.
                           Pro and Business carry a small merchandising label
                           ("Popular" / "Best") beside the plan name.
-    FR-B2  Upgrade ...... An owner/admin upgrades from the Billing tab via Stripe
-                          Checkout, choosing the monthly or yearly interval; on
-                          success the workspace's plan and interval are updated,
-                          and the Billing tab shows whether it is billed monthly
-                          or yearly.
-    FR-B3  Manage ....... Subscribers open the Stripe Customer Portal to change
-                          tier, update card, or cancel; cancellation returns the
-                          workspace to Free.
+    FR-B2  Subscribe .... From Free, an owner subscribes to a paid plan (monthly
+                          or yearly) via Stripe Checkout; on success the plan and
+                          interval are updated.
+    FR-B2a Change plan .. An existing subscriber changes plan or interval FROM THE
+                          BILLING TAB with correct PRORATION (not via the portal).
+                          An UPGRADE first shows the exact prorated amount charged
+                          now — only the difference, crediting the time already
+                          paid for — then, on confirmation, charges it immediately.
+                          A DOWNGRADE takes effect at the END of the paid period:
+                          the higher tier is kept until then with no charge or
+                          refund now; the scheduled change is shown and can be
+                          cancelled. Applies equally to monthly and yearly, and to
+                          switching interval on the same tier.
+    FR-B3  Manage ....... The Stripe Customer Portal is used to update the card or
+                          cancel; cancellation returns the workspace to Free.
     FR-B4  Sync ......... A Stripe webhook keeps the workspace plan and status in
                           sync with the subscription lifecycle.
     FR-B5  Enforcement .. Paid capabilities are gated by plan: a Free workspace

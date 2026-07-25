@@ -897,8 +897,9 @@ Sample Body:
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Billing status retrieved","data":{"planName":"pro","subscriptionStatus":"active","billingInterval":"year","currentPeriodEnd":"2027-07-15T00:00:00.000Z","hasSubscription":true,"limits":{"seats":5,"ownWorkspaces":3,"joinWorkspaces":3,"customDomain":true,"integrations":true,"deleteFeedback":true,"attachments":true,"contactSubmitter":true,"multiDevice":false},"offers":{}}}
+{"status":"success","message":"Billing status retrieved","data":{"planName":"pro","subscriptionStatus":"active","billingInterval":"year","currentPeriodEnd":"2027-07-15T00:00:00.000Z","hasSubscription":true,"pendingPlan":null,"pendingInterval":null,"pendingEffectiveAt":null,"limits":{"seats":5,"ownWorkspaces":3,"joinWorkspaces":3,"customDomain":true,"integrations":true,"deleteFeedback":true,"attachments":true,"contactSubmitter":true,"multiDevice":false,"ownerBadge":true,"ownerPrivacy":false},"offers":{}}}
 ```
+`pending*` describe a scheduled downgrade (a Stripe Subscription Schedule taking effect at `pendingEffectiveAt`), else null.
 
 ### POST /billing/checkout
 Starts a Stripe Checkout session for a paid plan and returns its hosted URL. `interval` is `month` (default) or `year` (~20% cheaper). An optional `promotionCode` (from a redeemed percent-off promo) is applied as a discount.
@@ -923,7 +924,7 @@ Sample Response:
 ```
 
 ### POST /billing/portal
-Returns a Stripe Billing Portal URL for the subscriber to change tier / update card / cancel.
+Returns a Stripe Billing Portal URL for the subscriber to update card / cancel. (Tier changes are done in-app via `/billing/change` for correct proration.)
 Sample Body:
 ```json
 {"lg":"en"}
@@ -931,6 +932,24 @@ Sample Body:
 Sample Response:
 ```json
 {"status":"success","message":"Billing portal session created","data":{"url":"https://billing.stripe.com/p/session/..."}}
+```
+
+### POST /billing/change/preview
+Owner-only. Previews an in-app plan change WITHOUT applying it. Body `{plan, interval?, lg}`. For an **upgrade** returns the exact prorated `amountDueNow` (cents, charged now); for a **downgrade** `amountDueNow:0` and `effectiveAt` (period end). Requires a live subscription.
+```json
+{"status":"success","message":"Plan change previewed","data":{"direction":"upgrade","amountDueNow":500,"currency":"USD","immediate":true}}
+```
+
+### POST /billing/change
+Owner-only. Applies the change. **Upgrade** = swap price with `proration_behavior:'always_invoice'` → charges the prorated difference now. **Downgrade** = a Stripe Subscription Schedule switching at period end (stored in `tenants.pending_*`). Body `{plan, interval?, lg}`.
+```json
+{"status":"success","message":"Plan updated","data":{"direction":"upgrade","plan":"business","interval":"month"}}
+```
+
+### POST /billing/change/cancel
+Owner-only. Cancels a scheduled (pending) downgrade — releases the Stripe schedule and clears `pending_*`, keeping the current plan.
+```json
+{"status":"success","message":"Scheduled change cancelled","data":{"ok":true}}
 ```
 
 ---

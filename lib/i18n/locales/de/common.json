@@ -559,7 +559,24 @@
       "canceled": "Gekündigt",
       "incomplete": "Unvollständig",
       "unpaid": "Unbezahlt"
-    }
+    },
+    "changeFailed": "Tarif konnte nicht geändert werden. Bitte erneut versuchen.",
+    "changedToast": "Ihr Tarif wurde aktualisiert.",
+    "changeScheduledToast": "Tarifänderung geplant.",
+    "changeCancelledToast": "Geplante Änderung abgebrochen.",
+    "switchToYearly": "Zu jährlich wechseln",
+    "switchToMonthly": "Zu monatlich wechseln",
+    "downgradeTo": "Auf {{plan}} herabstufen",
+    "pendingChange": "Wechsel zu {{plan}} geplant für {{date}}.",
+    "cancelChange": "Änderung abbrechen",
+    "confirmUpgradeTitle": "Upgrade bestätigen",
+    "confirmDowngradeTitle": "Änderung bestätigen",
+    "calculating": "Wird berechnet…",
+    "upgradeChargeNow": "Ihnen werden jetzt {{amount}} berechnet.",
+    "upgradeProrationNote": "Die bereits bezahlte Zeit wird angerechnet – Sie zahlen nur die Differenz. Danach verlängert sich Ihr Tarif zum vollen Preis.",
+    "downgradeNote": "Wird am {{date}} wirksam – bis dahin behalten Sie Ihren aktuellen Tarif, ohne Berechnung jetzt.",
+    "payAndUpgrade": "{{amount}} zahlen & upgraden",
+    "scheduleChange": "Änderung planen"
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",

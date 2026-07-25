@@ -559,7 +559,24 @@
       "canceled": "Canceled",
       "incomplete": "Incomplete",
       "unpaid": "Unpaid"
-    }
+    },
+    "changeFailed": "Couldn't change your plan. Please try again.",
+    "changedToast": "Your plan has been updated.",
+    "changeScheduledToast": "Plan change scheduled.",
+    "changeCancelledToast": "Scheduled change cancelled.",
+    "switchToYearly": "Switch to yearly",
+    "switchToMonthly": "Switch to monthly",
+    "downgradeTo": "Downgrade to {{plan}}",
+    "pendingChange": "Scheduled to change to {{plan}} on {{date}}.",
+    "cancelChange": "Cancel change",
+    "confirmUpgradeTitle": "Confirm upgrade",
+    "confirmDowngradeTitle": "Confirm change",
+    "calculating": "Calculating…",
+    "upgradeChargeNow": "You'll be charged {{amount}} now.",
+    "upgradeProrationNote": "The time you already paid for is credited — you only pay the difference. Your plan then renews at the full price.",
+    "downgradeNote": "Takes effect on {{date}} — you keep your current plan until then, with no charge now.",
+    "payAndUpgrade": "Pay {{amount}} & upgrade",
+    "scheduleChange": "Schedule change"
   },
   "switcher": {
     "addWorkspace": "Add Workspace",

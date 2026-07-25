@@ -559,7 +559,24 @@
       "canceled": "Cancelado",
       "incomplete": "Incompleto",
       "unpaid": "Por pagar"
-    }
+    },
+    "changeFailed": "Não foi possível alterar o seu plano. Tente novamente.",
+    "changedToast": "O seu plano foi atualizado.",
+    "changeScheduledToast": "Alteração do plano agendada.",
+    "changeCancelledToast": "Alteração agendada cancelada.",
+    "switchToYearly": "Mudar para anual",
+    "switchToMonthly": "Mudar para mensal",
+    "downgradeTo": "Mudar para {{plan}}",
+    "pendingChange": "Alteração para {{plan}} agendada para {{date}}.",
+    "cancelChange": "Cancelar alteração",
+    "confirmUpgradeTitle": "Confirmar upgrade",
+    "confirmDowngradeTitle": "Confirmar alteração",
+    "calculating": "A calcular…",
+    "upgradeChargeNow": "Ser-lhe-á cobrado {{amount}} agora.",
+    "upgradeProrationNote": "O tempo que já pagou é creditado — paga apenas a diferença. Depois o plano renova ao preço total.",
+    "downgradeNote": "Entra em vigor a {{date}} — mantém o seu plano atual até lá, sem cobrança agora.",
+    "payAndUpgrade": "Pagar {{amount}} e fazer upgrade",
+    "scheduleChange": "Agendar alteração"
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",

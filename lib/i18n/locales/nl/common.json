@@ -559,7 +559,24 @@
       "canceled": "Geannuleerd",
       "incomplete": "Onvolledig",
       "unpaid": "Onbetaald"
-    }
+    },
+    "changeFailed": "Kon je abonnement niet wijzigen. Probeer het opnieuw.",
+    "changedToast": "Je abonnement is bijgewerkt.",
+    "changeScheduledToast": "Abonnementswijziging gepland.",
+    "changeCancelledToast": "Geplande wijziging geannuleerd.",
+    "switchToYearly": "Overschakelen naar jaarlijks",
+    "switchToMonthly": "Overschakelen naar maandelijks",
+    "downgradeTo": "Downgraden naar {{plan}}",
+    "pendingChange": "Wijziging naar {{plan}} gepland op {{date}}.",
+    "cancelChange": "Wijziging annuleren",
+    "confirmUpgradeTitle": "Upgrade bevestigen",
+    "confirmDowngradeTitle": "Wijziging bevestigen",
+    "calculating": "Berekenen…",
+    "upgradeChargeNow": "Er wordt nu {{amount}} in rekening gebracht.",
+    "upgradeProrationNote": "De reeds betaalde tijd wordt verrekend — je betaalt alleen het verschil. Daarna verlengt je abonnement tegen de volle prijs.",
+    "downgradeNote": "Gaat in op {{date}} — tot dan behoud je je huidige abonnement, nu geen kosten.",
+    "payAndUpgrade": "{{amount}} betalen & upgraden",
+    "scheduleChange": "Wijziging plannen"
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",
