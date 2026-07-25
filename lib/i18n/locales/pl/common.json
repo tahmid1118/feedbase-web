@@ -445,7 +445,10 @@
     "commentAnonymously": "Skomentuj anonimowo",
     "owner": "Właściciel",
     "verifiedOwner": "Zweryfikowany właściciel",
-    "asYourName": "Twoje imię"
+    "asYourName": "Twoje imię",
+    "proBadge": "PRO",
+    "ownerReplyPro": "Odpowiadanie na opinie jako właściciel przestrzeni to funkcja Pro. Ulepsz plan, aby odpowiadać użytkownikom.",
+    "goToBilling": "Przejdź do rozliczeń"
   },
   "share": {
     "title": "Udostępnij ten wpis",

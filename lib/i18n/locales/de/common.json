@@ -439,7 +439,10 @@
     "commentAnonymously": "Anonym kommentieren",
     "owner": "Inhaber",
     "verifiedOwner": "Verifizierter Inhaber",
-    "asYourName": "Ihr Name"
+    "asYourName": "Ihr Name",
+    "proBadge": "PRO",
+    "ownerReplyPro": "Auf Feedback als Workspace-Inhaber zu antworten, ist eine Pro-Funktion. Upgrade, um deinen Nutzern zu antworten.",
+    "goToBilling": "Zur Abrechnung"
   },
   "share": {
     "title": "Diesen Beitrag teilen",

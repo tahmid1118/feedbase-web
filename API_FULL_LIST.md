@@ -451,7 +451,7 @@ Sample Response:
 ```json
 {"status":"success","message":"Comments retrieved successfully","data":[{"id":401,"post_id":101,"author_id":3,"body":"Great request. We need this soon.","is_edited":0,"author_name":"Jane Product","author_email":"jane@acme.test","author_is_admin":0}]}
 ```
-Each comment includes `author_is_admin` (platform-admin verified tick) and `author_as_owner` (owner display mode: 0 none, 1 "Name (Owner)", 2 "Owner" only with name withheld). `POST /comments/create` accepts `commentData.ownerMode` (`"named"` = Pro+, `"hidden"` = Business) — the mode is plan-gated server-side.
+Each comment includes `author_is_admin` (platform-admin verified tick) and `author_as_owner` (owner display mode: 0 none, 1 "Name (Owner)", 2 "Owner" only with name withheld). `POST /comments/create` accepts `commentData.ownerMode` (`"named"` = Pro+, `"hidden"` = Business) — the mode is plan-gated server-side. Commenting **as the board owner is itself Pro+**: a board owner on the **Free** plan is rejected with **`402 owner_comment_pro`** (non-owner members are not gated).
 
 ---
 
@@ -1097,7 +1097,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId/comments
-Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer). A logged-in **board owner** may pass `ownerMode` — `"named"` ("Name (Owner)" + tick, Pro+) or `"hidden"` ("Owner" only, name withheld, Business) — honored only when the Bearer account owns this board and the plan permits it.
+Add a comment (or a threaded reply via `parentCommentId`). Guest or logged-in (Bearer). A logged-in **board owner** may pass `ownerMode` — `"named"` ("Name (Owner)" + tick, Pro+) or `"hidden"` ("Owner" only, name withheld, Business) — honored only when the Bearer account owns this board and the plan permits it. Commenting as the board owner is **Pro+**: a Free-plan owner is rejected with **`402 owner_comment_pro`** (guests and non-owner members are unaffected).
 Sample Body:
 ```json
 {"lg":"en","body":"Great idea","parentCommentId":null,"submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12"}

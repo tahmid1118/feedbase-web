@@ -41,9 +41,11 @@ interface Viewer {
   name: string | null;
   image: string | null;
   isLoggedIn: boolean;
+  /** Owner of THIS board (any plan). */
+  ownsBoard: boolean;
   /** May post anonymously — a platform admin, or a Business board owner. */
   canAnonymize: boolean;
-  /** Owner of this board on a Pro+ plan → "Name (Owner)" identity. */
+  /** Owner of this board on a Pro+ plan → may comment as "Name (Owner)". */
   ownerBadge: boolean;
   /** Owner of this board on Business → "Owner" (hidden) + anonymous. */
   ownerPrivacy: boolean;
@@ -392,12 +394,14 @@ function CommentCard({
   tenant,
   onReply,
   onChanged,
+  canReply = true,
 }: {
   comment: Comment;
   viewer: Viewer;
   tenant: string;
   onReply: () => void;
   onChanged: () => void;
+  canReply?: boolean;
 }) {
   const { t } = useTranslation();
   const [editing, setEditing] = useState(false);
@@ -501,14 +505,16 @@ function CommentCard({
 
       {!editing && (
         <div className="mt-2 flex items-center gap-3 text-xs font-medium text-[#1c0a0c]/50">
-          <button
-            type="button"
-            onClick={onReply}
-            className="inline-flex items-center gap-1 hover:text-[#1c0a0c]"
-          >
-            <CornerDownRight className="h-3 w-3" />
-            {t("comments.reply")}
-          </button>
+          {canReply && (
+            <button
+              type="button"
+              onClick={onReply}
+              className="inline-flex items-center gap-1 hover:text-[#1c0a0c]"
+            >
+              <CornerDownRight className="h-3 w-3" />
+              {t("comments.reply")}
+            </button>
+          )}
           {mine && !confirmDelete && (
             <>
               <button
@@ -565,6 +571,7 @@ function ThreadView({
   setReplyTo,
   submit,
   onChanged,
+  canReply = true,
 }: {
   thread: Thread;
   brand: string;
@@ -575,9 +582,10 @@ function ThreadView({
   setReplyTo: (id: number | null) => void;
   submit: Submit;
   onChanged: () => void;
+  canReply?: boolean;
 }) {
   const { root, replies } = thread;
-  const isReplying = replyTo === root.id;
+  const isReplying = canReply && replyTo === root.id;
 
   return (
     <div>
@@ -587,6 +595,7 @@ function ThreadView({
         tenant={tenant}
         onReply={() => setReplyTo(isReplying ? null : root.id)}
         onChanged={onChanged}
+        canReply={canReply}
       />
       {(replies.length > 0 || isReplying) && (
         <div className="mt-3 ml-6 space-y-3 border-l border-black/10 pl-4">
@@ -598,6 +607,7 @@ function ThreadView({
               tenant={tenant}
               onReply={() => setReplyTo(root.id)}
               onChanged={onChanged}
+              canReply={canReply}
             />
           ))}
           {isReplying && (
@@ -667,6 +677,7 @@ export function PortalComments({
       name: session?.user?.name ?? null,
       image: session?.user?.image ?? null,
       isLoggedIn,
+      ownsBoard: Boolean(ownsBoard),
       // Anonymous: platform admins always; owners only on Business (ownerPrivacy).
       canAnonymize: isLoggedIn && (isPlatformAdmin || ownerPrivacy),
       ownerBadge,
@@ -674,16 +685,26 @@ export function PortalComments({
     };
   }, [session, boardTenantId, boardOwnerBadge, boardOwnerPrivacy]);
 
-  // The identities this commenter may post under. An owner with the named badge
-  // does NOT get a redundant plain-name option — "Name (Owner)" replaces it.
+  // The identities this commenter may post under.
+  //  - The board OWNER may comment only on Pro+ (ownerBadge). On Free they get
+  //    NO options → commenting is blocked (a Pro feature). An owner never gets a
+  //    plain-name option — "Name (Owner)" replaces it.
+  //  - A non-owner logged-in user comments as "self" (a platform admin may also
+  //    go anonymous).
   const identityOptions = useMemo<CommentAs[]>(() => {
     const opts: CommentAs[] = [];
-    if (viewer.ownerBadge) opts.push("owner_named");
-    else if (viewer.isLoggedIn) opts.push("self");
-    if (viewer.ownerPrivacy) opts.push("owner_hidden");
-    if (viewer.canAnonymize) opts.push("anonymous");
+    if (viewer.ownsBoard) {
+      if (viewer.ownerBadge) opts.push("owner_named");
+      if (viewer.ownerPrivacy) opts.push("owner_hidden");
+      if (viewer.canAnonymize) opts.push("anonymous");
+    } else if (viewer.isLoggedIn) {
+      opts.push("self");
+      if (viewer.canAnonymize) opts.push("anonymous");
+    }
     return opts;
   }, [viewer]);
+  // A logged-in board owner with no options is a Free owner → commenting blocked.
+  const ownerBlocked = viewer.isLoggedIn && viewer.ownsBoard && identityOptions.length === 0;
   // Effective choice — coerce into the available options (so a stale "self"
   // default lands on the first real option, e.g. "owner_named" for an owner).
   const commentAsEff: CommentAs = identityOptions.includes(commentAs)
@@ -731,15 +752,32 @@ export function PortalComments({
 
   return (
     <div className="space-y-5">
-      <CommentForm
-        brand={brand}
-        viewer={viewer}
-        submitting={submitting}
-        onSubmit={(body) => submit(body, null)}
-        commentAs={commentAsEff}
-        onChangeCommentAs={setCommentAs}
-        identityOptions={identityOptions}
-      />
+      {ownerBlocked ? (
+        <div className="rounded-lg border border-[#c74959]/25 bg-[#c74959]/5 p-4 text-sm text-[#1c0a0c]/70">
+          <p className="flex flex-wrap items-center gap-2">
+            <span className="rounded bg-[#c74959] px-1.5 py-0.5 text-xs font-semibold text-white">
+              {t("comments.proBadge")}
+            </span>
+            {t("comments.ownerReplyPro")}
+          </p>
+          <a
+            href="/dashboard/settings?tab=billing"
+            className="mt-2 inline-block text-xs font-medium text-[#c74959] underline"
+          >
+            {t("comments.goToBilling")}
+          </a>
+        </div>
+      ) : (
+        <CommentForm
+          brand={brand}
+          viewer={viewer}
+          submitting={submitting}
+          onSubmit={(body) => submit(body, null)}
+          commentAs={commentAsEff}
+          onChangeCommentAs={setCommentAs}
+          identityOptions={identityOptions}
+        />
+      )}
 
       {error && (
         <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
@@ -765,6 +803,7 @@ export function PortalComments({
               setReplyTo={setReplyTo}
               submit={submit}
               onChanged={onChanged}
+              canReply={!ownerBlocked}
             />
           ))}
         </div>

@@ -439,7 +439,10 @@
     "commentAnonymously": "Anoniem reageren",
     "owner": "Eigenaar",
     "verifiedOwner": "Geverifieerde eigenaar",
-    "asYourName": "Uw naam"
+    "asYourName": "Uw naam",
+    "proBadge": "PRO",
+    "ownerReplyPro": "Reageren op feedback als workspace-eigenaar is een Pro-functie. Upgrade om je gebruikers te antwoorden.",
+    "goToBilling": "Naar facturering"
   },
   "share": {
     "title": "Deel dit bericht",

@@ -439,7 +439,10 @@
     "commentAnonymously": "Comment anonymously",
     "owner": "Owner",
     "verifiedOwner": "Verified owner",
-    "asYourName": "Your name"
+    "asYourName": "Your name",
+    "proBadge": "PRO",
+    "ownerReplyPro": "Replying to feedback as the workspace owner is a Pro feature. Upgrade to respond to your users.",
+    "goToBilling": "Go to billing"
   },
   "share": {
     "title": "Share this post",

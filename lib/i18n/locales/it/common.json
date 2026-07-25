@@ -439,7 +439,10 @@
     "commentAnonymously": "Commenta in modo anonimo",
     "owner": "Proprietario",
     "verifiedOwner": "Proprietario verificato",
-    "asYourName": "Il tuo nome"
+    "asYourName": "Il tuo nome",
+    "proBadge": "PRO",
+    "ownerReplyPro": "Rispondere ai feedback come proprietario dello spazio è una funzione Pro. Esegui l’upgrade per rispondere ai tuoi utenti.",
+    "goToBilling": "Vai alla fatturazione"
   },
   "share": {
     "title": "Condividi questo post",
