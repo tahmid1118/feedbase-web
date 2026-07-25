@@ -785,7 +785,7 @@
       "multiDevice": "Logowanie na wielu urządzeniach",
       "prioritySupport": "Priorytetowe wsparcie",
       "commentAsOwner": "Odpowiadaj jako zweryfikowany właściciel",
-      "ownerPrivacy": "Ukryj swoje imię – odpowiadaj jako „Właściciel\" lub anonimowo"
+      "ownerPrivacy": "Odpowiadaj jako zweryfikowany „Owner” z ukrytym prawdziwym imieniem"
     },
     "badge": {
       "popular": "Popularny",
