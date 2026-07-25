@@ -260,6 +260,27 @@ export function BillingSettings() {
 
   const curInterval = status?.billingInterval ?? null;
 
+  // A note on when the plan renews / ends. A comped plan may have an expiry
+  // (timed comp) or none (lifetime); a real subscription set to cancel "ends"
+  // rather than "renews" on its period end.
+  const isComped = status?.subscriptionStatus === "comped";
+  const willCancel = Boolean(status?.cancelAtPeriodEnd);
+  const billedLine =
+    curInterval === "year"
+      ? t("billing.billedYearly")
+      : curInterval === "month"
+        ? t("billing.billedMonthly")
+        : null;
+  const periodNote = isComped
+    ? renewal
+      ? t("billing.compedUntil", { date: renewal })
+      : t("billing.compedLifetime")
+    : hasSub && renewal
+      ? willCancel
+        ? t("billing.endsOn", { date: renewal })
+        : t("billing.renewsOn", { date: renewal })
+      : null;
+
   const renderCta = (planKey: PlanKey, planName: string) => {
     // Free card: subscribers cancel via the portal; free users see "Included".
     if (planKey === "free") {
@@ -355,16 +376,11 @@ export function BillingSettings() {
                 </Badge>
               )}
             </div>
-            {hasSub && (renewal || status?.billingInterval) && (
-              <p className="mt-1 text-xs text-[#1c0a0c]/50">
-                {status?.billingInterval === "year"
-                  ? t("billing.billedYearly")
-                  : status?.billingInterval === "month"
-                    ? t("billing.billedMonthly")
-                    : null}
-                {status?.billingInterval && renewal ? " · " : ""}
-                {renewal ? t("billing.renews", { date: renewal }) : ""}
-              </p>
+            {(billedLine || periodNote) && (
+              <div className="mt-1 space-y-0.5 text-xs text-[#1c0a0c]/50">
+                {hasSub && billedLine && <p>{billedLine}</p>}
+                {periodNote && <p>{periodNote}</p>}
+              </div>
             )}
           </div>
           {hasSub && (

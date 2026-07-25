@@ -580,7 +580,11 @@
     "upgradeProrationNote": "Die bereits bezahlte Zeit wird angerechnet – Sie zahlen nur die Differenz. Danach verlängert sich Ihr Tarif zum vollen Preis.",
     "downgradeNote": "Wird am {{date}} wirksam – bis dahin behalten Sie Ihren aktuellen Tarif, ohne Berechnung jetzt.",
     "payAndUpgrade": "{{amount}} zahlen & upgraden",
-    "scheduleChange": "Änderung planen"
+    "scheduleChange": "Änderung planen",
+    "renewsOn": "Verlängert sich am {{date}} — dann wird erneut abgebucht.",
+    "endsOn": "Dein Abo endet am {{date}} — keine weiteren Abbuchungen.",
+    "compedUntil": "Kostenloser Zugang bis {{date}}.",
+    "compedLifetime": "Kostenloser Zugang — ohne Ablaufdatum."
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",

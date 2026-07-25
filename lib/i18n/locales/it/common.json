@@ -580,7 +580,11 @@
     "upgradeProrationNote": "Il tempo già pagato viene accreditato: paghi solo la differenza. Il piano si rinnova poi al prezzo pieno.",
     "downgradeNote": "Ha effetto il {{date}} — mantieni il piano attuale fino ad allora, senza addebiti ora.",
     "payAndUpgrade": "Paga {{amount}} e aggiorna",
-    "scheduleChange": "Pianifica modifica"
+    "scheduleChange": "Pianifica modifica",
+    "renewsOn": "Si rinnova il {{date}} — ti verrà addebitato di nuovo allora.",
+    "endsOn": "Il tuo abbonamento termina il {{date}} — nessun altro addebito.",
+    "compedUntil": "Accesso gratuito fino al {{date}}.",
+    "compedLifetime": "Accesso gratuito — senza scadenza."
   },
   "switcher": {
     "addWorkspace": "Aggiungi spazio di lavoro",

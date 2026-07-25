@@ -897,9 +897,9 @@ Sample Body:
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Billing status retrieved","data":{"planName":"pro","subscriptionStatus":"active","billingInterval":"year","currentPeriodEnd":"2027-07-15T00:00:00.000Z","hasSubscription":true,"pendingPlan":null,"pendingInterval":null,"pendingEffectiveAt":null,"limits":{"seats":5,"ownWorkspaces":3,"joinWorkspaces":3,"customDomain":true,"integrations":true,"deleteFeedback":true,"attachments":true,"contactSubmitter":true,"multiDevice":false,"ownerBadge":true,"ownerPrivacy":false},"offers":{}}}
+{"status":"success","message":"Billing status retrieved","data":{"planName":"pro","subscriptionStatus":"active","billingInterval":"year","currentPeriodEnd":"2027-07-15T00:00:00.000Z","hasSubscription":true,"cancelAtPeriodEnd":false,"pendingPlan":null,"pendingInterval":null,"pendingEffectiveAt":null,"limits":{"seats":5,"ownWorkspaces":3,"joinWorkspaces":3,"customDomain":true,"integrations":true,"deleteFeedback":true,"attachments":true,"contactSubmitter":true,"multiDevice":false,"ownerBadge":true,"ownerPrivacy":false},"offers":{}}}
 ```
-`pending*` describe a scheduled downgrade (a Stripe Subscription Schedule taking effect at `pendingEffectiveAt`), else null.
+`currentPeriodEnd` is the renewal/next-charge date (or, when `cancelAtPeriodEnd` is true, the date the subscription ends with no further charge — read live from Stripe). `pending*` describe a scheduled downgrade (a Stripe Subscription Schedule taking effect at `pendingEffectiveAt`), else null.
 
 ### POST /billing/checkout
 Starts a Stripe Checkout session for a paid plan and returns its hosted URL. `interval` is `month` (default) or `year` (~20% cheaper). An optional `promotionCode` (from a redeemed percent-off promo) is applied as a discount.

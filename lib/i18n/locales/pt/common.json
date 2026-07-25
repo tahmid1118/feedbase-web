@@ -580,7 +580,11 @@
     "upgradeProrationNote": "O tempo que já pagou é creditado — paga apenas a diferença. Depois o plano renova ao preço total.",
     "downgradeNote": "Entra em vigor a {{date}} — mantém o seu plano atual até lá, sem cobrança agora.",
     "payAndUpgrade": "Pagar {{amount}} e fazer upgrade",
-    "scheduleChange": "Agendar alteração"
+    "scheduleChange": "Agendar alteração",
+    "renewsOn": "Renova em {{date}} — você será cobrado novamente então.",
+    "endsOn": "Sua assinatura termina em {{date}} — sem novas cobranças.",
+    "compedUntil": "Acesso cortesia até {{date}}.",
+    "compedLifetime": "Acesso cortesia — sem expiração."
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",

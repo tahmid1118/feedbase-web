@@ -399,6 +399,8 @@ export interface BillingStatus {
   billingInterval: BillingInterval | null;
   currentPeriodEnd: string | null;
   hasSubscription: boolean;
+  /** True when the active subscription is set to cancel at period end (won't renew). */
+  cancelAtPeriodEnd?: boolean;
   /** A scheduled downgrade that takes effect at period end, if any. */
   pendingPlan?: PlanKey | null;
   pendingInterval?: BillingInterval | null;

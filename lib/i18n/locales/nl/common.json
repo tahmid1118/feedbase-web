@@ -580,7 +580,11 @@
     "upgradeProrationNote": "De reeds betaalde tijd wordt verrekend — je betaalt alleen het verschil. Daarna verlengt je abonnement tegen de volle prijs.",
     "downgradeNote": "Gaat in op {{date}} — tot dan behoud je je huidige abonnement, nu geen kosten.",
     "payAndUpgrade": "{{amount}} betalen & upgraden",
-    "scheduleChange": "Wijziging plannen"
+    "scheduleChange": "Wijziging plannen",
+    "renewsOn": "Verlengt op {{date}} — dan wordt er opnieuw afgeschreven.",
+    "endsOn": "Je abonnement eindigt op {{date}} — geen verdere kosten.",
+    "compedUntil": "Gratis toegang tot {{date}}.",
+    "compedLifetime": "Gratis toegang — zonder vervaldatum."
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",

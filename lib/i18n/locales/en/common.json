@@ -555,6 +555,10 @@
     "redeemHint": "Redeem a code to unlock a discount or a free plan.",
     "apply": "Apply",
     "renews": "Renews {{date}}",
+    "renewsOn": "Renews on {{date}} — you'll be charged again then.",
+    "endsOn": "Your subscription ends on {{date}} — no further charges.",
+    "compedUntil": "Complimentary access until {{date}}.",
+    "compedLifetime": "Complimentary access — no expiry.",
     "save": "SAVE {{percent}}%",
     "status": {
       "active": "Active",
