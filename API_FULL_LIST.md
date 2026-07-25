@@ -1052,7 +1052,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId
-Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — `users.is_platform_admin`, renders a "Verified admin" tick). Each comment also includes `author_as_owner` (owner display mode: 0 none, 1 "Name (Owner)" + tick, 2 "Owner" only with the real name/avatar withheld).
+Public post detail with its comment thread (no author emails). The post and each comment include `author_is_admin` (1 when the author's account is a platform admin — `users.is_platform_admin`, renders a "Verified admin" tick; their `author_avatar` is FeedBoard's app icon, set as the admin's profile picture). Each comment also includes `author_as_owner` (owner display mode: 0 none, 1 "Name (Owner)" + tick with the owner's profile picture as `author_avatar`, 2 "Owner" only — the real name is withheld and `author_avatar` becomes the workspace's own logo / company icon).
 Sample Body:
 ```json
 {"lg":"en"}

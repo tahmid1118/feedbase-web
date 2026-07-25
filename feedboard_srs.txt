@@ -206,7 +206,11 @@ Version 1.2
                           "Verified admin" tick beside the name, so visitors can
                           recognise an official reply from the platform's team.
                           The mark is derived from the platform-admin role on the
-                          account, not from a display name.
+                          account, not from a display name. The administrator's
+                          avatar is the product's own app icon (also their profile
+                          picture and the official feedback board's logo), so an
+                          official reply is visually branded as coming from the
+                          platform.
     FR-P10 Identity ..... When commenting, a privileged author may choose the
                           identity the comment is shown under. For a board OWNER
                           this is PLAN-GATED: replying to feedback as the workspace
@@ -214,14 +218,15 @@ Version 1.2
                           CANNOT comment on their own board at all (the composer is
                           replaced with an upgrade prompt and the reply action is
                           hidden). On Pro and above they comment as "Name (Owner)"
-                          with a verified tick; on Business they may instead choose
-                          a generic "Owner" with a tick (real name and avatar
-                          withheld) or fully anonymous. Non-owner members and
-                          platform admins are never gated (admins may always post
-                          anonymously). The plan gate is enforced server-side, not
-                          just in the UI. The choice applies to the comment and its
-                          replies, on both the public portal and (except anonymous)
-                          the dashboard.
+                          with a verified tick, shown with their profile picture as
+                          the avatar; on Business they may instead choose a generic
+                          "Owner" with a tick (real name withheld, shown with the
+                          workspace's own logo as the avatar) or fully anonymous.
+                          Non-owner members and platform admins are never gated
+                          (admins may always post anonymously). The plan gate is
+                          enforced server-side, not just in the UI. The choice
+                          applies to the comment and its replies, on both the public
+                          portal and (except anonymous) the dashboard.
     FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
                           FR-B5), a feedback post may carry up to three photo or
                           short-video attachments. Attaching is offered on both

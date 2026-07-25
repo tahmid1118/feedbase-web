@@ -112,9 +112,15 @@ interface Display {
  *    older rows that predate guest_id capture)
  */
 function commentDisplay(comment: Comment, ownerLabel: string): Display {
-  // Owner "hidden" mode (2): real name/avatar were withheld server-side.
+  // Owner "hidden" mode (2): the real name is withheld, but the avatar is the
+  // workspace's own logo (company icon), returned as author_avatar server-side.
   if (comment.author_as_owner === 2) {
-    return { name: ownerLabel, avatar: null, color: "#c74959", anonymous: false };
+    return {
+      name: ownerLabel,
+      avatar: comment.author_avatar ?? null,
+      color: "#c74959",
+      anonymous: false,
+    };
   }
   // Owner "named" mode (1): real name kept, suffixed with "(Owner)".
   if (comment.author_as_owner === 1) {
