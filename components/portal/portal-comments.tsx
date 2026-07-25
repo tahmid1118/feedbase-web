@@ -680,8 +680,6 @@ export function PortalComments({
     const token = session?.user?.accessToken || undefined;
     const userId = session?.user?.id ? Number(session.user.id) : null;
     const isLoggedIn = Boolean(token && userId);
-    // A platform admin can go anonymous on any board; a workspace owner can on
-    // THEIR OWN board (their active tenant matches this board's tenant).
     const isPlatformAdmin = Boolean(session?.user?.isPlatformAdmin);
     const ownsBoard =
       isLoggedIn &&
@@ -697,8 +695,11 @@ export function PortalComments({
       image: session?.user?.image ?? null,
       isLoggedIn,
       ownsBoard: Boolean(ownsBoard),
-      // Anonymous: platform admins always; owners only on Business (ownerPrivacy).
-      canAnonymize: isLoggedIn && (isPlatformAdmin || ownerPrivacy),
+      // Anonymous = post as a guest (no name/tick). Any logged-in user may choose
+      // it, so they can comment without their identity. The only exception is a
+      // FREE board owner, who is blocked from commenting on their own board (a Pro
+      // feature); a platform admin always keeps it.
+      canAnonymize: isLoggedIn && (isPlatformAdmin || !ownsBoard || ownerBadge),
       ownerBadge,
       ownerPrivacy,
     };
@@ -708,8 +709,7 @@ export function PortalComments({
   //  - The board OWNER may comment only on Pro+ (ownerBadge). On Free they get
   //    NO options → commenting is blocked (a Pro feature). An owner never gets a
   //    plain-name option — "Name (Owner)" replaces it.
-  //  - A non-owner logged-in user comments as "self" (a platform admin may also
-  //    go anonymous).
+  //  - A non-owner logged-in user comments as "self" or "anonymous".
   const identityOptions = useMemo<CommentAs[]>(() => {
     const opts: CommentAs[] = [];
     if (viewer.ownsBoard) {
