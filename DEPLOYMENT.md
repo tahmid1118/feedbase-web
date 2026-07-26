@@ -359,3 +359,112 @@ curl -s https://<domain>/_next/static/chunks/*.js | grep -o 'localhost:4560'
 - **Stripe webhook** (§8) pointed at the backend's public URL.
 - **Uploads** (`uploads/`) are on the container filesystem and die with it —
   mount a Dokploy volume or move to object storage.
+
+---
+
+## 12. Wildcard TLS for tenant portals (Dokploy + Traefik + Cloudflare DNS-01)
+
+`*.<domain>` needs **two** things, and only one of them is a certificate. Missing
+either gives a plausible-looking failure that points somewhere else.
+
+### 12.1 A router that matches unknown subdomains
+
+Dokploy's domain UI emits `rule: Host(`exact.host`)`, and Traefik's `Host()` does
+**not** accept wildcards — so a workspace subdomain a user invented at runtime
+matches no router and returns **404**, regardless of TLS. `proxy.ts` already
+derives the tenant from the `Host` header; the request just has to arrive.
+
+Hand-write `/etc/dokploy/traefik/dynamic/wildcard-portals.yml` (that directory is
+bind-mounted into the container with `watch: true`, so it loads live and Dokploy
+does not overwrite files it did not create):
+
+```yaml
+http:
+  routers:
+    portal-wildcard-websecure:
+      rule: HostRegexp(`^[a-z0-9-]+\.<domain-escaped>$`)
+      priority: 1                    # ← LOAD-BEARING, see below
+      entryPoints: [websecure]
+      service: portal-wildcard-service
+      tls:
+        certResolver: letsencryptdns  # overrides the entryPoint default
+        domains:
+          - main: <domain>
+            sans: ["*.<domain>"]
+  services:
+    portal-wildcard-service:
+      loadBalancer:
+        passHostHeader: true
+        servers: [{ url: "http://<frontend-service>:3000" }]
+```
+
+> **`priority: 1` is not cosmetic.** Traefik defaults a router's priority to the
+> **length of its rule**, and this regexp is longer than
+> `Host(`api.<domain>`)` — so without it, the catch-all **outranks every
+> exact-host router** and swallows `api`, `admin` (the Dokploy panel itself) and
+> `www`. The symptom is "portals work, everything else broke."
+
+Declare the service in this file rather than reusing Dokploy's generated
+`<app>-service-1`: the app's random suffix changes if the app is ever recreated.
+
+### 12.2 A wildcard certificate — DNS-01 only
+
+Let's Encrypt issues wildcards **only** over DNS-01. Dokploy ships a single
+HTTP-01 resolver, so add a second one to `traefik.yml` (keep the original; give
+the new one its own storage so existing certs can't be disturbed):
+
+```yaml
+certificatesResolvers:
+  letsencryptdns:
+    acme:
+      email: <you>
+      storage: /etc/dokploy/traefik/dynamic/acme-dns.json
+      dnsChallenge:
+        provider: cloudflare
+        resolvers: ["1.1.1.1:53", "8.8.8.8:53"]
+```
+
+Credentials come from **`CF_DNS_API_TOKEN`** in Traefik's environment — a
+Cloudflare token scoped to **Zone:DNS:Edit on that one zone**, with **Client IP
+filtering set to the server's IP** (so a leaked token is unusable elsewhere) and
+no TTL (an expiring token breaks renewal silently).
+
+> ⚠ **The token lives only in the container's env, and Dokploy's Traefik is a
+> plain `docker run` container — no compose file.** A Dokploy upgrade that
+> recreates it **drops the variable**, and renewal then fails **60 days later**
+> with no warning. Keep `/root/.cf_env` (mode 600) on the box and re-add
+> `--env-file /root/.cf_env` after any Dokploy upgrade. Check with:
+> `docker exec dokploy-traefik sh -c 'test -n "$CF_DNS_API_TOKEN" && echo ok'`
+
+Recreating the container: **stop it before renaming.** `docker rename` on a
+*running* container attached to a Swarm overlay network fails with
+`could not add service state for endpoint … already exists`. The container is
+stateless — everything is in the three bind mounts (`traefik.yml`, `dynamic/`,
+`docker.sock`).
+
+### 12.3 Cloudflare proxy: optional either way
+
+With a publicly trusted wildcard at the origin, both modes work:
+
+- **DNS only (grey cloud)** — browsers hit the origin and trust Let's Encrypt directly.
+- **Proxied (orange cloud)** — set SSL/TLS to **`Full (strict)`**; Cloudflare
+  validates the same cert. Universal SSL covers the apex + **one** subdomain
+  level, which is exactly what tenant portals need.
+
+Do **not** use `Flexible`: Cloudflare would speak plain HTTP to the origin and the
+`redirect-to-https` middleware would loop.
+
+A **Cloudflare Origin Certificate** is *not* a substitute — it is trusted only by
+Cloudflare, so it fails the moment a record is grey-clouded, and it does nothing
+about §12.1. Error **526** means Cloudflare reached the origin and rejected its
+certificate (i.e. routing works, cert doesn't); **404** on a tenant host means the
+opposite — TLS fine, no router.
+
+### 12.4 Verify
+
+```bash
+# trusted wildcard for an arbitrary future tenant (no -k)
+curl -sI https://anytenant.<domain>/ | head -1
+# routing intact for the specific hosts
+for h in <domain> www.<domain> api.<domain> admin.<domain>; do curl -so /dev/null -w "$h %{http_code}\n" https://$h/; done
+```
