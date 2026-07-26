@@ -290,15 +290,33 @@ node scripts/create-admin.js you@yourdomain.com 'STRONG_PASSWORD' 'Administrator
 
 ### Backend service
 
-`nixpacks.toml` sets `cmd = "node app.js"`. Do **not** let it run `pnpm start` —
-that is the PM2 entrypoint (`pm2 start ecosystem.config.js`), and in a container
-it fails twice over: `pm2` is not a dependency (the VPS installs it globally), and
-`pm2 start` daemonizes so the foreground process exits and the container stops.
-Docker already provides supervision and restarts; scale with replicas instead of
-PM2 cluster mode.
+**PM2 runs in the container too**, with the same `ecosystem.config.js` and the same
+cluster mode as the VPS — `nixpacks.toml` sets `cmd = "npm run start:container"` →
+`pm2-runtime start ecosystem.config.js --env production`.
+
+`pm2-runtime` (not `pm2 start`) is the difference that matters. `pm2 start`
+spawns a background daemon and returns, so the container's main process exits and
+Docker stops it — that is exactly what `pnpm start` does, and why it can't be the
+container entrypoint. `pm2-runtime` stays in the foreground as PID 1, forwards
+SIGTERM to the graceful shutdown in `app.js`, and streams worker logs to stdout so
+`docker logs` and the Dokploy log view work. `pm2` is a **dependency** (not a
+global install as on the VPS), so it's present in the image.
+
+**Pin `PM2_INSTANCES`.** `instances: "max"` counts the *host's* cores, not the
+container's CPU limit, so on a shared box "max" forks far more workers than the
+container can use and each one is a full V8 heap. Start at `PM2_INSTANCES=2`.
+
+Two consequences of running PM2 under Docker worth knowing: restarts are now
+handled at two levels (PM2 restarts a dead worker, Docker restarts the container
+if PM2 itself dies), and if you also scale Dokploy replicas the worker count
+multiplies — `replicas × PM2_INSTANCES`. Pick one axis to scale on.
 
 **`APP_PORT` must be set** — `app.js` reads it with no fallback, so unset it binds
-a random port and the proxy can never reach it. Set `APP_PORT=4560` and point the
+a random port and the proxy can never reach it. Note that PM2 applies
+`ecosystem.config.js`'s env *over* the inherited environment, so its
+`env_production` block now reads `Number(process.env.APP_PORT) || 4562` — without
+that pass-through it would force 4562 in the container and silently ignore the
+service's setting. Set `APP_PORT=4560` and point the
 service's domain at container port **4560**.
 
 Required env: `NODE_ENV=production`, `APP_PORT`, `TRUST_PROXY_HOPS=1`, the five
