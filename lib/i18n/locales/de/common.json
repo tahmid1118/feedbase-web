@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} neue Beiträge",
     "peakPerDay": "Spitze {{count}}/Tag",
     "noNewFeedback": "Kein neues Feedback in den letzten 30 Tagen.",
-    "backendUnreachable": "Backend-API auf Port 4560 nicht erreichbar. Leere Kennzahlen werden angezeigt."
+    "backendUnreachable": "Kennzahlen konnten nicht geladen werden – die Analyseanfrage ist fehlgeschlagen. Es werden leere Werte angezeigt."
   },
   "time": {
     "justNow": "gerade eben"

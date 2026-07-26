@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} publicaciones nuevas",
     "peakPerDay": "pico {{count}}/día",
     "noNewFeedback": "Sin comentarios nuevos en los últimos 30 días.",
-    "backendUnreachable": "No se puede conectar con la API backend en el puerto 4560. Mostrando métricas vacías."
+    "backendUnreachable": "No se pudieron cargar las métricas: la solicitud de análisis falló. Se muestran valores vacíos."
   },
   "time": {
     "justNow": "ahora mismo"

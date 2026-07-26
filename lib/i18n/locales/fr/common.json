@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} nouvelles publications",
     "peakPerDay": "pic {{count}}/jour",
     "noNewFeedback": "Aucun nouveau retour au cours des 30 derniers jours.",
-    "backendUnreachable": "Impossible d'atteindre l'API backend sur le port 4560. Affichage de métriques vides."
+    "backendUnreachable": "Impossible de charger les métriques — la requête analytique a échoué. Affichage de valeurs vides."
   },
   "time": {
     "justNow": "à l'instant"

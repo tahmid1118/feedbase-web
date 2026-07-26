@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} new posts",
     "peakPerDay": "peak {{count}}/day",
     "noNewFeedback": "No new feedback in the last 30 days.",
-    "backendUnreachable": "Unable to reach the backend API on port 4560. Showing empty metrics."
+    "backendUnreachable": "Couldn't load metrics — the analytics request failed. Showing empty values."
   },
   "time": {
     "justNow": "just now"

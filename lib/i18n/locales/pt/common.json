@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} novas publicações",
     "peakPerDay": "pico {{count}}/dia",
     "noNewFeedback": "Sem novo feedback nos últimos 30 dias.",
-    "backendUnreachable": "Não é possível aceder à API backend na porta 4560. A mostrar métricas vazias."
+    "backendUnreachable": "Não foi possível carregar as métricas — o pedido de análise falhou. A mostrar valores vazios."
   },
   "time": {
     "justNow": "agora mesmo"

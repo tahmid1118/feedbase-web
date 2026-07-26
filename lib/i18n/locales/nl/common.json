@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} nieuwe berichten",
     "peakPerDay": "piek {{count}}/dag",
     "noNewFeedback": "Geen nieuwe feedback in de afgelopen 30 dagen.",
-    "backendUnreachable": "Kan de backend-API op poort 4560 niet bereiken. Lege statistieken worden weergegeven."
+    "backendUnreachable": "Kan de statistieken niet laden — het analyseverzoek is mislukt. Lege waarden worden weergegeven."
   },
   "time": {
     "justNow": "zojuist"

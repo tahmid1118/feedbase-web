@@ -57,6 +57,8 @@ mysql -u feedboard -p feedboard_db < database/schema.sql
 ```
 > Import **`database/schema.sql`**, never `feedboard_db.sql`. The latter is the development dump: the same 26 tables *plus* a dummy seed block — `Acme Labs`/`Beta Works` tenants and four users (`owner@acme.test`, `admin@acme.test`, `jane@acme.test`, `owner@beta.test`) sharing one bcrypt hash. In production those are live logins with a known password. `schema.sql` carries every column the `scripts/*.js` migrations add, so a new database needs that one file — don't run the migration scripts.
 
+> **Match your dev database engine to production.** A local **MariaDB** (or any MySQL with a laxer `sql_mode`) will accept SQL that production **MySQL 8.x rejects**, because `ONLY_FULL_GROUP_BY` is **on by default** in MySQL 8 and off in older/MariaDB defaults. That difference shipped a broken analytics query: `GROUP BY DATE(created_at)` while selecting `DATE_FORMAT(DATE(created_at), …)` is a *different expression*, so MySQL 8 failed it with `ER_WRONG_FIELD_WITH_GROUP`, the `/analytics/overview` endpoint 500'd, and the dashboard reported it as "backend unreachable" — with every local test passing. Run MySQL 8.4 locally (Docker is easiest), or at minimum add `ONLY_FULL_GROUP_BY` to your dev `sql_mode`. **Rule: `GROUP BY` must repeat each selected non-aggregated expression verbatim.**
+
 Then create the platform admin — the only account a fresh install needs:
 ```bash
 node scripts/create-admin.js you@yourdomain.com 'STRONG_PASSWORD' 'Administrator'

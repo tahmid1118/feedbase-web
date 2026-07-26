@@ -824,7 +824,7 @@
     "newPostsCount_other": "{{count}} nuovi post",
     "peakPerDay": "picco {{count}}/giorno",
     "noNewFeedback": "Nessun nuovo feedback negli ultimi 30 giorni.",
-    "backendUnreachable": "Impossibile raggiungere l'API backend sulla porta 4560. Visualizzazione di metriche vuote."
+    "backendUnreachable": "Impossibile caricare le metriche: la richiesta di analisi è fallita. Vengono mostrati valori vuoti."
   },
   "time": {
     "justNow": "proprio ora"

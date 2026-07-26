@@ -834,7 +834,7 @@
     "newPostsCount_other": "{{count}} nowego wpisu",
     "peakPerDay": "szczyt {{count}}/dzień",
     "noNewFeedback": "Brak nowych opinii w ciągu ostatnich 30 dni.",
-    "backendUnreachable": "Nie można połączyć się z API zaplecza na porcie 4560. Wyświetlanie pustych wskaźników.",
+    "backendUnreachable": "Nie udało się wczytać wskaźników — żądanie analityczne nie powiodło się. Wyświetlane są puste wartości.",
     "newPostsCount_few": "{{count}} nowe wpisy",
     "newPostsCount_many": "{{count}} nowych wpisów"
   },
