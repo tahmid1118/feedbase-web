@@ -32,14 +32,19 @@ export function BoardTabs({ value }: { value: PublicBoardStatus }) {
   };
 
   return (
-    <Tabs value={value} onValueChange={onChange}>
-      <TabsList className="flex-wrap border border-[#e399a3]/30 bg-white">
-        {PUBLIC_BOARD_STATUSES.map((s) => (
-          <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
-            {t(`status.${s}`)}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+    <Tabs value={value} onValueChange={onChange} className="min-w-0">
+      {/* Scrolls on a phone rather than wrapping: wrapped pills inside a single
+          bordered pill container read as a broken control. Matches the dashboard
+          board and the Settings tab rail. */}
+      <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
+        <TabsList className="min-w-max border border-[#e399a3]/30 bg-white">
+          {PUBLIC_BOARD_STATUSES.map((s) => (
+            <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
+              {t(`status.${s}`)}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
     </Tabs>
   );
 }

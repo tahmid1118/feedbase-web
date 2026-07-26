@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ShieldCheck } from "lucide-react";
 
@@ -23,9 +24,15 @@ export default async function AdminLoginPage() {
 
       <div className="relative w-full max-w-md">
         <div className="mb-6 flex flex-col items-center gap-3 text-center">
-          <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#fdf8f9]/12 ring-1 ring-[#fdf8f9]/20">
+          {/* The mark was decoration only — this page had no link off it at all,
+              so an admin who opened it by mistake had to edit the URL. */}
+          <Link
+            href="/"
+            aria-label="FeedBoard home"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#fdf8f9]/12 ring-1 ring-[#fdf8f9]/20 transition-colors hover:bg-[#fdf8f9]/20"
+          >
             <Logo className="h-7 w-7" />
-          </span>
+          </Link>
           <div className="inline-flex items-center gap-1.5 rounded-full bg-[#fdf8f9]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em]">
             <ShieldCheck className="h-3.5 w-3.5" />
             Admin

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Sparkles, Zap } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { getTranslation } from "@/lib/i18n/server";
 
@@ -20,7 +20,20 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
     <div className="relative min-h-screen overflow-hidden bg-[#fdf8f9] text-[#1c0a0c]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(227,153,163,0.08),transparent_70%)]" />
 
-      <div className="relative mx-auto flex min-h-screen w-full max-w-6xl items-center px-4 py-8 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center gap-5 px-4 py-8 sm:px-6 lg:px-8">
+        {/* The brand + home link lives in the dark aside — which is
+            `hidden lg:flex`. Below lg the card was the entire page, so there was
+            NO way back to the marketing site: a visitor who opened /login on a
+            phone was stuck unless they edited the URL. */}
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 self-center text-sm font-semibold tracking-[0.18em] text-[#1c0a0c]/70 transition-colors hover:text-[#c74959] lg:hidden"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <Logo className="h-6 w-6" />
+          FEEDBOARD
+        </Link>
+
         <div className="grid w-full overflow-hidden rounded-[2rem] border border-[#e399a3]/50 bg-white/80 shadow-[0_36px_90px_-45px_rgba(28,10,12,0.65)] backdrop-blur-xl lg:grid-cols-2">
           <aside className="relative hidden flex-col justify-between bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)] p-10 text-[#fdf8f9] lg:flex">
             <div className="space-y-8">

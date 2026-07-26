@@ -321,14 +321,21 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <Tabs value={status} onValueChange={setStatus}>
-          <TabsList className="border border-[#e399a3]/30 bg-white">
-            {["all", "open", "planned", "in_progress", "completed", "rejected"].map((s) => (
-              <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
-                {t(`status.${s}`)}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        <Tabs value={status} onValueChange={setStatus} className="min-w-0">
+          {/* Six pills are wider than a phone. `TabsList` is an inline-flex with
+              no overflow handling, so "Rejected" was simply clipped off the edge
+              and unreachable. Scroll the row instead (same approach as the
+              Settings tab rail), bleeding to the screen edges on mobile so the
+              last pill isn't hidden under the page gutter. */}
+          <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
+            <TabsList className="min-w-max border border-[#e399a3]/30 bg-white">
+              {["all", "open", "planned", "in_progress", "completed", "rejected"].map((s) => (
+                <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
+                  {t(`status.${s}`)}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
         </Tabs>
 
         <div className="flex flex-wrap items-center gap-2">
