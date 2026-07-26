@@ -46,12 +46,22 @@ export function LanguageSelector({
     <Select value={current} onValueChange={onChange}>
       <SelectTrigger
         aria-label="Select language"
-        className={`h-9 w-auto gap-1.5 border-[#e399a3]/50 px-2.5 ${className ?? ""}`}
+        className={`h-9 w-auto gap-1 border-[#e399a3]/50 px-2 sm:gap-1.5 sm:px-2.5 ${className ?? ""}`}
       >
-        <Globe className="h-4 w-4" style={{ color: iconColor }} />
+        <Globe className="h-4 w-4 shrink-0" style={{ color: iconColor }} />
         {/* Explicit children: Radix resolves the item label only on the client,
             so without this the trigger server-renders blank. */}
-        <SelectValue>{currentLabel}</SelectValue>
+        <SelectValue>
+          {/* Full native name where there is room; the language CODE on a phone,
+              where "Português"/"Nederlands" alone can push a nav past the
+              viewport. Deliberately NOT a flag: a flag names a country, not a
+              language (whose flag is English?), and flag emoji do not render on
+              Windows, so the control would show bare letters there. */}
+          <span className="hidden sm:inline">{currentLabel}</span>
+          <span className="text-xs font-semibold uppercase sm:hidden">
+            {current}
+          </span>
+        </SelectValue>
       </SelectTrigger>
       <SelectContent className="max-h-72">
         {languageOptions.map((l) => (

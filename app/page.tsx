@@ -42,12 +42,20 @@ export default async function HomePage() {
     <div className="min-h-screen bg-[#fdf8f9]">
       {/* Navigation */}
       <nav className="border-b border-[#e399a3]/20 bg-white/60 backdrop-blur-md">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-2">
-            <Logo className="h-8 w-8" />
-            <span className="text-xl font-bold text-[#1c0a0c]">FeedBoard</span>
-          </div>
-          <div className="flex items-center gap-3">
+        {/* Four items plus a wordmark do not fit a 360px viewport: the row grew
+            wider than the screen, which is what made the whole landing page
+            scroll sideways. Everything below shrinks rather than overflows. */}
+        <div className="container mx-auto flex h-16 items-center justify-between gap-2 px-4 sm:gap-3">
+          <Link href="/" className="flex min-w-0 items-center gap-2">
+            <Logo className="h-8 w-8 shrink-0" />
+            {/* The rose mark carries the brand on a phone; the wordmark is the
+                single most expensive item in the row (~105px), so it returns as
+                soon as there is room for it. */}
+            <span className="hidden truncate text-xl font-bold text-[#1c0a0c] min-[420px]:inline">
+              FeedBoard
+            </span>
+          </Link>
+          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
             <LanguageSelector />
             <Link href="/pricing" className="hidden sm:block">
               <Button variant="ghost" className="text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]">
@@ -55,12 +63,15 @@ export default async function HomePage() {
               </Button>
             </Link>
             <Link href="/login">
-              <Button variant="ghost" className="text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]">
+              <Button
+                variant="ghost"
+                className="px-2 text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959] sm:px-4"
+              >
                 {t("nav.signIn")}
               </Button>
             </Link>
             <Link href="/signup">
-              <Button className="bg-[#c74959] text-white hover:bg-[#b03f4d]">
+              <Button className="px-3 bg-[#c74959] text-white hover:bg-[#b03f4d] sm:px-4">
                 {t("nav.getStarted")}
               </Button>
             </Link>
@@ -75,14 +86,16 @@ export default async function HomePage() {
         <div aria-hidden className="pointer-events-none absolute -right-24 top-40 h-96 w-96 rounded-full bg-[#da6a78]/15 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-[#e399a3]/20 blur-3xl" />
 
-        <div className="container relative mx-auto px-4 pb-14 pt-20 text-center">
-          <div className="mx-auto max-w-4xl space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#c74959]/20 bg-white/80 px-4 py-2 text-sm text-[#c74959] shadow-sm">
-              <Sparkles className="h-4 w-4" />
+        <div className="container relative mx-auto px-4 pb-12 pt-12 text-center sm:pb-14 sm:pt-20">
+          <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#c74959]/20 bg-white/80 px-3 py-1.5 text-xs text-[#c74959] shadow-sm sm:px-4 sm:py-2 sm:text-sm">
+              <Sparkles className="h-4 w-4 shrink-0" />
               <span>{t("landing.hero.badge")}</span>
             </div>
 
-            <h1 className="text-5xl font-bold leading-tight text-[#1c0a0c] sm:text-6xl lg:text-7xl">
+            {/* 48px type wrapped this headline onto five lines on a phone and
+                pushed the CTAs below the fold. */}
+            <h1 className="text-4xl font-bold leading-tight text-[#1c0a0c] sm:text-6xl lg:text-7xl">
               {t("landing.hero.titleLead")}{" "}
               <span className="bg-gradient-to-r from-[#c74959] to-[#da6a78] bg-clip-text text-transparent">
                 {t("landing.hero.titleHighlight")}
