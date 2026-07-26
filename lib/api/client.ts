@@ -3,7 +3,29 @@
  * Handles authentication, error handling, and request/response formatting
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
+/**
+ * Where to reach the backend — resolved per environment, because this module is
+ * imported from BOTH Client Components and Server Components (the dashboard
+ * layout's `billingApi.getStatus`, the dashboard page's `postsApi.list`).
+ *
+ * On the server, prefer `FEEDBOARD_API_BASE_URL`: in a containerised deploy that
+ * is an internal address on the private network, so a server-rendered page talks
+ * to the API directly instead of going out to the public hostname and back in
+ * through the proxy (a "hairpin"). That is faster, and it does not depend on the
+ * public TLS certificate being valid — with only the public URL available, a
+ * missing/invalid cert on the API subdomain takes the dashboard down server-side
+ * even though the browser calls would be fine.
+ *
+ * In the browser only `NEXT_PUBLIC_*` exists (and is inlined at build time), and
+ * it must be the public HTTPS origin. Mirrors `lib/api/public.ts` and
+ * `lib/auth/server-config.ts`.
+ */
+const API_BASE_URL =
+  typeof window === "undefined"
+    ? process.env.FEEDBOARD_API_BASE_URL ||
+      process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL ||
+      "http://localhost:4560"
+    : process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 const DEFAULT_LANGUAGE = "en";
 const REQUEST_TIMEOUT_MS = 30000;
 
@@ -133,8 +155,13 @@ async function request<T>(
       url: `${API_BASE_URL}${endpoint}`,
     });
 
+    // Name the origin we actually tried. The old message hardcoded "port 4560",
+    // which sends you looking at the backend process when the real cause is
+    // usually the URL this build was given (or its TLS cert) — a fetch to an
+    // https origin with an untrusted certificate fails here identically to the
+    // backend being down.
     throw new ApiError(
-      "Unable to connect to the API. Please ensure the backend is running on port 4560.",
+      `Unable to connect to the API at ${API_BASE_URL}. Check that it is reachable from your browser (and that its HTTPS certificate is valid).`,
       503
     );
   } finally {

@@ -125,6 +125,8 @@ Dashboard pages are `"use client"` and read the access token from `useSession()`
 
 `lib/api/client.ts` — base `apiClient` with `get/post/put/patch/delete`. Mutating methods and many reads **automatically inject `lg: "en"` into the request body** (a backend convention); several logical GETs are implemented as POST.
 
+**The base URL is resolved per environment**, because `apiClient` is imported from Client *and* Server Components (`app/dashboard/layout.tsx` → `billingApi.getStatus`, `app/dashboard/page.tsx` → `postsApi.list`). On the server it prefers `FEEDBOARD_API_BASE_URL` (an internal address in a containerised deploy) and falls back to the public one; in the browser only `NEXT_PUBLIC_FEEDBOARD_API_BASE_URL` exists. Reading *only* the public var on the server means every server-rendered page hairpins out to the public hostname and back through the proxy — slower, and it makes server rendering depend on the API's public TLS cert being valid (an invalid cert on the API subdomain took the dashboard down server-side while browser calls were unaffected). `lib/api/public.ts` and `lib/auth/server-config.ts` follow the same precedence; `lib/avatar.ts` deliberately inverts it (its output goes into `<img src>`, so it must be the public origin even server-side).
+
 Services live in `lib/api/` and are re-exported from `lib/api/index.ts`:
 
 ```typescript
