@@ -622,8 +622,6 @@
     "sharedWithYou": "Mit Ihnen geteilt"
   },
   "roadmap": {
-    "editColumn": "Spalte bearbeiten",
-    "columnName": "Spaltenname",
     "addToRoadmap": "Zur Roadmap hinzufügen",
     "selectPost": "Beitrag auswählen",
     "loading": "Roadmap wird geladen…",
@@ -631,14 +629,11 @@
     "nItems_one": "{{count}} Eintrag",
     "nItems_other": "{{count}} Einträge",
     "addItem": "Eintrag hinzufügen",
-    "renameDesc": "Diese Roadmap-Spalte umbenennen.",
-    "columnPlaceholder": "z. B. In Bearbeitung",
     "addDesc": "Platzieren Sie einen Feedback-Beitrag in einer Roadmap-Spalte.",
     "post": "Beitrag",
     "allOnRoadmap": "Alle Beiträge stehen bereits auf der Roadmap.",
     "removeItem": "Eintrag entfernen",
     "loadFailed": "Roadmap konnte nicht geladen werden",
-    "saveColumnFailed": "Spalte konnte nicht gespeichert werden",
     "addItemFailed": "Eintrag konnte nicht hinzugefügt werden",
     "moveItemFailed": "Eintrag konnte nicht verschoben werden",
     "removeItemFailed": "Eintrag konnte nicht entfernt werden"
@@ -705,7 +700,6 @@
     "changelogPublished": "Änderungsprotokoll veröffentlicht",
     "changelogUpdated": "Änderungsprotokoll aktualisiert",
     "chatClosed": "Chat geschlossen",
-    "columnUpdated": "Spalte aktualisiert",
     "commentDeleted": "Kommentar gelöscht",
     "copiedToClipboard": "In die Zwischenablage kopiert",
     "imageUploaded": "Bild hochgeladen. Speichern Sie Ihr Profil, um es anzuwenden.",

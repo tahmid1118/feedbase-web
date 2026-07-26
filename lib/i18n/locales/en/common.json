@@ -622,8 +622,6 @@
     "sharedWithYou": "Shared with you"
   },
   "roadmap": {
-    "editColumn": "Edit Column",
-    "columnName": "Column name",
     "addToRoadmap": "Add to Roadmap",
     "selectPost": "Select a post",
     "loading": "Loading roadmap…",
@@ -631,14 +629,11 @@
     "nItems_one": "{{count}} item",
     "nItems_other": "{{count}} items",
     "addItem": "Add item",
-    "renameDesc": "Rename this roadmap column.",
-    "columnPlaceholder": "e.g. In Progress",
     "addDesc": "Place a feedback post onto a roadmap column.",
     "post": "Post",
     "allOnRoadmap": "All posts are already on the roadmap.",
     "removeItem": "Remove item",
     "loadFailed": "Failed to load roadmap",
-    "saveColumnFailed": "Failed to save column",
     "addItemFailed": "Failed to add item",
     "moveItemFailed": "Failed to move item",
     "removeItemFailed": "Failed to remove item"
@@ -705,7 +700,6 @@
     "changelogPublished": "Changelog published",
     "changelogUpdated": "Changelog updated",
     "chatClosed": "Chat closed",
-    "columnUpdated": "Column updated",
     "commentDeleted": "Comment deleted",
     "copiedToClipboard": "Copied to clipboard",
     "imageUploaded": "Image uploaded. Save your profile to apply it.",

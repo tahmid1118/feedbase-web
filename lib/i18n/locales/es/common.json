@@ -622,8 +622,6 @@
     "sharedWithYou": "Compartido contigo"
   },
   "roadmap": {
-    "editColumn": "Editar columna",
-    "columnName": "Nombre de la columna",
     "addToRoadmap": "Añadir a la hoja de ruta",
     "selectPost": "Selecciona una publicación",
     "loading": "Cargando hoja de ruta…",
@@ -631,14 +629,11 @@
     "nItems_one": "{{count}} elemento",
     "nItems_other": "{{count}} elementos",
     "addItem": "Añadir elemento",
-    "renameDesc": "Cambia el nombre de esta columna de la hoja de ruta.",
-    "columnPlaceholder": "p. ej. En curso",
     "addDesc": "Coloca una publicación de comentarios en una columna de la hoja de ruta.",
     "post": "Publicación",
     "allOnRoadmap": "Todas las publicaciones ya están en la hoja de ruta.",
     "removeItem": "Quitar elemento",
     "loadFailed": "No se pudo cargar la hoja de ruta",
-    "saveColumnFailed": "No se pudo guardar la columna",
     "addItemFailed": "No se pudo añadir el elemento",
     "moveItemFailed": "No se pudo mover el elemento",
     "removeItemFailed": "No se pudo quitar el elemento"
@@ -705,7 +700,6 @@
     "changelogPublished": "Registro de cambios publicado",
     "changelogUpdated": "Registro de cambios actualizado",
     "chatClosed": "Chat cerrado",
-    "columnUpdated": "Columna actualizada",
     "commentDeleted": "Comentario eliminado",
     "copiedToClipboard": "Copiado al portapapeles",
     "imageUploaded": "Imagen subida. Guarda tu perfil para aplicarla.",

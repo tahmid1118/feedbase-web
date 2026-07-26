@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useSession } from "next-auth/react";
-import { Plus, Pencil, X, Calendar, GripVertical } from "lucide-react";
+import { Plus, X, Calendar, GripVertical } from "lucide-react";
 import {
   DndContext,
   DragOverlay,
@@ -45,10 +45,10 @@ import {
 import { toast } from "sonner";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";
 
-// Roadmap columns are tenant data and can be renamed, so their names aren't
-// translated in general. The three the backend seeds are the exception: map
-// those to the shared status labels so a fresh workspace reads correctly in
-// every language. A renamed or custom column keeps its own text verbatim.
+// The three columns the backend seeds are FIXED and map to the shared status
+// labels, so the board reads correctly in every language. The verbatim fallback
+// below is kept for any workspace whose rows were renamed before the rename
+// affordance was removed — it should never be hit on a new workspace.
 const DEFAULT_COLUMN_KEYS: Record<string, string> = {
   planned: "status.planned",
   "in progress": "status.in_progress",
@@ -70,11 +70,6 @@ export function RoadmapBoard() {
   const [loading, setLoading] = useState(true);
 
   // Dialog state
-  const [columnDialog, setColumnDialog] = useState<{
-    open: boolean;
-    editing?: RoadmapColumn;
-  }>({ open: false });
-  const [columnName, setColumnName] = useState("");
   const [itemDialogOpen, setItemDialogOpen] = useState(false);
   const [itemPostId, setItemPostId] = useState("");
   const [itemColumnId, setItemColumnId] = useState("");
@@ -138,30 +133,11 @@ export function RoadmapBoard() {
   const postTitle = (postId: number) =>
     posts.find((p) => p.id === postId)?.title ?? `Post #${postId}`;
 
-  // --- Column actions ---
-  const openEditColumn = (column: RoadmapColumn) => {
-    setColumnName(column.name);
-    setColumnDialog({ open: true, editing: column });
-  };
-
-  const saveColumn = async () => {
-    if (!token || !columnName.trim() || !columnDialog.editing) return;
-    setBusy(true);
-    try {
-      await roadmapApi.updateColumn(
-        columnDialog.editing.id,
-        { name: columnName.trim() },
-        token
-      );
-      toast.success(t("toast.columnUpdated"));
-      setColumnDialog({ open: false });
-      await load();
-    } catch {
-      toast.error(t("roadmap.saveColumnFailed"));
-    } finally {
-      setBusy(false);
-    }
-  };
+  // The roadmap's columns are FIXED (Planned / In Progress / Completed) — they
+  // mirror the post statuses the rest of the app filters and reports on, so a
+  // rename would leave the board's labels disagreeing with every status shown on
+  // the feedback board, the public portal and the analytics breakdown. There is
+  // deliberately no rename affordance.
 
   // --- Item actions ---
   const openAddItem = (columnId?: number) => {
@@ -294,16 +270,6 @@ export function RoadmapBoard() {
                             {t("roadmap.nItems", { count: columnItems.length })}
                           </p>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() => openEditColumn(column)}
-                            className="rounded p-1 text-[#1c0a0c]/60 hover:bg-white hover:text-[#c74959]"
-                            aria-label={t("roadmap.editColumn")}
-                          >
-                            <Pencil className="h-3.5 w-3.5" />
-                          </button>
-                        </div>
                       </div>
 
                       <div className="min-h-[60px] space-y-2">
@@ -343,45 +309,6 @@ export function RoadmapBoard() {
           </DragOverlay>
         </DndContext>
       )}
-
-      {/* Column dialog */}
-      <Dialog
-        open={columnDialog.open}
-        onOpenChange={(open) => setColumnDialog({ open })}
-      >
-        <DialogContent className="sm:max-w-[420px]">
-          <DialogHeader>
-            <DialogTitle>{t("roadmap.editColumn")}</DialogTitle>
-            <DialogDescription>
-              {t("roadmap.renameDesc")}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-2">
-            <Label htmlFor="column-name">{t("roadmap.columnName")}</Label>
-            <Input
-              id="column-name"
-              value={columnName}
-              onChange={(e) => setColumnName(e.target.value)}
-              placeholder={t("roadmap.columnPlaceholder")}
-            />
-          </div>
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => setColumnDialog({ open: false })}
-            >
-              {t("common.cancel")}
-            </Button>
-            <Button
-              className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
-              onClick={saveColumn}
-              disabled={busy || !columnName.trim()}
-            >
-              {t("common.save")}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
 
       {/* Add item dialog */}
       <Dialog open={itemDialogOpen} onOpenChange={setItemDialogOpen}>

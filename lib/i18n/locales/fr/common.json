@@ -622,8 +622,6 @@
     "sharedWithYou": "Partagé avec vous"
   },
   "roadmap": {
-    "editColumn": "Modifier la colonne",
-    "columnName": "Nom de la colonne",
     "addToRoadmap": "Ajouter à la feuille de route",
     "selectPost": "Sélectionnez une publication",
     "loading": "Chargement de la feuille de route…",
@@ -631,14 +629,11 @@
     "nItems_one": "{{count}} élément",
     "nItems_other": "{{count}} éléments",
     "addItem": "Ajouter un élément",
-    "renameDesc": "Renommer cette colonne de la feuille de route.",
-    "columnPlaceholder": "p. ex. En cours",
     "addDesc": "Placez une publication de retour dans une colonne de la feuille de route.",
     "post": "Publication",
     "allOnRoadmap": "Toutes les publications sont déjà sur la feuille de route.",
     "removeItem": "Supprimer l'élément",
     "loadFailed": "Échec du chargement de la feuille de route",
-    "saveColumnFailed": "Échec de l'enregistrement de la colonne",
     "addItemFailed": "Échec de l'ajout de l'élément",
     "moveItemFailed": "Échec du déplacement de l'élément",
     "removeItemFailed": "Échec de la suppression de l'élément"
@@ -705,7 +700,6 @@
     "changelogPublished": "Journal des modifications publié",
     "changelogUpdated": "Journal des modifications mis à jour",
     "chatClosed": "Chat fermé",
-    "columnUpdated": "Colonne mise à jour",
     "commentDeleted": "Commentaire supprimé",
     "copiedToClipboard": "Copié dans le presse-papiers",
     "imageUploaded": "Image téléchargée. Enregistrez votre profil pour l'appliquer.",

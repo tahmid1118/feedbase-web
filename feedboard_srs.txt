@@ -301,9 +301,12 @@ Version 1.2
       can see a guest's email, when provided, for follow-up.
 
 3.4 Roadmap
-    FR-R1  Columns ...... Rename and reorder columns. (Columns cannot be created
-                          or deleted from the board — each workspace is seeded with
-                          the default status-linked columns.)
+    FR-R1  Columns ...... Fixed. Each workspace is seeded with the default
+                          status-linked columns (Planned, In Progress, Completed);
+                          they cannot be created, renamed or deleted from the
+                          board. Their labels are the shared status labels, so the
+                          roadmap always agrees with the status shown on the
+                          feedback board, the public portal and analytics.
     FR-R2  Items ........ Add a post to a column with an optional target date;
                           move items between columns by drag-and-drop; remove items.
     FR-R3  Status sync .. Columns whose key matches a post status (planned,

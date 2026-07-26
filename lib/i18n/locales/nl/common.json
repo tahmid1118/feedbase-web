@@ -622,8 +622,6 @@
     "sharedWithYou": "Met u gedeeld"
   },
   "roadmap": {
-    "editColumn": "Kolom bewerken",
-    "columnName": "Kolomnaam",
     "addToRoadmap": "Aan roadmap toevoegen",
     "selectPost": "Selecteer een bericht",
     "loading": "Roadmap laden…",
@@ -631,14 +629,11 @@
     "nItems_one": "{{count}} item",
     "nItems_other": "{{count}} items",
     "addItem": "Item toevoegen",
-    "renameDesc": "Deze roadmapkolom hernoemen.",
-    "columnPlaceholder": "bijv. In uitvoering",
     "addDesc": "Plaats een feedbackbericht in een roadmapkolom.",
     "post": "Bericht",
     "allOnRoadmap": "Alle berichten staan al op de roadmap.",
     "removeItem": "Item verwijderen",
     "loadFailed": "Kan roadmap niet laden",
-    "saveColumnFailed": "Kan kolom niet opslaan",
     "addItemFailed": "Kan item niet toevoegen",
     "moveItemFailed": "Kan item niet verplaatsen",
     "removeItemFailed": "Kan item niet verwijderen"
@@ -705,7 +700,6 @@
     "changelogPublished": "Wijzigingslogboek gepubliceerd",
     "changelogUpdated": "Wijzigingslogboek bijgewerkt",
     "chatClosed": "Chat gesloten",
-    "columnUpdated": "Kolom bijgewerkt",
     "commentDeleted": "Reactie verwijderd",
     "copiedToClipboard": "Gekopieerd naar klembord",
     "imageUploaded": "Afbeelding geüpload. Sla uw profiel op om het toe te passen.",
