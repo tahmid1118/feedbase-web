@@ -113,7 +113,9 @@ cp .env.example .env.local   # then edit — see below
 pnpm build
 ```
 
-> **pnpm 10+ is required**, and `package.json` pins it via `"packageManager": "pnpm@10.26.2"` — honour that pin (Corepack, or install the matching version). `pnpm-workspace.yaml` here carries only settings (`ignoredBuiltDependencies`) and has **no `packages:` key**, which pnpm 10 accepts but pnpm 9 rejects with `ERROR packages field missing or empty`. This matters on build platforms that auto-detect the package manager (Nixpacks/Dokploy, Railway, Heroku): without the pin they install an older pnpm and the install step fails. `pnpm-lock.yaml` is the only committed lockfile — do not add a `package-lock.json`.
+> **Package manager: pnpm, pinned** via `"packageManager": "pnpm@10.26.2"` in `package.json`. `pnpm-lock.yaml` is the **only** committed lockfile — never add a `package-lock.json` (a second lockfile makes auto-detecting builders such as Nixpacks/Dokploy, Railway, or Heroku pick the wrong manager).
+>
+> There is deliberately **no `pnpm-workspace.yaml`** — this is a single package, not a workspace. pnpm 10 tolerates a settings-only workspace file, but pnpm 9 and earlier read its presence as "workspace root" and abort with `ERROR packages field missing or empty`, which broke container builds. pnpm settings therefore live in the `"pnpm"` field of `package.json`. Don't reintroduce the file.
 
 `.env.local` (or export in the environment / PM2 config):
 ```
