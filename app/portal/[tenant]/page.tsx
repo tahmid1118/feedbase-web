@@ -51,7 +51,7 @@ export default async function PortalBoardPage({
   const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[#1c0a0c]">
@@ -75,7 +75,7 @@ export default async function PortalBoardPage({
         </div>
 
         {posts.length === 0 ? (
-          <div className="rounded-xl border border-black/5 bg-white p-12 text-center text-[#1c0a0c]/60">
+          <div className="rounded-xl border border-black/5 bg-white p-8 text-center sm:p-12 text-[#1c0a0c]/60">
             {t(status === "all" ? "portal.noFeedbackYet" : "portal.noMatchingPosts")}
           </div>
         ) : (
@@ -89,7 +89,7 @@ export default async function PortalBoardPage({
                 aria-label={t("portal.openPost", { title: post.title })}
                 className="absolute inset-0 z-[1] rounded-xl"
               />
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3 sm:gap-4">
                 <PortalVoteButton
                   tenant={decoded}
                   postId={post.id}
@@ -98,8 +98,8 @@ export default async function PortalBoardPage({
                 />
 
                 <div className="flex-1 space-y-2">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
+                  <div className="flex items-start justify-between gap-2 sm:gap-3">
+                    <div className="min-w-0">
                       <div className="flex items-center gap-2">
                         <span>{TYPE_ICON[post.post_type] ?? "💬"}</span>
                         <h3 className="font-semibold text-[#1c0a0c]">
@@ -111,7 +111,7 @@ export default async function PortalBoardPage({
                       </p>
                     </div>
                     <span
-                      className={`shrink-0 rounded-full px-3 py-1 text-xs font-medium ${STATUS_BADGE[post.status]}`}
+                      className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium sm:px-3 sm:py-1 sm:text-xs ${STATUS_BADGE[post.status]}`}
                     >
                       {t(`status.${post.status}`)}
                     </span>
