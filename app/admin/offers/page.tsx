@@ -61,6 +61,17 @@ function priceFromPercent(
 const MIN_OFFER_PRICE = 0.5;
 
 /**
+ * A `datetime-local` value ("2026-07-27T00:57") carries no timezone, so sending
+ * it as-is means the server reads the admin's wall clock as its own. Interpret it
+ * in the admin's zone — which is what the dialog promises — and send the instant.
+ */
+function toInstant(local?: string | null): string | undefined {
+  if (!local) return undefined;
+  const d = new Date(local); // parsed as local time by the browser
+  return Number.isNaN(d.getTime()) ? undefined : d.toISOString();
+}
+
+/**
  * The discount an EXISTING offer represents — the table shows "(N% off)" for
  * offers already stored as a price (including any created before this form took
  * a percentage).
@@ -114,7 +125,16 @@ export default function AdminOffersPage() {
     if (!token) return;
     setBusy(true);
     // Send the derived price, not the percentage — that is what the API stores.
-    const res = await adminApi.createOffer(token, { ...form, offerPrice });
+    // Send the schedule as an EXACT INSTANT. `<input type="datetime-local">`
+    // yields "2026-07-27T00:57" with no zone, and the API used to store that
+    // wall clock verbatim against a UTC database clock — so an admin in UTC+6
+    // picking "now" created an offer that quietly went live six hours later.
+    const res = await adminApi.createOffer(token, {
+      ...form,
+      offerPrice,
+      startsAt: toInstant(form.startsAt),
+      endsAt: toInstant(form.endsAt),
+    });
     setBusy(false);
     if (res.ok) {
       toast.success(t("toast.offerCreated"));
