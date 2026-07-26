@@ -129,6 +129,7 @@ pnpm build
 `.env.local` (or export in the environment / PM2 config):
 ```
 AUTH_SECRET=<openssl rand -base64 32>
+AUTH_URL=https://feedboardapp.com                     # canonical origin — REQUIRED behind Nginx
 FEEDBOARD_API_BASE_URL=http://127.0.0.1:4562          # server→API, internal
 NEXT_PUBLIC_FEEDBOARD_API_BASE_URL=https://api.feedboardapp.com   # browser→API, public
 NEXT_PUBLIC_ROOT_DOMAIN=feedboardapp.com
@@ -337,6 +338,7 @@ app breaks in the browser while the build and logs look clean.
 | Var | Value | Why |
 |---|---|---|
 | `AUTH_SECRET` | `openssl rand -base64 32` | NextAuth |
+| `AUTH_URL` | `https://<domain>` | **Canonical origin.** Unset, every NextAuth redirect is built against the container's internal origin — signing out lands on `https://localhost:3000`. Runtime-read, so a restart applies it (no rebuild). |
 | `FEEDBOARD_API_BASE_URL` | internal backend hostname:4560 | server→API, stays on the Docker network |
 | `NEXT_PUBLIC_FEEDBOARD_API_BASE_URL` | `https://api.<domain>` | browser→API, must be public HTTPS |
 | `NEXT_PUBLIC_ROOT_DOMAIN` | `<domain>` | subdomain routing + cookie scope |

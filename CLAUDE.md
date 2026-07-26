@@ -199,11 +199,14 @@ Conventions:
 
 ```
 AUTH_SECRET                        # NextAuth secret
+AUTH_URL                           # Canonical public origin w/ protocol — REQUIRED behind a proxy
 FEEDBOARD_API_BASE_URL              # Server-side API URL (default: http://localhost:4560)
 NEXT_PUBLIC_FEEDBOARD_API_BASE_URL  # Client-side API URL (same)
 NEXT_PUBLIC_ROOT_DOMAIN            # Root domain for subdomain routing (default: localhost:3000)
 NEXT_PUBLIC_FEEDBACK_SUBDOMAIN     # Subdomain of FeedBoard own feedback board (default: feedback)
 ```
+
+**`AUTH_URL` is required in any reverse-proxied deployment** (Nginx, Dokploy/Traefik) and omitted in local dev. NextAuth builds every redirect it issues — sign-out `callbackUrl`, post-login `callbackUrl`, `?error=` pages — from `reqWithEnvURL()` (`next-auth/lib/env.js`), which consults **only** `AUTH_URL`/`NEXTAUTH_URL` and otherwise passes the request through untouched. Behind a proxy the request's origin is the container's internal address, so with it unset, signing out redirects to **`https://localhost:3000/...`**. `trustHost: true` (set in `auth.ts`) governs host *trust*, not this URL construction — it does not substitute. Not a `NEXT_PUBLIC_` var, so it's read at runtime: setting it needs a restart, not a rebuild.
 
 Configured in `.env.local` (not committed). **`.env.example` is the committed template** — copy it. Full list + host setup in **`DEPLOYMENT.md`** (Hostinger VPS: Nginx wildcard-subdomain reverse proxy, PM2, MySQL, wildcard TLS, Stripe webhook).
 
