@@ -39,18 +39,42 @@ function listPriceOf(plan: "pro" | "business", interval: OfferInterval): number 
   return interval === "year" ? planPricing(p, "year").yearlyTotal ?? 0 : p.monthlyPrice;
 }
 
-// Default a new offer to ~20% off Pro monthly; the admin can set any value,
-// including cents, and switch the interval.
-const EMPTY: CreateOfferInput = {
-  plan: "pro",
-  interval: "month",
-  offerPrice: Math.max(1, Math.round(listPriceOf("pro", "month") * 0.8)),
-};
+/** Default discount for a new offer. */
+const DEFAULT_PERCENT_OFF = 20;
 
+/**
+ * Stripe cannot charge a fraction of a cent, so the price the admin's percentage
+ * implies is rounded to cents. 33% off $10 is $6.70, not $6.699999.
+ */
+const toCents = (n: number) => Math.round(n * 100) / 100;
+
+/** The price a percentage off the list price works out to. */
+function priceFromPercent(
+  plan: "pro" | "business",
+  interval: OfferInterval,
+  percentOff: number
+): number {
+  return toCents(listPriceOf(plan, interval) * (1 - percentOff / 100));
+}
+
+/** Stripe rejects charges under $0.50, so an offer can never go below it. */
+const MIN_OFFER_PRICE = 0.5;
+
+/**
+ * The discount an EXISTING offer represents — the table shows "(N% off)" for
+ * offers already stored as a price (including any created before this form took
+ * a percentage).
+ */
 function pct(plan: "pro" | "business", interval: OfferInterval, offer: number): number {
   const orig = listPriceOf(plan, interval);
   return orig > 0 ? Math.round((1 - offer / orig) * 100) : 0;
 }
+
+const EMPTY: CreateOfferInput = {
+  plan: "pro",
+  interval: "month",
+  offerPrice: priceFromPercent("pro", "month", DEFAULT_PERCENT_OFF),
+};
 
 const intervalLabel = (i: OfferInterval) => (i === "year" ? "Yearly" : "Monthly");
 const perSuffix = (i: OfferInterval) => (i === "year" ? "/yr" : "/mo");
@@ -63,6 +87,10 @@ export default function AdminOffersPage() {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState<CreateOfferInput>(EMPTY);
+  // The admin types a DISCOUNT; the price is derived. The API still takes a
+  // price (the Stripe coupon is a fixed amount_off = list - offer), so the
+  // percentage lives only in the form and is converted on submit.
+  const [percentOff, setPercentOff] = useState(DEFAULT_PERCENT_OFF);
   const [busy, setBusy] = useState(false);
 
   const load = useCallback(async () => {
@@ -85,12 +113,14 @@ export default function AdminOffersPage() {
   const create = async () => {
     if (!token) return;
     setBusy(true);
-    const res = await adminApi.createOffer(token, form);
+    // Send the derived price, not the percentage — that is what the API stores.
+    const res = await adminApi.createOffer(token, { ...form, offerPrice });
     setBusy(false);
     if (res.ok) {
       toast.success(t("toast.offerCreated"));
       setOpen(false);
       setForm(EMPTY);
+      setPercentOff(DEFAULT_PERCENT_OFF);
       load();
     } else toast.error(res.message || "Failed to create offer");
   };
@@ -105,7 +135,12 @@ export default function AdminOffersPage() {
   };
 
   const planPrice = listPriceOf(form.plan, form.interval);
-  const valid = form.offerPrice > 0 && form.offerPrice < planPrice;
+  const offerPrice = priceFromPercent(form.plan, form.interval, percentOff);
+  const valid =
+    percentOff > 0 &&
+    percentOff < 100 &&
+    offerPrice >= MIN_OFFER_PRICE &&
+    offerPrice < planPrice;
 
   return (
     <div className="space-y-6">
@@ -206,10 +241,9 @@ export default function AdminOffersPage() {
               <Label>{t("admin.th.plan")}</Label>
               <Select
                 value={form.plan}
-                onValueChange={(v) => {
-                  const plan = v as "pro" | "business";
-                  set({ plan, offerPrice: Math.max(1, Math.round(listPriceOf(plan, form.interval) * 0.8)) });
-                }}
+                // The price follows from the percentage, so switching plan or
+                // interval needs no price fixup — it recomputes.
+                onValueChange={(v) => set({ plan: v as "pro" | "business" })}
               >
                 <SelectTrigger className="w-full capitalize">
                   <SelectValue />
@@ -224,10 +258,7 @@ export default function AdminOffersPage() {
               <Label>{t("admin.billingCycle")}</Label>
               <Select
                 value={form.interval}
-                onValueChange={(v) => {
-                  const interval = v as OfferInterval;
-                  set({ interval, offerPrice: Math.max(1, Math.round(listPriceOf(form.plan, interval) * 0.8)) });
-                }}
+                onValueChange={(v) => set({ interval: v as OfferInterval })}
               >
                 <SelectTrigger className="w-full">
                   <SelectValue />
@@ -239,23 +270,50 @@ export default function AdminOffersPage() {
               </Select>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="o-price">
-                Offer price (USD {form.interval === "year" ? "total / year" : "/ month"})
-              </Label>
-              <Input
-                id="o-price"
-                type="number"
-                min={0.5}
-                max={planPrice - 0.01}
-                step={0.01}
-                value={form.offerPrice}
-                onChange={(e) => set({ offerPrice: Number(e.target.value) })}
-              />
-              <p className="text-xs text-[#1c0a0c]/50">
-                {valid
-                  ? `${pct(form.plan, form.interval, form.offerPrice)}% off the $${planPrice} ${form.interval === "year" ? "yearly" : "monthly"} list price.`
-                  : `Must be between $1 and $${planPrice - 1}.`}
-              </p>
+              <Label htmlFor="o-percent">Discount (% off)</Label>
+              <div className="relative">
+                <Input
+                  id="o-percent"
+                  type="number"
+                  min={1}
+                  max={99}
+                  step={1}
+                  value={percentOff}
+                  onChange={(e) => setPercentOff(Number(e.target.value))}
+                  className="pr-8"
+                />
+                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-[#1c0a0c]/40">
+                  %
+                </span>
+              </div>
+
+              {/* The resulting price, so the admin sees exactly what customers pay. */}
+              {valid ? (
+                <div className="rounded-lg border border-[#e399a3]/40 bg-[#fdf8f9] px-3 py-2">
+                  <p className="text-sm text-[#1c0a0c]">
+                    Customers pay{" "}
+                    <span className="font-semibold text-[#c74959]">
+                      {formatPrice(offerPrice)}
+                      {perSuffix(form.interval)}
+                    </span>{" "}
+                    <span className="text-[#1c0a0c]/40 line-through">
+                      {formatPrice(planPrice)}
+                      {perSuffix(form.interval)}
+                    </span>
+                  </p>
+                  <p className="mt-0.5 text-xs text-[#1c0a0c]/50">
+                    {form.interval === "year"
+                      ? `Billed annually — ${formatPrice(toCents(offerPrice / 12))}/mo equivalent. Saves ${formatPrice(toCents(planPrice - offerPrice))} per year.`
+                      : `Saves ${formatPrice(toCents(planPrice - offerPrice))} per month.`}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-xs text-[#c74959]">
+                  {percentOff <= 0 || percentOff >= 100
+                    ? "Enter a discount between 1% and 99%."
+                    : `That works out to ${formatPrice(offerPrice)}, below the ${formatPrice(MIN_OFFER_PRICE)} minimum Stripe can charge. Use a smaller discount.`}
+                </p>
+              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="o-label">{t("admin.labelOptional")}</Label>
