@@ -9,6 +9,7 @@ import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LocalTime } from "@/components/local-time";
+import { appUrl } from "@/lib/app-url";
 import { portalActions } from "@/lib/portal/actions";
 import { getGuestId } from "@/lib/portal/guest";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
@@ -779,8 +780,16 @@ export function PortalComments({
             </span>
             {t("comments.ownerReplyPro")}
           </p>
+          {/*
+            MUST be absolute. This component renders on a tenant subdomain, where
+            proxy.ts rewrites every path to `/portal/<tenant>/…` — a relative
+            `/dashboard/settings` became
+            `uchihaz.feedboardapp.com/portal/uchihaz/dashboard/settings` and 404'd.
+            `appUrl` targets the bare root domain, which is where the dashboard
+            lives. Same reason the portal layout uses it for the signup link.
+          */}
           <a
-            href="/dashboard/settings?tab=billing"
+            href={appUrl("/dashboard/settings?tab=billing")}
             className="mt-2 inline-block text-xs font-medium text-[#c74959] underline"
           >
             {t("comments.goToBilling")}
