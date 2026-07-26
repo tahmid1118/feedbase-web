@@ -52,7 +52,7 @@ export async function uploadImage(
     }
 
     throw new ApiError(
-      "Unable to upload image. Please ensure the backend is running on port 4560.",
+      `Unable to reach the upload API at ${API_BASE_URL}. Check that it is reachable from your browser (and that its HTTPS certificate is valid).`,
       503
     );
   } finally {

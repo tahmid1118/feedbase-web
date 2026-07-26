@@ -14,6 +14,28 @@ export const IMAGE_MIME_TYPES = [
 
 export const VIDEO_MIME_TYPES = ["video/mp4", "video/webm", "video/quicktime"];
 
+/**
+ * Profile avatars and the workspace logo — a DIFFERENT endpoint
+ * (`/uploader/upload-image`) with its own list on the backend
+ * (`src/common/file-upload/upload-file-const-value.js`). Keep them in step.
+ *
+ * Use this for the picker's `accept` instead of `image/*`: that offered the user
+ * every image format the OS knows (HEIC from a phone, SVG, BMP) and let them
+ * pick one the API then rejected — an avoidable round trip and a confusing
+ * "Failed to upload image".
+ */
+export const PROFILE_IMAGE_MIME_TYPES = [
+  "image/png",
+  "image/jpeg",
+  "image/jpg",
+  "image/webp",
+  "image/gif",
+  "image/avif",
+];
+
+/** For an <input type="file" accept="…"> on avatar / logo pickers. */
+export const PROFILE_IMAGE_ACCEPT = PROFILE_IMAGE_MIME_TYPES.join(",");
+
 /** For an <input type="file" accept="…"> that allows both. */
 export const ATTACHMENT_ACCEPT = [...IMAGE_MIME_TYPES, ...VIDEO_MIME_TYPES].join(
   ","

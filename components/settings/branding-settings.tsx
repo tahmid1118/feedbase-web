@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { ImageIcon, Loader2, Upload } from "lucide-react";
-import { tenantsApi, uploaderApi, type Tenant } from "@/lib/api";
+import { tenantsApi, uploaderApi, ApiError, type Tenant } from "@/lib/api";
+import { PROFILE_IMAGE_ACCEPT } from "@/lib/attachments";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
 import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
@@ -68,8 +69,14 @@ export function BrandingSettings() {
       const res = await uploaderApi.uploadImage(file, token);
       setLogoUrl(res.filePath);
       toast.success(t("toast.logoUploaded"));
-    } catch {
-      toast.error(t("branding.logoUploadFailed"));
+    } catch (error) {
+      // Surface the API's reason (unsupported type, too large) rather than a
+      // generic failure — see the same handling in profile-settings.tsx.
+      toast.error(
+        error instanceof ApiError && error.message
+          ? error.message
+          : t("branding.logoUploadFailed")
+      );
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -149,7 +156,7 @@ export function BrandingSettings() {
             <input
               ref={fileInputRef}
               type="file"
-              accept="image/*"
+              accept={PROFILE_IMAGE_ACCEPT}
               className="hidden"
               onChange={handleLogoChange}
             />

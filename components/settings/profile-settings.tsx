@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { Loader2, Upload } from "lucide-react";
-import { usersApi, uploaderApi, type PersonalData } from "@/lib/api";
+import { usersApi, uploaderApi, ApiError, type PersonalData } from "@/lib/api";
+import { PROFILE_IMAGE_ACCEPT } from "@/lib/attachments";
 import { resolveAvatarUrl } from "@/lib/avatar";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
@@ -55,8 +56,16 @@ export function ProfileSettings() {
       const res = await uploaderApi.uploadImage(file, token);
       setAvatarPath(res.filePath);
       toast.success(t("toast.imageUploaded"));
-    } catch {
-      toast.error(t("profile.uploadFailed"));
+    } catch (error) {
+      // Show WHY it failed. The API says e.g. "image/heic is not supported.
+      // Allowed image types: PNG, JPEG, JPG, WEBP, GIF, AVIF." — swallowing that
+      // and toasting a generic "Failed to upload image" leaves the user with no
+      // way to act on it (and cost real debugging time in production).
+      toast.error(
+        error instanceof ApiError && error.message
+          ? error.message
+          : t("profile.uploadFailed")
+      );
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -139,7 +148,7 @@ export function ProfileSettings() {
             <input
               ref={fileInputRef}
               type="file"
-              accept="image/*"
+              accept={PROFILE_IMAGE_ACCEPT}
               className="hidden"
               onChange={handleAvatarChange}
             />
