@@ -113,6 +113,8 @@ cp .env.example .env.local   # then edit — see below
 pnpm build
 ```
 
+> **pnpm 10+ is required**, and `package.json` pins it via `"packageManager": "pnpm@10.26.2"` — honour that pin (Corepack, or install the matching version). `pnpm-workspace.yaml` here carries only settings (`ignoredBuiltDependencies`) and has **no `packages:` key**, which pnpm 10 accepts but pnpm 9 rejects with `ERROR packages field missing or empty`. This matters on build platforms that auto-detect the package manager (Nixpacks/Dokploy, Railway, Heroku): without the pin they install an older pnpm and the install step fails. `pnpm-lock.yaml` is the only committed lockfile — do not add a `package-lock.json`.
+
 `.env.local` (or export in the environment / PM2 config):
 ```
 AUTH_SECRET=<openssl rand -base64 32>
