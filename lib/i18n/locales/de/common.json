@@ -14,7 +14,9 @@
     "notifications": "Benachrichtigungen",
     "settings": "Einstellungen",
     "publicBoard": "Öffentliche Pinnwand",
-    "giveFeedback": "Feedback geben"
+    "giveFeedback": "Feedback geben",
+    "openMenu": "Menü öffnen",
+    "menu": "Menü"
   },
   "landing": {
     "hero": {

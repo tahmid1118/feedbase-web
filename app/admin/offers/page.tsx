@@ -164,7 +164,7 @@ export default function AdminOffersPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.offers")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
@@ -344,7 +344,7 @@ export default function AdminOffersPage() {
                 placeholder="Launch offer"
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="o-start">{t("admin.startsOptional")}</Label>
                 <Input

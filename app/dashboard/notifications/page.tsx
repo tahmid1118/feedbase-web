@@ -168,7 +168,7 @@ export default function NotificationsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("nav.notifications")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">

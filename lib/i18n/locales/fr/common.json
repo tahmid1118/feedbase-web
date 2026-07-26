@@ -14,7 +14,9 @@
     "notifications": "Notifications",
     "settings": "Paramètres",
     "publicBoard": "Tableau public",
-    "giveFeedback": "Donner un avis"
+    "giveFeedback": "Donner un avis",
+    "openMenu": "Ouvrir le menu",
+    "menu": "Menu"
   },
   "landing": {
     "hero": {

@@ -14,7 +14,9 @@
     "notifications": "Notificaciones",
     "settings": "Ajustes",
     "publicBoard": "Tablero público",
-    "giveFeedback": "Enviar comentarios"
+    "giveFeedback": "Enviar comentarios",
+    "openMenu": "Abrir menú",
+    "menu": "Menú"
   },
   "landing": {
     "hero": {

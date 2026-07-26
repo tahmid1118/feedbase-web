@@ -55,9 +55,12 @@ export default async function DashboardLayout({
     <div className="min-h-screen bg-[#fdf8f9]">
       <Sidebar />
       <Header user={session.user} />
-      <main className="ml-64 pt-16">
+      {/* No left margin on phones — the rail is a drawer there. `min-w-0`
+          prevents a wide child (a table, a long word) from stretching the shell
+          and making the whole page scroll sideways. */}
+      <main className="min-w-0 pt-16 md:ml-64">
         <AdminReturnBanner />
-        <div className="p-6">{children}</div>
+        <div className="p-4 sm:p-6">{children}</div>
       </main>
       {/* A 2nd tab reuses the session cookie, so only the browser can catch it. */}
       <SingleTabGuard multiDevice={multiDevice} />

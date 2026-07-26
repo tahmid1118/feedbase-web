@@ -14,7 +14,9 @@
     "notifications": "Notifications",
     "settings": "Settings",
     "publicBoard": "Public Board",
-    "giveFeedback": "Give feedback"
+    "giveFeedback": "Give feedback",
+    "openMenu": "Open menu",
+    "menu": "Menu"
   },
   "common": {
     "save": "Save",

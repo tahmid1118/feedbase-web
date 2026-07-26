@@ -13,6 +13,7 @@ import { resolveAvatarUrl } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/i18n/language-selector";
+import { MobileSidebar } from "@/components/dashboard/sidebar";
 import { useTranslation } from "@/lib/i18n/client";
 import {
   DropdownMenu,
@@ -73,15 +74,25 @@ export function Header({ user }: HeaderProps) {
       .join("")
       .toUpperCase() || "U";
 
+  // `left-0` on phones (no rail there), `left-64` once the rail appears.
   return (
-    <header className="fixed left-64 right-0 top-0 z-30 h-16 border-b border-[#e399a3]/20 bg-white/80 backdrop-blur-md">
-      <div className="flex h-full items-center justify-between px-6">
-        <div>
-          <h1 className="text-lg font-semibold text-[#1c0a0c]">{t("dashboard.welcomeBack")}</h1>
-          <p className="text-sm text-[#1c0a0c]/60">{displayName || "User"}</p>
+    <header className="fixed left-0 right-0 top-0 z-30 h-16 border-b border-[#e399a3]/20 bg-white/80 backdrop-blur-md md:left-64">
+      <div className="flex h-full items-center justify-between gap-2 px-4 md:px-6">
+        {/* min-w-0 lets the greeting truncate instead of shoving the actions
+            off-screen on a narrow viewport. */}
+        <div className="flex min-w-0 items-center gap-1">
+          <MobileSidebar />
+          <div className="min-w-0">
+            <h1 className="truncate text-base font-semibold text-[#1c0a0c] md:text-lg">
+              {t("dashboard.welcomeBack")}
+            </h1>
+            <p className="truncate text-xs text-[#1c0a0c]/60 md:text-sm">
+              {displayName || "User"}
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-3">
           <LanguageSelector />
           {/* Notifications */}
           <Button

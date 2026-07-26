@@ -4,6 +4,7 @@ import { LogOut, ShieldCheck } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/i18n/language-selector";
+import { AdminMobileSidebar } from "@/components/admin/admin-sidebar";
 import { useTranslation } from "@/lib/i18n/client";
 import {
   DropdownMenu,
@@ -22,15 +23,24 @@ export function AdminHeader({
   email?: string | null;
 }) {
   const { t } = useTranslation();
+  // `left-0` on phones (the rail is a drawer there), `left-64` from md up.
   return (
-    <header className="fixed left-64 right-0 top-0 z-30 h-16 border-b border-[#e399a3]/20 bg-white/80 backdrop-blur-md">
-      <div className="flex h-full items-center justify-between px-6">
-        <div>
-          <h1 className="text-lg font-semibold text-[#1c0a0c]">{t("admin.panel")}</h1>
-          <p className="text-sm text-[#1c0a0c]/60">{t("admin.subtitle")}</p>
+    <header className="fixed left-0 right-0 top-0 z-30 h-16 border-b border-[#e399a3]/20 bg-white/80 backdrop-blur-md md:left-64">
+      <div className="flex h-full items-center justify-between gap-2 px-4 md:px-6">
+        <div className="flex min-w-0 items-center gap-1">
+          <AdminMobileSidebar />
+          <div className="min-w-0">
+            <h1 className="truncate text-base font-semibold text-[#1c0a0c] md:text-lg">
+              {t("admin.panel")}
+            </h1>
+            {/* The subtitle is the first thing worth losing on a phone. */}
+            <p className="hidden truncate text-sm text-[#1c0a0c]/60 sm:block">
+              {t("admin.subtitle")}
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-3">
         <LanguageSelector />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

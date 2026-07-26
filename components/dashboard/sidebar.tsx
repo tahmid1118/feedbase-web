@@ -12,7 +12,16 @@ import {
   Bell,
   Settings,
   ExternalLink,
+  Menu,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { tenantsApi } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/client";
@@ -30,7 +39,15 @@ const navigation = [
   { key: "nav.settings", href: "/dashboard/settings", icon: Settings },
 ];
 
-export function Sidebar() {
+/**
+ * The sidebar's contents, shared by the fixed desktop rail and the mobile
+ * drawer, so the navigation exists in exactly one place.
+ *
+ * `onNavigate` lets the drawer close itself when a link is tapped — without it a
+ * mobile user taps a link, the route changes behind the overlay, and the drawer
+ * stays open over the page they asked for.
+ */
+function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const { data: session } = useSession();
   const { t } = useTranslation();
@@ -57,8 +74,7 @@ export function Sidebar() {
   }, [token]);
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-[#e399a3]/20 bg-white">
-      <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col">
         {/* Logo */}
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
           <Logo className="h-8 w-8" />
@@ -81,6 +97,7 @@ export function Sidebar() {
               <Link
                 key={item.key}
                 href={item.href}
+                onClick={onNavigate}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
@@ -100,6 +117,7 @@ export function Sidebar() {
               href={portalUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={onNavigate}
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-[#1c0a0c]/70 transition-colors hover:bg-[#fdf8f9] hover:text-[#c74959]"
             >
               <ExternalLink className="h-5 w-5" />
@@ -107,8 +125,56 @@ export function Sidebar() {
             </a>
           )}
 
-        </nav>
-      </div>
+      </nav>
+    </div>
+  );
+}
+
+/**
+ * Fixed rail, tablet and up only. Below `md` the shell has no left margin and
+ * navigation moves into `MobileSidebar` — the rail used to be `fixed w-64` with
+ * no breakpoint, so on a phone it covered the page while `main`'s hardcoded
+ * `ml-64` pushed the content off-screen to the right.
+ */
+export function Sidebar() {
+  return (
+    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 border-r border-[#e399a3]/20 bg-white md:block">
+      <SidebarContent />
     </aside>
+  );
+}
+
+/**
+ * The same navigation as a drawer, plus the button that opens it. Rendered by
+ * the header so the open/closed state stays local to the trigger.
+ */
+export function MobileSidebar() {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="-ml-2 text-[#1c0a0c]/70 md:hidden"
+          aria-label={t("nav.openMenu")}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent
+        side="left"
+        className="w-[17rem] max-w-[85vw] gap-0 bg-white p-0"
+      >
+        {/* Radix requires a title for accessibility; the drawer shows the
+            branded logo row instead, so keep it visually hidden. */}
+        <SheetHeader className="sr-only">
+          <SheetTitle>{t("nav.menu")}</SheetTitle>
+        </SheetHeader>
+        <SidebarContent onNavigate={() => setOpen(false)} />
+      </SheetContent>
+    </Sheet>
   );
 }

@@ -14,7 +14,9 @@
     "notifications": "Notificações",
     "settings": "Definições",
     "publicBoard": "Quadro público",
-    "giveFeedback": "Dar feedback"
+    "giveFeedback": "Dar feedback",
+    "openMenu": "Abrir menu",
+    "menu": "Menu"
   },
   "landing": {
     "hero": {

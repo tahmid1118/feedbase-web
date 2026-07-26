@@ -14,8 +14,17 @@ import {
   Tag,
   Headset,
   MessagesSquare,
+  Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useTranslation } from "@/lib/i18n/client";
 import { Logo } from "@/components/ui/logo";
 import { adminApi } from "@/lib/api";
@@ -34,7 +43,11 @@ const navigation = [
 
 const POLL_MS = 20000;
 
-export function AdminSidebar() {
+/**
+ * Shared by the fixed desktop rail and the mobile drawer so the admin
+ * navigation is defined once. `onNavigate` closes the drawer after a tap.
+ */
+function AdminSidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const { data: session } = useSession();
   const { t } = useTranslation();
@@ -84,8 +97,7 @@ export function AdminSidebar() {
     boardId != null && pathname.startsWith(`/admin/workspaces/${boardId}`);
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-[#e399a3]/20 bg-white">
-      <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col">
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
           <Logo className="h-8 w-8" />
           <div className="flex flex-col leading-tight">
@@ -107,7 +119,7 @@ export function AdminSidebar() {
                 : pathname.startsWith(item.href);
             const badge = item.href === "/admin/support" ? supportUnread : 0;
             return (
-              <Link
+              <Link onClick={onNavigate}
                 key={item.key}
                 href={item.href}
                 className={cn(
@@ -136,7 +148,7 @@ export function AdminSidebar() {
           {boardId != null && (
             <>
               <div className="my-2 border-t border-[#e399a3]/20" />
-              <Link
+              <Link onClick={onNavigate}
                 href={`/admin/workspaces/${boardId}`}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
@@ -151,7 +163,45 @@ export function AdminSidebar() {
             </>
           )}
         </nav>
-      </div>
+    </div>
+  );
+}
+
+/** Fixed rail, tablet and up. Below `md` navigation lives in the drawer below. */
+export function AdminSidebar() {
+  return (
+    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 border-r border-[#e399a3]/20 bg-white md:block">
+      <AdminSidebarContent />
     </aside>
+  );
+}
+
+/** The same navigation as a drawer, plus its trigger (rendered by the header). */
+export function AdminMobileSidebar() {
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="-ml-2 text-[#1c0a0c]/70 md:hidden"
+          aria-label={t("nav.openMenu")}
+        >
+          <Menu className="h-5 w-5" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent
+        side="left"
+        className="w-[17rem] max-w-[85vw] gap-0 bg-white p-0"
+      >
+        <SheetHeader className="sr-only">
+          <SheetTitle>{t("nav.menu")}</SheetTitle>
+        </SheetHeader>
+        <AdminSidebarContent onNavigate={() => setOpen(false)} />
+      </SheetContent>
+    </Sheet>
   );
 }

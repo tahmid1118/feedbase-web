@@ -14,7 +14,9 @@
     "notifications": "Notifiche",
     "settings": "Impostazioni",
     "publicBoard": "Bacheca pubblica",
-    "giveFeedback": "Lascia un feedback"
+    "giveFeedback": "Lascia un feedback",
+    "openMenu": "Apri il menu",
+    "menu": "Menu"
   },
   "landing": {
     "hero": {

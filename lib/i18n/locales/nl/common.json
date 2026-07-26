@@ -14,7 +14,9 @@
     "notifications": "Meldingen",
     "settings": "Instellingen",
     "publicBoard": "Openbaar bord",
-    "giveFeedback": "Feedback geven"
+    "giveFeedback": "Feedback geven",
+    "openMenu": "Menu openen",
+    "menu": "Menu"
   },
   "landing": {
     "hero": {

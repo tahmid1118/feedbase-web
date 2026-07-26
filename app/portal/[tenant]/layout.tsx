@@ -44,7 +44,7 @@ export default async function PortalLayout({
         rel="noopener noreferrer"
         className="group block bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"
       >
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-6 py-2 text-center text-sm">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-3 gap-y-1 px-4 sm:px-6 py-2 text-center text-sm">
           <span className="inline-flex items-center gap-1.5 font-medium">
             <Sparkles className="h-4 w-4" />
             {t("portal.ownBoardTitle")}
@@ -57,7 +57,7 @@ export default async function PortalLayout({
       </a>
 
       <header className="border-b border-black/5 bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6 py-4">
           <Link
             href={`/portal/${decodeURIComponent(tenant)}`}
             className="flex items-center gap-3"
@@ -81,14 +81,14 @@ export default async function PortalLayout({
       </header>
 
       {/* flex-1 pushes the footer to the bottom of the viewport on short pages. */}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-8">{children}</main>
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 sm:px-6 py-8">{children}</main>
 
       <footer className="mt-auto border-t border-black/5 bg-white">
         {/* FeedBoard promo — a visitor here is a prospect for their own board.
             Uses FeedBoard's own rose, not the tenant brand: this is clearly our
             space, cordoned off in the footer, not part of the tenant's content.
             Links to the app on the root domain (absolute — see appUrl). */}
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 sm:px-6 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
           <div className="flex items-center gap-3">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#c74959]/10 text-[#c74959]">
               <Sparkles className="h-5 w-5" />

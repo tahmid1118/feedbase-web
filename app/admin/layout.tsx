@@ -20,8 +20,8 @@ export default async function AdminLayout({
     <div className="min-h-screen bg-[#fdf8f9]">
       <AdminSidebar />
       <AdminHeader name={session.user.name} email={session.user.email} />
-      <main className="ml-64 pt-16">
-        <div className="p-6">{children}</div>
+      <main className="min-w-0 pt-16 md:ml-64">
+        <div className="p-4 sm:p-6">{children}</div>
       </main>
       <Toaster />
     </div>
