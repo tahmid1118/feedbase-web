@@ -1,0 +1,13 @@
+# Build config for Nixpacks-based platforms (Dokploy, Railway, Coolify).
+#
+# Next 16 requires Node >= 20.9.0 (see `engines` in next/package.json), but
+# Nixpacks defaults to Node 18 when the repo declares no version, and the build
+# then dies with "You are using Node.js 18.x. For Next.js, Node.js version
+# >=20.9.0 is required." Pinning the setup packages here is unambiguous —
+# Nixpacks' own version detection reads `engines.node` / `.nvmrc` and silently
+# falls back to its default when it can't parse a semver *range*.
+#
+# Keep the Node major in sync with .nvmrc.
+
+[phases.setup]
+nixPkgs = ["nodejs_22", "pnpm-10_x"]

@@ -27,9 +27,9 @@ The `*` wildcard is what makes `<tenant>.feedboardapp.com` resolve to the box.
 ## 2. Server prerequisites (Ubuntu VPS)
 
 ```bash
-# Node 20 LTS via nvm, pnpm, PM2
+# Node 22 LTS via nvm, pnpm, PM2  (Next 16 requires >= 20.9.0; .nvmrc pins 22)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-nvm install 20 && nvm alias default 20
+nvm install 22 && nvm alias default 22
 npm i -g pnpm pm2
 
 # MySQL + Nginx + Certbot
@@ -114,6 +114,8 @@ pnpm build
 ```
 
 > **Package manager: pnpm, pinned** via `"packageManager": "pnpm@10.26.2"` in `package.json`. `pnpm-lock.yaml` is the **only** committed lockfile — never add a `package-lock.json` (a second lockfile makes auto-detecting builders such as Nixpacks/Dokploy, Railway, or Heroku pick the wrong manager).
+>
+> **Node 20.9+ is required** (Next 16's own `engines`). `.nvmrc` pins **22**, and `nixpacks.toml` pins `nodejs_22` for Nixpacks-based platforms (Dokploy, Railway, Coolify) — without it Nixpacks defaults to **Node 18** and `next build` fails with `For Next.js, Node.js version ">=20.9.0" is required`. Don't express the requirement as a semver *range* in `engines.node`: Nixpacks reads that field first and falls back to its Node 18 default when it can't parse the value, which is worse than saying nothing. Keep `nixpacks.toml` and `.nvmrc` on the same major.
 >
 > There is deliberately **no `pnpm-workspace.yaml`** — this is a single package, not a workspace. pnpm 10 tolerates a settings-only workspace file, but pnpm 9 and earlier read its presence as "workspace root" and abort with `ERROR packages field missing or empty`, which broke container builds. pnpm settings therefore live in the `"pnpm"` field of `package.json`. Don't reintroduce the file.
 
