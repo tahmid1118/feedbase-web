@@ -53,8 +53,15 @@ FLUSH PRIVILEGES; EXIT;
 ```
 Import the schema (from the backend repo):
 ```bash
-mysql -u feedboard -p feedboard_db < feedboard_db.sql
+mysql -u feedboard -p feedboard_db < database/schema.sql
 ```
+> Import **`database/schema.sql`**, never `feedboard_db.sql`. The latter is the development dump: the same 26 tables *plus* a dummy seed block — `Acme Labs`/`Beta Works` tenants and four users (`owner@acme.test`, `admin@acme.test`, `jane@acme.test`, `owner@beta.test`) sharing one bcrypt hash. In production those are live logins with a known password. `schema.sql` carries every column the `scripts/*.js` migrations add, so a new database needs that one file — don't run the migration scripts.
+
+Then create the platform admin — the only account a fresh install needs:
+```bash
+node scripts/create-admin.js you@yourdomain.com 'STRONG_PASSWORD' 'Administrator'
+```
+It sets `users.is_platform_admin = 1` with `tenant_id NULL` (admin login, no workspace). Sign in at `/admin-login`.
 
 ---
 
@@ -252,3 +259,81 @@ Run any new `scripts/*` migration mentioned in the changelog (they're idempotent
 - **CORS:** with `NODE_ENV=production` + `ROOT_DOMAIN` set, the API restricts browser origins to the app domain + any subdomain of it. Add others via `CORS_EXTRA_ORIGINS`.
 - **Uploads** live on disk under the backend's `uploads/` (served at `/uploads`). Back them up, or move to object storage if you scale to multiple API hosts. `client_max_body_size 55M` in Nginx must allow video attachments.
 - **MySQL backups:** schedule `mysqldump feedboard_db` (cron) — the app data + billing_accounts live here.
+
+---
+
+## 11. Deploying on Dokploy (containers) — alternative to §2–§7
+
+Sections 2–7 describe a VPS with Nginx + PM2. Dokploy (Nixpacks + Docker) replaces
+them: it builds each repo, runs the container, and terminates TLS itself. Three
+services: **DB** (MySQL), **Backend**, **Frontend**.
+
+Both repos commit a `nixpacks.toml`. **Node 22 is pinned there** — Nixpacks
+defaults to Node 18, which fails the frontend build outright (`For Next.js,
+Node.js version ">=20.9.0" is required`).
+
+### DB service
+
+Create a MySQL service with `Database Name = feedboard_db`, `Database User =
+feedboard` (matching `.env.example`, so nothing needs overriding). Leave the
+external port unexposed — only the other containers need it.
+
+`DB_HOST` is **not** `127.0.0.1`: containers reach each other by the service's
+internal hostname on the Docker network. Copy it from the DB service page.
+
+Import the schema from the **Backend** container's terminal (the Nixpacks image
+has no `mysql` client, so use the app's own `mysql2`):
+```bash
+node scripts/import-schema.js          # idempotent; creates 26 tables
+node scripts/create-admin.js you@yourdomain.com 'STRONG_PASSWORD' 'Administrator'
+```
+
+### Backend service
+
+`nixpacks.toml` sets `cmd = "node app.js"`. Do **not** let it run `pnpm start` —
+that is the PM2 entrypoint (`pm2 start ecosystem.config.js`), and in a container
+it fails twice over: `pm2` is not a dependency (the VPS installs it globally), and
+`pm2 start` daemonizes so the foreground process exits and the container stops.
+Docker already provides supervision and restarts; scale with replicas instead of
+PM2 cluster mode.
+
+**`APP_PORT` must be set** — `app.js` reads it with no fallback, so unset it binds
+a random port and the proxy can never reach it. Set `APP_PORT=4560` and point the
+service's domain at container port **4560**.
+
+Required env: `NODE_ENV=production`, `APP_PORT`, `TRUST_PROXY_HOPS=1`, the five
+`DB_*`, `SECRET_ACCESS_TOKEN`, `ACCESS_TOKEN_EXPIRE`, `FRONTEND_URL`,
+`ROOT_DOMAIN`, the Stripe keys, and one email provider (§4).
+
+`FRONTEND_URL` + `ROOT_DOMAIN` are what open CORS to the app and its portal
+subdomains — with `NODE_ENV=production` and `ROOT_DOMAIN` set, anything else is
+refused. Get them wrong and every browser call fails while curl still works.
+
+### Frontend service
+
+`NEXT_PUBLIC_*` values are **inlined into the client bundle at build time**, so
+they must be present when Dokploy builds, not only at runtime. Supplied late, the
+bundle ships the `localhost` fallbacks (`lib/api/client.ts`, `proxy.ts`) and the
+app breaks in the browser while the build and logs look clean.
+
+| Var | Value | Why |
+|---|---|---|
+| `AUTH_SECRET` | `openssl rand -base64 32` | NextAuth |
+| `FEEDBOARD_API_BASE_URL` | internal backend hostname:4560 | server→API, stays on the Docker network |
+| `NEXT_PUBLIC_FEEDBOARD_API_BASE_URL` | `https://api.<domain>` | browser→API, must be public HTTPS |
+| `NEXT_PUBLIC_ROOT_DOMAIN` | `<domain>` | subdomain routing + cookie scope |
+| `NEXT_PUBLIC_FEEDBACK_SUBDOMAIN` | `feedback` | dogfooding board |
+
+Verify the inlining after deploy — this must print nothing:
+```bash
+curl -s https://<domain>/_next/static/chunks/*.js | grep -o 'localhost:4560'
+```
+
+### Still required from the VPS sections
+
+- **Wildcard DNS + TLS** (§1, §7): `*.<domain>` must resolve and be covered by the
+  certificate, or tenant portals 404/fail TLS. Dokploy needs a wildcard domain on
+  the frontend service.
+- **Stripe webhook** (§8) pointed at the backend's public URL.
+- **Uploads** (`uploads/`) are on the container filesystem and die with it —
+  mount a Dokploy volume or move to object storage.
