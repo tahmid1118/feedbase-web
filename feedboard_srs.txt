@@ -398,9 +398,13 @@ Version 1.2
                           refund now; the scheduled change is shown and can be
                           cancelled. Applies equally to monthly and yearly, and to
                           switching interval on the same tier.
-    FR-B3  Manage ....... The Stripe Customer Portal is used to update the card or
-                          cancel; cancellation returns the account (and all the
-                          workspaces it owns) to Free.
+    FR-B3  Manage ....... The subscriber can CANCEL from the Billing tab in-app:
+                          cancellation takes effect at the END of the paid period —
+                          they keep the plan until then and are NOT charged again,
+                          after which the account (and all the workspaces it owns)
+                          reverts to Free. A cancellation can be RESUMED before the
+                          period ends to keep the subscription. The Stripe Customer
+                          Portal remains available for card updates.
     FR-B4  Sync ......... A Stripe webhook keeps the account plan and status in
                           sync with the subscription lifecycle, mirrored to every
                           workspace the account owns.

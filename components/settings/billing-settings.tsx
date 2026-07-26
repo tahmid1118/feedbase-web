@@ -87,6 +87,8 @@ export function BillingSettings() {
   const [preview, setPreview] = useState<PlanChangePreview | null>(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   const [applying, setApplying] = useState(false);
+  // Confirm dialog for cancelling the subscription at period end.
+  const [confirmCancel, setConfirmCancel] = useState(false);
 
   const load = useCallback(() => {
     if (!token) return;
@@ -211,6 +213,37 @@ export function BillingSettings() {
     try {
       await billingApi.cancelChange(token);
       toast.success(t("billing.changeCancelledToast"));
+      load();
+    } catch (e) {
+      toast.error((e as Error)?.message || t("billing.changeFailed"));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  // Cancel at period end (keep access until then, no further charge).
+  const cancelSub = async () => {
+    if (!token) return;
+    setBusy("cancel-sub");
+    try {
+      await billingApi.cancelSubscription(token);
+      toast.success(t("billing.cancelledToast"));
+      setConfirmCancel(false);
+      load();
+    } catch (e) {
+      toast.error((e as Error)?.message || t("billing.changeFailed"));
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  // Undo a scheduled cancellation — the subscription renews as usual again.
+  const resumeSub = async () => {
+    if (!token) return;
+    setBusy("resume-sub");
+    try {
+      await billingApi.resumeSubscription(token);
+      toast.success(t("billing.resumedToast"));
       load();
     } catch (e) {
       toast.error((e as Error)?.message || t("billing.changeFailed"));
@@ -387,16 +420,72 @@ export function BillingSettings() {
             </p>
           </div>
           {hasSub && (
-            <Button variant="outline" onClick={manage} disabled={busy !== null}>
-              {busy === "portal" ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
+            <div className="flex flex-col items-stretch gap-2 sm:items-end">
+              <Button variant="outline" onClick={manage} disabled={busy !== null}>
+                {busy === "portal" ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  t("billing.manageBilling")
+                )}
+              </Button>
+              {willCancel ? (
+                // Already set to cancel — offer to resume (keep the plan).
+                <Button
+                  onClick={resumeSub}
+                  disabled={busy !== null}
+                  className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                >
+                  {busy === "resume-sub" ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    t("billing.resumeSubscription")
+                  )}
+                </Button>
               ) : (
-                t("billing.manageBilling")
+                <button
+                  type="button"
+                  onClick={() => setConfirmCancel(true)}
+                  disabled={busy !== null}
+                  className="text-xs text-[#1c0a0c]/45 underline underline-offset-2 hover:text-[#c74959] disabled:opacity-50"
+                >
+                  {t("billing.cancelSubscription")}
+                </button>
               )}
-            </Button>
+            </div>
           )}
         </div>
       </Card>
+
+      {/* Confirm cancel-at-period-end. */}
+      <AlertDialog open={confirmCancel} onOpenChange={(o) => !o && setConfirmCancel(false)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t("billing.cancelSubTitle")}</AlertDialogTitle>
+            <AlertDialogDescription>
+              {renewal
+                ? t("billing.cancelSubBody", {
+                    plan: currentPlan?.name ?? "",
+                    date: renewal,
+                  })
+                : t("billing.cancelSubBodyNoDate", { plan: currentPlan?.name ?? "" })}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>{t("billing.keepSubscription")}</AlertDialogCancel>
+            <AlertDialogAction
+              variant="destructive"
+              onClick={cancelSub}
+              disabled={busy !== null}
+            >
+              {busy === "cancel-sub" ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                t("billing.cancelSubscription")
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       {status?.pendingPlan && (
         <Card className="border-[#c74959]/30 bg-[#c74959]/5 p-4">

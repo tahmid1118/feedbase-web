@@ -604,7 +604,15 @@
     "endsOn": "Sua assinatura termina em {{date}} — sem novas cobranças.",
     "compedUntil": "Acesso cortesia até {{date}}.",
     "compedLifetime": "Acesso cortesia — sem expiração.",
-    "accountWide": "Aplica-se a toda a sua conta — todos os workspaces que você possui."
+    "accountWide": "Aplica-se a toda a sua conta — todos os workspaces que você possui.",
+    "cancelSubscription": "Cancelar assinatura",
+    "resumeSubscription": "Retomar assinatura",
+    "keepSubscription": "Manter assinatura",
+    "cancelSubTitle": "Cancelar sua assinatura?",
+    "cancelSubBody": "Você mantém {{plan}} até {{date}} e não será cobrado novamente. Depois, sua conta passa para Free.",
+    "cancelSubBodyNoDate": "Você mantém {{plan}} até o fim do seu período de faturamento e não será cobrado novamente. Depois, sua conta passa para Free.",
+    "cancelledToast": "Assinatura cancelada — você mantém o acesso até o fim do período.",
+    "resumedToast": "Assinatura retomada — será renovada normalmente."
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",

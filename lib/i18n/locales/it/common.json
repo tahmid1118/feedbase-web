@@ -604,7 +604,15 @@
     "endsOn": "Il tuo abbonamento termina il {{date}} — nessun altro addebito.",
     "compedUntil": "Accesso gratuito fino al {{date}}.",
     "compedLifetime": "Accesso gratuito — senza scadenza.",
-    "accountWide": "Vale per l’intero account — ogni spazio che possiedi."
+    "accountWide": "Vale per l’intero account — ogni spazio che possiedi.",
+    "cancelSubscription": "Annulla abbonamento",
+    "resumeSubscription": "Riprendi abbonamento",
+    "keepSubscription": "Mantieni abbonamento",
+    "cancelSubTitle": "Annullare l'abbonamento?",
+    "cancelSubBody": "Manterrai {{plan}} fino al {{date}} e non ti sarà addebitato di nuovo. Dopodiché il tuo account passa a Free.",
+    "cancelSubBodyNoDate": "Manterrai {{plan}} fino alla fine del periodo di fatturazione e non ti sarà addebitato di nuovo. Dopodiché il tuo account passa a Free.",
+    "cancelledToast": "Abbonamento annullato: mantieni l'accesso fino alla fine del periodo.",
+    "resumedToast": "Abbonamento ripreso: si rinnoverà normalmente."
   },
   "switcher": {
     "addWorkspace": "Aggiungi spazio di lavoro",

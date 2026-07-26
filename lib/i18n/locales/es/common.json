@@ -604,7 +604,15 @@
     "endsOn": "Tu suscripción termina el {{date}} — sin más cargos.",
     "compedUntil": "Acceso de cortesía hasta el {{date}}.",
     "compedLifetime": "Acceso de cortesía — sin caducidad.",
-    "accountWide": "Se aplica a toda tu cuenta: cada espacio que posees."
+    "accountWide": "Se aplica a toda tu cuenta: cada espacio que posees.",
+    "cancelSubscription": "Cancelar suscripción",
+    "resumeSubscription": "Reanudar suscripción",
+    "keepSubscription": "Mantener suscripción",
+    "cancelSubTitle": "¿Cancelar tu suscripción?",
+    "cancelSubBody": "Conservarás {{plan}} hasta el {{date}} y no se te cobrará de nuevo. Después, tu cuenta pasa a Free.",
+    "cancelSubBodyNoDate": "Conservarás {{plan}} hasta el final de tu período de facturación y no se te cobrará de nuevo. Después, tu cuenta pasa a Free.",
+    "cancelledToast": "Suscripción cancelada: mantienes el acceso hasta que termine el período.",
+    "resumedToast": "Suscripción reanudada: se renovará con normalidad."
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",

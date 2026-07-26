@@ -68,6 +68,17 @@ export const billingApi = {
   cancelChange: (token: string) =>
     apiClient.post<ApiResponse<{ ok: boolean }>>("/billing/change/cancel", {}, { token }),
 
+  // Cancel the subscription at PERIOD END — keep access until then, no further
+  // charge, then revert to Free. Resume undoes it (renews as usual).
+  cancelSubscription: (token: string) =>
+    apiClient.post<ApiResponse<{ cancelAtPeriodEnd: boolean; currentPeriodEnd: string | null }>>(
+      "/billing/cancel",
+      {},
+      { token }
+    ),
+  resumeSubscription: (token: string) =>
+    apiClient.post<ApiResponse<{ cancelAtPeriodEnd: boolean }>>("/billing/resume", {}, { token }),
+
   // Redeem a promo code. Free-plan codes apply instantly; percent-off codes
   // return a Stripe promotion code to pass into checkout.
   redeem: (code: string, token: string) =>

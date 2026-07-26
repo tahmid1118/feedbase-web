@@ -604,7 +604,15 @@
     "endsOn": "Dein Abo endet am {{date}} — keine weiteren Abbuchungen.",
     "compedUntil": "Kostenloser Zugang bis {{date}}.",
     "compedLifetime": "Kostenloser Zugang — ohne Ablaufdatum.",
-    "accountWide": "Gilt für dein gesamtes Konto — jeden Workspace, den du besitzt."
+    "accountWide": "Gilt für dein gesamtes Konto — jeden Workspace, den du besitzt.",
+    "cancelSubscription": "Abo kündigen",
+    "resumeSubscription": "Abo fortsetzen",
+    "keepSubscription": "Abo behalten",
+    "cancelSubTitle": "Abo kündigen?",
+    "cancelSubBody": "Du behältst {{plan}} bis zum {{date}} und wirst nicht erneut belastet. Danach wechselt dein Konto auf Free.",
+    "cancelSubBodyNoDate": "Du behältst {{plan}} bis zum Ende deines Abrechnungszeitraums und wirst nicht erneut belastet. Danach wechselt dein Konto auf Free.",
+    "cancelledToast": "Abo gekündigt – du behältst den Zugang bis zum Periodenende.",
+    "resumedToast": "Abo fortgesetzt – es wird wie gewohnt verlängert."
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",

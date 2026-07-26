@@ -612,7 +612,15 @@
     "endsOn": "Twoja subskrypcja kończy się {{date}} — bez dalszych opłat.",
     "compedUntil": "Dostęp gratisowy do {{date}}.",
     "compedLifetime": "Dostęp gratisowy — bez wygaśnięcia.",
-    "accountWide": "Dotyczy całego konta — każdej przestrzeni, którą posiadasz."
+    "accountWide": "Dotyczy całego konta — każdej przestrzeni, którą posiadasz.",
+    "cancelSubscription": "Anuluj subskrypcję",
+    "resumeSubscription": "Wznów subskrypcję",
+    "keepSubscription": "Zachowaj subskrypcję",
+    "cancelSubTitle": "Anulować subskrypcję?",
+    "cancelSubBody": "Zachowasz {{plan}} do {{date}} i nie zostaniesz ponownie obciążony. Potem Twoje konto przechodzi na Free.",
+    "cancelSubBodyNoDate": "Zachowasz {{plan}} do końca okresu rozliczeniowego i nie zostaniesz ponownie obciążony. Potem Twoje konto przechodzi na Free.",
+    "cancelledToast": "Subskrypcja anulowana — zachowujesz dostęp do końca okresu.",
+    "resumedToast": "Subskrypcja wznowiona — odnowi się normalnie."
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",

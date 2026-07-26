@@ -952,6 +952,18 @@ Owner-only. Cancels a scheduled (pending) downgrade — releases the Stripe sche
 {"status":"success","message":"Scheduled change cancelled","data":{"ok":true}}
 ```
 
+### POST /billing/cancel
+Owner-only. Cancels the ACCOUNT subscription **at period end** — sets Stripe `cancel_at_period_end` (any pending downgrade schedule is released first). The account keeps its paid plan until `currentPeriodEnd` with **no further charge**, then reverts to Free (via the webhook/reconcile). `400 no_active_subscription` for a free/comped account. Body `{lg}`.
+```json
+{"status":"success","message":"Subscription cancelled","data":{"cancelAtPeriodEnd":true,"currentPeriodEnd":"2027-07-15T00:00:00.000Z"}}
+```
+
+### POST /billing/resume
+Owner-only. Undoes a period-end cancellation (clears `cancel_at_period_end`) so the subscription renews normally. Body `{lg}`.
+```json
+{"status":"success","message":"Subscription resumed","data":{"cancelAtPeriodEnd":false}}
+```
+
 ---
 
 ## 16) Invitation APIs

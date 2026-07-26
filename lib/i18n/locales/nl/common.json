@@ -604,7 +604,15 @@
     "endsOn": "Je abonnement eindigt op {{date}} — geen verdere kosten.",
     "compedUntil": "Gratis toegang tot {{date}}.",
     "compedLifetime": "Gratis toegang — zonder vervaldatum.",
-    "accountWide": "Geldt voor je hele account — elke workspace die je bezit."
+    "accountWide": "Geldt voor je hele account — elke workspace die je bezit.",
+    "cancelSubscription": "Abonnement opzeggen",
+    "resumeSubscription": "Abonnement hervatten",
+    "keepSubscription": "Abonnement behouden",
+    "cancelSubTitle": "Je abonnement opzeggen?",
+    "cancelSubBody": "Je behoudt {{plan}} tot {{date}} en wordt niet opnieuw in rekening gebracht. Daarna gaat je account naar Free.",
+    "cancelSubBodyNoDate": "Je behoudt {{plan}} tot het einde van je factureringsperiode en wordt niet opnieuw in rekening gebracht. Daarna gaat je account naar Free.",
+    "cancelledToast": "Abonnement opgezegd — je houdt toegang tot het einde van de periode.",
+    "resumedToast": "Abonnement hervat — het wordt normaal verlengd."
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",
