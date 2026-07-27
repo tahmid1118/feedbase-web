@@ -206,7 +206,23 @@ Add the TXT record it prints in Hostinger DNS, finish, then point the `ssl_certi
 
 ---
 
-## 8. Stripe — go LIVE (real payments)
+## 8. Payments — go LIVE
+
+The active provider is set by `BILLING_PROVIDER` (default **`paddle`**). **Paddle**
+is the Merchant of Record used in production (Stripe can't pay out to Bangladesh);
+the Stripe path stays available with `BILLING_PROVIDER=stripe`.
+
+### 8a. Paddle (default provider) — go live
+Sandbox and production are **separate universes** (keys, prices, webhooks all differ).
+1. Get your Paddle account **approved for live** (seller verification), then switch the dashboard to **Live**.
+2. Backend `.env`: `BILLING_PROVIDER=paddle`, `PADDLE_ENV=production`, `PADDLE_API_KEY=pdl_live_…`.
+3. Set the **Default Payment Link** (Paddle → Checkout settings) to your app URL, e.g. `https://feedboardapp.com`.
+4. Create live prices: `node scripts/paddle-setup.js` → paste the `PADDLE_PRICE_*` (production `pri_…`) into `.env`.
+5. Create a **live** Notification destination → `https://api.feedboardapp.com/webhooks/paddle` (events: `subscription.*`, `transaction.completed`); put its secret in `PADDLE_WEBHOOK_SECRET`.
+6. Frontend `.env`: `NEXT_PUBLIC_BILLING_PROVIDER=paddle`, `NEXT_PUBLIC_PADDLE_CLIENT_TOKEN=live_…`, `NEXT_PUBLIC_PADDLE_ENV=production`; rebuild the frontend.
+7. `pm2 reload feedboard-server`. On boot the API logs `Paddle configured in PRODUCTION mode.` (it warns if sandbox keys are used with `NODE_ENV=production`). Do a real purchase + refund to confirm.
+
+### 8b. Stripe — go LIVE (only if `BILLING_PROVIDER=stripe`)
 
 The app code is mode-agnostic: it uses whatever key you set. **Test and live are
 separate universes** — keys, prices, coupons, and webhooks all differ. To take

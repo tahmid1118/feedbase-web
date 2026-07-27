@@ -374,8 +374,11 @@ Version 1.2
     A subscription belongs to the USER ACCOUNT, not an individual workspace:
     a user pays once and the plan covers EVERY workspace they own (a new
     workspace an account creates inherits the account's current plan). Team-size
-    (seat) limits still apply per workspace. Payment is handled by Stripe (hosted
-    Checkout + Customer Portal — no card data is stored by the platform).
+    (seat) limits still apply per workspace. Payment is processed by a Merchant
+    of Record (Paddle) via an overlay checkout and a customer portal — no card
+    data is stored by the platform. (The provider is configurable; a Stripe
+    implementation is retained as an alternative.) On Paddle, plan downgrades are
+    made through the customer portal (scheduled to the renewal date).
     FR-B1  Plans ........ Three tiers: Free ($0), Pro ($10/mo), and Business
                           ($15/mo). Paid tiers may be billed MONTHLY or YEARLY;
                           yearly is ~20% cheaper, priced at a whole-dollar monthly

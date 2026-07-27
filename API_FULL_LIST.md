@@ -902,15 +902,22 @@ Sample Response:
 `currentPeriodEnd` is the renewal/next-charge date (or, when `cancelAtPeriodEnd` is true, the date the subscription ends with no further charge — read live from Stripe). `pending*` describe a scheduled downgrade (a Stripe Subscription Schedule taking effect at `pendingEffectiveAt`), else null.
 
 ### POST /billing/checkout
-Starts a Stripe Checkout session for a paid plan and returns its hosted URL. `interval` is `month` (default) or `year` (~20% cheaper). An optional `promotionCode` (from a redeemed percent-off promo) is applied as a discount.
+Starts checkout for a paid plan on the ACTIVE provider (`BILLING_PROVIDER`). `interval` is `month` (default) or `year`. **Paddle** (default) returns `{ transactionId }` — the client opens the Paddle.js overlay; **Stripe** returns `{ url }` — the client redirects. (`promotionCode` applies only on Stripe.)
 Sample Body:
 ```json
-{"lg":"en","plan":"pro","interval":"year","promotionCode":"promo_1AbC..."}
+{"lg":"en","plan":"pro","interval":"year"}
 ```
-Sample Response:
+Sample Response (Paddle):
+```json
+{"status":"success","message":"Checkout session created","data":{"provider":"paddle","transactionId":"txn_01h..."}}
+```
+Sample Response (Stripe):
 ```json
 {"status":"success","message":"Checkout session created","data":{"url":"https://checkout.stripe.com/c/pay/cs_test_..."}}
 ```
+
+### POST /webhooks/paddle
+Paddle webhook receiver (raw body; mounted before the JSON parser). Verifies the `Paddle-Signature` header via `paddle.webhooks.unmarshal` (HMAC-SHA256, `PADDLE_WEBHOOK_SECRET`). On `subscription.*` events it reconciles the account (from `customData.accountEmail`) and mirrors the plan to its workspaces. Returns `{ received: true }`; `400` on a bad signature. (The Stripe equivalent is `POST /webhooks/stripe`.)
 
 ### POST /billing/redeem
 Redeems a promo code (owner-only). A free-plan code comps the plan instantly; a percent-off code returns a Stripe `promotionCode` to pass into the next checkout.
