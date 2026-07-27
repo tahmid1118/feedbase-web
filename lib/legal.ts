@@ -35,13 +35,6 @@ export const legal = {
 
   /** Shown as "Last updated" on every page. Bump when you change the text. */
   lastUpdated: "27 July 2026",
-
-  /**
-   * Window in which a refund request will be considered, in days. This is a
-   * BUSINESS DECISION, not something the code enforces — see the Refund Policy.
-   * Set to 0 to remove the discretionary-refund section entirely.
-   */
-  refundWindowDays: 14,
 } as const;
 
 /** The four documents, in the order they appear in the switcher. */

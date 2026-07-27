@@ -559,10 +559,21 @@ Version 1.2
                           updated in the same change.
 
     FR-LG5 Operator data  Entity name, registered address, governing
-                          jurisdiction, contact addresses and the refund review
-                          window are held in one configuration module. Values
-                          left unset render as a visible placeholder so an
-                          incomplete document cannot be published unnoticed.
+                          jurisdiction and contact addresses are held in one
+                          configuration module. Values left unset render as a
+                          visible placeholder so an incomplete document cannot
+                          be published unnoticed.
+
+    FR-LG6 Refunds ...... Paid periods are non-refundable. Cancellation marks the
+                          subscription to end at the close of the current period:
+                          access continues to that date, no further charge is
+                          made, and no proportion of the paid period is returned.
+                          Two exceptions are documented: correction of a billing
+                          error (duplicate charge, charge after cancellation took
+                          effect, or a charge for a plan or interval other than
+                          the one confirmed), and the remedy owed if a paid plan
+                          is materially reduced during a prepaid term. Mandatory
+                          consumer rights prevail where they apply.
 
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES
