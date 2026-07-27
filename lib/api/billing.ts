@@ -23,7 +23,8 @@ export const billingApi = {
     token: string,
     opts?: { interval?: BillingInterval; promotionCode?: string }
   ) =>
-    apiClient.post<ApiResponse<{ url: string }>>(
+    // Stripe returns { url } (redirect); Paddle returns { transactionId } (overlay).
+    apiClient.post<ApiResponse<{ url?: string; transactionId?: string; provider?: string }>>(
       "/billing/checkout",
       {
         plan,

@@ -12,6 +12,7 @@ import {
   type PlanKey,
 } from "@/lib/api";
 import { PLANS, PLAN_ORDER, planPricing, formatPrice } from "@/lib/plans";
+import { isPaddleProvider, openPaddleCheckout, setPaddleOnComplete } from "@/lib/paddle";
 import { useTranslation } from "@/lib/i18n/client";
 import { useLanguage } from "@/components/providers/i18n-provider";
 import { cn } from "@/lib/utils";
@@ -103,6 +104,15 @@ export function BillingSettings() {
     load();
   }, [load]);
 
+  // Reload the subscription when a Paddle overlay checkout completes (no redirect).
+  useEffect(() => {
+    setPaddleOnComplete(() => {
+      toast.success(t("toast.subscriptionUpdated"));
+      load();
+    });
+    return () => setPaddleOnComplete(null);
+  }, [t, load]);
+
   // Toast on return from Stripe Checkout (?checkout=success|cancelled).
   useEffect(() => {
     const c = params.get("checkout");
@@ -118,8 +128,17 @@ export function BillingSettings() {
         interval,
         promotionCode: discount?.promotionCode,
       });
-      if (res.data?.url) window.location.assign(res.data.url);
-      else toast.error(t("billing.checkoutFailed"));
+      if (res.data?.transactionId) {
+        // Paddle: open the overlay checkout (completion reloads via the callback).
+        await openPaddleCheckout(
+          res.data.transactionId,
+          `${window.location.origin}/dashboard/settings?tab=billing&checkout=success`
+        );
+      } else if (res.data?.url) {
+        window.location.assign(res.data.url); // Stripe: hosted redirect
+      } else {
+        toast.error(t("billing.checkoutFailed"));
+      }
     } catch (e) {
       toast.error((e as Error)?.message || "Could not start checkout");
     } finally {
@@ -172,6 +191,12 @@ export function BillingSettings() {
     if (!token || !status) return;
     const direction = changeDirection(status.planName, status.billingInterval, plan, planInterval);
     if (direction === "same") return;
+    // Paddle applies item changes immediately, so downgrades are handled in the
+    // customer portal (scheduled to renewal) rather than an in-app change.
+    if (direction === "downgrade" && isPaddleProvider()) {
+      manage();
+      return;
+    }
     setChangeTarget({ plan, interval: planInterval, direction });
     setPreview(null);
     setPreviewLoading(true);
@@ -272,6 +297,10 @@ export function BillingSettings() {
   const current: PlanKey = status?.planName ?? "free";
   const hasSub = status?.hasSubscription ?? false;
   const currentPlan = PLANS.find((p) => p.key === current);
+  // Promotional offers + promo codes are Stripe-only for now (Phase 1) — hidden
+  // when Paddle is the active provider so we never show a discount we can't honor.
+  const paddleActive = isPaddleProvider();
+  const offers = paddleActive ? undefined : status?.offers;
   const renewal = status?.currentPeriodEnd
     ? new Date(status.currentPeriodEnd).toLocaleDateString(lng)
     : null;
@@ -514,46 +543,48 @@ export function BillingSettings() {
         </Card>
       )}
 
-      <Card className="p-6">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium text-[#1c0a0c]">{t("billing.havePromoCode")}</p>
-            <p className="text-xs text-[#1c0a0c]/60">
-              {t("billing.redeemHint")}
-            </p>
+      {!paddleActive && (
+        <Card className="p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div className="flex-1 space-y-1">
+              <p className="text-sm font-medium text-[#1c0a0c]">{t("billing.havePromoCode")}</p>
+              <p className="text-xs text-[#1c0a0c]/60">
+                {t("billing.redeemHint")}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Input
+                value={promoInput}
+                onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
+                placeholder={t("billing.enterCode")}
+                className="w-40 font-mono uppercase sm:w-48"
+              />
+              <Button
+                variant="outline"
+                onClick={redeem}
+                disabled={redeeming || !promoInput.trim()}
+              >
+                {redeeming ? <Loader2 className="h-4 w-4 animate-spin" /> : t("billing.apply")}
+              </Button>
+            </div>
           </div>
-          <div className="flex gap-2">
-            <Input
-              value={promoInput}
-              onChange={(e) => setPromoInput(e.target.value.toUpperCase())}
-              placeholder={t("billing.enterCode")}
-              className="w-40 font-mono uppercase sm:w-48"
-            />
-            <Button
-              variant="outline"
-              onClick={redeem}
-              disabled={redeeming || !promoInput.trim()}
-            >
-              {redeeming ? <Loader2 className="h-4 w-4 animate-spin" /> : t("billing.apply")}
-            </Button>
-          </div>
-        </div>
-        {discount?.percentOff ? (
-          <div className="mt-3 rounded-lg bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
-            {discount.percentOff}% off will be applied at checkout
-            {discount.appliesToPlan && discount.appliesToPlan !== "any"
-              ? ` (${discount.appliesToPlan})`
-              : ""}
-            .
-          </div>
-        ) : null}
-      </Card>
+          {discount?.percentOff ? (
+            <div className="mt-3 rounded-lg bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
+              {discount.percentOff}% off will be applied at checkout
+              {discount.appliesToPlan && discount.appliesToPlan !== "any"
+                ? ` (${discount.appliesToPlan})`
+                : ""}
+              .
+            </div>
+          ) : null}
+        </Card>
+      )}
 
       <div className="flex justify-center">
         <IntervalToggle
           value={interval}
           onChange={setInterval}
-          showSave={!Object.values(status?.offers ?? {}).some((o) => o?.year)}
+          showSave={!Object.values(offers ?? {}).some((o) => o?.year)}
         />
       </div>
 
@@ -561,7 +592,7 @@ export function BillingSettings() {
         {PLANS.map((plan) => {
           // Admin promotional offer for the toggled interval (monthly or yearly);
           // a yearly offer replaces that plan's flat 20% yearly saving.
-          const offer = status?.offers?.[plan.key]?.[interval];
+          const offer = offers?.[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
           // On the yearly interval an offer is quoted PER MONTH, exactly like a
