@@ -10,6 +10,7 @@ import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 import { officialBoardUrl } from "@/lib/official-board";
+import { legalHref, legalPages } from "@/lib/legal";
 
 export default async function HomePage() {
   const session = await auth();
@@ -346,6 +347,20 @@ export default async function HomePage() {
             <MessageSquarePlus className="h-4 w-4" />
             {t("landing.footer.giveFeedback")}
           </a>
+
+          {/* Legal documents. Not localized — English is the authoritative
+              version (see components/legal/legal-shell.tsx). */}
+          <nav className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            {legalPages.map((p) => (
+              <Link
+                key={p.slug}
+                href={legalHref(p.slug)}
+                className="text-[#1c0a0c]/60 transition-colors hover:text-[#c74959] hover:underline"
+              >
+                {p.title}
+              </Link>
+            ))}
+          </nav>
         </div>
       </footer>
     </div>

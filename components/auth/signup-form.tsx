@@ -9,6 +9,7 @@ import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
+import { legalHref } from "@/lib/legal";
 import {
   Form,
   FormControl,
@@ -291,6 +292,29 @@ export function SignupForm() {
                 <UserPlus className="h-4 w-4" />{t("auth.createAccountCta")}</>
             )}
           </Button>
+
+          {/* Terms acceptance. A tick-box would be friction with no legal
+              benefit here — a clear notice at the point of signup is the
+              accepted pattern, and clause 1 of the Terms is written to match
+              ("by creating an account … you agree"). Not localized: English is
+              the authoritative version of the documents. */}
+          <p className="text-center text-xs leading-relaxed text-[#1c0a0c]/55">
+            By creating an account you agree to our{" "}
+            <Link
+              href={legalHref("terms")}
+              className="font-medium text-[#c74959] hover:underline"
+            >
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link
+              href={legalHref("privacy")}
+              className="font-medium text-[#c74959] hover:underline"
+            >
+              Privacy Policy
+            </Link>
+            .
+          </p>
         </form>
       </Form>
     </div>

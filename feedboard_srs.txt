@@ -529,6 +529,41 @@ Version 1.2
                           item in the dashboard sidebar; signed-out visitors
                           reach it from a link in the marketing site footer.
 
+3.14 LEGAL DOCUMENTS
+
+    FR-LG1 Documents .... Four public documents are published: Terms of Service,
+                          Privacy Policy, Cookie Policy and Refund Policy. Each
+                          shows a last-updated date and links to the other three.
+
+    FR-LG2 Placement .... Linked from the marketing site footer, the public
+                          portal footer (so board visitors can reach them from a
+                          tenant subdomain) and the sign-up form, which states
+                          that creating an account accepts the Terms and Privacy
+                          Policy.
+
+    FR-LG3 Language ..... The documents are published in English only and each
+                          states that English is the authoritative version;
+                          they are deliberately excluded from the interface
+                          translation described in 3.12, because a mistranslated
+                          liability or refund clause carries real risk.
+
+    FR-LG4 Accuracy ..... The documents describe the system as built — session
+                          and visitor cookies with their real names and
+                          lifetimes, the single-device limit on Free and Pro,
+                          guest submitter emails being stored but never shown
+                          publicly, payment data being held only by the payment
+                          processor, proration on upgrade versus scheduled
+                          downgrade, and the effect of account deletion on owned
+                          versus joined workspaces. A change to any of those
+                          behaviours requires the corresponding document to be
+                          updated in the same change.
+
+    FR-LG5 Operator data  Entity name, registered address, governing
+                          jurisdiction, contact addresses and the refund review
+                          window are held in one configuration module. Values
+                          left unset render as a visible placeholder so an
+                          incomplete document cannot be published unnoticed.
+
 --------------------------------------------------------------------------------
 4. EXTERNAL INTERFACES
 --------------------------------------------------------------------------------

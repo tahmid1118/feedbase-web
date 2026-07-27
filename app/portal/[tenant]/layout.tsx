@@ -8,6 +8,7 @@ import { LanguageSelector } from "@/components/i18n/language-selector";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { getTranslation } from "@/lib/i18n/server";
 import { appUrl } from "@/lib/app-url";
+import { legalHref, legalPages } from "@/lib/legal";
 
 const DEFAULT_BRAND = "#c74959";
 
@@ -126,8 +127,19 @@ export default async function PortalLayout({
           </a>
         </div>
 
-        <div className="border-t border-black/5 py-4 text-center text-xs text-[#1c0a0c]/40">
-          {t("portal.poweredBy")}
+        {/* Visitors are on OUR infrastructure, so our policies must be reachable
+            from a tenant board too — not only from the marketing site. */}
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-black/5 py-4 text-center text-xs text-[#1c0a0c]/40">
+          <span>{t("portal.poweredBy")}</span>
+          {legalPages.map((lp) => (
+            <a
+              key={lp.slug}
+              href={appUrl(legalHref(lp.slug))}
+              className="transition-colors hover:text-[#c74959] hover:underline"
+            >
+              {lp.short}
+            </a>
+          ))}
         </div>
       </footer>
     </div>
