@@ -36,7 +36,17 @@ export function getPaddle(): Promise<Paddle | undefined> {
   return paddlePromise;
 }
 
-/** Open the overlay checkout for a server-created transaction. */
+/**
+ * Open the overlay checkout for a server-created transaction.
+ *
+ * We deliberately set **no** `allowedPaymentMethods` — the methods a buyer sees
+ * are driven entirely by the Paddle dashboard (Checkout → Payment methods) plus
+ * their eligibility (device/browser, country, currency, and whether the method
+ * supports a *recurring* subscription). Adding an allow-list here would only
+ * narrow that set, so we leave it open and manage the offering from the
+ * dashboard. `variant: "one-page"` surfaces the wallet express buttons
+ * (Apple Pay / Google Pay) prominently at the top.
+ */
 export async function openPaddleCheckout(transactionId: string, successUrl?: string) {
   const paddle = await getPaddle();
   if (!paddle) throw new Error("Paddle is not configured");
@@ -44,6 +54,7 @@ export async function openPaddleCheckout(transactionId: string, successUrl?: str
     transactionId,
     settings: {
       displayMode: "overlay",
+      variant: "one-page",
       ...(successUrl ? { successUrl } : {}),
     },
   });
