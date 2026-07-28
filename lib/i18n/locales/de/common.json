@@ -599,7 +599,7 @@
     "calculating": "Wird berechnet…",
     "upgradeChargeNow": "Ihnen werden jetzt {{amount}} berechnet.",
     "upgradeProrationNote": "Die bereits bezahlte Zeit wird angerechnet – Sie zahlen nur die Differenz. Danach verlängert sich Ihr Tarif zum vollen Preis.",
-    "downgradeNote": "Wird am {{date}} wirksam – bis dahin behalten Sie Ihren aktuellen Tarif, ohne Berechnung jetzt.",
+    "downgradeNote": "Keine Belastung jetzt – du wechselst sofort zum neuen Tarif, und ungenutzte Zeit wird deiner nächsten Rechnung am {{date}} gutgeschrieben.",
     "payAndUpgrade": "{{amount}} zahlen & upgraden",
     "scheduleChange": "Änderung planen",
     "renewsOn": "Verlängert sich am {{date}} — dann wird erneut abgebucht.",

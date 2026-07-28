@@ -599,7 +599,7 @@
     "calculating": "Berekenen…",
     "upgradeChargeNow": "Er wordt nu {{amount}} in rekening gebracht.",
     "upgradeProrationNote": "De reeds betaalde tijd wordt verrekend — je betaalt alleen het verschil. Daarna verlengt je abonnement tegen de volle prijs.",
-    "downgradeNote": "Gaat in op {{date}} — tot dan behoud je je huidige abonnement, nu geen kosten.",
+    "downgradeNote": "Nu geen kosten — je schakelt meteen over naar het nieuwe plan, en ongebruikte tijd wordt verrekend met je volgende factuur op {{date}}.",
     "payAndUpgrade": "{{amount}} betalen & upgraden",
     "scheduleChange": "Wijziging plannen",
     "renewsOn": "Verlengt op {{date}} — dan wordt er opnieuw afgeschreven.",

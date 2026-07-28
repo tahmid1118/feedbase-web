@@ -191,12 +191,6 @@ export function BillingSettings() {
     if (!token || !status) return;
     const direction = changeDirection(status.planName, status.billingInterval, plan, planInterval);
     if (direction === "same") return;
-    // Paddle applies item changes immediately, so downgrades are handled in the
-    // customer portal (scheduled to renewal) rather than an in-app change.
-    if (direction === "downgrade" && isPaddleProvider()) {
-      manage();
-      return;
-    }
     setChangeTarget({ plan, interval: planInterval, direction });
     setPreview(null);
     setPreviewLoading(true);

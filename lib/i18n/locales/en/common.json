@@ -612,7 +612,7 @@
     "calculating": "Calculating…",
     "upgradeChargeNow": "You'll be charged {{amount}} now.",
     "upgradeProrationNote": "The time you already paid for is credited — you only pay the difference. Your plan then renews at the full price.",
-    "downgradeNote": "Takes effect on {{date}} — you keep your current plan until then, with no charge now.",
+    "downgradeNote": "No charge now — you switch to the new plan right away, and any unused time is credited to your next bill on {{date}}.",
     "payAndUpgrade": "Pay {{amount}} & upgrade",
     "scheduleChange": "Schedule change"
   },

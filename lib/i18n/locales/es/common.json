@@ -599,7 +599,7 @@
     "calculating": "Calculando…",
     "upgradeChargeNow": "Se te cobrará {{amount}} ahora.",
     "upgradeProrationNote": "El tiempo que ya pagaste se abona: solo pagas la diferencia. Tu plan se renueva luego al precio completo.",
-    "downgradeNote": "Entra en vigor el {{date}}: conservas tu plan actual hasta entonces, sin cargo ahora.",
+    "downgradeNote": "Sin cargo ahora: cambias al nuevo plan de inmediato y el tiempo no usado se acredita en tu próxima factura el {{date}}.",
     "payAndUpgrade": "Pagar {{amount}} y mejorar",
     "scheduleChange": "Programar cambio",
     "renewsOn": "Se renueva el {{date}} — se te volverá a cobrar entonces.",
