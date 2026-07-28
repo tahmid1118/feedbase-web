@@ -53,7 +53,7 @@ export default function RefundsPage() {
       <Clause n={3} heading="How billing works">
         <Bullets
           items={[
-            "Paid plans are billed in advance for the whole period, monthly or yearly, through Stripe. Access is granted for the period you paid for.",
+            "Paid plans are billed in advance for the whole period, monthly or yearly, through Paddle, our Merchant of Record. Access is granted for the period you paid for.",
             "A subscription belongs to your account and covers every workspace you own. Billing is per account, not per workspace, and not per seat.",
             "Renewal is automatic at the end of each period, at the then-current price for your plan and interval, until you cancel.",
             "Prices exclude taxes unless stated. Any tax is calculated and collected at checkout.",
@@ -87,9 +87,9 @@ export default function RefundsPage() {
       <Clause n={5} heading="Changing plan mid-period">
         <Bullets
           items={[
-            "Upgrading takes effect immediately. Stripe charges only the prorated difference for the remainder of the current period; the exact amount is shown for confirmation before you agree to it. That charge is final on the same terms as any other.",
-            "Downgrading is scheduled for the end of the current period, so you keep what you have already paid for. No credit or refund arises from a downgrade, and the scheduled change can be cancelled before it applies.",
-            "Switching between monthly and yearly follows the same rule: moving to the longer term is treated as an upgrade and charged pro rata; moving to the shorter term is scheduled for the period end.",
+            "Upgrading takes effect immediately. Paddle charges only the prorated difference for the remainder of the current period; the exact amount is shown for confirmation before you agree to it. That charge is final on the same terms as any other.",
+            "Downgrading takes effect immediately. You are not charged at that moment, and the unused portion of what you already paid is credited toward your next bill. No cash refund arises from a downgrade.",
+            "Switching between monthly and yearly follows the same rule: moving to the longer term is treated as an upgrade and charged pro rata; moving to the shorter term is treated as a downgrade — it takes effect immediately with the unused time credited toward your next bill.",
           ]}
         />
       </Clause>
@@ -129,7 +129,7 @@ export default function RefundsPage() {
             {legal.contactEmail}
           </a>{" "}
           with the date and amount. Verified errors are reversed to the original
-          payment method through Stripe, usually within 5–10 business days
+          payment method through Paddle, usually within 5–10 business days
           depending on your bank. Dissatisfaction with the product, a change of
           mind, or a renewal you forgot to cancel are not billing errors.
         </p>
@@ -172,7 +172,7 @@ export default function RefundsPage() {
       <Clause n={10} heading="Failed payments">
         <Bullets
           items={[
-            "If a renewal fails, Stripe retries it according to its standard schedule. We do not suspend access on the first failure.",
+            "If a renewal fails, Paddle retries it according to its standard schedule. We do not suspend access on the first failure.",
             "If the charge remains unpaid, the account drops to the Free plan and paid capabilities stop. Your content is retained.",
             "Update the card from Settings → Billing → Manage billing and resubscribe when you are ready. No charge is made for the lapsed period, and none is owed for it.",
           ]}
@@ -205,7 +205,7 @@ export default function RefundsPage() {
           <Link href={legalHref("terms")} className="font-medium text-[#c74959] hover:underline">
             Terms of Service
           </Link>
-          . What we do with billing data — and what Stripe holds rather than us —
+          . What we do with billing data — and what Paddle holds rather than us —
           is in the{" "}
           <Link href={legalHref("privacy")} className="font-medium text-[#c74959] hover:underline">
             Privacy Policy

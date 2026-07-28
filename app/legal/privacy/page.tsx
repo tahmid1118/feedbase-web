@@ -51,7 +51,7 @@ export default function PrivacyPage() {
             "Name, email address and password (stored only as a bcrypt hash — we cannot read it).",
             "Optional profile details: contact number and profile picture.",
             "Workspace details you create: name, subdomain, logo and brand colour.",
-            "Billing status: plan, billing interval, subscription state and current period end. Card details go straight to Stripe and never reach our servers.",
+            "Billing status: plan, billing interval, subscription state and current period end. Card details go straight to Paddle and never reach our servers.",
             "Support chat messages you send us, and our replies.",
           ]}
         />
@@ -109,7 +109,7 @@ export default function PrivacyPage() {
         <LegalTable
           head={["Provider", "What it handles"]}
           rows={[
-            ["Stripe", "Payments, subscriptions, invoices. Receives your email and billing details directly; we never receive card numbers."],
+            ["Paddle", "Our Merchant of Record: processes payments, subscriptions, sales tax/VAT and invoices as the seller of record. Receives your email and billing details directly; we never receive card numbers."],
             ["Hosting provider", "The servers and database that run the application and store content and uploads."],
             ["Cloudflare", "DNS, TLS and reverse proxy for our domains; bot and abuse protection."],
             ["Email provider", "Delivery of transactional email such as invitations and password resets."],

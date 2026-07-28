@@ -154,9 +154,9 @@ export default function TermsPage() {
       <Clause n={9} heading="Plans, billing and taxes">
         <Bullets
           items={[
-            "Paid plans are billed in advance, monthly or yearly, through Stripe. We never see or store your card details.",
+            "Paid plans are billed in advance, monthly or yearly, through Paddle, our Merchant of Record (the seller of record for your purchase, which also handles applicable sales tax/VAT). We never see or store your card details.",
             "A subscription attaches to your account and covers every workspace you own — not per workspace. Seats are per workspace.",
-            "Upgrades take effect immediately and are charged pro rata. Downgrades take effect at the end of the current period.",
+            "Upgrades take effect immediately and are charged pro rata. Downgrades take effect immediately, with any unused time credited toward your next bill.",
             "Prices shown exclude taxes unless stated. Any tax collected is handled at checkout.",
             "Promotional prices and promo codes apply as described at the time of purchase and may be withdrawn for new purchases at any time.",
             "If a payment fails and remains unpaid, the workspace reverts to the Free plan and paid capabilities stop.",

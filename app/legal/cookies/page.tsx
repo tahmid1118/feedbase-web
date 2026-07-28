@@ -82,10 +82,11 @@ export default function CookiesPage() {
         <Bullets
           items={[
             <>
-              <strong>Stripe</strong> — when you go to checkout or the billing
-              portal you are on Stripe&rsquo;s own domain, where Stripe sets
-              cookies for payment processing and fraud prevention. Those are
-              governed by Stripe&rsquo;s privacy notice, not ours.
+              <strong>Paddle</strong> — our payment provider and Merchant of
+              Record. When you check out or open the billing portal, Paddle
+              processes the payment and may set cookies for payment processing
+              and fraud prevention. Those are governed by Paddle&rsquo;s privacy
+              notice, not ours.
             </>,
             <>
               <strong>Cloudflare</strong> — our domains are served through
