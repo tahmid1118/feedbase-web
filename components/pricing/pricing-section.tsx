@@ -12,9 +12,8 @@ export async function PricingSection({
 }: {
   ctaHref?: string;
 }) {
-  // Promotional offers are Stripe-only for now (Phase 1); hide them when Paddle
-  // is the active provider so we never advertise a discount we can't honor.
-  const paddleActive = (process.env.NEXT_PUBLIC_BILLING_PROVIDER ?? "paddle") !== "stripe";
-  const offers = paddleActive ? {} : (await publicApi.getOffers()) ?? {};
+  // Promotional offers work on both providers (backed by a Stripe coupon or a
+  // Paddle discount, auto-applied at checkout), so they're always advertised.
+  const offers = (await publicApi.getOffers()) ?? {};
   return <PricingCards offers={offers} ctaHref={ctaHref} />;
 }

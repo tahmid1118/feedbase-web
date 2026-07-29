@@ -297,10 +297,9 @@ export function BillingSettings() {
   const current: PlanKey = status?.planName ?? "free";
   const hasSub = status?.hasSubscription ?? false;
   const currentPlan = PLANS.find((p) => p.key === current);
-  // Promotional offers + promo codes are Stripe-only for now (Phase 1) — hidden
-  // when Paddle is the active provider so we never show a discount we can't honor.
-  const paddleActive = isPaddleProvider();
-  const offers = paddleActive ? undefined : status?.offers;
+  // Promotional offers + promo codes work on both providers (Stripe coupons /
+  // Paddle discounts), auto-applied at checkout — so they're always shown.
+  const offers = status?.offers;
   const renewal = status?.currentPeriodEnd
     ? new Date(status.currentPeriodEnd).toLocaleDateString(lng)
     : null;
@@ -543,8 +542,7 @@ export function BillingSettings() {
         </Card>
       )}
 
-      {!paddleActive && (
-        <Card className="p-6">
+      <Card className="p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex-1 space-y-1">
               <p className="text-sm font-medium text-[#1c0a0c]">{t("billing.havePromoCode")}</p>
@@ -577,8 +575,7 @@ export function BillingSettings() {
               .
             </div>
           ) : null}
-        </Card>
-      )}
+      </Card>
 
       <div className="flex justify-center">
         <IntervalToggle

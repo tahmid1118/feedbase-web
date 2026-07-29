@@ -435,8 +435,8 @@ Version 1.2
                           The plan is set only by Stripe (or an admin comp) and
                           cannot be changed directly by the client.
     FR-B6  Promo codes . Admins generate promo codes (see 3.11): percentage-off
-                          codes (for any or a specific plan, backed by Stripe) and
-                          free-plan comps (Pro/Business). An owner redeems a code
+                          codes (for any or a specific plan, backed by a discount on
+                          the active payment processor) and free-plan comps (Pro/Business). An owner redeems a code
                           in the Billing tab — free-plan codes grant the plan
                           instantly with no charge, percentage-off codes apply at
                           checkout. Codes support a duration, a redemption limit,
