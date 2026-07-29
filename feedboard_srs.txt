@@ -377,10 +377,11 @@ Version 1.2
     (seat) limits still apply per workspace. Payment is processed by a Merchant
     of Record (Paddle) via an overlay checkout and a customer portal — no card
     data is stored by the platform. (The provider is configurable; a Stripe
-    implementation is retained as an alternative.) On Paddle a downgrade takes
-    effect immediately with the unused time credited to the next bill (no refund);
-    an upgrade charges the exact prorated difference now, previewed before it is
-    confirmed.
+    implementation is retained as an alternative.) A downgrade takes effect at the
+    END of the current paid period — the customer keeps their current plan until
+    then, with no charge and no refund; an upgrade charges the exact prorated
+    difference now, previewed before it is confirmed. Switching billing interval
+    together with a downgrade (yearly to monthly) is not offered in-app.
     FR-B1  Plans ........ Three tiers: Free ($0), Pro ($10/mo), and Business
                           ($15/mo). Paid tiers may be billed MONTHLY or YEARLY;
                           yearly is ~20% cheaper, priced at a whole-dollar monthly

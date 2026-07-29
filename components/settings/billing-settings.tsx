@@ -191,6 +191,12 @@ export function BillingSettings() {
     if (!token || !status) return;
     const direction = changeDirection(status.planName, status.billingInterval, plan, planInterval);
     if (direction === "same") return;
+    // Paddle can't switch billing interval on a downgrade without either forfeiting
+    // paid time or a surprise renewal charge, so that combination isn't offered.
+    if (direction === "downgrade" && planInterval !== status.billingInterval && isPaddleProvider()) {
+      toast.error(t("billing.downgradeIntervalUnsupported"));
+      return;
+    }
     setChangeTarget({ plan, interval: planInterval, direction });
     setPreview(null);
     setPreviewLoading(true);

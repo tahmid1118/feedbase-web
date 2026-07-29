@@ -599,7 +599,7 @@
     "calculating": "Calculando…",
     "upgradeChargeNow": "Se te cobrará {{amount}} ahora.",
     "upgradeProrationNote": "El tiempo que ya pagaste se abona: solo pagas la diferencia. Tu plan se renueva luego al precio completo.",
-    "downgradeNote": "Sin cargo ahora: cambias al nuevo plan de inmediato y el tiempo no usado se acredita en tu próxima factura el {{date}}.",
+    "downgradeNote": "Sin cargo ahora. Mantienes tu plan actual hasta el {{date}} y luego cambia al nuevo plan. Sin reembolso por el resto del periodo actual.",
     "payAndUpgrade": "Pagar {{amount}} y mejorar",
     "scheduleChange": "Programar cambio",
     "renewsOn": "Se renueva el {{date}} — se te volverá a cobrar entonces.",
@@ -614,7 +614,8 @@
     "cancelSubBody": "Conservarás {{plan}} hasta el {{date}} y no se te cobrará de nuevo. Después, tu cuenta pasa a Free.",
     "cancelSubBodyNoDate": "Conservarás {{plan}} hasta el final de tu período de facturación y no se te cobrará de nuevo. Después, tu cuenta pasa a Free.",
     "cancelledToast": "Suscripción cancelada: mantienes el acceso hasta que termine el período.",
-    "resumedToast": "Suscripción reanudada: se renovará con normalidad."
+    "resumedToast": "Suscripción reanudada: se renovará con normalidad.",
+    "downgradeIntervalUnsupported": "No se admite cambiar el intervalo de facturación y bajar de plan a la vez. Cambia el intervalo por separado, o cancela al final del periodo y vuelve a suscribirte."
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",

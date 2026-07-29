@@ -599,7 +599,7 @@
     "calculating": "Berekenen…",
     "upgradeChargeNow": "Er wordt nu {{amount}} in rekening gebracht.",
     "upgradeProrationNote": "De reeds betaalde tijd wordt verrekend — je betaalt alleen het verschil. Daarna verlengt je abonnement tegen de volle prijs.",
-    "downgradeNote": "Nu geen kosten — je schakelt meteen over naar het nieuwe plan, en ongebruikte tijd wordt verrekend met je volgende factuur op {{date}}.",
+    "downgradeNote": "Nu geen kosten. Je houdt je huidige plan tot {{date}} en schakelt daarna over naar het nieuwe plan. Geen restitutie voor de rest van de huidige periode.",
     "payAndUpgrade": "{{amount}} betalen & upgraden",
     "scheduleChange": "Wijziging plannen",
     "renewsOn": "Verlengt op {{date}} — dan wordt er opnieuw afgeschreven.",
@@ -614,7 +614,8 @@
     "cancelSubBody": "Je behoudt {{plan}} tot {{date}} en wordt niet opnieuw in rekening gebracht. Daarna gaat je account naar Free.",
     "cancelSubBodyNoDate": "Je behoudt {{plan}} tot het einde van je factureringsperiode en wordt niet opnieuw in rekening gebracht. Daarna gaat je account naar Free.",
     "cancelledToast": "Abonnement opgezegd — je houdt toegang tot het einde van de periode.",
-    "resumedToast": "Abonnement hervat — het wordt normaal verlengd."
+    "resumedToast": "Abonnement hervat — het wordt normaal verlengd.",
+    "downgradeIntervalUnsupported": "Factureringsinterval wijzigen en tegelijk downgraden wordt niet ondersteund. Wijzig het interval apart, of zeg op tegen het periode-einde en neem opnieuw een abonnement."
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",

@@ -612,9 +612,10 @@
     "calculating": "Calculating…",
     "upgradeChargeNow": "You'll be charged {{amount}} now.",
     "upgradeProrationNote": "The time you already paid for is credited — you only pay the difference. Your plan then renews at the full price.",
-    "downgradeNote": "No charge now — you switch to the new plan right away, and any unused time is credited to your next bill on {{date}}.",
+    "downgradeNote": "No charge now. You keep your current plan until {{date}}, then it switches to the new plan. No refund for the remainder of the current period.",
     "payAndUpgrade": "Pay {{amount}} & upgrade",
-    "scheduleChange": "Schedule change"
+    "scheduleChange": "Schedule change",
+    "downgradeIntervalUnsupported": "To switch billing interval and downgrade at once isn't supported. Change the interval separately, or cancel at period end and resubscribe."
   },
   "switcher": {
     "addWorkspace": "Add Workspace",

@@ -599,7 +599,7 @@
     "calculating": "Wird berechnet…",
     "upgradeChargeNow": "Ihnen werden jetzt {{amount}} berechnet.",
     "upgradeProrationNote": "Die bereits bezahlte Zeit wird angerechnet – Sie zahlen nur die Differenz. Danach verlängert sich Ihr Tarif zum vollen Preis.",
-    "downgradeNote": "Keine Belastung jetzt – du wechselst sofort zum neuen Tarif, und ungenutzte Zeit wird deiner nächsten Rechnung am {{date}} gutgeschrieben.",
+    "downgradeNote": "Keine Belastung jetzt. Du behältst deinen aktuellen Tarif bis {{date}}, danach wird auf den neuen Tarif gewechselt. Keine Rückerstattung für den Rest der aktuellen Periode.",
     "payAndUpgrade": "{{amount}} zahlen & upgraden",
     "scheduleChange": "Änderung planen",
     "renewsOn": "Verlängert sich am {{date}} — dann wird erneut abgebucht.",
@@ -614,7 +614,8 @@
     "cancelSubBody": "Du behältst {{plan}} bis zum {{date}} und wirst nicht erneut belastet. Danach wechselt dein Konto auf Free.",
     "cancelSubBodyNoDate": "Du behältst {{plan}} bis zum Ende deines Abrechnungszeitraums und wirst nicht erneut belastet. Danach wechselt dein Konto auf Free.",
     "cancelledToast": "Abo gekündigt – du behältst den Zugang bis zum Periodenende.",
-    "resumedToast": "Abo fortgesetzt – es wird wie gewohnt verlängert."
+    "resumedToast": "Abo fortgesetzt – es wird wie gewohnt verlängert.",
+    "downgradeIntervalUnsupported": "Abrechnungsintervall wechseln und gleichzeitig herabstufen wird nicht unterstützt. Ändere das Intervall separat oder kündige zum Periodenende und abonniere neu."
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",

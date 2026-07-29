@@ -88,8 +88,8 @@ export default function RefundsPage() {
         <Bullets
           items={[
             "Upgrading takes effect immediately. Paddle charges only the prorated difference for the remainder of the current period; the exact amount is shown for confirmation before you agree to it. That charge is final on the same terms as any other.",
-            "Downgrading takes effect immediately. You are not charged at that moment, and the unused portion of what you already paid is credited toward your next bill. No cash refund arises from a downgrade.",
-            "Switching between monthly and yearly follows the same rule: moving to the longer term is treated as an upgrade and charged pro rata; moving to the shorter term is treated as a downgrade — it takes effect immediately with the unused time credited toward your next bill.",
+            "Downgrading takes effect at the end of your current paid period. You keep your current plan until then, and the lower plan applies afterward at its own price. You are not charged for the change, and no refund arises for the remainder of the current period. You can cancel the scheduled change before it takes effect.",
+            "Switching between monthly and yearly: moving to the longer term is treated as an upgrade and charged pro rata. To move to the shorter term, cancel at the end of your current period and resubscribe on the shorter term once that period ends.",
           ]}
         />
       </Clause>

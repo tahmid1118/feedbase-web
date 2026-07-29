@@ -599,7 +599,7 @@
     "calculating": "Calcul en cours…",
     "upgradeChargeNow": "Vous serez débité de {{amount}} maintenant.",
     "upgradeProrationNote": "Le temps déjà payé est crédité — vous ne payez que la différence. Votre forfait se renouvelle ensuite au prix plein.",
-    "downgradeNote": "Aucun débit maintenant — vous passez au nouveau forfait immédiatement, et le temps non utilisé est crédité sur votre prochaine facture le {{date}}.",
+    "downgradeNote": "Aucun débit maintenant. Vous conservez votre forfait actuel jusqu'au {{date}}, puis le nouveau forfait s'applique. Aucun remboursement pour le reste de la période en cours.",
     "payAndUpgrade": "Payer {{amount}} et mettre à niveau",
     "scheduleChange": "Programmer le changement",
     "renewsOn": "Se renouvelle le {{date}} — vous serez alors débité à nouveau.",
@@ -614,7 +614,8 @@
     "cancelSubBody": "Vous conservez {{plan}} jusqu'au {{date}} et ne serez plus facturé. Ensuite, votre compte passe à Free.",
     "cancelSubBodyNoDate": "Vous conservez {{plan}} jusqu'à la fin de votre période de facturation et ne serez plus facturé. Ensuite, votre compte passe à Free.",
     "cancelledToast": "Abonnement annulé — vous gardez l'accès jusqu'à la fin de la période.",
-    "resumedToast": "Abonnement repris — il se renouvellera normalement."
+    "resumedToast": "Abonnement repris — il se renouvellera normalement.",
+    "downgradeIntervalUnsupported": "Changer d'intervalle de facturation et rétrograder en même temps n'est pas pris en charge. Modifiez l'intervalle séparément, ou résiliez à la fin de la période et réabonnez-vous."
   },
   "switcher": {
     "addWorkspace": "Ajouter un espace de travail",

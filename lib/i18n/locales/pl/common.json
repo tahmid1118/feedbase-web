@@ -607,7 +607,7 @@
     "calculating": "Obliczanie…",
     "upgradeChargeNow": "Zostanie teraz pobrana kwota {{amount}}.",
     "upgradeProrationNote": "Już opłacony czas jest zaliczany — płacisz tylko różnicę. Następnie plan odnawia się w pełnej cenie.",
-    "downgradeNote": "Bez opłaty teraz — od razu przechodzisz na nowy plan, a niewykorzystany czas zostaje zaliczony na poczet następnego rachunku {{date}}.",
+    "downgradeNote": "Bez opłaty teraz. Zachowujesz obecny plan do {{date}}, a potem następuje zmiana na nowy plan. Bez zwrotu za pozostałą część bieżącego okresu.",
     "payAndUpgrade": "Zapłać {{amount}} i ulepsz",
     "scheduleChange": "Zaplanuj zmianę",
     "renewsOn": "Odnawia się {{date}} — wtedy nastąpi kolejne obciążenie.",
@@ -622,7 +622,8 @@
     "cancelSubBody": "Zachowasz {{plan}} do {{date}} i nie zostaniesz ponownie obciążony. Potem Twoje konto przechodzi na Free.",
     "cancelSubBodyNoDate": "Zachowasz {{plan}} do końca okresu rozliczeniowego i nie zostaniesz ponownie obciążony. Potem Twoje konto przechodzi na Free.",
     "cancelledToast": "Subskrypcja anulowana — zachowujesz dostęp do końca okresu.",
-    "resumedToast": "Subskrypcja wznowiona — odnowi się normalnie."
+    "resumedToast": "Subskrypcja wznowiona — odnowi się normalnie.",
+    "downgradeIntervalUnsupported": "Zmiana interwału rozliczeń i obniżenie planu jednocześnie nie jest obsługiwana. Zmień interwał osobno albo anuluj na koniec okresu i wykup ponownie."
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",
