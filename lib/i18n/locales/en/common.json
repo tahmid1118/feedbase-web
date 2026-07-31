@@ -616,7 +616,7 @@
     "payAndUpgrade": "Pay {{amount}} & upgrade",
     "scheduleChange": "Schedule change",
     "downgradeIntervalUnsupported": "To switch billing interval and downgrade at once isn't supported. Change the interval separately, or cancel at period end and resubscribe.",
-    "switchAfterYearly": "Available when your yearly plan ends"
+    "downgradeIntervalNote": "No charge now. You keep your current yearly plan until {{date}} — nothing is refunded for it. Monthly billing then begins at the new plan's price."
   },
   "switcher": {
     "addWorkspace": "Add Workspace",

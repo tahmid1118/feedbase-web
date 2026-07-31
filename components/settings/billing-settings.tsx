@@ -191,9 +191,15 @@ export function BillingSettings() {
     if (!token || !status) return;
     const direction = changeDirection(status.planName, status.billingInterval, plan, planInterval);
     if (direction === "same") return;
-    // Paddle can't switch billing interval on a downgrade without either forfeiting
-    // paid time or a surprise renewal charge, so that combination isn't offered.
-    if (direction === "downgrade" && planInterval !== status.billingInterval && isPaddleProvider()) {
+    // A downgrade that LENGTHENS the interval (monthly → yearly) isn't offered —
+    // change the tier first, then the interval. Yearly → monthly IS supported: it's
+    // scheduled for the period end so the paid year is never destroyed.
+    if (
+      direction === "downgrade" &&
+      planInterval !== status.billingInterval &&
+      status.billingInterval === "month" &&
+      isPaddleProvider()
+    ) {
       toast.error(t("billing.downgradeIntervalUnsupported"));
       return;
     }
@@ -391,17 +397,6 @@ export function BillingSettings() {
       return (
         <Button variant="outline" disabled className="w-full">
           {t("billing.currentPlan")}
-        </Button>
-      );
-    }
-    // While on a YEARLY plan we don't offer switching to monthly billing (Paddle
-    // can't preserve the paid year). It becomes available once the yearly period
-    // ends and the account is no longer subscribed. Hide the CTA rather than let
-    // the user click into an error.
-    if (isPaddleProvider() && curInterval === "year" && interval === "month") {
-      return (
-        <Button variant="outline" disabled className="h-auto w-full whitespace-normal py-2 text-xs">
-          {t("billing.switchAfterYearly")}
         </Button>
       );
     }
@@ -754,11 +749,18 @@ export function BillingSettings() {
                   </>
                 ) : (
                   <span className="block">
-                    {t("billing.downgradeNote", {
-                      date: preview.effectiveAt
-                        ? new Date(preview.effectiveAt).toLocaleDateString(lng)
-                        : "",
-                    })}
+                    {t(
+                      // A yearly → monthly switch also starts a new billing cycle on
+                      // that date, so say so rather than implying nothing is charged.
+                      changeTarget && changeTarget.interval !== status?.billingInterval
+                        ? "billing.downgradeIntervalNote"
+                        : "billing.downgradeNote",
+                      {
+                        date: preview.effectiveAt
+                          ? new Date(preview.effectiveAt).toLocaleDateString(lng)
+                          : "",
+                      }
+                    )}
                   </span>
                 )}
               </div>

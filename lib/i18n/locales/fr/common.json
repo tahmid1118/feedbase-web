@@ -616,7 +616,7 @@
     "cancelledToast": "Abonnement annulé — vous gardez l'accès jusqu'à la fin de la période.",
     "resumedToast": "Abonnement repris — il se renouvellera normalement.",
     "downgradeIntervalUnsupported": "Changer d'intervalle de facturation et rétrograder en même temps n'est pas pris en charge. Modifiez l'intervalle séparément, ou résiliez à la fin de la période et réabonnez-vous.",
-    "switchAfterYearly": "Disponible à la fin de votre forfait annuel"
+    "downgradeIntervalNote": "Aucun débit maintenant. Vous conservez votre forfait annuel actuel jusqu'au {{date}} — aucun remboursement pour cette période. La facturation mensuelle commence ensuite au prix du nouveau forfait."
   },
   "switcher": {
     "addWorkspace": "Ajouter un espace de travail",

@@ -616,7 +616,7 @@
     "cancelledToast": "Abbonamento annullato: mantieni l'accesso fino alla fine del periodo.",
     "resumedToast": "Abbonamento ripreso: si rinnoverà normalmente.",
     "downgradeIntervalUnsupported": "Cambiare intervallo di fatturazione e passare a un piano inferiore insieme non è supportato. Modifica l'intervallo separatamente, oppure annulla a fine periodo e riattiva l'abbonamento.",
-    "switchAfterYearly": "Disponibile al termine del piano annuale"
+    "downgradeIntervalNote": "Nessun addebito ora. Mantieni il piano annuale attuale fino al {{date}}: non è previsto alcun rimborso. Successivamente inizia la fatturazione mensile al prezzo del nuovo piano."
   },
   "switcher": {
     "addWorkspace": "Aggiungi spazio di lavoro",

@@ -624,7 +624,7 @@
     "cancelledToast": "Subskrypcja anulowana — zachowujesz dostęp do końca okresu.",
     "resumedToast": "Subskrypcja wznowiona — odnowi się normalnie.",
     "downgradeIntervalUnsupported": "Zmiana interwału rozliczeń i obniżenie planu jednocześnie nie jest obsługiwana. Zmień interwał osobno albo anuluj na koniec okresu i wykup ponownie.",
-    "switchAfterYearly": "Dostępne po zakończeniu planu rocznego"
+    "downgradeIntervalNote": "Bez opłaty teraz. Zachowujesz obecny plan roczny do {{date}} — bez zwrotu za ten okres. Następnie rozpoczyna się rozliczanie miesięczne w cenie nowego planu."
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",

@@ -380,8 +380,11 @@ Version 1.2
     implementation is retained as an alternative.) A downgrade takes effect at the
     END of the current paid period — the customer keeps their current plan until
     then, with no charge and no refund; an upgrade charges the exact prorated
-    difference now, previewed before it is confirmed. Switching billing interval
-    together with a downgrade (yearly to monthly) is not offered in-app.
+    difference now, previewed before it is confirmed. Moving from yearly to monthly
+    billing is likewise scheduled for the period end: the paid year is kept in full
+    and monthly billing begins on that date. Moving from monthly to yearly billing
+    as part of a tier downgrade is not offered — the tier and the billing interval
+    are changed one at a time.
     FR-B1  Plans ........ Three tiers: Free ($0), Pro ($10/mo), and Business
                           ($15/mo). Paid tiers may be billed MONTHLY or YEARLY;
                           yearly is ~20% cheaper, priced at a whole-dollar monthly

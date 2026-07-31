@@ -616,7 +616,7 @@
     "cancelledToast": "Suscripción cancelada: mantienes el acceso hasta que termine el período.",
     "resumedToast": "Suscripción reanudada: se renovará con normalidad.",
     "downgradeIntervalUnsupported": "No se admite cambiar el intervalo de facturación y bajar de plan a la vez. Cambia el intervalo por separado, o cancela al final del periodo y vuelve a suscribirte.",
-    "switchAfterYearly": "Disponible cuando termine tu plan anual"
+    "downgradeIntervalNote": "Sin cargo ahora. Mantienes tu plan anual actual hasta el {{date}}: no se reembolsa nada por él. Después comienza la facturación mensual al precio del nuevo plan."
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",
