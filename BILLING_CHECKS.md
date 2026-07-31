@@ -99,7 +99,16 @@ discount (what makes checkout bill it); they drift independently.
 
 - [ ] Cancel sets `scheduledChange.action = cancel`, status stays `active`, access
   continues to period end, card reads "ends on `<date>`".
-- [ ] Resume clears it.
+- [ ] Resume clears it — same billing date, no new charge, discount kept. This is
+  how a customer "comes back" during a cancelled period; resubscribing would
+  charge again and reset the period they already paid for.
+- [ ] **Buying again while cancelled-but-active is REFUSED**
+  (`subscription_already_active`). Cancelling leaves the subscription ACTIVE
+  until period end, so a checkout in that window would create a SECOND Paddle
+  subscription — both billing, with the app tracking only the newest.
+- [ ] **A discount that cannot apply to the current plan is replaced, not kept.**
+  Ours are `restrictTo` one price, so after a plan change the old plan’s discount
+  lingers inert and would block a later offer for the plan they are actually on.
 - [ ] An admin comp or free-plan promo **cancels any live subscription first** —
   otherwise the provider keeps charging an account the app shows as comped.
 - [ ] Comped accounts are never touched by the scheduler or by offer attachment.
