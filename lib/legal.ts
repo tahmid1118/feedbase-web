@@ -15,17 +15,17 @@ export const legal = {
   /** Product name as used throughout the documents. */
   product: "FeedBoard",
 
-  /** TODO: the registered legal entity that contracts with customers. */
-  entity: "",
+  /** The legal entity that contracts with customers (sole proprietor). */
+  entity: "Tahmid Shahriar Bhuiyan",
 
-  /** TODO: registered business address (required for EU/UK consumer sales). */
-  address: "",
+  /** Registered business address (required for EU/UK consumer sales). */
+  address: "House A-1/7, Block A, NS Road, Banasree, Rampura, Dhaka 1219, Bangladesh",
 
-  /** TODO: country/state whose law governs the terms, e.g. "Bangladesh". */
-  jurisdiction: "",
+  /** Country whose law governs the terms. */
+  jurisdiction: "Bangladesh",
 
-  /** TODO: where consumers may bring proceedings, if different from above. */
-  courts: "",
+  /** Venue for proceedings — a city, since courts sit in cities, not countries. */
+  courts: "Dhaka, Bangladesh",
 
   /** General contact. */
   contactEmail: "support@feedboardapp.com",
@@ -34,7 +34,7 @@ export const legal = {
   privacyEmail: "privacy@feedboardapp.com",
 
   /** Shown as "Last updated" on every page. Bump when you change the text. */
-  lastUpdated: "31 July 2026",
+  lastUpdated: "1 August 2026",
 } as const;
 
 /** The four documents, in the order they appear in the switcher. */
