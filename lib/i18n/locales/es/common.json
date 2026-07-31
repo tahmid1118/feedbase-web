@@ -289,7 +289,15 @@
     "nWorkspaces_one": "{{count}} espacio",
     "nWorkspaces_other": "{{count}} espacios",
     "grantToAccount": "Conceder {{plan}} a {{account}}",
-    "grantAccountDesc": "Esto ofrece la cuenta (y sus {{count}} espacios) sin coste; se cancela cualquier suscripción de Stripe activa. Elige la duración; después vuelve a Free automáticamente."
+    "grantAccountDesc": "Esto ofrece la cuenta (y sus {{count}} espacios) sin coste; se cancela cualquier suscripción de Stripe activa. Elige la duración; después vuelve a Free automáticamente.",
+    "planGrant": "Concede el plan",
+    "expiresAt": "Caduca",
+    "unlimited": "Ilimitado",
+    "reactivate": "Reactivar",
+    "reactivateCode": "Reactivar {{code}}",
+    "reactivateHint": "El código no cambia: quien ya lo tenga podrá usarlo otra vez. Ajusta las condiciones si quieres que se comporte de otra forma.",
+    "resetUsage": "Restablecer el historial de uso",
+    "resetUsageHint": "Borra {{count}} canje(s) anterior(es) para que quien ya lo usó pueda volver a canjearlo."
   },
   "auth": {
     "login": {
@@ -730,7 +738,8 @@
     "userDeleted": "Usuario eliminado",
     "workspaceDeleted": "Espacio de trabajo eliminado",
     "workspaceUpdated": "Espacio de trabajo actualizado",
-    "accountDeleted": "Tu cuenta ha sido eliminada"
+    "accountDeleted": "Tu cuenta ha sido eliminada",
+    "promoReactivated": "Código promocional reactivado"
   },
   "authAside": {
     "badge": "Plataforma de comentarios de producto",

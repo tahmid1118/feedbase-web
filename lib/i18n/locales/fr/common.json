@@ -289,7 +289,15 @@
     "nWorkspaces_one": "{{count}} espace",
     "nWorkspaces_other": "{{count}} espaces",
     "grantToAccount": "Attribuer {{plan}} à {{account}}",
-    "grantAccountDesc": "Ceci offre le compte (et ses {{count}} espaces) gratuitement ; tout abonnement Stripe actif est annulé. Choisissez la durée — ensuite, retour automatique à Free."
+    "grantAccountDesc": "Ceci offre le compte (et ses {{count}} espaces) gratuitement ; tout abonnement Stripe actif est annulé. Choisissez la durée — ensuite, retour automatique à Free.",
+    "planGrant": "Accorde le forfait",
+    "expiresAt": "Expire le",
+    "unlimited": "Illimité",
+    "reactivate": "Réactiver",
+    "reactivateCode": "Réactiver {{code}}",
+    "reactivateHint": "Le code reste identique — ceux qui l’ont déjà peuvent le réutiliser. Modifiez les conditions ci-dessous si nécessaire.",
+    "resetUsage": "Réinitialiser l’historique",
+    "resetUsageHint": "Efface {{count}} utilisation(s) passée(s) afin que les anciens utilisateurs puissent réutiliser le code."
   },
   "auth": {
     "login": {
@@ -730,7 +738,8 @@
     "userDeleted": "Utilisateur supprimé",
     "workspaceDeleted": "Espace de travail supprimé",
     "workspaceUpdated": "Espace de travail mis à jour",
-    "accountDeleted": "Votre compte a été supprimé"
+    "accountDeleted": "Votre compte a été supprimé",
+    "promoReactivated": "Code promo réactivé"
   },
   "authAside": {
     "badge": "Plateforme de retours produit",

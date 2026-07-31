@@ -2,8 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Loader2, Plus, Ban } from "lucide-react";
-import { adminApi, type PromoCode, type CreatePromoInput } from "@/lib/api";
+import { Loader2, Plus, Ban, RotateCcw } from "lucide-react";
+import {
+  adminApi,
+  type PromoCode,
+  type CreatePromoInput,
+  type ReactivatePromoInput,
+} from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
@@ -52,6 +57,9 @@ export default function AdminPromoCodesPage() {
   const [open, setOpen] = useState(false);
   const [form, setForm] = useState<CreatePromoInput>(EMPTY);
   const [busy, setBusy] = useState(false);
+  // The revoked code being reactivated (null = dialog closed) + its new terms.
+  const [reactivating, setReactivating] = useState<PromoCode | null>(null);
+  const [reForm, setReForm] = useState<ReactivatePromoInput>({});
 
   const load = useCallback(async () => {
     if (!token) return;
@@ -91,6 +99,33 @@ export default function AdminPromoCodesPage() {
       setRows((prev) => prev.map((r) => (r.id === p.id ? { ...r, is_active: 0 } : r)));
       toast.success(t("toast.promoRevoked"));
     } else toast.error(res.message || "Failed");
+  };
+
+  /** Open the reactivate dialog seeded with the code's current terms. */
+  const openReactivate = (p: PromoCode) => {
+    setReactivating(p);
+    setReForm({
+      percentOff: p.percent_off ?? undefined,
+      appliesToPlan: p.applies_to_plan ?? "any",
+      planGrant: p.plan_grant ?? "pro",
+      duration: p.duration,
+      durationMonths: p.duration_months ?? undefined,
+      maxRedemptions: p.max_redemptions,
+      expiresAt: p.expires_at ? p.expires_at.slice(0, 10) : null,
+      resetUsage: false,
+    });
+  };
+
+  const reactivate = async () => {
+    if (!token || !reactivating) return;
+    setBusy(true);
+    const res = await adminApi.reactivatePromoCode(token, reactivating.id, reForm);
+    setBusy(false);
+    if (res.ok) {
+      toast.success(t("toast.promoReactivated"));
+      setReactivating(null);
+      load();
+    } else toast.error(res.message || "Failed to reactivate");
   };
 
   const codeValid = /^[A-Za-z0-9_-]{3,64}$/.test(form.code);
@@ -152,7 +187,7 @@ export default function AdminPromoCodesPage() {
                     )}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    {p.is_active === 1 && (
+                    {p.is_active === 1 ? (
                       <Button
                         variant="ghost"
                         size="sm"
@@ -161,6 +196,11 @@ export default function AdminPromoCodesPage() {
                       >
                         <Ban className="h-4 w-4" />
                         Revoke
+                      </Button>
+                    ) : (
+                      <Button variant="ghost" size="sm" onClick={() => openReactivate(p)}>
+                        <RotateCcw className="h-4 w-4" />
+                        {t("admin.reactivate")}
                       </Button>
                     )}
                   </td>
@@ -306,6 +346,121 @@ export default function AdminPromoCodesPage() {
               onClick={create}
             >
               {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : "Create code"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Reactivate a revoked code, optionally on new terms. The code itself is
+          never editable — customers may already be holding it. */}
+      <Dialog open={!!reactivating} onOpenChange={(o) => !o && setReactivating(null)}>
+        <DialogContent className="sm:max-w-[460px]">
+          <DialogHeader>
+            <DialogTitle>
+              {t("admin.reactivateCode", { code: reactivating?.code ?? "" })}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-sm text-[#1c0a0c]/60">{t("admin.reactivateHint")}</p>
+
+            {reactivating?.type === "percent_off" ? (
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1.5">
+                  <Label>{t("admin.percentOff")}</Label>
+                  <Input
+                    type="number"
+                    min={1}
+                    max={100}
+                    value={reForm.percentOff ?? ""}
+                    onChange={(e) =>
+                      setReForm((f) => ({ ...f, percentOff: Number(e.target.value) }))
+                    }
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label>{t("admin.appliesTo")}</Label>
+                  <Select
+                    value={reForm.appliesToPlan ?? "any"}
+                    onValueChange={(v) => setReForm((f) => ({ ...f, appliesToPlan: v }))}
+                  >
+                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="any">{t("admin.anyPlan")}</SelectItem>
+                      <SelectItem value="pro">Pro</SelectItem>
+                      <SelectItem value="business">Business</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-1.5">
+                <Label>{t("admin.planGrant")}</Label>
+                <Select
+                  value={reForm.planGrant ?? "pro"}
+                  onValueChange={(v) => setReForm((f) => ({ ...f, planGrant: v }))}
+                >
+                  <SelectTrigger><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="pro">Pro</SelectItem>
+                    <SelectItem value="business">Business</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <Label>{t("admin.maxRedemptions")}</Label>
+                <Input
+                  type="number"
+                  min={1}
+                  placeholder={t("admin.unlimited")}
+                  value={reForm.maxRedemptions ?? ""}
+                  onChange={(e) =>
+                    setReForm((f) => ({
+                      ...f,
+                      maxRedemptions: e.target.value === "" ? null : Number(e.target.value),
+                    }))
+                  }
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label>{t("admin.expiresAt")}</Label>
+                <Input
+                  type="date"
+                  value={reForm.expiresAt ?? ""}
+                  onChange={(e) =>
+                    setReForm((f) => ({ ...f, expiresAt: e.target.value || null }))
+                  }
+                />
+              </div>
+            </div>
+
+            <label className="flex cursor-pointer items-start gap-2 rounded-lg border border-[#e399a3]/50 bg-white p-3">
+              <input
+                type="checkbox"
+                className="mt-0.5 accent-[#c74959]"
+                checked={reForm.resetUsage ?? false}
+                onChange={(e) => setReForm((f) => ({ ...f, resetUsage: e.target.checked }))}
+              />
+              <span className="text-sm">
+                <span className="font-medium text-[#1c0a0c]">{t("admin.resetUsage")}</span>
+                <span className="block text-xs text-[#1c0a0c]/60">
+                  {t("admin.resetUsageHint", { count: reactivating?.times_redeemed ?? 0 })}
+                </span>
+              </span>
+            </label>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setReactivating(null)} disabled={busy}>
+              {t("common.cancel")}
+            </Button>
+            <Button
+              className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+              onClick={reactivate}
+              disabled={busy}
+            >
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : t("admin.reactivate")}
             </Button>
           </DialogFooter>
         </DialogContent>

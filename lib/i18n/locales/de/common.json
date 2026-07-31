@@ -289,7 +289,15 @@
     "nWorkspaces_one": "{{count}} Workspace",
     "nWorkspaces_other": "{{count}} Workspaces",
     "grantToAccount": "{{plan}} an {{account}} vergeben",
-    "grantAccountDesc": "Dies stellt das Konto (und alle {{count}} zugehörigen Workspaces) kostenlos frei; ein laufendes Stripe-Abo wird gekündigt. Wähle die Dauer — danach wird automatisch auf Free zurückgesetzt."
+    "grantAccountDesc": "Dies stellt das Konto (und alle {{count}} zugehörigen Workspaces) kostenlos frei; ein laufendes Stripe-Abo wird gekündigt. Wähle die Dauer — danach wird automatisch auf Free zurückgesetzt.",
+    "planGrant": "Gewährt Tarif",
+    "expiresAt": "Läuft ab",
+    "unlimited": "Unbegrenzt",
+    "reactivate": "Reaktivieren",
+    "reactivateCode": "{{code}} reaktivieren",
+    "reactivateHint": "Der Code bleibt gleich — wer ihn bereits hat, kann ihn erneut nutzen. Passe unten die Konditionen an, wenn er sich diesmal anders verhalten soll.",
+    "resetUsage": "Nutzungsverlauf zurücksetzen",
+    "resetUsageHint": "Löscht {{count}} bisherige Einlösung(en), damit frühere Nutzer den Code erneut einlösen können."
   },
   "auth": {
     "login": {
@@ -730,7 +738,8 @@
     "userDeleted": "Benutzer gelöscht",
     "workspaceDeleted": "Arbeitsbereich gelöscht",
     "workspaceUpdated": "Arbeitsbereich aktualisiert",
-    "accountDeleted": "Ihr Konto wurde gelöscht"
+    "accountDeleted": "Ihr Konto wurde gelöscht",
+    "promoReactivated": "Promo-Code reaktiviert"
   },
   "authAside": {
     "badge": "Produkt-Feedback-Plattform",

@@ -289,7 +289,15 @@
     "nWorkspaces_one": "{{count}} workspace",
     "nWorkspaces_other": "{{count}} workspaces",
     "grantToAccount": "{{plan}} toekennen aan {{account}}",
-    "grantAccountDesc": "Dit geeft het account (en alle {{count}} workspaces) gratis; een actief Stripe-abonnement wordt geannuleerd. Kies de duur — daarna automatisch terug naar Free."
+    "grantAccountDesc": "Dit geeft het account (en alle {{count}} workspaces) gratis; een actief Stripe-abonnement wordt geannuleerd. Kies de duur — daarna automatisch terug naar Free.",
+    "planGrant": "Kent plan toe",
+    "expiresAt": "Verloopt",
+    "unlimited": "Onbeperkt",
+    "reactivate": "Opnieuw activeren",
+    "reactivateCode": "{{code}} opnieuw activeren",
+    "reactivateHint": "De code blijft hetzelfde — wie hem al heeft, kan hem opnieuw gebruiken. Pas hieronder de voorwaarden aan indien gewenst.",
+    "resetUsage": "Gebruiksgeschiedenis wissen",
+    "resetUsageHint": "Wist {{count}} eerdere inwisseling(en), zodat eerdere gebruikers de code opnieuw kunnen inwisselen."
   },
   "auth": {
     "login": {
@@ -730,7 +738,8 @@
     "userDeleted": "Gebruiker verwijderd",
     "workspaceDeleted": "Werkruimte verwijderd",
     "workspaceUpdated": "Werkruimte bijgewerkt",
-    "accountDeleted": "Uw account is verwijderd"
+    "accountDeleted": "Uw account is verwijderd",
+    "promoReactivated": "Promocode opnieuw geactiveerd"
   },
   "authAside": {
     "badge": "Platform voor productfeedback",

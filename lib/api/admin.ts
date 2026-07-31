@@ -126,6 +126,23 @@ export interface CreatePromoInput {
   expiresAt?: string;
 }
 
+/**
+ * Terms to reactivate a revoked code with. Everything is optional — omitted
+ * fields keep their current value. The `code` itself is never changed (customers
+ * may already have it). `resetUsage` also clears the redemption history, letting
+ * people who already used the code use it again.
+ */
+export interface ReactivatePromoInput {
+  percentOff?: number;
+  appliesToPlan?: string;
+  planGrant?: string;
+  duration?: string;
+  durationMonths?: number;
+  maxRedemptions?: number | null;
+  expiresAt?: string | null;
+  resetUsage?: boolean;
+}
+
 export interface AdminPost {
   id: number;
   title: string;
@@ -305,6 +322,8 @@ export const adminApi = {
     request("/promo-codes", "POST", token, { ...data }),
   revokePromoCode: (token: string | undefined, id: number) =>
     request(`/promo-codes/${id}/revoke`, "PUT", token),
+  reactivatePromoCode: (token: string | undefined, id: number, data: ReactivatePromoInput = {}) =>
+    request(`/promo-codes/${id}/reactivate`, "PUT", token, { ...data }),
 
   // Support chat
   supportInboxUnread: (token?: string) =>

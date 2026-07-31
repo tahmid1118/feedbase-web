@@ -289,7 +289,15 @@
     "repeating": "Repeating",
     "forever": "Forever",
     "statusChangedTo": "Status set to {{status}}",
-    "closeChatDesc": "The user will no longer see this conversation and can't reply to it. You keep the full transcript here. They can always start a new chat."
+    "closeChatDesc": "The user will no longer see this conversation and can't reply to it. You keep the full transcript here. They can always start a new chat.",
+    "planGrant": "Grants plan",
+    "expiresAt": "Expires",
+    "unlimited": "Unlimited",
+    "reactivate": "Reactivate",
+    "reactivateCode": "Reactivate {{code}}",
+    "reactivateHint": "The code stays the same — customers who already have it can use it again. Adjust the terms below if you want it to behave differently this time.",
+    "resetUsage": "Reset usage history",
+    "resetUsageHint": "Clears {{count}} past redemption(s) so people who already used this code can redeem it again."
   },
   "auth": {
     "login": {
@@ -730,7 +738,8 @@
     "userDeleted": "User deleted",
     "workspaceDeleted": "Workspace deleted",
     "workspaceUpdated": "Workspace updated",
-    "accountDeleted": "Your account has been deleted"
+    "accountDeleted": "Your account has been deleted",
+    "promoReactivated": "Promo code reactivated"
   },
   "authAside": {
     "badge": "Product Feedback Platform",
