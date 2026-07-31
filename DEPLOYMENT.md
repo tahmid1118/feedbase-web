@@ -91,21 +91,32 @@ SECRET_ACCESS_TOKEN=<openssl rand -hex 48>
 ACCESS_TOKEN_EXPIRE=7d
 FRONTEND_URL=https://feedboardapp.com
 ROOT_DOMAIN=feedboardapp.com
-STRIPE_SECRET_KEY=sk_live_...
-STRIPE_WEBHOOK_SECRET=whsec_...        # from step 8
-# Stripe price IDs — create them once:  node scripts/stripe-setup.js  (prints IDs)
-STRIPE_PRICE_PRO=... STRIPE_PRICE_PRO_YEARLY=...
-STRIPE_PRICE_BUSINESS=... STRIPE_PRICE_BUSINESS_YEARLY=...
+# ── Payments: Paddle is the ACTIVE provider (Merchant of Record). See §8a.
+BILLING_PROVIDER=paddle
+PADDLE_ENV=production
+PADDLE_API_KEY=pdl_live_...
+PADDLE_WEBHOOK_SECRET=pdl_ntfset_...   # from step 8a
+# Paddle price IDs — create them once:  node scripts/paddle-setup.js  (prints IDs)
+PADDLE_PRICE_PRO=... PADDLE_PRICE_PRO_YEARLY=...
+PADDLE_PRICE_BUSINESS=... PADDLE_PRICE_BUSINESS_YEARLY=...
+# Billing scheduler: leave the defaults ON. It applies plan changes Paddle can't
+# defer itself (yearly → monthly). Disabling it means such a change never takes
+# effect and the customer is billed for another year. Cluster-safe.
+# Stripe is dormant — only needed if you set BILLING_PROVIDER=stripe (see §8b).
 # Email — Resend (RESEND_API_KEY) OR SMTP (SMTP_HOST/PORT/USER/PASS + MAIL_FROM)
 ```
 
 One-time setup scripts, then start under PM2:
 ```bash
-node scripts/stripe-setup.js            # creates Stripe products/prices → paste IDs into .env
+node scripts/paddle-setup.js            # creates Paddle products/prices → paste IDs into .env
 node scripts/create-admin.js            # your platform-admin account
 node scripts/create-official-board.js   # the dogfooding "feedback" board
 node scripts/set-official-branding.js   # app icon = admin avatar + board logo
 node scripts/create-billing-accounts.js # ensure the billing_accounts table exists
+# Schema migrations — idempotent, safe to re-run. REQUIRED on an existing database
+# (a fresh install from feedboard_db.sql already has these columns):
+node scripts/add-paddle-columns.js          # billing_accounts.paddle_customer_id / _subscription_id
+node scripts/add-paddle-discount-columns.js # offers/promo_codes.paddle_discount_id
 
 pnpm start                              # pm2 start ecosystem.config.js --env production
 pm2 save && pm2 startup                 # survive reboots (run the printed command)
@@ -138,7 +149,16 @@ FEEDBOARD_API_BASE_URL=http://127.0.0.1:4562          # server→API, internal
 NEXT_PUBLIC_FEEDBOARD_API_BASE_URL=https://api.feedboardapp.com   # browser→API, public
 NEXT_PUBLIC_ROOT_DOMAIN=feedboardapp.com
 NEXT_PUBLIC_FEEDBACK_SUBDOMAIN=feedback
+# Payments — must match the backend BILLING_PROVIDER / PADDLE_ENV (see §8a).
+NEXT_PUBLIC_BILLING_PROVIDER=paddle
+NEXT_PUBLIC_PADDLE_CLIENT_TOKEN=live_...              # `live_…` in production, `test_…` in sandbox
+NEXT_PUBLIC_PADDLE_ENV=production
 ```
+
+> These are `NEXT_PUBLIC_*`, so they are **baked in at build time** — changing a
+> Paddle token or env means `pnpm build` again, not just a restart. A `test_…`
+> token with `NEXT_PUBLIC_PADDLE_ENV=production` (or the reverse) makes the
+> checkout overlay fail to load.
 
 Start it under PM2 (`next start`, port 3000):
 ```bash
@@ -220,7 +240,21 @@ Sandbox and production are **separate universes** (keys, prices, webhooks all di
 4. Create live prices: `node scripts/paddle-setup.js` → paste the `PADDLE_PRICE_*` (production `pri_…`) into `.env`.
 5. Create a **live** Notification destination → `https://api.feedboardapp.com/webhooks/paddle` (events: `subscription.*`, `transaction.completed`); put its secret in `PADDLE_WEBHOOK_SECRET`.
 6. Frontend `.env`: `NEXT_PUBLIC_BILLING_PROVIDER=paddle`, `NEXT_PUBLIC_PADDLE_CLIENT_TOKEN=live_…`, `NEXT_PUBLIC_PADDLE_ENV=production`; rebuild the frontend.
-7. `pm2 reload feedboard-server`. On boot the API logs `Paddle configured in PRODUCTION mode.` (it warns if sandbox keys are used with `NODE_ENV=production`). Do a real purchase + refund to confirm.
+7. Run the idempotent schema migrations if the database predates them (§4): `node scripts/add-paddle-columns.js` and `node scripts/add-paddle-discount-columns.js`. Without the second one, creating an offer or promo code fails to store its Paddle discount.
+8. `pm2 reload feedboard-server`. On boot the API logs `Paddle configured in PRODUCTION mode.` (it warns if sandbox keys are used with `NODE_ENV=production`) **and** `Billing scheduler started (every 30m).` Do a real purchase + refund to confirm.
+
+**Discounts don't migrate.** A Paddle discount only exists in the environment it was
+created in, so any **offer** or **promo code** made while on sandbox has no live
+discount behind it. **Re-create them in the Admin Panel after going live**, or
+checkout will charge the undiscounted price.
+
+**The billing scheduler must keep running.** It's what applies a yearly→monthly
+downgrade at the period end — Paddle cannot defer that itself. If it's disabled or
+the process is down across the whole window, the subscription renews on the **old
+yearly plan** and the customer is charged for another year. It logs
+`billing scheduler: MISSED the change window for <email>` when that happens, so
+alert on that string. Defaults (30-minute ticks, 6-hour lead) tolerate a restart or
+a short outage.
 
 ### 8b. Stripe — go LIVE (only if `BILLING_PROVIDER=stripe`)
 
@@ -260,6 +294,15 @@ dashboard.
 - `https://<your-tenant>.feedboardapp.com` — public portal loads.
 - `https://api.feedboardapp.com/public/feedback/posts` (POST `{"lg":"en"}`) — API responds.
 - A test checkout completes and the plan updates (webhook + reconcile).
+
+**Payments (do these against LIVE Paddle, with a real card — refund yourself after):**
+- `pm2 logs feedboard-server` shows `Paddle configured in PRODUCTION mode.` and `Billing scheduler started`.
+- Checkout: the overlay opens, shows the **live** price, and completes. The plan appears in Settings → Billing and on every workspace the account owns.
+- Webhook: Paddle → Notifications → your destination shows **200** responses (not 401/500).
+- Upgrade Pro → Business: the dialog's "You'll be charged $X now" equals the amount actually charged in Paddle.
+- Downgrade: the banner shows the scheduled change and the plan does **not** drop until the period end; **Cancel change** restores it.
+- Offer / promo code: create one in the Admin Panel, then confirm checkout charges the **discounted** amount to the cent.
+- Cancel: the card reads "ends on `<date>`", access continues, and **Resume** clears it.
 
 ---
 
