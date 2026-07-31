@@ -126,3 +126,14 @@ discount (what makes checkout bill it); they drift independently.
 - [ ] Frontend and backend agree on provider and environment
   (`BILLING_PROVIDER` / `NEXT_PUBLIC_BILLING_PROVIDER`, `PADDLE_ENV` /
   `NEXT_PUBLIC_PADDLE_ENV`).
+- [ ] **The Paddle customer's email matches the account email** for every row in
+  `billing_accounts` — it's where the portal sign-in link, receipts and invoices
+  go. Compare `paddle.customers.get(paddle_customer_id).email` with `email`.
+
+> **Not a bug: sandbox emails arrive at the seller's address.** Paddle's sandbox
+> redirects customer-facing email (portal sign-in links, receipts) to the Paddle
+> *account owner's* address instead of the customer's, so a test purchase by
+> `customer@example.com` lands in the seller's inbox. Verify the customer record
+> holds the right address (above) rather than judging by which inbox received it;
+> production delivers to the real customer. We send none of these emails — they
+> come from Paddle.
