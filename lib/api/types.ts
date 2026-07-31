@@ -384,6 +384,12 @@ export interface ActiveOffer {
   offerPrice: number;
   percentOff: number;
   label: string | null;
+  /**
+   * How many billing periods the offer price lasts — a 3-month monthly offer is
+   * 3, a yearly offer is 1 (its one yearly period), `null` = forever. Shown to
+   * the customer so a time-limited price isn't presented as permanent.
+   */
+  durationPeriods: number | null;
   endsAt: string | null;
 }
 
