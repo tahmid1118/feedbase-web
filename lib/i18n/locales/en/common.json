@@ -625,7 +625,8 @@
     "scheduleChange": "Schedule change",
     "downgradeIntervalUnsupported": "To switch billing interval and downgrade at once isn't supported. Change the interval separately, or cancel at period end and resubscribe.",
     "downgradeIntervalNote": "No charge now. You keep your current yearly plan until {{date}} — nothing is refunded for it. Monthly billing then begins at the new plan's price.",
-    "offerAppliesToRenewals": "{{label}}: your renewals are billed at {{price}}/mo instead of {{regular}}/mo while the offer runs."
+    "offerAppliesToRenewals": "{{label}}: your renewals are billed at {{price}}/mo instead of {{regular}}/mo while the offer runs.",
+    "switchAfterYearly": "Available when your yearly plan ends"
   },
   "switcher": {
     "addWorkspace": "Add Workspace",

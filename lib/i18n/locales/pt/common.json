@@ -625,7 +625,8 @@
     "resumedToast": "Assinatura retomada — será renovada normalmente.",
     "downgradeIntervalUnsupported": "Mudar o intervalo de faturação e fazer downgrade ao mesmo tempo não é suportado. Altere o intervalo separadamente, ou cancele no fim do período e volte a subscrever.",
     "downgradeIntervalNote": "Sem cobrança agora. Mantém o seu plano anual atual até {{date}} — não há reembolso por esse período. Depois começa a faturação mensal ao preço do novo plano.",
-    "offerAppliesToRenewals": "{{label}}: enquanto a promoção durar, as suas renovações são cobradas a {{price}}/mês em vez de {{regular}}/mês."
+    "offerAppliesToRenewals": "{{label}}: enquanto a promoção durar, as suas renovações são cobradas a {{price}}/mês em vez de {{regular}}/mês.",
+    "switchAfterYearly": "Disponível quando o seu plano anual terminar"
   },
   "switcher": {
     "addWorkspace": "Adicionar espaço de trabalho",

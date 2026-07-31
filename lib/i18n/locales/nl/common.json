@@ -625,7 +625,8 @@
     "resumedToast": "Abonnement hervat — het wordt normaal verlengd.",
     "downgradeIntervalUnsupported": "Factureringsinterval wijzigen en tegelijk downgraden wordt niet ondersteund. Wijzig het interval apart, of zeg op tegen het periode-einde en neem opnieuw een abonnement.",
     "downgradeIntervalNote": "Nu geen kosten. Je houdt je huidige jaarplan tot {{date}} — daarvoor volgt geen restitutie. Daarna start de maandelijkse facturering tegen de prijs van het nieuwe plan.",
-    "offerAppliesToRenewals": "{{label}}: zolang de actie loopt, worden je verlengingen gefactureerd tegen {{price}}/mnd in plaats van {{regular}}/mnd."
+    "offerAppliesToRenewals": "{{label}}: zolang de actie loopt, worden je verlengingen gefactureerd tegen {{price}}/mnd in plaats van {{regular}}/mnd.",
+    "switchAfterYearly": "Beschikbaar wanneer je jaarabonnement afloopt"
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",

@@ -412,6 +412,17 @@ export function BillingSettings() {
         </Button>
       );
     }
+    // A yearly subscriber is never offered a move to monthly billing — not the
+    // same tier ("Switch to monthly") and not a tier downgrade that also shortens
+    // the interval. They keep the year they paid for; monthly becomes available
+    // once that year ends and they are no longer subscribed.
+    if (curInterval === "year" && interval === "month") {
+      return (
+        <Button variant="outline" disabled className="h-auto w-full whitespace-normal py-2 text-xs">
+          {t("billing.switchAfterYearly")}
+        </Button>
+      );
+    }
     const sameTier = planKey === current;
     const label = sameTier
       ? interval === "year"
