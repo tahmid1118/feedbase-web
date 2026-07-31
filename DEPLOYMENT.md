@@ -245,8 +245,22 @@ Sandbox and production are **separate universes** (keys, prices, webhooks all di
 
 **Discounts don't migrate.** A Paddle discount only exists in the environment it was
 created in, so any **offer** or **promo code** made while on sandbox has no live
-discount behind it. **Re-create them in the Admin Panel after going live**, or
-checkout will charge the undiscounted price.
+discount behind it. After switching `PADDLE_ENV`:
+
+```bash
+node scripts/backfill-offer-discounts.js --force   # offers: re-mint in the live account
+```
+
+`--force` is required because the rows still hold the *sandbox* discount ids and a
+plain run would skip them. **Promo codes must be re-created in the Admin Panel.**
+
+This is a real failure that already happened once in sandbox: the pricing card
+advertised *Pro $5.60/mo* while Paddle billed the full *$10*, because the offers
+predated the discount code and `paddle_discount_id` was NULL. `getActiveOffers`
+now **hides any offer it cannot charge** (logging a warning), so the failure mode
+is a silently missing discount rather than a mis-advertised price — but you still
+have to run the backfill to get the offer back. Verify after going live that the
+advertised price equals the amount Paddle actually charges.
 
 **The billing scheduler must keep running.** It's what applies a yearly→monthly
 downgrade at the period end — Paddle cannot defer that itself. If it's disabled or
