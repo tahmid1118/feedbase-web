@@ -624,7 +624,8 @@
     "cancelledToast": "Abo gekündigt – du behältst den Zugang bis zum Periodenende.",
     "resumedToast": "Abo fortgesetzt – es wird wie gewohnt verlängert.",
     "downgradeIntervalUnsupported": "Abrechnungsintervall wechseln und gleichzeitig herabstufen wird nicht unterstützt. Ändere das Intervall separat oder kündige zum Periodenende und abonniere neu.",
-    "downgradeIntervalNote": "Keine Belastung jetzt. Du behältst deinen aktuellen Jahrestarif bis {{date}} — dafür gibt es keine Rückerstattung. Danach beginnt die monatliche Abrechnung zum Preis des neuen Tarifs."
+    "downgradeIntervalNote": "Keine Belastung jetzt. Du behältst deinen aktuellen Jahrestarif bis {{date}} — dafür gibt es keine Rückerstattung. Danach beginnt die monatliche Abrechnung zum Preis des neuen Tarifs.",
+    "offerAppliesToRenewals": "{{label}}: Solange die Aktion läuft, werden deine Verlängerungen mit {{price}}/Mon. statt {{regular}}/Mon. berechnet."
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",

@@ -348,6 +348,18 @@ export function BillingSettings() {
         : t("billing.renewsOn", { date: renewal })
       : null;
 
+  /**
+   * While an offer is running it is the CURRENT price of the plan, not a
+   * new-customer-only deal — an existing subscriber renewing inside the window is
+   * billed the offer price too. Say so on the current-plan card, otherwise they
+   * see "$5.60" advertised elsewhere on the same page and reasonably assume they
+   * are still being charged full price.
+   */
+  const currentOffer =
+    hasSub && !isComped && !willCancel && current !== "free"
+      ? offers?.[current]?.[status?.billingInterval === "year" ? "year" : "month"]
+      : undefined;
+
   const renderCta = (planKey: PlanKey, planName: string) => {
     // Free card: subscribers cancel via the portal; free users see "Included".
     if (planKey === "free") {
@@ -448,6 +460,21 @@ export function BillingSettings() {
                 {hasSub && billedLine && <p>{billedLine}</p>}
                 {periodNote && <p>{periodNote}</p>}
               </div>
+            )}
+            {currentOffer && (
+              <p className="mt-2 rounded-lg bg-green-50 px-3 py-2 text-xs font-medium text-green-800">
+                {t("billing.offerAppliesToRenewals", {
+                  label: currentOffer.label || t("pricing.limitedOffer"),
+                  price: formatPrice(
+                    status?.billingInterval === "year"
+                      ? currentOffer.offerPrice / 12
+                      : currentOffer.offerPrice
+                  ),
+                  regular: formatPrice(
+                    PLANS.find((p) => p.key === current)?.monthlyPrice ?? 0
+                  ),
+                })}
+              </p>
             )}
             <p className="mt-1 text-xs text-[#1c0a0c]/45">
               {t("billing.accountWide")}
