@@ -458,6 +458,19 @@ Version 1.2
                           the two displayed figures, and the exact discount is
                           applied automatically at checkout. One active offer per
                           plan and cycle.
+                          The offer's time window also decides how long a customer
+                          KEEPS the offer price: a monthly offer running three
+                          months bills the offer price for three monthly periods
+                          and then the regular price, while a yearly offer taken
+                          during the window covers that whole year. Both the
+                          Billing tab and the pricing cards state this ("Offer
+                          price for the first 3 months, then $10.00/mo") so a
+                          temporary price is never presented as permanent.
+                          An active offer is the plan's CURRENT price rather than a
+                          new-customer deal: an existing subscriber whose renewal
+                          falls during the window is billed the offer price too,
+                          and the Billing tab tells them so. A customer already on
+                          a promo code or an earlier offer keeps those terms.
 
 3.11 Platform Administration (Admin Panel)
     A platform admin manages the entire platform from a dedicated panel.
@@ -561,7 +574,7 @@ Version 1.2
                           lifetimes, the single-device limit on Free and Pro,
                           guest submitter emails being stored but never shown
                           publicly, payment data being held only by the payment
-                          processor, proration on upgrade versus scheduled
+                          processor, offers applying to renewals, proration on upgrade versus scheduled
                           downgrade, and the effect of account deletion on owned
                           versus joined workspaces. A change to any of those
                           behaviours requires the corresponding document to be
