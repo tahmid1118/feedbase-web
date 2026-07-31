@@ -615,7 +615,8 @@
     "cancelSubBodyNoDate": "Vous conservez {{plan}} jusqu'à la fin de votre période de facturation et ne serez plus facturé. Ensuite, votre compte passe à Free.",
     "cancelledToast": "Abonnement annulé — vous gardez l'accès jusqu'à la fin de la période.",
     "resumedToast": "Abonnement repris — il se renouvellera normalement.",
-    "downgradeIntervalUnsupported": "Changer d'intervalle de facturation et rétrograder en même temps n'est pas pris en charge. Modifiez l'intervalle séparément, ou résiliez à la fin de la période et réabonnez-vous."
+    "downgradeIntervalUnsupported": "Changer d'intervalle de facturation et rétrograder en même temps n'est pas pris en charge. Modifiez l'intervalle séparément, ou résiliez à la fin de la période et réabonnez-vous.",
+    "switchAfterYearly": "Disponible à la fin de votre forfait annuel"
   },
   "switcher": {
     "addWorkspace": "Ajouter un espace de travail",

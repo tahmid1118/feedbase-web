@@ -55,6 +55,11 @@ export async function openPaddleCheckout(transactionId: string, successUrl?: str
     settings: {
       displayMode: "overlay",
       variant: "one-page",
+      // Keep the checkout minimal: no "Add VAT number / ABN" tax-ID field, and no
+      // Paddle "Add discount" field — promo codes are redeemed in our own Billing
+      // tab and applied server-side by discount id, so Paddle's field is redundant.
+      showAddTaxId: false,
+      showAddDiscounts: false,
       ...(successUrl ? { successUrl } : {}),
     },
   });

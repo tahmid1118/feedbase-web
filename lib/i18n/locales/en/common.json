@@ -615,7 +615,8 @@
     "downgradeNote": "No charge now. You keep your current plan until {{date}}, then it switches to the new plan. No refund for the remainder of the current period.",
     "payAndUpgrade": "Pay {{amount}} & upgrade",
     "scheduleChange": "Schedule change",
-    "downgradeIntervalUnsupported": "To switch billing interval and downgrade at once isn't supported. Change the interval separately, or cancel at period end and resubscribe."
+    "downgradeIntervalUnsupported": "To switch billing interval and downgrade at once isn't supported. Change the interval separately, or cancel at period end and resubscribe.",
+    "switchAfterYearly": "Available when your yearly plan ends"
   },
   "switcher": {
     "addWorkspace": "Add Workspace",

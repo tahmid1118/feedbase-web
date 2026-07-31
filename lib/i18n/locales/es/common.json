@@ -615,7 +615,8 @@
     "cancelSubBodyNoDate": "Conservarás {{plan}} hasta el final de tu período de facturación y no se te cobrará de nuevo. Después, tu cuenta pasa a Free.",
     "cancelledToast": "Suscripción cancelada: mantienes el acceso hasta que termine el período.",
     "resumedToast": "Suscripción reanudada: se renovará con normalidad.",
-    "downgradeIntervalUnsupported": "No se admite cambiar el intervalo de facturación y bajar de plan a la vez. Cambia el intervalo por separado, o cancela al final del periodo y vuelve a suscribirte."
+    "downgradeIntervalUnsupported": "No se admite cambiar el intervalo de facturación y bajar de plan a la vez. Cambia el intervalo por separado, o cancela al final del periodo y vuelve a suscribirte.",
+    "switchAfterYearly": "Disponible cuando termine tu plan anual"
   },
   "switcher": {
     "addWorkspace": "Añadir espacio de trabajo",

@@ -394,6 +394,17 @@ export function BillingSettings() {
         </Button>
       );
     }
+    // While on a YEARLY plan we don't offer switching to monthly billing (Paddle
+    // can't preserve the paid year). It becomes available once the yearly period
+    // ends and the account is no longer subscribed. Hide the CTA rather than let
+    // the user click into an error.
+    if (isPaddleProvider() && curInterval === "year" && interval === "month") {
+      return (
+        <Button variant="outline" disabled className="h-auto w-full whitespace-normal py-2 text-xs">
+          {t("billing.switchAfterYearly")}
+        </Button>
+      );
+    }
     const sameTier = planKey === current;
     const label = sameTier
       ? interval === "year"

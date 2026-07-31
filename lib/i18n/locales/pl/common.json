@@ -623,7 +623,8 @@
     "cancelSubBodyNoDate": "Zachowasz {{plan}} do końca okresu rozliczeniowego i nie zostaniesz ponownie obciążony. Potem Twoje konto przechodzi na Free.",
     "cancelledToast": "Subskrypcja anulowana — zachowujesz dostęp do końca okresu.",
     "resumedToast": "Subskrypcja wznowiona — odnowi się normalnie.",
-    "downgradeIntervalUnsupported": "Zmiana interwału rozliczeń i obniżenie planu jednocześnie nie jest obsługiwana. Zmień interwał osobno albo anuluj na koniec okresu i wykup ponownie."
+    "downgradeIntervalUnsupported": "Zmiana interwału rozliczeń i obniżenie planu jednocześnie nie jest obsługiwana. Zmień interwał osobno albo anuluj na koniec okresu i wykup ponownie.",
+    "switchAfterYearly": "Dostępne po zakończeniu planu rocznego"
   },
   "switcher": {
     "addWorkspace": "Dodaj przestrzeń roboczą",

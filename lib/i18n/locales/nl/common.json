@@ -615,7 +615,8 @@
     "cancelSubBodyNoDate": "Je behoudt {{plan}} tot het einde van je factureringsperiode en wordt niet opnieuw in rekening gebracht. Daarna gaat je account naar Free.",
     "cancelledToast": "Abonnement opgezegd — je houdt toegang tot het einde van de periode.",
     "resumedToast": "Abonnement hervat — het wordt normaal verlengd.",
-    "downgradeIntervalUnsupported": "Factureringsinterval wijzigen en tegelijk downgraden wordt niet ondersteund. Wijzig het interval apart, of zeg op tegen het periode-einde en neem opnieuw een abonnement."
+    "downgradeIntervalUnsupported": "Factureringsinterval wijzigen en tegelijk downgraden wordt niet ondersteund. Wijzig het interval apart, of zeg op tegen het periode-einde en neem opnieuw een abonnement.",
+    "switchAfterYearly": "Beschikbaar wanneer je jaarabonnement afloopt"
   },
   "switcher": {
     "addWorkspace": "Werkruimte toevoegen",

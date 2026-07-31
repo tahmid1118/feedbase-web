@@ -615,7 +615,8 @@
     "cancelSubBodyNoDate": "Du behältst {{plan}} bis zum Ende deines Abrechnungszeitraums und wirst nicht erneut belastet. Danach wechselt dein Konto auf Free.",
     "cancelledToast": "Abo gekündigt – du behältst den Zugang bis zum Periodenende.",
     "resumedToast": "Abo fortgesetzt – es wird wie gewohnt verlängert.",
-    "downgradeIntervalUnsupported": "Abrechnungsintervall wechseln und gleichzeitig herabstufen wird nicht unterstützt. Ändere das Intervall separat oder kündige zum Periodenende und abonniere neu."
+    "downgradeIntervalUnsupported": "Abrechnungsintervall wechseln und gleichzeitig herabstufen wird nicht unterstützt. Ändere das Intervall separat oder kündige zum Periodenende und abonniere neu.",
+    "switchAfterYearly": "Verfügbar, wenn dein Jahresabo endet"
   },
   "switcher": {
     "addWorkspace": "Arbeitsbereich hinzufügen",
