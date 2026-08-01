@@ -448,8 +448,7 @@
     "notFoundDesc": "This feedback portal doesn't exist or is no longer active. Please check the address and try again.",
     "ownBoardTitle": "Want your own feedback board?",
     "ownBoardSubtitle": "Collect feedback, prioritize by votes, and share a public roadmap — free to start.",
-    "ownBoardCta": "Join our community",
-    "ownerPostPro": "Posting on your own board is a Pro feature."
+    "ownBoardCta": "Join our community"
   },
   "type": {
     "feedback": "Feedback",
@@ -477,7 +476,6 @@
     "verifiedOwner": "Verified owner",
     "asYourName": "Your name",
     "proBadge": "PRO",
-    "ownerReplyPro": "Replying to feedback as the workspace owner is a Pro feature. Upgrade to respond to your users.",
     "goToBilling": "Go to billing"
   },
   "share": {
@@ -792,7 +790,7 @@
       "photoVideo": "Photo & video on feedback",
       "contactSubmitters": "Contact & notify feedback submitters",
       "deletePosts": "Delete feedback posts",
-      "commentAsOwner": "Reply as a verified Owner",
+      "commentAsOwner": "Reply with a verified Owner badge",
       "upTo5Members": "Up to 5 team members",
       "everythingPro": "Everything in Pro",
       "unlimitedWorkspaces": "Unlimited workspaces",

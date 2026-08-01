@@ -458,8 +458,7 @@
     "ownBoardTitle": "Chcesz własną tablicę opinii?",
     "ownBoardSubtitle": "Zbieraj opinie, ustalaj priorytety głosami i udostępniaj publiczny plan działań — zacznij za darmo.",
     "ownBoardCta": "Dołącz do naszej społeczności",
-    "noMatchingPosts": "Brak wpisów w tym widoku.",
-    "ownerPostPro": "Publikowanie na własnej tablicy to funkcja Pro."
+    "noMatchingPosts": "Brak wpisów w tym widoku."
   },
   "type": {
     "feedback": "Opinia",
@@ -487,7 +486,6 @@
     "verifiedOwner": "Zweryfikowany właściciel",
     "asYourName": "Twoje imię",
     "proBadge": "PRO",
-    "ownerReplyPro": "Odpowiadanie na opinie jako właściciel przestrzeni to funkcja Pro. Ulepsz plan, aby odpowiadać użytkownikom.",
     "goToBilling": "Przejdź do rozliczeń"
   },
   "share": {
@@ -810,7 +808,7 @@
       "unlimitedMembers": "Nieograniczeni członkowie zespołu",
       "multiDevice": "Logowanie na wielu urządzeniach",
       "prioritySupport": "Priorytetowe wsparcie",
-      "commentAsOwner": "Odpowiadaj jako zweryfikowany właściciel",
+      "commentAsOwner": "Odpowiadaj z odznaką zweryfikowanego właściciela",
       "ownerPrivacy": "Odpowiadaj jako zweryfikowany „Owner” z ukrytym prawdziwym imieniem"
     },
     "badge": {

@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { CornerDownRight, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -66,10 +65,8 @@ export function CommentThread({
   const { t } = useTranslation();
   const { data: session } = useSession();
   const isOwner = session?.user?.role === "owner";
-  // Commenting on your own board as the owner is a Pro+ capability (ownerBadge).
-  // A Free owner is blocked entirely (server enforces 402); members are never
-  // gated here — they comment as normal users.
-  const ownerBlocked = isOwner && !ownerBadge;
+  // Replying is free on every plan. A paid plan only adds the identities the
+  // reply can carry — a Free owner replies under their own name.
   const tree = useMemo(() => buildTree(comments), [comments]);
   const [body, setBody] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -115,24 +112,8 @@ export function CommentThread({
 
   return (
     <div className="space-y-4">
-      {/* Top-level composer — a Free owner is blocked (Pro+ feature). */}
-      {ownerBlocked ? (
-        <div className="rounded-lg border border-[#c74959]/25 bg-[#c74959]/5 p-4 text-sm text-[#1c0a0c]/70">
-          <p className="flex flex-wrap items-center gap-2">
-            <span className="rounded bg-[#c74959] px-1.5 py-0.5 text-xs font-semibold text-white">
-              {t("comments.proBadge")}
-            </span>
-            {t("comments.ownerReplyPro")}
-          </p>
-          <Link
-            href="/dashboard/settings?tab=billing"
-            className="mt-2 inline-block text-xs font-medium text-[#c74959] underline"
-          >
-            {t("comments.goToBilling")}
-          </Link>
-        </div>
-      ) : (
-        <div className="space-y-2">
+      {/* Top-level composer — available on every plan. */}
+      <div className="space-y-2">
         <Textarea
           value={body}
           onChange={(e) => setBody(e.target.value)}
@@ -183,8 +164,7 @@ export function CommentThread({
             )}
           </Button>
         </div>
-        </div>
-      )}
+      </div>
 
       {comments.length === 0 ? (
         <p className="py-8 text-center text-sm text-[#1c0a0c]/60">
@@ -199,7 +179,6 @@ export function CommentThread({
               depth={0}
               submitting={submitting}
               onReply={post}
-              canReply={!ownerBlocked}
             />
           ))}
         </div>

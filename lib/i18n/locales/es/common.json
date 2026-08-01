@@ -448,8 +448,7 @@
     "ownBoardTitle": "¿Quieres tu propio tablero de comentarios?",
     "ownBoardSubtitle": "Recoge comentarios, prioriza por votos y comparte una hoja de ruta pública: empieza gratis.",
     "ownBoardCta": "Únete a nuestra comunidad",
-    "noMatchingPosts": "No hay publicaciones en esta vista.",
-    "ownerPostPro": "Publicar en tu propio tablero es una función Pro."
+    "noMatchingPosts": "No hay publicaciones en esta vista."
   },
   "type": {
     "feedback": "Comentario",
@@ -477,7 +476,6 @@
     "verifiedOwner": "Propietario verificado",
     "asYourName": "Tu nombre",
     "proBadge": "PRO",
-    "ownerReplyPro": "Responder a los comentarios como propietario del espacio es una función Pro. Mejora tu plan para responder a tus usuarios.",
     "goToBilling": "Ir a facturación"
   },
   "share": {
@@ -798,7 +796,7 @@
       "unlimitedMembers": "Miembros del equipo ilimitados",
       "multiDevice": "Inicia sesión en varios dispositivos",
       "prioritySupport": "Soporte prioritario",
-      "commentAsOwner": "Responder como propietario verificado",
+      "commentAsOwner": "Responder con una insignia de propietario verificado",
       "ownerPrivacy": "Responde como \"Owner\" verificado con tu nombre real oculto"
     },
     "badge": {

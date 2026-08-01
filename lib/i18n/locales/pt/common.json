@@ -448,8 +448,7 @@
     "ownBoardTitle": "Quer o seu próprio painel de feedback?",
     "ownBoardSubtitle": "Recolha feedback, priorize por votos e partilhe um roteiro público — comece gratuitamente.",
     "ownBoardCta": "Junte-se à nossa comunidade",
-    "noMatchingPosts": "Nenhuma publicação nesta visualização.",
-    "ownerPostPro": "Publicar no seu próprio quadro é uma funcionalidade Pro."
+    "noMatchingPosts": "Nenhuma publicação nesta visualização."
   },
   "type": {
     "feedback": "Feedback",
@@ -477,7 +476,6 @@
     "verifiedOwner": "Proprietário verificado",
     "asYourName": "O seu nome",
     "proBadge": "PRO",
-    "ownerReplyPro": "Responder a feedbacks como proprietário do espaço é um recurso Pro. Faça upgrade para responder aos seus usuários.",
     "goToBilling": "Ir para faturamento"
   },
   "share": {
@@ -798,7 +796,7 @@
       "unlimitedMembers": "Membros da equipa ilimitados",
       "multiDevice": "Inicie sessão em vários dispositivos",
       "prioritySupport": "Suporte prioritário",
-      "commentAsOwner": "Responder como proprietário verificado",
+      "commentAsOwner": "Responder com um selo de proprietário verificado",
       "ownerPrivacy": "Responda como \"Owner\" verificado com seu nome real oculto"
     },
     "badge": {

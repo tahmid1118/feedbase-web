@@ -448,8 +448,7 @@
     "ownBoardTitle": "Möchten Sie Ihre eigene Feedback-Pinnwand?",
     "ownBoardSubtitle": "Sammeln Sie Feedback, priorisieren Sie per Abstimmung und teilen Sie eine öffentliche Roadmap — kostenlos starten.",
     "ownBoardCta": "Werden Sie Teil unserer Community",
-    "noMatchingPosts": "Keine Beiträge in dieser Ansicht.",
-    "ownerPostPro": "Beiträge auf dem eigenen Board sind eine Pro-Funktion."
+    "noMatchingPosts": "Keine Beiträge in dieser Ansicht."
   },
   "type": {
     "feedback": "Feedback",
@@ -477,7 +476,6 @@
     "verifiedOwner": "Verifizierter Inhaber",
     "asYourName": "Ihr Name",
     "proBadge": "PRO",
-    "ownerReplyPro": "Auf Feedback als Workspace-Inhaber zu antworten, ist eine Pro-Funktion. Upgrade, um deinen Nutzern zu antworten.",
     "goToBilling": "Zur Abrechnung"
   },
   "share": {
@@ -798,7 +796,7 @@
       "unlimitedMembers": "Unbegrenzte Teammitglieder",
       "multiDevice": "Anmeldung auf mehreren Geräten",
       "prioritySupport": "Priorisierter Support",
-      "commentAsOwner": "Als verifizierter Inhaber antworten",
+      "commentAsOwner": "Mit verifiziertem Inhaber-Abzeichen antworten",
       "ownerPrivacy": "Als verifizierter „Owner“ antworten – dein echter Name bleibt verborgen"
     },
     "badge": {

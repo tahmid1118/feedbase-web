@@ -65,8 +65,6 @@ export default async function PortalBoardPage({
           tenant={decoded}
           brand={brand}
           attachmentsEnabled={Boolean(info?.attachments_enabled)}
-          boardTenantId={info?.id}
-          boardOwnerBadge={info?.owner_badge_enabled}
         />
       </div>
 

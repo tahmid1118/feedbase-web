@@ -168,8 +168,11 @@ Version 1.2
                           email required; details, type and name optional). The
                           email is mandatory so the team can reach the submitter
                           with updates on their post; it is never shown publicly.
-                          A logged-in submitter is identified by their account
-                          instead. On workspaces whose plan includes attachments
+                          This applies to every submitter, signed in or not: a
+                          post records the contact details given on the form and
+                          is not attributed to an account. Posting is available
+                          on every plan, including to the board's own owner.
+                          On workspaces whose plan includes attachments
                           (see FR-A1), the submit form also lets the visitor
                           attach photos or a short video.
     FR-P3  Vote ......... Any visitor may upvote/remove an upvote. Voting is
@@ -214,25 +217,30 @@ Version 1.2
                           picture and the official feedback board's logo), so an
                           official reply is visually branded as coming from the
                           platform.
-    FR-P10 Identity ..... When commenting on a public board, a logged-in author
-                          may choose the identity the comment is shown under. Any
-                          logged-in user may post as THEMSELVES or ANONYMOUSLY (as
-                          a guest, with no name or tick), so they can comment
-                          without revealing their identity. For a board OWNER the
-                          owner identity is PLAN-GATED: replying to feedback as the
-                          workspace owner is a paid capability, so on the FREE plan
-                          the owner CANNOT comment on their own board at all (the
-                          composer is replaced with an upgrade prompt and the reply
-                          action is hidden — they get no anonymous option either).
-                          On Pro and above they comment as "Name (Owner)" with a
-                          verified tick, shown with their profile picture as the
-                          avatar; on Business they may instead choose a generic
+    FR-P10 Identity ..... POSTING AND COMMENTING ARE AVAILABLE ON EVERY PLAN,
+                          including to the board's own owner. What a paid plan
+                          buys is the IDENTITY a contribution is shown under,
+                          never the right to take part.
+                          When commenting on a public board, a logged-in author
+                          may choose that identity. Any logged-in user may post as
+                          THEMSELVES or ANONYMOUSLY (as a guest, with no name or
+                          tick), so they can comment without revealing who they
+                          are. For a board OWNER the additional owner identities
+                          are PLAN-GATED: on FREE the owner comments under their
+                          own name; on Pro and above they may appear as
+                          "Name (Owner)" with a verified tick and their profile
+                          picture; on Business they may instead choose a generic
                           "Owner" with a tick (real name withheld, shown with the
-                          workspace's own logo as the avatar). Platform admins may
-                          always post anonymously. The plan gate is enforced
-                          server-side, not just in the UI. The choice applies to the
-                          comment and its replies, on both the public portal and
-                          (except anonymous) the dashboard.
+                          workspace's own logo as the avatar). The anonymous
+                          option is not offered to a FREE board owner, because for
+                          the owner it is another way of changing the name shown —
+                          the very thing a paid plan provides. Platform admins may
+                          always post anonymously. Gating is enforced server-side,
+                          not just in the UI, and requesting an identity the plan
+                          does not include falls back to the author's plain name
+                          rather than rejecting the comment. The choice applies to
+                          the comment and its replies, on both the public portal
+                          and (except anonymous) the dashboard.
     FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
                           FR-B5), a feedback post may carry up to three photo or
                           short-video attachments. Attaching is offered on both

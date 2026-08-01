@@ -9,7 +9,6 @@ import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LocalTime } from "@/components/local-time";
-import { appUrl } from "@/lib/app-url";
 import { portalActions } from "@/lib/portal/actions";
 import { getGuestId } from "@/lib/portal/guest";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
@@ -697,24 +696,28 @@ export function PortalComments({
       isLoggedIn,
       ownsBoard: Boolean(ownsBoard),
       // Anonymous = post as a guest (no name/tick). Any logged-in user may choose
-      // it, so they can comment without their identity. The only exception is a
-      // FREE board owner, who is blocked from commenting on their own board (a Pro
-      // feature); a platform admin always keeps it.
+      // it, so they can comment without their identity. The exception is a FREE
+      // board owner: for them it is a way to change the name their comment shows
+      // under, which is the thing a paid plan buys. They comment under their own
+      // name instead. A platform admin always keeps it.
       canAnonymize: isLoggedIn && (isPlatformAdmin || !ownsBoard || ownerBadge),
       ownerBadge,
       ownerPrivacy,
     };
   }, [session, boardTenantId, boardOwnerBadge, boardOwnerPrivacy]);
 
-  // The identities this commenter may post under.
-  //  - The board OWNER may comment only on Pro+ (ownerBadge). On Free they get
-  //    NO options → commenting is blocked (a Pro feature). An owner never gets a
-  //    plain-name option — "Name (Owner)" replaces it.
+  // The identities this commenter may post under. Everyone logged in can
+  // comment; the plan decides only which identities are on offer.
+  //  - The board OWNER on Pro+ gets "Name (Owner)" INSTEAD of a plain-name
+  //    option (the badge replaces it), plus "Owner" (hidden) on Business.
+  //  - On Free the owner comments as themselves — the one identity that is
+  //    always available, and the reason commenting is never blocked.
   //  - A non-owner logged-in user comments as "self" or "anonymous".
   const identityOptions = useMemo<CommentAs[]>(() => {
     const opts: CommentAs[] = [];
     if (viewer.ownsBoard) {
       if (viewer.ownerBadge) opts.push("owner_named");
+      else opts.push("self");
       if (viewer.ownerPrivacy) opts.push("owner_hidden");
       if (viewer.canAnonymize) opts.push("anonymous");
     } else if (viewer.isLoggedIn) {
@@ -723,8 +726,6 @@ export function PortalComments({
     }
     return opts;
   }, [viewer]);
-  // A logged-in board owner with no options is a Free owner → commenting blocked.
-  const ownerBlocked = viewer.isLoggedIn && viewer.ownsBoard && identityOptions.length === 0;
   // Effective choice — coerce into the available options (so a stale "self"
   // default lands on the first real option, e.g. "owner_named" for an owner).
   const commentAsEff: CommentAs = identityOptions.includes(commentAs)
@@ -772,40 +773,15 @@ export function PortalComments({
 
   return (
     <div className="space-y-5">
-      {ownerBlocked ? (
-        <div className="rounded-lg border border-[#c74959]/25 bg-[#c74959]/5 p-4 text-sm text-[#1c0a0c]/70">
-          <p className="flex flex-wrap items-center gap-2">
-            <span className="rounded bg-[#c74959] px-1.5 py-0.5 text-xs font-semibold text-white">
-              {t("comments.proBadge")}
-            </span>
-            {t("comments.ownerReplyPro")}
-          </p>
-          {/*
-            MUST be absolute. This component renders on a tenant subdomain, where
-            proxy.ts rewrites every path to `/portal/<tenant>/…` — a relative
-            `/dashboard/settings` became
-            `uchihaz.feedboardapp.com/portal/uchihaz/dashboard/settings` and 404'd.
-            `appUrl` targets the bare root domain, which is where the dashboard
-            lives. Same reason the portal layout uses it for the signup link.
-          */}
-          <a
-            href={appUrl("/dashboard/settings?tab=billing")}
-            className="mt-2 inline-block text-xs font-medium text-[#c74959] underline"
-          >
-            {t("comments.goToBilling")}
-          </a>
-        </div>
-      ) : (
-        <CommentForm
-          brand={brand}
-          viewer={viewer}
-          submitting={submitting}
-          onSubmit={(body) => submit(body, null)}
-          commentAs={commentAsEff}
-          onChangeCommentAs={setCommentAs}
-          identityOptions={identityOptions}
-        />
-      )}
+      <CommentForm
+        brand={brand}
+        viewer={viewer}
+        submitting={submitting}
+        onSubmit={(body) => submit(body, null)}
+        commentAs={commentAsEff}
+        onChangeCommentAs={setCommentAs}
+        identityOptions={identityOptions}
+      />
 
       {error && (
         <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">
@@ -831,7 +807,6 @@ export function PortalComments({
               setReplyTo={setReplyTo}
               submit={submit}
               onChanged={onChanged}
-              canReply={!ownerBlocked}
             />
           ))}
         </div>

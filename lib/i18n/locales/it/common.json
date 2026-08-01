@@ -448,8 +448,7 @@
     "ownBoardTitle": "Vuoi la tua bacheca dei feedback?",
     "ownBoardSubtitle": "Raccogli feedback, dai priorità con i voti e condividi una roadmap pubblica — inizi gratis.",
     "ownBoardCta": "Unisciti alla community",
-    "noMatchingPosts": "Nessun post in questa vista.",
-    "ownerPostPro": "Pubblicare sulla propria bacheca è una funzione Pro."
+    "noMatchingPosts": "Nessun post in questa vista."
   },
   "type": {
     "feedback": "Feedback",
@@ -477,7 +476,6 @@
     "verifiedOwner": "Proprietario verificato",
     "asYourName": "Il tuo nome",
     "proBadge": "PRO",
-    "ownerReplyPro": "Rispondere ai feedback come proprietario dello spazio è una funzione Pro. Esegui l’upgrade per rispondere ai tuoi utenti.",
     "goToBilling": "Vai alla fatturazione"
   },
   "share": {
@@ -798,7 +796,7 @@
       "unlimitedMembers": "Membri del team illimitati",
       "multiDevice": "Accedi su più dispositivi",
       "prioritySupport": "Assistenza prioritaria",
-      "commentAsOwner": "Rispondi come proprietario verificato",
+      "commentAsOwner": "Rispondi con un badge Proprietario verificato",
       "ownerPrivacy": "Rispondi come \"Owner\" verificato con il tuo vero nome nascosto"
     },
     "badge": {
