@@ -2,8 +2,12 @@
 
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
-import { KeyRound, Search, Trash2 } from "lucide-react";
-import { adminApi, type AdminUserRow } from "@/lib/api";
+import { KeyRound, Loader2, Search, ShieldCheck, Trash2 } from "lucide-react";
+import {
+  adminApi,
+  type AdminUserRow,
+  type AdminUserDeletionSummary,
+} from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
@@ -24,7 +28,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 
@@ -39,6 +42,12 @@ export default function AdminUsersPage() {
   const [loading, setLoading] = useState(true);
   const [pwUser, setPwUser] = useState<AdminUserRow | null>(null);
   const [pw, setPw] = useState("");
+  // Deletion is account-scoped and irreversible, so the dialog loads a summary
+  // from the server first and the admin confirms against the real consequences.
+  const [delUser, setDelUser] = useState<AdminUserRow | null>(null);
+  const [delSummary, setDelSummary] = useState<AdminUserDeletionSummary | null>(null);
+  const [delLoading, setDelLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const load = useCallback(
     async (q?: string) => {
@@ -77,13 +86,35 @@ export default function AdminUsersPage() {
     } else toast.error(res.message || "Failed");
   };
 
-  const remove = async (u: AdminUserRow) => {
+  const openDelete = async (u: AdminUserRow) => {
     if (!token) return;
-    const res = await adminApi.deleteUser(token, u.id);
-    if (res.ok) {
-      setRows((prev) => prev.filter((r) => r.id !== u.id));
-      toast.success(t("toast.userDeleted"));
-    } else toast.error(res.message || "Failed");
+    setDelUser(u);
+    setDelSummary(null);
+    setDelLoading(true);
+    try {
+      const res = await adminApi.getUserDeletionSummary(token, u.id);
+      if (res.ok && res.data) setDelSummary(res.data);
+      else toast.error(res.message || "Could not load what would be deleted");
+    } finally {
+      setDelLoading(false);
+    }
+  };
+
+  const remove = async () => {
+    if (!token || !delUser) return;
+    setDeleting(true);
+    try {
+      const res = await adminApi.deleteUser(token, delUser.id);
+      if (res.ok) {
+        // The whole account went, so drop every row sharing its email.
+        const email = delUser.email;
+        setRows((prev) => prev.filter((r) => r.email !== email));
+        toast.success(res.message || t("toast.userDeleted"));
+        setDelUser(null);
+      } else toast.error(res.message || "Failed");
+    } finally {
+      setDeleting(false);
+    }
   };
 
   const resetPw = async () => {
@@ -154,6 +185,7 @@ export default function AdminUsersPage() {
             <tbody>
               {groups.map((group) => {
                 const person = group[0];
+                const isAdmin = group.some((u) => u.is_platform_admin === 1);
                 return (
                   <Fragment key={person.email}>
                     {group.map((u, i) => (
@@ -169,6 +201,12 @@ export default function AdminUsersPage() {
                             <div className="text-xs text-[#1c0a0c]/50">
                               {person.email}
                             </div>
+                            {isAdmin && (
+                              <div className="mt-1 inline-flex items-center gap-1 rounded-full bg-[#c74959]/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-[#c74959]">
+                                <ShieldCheck className="h-3 w-3" />
+                                Platform admin
+                              </div>
+                            )}
                             {group.length > 1 && (
                               <div className="mt-1 text-[10px] font-semibold uppercase tracking-wide text-[#c74959]">
                                 {group.length} workspaces
@@ -177,7 +215,14 @@ export default function AdminUsersPage() {
                           </td>
                         )}
                         <td className="px-4 py-3 text-[#1c0a0c]/70">
-                          {u.workspace_name || "—"}
+                          {u.workspace_name || (
+                            // Not a broken row: an account exists before it
+                            // onboards a workspace, and the platform-admin
+                            // identity lives on exactly such a row.
+                            <span className="text-xs italic text-[#1c0a0c]/40">
+                              No workspace
+                            </span>
+                          )}
                         </td>
                         <td className="px-4 py-3">
                           <Select
@@ -209,45 +254,39 @@ export default function AdminUsersPage() {
                             {u.is_active ? "Active" : "Inactive"}
                           </button>
                         </td>
-                        <td className="px-4 py-3">
-                          <div className="flex items-center justify-end gap-1">
-                            <Button
-                              variant="ghost"
-                              size="icon"
-                              title="Reset password"
-                              onClick={() => {
-                                setPwUser(u);
-                                setPw("");
-                              }}
-                            >
-                              <KeyRound className="h-4 w-4" />
-                            </Button>
-                            <AlertDialog>
-                              <AlertDialogTrigger asChild>
-                                <Button variant="ghost" size="icon" className="text-red-600 hover:text-red-700">
-                                  <Trash2 className="h-4 w-4" />
-                                </Button>
-                              </AlertDialogTrigger>
-                              <AlertDialogContent>
-                                <AlertDialogHeader>
-                                  <AlertDialogTitle>
-                                    Delete {person.full_name} from {u.workspace_name || "this workspace"}?
-                                  </AlertDialogTitle>
-                                  <AlertDialogDescription>
-                                    This removes this workspace membership. This cannot
-                                    be undone.
-                                  </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                  <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
-                                  <AlertDialogAction variant="destructive" onClick={() => remove(u)}>
-                                    Delete
-                                  </AlertDialogAction>
-                                </AlertDialogFooter>
-                              </AlertDialogContent>
-                            </AlertDialog>
-                          </div>
-                        </td>
+                        {/* Password and deletion are ACCOUNT-scoped, not
+                            per-membership, so they render once per person. */}
+                        {i === 0 && (
+                          <td className="px-4 py-3 align-top" rowSpan={group.length}>
+                            <div className="flex items-center justify-end gap-1">
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                title="Reset password"
+                                onClick={() => {
+                                  setPwUser(person);
+                                  setPw("");
+                                }}
+                              >
+                                <KeyRound className="h-4 w-4" />
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="text-red-600 hover:text-red-700 disabled:opacity-40"
+                                disabled={isAdmin}
+                                title={
+                                  isAdmin
+                                    ? "Platform admins can't be deleted here — remove the admin role under Admins first"
+                                    : "Delete account"
+                                }
+                                onClick={() => openDelete(person)}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </td>
+                        )}
                       </tr>
                     ))}
                   </Fragment>
@@ -276,6 +315,90 @@ export default function AdminUsersPage() {
             <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
             <AlertDialogAction disabled={pw.length < 8} onClick={resetPw}>
               Reset
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Account deletion. Irreversible and wider than the row that triggered
+          it, so it never fires until the server has said exactly what dies. */}
+      <AlertDialog open={!!delUser} onOpenChange={(o) => !o && !deleting && setDelUser(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete {delUser?.full_name}&apos;s account?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This deletes the entire account for{" "}
+              <span className="font-medium text-[#1c0a0c]">{delUser?.email}</span>, not
+              just one workspace membership. It cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+
+          {delLoading ? (
+            <div className="flex items-center gap-2 py-4 text-sm text-[#1c0a0c]/60">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Checking what would be deleted…
+            </div>
+          ) : delSummary ? (
+            <div className="space-y-3 text-sm">
+              {delSummary.ownedWorkspaces.length > 0 && (
+                <div className="rounded-xl border border-[#c74959]/30 bg-[#c74959]/5 p-3">
+                  <div className="font-medium text-[#8f2f3b]">
+                    {delSummary.ownedWorkspaces.length} workspace
+                    {delSummary.ownedWorkspaces.length === 1 ? "" : "s"} will be destroyed
+                  </div>
+                  <ul className="mt-1 space-y-0.5 text-xs text-[#1c0a0c]/70">
+                    {delSummary.ownedWorkspaces.map((w) => (
+                      <li key={w.id}>
+                        <span className="font-medium">{w.name}</span> — {w.postCount} post
+                        {w.postCount === 1 ? "" : "s"}, {w.memberCount} member
+                        {w.memberCount === 1 ? "" : "s"} lose access
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {delSummary.memberWorkspaces.length > 0 && (
+                <div className="rounded-xl border border-[#e399a3]/40 bg-[#fdf8f9] p-3">
+                  <div className="font-medium text-[#1c0a0c]">
+                    Shared workspaces survive
+                  </div>
+                  <div className="mt-0.5 text-xs text-[#1c0a0c]/70">
+                    Leaves {delSummary.memberWorkspaces.map((w) => w.name).join(", ")}.
+                    Their posts and comments stay, but become anonymous.
+                  </div>
+                </div>
+              )}
+
+              <div className="rounded-xl border border-[#e399a3]/40 bg-[#fdf8f9] p-3">
+                <div className="font-medium text-[#1c0a0c]">Billing</div>
+                <div className="mt-0.5 text-xs text-[#1c0a0c]/70">
+                  {delSummary.billing?.hasLiveSubscription
+                    ? `Live ${delSummary.billing.plan ?? ""} subscription is cancelled immediately, then the billing record is removed.`
+                    : "No live subscription. Any billing record, device sessions, password resets and pending invitations are removed."}
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={deleting}>{t("common.cancel")}</AlertDialogCancel>
+            <AlertDialogAction
+              variant="destructive"
+              disabled={delLoading || deleting || !delSummary || delSummary.isPlatformAdmin}
+              onClick={(e) => {
+                e.preventDefault();
+                remove();
+              }}
+            >
+              {deleting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Deleting…
+                </>
+              ) : (
+                "Delete account"
+              )}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -84,9 +84,24 @@ export interface AdminUserRow {
   role: string | null;
   is_active: number;
   tenant_id: number | null;
+  is_platform_admin?: number;
   created_at: string;
   last_login_at: string | null;
   workspace_name: string | null;
+}
+
+/**
+ * What deleting a user would destroy. Deletion is ACCOUNT-scoped (a `users` row
+ * is one workspace membership), so the dialog has to spell out every workspace
+ * that dies and whether a live subscription gets cancelled.
+ */
+export interface AdminUserDeletionSummary {
+  email: string;
+  isPlatformAdmin: boolean;
+  ownedWorkspaces: { id: number; name: string; memberCount: number; postCount: number }[];
+  memberWorkspaces: { id: number; name: string }[];
+  workspacelessRows: number;
+  billing: { plan: string | null; status: string | null; hasLiveSubscription: boolean } | null;
 }
 
 export interface AdminRow {
@@ -300,6 +315,10 @@ export const adminApi = {
   ) => request(`/users/${id}`, "PUT", token, data),
   resetUserPassword: (token: string | undefined, id: number, password: string) =>
     request(`/users/${id}/password`, "PUT", token, { password }),
+  getUserDeletionSummary: (token: string | undefined, id: number) =>
+    request<AdminUserDeletionSummary>(`/users/${id}/deletion-summary`, "GET", token),
+  // Deletes the whole ACCOUNT behind this row: owned workspaces, billing
+  // record, sessions and the provider subscription — not just the membership.
   deleteUser: (token: string | undefined, id: number) =>
     request(`/users/${id}`, "DELETE", token),
 

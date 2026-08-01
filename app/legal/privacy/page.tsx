@@ -147,17 +147,21 @@ export default function PrivacyPage() {
             "Device sessions: revoked when you sign out or when another device takes over; abandoned sessions become eligible for takeover after 15 minutes of inactivity.",
             "Password-reset tokens: one hour, single use.",
             "Support conversations: retained after a chat is closed so we have a record of what was asked and advised. You lose access to a closed chat but we keep the transcript.",
+            "Promotional code redemptions: a record that a code was redeemed by your email address is kept even after account deletion, so that single-use offers cannot be claimed repeatedly.",
             "Server access and audit logs: kept for a limited period for security and debugging, then discarded.",
           ]}
         />
         <p>
           <strong>When you delete your account:</strong> the workspaces you own are
           deleted along with their posts, comments, roadmap and changelog, your
-          device sessions are revoked, and any live subscription is cancelled.
-          Workspaces you only joined are not deleted — content you posted there
-          remains but is no longer attributed to you. Deletion requires your
+          device sessions are revoked, any live subscription is cancelled, and
+          your billing record, password-reset tokens and pending invitations are
+          erased. Workspaces you only joined are not deleted — content you posted
+          there remains but is no longer attributed to you. Deletion requires your
           password and is irreversible. Backups may retain copies for a short
-          period before being overwritten.
+          period before being overwritten. We may also delete an account on your
+          request through support, or where our Terms allow; the effect is the
+          same as deleting it yourself.
         </p>
       </Clause>
 

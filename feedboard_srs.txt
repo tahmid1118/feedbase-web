@@ -512,8 +512,22 @@ Version 1.2
                           also cancels any live paid subscription so the account is
                           no longer charged for its previous plan.
     FR-AD3 Users ....... View and search all users across workspaces; change role
-                          (owner/user), reset password, activate/deactivate, or
-                          delete.
+                          (owner/user), activate/deactivate, reset the password,
+                          or delete. A listing entry is one workspace membership,
+                          so role and active state apply to that membership,
+                          while the password and deletion apply to the whole
+                          ACCOUNT. Resetting the password sets it for every
+                          workspace the account belongs to and signs it out of
+                          all devices. Deleting removes the account exactly as
+                          the account holder's own deletion would (FR-D1): any
+                          paid subscription is cancelled, owned workspaces and
+                          their content are deleted, joined workspaces are
+                          retained with the person's content anonymised, and the
+                          billing record, sessions and pending invitations are
+                          erased. Before deleting, the admin is shown precisely
+                          what will be destroyed. An account holding the
+                          platform-admin role cannot be deleted here; the role
+                          must be revoked first (FR-AD4).
     FR-AD4 Admins ...... List admins and grant or revoke the platform-admin role
                           on accounts (revoking never deletes the underlying user
                           account; an admin cannot revoke their own role).

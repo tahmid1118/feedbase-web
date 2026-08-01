@@ -1202,11 +1202,12 @@ Accounts (subscriptions are per **account** — the plan covers every workspace 
 - `GET  /admin/accounts` — list billing accounts (`?search=`): `{ rows: [{ email, name, owned_count, workspaces, plan_name, subscription_status, billing_interval, current_period_end, is_platform_admin }] }`.
 - `PUT  /admin/accounts/:email/plan` — grant / comp / revoke a plan for the whole account. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live account Stripe subscription first, then mirrors the plan onto every workspace the account owns.
 
-Users (across tenants):
-- `GET  /admin/users` — list/search.
-- `PUT  /admin/users/:id` — update (name/role/active).
-- `PUT  /admin/users/:id/password` — reset password.
-- `DELETE /admin/users/:id` — delete.
+Users (across tenants). A `users` row is one **workspace membership**; password reset and deletion are **account-scoped** (keyed by the row's email), not row-scoped:
+- `GET  /admin/users` — list/search. Rows include `is_platform_admin`.
+- `PUT  /admin/users/:id` — update (name/role/active). Row-scoped (a role only means something within one workspace).
+- `PUT  /admin/users/:id/password` — reset password on **every row for that email**, and revoke the account's device sessions.
+- `GET  /admin/users/:id/deletion-summary` — what a delete would destroy: `{ email, isPlatformAdmin, ownedWorkspaces: [{ id, name, memberCount, postCount }], memberWorkspaces: [{ id, name }], workspacelessRows, billing: { plan, status, hasLiveSubscription } | null }`.
+- `DELETE /admin/users/:id` — **purge the whole account**: cancels the subscription on the active provider, deletes owned workspaces (FK cascade), anonymises/reassigns content in joined ones, then clears `users`, `billing_accounts`, `user_sessions`, `password_resets` and `invitations` for the email. `400 platform_admin_undeletable` if the account holds the platform-admin role — removing it would lock everyone out of `/admin-login` (revoke the role under **Admins** first).
 
 Admins (grant/revoke the `users.is_platform_admin` role — the user account is never deleted):
 - `GET  /admin/admins` — list admin accounts (one row per email).
