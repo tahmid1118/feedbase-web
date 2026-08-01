@@ -43,11 +43,11 @@ interface Viewer {
   isLoggedIn: boolean;
   /** Owner of THIS board (any plan). */
   ownsBoard: boolean;
-  /** May post anonymously — a platform admin, or a Business board owner. */
+  /** May post anonymously — any logged-in commenter, on any plan. */
   canAnonymize: boolean;
-  /** Owner of this board on a Pro+ plan → may comment as "Name (Owner)". */
+  /** Owner of this board on a Pro+ plan → may comment as "Name (Owner)" + tick. */
   ownerBadge: boolean;
-  /** Owner of this board on Business → "Owner" (hidden) + anonymous. */
+  /** Owner of this board on Business → "Owner" + tick, real name withheld. */
   ownerPrivacy: boolean;
 }
 
@@ -680,7 +680,6 @@ export function PortalComments({
     const token = session?.user?.accessToken || undefined;
     const userId = session?.user?.id ? Number(session.user.id) : null;
     const isLoggedIn = Boolean(token && userId);
-    const isPlatformAdmin = Boolean(session?.user?.isPlatformAdmin);
     const ownsBoard =
       isLoggedIn &&
       session?.user?.role === "owner" &&
@@ -695,24 +694,24 @@ export function PortalComments({
       image: session?.user?.image ?? null,
       isLoggedIn,
       ownsBoard: Boolean(ownsBoard),
-      // Anonymous = post as a guest (no name/tick). Any logged-in user may choose
-      // it, so they can comment without their identity. The exception is a FREE
-      // board owner: for them it is a way to change the name their comment shows
-      // under, which is the thing a paid plan buys. They comment under their own
-      // name instead. A platform admin always keeps it.
-      canAnonymize: isLoggedIn && (isPlatformAdmin || !ownsBoard || ownerBadge),
+      // Anonymous = post as a guest (no name, no tick). Free for EVERY logged-in
+      // commenter, the board's own owner included — it withholds an identity
+      // rather than granting one, which is the opposite of what a plan sells.
+      // What stays paid is the owner BADGE: "Name (Owner)" and the name-withheld
+      // "Owner", both carrying the verified tick.
+      canAnonymize: isLoggedIn,
       ownerBadge,
       ownerPrivacy,
     };
   }, [session, boardTenantId, boardOwnerBadge, boardOwnerPrivacy]);
 
   // The identities this commenter may post under. Everyone logged in can
-  // comment; the plan decides only which identities are on offer.
-  //  - The board OWNER on Pro+ gets "Name (Owner)" INSTEAD of a plain-name
-  //    option (the badge replaces it), plus "Owner" (hidden) on Business.
-  //  - On Free the owner comments as themselves — the one identity that is
-  //    always available, and the reason commenting is never blocked.
-  //  - A non-owner logged-in user comments as "self" or "anonymous".
+  // comment, as themselves or anonymously, on any plan. A plan only adds the
+  // BADGED identities on top:
+  //  - Free owner        → self, anonymous
+  //  - Pro owner         → "Name (Owner)" + tick (replaces self), anonymous
+  //  - Business owner    → …plus "Owner" + tick, real name withheld
+  //  - Any other user    → self, anonymous
   const identityOptions = useMemo<CommentAs[]>(() => {
     const opts: CommentAs[] = [];
     if (viewer.ownsBoard) {

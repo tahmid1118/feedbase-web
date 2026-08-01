@@ -219,23 +219,24 @@ Version 1.2
                           platform.
     FR-P10 Identity ..... POSTING AND COMMENTING ARE AVAILABLE ON EVERY PLAN,
                           including to the board's own owner. What a paid plan
-                          buys is the IDENTITY a contribution is shown under,
+                          buys is the VERIFIED OWNER BADGE a comment may carry,
                           never the right to take part.
                           When commenting on a public board, a logged-in author
-                          may choose that identity. Any logged-in user may post as
-                          THEMSELVES or ANONYMOUSLY (as a guest, with no name or
-                          tick), so they can comment without revealing who they
-                          are. For a board OWNER the additional owner identities
-                          are PLAN-GATED: on FREE the owner comments under their
-                          own name; on Pro and above they may appear as
+                          may choose the identity shown. EVERY logged-in user —
+                          the board's own owner included, on any plan — may post
+                          as THEMSELVES or ANONYMOUSLY (as a guest, with no name
+                          and no tick), so anyone may always comment without
+                          revealing who they are. Posting anonymously is never
+                          charged for: it withholds an identity rather than
+                          granting one.
+                          The BADGED identities are what require a paid plan. On
+                          Pro and above the board owner may appear as
                           "Name (Owner)" with a verified tick and their profile
                           picture; on Business they may instead choose a generic
                           "Owner" with a tick (real name withheld, shown with the
-                          workspace's own logo as the avatar). The anonymous
-                          option is not offered to a FREE board owner, because for
-                          the owner it is another way of changing the name shown —
-                          the very thing a paid plan provides. Platform admins may
-                          always post anonymously. Gating is enforced server-side,
+                          workspace's own logo as the avatar). On the free plan
+                          the owner comments under their own plain name, with no
+                          tick. Gating is enforced server-side,
                           not just in the UI, and requesting an identity the plan
                           does not include falls back to the author's plain name
                           rather than rejecting the comment. The choice applies to
