@@ -11,7 +11,7 @@ import {
   type PlanChangePreview,
   type PlanKey,
 } from "@/lib/api";
-import { PLANS, PLAN_ORDER, planPricing, formatPrice } from "@/lib/plans";
+import { PLANS, PLAN_ORDER, planPricing, formatPrice, offerDisplay } from "@/lib/plans";
 import { isPaddleProvider, openPaddleCheckout, setPaddleOnComplete } from "@/lib/paddle";
 import { useTranslation } from "@/lib/i18n/client";
 import { useLanguage } from "@/components/providers/i18n-provider";
@@ -69,7 +69,11 @@ export function BillingSettings() {
 
   const [status, setStatus] = useState<BillingStatus | null>(null);
   const [loading, setLoading] = useState(true);
-  const [interval, setInterval] = useState<BillingInterval>("month");
+  // Yearly first for a prospect, but a SUBSCRIBER always opens on their own
+  // interval (set once status loads). A flat "year" would show a monthly
+  // subscriber yearly prices and "switch" CTAs against their own plan, which
+  // reads as though we had changed their billing.
+  const [interval, setInterval] = useState<BillingInterval>("year");
   const [busy, setBusy] = useState<string | null>(null); // plan key or "portal"
   const [promoInput, setPromoInput] = useState("");
   const [redeeming, setRedeeming] = useState(false);
@@ -95,7 +99,11 @@ export function BillingSettings() {
     if (!token) return;
     billingApi
       .getStatus(token)
-      .then((res) => setStatus(res.data ?? null))
+      .then((res) => {
+        const data = res.data ?? null;
+        setStatus(data);
+        if (data?.billingInterval) setInterval(data.billingInterval);
+      })
       .catch(() => toast.error(t("billing.loadFailed")))
       .finally(() => setLoading(false));
   }, [token, t]);
@@ -641,26 +649,11 @@ export function BillingSettings() {
           const offer = offers?.[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
-          // On the yearly interval an offer is quoted PER MONTH, exactly like a
-          // non-offer card. The struck price is the plain monthly list price: an
-          // offer REPLACES the built-in 20% yearly discount rather than stacking
-          // on top of it.
-          const offerStrike = offer
-            ? interval === "year"
-              ? plan.monthlyPrice
-              : offer.originalPrice
-            : 0;
-          const offerPerMonth = offer
-            ? interval === "year"
-              ? offer.offerPrice / 12
-              : offer.offerPrice
-            : 0;
-          // Derive the badge from the two figures actually on the card; the
-          // backend percentOff is measured against the discounted yearly list.
-          const offerPercent =
-            offer && offerStrike > 0
-              ? Math.round(((offerStrike - offerPerMonth) / offerStrike) * 100)
-              : (offer?.percentOff ?? 0);
+          const {
+            strike: offerStrike,
+            perMonth: offerPerMonth,
+            percent: offerPercent,
+          } = offerDisplay(plan, interval, offer);
           return (
           <Card
             key={plan.key}

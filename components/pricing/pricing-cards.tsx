@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { Check } from "lucide-react";
-import { PLANS, planPricing, formatPrice } from "@/lib/plans";
+import { PLANS, planPricing, formatPrice, offerDisplay } from "@/lib/plans";
 import type { OfferMap, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
@@ -28,7 +29,28 @@ export function PricingCards({
 }) {
   const { t } = useTranslation();
   const lng = useLanguage();
-  const [interval, setInterval] = useState<BillingInterval>("month");
+  const { data: session } = useSession();
+  // Yearly first: it's the better-value option and carries the larger discount.
+  const [interval, setInterval] = useState<BillingInterval>("year");
+
+  /**
+   * Where a paid plan's CTA goes, carrying the purchase intent as URL params.
+   *
+   * Checkout requires `role === "owner"` server-side, and a fresh signup has no
+   * workspace and therefore no role — so a paid plan can never go straight to
+   * payment. Onboarding has to run first, because creating a workspace is what
+   * makes the account an owner. Each hop revalidates the params rather than
+   * trusting them.
+   */
+  const ctaFor = (planKey: string) => {
+    if (planKey === "free") return ctaHref;
+    const q = `plan=${planKey}&interval=${interval}`;
+    if (!session?.user?.id) return `/signup?${q}`;
+    if (!session.user.tenantId) return `/onboarding?${q}`;
+    // A member of someone else's workspace can't buy — they need their own.
+    if (session.user.role !== "owner") return `/onboarding?${q}`;
+    return `/checkout?${q}`;
+  };
 
   // A yearly offer replaces the flat 20% yearly saving for that plan, so hide
   // the toggle's generic "Save 20%" badge when any yearly offer is active.
@@ -45,28 +67,11 @@ export function PricingCards({
           const offer = offers[plan.key]?.[interval];
           const pricing = planPricing(plan, interval);
           const showYearly = interval === "year" && plan.monthlyPrice > 0;
-          // On the yearly interval an offer is quoted PER MONTH, exactly like a
-          // non-offer card. The struck price is the plain monthly list price:
-          // an offer REPLACES the built-in 20% yearly discount rather than
-          // stacking on top of it, so the comparison is against the standard
-          // monthly rate, not the already-discounted yearly one.
-          const offerStrike = offer
-            ? interval === "year"
-              ? plan.monthlyPrice
-              : offer.originalPrice
-            : 0;
-          const offerPerMonth = offer
-            ? interval === "year"
-              ? offer.offerPrice / 12
-              : offer.offerPrice
-            : 0;
-          // Derive the badge from the two figures actually on the card. The
-          // backend's percentOff is measured against the discounted yearly
-          // list, so on a yearly offer it would contradict what's shown.
-          const offerPercent =
-            offer && offerStrike > 0
-              ? Math.round(((offerStrike - offerPerMonth) / offerStrike) * 100)
-              : (offer?.percentOff ?? 0);
+          const {
+            strike: offerStrike,
+            perMonth: offerPerMonth,
+            percent: offerPercent,
+          } = offerDisplay(plan, interval, offer);
           return (
             <div
               key={plan.key}
@@ -157,7 +162,7 @@ export function PricingCards({
                 ))}
               </ul>
 
-              <Link href={ctaHref} className="mt-6 block">
+              <Link href={ctaFor(plan.key)} className="mt-6 block">
                 <Button
                   className={cn(
                     "w-full",

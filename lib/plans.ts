@@ -133,3 +133,36 @@ export function planPricing(plan: PlanDisplay, interval: BillingInterval) {
     savingsPercent: Math.round(YEARLY_DISCOUNT * 100),
   };
 }
+
+/**
+ * The three figures an offer is rendered with, in ONE place.
+ *
+ * This math was duplicated verbatim in the pricing cards and the Billing tab,
+ * and a checkout page would have made it a third copy. Pricing arithmetic that
+ * lives in several files is how "advertised $5.60, charged $10" happens: one
+ * copy gets fixed and the others quietly disagree.
+ *
+ *  - `strike`   the crossed-out reference price, ALWAYS per month. On a yearly
+ *               offer that's the plain monthly list price, because an offer
+ *               REPLACES the built-in 20% yearly discount rather than stacking
+ *               on it — so the comparison is against the standard monthly rate.
+ *  - `perMonth` the offer price, also per month (a yearly offer is /12).
+ *  - `percent`  derived from the two figures ACTUALLY shown. The backend's
+ *               `percentOff` is measured against the already-discounted yearly
+ *               list, so on a yearly offer it would contradict the prices beside
+ *               it.
+ */
+export function offerDisplay(
+  plan: PlanDisplay,
+  interval: BillingInterval,
+  offer: { originalPrice: number; offerPrice: number; percentOff?: number } | undefined
+): { strike: number; perMonth: number; percent: number } {
+  if (!offer) return { strike: 0, perMonth: 0, percent: 0 };
+  const strike = interval === "year" ? plan.monthlyPrice : offer.originalPrice;
+  const perMonth = interval === "year" ? offer.offerPrice / 12 : offer.offerPrice;
+  const percent =
+    strike > 0
+      ? Math.round(((strike - perMonth) / strike) * 100)
+      : (offer.percentOff ?? 0);
+  return { strike, perMonth, percent };
+}

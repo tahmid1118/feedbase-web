@@ -963,5 +963,12 @@
     "invalidTitle": "Ce lien est invalide ou a expiré",
     "invalidBody": "Les liens de réinitialisation sont valables 1 heure et ne peuvent être utilisés qu'une fois. Demandez-en un nouveau pour continuer.",
     "requestNew": "Demander un nouveau lien"
+  },
+  "checkout": {
+    "title": "Activer {{plan}}",
+    "subtitle": "Votre espace est prêt — ajoutez un paiement pour le débloquer.",
+    "taxNote": "Taxes calculées au paiement.",
+    "pay": "Payer et activer {{plan}}",
+    "continueFree": "Continuer avec le forfait gratuit"
   }
 }

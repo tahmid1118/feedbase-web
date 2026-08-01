@@ -963,5 +963,12 @@
     "invalidTitle": "Este enlace no es válido o ha caducado",
     "invalidBody": "Los enlaces de restablecimiento son válidos durante 1 hora y solo se pueden usar una vez. Solicita uno nuevo para continuar.",
     "requestNew": "Solicitar un enlace nuevo"
+  },
+  "checkout": {
+    "title": "Activar {{plan}}",
+    "subtitle": "Tu espacio está listo: añade un pago para desbloquearlo.",
+    "taxNote": "Impuestos calculados al pagar.",
+    "pay": "Pagar y activar {{plan}}",
+    "continueFree": "Continuar con el plan gratuito"
   }
 }

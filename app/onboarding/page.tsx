@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { readPlanIntent, planIntentQuery } from "@/lib/plan-intent";
 
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
@@ -35,6 +36,9 @@ export default function OnboardingPage() {
   // already belong to that workspace, still create their OWN one here, and then
   // land in the workspace they were invited to.
   const invitedTenantId = searchParams.get("invited");
+  // A plan chosen on the pricing page. Dropped for an INVITED user: they end up
+  // a member of someone else's workspace, and members cannot buy.
+  const planIntent = invitedTenantId ? null : readPlanIntent(searchParams);
 
   const [name, setName] = useState("");
   const [subdomain, setSubdomain] = useState("");
@@ -66,9 +70,10 @@ export default function OnboardingPage() {
       role: auth.user.role,
       userId: String(auth.user.id),
     });
-    // Hard reload so the dashboard renders with the freshly written session
+    // Hard reload so the next page renders with the freshly written session
     // cookie (a soft router push can race the update and bounce back here).
-    window.location.assign("/dashboard");
+    // With a plan intent the account is now an OWNER, so checkout is reachable.
+    window.location.assign(planIntent ? `/checkout${planIntentQuery(planIntent)}` : "/dashboard");
   };
 
   const handleNameChange = (value: string) => {

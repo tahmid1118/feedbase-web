@@ -963,5 +963,12 @@
     "invalidTitle": "Dieser Link ist ungültig oder abgelaufen",
     "invalidBody": "Links zum Zurücksetzen des Passworts sind 1 Stunde gültig und können nur einmal verwendet werden. Fordern Sie einen neuen an, um fortzufahren.",
     "requestNew": "Neuen Link anfordern"
+  },
+  "checkout": {
+    "title": "{{plan}} aktivieren",
+    "subtitle": "Deine Workspace ist bereit — füge eine Zahlung hinzu, um sie freizuschalten.",
+    "taxNote": "Steuern werden beim Bezahlen berechnet.",
+    "pay": "Bezahlen & {{plan}} aktivieren",
+    "continueFree": "Mit dem Gratis-Tarif fortfahren"
   }
 }

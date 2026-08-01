@@ -963,5 +963,12 @@
     "invalidTitle": "This link is invalid or has expired",
     "invalidBody": "Password reset links are valid for 1 hour and can be used only once. Request a new one to continue.",
     "requestNew": "Request a new link"
+  },
+  "checkout": {
+    "title": "Activate {{plan}}",
+    "subtitle": "Your workspace is ready — add payment to unlock it.",
+    "taxNote": "Taxes calculated at checkout.",
+    "pay": "Pay & activate {{plan}}",
+    "continueFree": "Continue on the Free plan"
   }
 }

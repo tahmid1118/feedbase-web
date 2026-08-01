@@ -398,8 +398,24 @@ Version 1.2
                           Pro and Business carry a small merchandising label
                           ("Popular" / "Best") beside the plan name.
     FR-B2  Subscribe .... From Free, an owner subscribes to a paid plan (monthly
-                          or yearly) via Stripe Checkout; on success the plan and
-                          interval are updated.
+                          or yearly) via the payment processor's checkout; on
+                          success the plan and interval are updated.
+    FR-B2b Buy on signup  Choosing a paid plan on the public pricing page carries
+                          that choice through sign-up and workspace creation to a
+                          payment step, and only then to the dashboard. The choice
+                          is re-checked at each step rather than trusted. Payment
+                          necessarily follows workspace creation, because only a
+                          workspace OWNER may purchase. Someone accepting an
+                          invitation is never taken to payment: they join an
+                          existing workspace as a member and members cannot buy.
+                          Abandoning payment leaves a working free account and
+                          workspace, and that exit is offered plainly. The payment
+                          step states that taxes are calculated at checkout rather
+                          than showing a total, because the processor is the
+                          merchant of record and adds tax the platform does not
+                          calculate. Yearly pricing is shown by default; an
+                          existing subscriber always sees their own billing
+                          interval first.
     FR-B2a Change plan .. An existing subscriber changes plan or interval FROM THE
                           BILLING TAB with correct PRORATION (not via the portal).
                           An UPGRADE first shows the exact prorated amount charged

@@ -963,5 +963,12 @@
     "invalidTitle": "Deze link is ongeldig of verlopen",
     "invalidBody": "Resetlinks zijn 1 uur geldig en kunnen maar één keer worden gebruikt. Vraag een nieuwe aan om door te gaan.",
     "requestNew": "Nieuwe link aanvragen"
+  },
+  "checkout": {
+    "title": "{{plan}} activeren",
+    "subtitle": "Je werkruimte is klaar — voeg een betaling toe om te ontgrendelen.",
+    "taxNote": "Belasting wordt bij het afrekenen berekend.",
+    "pay": "Betalen en {{plan}} activeren",
+    "continueFree": "Doorgaan met het gratis abonnement"
   }
 }

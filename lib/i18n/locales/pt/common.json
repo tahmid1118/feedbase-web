@@ -963,5 +963,12 @@
     "invalidTitle": "Esta ligação é inválida ou expirou",
     "invalidBody": "As ligações de reposição são válidas por 1 hora e só podem ser usadas uma vez. Peça uma nova para continuar.",
     "requestNew": "Pedir uma nova ligação"
+  },
+  "checkout": {
+    "title": "Ativar {{plan}}",
+    "subtitle": "O seu espaço está pronto — adicione um pagamento para o desbloquear.",
+    "taxNote": "Impostos calculados no pagamento.",
+    "pay": "Pagar e ativar {{plan}}",
+    "continueFree": "Continuar no plano gratuito"
   }
 }

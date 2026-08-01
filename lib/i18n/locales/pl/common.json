@@ -989,5 +989,12 @@
     "invalidTitle": "Ten link jest nieprawidłowy lub wygasł",
     "invalidBody": "Linki do resetowania są ważne przez 1 godzinę i można ich użyć tylko raz. Poproś o nowy, aby kontynuować.",
     "requestNew": "Poproś o nowy link"
+  },
+  "checkout": {
+    "title": "Aktywuj {{plan}}",
+    "subtitle": "Twoja przestrzeń jest gotowa — dodaj płatność, aby ją odblokować.",
+    "taxNote": "Podatki naliczane przy płatności.",
+    "pay": "Zapłać i aktywuj {{plan}}",
+    "continueFree": "Kontynuuj w planie darmowym"
   }
 }
