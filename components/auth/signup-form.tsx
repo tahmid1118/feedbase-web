@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, Loader2, UserPlus } from "lucide-react";
@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/lib/i18n/client";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
-import { readPlanIntent, planIntentQuery } from "@/lib/plan-intent";
+import { planIntentQuery } from "@/lib/plan-intent";
 import {
   signupSchema,
   type SignupFormValues,
@@ -34,14 +34,18 @@ import type {
 
 type SignupApiResponse = AuthRouteErrorResponse | AuthRouteSuccessResponse;
 
-export function SignupForm() {
+export function SignupForm({
+  /** Verified, re-signed plan-intent token from the page (null if none). */
+  planToken = null,
+}: {
+  planToken?: string | null;
+}) {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const form = useForm<SignupFormValues>({
     resolver: zodResolver(signupSchema),
@@ -125,7 +129,7 @@ export function SignupForm() {
       // New accounts have no workspace yet — onboard to create their first.
       // A plan chosen on the pricing page rides along: checkout requires an
       // OWNER, and creating a workspace is what makes them one.
-      router.replace(`/onboarding${planIntentQuery(readPlanIntent(searchParams))}`);
+      router.replace(`/onboarding${planIntentQuery(planToken)}`);
       router.refresh();
     } catch {
       setFormError("Unable to create account right now. Please try again.");

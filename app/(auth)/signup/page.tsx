@@ -3,10 +3,23 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { SignupForm } from "@/components/auth/signup-form";
 import { getTranslation } from "@/lib/i18n/server";
+import { PLAN_INTENT_PARAM } from "@/lib/plan-intent";
+import { refreshPlanIntent } from "@/lib/plan-intent-token";
 
-export default async function SignupPage() {
+export default async function SignupPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const session = await auth();
   const { t } = await getTranslation();
+  const sp = await searchParams;
+
+  // The plan a visitor picked arrives as a signed token. Verify it here (the
+  // secret is server-side) and hand the form a fresh one to carry onward; an
+  // invalid or expired token becomes null, i.e. an ordinary signup.
+  const raw = sp?.[PLAN_INTENT_PARAM];
+  const planToken = refreshPlanIntent(typeof raw === "string" ? raw : null);
 
   if (session?.user?.userId) {
     redirect("/");
@@ -26,7 +39,7 @@ export default async function SignupPage() {
         </p>
       </header>
 
-      <SignupForm />
+      <SignupForm planToken={planToken} />
     </div>
   );
 }

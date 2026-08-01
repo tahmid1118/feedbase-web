@@ -75,6 +75,14 @@ discount (what makes checkout bill it); they drift independently.
   each target must equal the offer price (minus proration credit).
   *Bug: "Pro yearly $4.48/mo" on the card, **$95.30** in the confirm dialog —
   the discount was applied at checkout but not on plan changes.*
+- [ ] **The plan you clicked is the plan you're charged for.** The pricing CTA
+  carries an encrypted `?c=` token (`lib/plan-intent-token.ts`), not readable
+  params. Click Pro yearly, walk to `/checkout`, confirm the card shows Pro
+  yearly. Then edit the token in the address bar by one character and reload:
+  it must fall back to **no intent** (dashboard), never to a different plan.
+  Also confirm all four tokens are the **same length** — GCM ciphertext matches
+  plaintext length, so a variable-width payload would leak `business` vs `pro`
+  through the URL's size alone.
 
 ## B. Offer lifetime
 

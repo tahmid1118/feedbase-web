@@ -27,21 +27,27 @@ without weakening a billing authorisation rule, which we are not going to do.
 
 ## Flow
 
-Intent travels as URL params `?plan=pro|business&interval=month|year`, and is
-**revalidated at each hop** rather than trusted:
+Intent travels as **one encrypted token** `?c=<token>` (AES-256-GCM, keyed off
+`AUTH_SECRET` — see `lib/plan-intent-token.ts`), decrypted and **re-signed at
+each hop** rather than trusted:
 
 ```
-Pricing card → /signup?plan=pro&interval=year
-             → /onboarding?plan=pro&interval=year    (workspace created ⇒ owner)
-             → /checkout?plan=pro&interval=year      (Paddle overlay)
+Pricing card → /signup?c=thQMv8Mr6fWgLXjq1u7n5H12ecqLUFYRSNeoKRTVwmDL3UT1HswSaBpWBQ
+             → /onboarding?c=…                       (workspace created ⇒ owner)
+             → /checkout?c=…                         (Paddle overlay)
              → /dashboard
 ```
 
 Rules:
 
-- An unknown plan, or `free`, means **no intent** — the visitor lands on the
-  dashboard as today.
-- `interval` defaults to **`year`** when absent or invalid.
+- A token that fails to decrypt — forged, tampered, expired, or signed under a
+  different secret — means **no intent**: the visitor lands on the dashboard as
+  today. Old plaintext `?plan=pro` links fall into this case by design.
+- The token carries `{plan, interval, expiry}` only. **Never a price** — that is
+  resolved server-side at checkout.
+- Tokens expire after **7 days**.
+- Decryption needs the server secret, so each hop's `page.tsx` is a Server
+  Component that decodes and passes the result to its client body.
 - If `/onboarding` carries `?invited=`, the plan intent is **dropped**. That user
   becomes a *member* of someone else's workspace, and members cannot buy.
 

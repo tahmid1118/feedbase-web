@@ -8,6 +8,7 @@ import { PLANS, planPricing, formatPrice, offerDisplay } from "@/lib/plans";
 import type { OfferMap, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { IntervalToggle } from "@/components/pricing/interval-toggle";
+import { planIntentQuery } from "@/lib/plan-intent";
 import { useTranslation } from "@/lib/i18n/client";
 import { useLanguage } from "@/components/providers/i18n-provider";
 import { cn } from "@/lib/utils";
@@ -23,9 +24,12 @@ import { cn } from "@/lib/utils";
 export function PricingCards({
   offers,
   ctaHref = "/signup",
+  tokens = {},
 }: {
   offers: OfferMap;
   ctaHref?: string;
+  /** Signed plan-intent tokens, minted server-side — see lib/plan-intent-token. */
+  tokens?: Record<string, Partial<Record<BillingInterval, string>>>;
 }) {
   const { t } = useTranslation();
   const lng = useLanguage();
@@ -44,12 +48,16 @@ export function PricingCards({
    */
   const ctaFor = (planKey: string) => {
     if (planKey === "free") return ctaHref;
-    const q = `plan=${planKey}&interval=${interval}`;
-    if (!session?.user?.id) return `/signup?${q}`;
-    if (!session.user.tenantId) return `/onboarding?${q}`;
+    // The choice rides as one opaque signed token, not readable plan/interval
+    // params. No token (no server secret) means we simply can't carry the
+    // intent — link to plain signup rather than to a URL that says nothing.
+    const q = planIntentQuery(tokens[planKey]?.[interval]);
+    if (!q) return ctaHref;
+    if (!session?.user?.id) return `/signup${q}`;
+    if (!session.user.tenantId) return `/onboarding${q}`;
     // A member of someone else's workspace can't buy — they need their own.
-    if (session.user.role !== "owner") return `/onboarding?${q}`;
-    return `/checkout?${q}`;
+    if (session.user.role !== "owner") return `/onboarding${q}`;
+    return `/checkout${q}`;
   };
 
   // A yearly offer replaces the flat 20% yearly saving for that plan, so hide

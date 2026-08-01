@@ -403,7 +403,14 @@ Version 1.2
     FR-B2b Buy on signup  Choosing a paid plan on the public pricing page carries
                           that choice through sign-up and workspace creation to a
                           payment step, and only then to the dashboard. The choice
-                          is re-checked at each step rather than trusted. Payment
+                          travels as a single encrypted, expiring token in the web
+                          address — it is never readable there, and cannot be
+                          altered by editing the address bar, so nobody can change
+                          which plan is about to be charged for. It is decrypted
+                          and re-checked at each step rather than trusted, and a
+                          token that fails verification simply means no plan was
+                          chosen. The token never carries a price; the price is
+                          determined when payment begins. Payment
                           necessarily follows workspace creation, because only a
                           workspace OWNER may purchase. Someone accepting an
                           invitation is never taken to payment: they join an

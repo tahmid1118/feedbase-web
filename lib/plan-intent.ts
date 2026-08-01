@@ -2,36 +2,31 @@ import type { BillingInterval, PlanKey } from "@/lib/api";
 
 /**
  * A visitor's intent to buy a plan, carried across signup → onboarding →
- * checkout as URL params.
+ * checkout.
  *
- * It is REVALIDATED at every hop rather than trusted: these params are visible
- * and editable in the address bar, and they decide which plan we take money for.
- * An unknown plan, or `free`, means no intent at all — the visitor simply lands
- * on the dashboard as before.
+ * It travels as ONE opaque signed token (`?c=…`), never as readable
+ * `?plan=&interval=` params — see `lib/plan-intent-token.ts` for what that does
+ * and does not protect. Signing and verification need a secret, so they are
+ * server-only; this module holds just the shape and the link builder, which are
+ * safe in a Client Component.
+ *
+ * The token is verified at every hop rather than trusted, and a token that does
+ * not verify means no intent at all — the visitor lands on the dashboard as if
+ * they had never picked a plan. That is also what happens to the old plaintext
+ * links: they no longer preselect a plan, which is the point.
  */
 export interface PlanIntent {
   plan: Extract<PlanKey, "pro" | "business">;
   interval: BillingInterval;
 }
 
-const PAID: readonly string[] = ["pro", "business"];
+/** The plans that can be bought. `free` is never an intent. */
+export const PAID_PLANS: readonly string[] = ["pro", "business"];
 
-/** Read a valid intent from URL params, or null. Interval defaults to yearly. */
-export function readPlanIntent(
-  params: Pick<URLSearchParams, "get"> | null | undefined
-): PlanIntent | null {
-  const plan = params?.get("plan");
-  if (!plan || !PAID.includes(plan)) return null;
-  const raw = params?.get("interval");
-  return {
-    plan: plan as PlanIntent["plan"],
-    // Yearly is the default everywhere, so an absent or junk value lands there
-    // rather than quietly selling the more expensive monthly option.
-    interval: raw === "month" ? "month" : "year",
-  };
-}
+/** The query param carrying the signed intent. Deliberately meaningless. */
+export const PLAN_INTENT_PARAM = "c";
 
-/** `?plan=pro&interval=year` for forwarding an intent, or "" when there is none. */
-export function planIntentQuery(intent: PlanIntent | null): string {
-  return intent ? `?plan=${intent.plan}&interval=${intent.interval}` : "";
+/** `?c=<token>` for forwarding an intent, or "" when there is none. */
+export function planIntentQuery(token: string | null | undefined): string {
+  return token ? `?${PLAN_INTENT_PARAM}=${encodeURIComponent(token)}` : "";
 }
