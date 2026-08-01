@@ -808,10 +808,7 @@
     "ends": "termina a {{date}}",
     "limitedOffer": "Oferta por tempo limitado",
     "perMo": "/mês",
-    "perYr": "/ano",
-    "offerForMonths_one": "Preço promocional no primeiro mês, depois {{price}}/mês",
-    "offerForMonths_other": "Preço promocional nos primeiros {{count}} meses, depois {{price}}/mês",
-    "offerFirstYear": "Preço promocional no primeiro ano, depois {{price}}/mês"
+    "perYr": "/ano"
   },
   "toggle": {
     "monthly": "Mensal",

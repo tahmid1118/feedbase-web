@@ -808,10 +808,7 @@
     "ends": "eindigt op {{date}}",
     "limitedOffer": "Tijdelijke aanbieding",
     "perMo": "/mnd",
-    "perYr": "/jr",
-    "offerForMonths_one": "Actieprijs de eerste maand, daarna {{price}}/mnd",
-    "offerForMonths_other": "Actieprijs de eerste {{count}} maanden, daarna {{price}}/mnd",
-    "offerFirstYear": "Actieprijs het eerste jaar, daarna {{price}}/mnd"
+    "perYr": "/jr"
   },
   "toggle": {
     "monthly": "Maandelijks",

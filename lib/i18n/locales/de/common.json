@@ -808,10 +808,7 @@
     "ends": "endet am {{date}}",
     "limitedOffer": "Zeitlich begrenztes Angebot",
     "perMo": "/Mon.",
-    "perYr": "/Jahr",
-    "offerForMonths_one": "Aktionspreis im ersten Monat, danach {{price}}/Mon.",
-    "offerForMonths_other": "Aktionspreis in den ersten {{count}} Monaten, danach {{price}}/Mon.",
-    "offerFirstYear": "Aktionspreis im ersten Jahr, danach {{price}}/Mon."
+    "perYr": "/Jahr"
   },
   "toggle": {
     "monthly": "Monatlich",

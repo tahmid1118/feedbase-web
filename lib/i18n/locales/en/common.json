@@ -808,10 +808,7 @@
     "ends": "ends {{date}}",
     "limitedOffer": "Limited-time offer",
     "perMo": "/mo",
-    "perYr": "/yr",
-    "offerForMonths_one": "Offer price for the first month, then {{price}}/mo",
-    "offerForMonths_other": "Offer price for the first {{count}} months, then {{price}}/mo",
-    "offerFirstYear": "Offer price for the first year, then {{price}}/mo"
+    "perYr": "/yr"
   },
   "toggle": {
     "monthly": "Monthly",

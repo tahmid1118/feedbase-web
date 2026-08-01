@@ -723,18 +723,6 @@ export function BillingSettings() {
                   <p className="mt-1 text-xs text-[#1c0a0c]/50">
                     {t(interval === "year" ? "pricing.billedAnnually" : "pricing.billedMonthly")}
                   </p>
-                  {/* A time-limited offer must not read as a permanent price:
-                      say how long it lasts and what it becomes afterwards. */}
-                  <p className="mt-1 text-xs text-[#1c0a0c]/60">
-                    {interval === "year"
-                      ? t("pricing.offerFirstYear", { price: formatPrice(plan.monthlyPrice) })
-                      : offer.durationPeriods
-                        ? t("pricing.offerForMonths", {
-                            count: offer.durationPeriods,
-                            price: formatPrice(plan.monthlyPrice),
-                          })
-                        : null}
-                  </p>
                   {offer.label || offer.endsAt ? (
                     <p className="mt-1 text-xs font-medium text-green-700">
                       {offer.label || t("pricing.limitedOffer")}
