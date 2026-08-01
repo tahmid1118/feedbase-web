@@ -17,6 +17,47 @@ conclude from a script printing `OK`.
 
 ---
 
+## 0. Run the automated audit first
+
+```bash
+node scripts/audit-billing.js      # read-only, safe on production
+```
+
+One command covering the checks that are easy to skip and expensive to miss:
+every configured **price** matches `lib/plans.ts`; every active **offer** charges
+its advertised price, expires with its window, and is restricted to its own price;
+every active **promo code** has a discount that exists; and every stored
+**customer/subscription id** resolves in the current environment. Exits non-zero
+if anything fails, so it can gate a deploy.
+
+Fix what it reports:
+
+| It says | Run |
+|---|---|
+| offer discount missing / wrong / doesn't exist here | `backfill-offer-discounts.js --force` |
+| customer or subscription doesn't exist here | `clear-stale-paddle-refs.js` |
+| promo code discount doesn't exist here | re-create the code in the Admin Panel |
+
+**A clean audit is necessary, not sufficient** — it reads configuration. The
+sections below cover behaviour it can't observe (proration, cancel/resume,
+redemption limits, webhooks), and a real purchase is still the final word.
+
+### The class of bug this catches
+
+Rows in our database point at objects in Paddle. Nothing enforces that the two
+agree, and **nothing crosses environments** — prices, discounts, customers and
+subscriptions are all separate between sandbox and live. When a reference goes
+stale the app does not error; it quietly misbehaves:
+
+- an offer with a missing discount → advertised **$5.60**, charged **$10.00**
+- a subscription id from another environment → the account shows a **paid plan
+  while nothing bills it**, and every plan change fails with *"Subscription not
+  found"*, which `reconcile` cannot repair because the id does not exist
+
+Both shipped. Re-run the audit after **any** environment or provider change.
+
+---
+
 ## A. Advertised price == charged price
 
 The whole class of bug. An offer is a DB row (what we display) *plus* a provider
