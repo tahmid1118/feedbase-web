@@ -299,7 +299,14 @@
     "reactivateCode": "Aktywuj ponownie {{code}}",
     "reactivateHint": "Kod pozostaje ten sam — osoby, które już go mają, mogą użyć go ponownie. Poniżej możesz zmienić warunki.",
     "resetUsage": "Wyczyść historię użycia",
-    "resetUsageHint": "Usuwa {{count}} wcześniejsze wykorzystanie(a), aby osoby, które już użyły kodu, mogły zrobić to ponownie."
+    "resetUsageHint": "Usuwa {{count}} wcześniejsze wykorzystanie(a), aby osoby, które już użyły kodu, mogły zrobić to ponownie.",
+    "deleteCodeTitle": "Trwale usunąć {{code}}?",
+    "deleteCodeBody": "Usuwa kod całkowicie. W przeciwieństwie do unieważnienia nie da się go przywrócić.",
+    "deleteCodeRedeemed_one": "Usuwa też {{count}} rekord wykorzystania — jedyny ślad tego, kto użył kodu.",
+    "deleteCodeRedeemed_few": "Usuwa też {{count}} rekordy wykorzystania — jedyny ślad tego, kto użył kodu.",
+    "deleteCodeRedeemed_many": "Usuwa też {{count}} rekordów wykorzystania — jedyny ślad tego, kto użył kodu.",
+    "deleteCodeRedeemed_other": "Usuwa też {{count}} rekordów wykorzystania — jedyny ślad tego, kto użył kodu.",
+    "deleteCodeKeepsPlans": "Już przyznane plany nie są odbierane."
   },
   "auth": {
     "login": {
@@ -752,7 +759,8 @@
     "workspaceDeleted": "Przestrzeń robocza usunięta",
     "workspaceUpdated": "Przestrzeń robocza zaktualizowana",
     "accountDeleted": "Twoje konto zostało usunięte",
-    "promoReactivated": "Kod promocyjny ponownie aktywowany"
+    "promoReactivated": "Kod promocyjny ponownie aktywowany",
+    "promoDeleted": "Kod promocyjny usunięty"
   },
   "authAside": {
     "badge": "Platforma opinii o produkcie",

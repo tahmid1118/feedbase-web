@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Loader2, Plus, Ban, RotateCcw } from "lucide-react";
+import { Loader2, Plus, Ban, RotateCcw, Trash2 } from "lucide-react";
 import {
   adminApi,
   type PromoCode,
@@ -29,6 +29,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 
 const EMPTY: CreatePromoInput = {
@@ -60,6 +70,8 @@ export default function AdminPromoCodesPage() {
   // The revoked code being reactivated (null = dialog closed) + its new terms.
   const [reactivating, setReactivating] = useState<PromoCode | null>(null);
   const [reForm, setReForm] = useState<ReactivatePromoInput>({});
+  // The code queued for permanent deletion (null = dialog closed).
+  const [deleting, setDeleting] = useState<PromoCode | null>(null);
 
   const load = useCallback(async () => {
     if (!token) return;
@@ -126,6 +138,18 @@ export default function AdminPromoCodesPage() {
       setReactivating(null);
       load();
     } else toast.error(res.message || "Failed to reactivate");
+  };
+
+  const remove = async () => {
+    if (!token || !deleting) return;
+    setBusy(true);
+    const res = await adminApi.deletePromoCode(token, deleting.id);
+    setBusy(false);
+    if (res.ok) {
+      toast.success(t("toast.promoDeleted"));
+      setDeleting(null);
+      load();
+    } else toast.error(res.message || "Failed to delete");
   };
 
   const codeValid = /^[A-Za-z0-9_-]{3,64}$/.test(form.code);
@@ -203,6 +227,15 @@ export default function AdminPromoCodesPage() {
                         {t("admin.reactivate")}
                       </Button>
                     )}
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-red-600 hover:text-red-700"
+                      onClick={() => setDeleting(p)}
+                      aria-label={t("common.delete")}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -465,6 +498,38 @@ export default function AdminPromoCodesPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      {/* Permanent delete. Names the redemption records that go with it — that
+          history is the only trace of who received a comp or discount. */}
+      <AlertDialog open={!!deleting} onOpenChange={(o) => !o && setDeleting(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              {t("admin.deleteCodeTitle", { code: deleting?.code ?? "" })}
+            </AlertDialogTitle>
+            <AlertDialogDescription asChild>
+              <div className="space-y-2 text-sm text-[#1c0a0c]/70">
+                <span className="block">{t("admin.deleteCodeBody")}</span>
+                {deleting && deleting.times_redeemed > 0 && (
+                  <span className="block rounded-lg bg-red-50 px-3 py-2 text-red-800">
+                    {t("admin.deleteCodeRedeemed", { count: deleting.times_redeemed })}
+                  </span>
+                )}
+                <span className="block text-xs">{t("admin.deleteCodeKeepsPlans")}</span>
+              </div>
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={busy}>{t("common.cancel")}</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={(e) => { e.preventDefault(); remove(); }}
+              disabled={busy}
+              className="bg-red-600 text-white hover:bg-red-700"
+            >
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : t("common.delete")}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

@@ -297,7 +297,12 @@
     "reactivateCode": "{{code}} opnieuw activeren",
     "reactivateHint": "De code blijft hetzelfde — wie hem al heeft, kan hem opnieuw gebruiken. Pas hieronder de voorwaarden aan indien gewenst.",
     "resetUsage": "Gebruiksgeschiedenis wissen",
-    "resetUsageHint": "Wist {{count}} eerdere inwisseling(en), zodat eerdere gebruikers de code opnieuw kunnen inwisselen."
+    "resetUsageHint": "Wist {{count}} eerdere inwisseling(en), zodat eerdere gebruikers de code opnieuw kunnen inwisselen.",
+    "deleteCodeTitle": "{{code}} definitief verwijderen?",
+    "deleteCodeBody": "Dit verwijdert de code volledig. Anders dan intrekken kan hij niet opnieuw worden geactiveerd.",
+    "deleteCodeRedeemed_one": "Het verwijdert ook {{count}} inwisselrecord — het enige spoor van wie de code gebruikte.",
+    "deleteCodeRedeemed_other": "Het verwijdert ook {{count}} inwisselrecords — het enige spoor van wie de code gebruikte.",
+    "deleteCodeKeepsPlans": "Reeds toegekende abonnementen worden niet ingetrokken."
   },
   "auth": {
     "login": {
@@ -742,7 +747,8 @@
     "workspaceDeleted": "Werkruimte verwijderd",
     "workspaceUpdated": "Werkruimte bijgewerkt",
     "accountDeleted": "Uw account is verwijderd",
-    "promoReactivated": "Promocode opnieuw geactiveerd"
+    "promoReactivated": "Promocode opnieuw geactiveerd",
+    "promoDeleted": "Promocode verwijderd"
   },
   "authAside": {
     "badge": "Platform voor productfeedback",

@@ -297,7 +297,12 @@
     "reactivateCode": "Reactivate {{code}}",
     "reactivateHint": "The code stays the same — customers who already have it can use it again. Adjust the terms below if you want it to behave differently this time.",
     "resetUsage": "Reset usage history",
-    "resetUsageHint": "Clears {{count}} past redemption(s) so people who already used this code can redeem it again."
+    "resetUsageHint": "Clears {{count}} past redemption(s) so people who already used this code can redeem it again.",
+    "deleteCodeTitle": "Delete {{code}} permanently?",
+    "deleteCodeBody": "This removes the code entirely. Unlike revoking, it cannot be reactivated.",
+    "deleteCodeRedeemed_one": "It also deletes {{count}} redemption record — the only trace of who redeemed this code.",
+    "deleteCodeRedeemed_other": "It also deletes {{count}} redemption records — the only trace of who redeemed this code.",
+    "deleteCodeKeepsPlans": "Plans already granted are not revoked; customers keep what they were given."
   },
   "auth": {
     "login": {
@@ -742,7 +747,8 @@
     "workspaceDeleted": "Workspace deleted",
     "workspaceUpdated": "Workspace updated",
     "accountDeleted": "Your account has been deleted",
-    "promoReactivated": "Promo code reactivated"
+    "promoReactivated": "Promo code reactivated",
+    "promoDeleted": "Promo code deleted"
   },
   "authAside": {
     "badge": "Product Feedback Platform",

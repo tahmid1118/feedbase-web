@@ -297,7 +297,12 @@
     "reactivateCode": "Réactiver {{code}}",
     "reactivateHint": "Le code reste identique — ceux qui l’ont déjà peuvent le réutiliser. Modifiez les conditions ci-dessous si nécessaire.",
     "resetUsage": "Réinitialiser l’historique",
-    "resetUsageHint": "Efface {{count}} utilisation(s) passée(s) afin que les anciens utilisateurs puissent réutiliser le code."
+    "resetUsageHint": "Efface {{count}} utilisation(s) passée(s) afin que les anciens utilisateurs puissent réutiliser le code.",
+    "deleteCodeTitle": "Supprimer définitivement {{code}} ?",
+    "deleteCodeBody": "Le code est entièrement supprimé. Contrairement à la révocation, il ne peut pas être réactivé.",
+    "deleteCodeRedeemed_one": "Cela supprime aussi {{count}} enregistrement d’utilisation — la seule trace de qui a utilisé ce code.",
+    "deleteCodeRedeemed_other": "Cela supprime aussi {{count}} enregistrements d’utilisation — la seule trace de qui a utilisé ce code.",
+    "deleteCodeKeepsPlans": "Les forfaits déjà accordés ne sont pas retirés."
   },
   "auth": {
     "login": {
@@ -742,7 +747,8 @@
     "workspaceDeleted": "Espace de travail supprimé",
     "workspaceUpdated": "Espace de travail mis à jour",
     "accountDeleted": "Votre compte a été supprimé",
-    "promoReactivated": "Code promo réactivé"
+    "promoReactivated": "Code promo réactivé",
+    "promoDeleted": "Code promo supprimé"
   },
   "authAside": {
     "badge": "Plateforme de retours produit",

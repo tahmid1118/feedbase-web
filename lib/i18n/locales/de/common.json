@@ -297,7 +297,12 @@
     "reactivateCode": "{{code}} reaktivieren",
     "reactivateHint": "Der Code bleibt gleich — wer ihn bereits hat, kann ihn erneut nutzen. Passe unten die Konditionen an, wenn er sich diesmal anders verhalten soll.",
     "resetUsage": "Nutzungsverlauf zurücksetzen",
-    "resetUsageHint": "Löscht {{count}} bisherige Einlösung(en), damit frühere Nutzer den Code erneut einlösen können."
+    "resetUsageHint": "Löscht {{count}} bisherige Einlösung(en), damit frühere Nutzer den Code erneut einlösen können.",
+    "deleteCodeTitle": "{{code}} endgültig löschen?",
+    "deleteCodeBody": "Der Code wird vollständig entfernt. Anders als beim Widerrufen ist keine Reaktivierung möglich.",
+    "deleteCodeRedeemed_one": "Dabei wird auch {{count}} Einlösungseintrag gelöscht — der einzige Nachweis, wer den Code eingelöst hat.",
+    "deleteCodeRedeemed_other": "Dabei werden auch {{count}} Einlösungseinträge gelöscht — der einzige Nachweis, wer den Code eingelöst hat.",
+    "deleteCodeKeepsPlans": "Bereits gewährte Tarife werden nicht entzogen."
   },
   "auth": {
     "login": {
@@ -742,7 +747,8 @@
     "workspaceDeleted": "Arbeitsbereich gelöscht",
     "workspaceUpdated": "Arbeitsbereich aktualisiert",
     "accountDeleted": "Ihr Konto wurde gelöscht",
-    "promoReactivated": "Promo-Code reaktiviert"
+    "promoReactivated": "Promo-Code reaktiviert",
+    "promoDeleted": "Promo-Code gelöscht"
   },
   "authAside": {
     "badge": "Produkt-Feedback-Plattform",

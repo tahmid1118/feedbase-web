@@ -324,6 +324,9 @@ export const adminApi = {
     request(`/promo-codes/${id}/revoke`, "PUT", token),
   reactivatePromoCode: (token: string | undefined, id: number, data: ReactivatePromoInput = {}) =>
     request(`/promo-codes/${id}/reactivate`, "PUT", token, { ...data }),
+  /** Permanently deletes the code AND its redemption history (cascade). */
+  deletePromoCode: (token: string | undefined, id: number) =>
+    request<{ id: number; redemptions: number }>(`/promo-codes/${id}`, "DELETE", token),
 
   // Support chat
   supportInboxUnread: (token?: string) =>

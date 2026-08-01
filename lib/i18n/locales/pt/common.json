@@ -297,7 +297,12 @@
     "reactivateCode": "Reativar {{code}}",
     "reactivateHint": "O código permanece o mesmo — quem já o tem poderá usá-lo novamente. Ajuste as condições abaixo se quiser.",
     "resetUsage": "Repor o histórico de utilização",
-    "resetUsageHint": "Apaga {{count}} resgate(s) anterior(es) para que quem já o usou possa resgatá-lo de novo."
+    "resetUsageHint": "Apaga {{count}} resgate(s) anterior(es) para que quem já o usou possa resgatá-lo de novo.",
+    "deleteCodeTitle": "Eliminar {{code}} definitivamente?",
+    "deleteCodeBody": "Remove o código por completo. Ao contrário de revogar, não pode ser reativado.",
+    "deleteCodeRedeemed_one": "Também elimina {{count}} registo de resgate — o único vestígio de quem o resgatou.",
+    "deleteCodeRedeemed_other": "Também elimina {{count}} registos de resgate — o único vestígio de quem o resgatou.",
+    "deleteCodeKeepsPlans": "Os planos já concedidos não são revogados."
   },
   "auth": {
     "login": {
@@ -742,7 +747,8 @@
     "workspaceDeleted": "Espaço de trabalho eliminado",
     "workspaceUpdated": "Espaço de trabalho atualizado",
     "accountDeleted": "A sua conta foi eliminada",
-    "promoReactivated": "Código promocional reativado"
+    "promoReactivated": "Código promocional reativado",
+    "promoDeleted": "Código promocional eliminado"
   },
   "authAside": {
     "badge": "Plataforma de feedback de produto",
