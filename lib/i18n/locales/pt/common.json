@@ -443,7 +443,8 @@
     "ownBoardTitle": "Quer o seu próprio painel de feedback?",
     "ownBoardSubtitle": "Recolha feedback, priorize por votos e partilhe um roteiro público — comece gratuitamente.",
     "ownBoardCta": "Junte-se à nossa comunidade",
-    "noMatchingPosts": "Nenhuma publicação nesta visualização."
+    "noMatchingPosts": "Nenhuma publicação nesta visualização.",
+    "ownerPostPro": "Publicar no seu próprio quadro é uma funcionalidade Pro."
   },
   "type": {
     "feedback": "Feedback",

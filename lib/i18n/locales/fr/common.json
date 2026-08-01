@@ -443,7 +443,8 @@
     "ownBoardTitle": "Vous voulez votre propre tableau de retours ?",
     "ownBoardSubtitle": "Recueillez des retours, priorisez par votes et partagez une feuille de route publique — gratuit au départ.",
     "ownBoardCta": "Rejoindre notre communauté",
-    "noMatchingPosts": "Aucune publication dans cette vue."
+    "noMatchingPosts": "Aucune publication dans cette vue.",
+    "ownerPostPro": "Publier sur votre propre tableau est une fonctionnalité Pro."
   },
   "type": {
     "feedback": "Retour",

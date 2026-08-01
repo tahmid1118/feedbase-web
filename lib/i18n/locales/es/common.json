@@ -443,7 +443,8 @@
     "ownBoardTitle": "¿Quieres tu propio tablero de comentarios?",
     "ownBoardSubtitle": "Recoge comentarios, prioriza por votos y comparte una hoja de ruta pública: empieza gratis.",
     "ownBoardCta": "Únete a nuestra comunidad",
-    "noMatchingPosts": "No hay publicaciones en esta vista."
+    "noMatchingPosts": "No hay publicaciones en esta vista.",
+    "ownerPostPro": "Publicar en tu propio tablero es una función Pro."
   },
   "type": {
     "feedback": "Comentario",

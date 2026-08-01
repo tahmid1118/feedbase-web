@@ -443,7 +443,8 @@
     "ownBoardTitle": "Wilt u uw eigen feedbackbord?",
     "ownBoardSubtitle": "Verzamel feedback, prioriteer op stemmen en deel een openbare roadmap — gratis te starten.",
     "ownBoardCta": "Word lid van onze community",
-    "noMatchingPosts": "Geen berichten in deze weergave."
+    "noMatchingPosts": "Geen berichten in deze weergave.",
+    "ownerPostPro": "Plaatsen op je eigen bord is een Pro-functie."
   },
   "type": {
     "feedback": "Feedback",

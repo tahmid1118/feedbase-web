@@ -443,7 +443,8 @@
     "ownBoardTitle": "Vuoi la tua bacheca dei feedback?",
     "ownBoardSubtitle": "Raccogli feedback, dai priorità con i voti e condividi una roadmap pubblica — inizi gratis.",
     "ownBoardCta": "Unisciti alla community",
-    "noMatchingPosts": "Nessun post in questa vista."
+    "noMatchingPosts": "Nessun post in questa vista.",
+    "ownerPostPro": "Pubblicare sulla propria bacheca è una funzione Pro."
   },
   "type": {
     "feedback": "Feedback",

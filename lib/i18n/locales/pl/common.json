@@ -451,7 +451,8 @@
     "ownBoardTitle": "Chcesz własną tablicę opinii?",
     "ownBoardSubtitle": "Zbieraj opinie, ustalaj priorytety głosami i udostępniaj publiczny plan działań — zacznij za darmo.",
     "ownBoardCta": "Dołącz do naszej społeczności",
-    "noMatchingPosts": "Brak wpisów w tym widoku."
+    "noMatchingPosts": "Brak wpisów w tym widoku.",
+    "ownerPostPro": "Publikowanie na własnej tablicy to funkcja Pro."
   },
   "type": {
     "feedback": "Opinia",

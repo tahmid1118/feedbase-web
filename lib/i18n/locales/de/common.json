@@ -443,7 +443,8 @@
     "ownBoardTitle": "Möchten Sie Ihre eigene Feedback-Pinnwand?",
     "ownBoardSubtitle": "Sammeln Sie Feedback, priorisieren Sie per Abstimmung und teilen Sie eine öffentliche Roadmap — kostenlos starten.",
     "ownBoardCta": "Werden Sie Teil unserer Community",
-    "noMatchingPosts": "Keine Beiträge in dieser Ansicht."
+    "noMatchingPosts": "Keine Beiträge in dieser Ansicht.",
+    "ownerPostPro": "Beiträge auf dem eigenen Board sind eine Pro-Funktion."
   },
   "type": {
     "feedback": "Feedback",

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { MessageSquare, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
@@ -9,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { getGuestId } from "@/lib/portal/guest";
+import { appUrl } from "@/lib/app-url";
 import { uploaderApi } from "@/lib/api";
 import type { UploadedAttachment } from "@/lib/api/uploader";
 import { AttachmentPicker } from "@/components/feedback/attachment-picker";
@@ -44,13 +46,36 @@ export function FeedbackSubmit({
   tenant,
   brand,
   attachmentsEnabled = false,
+  boardTenantId,
+  boardOwnerBadge,
 }: {
   tenant: string;
   brand: string;
   /** Pro+ workspaces let visitors attach a photo or short video. */
   attachmentsEnabled?: boolean;
+  /** This board's tenant id — used to tell if the viewer owns THIS board. */
+  boardTenantId?: number;
+  /** Whether the board's plan allows the owner to act as the owner (Pro+). */
+  boardOwnerBadge?: boolean;
 }) {
   const { t } = useTranslation();
+  const { data: session } = useSession();
+
+  /**
+   * The board's OWNER may only post on their own board on Pro+, mirroring the
+   * rule for replying as the owner. On Free the board belongs to the workspace's
+   * users. Enforced server-side (`owner_post_pro`); this just replaces the form
+   * with the upgrade prompt instead of letting them write a post and be rejected.
+   *
+   * Only the owner of THIS board is affected — a member, a guest, or someone who
+   * owns a different workspace posts normally.
+   */
+  const ownerBlocked =
+    Boolean(session?.user?.id) &&
+    session?.user?.role === "owner" &&
+    boardTenantId != null &&
+    String(session?.user?.tenantId) === String(boardTenantId) &&
+    !boardOwnerBadge;
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -126,6 +151,28 @@ export function FeedbackSubmit({
     setOpen(next);
     if (!next) setTimeout(reset, 200);
   };
+
+  // Free board owner: show the upgrade prompt instead of a form the server would
+  // reject. `appUrl` because this renders on a tenant subdomain, where every path
+  // is rewritten to /portal/<tenant>/… — a relative /dashboard link would 404.
+  if (ownerBlocked) {
+    return (
+      <div className="shrink-0 rounded-lg border border-[#c74959]/25 bg-[#c74959]/5 px-4 py-3 text-sm text-[#1c0a0c]/70">
+        <p className="flex flex-wrap items-center gap-2">
+          <span className="rounded bg-[#c74959] px-1.5 py-0.5 text-xs font-semibold text-white">
+            {t("comments.proBadge")}
+          </span>
+          {t("portal.ownerPostPro")}
+        </p>
+        <a
+          href={appUrl("/dashboard/settings?tab=billing")}
+          className="mt-1 inline-block text-xs font-medium text-[#c74959] underline"
+        >
+          {t("comments.goToBilling")}
+        </a>
+      </div>
+    );
+  }
 
   return (
     <>
