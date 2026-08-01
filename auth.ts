@@ -1,11 +1,22 @@
 import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import Google from "next-auth/providers/google";
+import { cookies } from "next/headers";
 
 import {
   DEFAULT_LANGUAGE,
   LOGIN_RATE_LIMIT,
 } from "@/lib/auth/constants";
-import { loginWithCredentials, loginAsAdmin } from "@/lib/auth/auth-service";
+import {
+  loginWithCredentials,
+  loginAsAdmin,
+  loginWithOAuth,
+} from "@/lib/auth/auth-service";
+import {
+  OAUTH_ERROR,
+  OAUTH_ERROR_PARAM,
+  OAUTH_FORCE_COOKIE,
+} from "@/lib/auth/oauth";
 import type { SavedAdminIdentity } from "@/types/next-auth";
 import { AuthApiError } from "@/lib/auth/errors";
 import { consumeRateLimit } from "@/lib/auth/rate-limit";
@@ -100,8 +111,28 @@ const credentialsProvider = Credentials({
   },
 });
 
+/**
+ * "Continue with Google". NextAuth owns the handshake and verifies the ID token;
+ * the `signIn` callback below then trades the verified identity for a FeedBoard
+ * session, so the backend stays the single source of truth for accounts, plans
+ * and the one-device rule.
+ *
+ * Only `openid email profile` — the non-sensitive scopes. That is what keeps
+ * Google's verification to the light path and avoids the paid security
+ * assessment restricted scopes require. Don't add scopes casually.
+ *
+ * `prompt: "select_account"` because people sign in to FeedBoard from a browser
+ * that is often already signed in to a personal Google account; without it they
+ * are silently taken through whichever account Google picks.
+ */
+const googleProvider = Google({
+  authorization: {
+    params: { scope: "openid email profile", prompt: "select_account" },
+  },
+});
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  providers: [credentialsProvider],
+  providers: [credentialsProvider, googleProvider],
   pages: {
     signIn: "/login",
   },
@@ -127,6 +158,64 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
+    /**
+     * Social sign-in only. The Credentials provider has already done its work in
+     * `authorize()`, so it passes straight through.
+     *
+     * Here we trade Google's verified identity for a FeedBoard session and hang
+     * the result on `user`, which `jwt` below reads on the same pass. Returning
+     * a STRING redirects the browser, which is the only way to surface a
+     * specific reason for an OAuth failure — NextAuth otherwise collapses
+     * everything into a generic error page, and the device-limit case needs to
+     * offer the takeover button.
+     */
+    async signIn({ user, account, profile }) {
+      if (account?.provider !== "google") return true;
+
+      const providerUserId = profile?.sub ?? account.providerAccountId;
+      const email = profile?.email;
+      // Google reports this for the `email` scope. The backend refuses an
+      // unverified address anyway — this is the same rule, stated twice on
+      // purpose, because matching an account by an unverified email is an
+      // account-takeover route rather than a mere inconvenience.
+      const emailVerified = profile?.email_verified === true;
+
+      if (!providerUserId || !email) {
+        return `/login?${OAUTH_ERROR_PARAM}=${OAUTH_ERROR.failed}`;
+      }
+      if (!emailVerified) {
+        return `/login?${OAUTH_ERROR_PARAM}=${OAUTH_ERROR.emailUnverified}`;
+      }
+
+      // A confirmed takeover after a 409. One-shot: cleared here so a stale
+      // cookie can never silently sign other devices out on a later login.
+      const jar = await cookies();
+      const force = jar.get(OAUTH_FORCE_COOKIE)?.value === "1";
+      if (force) jar.delete(OAUTH_FORCE_COOKIE);
+
+      try {
+        const profileResult = await loginWithOAuth({
+          provider: "google",
+          providerUserId,
+          email,
+          emailVerified,
+          fullName: profile?.name ?? undefined,
+          avatarUrl: profile?.picture ?? undefined,
+          force,
+        });
+        if (!profileResult) {
+          return `/login?${OAUTH_ERROR_PARAM}=${OAUTH_ERROR.failed}`;
+        }
+        // Carried into `jwt` on this same sign-in.
+        Object.assign(user, profileResult);
+        return true;
+      } catch (error) {
+        if (error instanceof AuthApiError && error.statusCode === 409) {
+          return `/login?${OAUTH_ERROR_PARAM}=${OAUTH_ERROR.activeSession}`;
+        }
+        return `/login?${OAUTH_ERROR_PARAM}=${OAUTH_ERROR.failed}`;
+      }
+    },
     async jwt({ token, user, trigger, session }) {
       if (user) {
         token.userId = user.userId;

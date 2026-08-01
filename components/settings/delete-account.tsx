@@ -55,7 +55,10 @@ export function DeleteAccount() {
 
   const owned = summary?.ownedWorkspaces ?? [];
   const joined = summary?.memberWorkspaces ?? [];
-  const canDelete = password.length > 0 && confirm === CONFIRM_WORD && !busy;
+  const canDelete =
+    (summary?.hasPassword ? password.length > 0 : true) &&
+    confirm === CONFIRM_WORD &&
+    !busy;
 
   const remove = async () => {
     if (!token || !canDelete) return;
@@ -154,16 +157,20 @@ export function DeleteAccount() {
                 </div>
               )}
 
-              <div className="space-y-2">
-                <Label htmlFor="da-pw">{t("delete.confirmPassword")}</Label>
-                <Input
-                  id="da-pw"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder={t("delete.yourPassword")}
-                />
-              </div>
+              {/* A social-only account has no password to re-enter, so asking
+                  for one would make it undeletable. */}
+              {summary?.hasPassword && (
+                <div className="space-y-2">
+                  <Label htmlFor="da-pw">{t("delete.confirmPassword")}</Label>
+                  <Input
+                    id="da-pw"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder={t("delete.yourPassword")}
+                  />
+                </div>
+              )}
 
               <div className="space-y-2">
                 {/* Interpolated rather than split into prefix/suffix: the word's

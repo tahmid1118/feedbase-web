@@ -23,6 +23,7 @@ import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/lib/i18n/client";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import { planIntentQuery } from "@/lib/plan-intent";
+import { AuthDivider, GoogleButton } from "@/components/auth/google-button";
 import {
   signupSchema,
   type SignupFormValues,
@@ -146,6 +147,12 @@ export function SignupForm({
         {t("auth.alreadyHaveAccount")}{" "}
         <Link href="/login" className="font-semibold text-[#c74959] hover:text-[#b03f4d]">{t("auth.signInInstead")}</Link>
       </div>
+
+      {/* Google signs up and signs in through the same button — the backend
+          provisions the account on first use. It lands on /onboarding for the
+          same reason an email signup does: a new account has no workspace. */}
+      <GoogleButton label={t("auth.continueWithGoogle")} callbackUrl="/onboarding" />
+      <AuthDivider label={t("auth.orUseEmail")} />
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>

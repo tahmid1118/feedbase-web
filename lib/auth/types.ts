@@ -43,6 +43,36 @@ export interface LoginApiResponse extends ApiMessageResponse {
   user?: LoginApiUser;
 }
 
+/**
+ * Social sign-in. NextAuth has already verified the provider's ID token, so what
+ * we forward is an assertion the backend trusts — which is why `emailVerified`
+ * is part of the contract and not optional: the backend refuses to match an
+ * account by an unverified address.
+ */
+export interface OAuthLoginApiRequest {
+  lg: string;
+  userData: {
+    provider: "google";
+    providerUserId: string;
+    email: string;
+    emailVerified: boolean;
+    fullName?: string;
+    avatarUrl?: string;
+    force?: boolean;
+  };
+}
+
+export interface OAuthLoginInput {
+  provider: "google";
+  providerUserId: string;
+  email: string;
+  emailVerified: boolean;
+  fullName?: string;
+  avatarUrl?: string;
+  force?: boolean;
+  lg?: string;
+}
+
 export interface AdminLoginApiResponse extends ApiMessageResponse {
   admin?: {
     token: string;

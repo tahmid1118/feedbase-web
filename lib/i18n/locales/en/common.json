@@ -319,6 +319,8 @@
     "hidePassword": "Hide password",
     "signingIn": "Signing in...",
     "newToFeedBoard": "New to FeedBoard?",
+    "continueWithGoogle": "Continue with Google",
+    "orUseEmail": "or",
     "createAccount": "Create your account",
     "fullName": "Full name",
     "contact": "Contact",

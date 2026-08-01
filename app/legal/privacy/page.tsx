@@ -59,7 +59,8 @@ export default function PrivacyPage() {
         <p className="font-medium text-[#1c0a0c]">From account holders</p>
         <Bullets
           items={[
-            "Name, email address and password (stored only as a bcrypt hash — we cannot read it).",
+            "Name, email address and password (stored only as a bcrypt hash — we cannot read it). An account created with “Continue with Google” has no password at all until you set one.",
+            "If you sign in with Google: your Google account's identifier, email address, name and profile picture, received from Google at each sign-in. We never receive your Google password, and we ask Google for nothing beyond these basics.",
             "Optional profile details: contact number and profile picture.",
             "Workspace details you create: name, subdomain, logo and brand colour.",
             "Billing status: plan, billing interval, subscription state and current period end. Card details go straight to Paddle and never reach our servers.",
@@ -124,6 +125,7 @@ export default function PrivacyPage() {
             ["Hosting provider", "The servers and database that run the application and store content and uploads."],
             ["Cloudflare", "DNS, TLS and reverse proxy for our domains; bot and abuse protection."],
             ["Email provider", "Delivery of transactional email such as invitations and password resets."],
+            ["Google", "Only if you choose “Continue with Google”: Google authenticates you and tells us your Google account identifier, email, name and picture. Google acts as its own controller for what happens on their side, under their privacy policy. Using this is entirely optional — you can create an account with an email address and password instead."],
           ]}
         />
         <p>
@@ -166,8 +168,8 @@ export default function PrivacyPage() {
           <strong>When you delete your account:</strong> the workspaces you own are
           deleted along with their posts, comments, roadmap and changelog, your
           device sessions are revoked, any live subscription is cancelled, and
-          your billing record, password-reset tokens and pending invitations are
-          erased. Workspaces you only joined are not deleted — content you posted
+          your billing record, password-reset tokens, pending invitations and any
+          social sign-in link are erased. Workspaces you only joined are not deleted — content you posted
           there remains but is no longer attributed to you. Deletion requires your
           password and is irreversible. Backups may retain copies for a short
           period before being overwritten. We may also delete an account on your

@@ -75,9 +75,28 @@ Version 1.2
 --------------------------------------------------------------------------------
 
 3.1 Authentication & Accounts
-    - Email/password authentication using JWT bearer tokens (OAuth-ready).
+    - Email/password authentication using JWT bearer tokens.
     - The session carries the user identity, tenant, and role.
     - Profile management: name, contact, avatar upload, and password change.
+    FR-G1  Google sign-in  A visitor may create an account or sign in with
+                          "Continue with Google", offered on both the sign-in and
+                          sign-up pages alongside the email form. The system
+                          requests only the user's basic profile — identifier,
+                          email address, name and picture — and never receives
+                          their Google password.
+                          Google must report the address as VERIFIED. An
+                          unverified address is refused, because accounts are
+                          matched by email and accepting one would let a person
+                          claim an account that is not theirs.
+                          The Google identity, not the email address, is what
+                          identifies the person on return visits, so changing the
+                          address on their Google account keeps them signed in to
+                          the same FeedBoard account.
+                          A first-time user is created WITHOUT a workspace and
+                          WITHOUT a password, exactly as an email sign-up is, and
+                          continues to workspace creation. Signing in this way
+                          obeys the same single-session rule as a password sign-in
+                          (FR-S1), including the "sign out other devices" option.
     FR-PR1 Password reset  A user who has forgotten their password can request a
                           reset from the sign-in page by entering their email. The
                           system responds identically whether or not the email is
@@ -88,10 +107,18 @@ Version 1.2
                           reused or used after it expires. Completing a reset
                           signs the account out of all devices, so it must be
                           signed in again with the new password.
+                          This flow also serves accounts created through Google,
+                          which have no password: it is how such an account SETS
+                          one. Without it, signing up with Google would be a
+                          one-way door — losing access to the Google account
+                          would mean losing the workspace.
     FR-D1  Delete account  A user may permanently delete their account from
                           Settings. Before anything happens they are shown exactly
                           what will be lost, and must re-enter their password and
-                          type a confirmation word. Workspaces they OWN are deleted
+                          type a confirmation word. An account created through
+                          Google has no password to re-enter, so it is asked only
+                          for the confirmation word — otherwise it could never be
+                          deleted. Workspaces they OWN are deleted
                           with the account (all feedback, roadmap, changelog and
                           member access; any subscription is cancelled), because a
                           workspace has exactly one owner and cannot be

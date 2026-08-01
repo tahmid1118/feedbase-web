@@ -1,11 +1,14 @@
 import { requestJson } from "@/lib/auth/api-client";
 import { AuthApiError } from "@/lib/auth/errors";
 import { resolveAvatarUrl } from "@/lib/avatar";
+import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import type {
   AdminLoginApiResponse,
   LoginApiRequest,
   LoginApiResponse,
   LoginCredentialsInput,
+  OAuthLoginApiRequest,
+  OAuthLoginInput,
   RegisterApiRequest,
   RegisterApiResponse,
   RegisterInput,
@@ -86,6 +89,56 @@ export async function loginAsAdmin(
     isAdmin: true,
     adminId,
     isPlatformAdmin: true,
+  };
+}
+
+/**
+ * Exchange a verified social identity for a FeedBoard session.
+ *
+ * NextAuth owns the provider handshake (state, PKCE, ID-token signature); this
+ * only forwards the result. The backend decides everything that matters —
+ * whether the account exists, whether the email may be matched, and whether the
+ * device limit allows another session — so a 409 surfaces here exactly as it
+ * does for password login.
+ */
+export async function loginWithOAuth(
+  input: OAuthLoginInput
+): Promise<SessionUserProfile | null> {
+  const payload: OAuthLoginApiRequest = {
+    lg: input.lg ?? DEFAULT_LANGUAGE,
+    userData: {
+      provider: input.provider,
+      providerUserId: input.providerUserId,
+      email: input.email,
+      emailVerified: input.emailVerified,
+      ...(input.fullName ? { fullName: input.fullName } : {}),
+      ...(input.avatarUrl ? { avatarUrl: input.avatarUrl } : {}),
+      ...(input.force ? { force: true } : {}),
+    },
+  };
+
+  const response = await requestJson<LoginApiResponse>("/users/oauth/login", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+
+  if (!isSuccess(response.status) || !response.user?.token) {
+    return null;
+  }
+
+  const userId = String(response.user.id);
+
+  return {
+    id: userId,
+    userId,
+    tenantId:
+      response.user.tenantId != null ? String(response.user.tenantId) : null,
+    role: response.user.role ?? null,
+    name: response.user.fullName,
+    email: response.user.email,
+    image: resolveAvatarUrl(response.user.imageUrl) ?? null,
+    accessToken: response.user.token,
+    isPlatformAdmin: Boolean(response.user.isPlatformAdmin),
   };
 }
 

@@ -22,6 +22,8 @@ import { useTranslation } from "@/lib/i18n/client";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import { loginSchema, type LoginFormValues } from "@/lib/auth/schemas";
 import { SIGNIN_ERROR_CODE, signInErrorMessage } from "@/lib/auth/signin-errors";
+import { OAUTH_ERROR, OAUTH_ERROR_PARAM } from "@/lib/auth/oauth";
+import { AuthDivider, GoogleButton } from "@/components/auth/google-button";
 
 const GENERIC_LOGIN_ERROR = "Invalid email or password.";
 
@@ -42,6 +44,9 @@ export function LoginForm() {
   const wasSignedOut = searchParams.get("reason") === "session_ended";
   // Set after a successful password reset redirects here.
   const didResetPassword = searchParams.get("reset") === "success";
+  // A social sign-in that failed. It redirects rather than returning a result,
+  // so the reason comes back in the URL.
+  const oauthError = searchParams.get(OAUTH_ERROR_PARAM);
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -104,6 +109,30 @@ export function LoginForm() {
           {t("auth.createAccount")}
         </Link>
       </div>
+
+      {/* Social sign-in redirects away, so its failures arrive as ?oauth_error=
+          rather than inline. Rendered above the form because that's where the
+          user's attention is when they come back from Google. */}
+      {oauthError && (
+        <div className="space-y-2 rounded-xl border border-[#c74959]/35 bg-[#c74959]/10 px-3 py-2 text-sm text-[#8f2f3b]">
+          <p>
+            {oauthError === OAUTH_ERROR.activeSession
+              ? signInErrorMessage(SIGNIN_ERROR_CODE.activeSession)
+              : oauthError === OAUTH_ERROR.emailUnverified
+                ? "Google hasn't verified that email address, so we can't sign you in with it. Verify it with Google, or sign in with your password below."
+                : "We couldn't complete the Google sign-in. Please try again, or sign in with your password below."}
+          </p>
+          {oauthError === OAUTH_ERROR.activeSession && (
+            <GoogleButton
+              force
+              label="This is me — sign out other devices and continue with Google"
+            />
+          )}
+        </div>
+      )}
+
+      <GoogleButton label={t("auth.continueWithGoogle")} />
+      <AuthDivider label={t("auth.orUseEmail")} />
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit((values) => onSubmit(values))} className="space-y-4" noValidate>

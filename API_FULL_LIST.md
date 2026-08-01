@@ -100,10 +100,17 @@ Sample Response:
 ```
 
 ### POST /users/oauth/login
-The frontend completes the provider handshake (Google/GitHub/Microsoft) and posts the verified identity here. The user is matched by an existing oauth link, then by email within the tenant; otherwise a new user is provisioned. Returns a JWT in the same shape as password login.
+Social sign-in **and** sign-up. The frontend (NextAuth) completes the provider handshake and posts the verified identity here; this endpoint never sees provider credentials. Providers: `google` (live), `facebook` / `github` / `microsoft` (accepted by the enum, not wired in the UI).
+
+- **`emailVerified: true` is REQUIRED** — accounts are matched by email, so an unverified provider address would be an account-takeover route. Rejected with `400 oauth_email_unverified`.
+- Matched first by the existing link on **`(provider, providerUserId)`** — the provider's subject id is the identity, so changing the email on the provider account keeps the same FeedBoard account — then by email.
+- No account yet → a new user is provisioned with **`tenant_id` NULL and no password**, exactly like an email signup; the client then routes to `/onboarding`. There is deliberately **no `tenantId` parameter**: an earlier version defaulted to `1` and would have put every social signup in the first workspace.
+- Enforces the same one-device rule as password login → **`409 already_logged_in_elsewhere`**, and accepts `force: true` as the confirmed takeover.
+
+Returns a JWT in the same shape as password login.
 Sample Body:
 ```json
-{"lg":"en","userData":{"provider":"google","providerUserId":"google-owner-001","email":"owner@acme.test","fullName":"Acme Owner","avatarUrl":"https://lh3.googleusercontent.com/a/abc","tenantId":1}}
+{"lg":"en","userData":{"provider":"google","providerUserId":"104928374651029384756","email":"owner@acme.test","emailVerified":true,"fullName":"Acme Owner","avatarUrl":"https://lh3.googleusercontent.com/a/abc"}}
 ```
 Sample Response:
 ```json
@@ -212,18 +219,18 @@ Sample Response:
 ```
 
 ### POST /users/account/deletion-summary
-What deleting this account would destroy (for the confirmation dialog): owned workspaces are deleted; joined workspaces are retained (the account's posts/comments there become anonymous).
+What deleting this account would destroy (for the confirmation dialog): owned workspaces are deleted; joined workspaces are retained (the account's posts/comments there become anonymous). `hasPassword` is **false** for an account created through social sign-in — the dialog must then hide the password field, since there is no password to re-enter.
 Sample Body:
 ```json
 {"lg":"en"}
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Data fetched successfully","data":{"email":"owner@acme.test","ownedWorkspaces":[{"tenantId":1,"name":"Acme Labs"}],"memberWorkspaces":[{"tenantId":2,"name":"Beta Works"}]}}
+{"status":"success","message":"Data fetched successfully","data":{"email":"owner@acme.test","hasPassword":true,"ownedWorkspaces":[{"tenantId":1,"name":"Acme Labs"}],"memberWorkspaces":[{"tenantId":2,"name":"Beta Works"}]}}
 ```
 
 ### POST /users/account/delete
-Permanently deletes the authenticated account after re-authenticating with the password. Owned workspaces (and their Stripe subscriptions) are deleted; memberships elsewhere are removed. Signs the user out afterward.
+Permanently deletes the authenticated account, re-authenticating with the password **when the account has one**. A social-only account (no `password_hash`) skips that check — requiring a password it never had would make it undeletable — and relies on the typed confirmation word in the UI. Runs the shared `purgeAccount` cascade: owned workspaces and their subscriptions are deleted, memberships elsewhere are removed, and the billing record, sessions, reset tokens, invitations and social sign-in links for the email are cleared. Signs the user out afterward.
 Sample Body:
 ```json
 {"lg":"en","password":"SecurePass123!"}

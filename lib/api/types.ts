@@ -287,6 +287,12 @@ export interface WorkspacesResponse {
 /** What deleting the account would destroy. */
 export interface AccountDeletionSummary {
   email: string;
+  /**
+   * False for an account created through social sign-in, which has no password
+   * to re-enter. The dialog hides the password field for those; the typed
+   * confirmation word is the barrier instead.
+   */
+  hasPassword: boolean;
   ownedWorkspaces: {
     id: number;
     name: string;
