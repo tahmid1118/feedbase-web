@@ -254,6 +254,16 @@ node scripts/backfill-offer-discounts.js --force   # offers: re-mint in the live
 `--force` is required because the rows still hold the *sandbox* discount ids and a
 plain run would skip them. **Promo codes must be re-created in the Admin Panel.**
 
+```bash
+node scripts/clear-stale-paddle-refs.js          # sandbox customers/subscriptions
+```
+
+Customers and subscriptions do not cross environments either. Any account that
+subscribed during sandbox testing still points at a `sub_…` the live account has
+never heard of — it shows a **paid plan while nothing bills**, and every plan
+change fails with *"Subscription not found"*. This verifies each stored id against
+the live API and resets only the accounts whose ids are genuinely gone.
+
 This is a real failure that already happened once in sandbox: the pricing card
 advertised *Pro $5.60/mo* while Paddle billed the full *$10*, because the offers
 predated the discount code and `paddle_discount_id` was NULL. `getActiveOffers`

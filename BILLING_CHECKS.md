@@ -121,9 +121,16 @@ discount (what makes checkout bill it); they drift independently.
   *Bug: production was on a pre-Paddle schema — the scheduler failed every tick
   with `Unknown column 'paddle_subscription_id'` and checkout would have failed
   on the first real customer.*
-- [ ] **After switching `PADDLE_ENV`:** discounts do **not** exist across
-  environments. Run `backfill-offer-discounts.js --force` (plain runs skip rows
-  that still hold sandbox ids) and **re-create promo codes** in the Admin Panel.
+- [ ] **After switching `PADDLE_ENV`:** *nothing* crosses environments — not
+  prices, discounts, customers, or subscriptions.
+  1. `backfill-offer-discounts.js --force` (plain runs skip rows that still hold
+     sandbox ids)
+  2. **Re-create promo codes** in the Admin Panel
+  3. `clear-stale-paddle-refs.js` — accounts that subscribed during sandbox
+     testing still point at a `sub_…` the live account has never heard of.
+     *Bug: two accounts showed a PAID plan with nothing billing them, and every
+     plan change failed with "Subscription not found". reconcile cannot repair it,
+     because the id it looks up does not exist.*
 - [ ] **Boot warnings are clean** — no sandbox key with `PADDLE_ENV=production`,
   no missing `PADDLE_PRICE_*`, no missing `PADDLE_WEBHOOK_SECRET`.
 - [ ] **Webhooks return 200.** The secret is the destination's **Secret key**
