@@ -19,8 +19,17 @@
   --color-muted-foreground: 353 19% 33%;
   --color-accent: 353 60% 64%;
   --color-accent-foreground: 353 47% 7%;
-  --color-destructive: 0 69% 45%;
-  --color-destructive-foreground: 348 56% 98%;
+  /*
+   * Tailwind v4 resolves `@theme` colours as real CSS colour values, so the bare
+   * HSL components used elsewhere in this block produce nothing for utilities
+   * like `bg-destructive/10` or `text-destructive`. That silently disabled every
+   * `variant="destructive"` button in the app — cancel-subscription, delete
+   * account, delete post — which rendered as unstyled black text with no
+   * background, indistinguishable from a disabled label. Wrapped in hsl() so the
+   * destructive utilities actually resolve.
+   */
+  --color-destructive: hsl(0 69% 45%);
+  --color-destructive-foreground: hsl(348 56% 98%);
   --color-border: 352 34% 84%;
   --color-input: 352 34% 84%;
   --color-ring: 352 53% 53%;

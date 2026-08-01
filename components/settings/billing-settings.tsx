@@ -542,8 +542,13 @@ export function BillingSettings() {
                 : t("billing.cancelSubBodyNoDate", { plan: currentPlan?.name ?? "" })}
             </AlertDialogDescription>
           </AlertDialogHeader>
+          {/* "Keep" is the emphasised choice because it's the safe one, but the
+              cancel action stays a full, clearly-labelled button — a greyed-out
+              or hidden cancel would be a dark pattern, not a design. */}
           <AlertDialogFooter>
-            <AlertDialogCancel>{t("billing.keepSubscription")}</AlertDialogCancel>
+            <AlertDialogCancel className="bg-[#c74959] text-white hover:bg-[#b03f4d] hover:text-white">
+              {t("billing.keepSubscription")}
+            </AlertDialogCancel>
             <AlertDialogAction
               variant="destructive"
               onClick={cancelSub}
