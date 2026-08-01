@@ -24,15 +24,26 @@ export default function PrivacyPage() {
       <Clause n={1} heading="Who is responsible for your data">
         <p>
           <Fill value={legal.entity} label="registered legal entity" />
-          {legal.address ? `, ${legal.address}` : (
-            <>
-              , <Fill value={legal.address} label="registered address" />
-            </>
-          )}{" "}
-          is the controller for personal data about{" "}
+          {legal.address ? `, ${legal.address},` : ""} a sole proprietorship
+          established in{" "}
+          <Fill value={legal.jurisdiction} label="governing jurisdiction" />, is
+          the controller for personal data about{" "}
           <strong>account holders</strong> — the people who sign up, own or join a
           workspace, and pay us.
         </p>
+        {!legal.address && (
+          <p>
+            We are a small independent business without public premises, so we do
+            not publish a street address. Our postal address is available on
+            request: email{" "}
+            <a className="underline" href={`mailto:${legal.contactEmail}`}>
+              {legal.contactEmail}
+            </a>{" "}
+            and we will provide it. Purchases are sold by our payment provider as
+            merchant of record, and their trader details are shown at checkout and
+            on your receipt.
+          </p>
+        )}
         <p>
           For content posted on a <strong>customer&rsquo;s public board</strong>{" "}
           (posts, comments, votes, submitter emails), the{" "}

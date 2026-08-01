@@ -1,10 +1,13 @@
 /**
  * Single source of truth for the legal pages (/legal/*).
  *
- * ⚠ FILL THESE IN BEFORE YOU TAKE PAYMENTS. The policies are written around what
- * the product actually does, but the four values marked TODO are facts only you
- * know. Anything left blank renders as a visible `[ADD: …]` marker on the page so
- * it cannot ship unnoticed.
+ * The policies are written around what the product actually does; the values
+ * here are the facts only the operator knows. A blank `entity`, `jurisdiction`
+ * or `courts` renders as a visible `[ADD: …]` marker on the page so an
+ * unfinished document cannot ship unnoticed.
+ *
+ * `address` is the exception — blank there is a deliberate choice (see below),
+ * not an omission, and renders as "available on request" rather than a marker.
  *
  * These documents are a solid, accurate starting point — not legal advice. Have a
  * lawyer in your jurisdiction review them before launch, particularly the
@@ -15,11 +18,32 @@ export const legal = {
   /** Product name as used throughout the documents. */
   product: "FeedBoard",
 
-  /** The legal entity that contracts with customers (sole proprietor). */
-  entity: "Tahmid Shahriar Bhuiyan",
+  /**
+   * The entity that contracts with customers — the trading name of a sole
+   * proprietorship, deliberately not the proprietor's personal name.
+   *
+   * This is the minimum an identifiable controller can be under GDPR Art. 13:
+   * a named operator, a jurisdiction, and a contact route that reaches a human.
+   * It works here because **Paddle is the merchant of record** — the purchase
+   * contract is with Paddle, who publishes their own trader details at
+   * checkout and holds full verified identity for this business. If you ever
+   * sell direct (BILLING_PROVIDER=stripe), you become the trader yourself and
+   * EU consumer law wants a real geographic address again — revisit this then.
+   */
+  entity: "FeedBoard",
 
-  /** Registered business address (required for EU/UK consumer sales). */
-  address: "House A-1/7, Block A, NS Road, Banasree, Rampura, Dhaka 1219, Bangladesh",
+  /**
+   * Publicly displayed postal address. Deliberately EMPTY.
+   *
+   * This is a sole proprietorship run from a residential address, and putting a
+   * home address on a public page is a personal-safety problem rather than a
+   * compliance win. Empty is a VALID, intentional state here — not an unfilled
+   * placeholder: the pages render "available on request" and route people to
+   * `contactEmail`, which is a real obligation, so the address must actually be
+   * supplied when someone asks. Set this string the moment a registered
+   * business or virtual office address exists, and the pages print it instead.
+   */
+  address: "",
 
   /** Country whose law governs the terms. */
   jurisdiction: "Bangladesh",
@@ -34,7 +58,7 @@ export const legal = {
   privacyEmail: "privacy@feedboardapp.com",
 
   /** Shown as "Last updated" on every page. Bump when you change the text. */
-  lastUpdated: "1 August 2026",
+  lastUpdated: "2 August 2026",
 } as const;
 
 /** The four documents, in the order they appear in the switcher. */

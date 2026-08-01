@@ -24,15 +24,26 @@ export default function TermsPage() {
         <p>
           {legal.product} is operated by{" "}
           <Fill value={legal.entity} label="registered legal entity" />
-          {legal.address ? `, ${legal.address}` : (
-            <>
-              , <Fill value={legal.address} label="registered address" />
-            </>
-          )}{" "}
+          {legal.address ? `, ${legal.address},` : ""} a sole proprietorship
+          established in{" "}
+          <Fill value={legal.jurisdiction} label="governing jurisdiction" />{" "}
           (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By creating an account, using a
           workspace, or posting on a public board, you agree to these terms. If
           you are agreeing on behalf of a company, you confirm you may bind it.
         </p>
+        {!legal.address && (
+          <p>
+            We do not publish a street address. Our postal address is available on
+            request — email{" "}
+            <a className="underline" href={`mailto:${legal.contactEmail}`}>
+              {legal.contactEmail}
+            </a>
+            . Subscriptions are sold by our payment provider acting as{" "}
+            <strong>merchant of record</strong>: your purchase contract for the
+            payment itself is with them, and their trader details and address
+            appear at checkout and on every receipt.
+          </p>
+        )}
         <p>
           If you do not agree, do not use the service. These terms sit alongside
           our{" "}
