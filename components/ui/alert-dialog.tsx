@@ -58,7 +58,12 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 overflow-hidden rounded-2xl border border-white/70 bg-gradient-to-b from-white to-[#fdf8f9] p-4 text-[#1c0a0c] shadow-[0_30px_80px_-24px_rgba(28,10,12,0.5)] ring-1 ring-[#e399a3]/30 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          // Same fix as DialogContent: fixed + transform-centered with no
+          // height cap meant a tall alert dialog (e.g. delete-account, which
+          // lists owned workspaces and billing state above its own
+          // password/confirm fields) could have its top pushed off-screen and
+          // unreachable — overflow-hidden clips rather than scrolls.
+          "group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid max-h-[calc(100%-2rem)] w-full -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-2xl border border-white/70 bg-gradient-to-b from-white to-[#fdf8f9] p-4 text-[#1c0a0c] shadow-[0_30px_80px_-24px_rgba(28,10,12,0.5)] ring-1 ring-[#e399a3]/30 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}

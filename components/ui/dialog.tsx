@@ -61,7 +61,14 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 overflow-hidden rounded-2xl border border-white/70 bg-gradient-to-b from-white to-[#fdf8f9] p-4 text-sm text-[#1c0a0c] shadow-[0_30px_80px_-24px_rgba(28,10,12,0.5)] ring-1 ring-[#e399a3]/30 duration-100 outline-none sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          // max-h + overflow-y-auto: this is `position: fixed` and centered by
+          // transform, not top-anchored, so a form taller than the viewport
+          // (e.g. the portal feedback dialog with attachments + name/email)
+          // had its top edge pushed off-screen with no way to scroll to it —
+          // `overflow-hidden` clips rather than scrolls. Capped to the same
+          // 2rem margin the width already uses, so it never touches the
+          // viewport edge.
+          "fixed top-1/2 left-1/2 z-50 grid max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 overflow-y-auto rounded-2xl border border-white/70 bg-gradient-to-b from-white to-[#fdf8f9] p-4 text-sm text-[#1c0a0c] shadow-[0_30px_80px_-24px_rgba(28,10,12,0.5)] ring-1 ring-[#e399a3]/30 duration-100 outline-none sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}

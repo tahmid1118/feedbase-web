@@ -402,7 +402,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
       {/* Bulk selection / send-to-roadmap bar (Open tab only) */}
       {selectionEnabled && !loading && visiblePosts.length > 0 && (
-        <div className="flex items-center justify-between rounded-lg border border-[#e399a3]/20 bg-white px-3 py-2">
+        <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-[#e399a3]/20 bg-white px-3 py-2">
           <label className="flex cursor-pointer items-center gap-2 text-sm font-medium text-[#1c0a0c]/70">
             <Checkbox
               checked={allSelected}
@@ -413,8 +413,12 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             {selectedCount > 0 ? t("feedback.nSelected", { count: selectedCount }) : t("feedback.selectAll")}
           </label>
 
+          {/* flex-wrap: on a narrow phone, "Clear" + "Reject" + "Send to
+              Roadmap" together are wider than the bar. They previously ran
+              off the right edge of the screen with no way to reach them —
+              wrapping onto a second line keeps every action reachable. */}
           {selectedCount > 0 && (
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <Button variant="ghost" size="sm" onClick={clearSelection}>
                 {t("common.clear")}
               </Button>

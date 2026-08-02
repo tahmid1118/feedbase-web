@@ -59,16 +59,17 @@ export default async function PortalLayout({
         </div>
       </a>
 
+      {/* Brand + language only. The Board/Changelog nav used to live here too,
+          which on a phone forced a third wrapped row (logo, then language,
+          then a full-width nav row) before any of the tenant's own content —
+          the growth bar above it already costs ~130px, so the header alone
+          could push "Feedback Board" a full screen down. Two items always fit
+          one row (the name truncates), so this needs no wrap/order juggling. */}
       <header className="border-b border-black/5 bg-white">
-        {/* Brand, nav and the language control did not fit one row on a phone:
-            the workspace name ran straight into the "Board" pill and the selector
-            was pushed off the edge. `flex-wrap` + `w-full` on the nav gives the
-            tabs their own line below the brand on mobile, and `order-*` puts them
-            back between the brand and the selector from sm up. */}
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 sm:flex-nowrap sm:justify-between sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
           <Link
             href={`/portal/${decodeURIComponent(tenant)}`}
-            className="order-1 flex min-w-0 flex-1 items-center gap-2 sm:flex-initial sm:gap-3"
+            className="flex min-w-0 flex-1 items-center gap-2 sm:flex-initial sm:gap-3"
           >
             <span className="shrink-0">
               <PortalLogo
@@ -84,18 +85,21 @@ export default async function PortalLayout({
 
           {/* Visitors are the tenant's own users, so they get their own language
               control — the dashboard navbar isn't shown here. */}
-          <div className="order-2 shrink-0 sm:order-3">
+          <div className="shrink-0">
             <LanguageSelector iconColor={brand} className="border-black/10" />
-          </div>
-
-          <div className="order-3 -mx-1 w-full overflow-x-auto px-1 sm:order-2 sm:mx-0 sm:w-auto sm:overflow-visible sm:px-0">
-            <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
           </div>
         </div>
       </header>
 
       {/* flex-1 pushes the footer to the bottom of the viewport on short pages. */}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">{children}</main>
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
+        {/* The Board/Changelog nav now lives in the page body, above the page's
+            own heading, instead of in the header chrome above the fold. */}
+        <div className="-mx-1 mb-4 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+          <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
+        </div>
+        {children}
+      </main>
 
       <footer className="mt-auto border-t border-black/5 bg-white">
         {/* The "get your own board" promo lives ONLY in the top bar now — it
