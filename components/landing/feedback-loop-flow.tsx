@@ -263,32 +263,31 @@ export function FeedbackLoopFlow() {
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         {/* Header */}
         <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+          {/* Bare mono eyebrow, matching the landing page's other section
+              openers. The outlined pill this replaced was the same badge-with-
+              an-icon pattern the hero used to have. */}
           <div
+            className="font-mono"
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "6px 14px",
-              border: "1px solid rgba(227,153,163,.55)",
-              background: "#fff",
-              borderRadius: 999,
-              fontSize: 12,
-              fontWeight: 600,
-              letterSpacing: ".16em",
+              fontSize: 11,
+              fontWeight: 500,
+              letterSpacing: ".18em",
               color: "#c74959",
               textTransform: "uppercase",
             }}
           >
-            <Icon id="iconLoop" size={14} color="#c74959" />
             {t("landing.how.eyebrow")}
           </div>
+          {/* font-display: this section is self-contained but sits inside the
+              landing page, and a second heading typeface on one page reads as
+              an accident rather than a choice. */}
           <h2
+            className="font-display"
             style={{
-              margin: "20px 0 0",
+              margin: "18px 0 0",
               fontSize: "clamp(30px,5vw,54px)",
-              fontWeight: 700,
-              lineHeight: 1.04,
-              letterSpacing: "-.02em",
+              fontWeight: 600,
+              lineHeight: 1.06,
               textWrap: "balance",
             }}
           >

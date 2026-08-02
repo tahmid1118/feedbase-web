@@ -43,6 +43,10 @@
      across the whole app (dialogs, cards, page titles all match). */
   --font-heading: var(--font-brand-sans);
   --font-sans: var(--font-brand-sans);
+  /* Marketing display face. Deliberately NOT wired into --font-heading: the
+     app's product surfaces (dashboard, portal, dialogs) stay on one family, and
+     only the landing page opts in via `font-display`. */
+  --font-display: var(--font-brand-display);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -176,4 +180,62 @@ body {
 
 .auth-reveal {
   animation: auth-reveal 420ms cubic-bezier(0.18, 0.8, 0.32, 1) both;
+}
+
+/* ── Landing page ─────────────────────────────────────────────────────────
+   Scoped to the marketing surface. Everything here is `lp-` prefixed so it
+   can't leak into the product UI. */
+
+/* Fraunces' WONK axis swaps in the quirkier letterforms and SOFT rounds the
+   terminals — together they keep the serif warm instead of the neutral,
+   high-contrast display serif that every generated landing page uses. Applied
+   here rather than via next/font `axes` so a font build without these axes
+   degrades silently instead of failing. */
+.font-display {
+  font-variation-settings: "SOFT" 24, "WONK" 1, "opsz" 96;
+  letter-spacing: -0.02em;
+}
+
+/* The hero's request card walks through its own lifecycle once on load. Each
+   stamp lands 900ms apart (see request-lifecycle.tsx), so the delay is applied
+   inline per row rather than with a nth-child ladder here. */
+@keyframes lp-stamp-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(-6px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.lp-stamp-in {
+  animation: lp-stamp-in 380ms cubic-bezier(0.18, 0.8, 0.32, 1) both;
+}
+
+/* The connector between stamps draws downward as each stage lands. */
+@keyframes lp-thread {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.lp-thread {
+  transform-origin: top;
+  animation: lp-thread 380ms cubic-bezier(0.18, 0.8, 0.32, 1) both;
+}
+
+/* Motion is decoration here: the card reads correctly in its final state, so
+   under reduced-motion we simply show that. */
+@media (prefers-reduced-motion: reduce) {
+  .auth-float-slow,
+  .auth-reveal,
+  .lp-stamp-in,
+  .lp-thread {
+    animation: none;
+  }
 }

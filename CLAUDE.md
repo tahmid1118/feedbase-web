@@ -220,7 +220,11 @@ Toasts use `sonner` — `import { toast } from "sonner"`. Roadmap drag-and-drop 
 Brand colors:
 - Primary: `#c74959` (rose) · Secondary: `#da6a78` · Accent/border: `#e399a3` · Background: `#fdf8f9` · Text: `#1c0a0c`
 
-Typography: **one family everywhere — Sora (sans).** `--font-heading` is remapped to the sans family in `globals.css`, so `font-heading` titles match body text. Mono (JetBrains) is reserved for code / API keys.
+Typography: **one family across the product — Sora (sans).** `--font-heading` is remapped to the sans family in `globals.css`, so `font-heading` titles match body text. Mono (JetBrains) is reserved for code / API keys.
+
+- **The marketing landing page is the one deliberate exception.** `app/page.tsx` (and the `FeedbackLoopFlow` heading inside it) set headlines in **Fraunces** via the `font-display` utility → `--font-display` → `--font-brand-display` (loaded in `app/layout.tsx`). It is **not** wired into `--font-heading`, so the dashboard, portal and dialogs are untouched: a product UI wants one voice, a marketing page needs a second or it reads as a template. The `.font-display` class in `globals.css` also sets `font-variation-settings` for Fraunces' `SOFT`/`WONK`/`opsz` axes — that's what keeps it warm rather than the neutral high-contrast serif every generated landing page uses. Don't apply `font-display` to product surfaces.
+- **Landing-only colour**: evergreen `#2f6b53` marks *shipped* in the hero's `RequestLifecycle` and nowhere else in the app. It's the single cool note in the warm palette, which is what makes the status sequence read as a system rather than decoration. The rest of the page is the standard rose set.
+- **Landing motion budget is one orchestrated moment** — the hero's `components/landing/request-lifecycle.tsx`, where a single request walks Open → Planned → In Progress → Shipped and stamps a trail. There are deliberately **no** scroll-reveal or lift-on-hover effects elsewhere on the page; scattered micro-animation is a large part of what makes a page read as generated. `lp-`-prefixed keyframes in `globals.css` are scoped to this surface and are disabled under `prefers-reduced-motion` (the component then jumps straight to the resolved state, which is the one that carries the meaning).
 
 Conventions:
 - Dialogs & alert-dialogs are glossy white (white→`#fdf8f9` gradient, soft shadow, rose ring); backdrop is `bg-[#1c0a0c]/30` blurred. `Select` dropdowns default to `position="popper"`.

@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, MessageSquarePlus, Sparkles, ThumbsUp, Users, Vote } from "lucide-react";
+import { ArrowRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, MessageSquarePlus, Users, Vote } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -7,11 +7,39 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
+import { RequestLifecycle } from "@/components/landing/request-lifecycle";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 import { officialBoardUrl } from "@/lib/official-board";
 import { legalHref, legalPages } from "@/lib/legal";
+
+/**
+ * Marketing landing page.
+ *
+ * Design notes, because this page deliberately breaks the app's own house
+ * style in two places:
+ *
+ *  - It is the ONLY surface that uses the Fraunces display face (`font-display`).
+ *    The product UI stays on a single family; a marketing page needs a second,
+ *    contrasting voice or it reads as a template.
+ *  - Evergreen (#2f6b53) appears here and nowhere else, used strictly for
+ *    "shipped". It's the one cool note in a warm palette, which is what makes
+ *    the status system feel like a system rather than decoration.
+ *
+ * Motion budget is one orchestrated moment — the hero's RequestLifecycle. No
+ * scroll-triggered reveals and no lift-on-hover across every card; that scatter
+ * is most of what makes a generated page feel generated.
+ */
+
+/** Small caps label used to open a section. Mono, so it reads as metadata. */
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="font-mono text-[11px] font-medium tracking-[0.18em] text-[#c74959] uppercase">
+      {children}
+    </span>
+  );
+}
 
 export default async function HomePage() {
   const session = await auth();
@@ -21,59 +49,81 @@ export default async function HomePage() {
     redirect("/dashboard");
   }
 
-  // Mock feedback cards floating in the hero — a miniature of the real board.
-  const mockPosts = [
-    { title: t("landing.mock.post1"), votes: 128, statusKey: "status.planned", badge: "bg-purple-100 text-purple-700", tilt: "-rotate-2" },
-    { title: t("landing.mock.post2"), votes: 96, statusKey: "status.in_progress", badge: "bg-yellow-100 text-yellow-700", tilt: "rotate-1" },
-    { title: t("landing.mock.post3"), votes: 74, statusKey: "status.completed", badge: "bg-green-100 text-green-700", tilt: "-rotate-1" },
-  ];
-
   // "Works for anything people use" — the use-case chips.
   const useCases = [
-    { emoji: "💻", key: "landing.uses.saas" },
-    { emoji: "📱", key: "landing.uses.mobile" },
-    { emoji: "🛍️", key: "landing.uses.ecommerce" },
-    { emoji: "🎮", key: "landing.uses.games" },
-    { emoji: "🏢", key: "landing.uses.agencies" },
-    { emoji: "🔧", key: "landing.uses.hardware" },
-    { emoji: "🤝", key: "landing.uses.services" },
-    { emoji: "🌐", key: "landing.uses.communities" },
+    { key: "landing.uses.saas" },
+    { key: "landing.uses.mobile" },
+    { key: "landing.uses.ecommerce" },
+    { key: "landing.uses.games" },
+    { key: "landing.uses.agencies" },
+    { key: "landing.uses.hardware" },
+    { key: "landing.uses.services" },
+    { key: "landing.uses.communities" },
+  ];
+
+  const facts = [
+    { value: t("landing.facts.launchValue"), label: t("landing.facts.launchLabel") },
+    { value: t("landing.facts.langValue"), label: t("landing.facts.langLabel") },
+    { value: t("landing.facts.priceValue"), label: t("landing.facts.priceLabel") },
+    { value: t("landing.facts.postsValue"), label: t("landing.facts.postsLabel") },
+  ];
+
+  const features = [
+    { icon: MessageSquare, title: t("landing.features.collection.title"), desc: t("landing.features.collection.desc") },
+    { icon: Vote, title: t("landing.features.voting.title"), desc: t("landing.features.voting.desc") },
+    { icon: GitBranch, title: t("landing.features.roadmap.title"), desc: t("landing.features.roadmap.desc") },
+    { icon: Camera, title: t("landing.features.attachments.title"), desc: t("landing.features.attachments.desc") },
+    { icon: Globe, title: t("landing.features.languages.title"), desc: t("landing.features.languages.desc") },
+    { icon: Users, title: t("landing.features.multitenant.title"), desc: t("landing.features.multitenant.desc") },
+  ];
+
+  const benefits = [
+    { icon: MessageSquare, title: t("landing.benefits.hearTitle"), desc: t("landing.benefits.hearDesc") },
+    { icon: BarChart3, title: t("landing.benefits.decideTitle"), desc: t("landing.benefits.decideDesc") },
+    { icon: CheckCircle2, title: t("landing.benefits.showTitle"), desc: t("landing.benefits.showDesc") },
+  ];
+
+  const types = [
+    { type: "feature_request" as const, label: t("type.feature_request"), desc: t("landing.types.featureDesc") },
+    { type: "bug_report" as const, label: t("type.bug_report"), desc: t("landing.types.bugDesc") },
+    { type: "feedback" as const, label: t("type.feedback"), desc: t("landing.types.feedbackDesc") },
   ];
 
   return (
     <div className="min-h-screen bg-[#fdf8f9]">
-      {/* Navigation */}
-      <nav className="border-b border-[#e399a3]/20 bg-white/60 backdrop-blur-md">
+      {/* ── Nav ─────────────────────────────────────────────────────────── */}
+      <nav className="sticky top-0 z-50 border-b border-[#e399a3]/25 bg-[#fdf8f9]/85 backdrop-blur-md">
         {/* Four items plus a wordmark do not fit a 360px viewport: the row grew
             wider than the screen, which is what made the whole landing page
             scroll sideways. Everything below shrinks rather than overflows. */}
-        <div className="container mx-auto flex h-16 items-center justify-between gap-2 px-4 sm:gap-3">
-          <Link href="/" className="flex min-w-0 items-center gap-2">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-5 sm:gap-3 lg:px-8">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5">
             <Logo className="h-8 w-8 shrink-0" />
             {/* The rose mark carries the brand on a phone; the wordmark is the
-                single most expensive item in the row (~105px), so it returns as
-                soon as there is room for it. */}
-            <span className="hidden truncate text-xl font-bold text-[#1c0a0c] min-[420px]:inline">
+                single most expensive item in the row, so it returns as soon as
+                there is room for it. */}
+            <span className="hidden truncate font-display text-xl font-semibold text-[#1c0a0c] min-[420px]:inline">
               FeedBoard
             </span>
           </Link>
-          <div className="flex shrink-0 items-center gap-1 sm:gap-3">
+
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
             <LanguageSelector />
             <Link href="/pricing" className="hidden sm:block">
-              <Button variant="ghost" className="text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]">
+              <Button variant="ghost" className="text-[#1c0a0c]/75 hover:bg-[#c74959]/8 hover:text-[#c74959]">
                 {t("nav.pricing")}
               </Button>
             </Link>
             <Link href="/login">
               <Button
                 variant="ghost"
-                className="px-2 text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959] sm:px-4"
+                className="px-2 text-[#1c0a0c]/75 hover:bg-[#c74959]/8 hover:text-[#c74959] sm:px-4"
               >
                 {t("nav.signIn")}
               </Button>
             </Link>
             <Link href="/signup">
-              <Button className="px-3 bg-[#c74959] text-white hover:bg-[#b03f4d] sm:px-4">
+              <Button className="bg-[#c74959] px-3 text-white hover:bg-[#b03f4d] sm:px-4">
                 {t("nav.getStarted")}
               </Button>
             </Link>
@@ -81,288 +131,262 @@ export default async function HomePage() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        {/* Decorative gradient blobs */}
-        <div aria-hidden className="pointer-events-none absolute -left-32 top-8 h-80 w-80 rounded-full bg-[#c74959]/10 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -right-24 top-40 h-96 w-96 rounded-full bg-[#da6a78]/15 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-[#e399a3]/20 blur-3xl" />
+      {/* ── Hero ────────────────────────────────────────────────────────── */}
+      {/* Asymmetric: the argument on the left, the artifact on the right. The
+          old centred stack with three blur blobs behind it was the single most
+          template-looking thing on the page. */}
+      <section className="mx-auto max-w-6xl px-5 pt-14 pb-16 lg:px-8 lg:pt-24 lg:pb-24">
+        {/* min-w-0 on both cells: grid children default to min-width:auto, so a
+            long unbreakable word in either column can force the whole page
+            wider than the viewport instead of wrapping. */}
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          <div className="min-w-0">
+            <Eyebrow>{t("landing.hero.badge")}</Eyebrow>
 
-        <div className="container relative mx-auto px-4 pb-12 pt-12 text-center sm:pb-14 sm:pt-20">
-          <div className="mx-auto max-w-4xl space-y-6 sm:space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#c74959]/20 bg-white/80 px-3 py-1.5 text-xs text-[#c74959] shadow-sm sm:px-4 sm:py-2 sm:text-sm">
-              <Sparkles className="h-4 w-4 shrink-0" />
-              <span>{t("landing.hero.badge")}</span>
-            </div>
-
-            {/* 48px type wrapped this headline onto five lines on a phone and
-                pushed the CTAs below the fold. */}
-            <h1 className="text-4xl font-bold leading-tight text-[#1c0a0c] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-semibold text-balance text-[#1c0a0c] sm:text-6xl lg:text-[4.1rem]">
               {t("landing.hero.titleLead")}{" "}
-              <span className="bg-gradient-to-r from-[#c74959] to-[#da6a78] bg-clip-text text-transparent">
+              <span className="text-[#8f2f3b] italic">
                 {t("landing.hero.titleHighlight")}
               </span>
             </h1>
 
-            <p className="mx-auto max-w-2xl text-lg text-[#1c0a0c]/70 sm:text-xl">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#1c0a0c]/65">
               {t("landing.hero.subtitle")}
             </p>
 
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/signup">
-                <Button size="lg" className="h-12 bg-[#c74959] px-8 text-base text-white shadow-lg shadow-[#c74959]/25 transition-transform hover:-translate-y-0.5 hover:bg-[#b03f4d]">
+            {/* items-start so the secondary link sits on the left margin with
+                everything else on mobile. Stretching it full-width centred its
+                label, which was the one thing fighting the left-aligned grid. */}
+            <div className="mt-9 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
+              <Link href="/signup" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="h-12 w-full bg-[#c74959] px-7 text-base text-white shadow-lg shadow-[#c74959]/20 hover:bg-[#b03f4d] sm:w-auto"
+                >
                   {t("landing.hero.startTrial")}
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Button>
               </Link>
               {/* Our own feedback board doubles as the live demo. */}
               <a href={officialBoardUrl()}>
-                <Button size="lg" variant="outline" className="h-12 border-[#c74959] bg-transparent px-8 text-base text-[#c74959] hover:bg-[#c74959] hover:text-white">
+                <Button
+                  size="lg"
+                  variant="ghost"
+                  className="h-12 px-3 text-base text-[#1c0a0c]/75 underline-offset-4 hover:bg-transparent hover:text-[#c74959] hover:underline sm:px-5"
+                >
                   {t("landing.hero.seeLive")}
                 </Button>
               </a>
             </div>
+
+            <p className="mt-5 font-mono text-xs tracking-wide text-[#1c0a0c]/40">
+              {t("landing.flow.noAccount")} · {t("landing.facts.priceValue")}{" "}
+              {t("landing.facts.priceLabel")}
+            </p>
           </div>
 
-          {/* Miniature board — three floating post cards */}
-          <div className="mx-auto mt-16 flex max-w-3xl flex-col items-stretch justify-center gap-4 sm:flex-row">
-            {mockPosts.map((post) => (
-              <div
-                key={post.statusKey}
-                className={`flex flex-1 flex-col gap-3 rounded-2xl border border-[#e399a3]/30 bg-white p-4 text-left shadow-lg shadow-[#c74959]/5 transition-transform duration-300 hover:-translate-y-2 hover:rotate-0 ${post.tilt}`}
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-semibold text-[#1c0a0c]">{post.title}</span>
-                  <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ${post.badge}`}>
-                    {t(post.statusKey)}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs text-[#1c0a0c]/60">
-                  <span className="inline-flex items-center gap-1 rounded-lg border border-[#e399a3]/40 px-2 py-1 font-semibold text-[#c74959]">
-                    <ThumbsUp className="h-3 w-3" /> {post.votes}
-                  </span>
-                  <MessageSquare className="ml-1 h-3 w-3" /> {12 + post.votes % 9}
-                </div>
-              </div>
-            ))}
+          <div className="flex min-w-0 justify-center lg:justify-end">
+            <RequestLifecycle />
           </div>
         </div>
       </section>
 
-      {/* Use cases — any product */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="mb-8 text-center">
-          <h2 className="mb-2 text-3xl font-bold text-[#1c0a0c]">{t("landing.uses.heading")}</h2>
-          <p className="text-lg text-[#1c0a0c]/70">{t("landing.uses.subheading")}</p>
-        </div>
-        <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
-          {useCases.map((u) => (
-            <span
-              key={u.key}
-              className="inline-flex items-center gap-2 rounded-full border border-[#e399a3]/40 bg-white px-4 py-2 text-sm font-medium text-[#1c0a0c]/80 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#c74959]/50 hover:text-[#c74959]"
-            >
-              <span>{u.emoji}</span> {t(u.key)}
-            </span>
+      {/* ── Facts ledger ────────────────────────────────────────────────── */}
+      {/* Was a full-bleed rose gradient band with four huge white numbers. A
+          quiet hairline row reads as fact rather than as a billboard. */}
+      <section className="border-y border-[#e399a3]/30 bg-white">
+        {/* No vertical rules between cells: the gap and the type hierarchy
+            already separate them, and four more hairlines here fought the
+            section borders above and below. */}
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-5 py-12 sm:gap-x-8 lg:grid-cols-4 lg:px-8">
+          {facts.map((f) => (
+            <div key={f.label} className="min-w-0">
+              {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
+                  not fit a half-width column on a 360px screen, and one
+                  overflowing word makes the whole page scroll sideways. */}
+              <div className="font-display text-2xl leading-none font-semibold break-words text-[#1c0a0c] sm:text-3xl lg:text-4xl">
+                {f.value}
+              </div>
+              <div className="mt-2 text-sm leading-snug text-[#1c0a0c]/55">
+                {f.label}
+              </div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Benefits — how you win, in three words */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-8 text-center transition-all hover:-translate-y-1 hover:border-[#c74959]/40 hover:shadow-xl hover:shadow-[#c74959]/5">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c74959]/10 text-[#c74959]">
-              <MessageSquare className="h-7 w-7" />
+      {/* ── Benefits ────────────────────────────────────────────────────── */}
+      {/* Three claims, no card chrome. Rule + type does the separating. */}
+      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="grid gap-x-12 gap-y-10 md:grid-cols-3">
+          {benefits.map((b) => (
+            <div key={b.title} className="border-t border-[#1c0a0c]/12 pt-6">
+              <b.icon className="h-5 w-5 text-[#c74959]" strokeWidth={1.75} />
+              <h3 className="mt-4 font-display text-2xl leading-tight font-semibold text-[#1c0a0c]">
+                {b.title}
+              </h3>
+              <p className="mt-2.5 leading-relaxed text-[#1c0a0c]/65">{b.desc}</p>
             </div>
-            <h3 className="mb-2 text-2xl font-bold text-[#1c0a0c]">{t("landing.benefits.hearTitle")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.benefits.hearDesc")}</p>
-          </div>
-          <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-8 text-center transition-all hover:-translate-y-1 hover:border-[#c74959]/40 hover:shadow-xl hover:shadow-[#c74959]/5">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#da6a78]/10 text-[#da6a78]">
-              <BarChart3 className="h-7 w-7" />
-            </div>
-            <h3 className="mb-2 text-2xl font-bold text-[#1c0a0c]">{t("landing.benefits.decideTitle")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.benefits.decideDesc")}</p>
-          </div>
-          <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-8 text-center transition-all hover:-translate-y-1 hover:border-[#c74959]/40 hover:shadow-xl hover:shadow-[#c74959]/5">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e399a3]/20 text-[#c74959]">
-              <CheckCircle2 className="h-7 w-7" />
-            </div>
-            <h3 className="mb-2 text-2xl font-bold text-[#1c0a0c]">{t("landing.benefits.showTitle")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.benefits.showDesc")}</p>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Honest facts strip (replaces the invented stats) */}
-      <section className="border-y border-[#e399a3]/20 bg-gradient-to-r from-[#c74959] to-[#da6a78] py-14">
-        <div className="container mx-auto px-4">
-          <div className="grid gap-8 text-center sm:grid-cols-2 md:grid-cols-4">
-            <div>
-              <div className="mb-1 text-4xl font-bold text-white">{t("landing.facts.launchValue")}</div>
-              <div className="text-white/90">{t("landing.facts.launchLabel")}</div>
-            </div>
-            <div>
-              <div className="mb-1 text-4xl font-bold text-white">{t("landing.facts.langValue")}</div>
-              <div className="text-white/90">{t("landing.facts.langLabel")}</div>
-            </div>
-            <div>
-              <div className="mb-1 text-4xl font-bold text-white">{t("landing.facts.priceValue")}</div>
-              <div className="text-white/90">{t("landing.facts.priceLabel")}</div>
-            </div>
-            <div>
-              <div className="mb-1 text-4xl font-bold text-white">{t("landing.facts.postsValue")}</div>
-              <div className="text-white/90">{t("landing.facts.postsLabel")}</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">{t("landing.features.heading")}</h2>
-          <p className="text-lg text-[#1c0a0c]/70">{t("landing.features.subheading")}</p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className="group rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#c74959]/40 hover:shadow-lg">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#c74959]/10 text-[#c74959]">
-              <MessageSquare className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.features.collection.title")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.features.collection.desc")}</p>
-          </div>
-
-          <div className="group rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#da6a78]/40 hover:shadow-lg">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#da6a78]/10 text-[#da6a78]">
-              <Vote className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.features.voting.title")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.features.voting.desc")}</p>
-          </div>
-
-          <div className="group rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#c74959]/40 hover:shadow-lg">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#e399a3]/20 text-[#c74959]">
-              <GitBranch className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.features.roadmap.title")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.features.roadmap.desc")}</p>
-          </div>
-
-          <div className="group rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#da6a78]/40 hover:shadow-lg">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#da6a78]/10 text-[#da6a78]">
-              <Camera className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.features.attachments.title")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.features.attachments.desc")}</p>
-          </div>
-
-          <div className="group rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#c74959]/40 hover:shadow-lg">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#c74959]/10 text-[#c74959]">
-              <Globe className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.features.languages.title")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.features.languages.desc")}</p>
-          </div>
-
-          <div className="group rounded-2xl border border-[#e399a3]/20 bg-white p-6 transition-all hover:-translate-y-1 hover:border-[#da6a78]/40 hover:shadow-lg">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#e399a3]/20 text-[#c74959]">
-              <Users className="h-6 w-6" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-[#1c0a0c]">{t("landing.features.multitenant.title")}</h3>
-            <p className="text-[#1c0a0c]/70">{t("landing.features.multitenant.desc")}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works — the feedback loop as a flat-design infographic.
-          Self-contained: renders its own section, heading and background. */}
+      {/* ── How it works ────────────────────────────────────────────────── */}
+      {/* Self-contained illustrated infographic: renders its own section,
+          heading and background. Left as-is — it's the most bespoke thing on
+          the page and the redesign is written to match its register. */}
       <FeedbackLoopFlow />
 
-      {/* Every kind of input (replaces the invented testimonials) */}
-      <section className="bg-[#fdf8f9] py-20">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">{t("landing.types.heading")}</h2>
-            <p className="text-lg text-[#1c0a0c]/70">{t("landing.types.subheading")}</p>
+      {/* ── Features ────────────────────────────────────────────────────── */}
+      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="max-w-2xl">
+          <Eyebrow>{t("nav.dashboard")}</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-5xl">
+            {t("landing.features.heading")}
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
+            {t("landing.features.subheading")}
+          </p>
+        </div>
+
+        {/* A hairline grid rather than twelve floating cards. The dividers do
+            the work the borders and drop shadows used to. */}
+        <div className="mt-14 grid gap-x-12 gap-y-11 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <div key={f.title} className="border-t border-[#1c0a0c]/12 pt-6">
+              <f.icon className="h-5 w-5 text-[#c74959]" strokeWidth={1.75} />
+              <h3 className="mt-4 text-lg font-semibold text-[#1c0a0c]">
+                {f.title}
+              </h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-[#1c0a0c]/60">
+                {f.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── What comes in ───────────────────────────────────────────────── */}
+      <section className="border-y border-[#e399a3]/30 bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-5xl">
+              {t("landing.types.heading")}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
+              {t("landing.types.subheading")}
+            </p>
           </div>
 
-          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c74959]/10 text-[#c74959]">
-                <PostTypeIcon type="feature_request" className="h-7 w-7" />
+          <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-3">
+            {types.map((ty) => (
+              <div key={ty.type} className="border-t border-[#1c0a0c]/12 pt-6">
+                <PostTypeIcon
+                  type={ty.type}
+                  className="h-5 w-5 text-[#c74959]"
+                />
+                <h3 className="mt-4 text-lg font-semibold text-[#1c0a0c]">
+                  {ty.label}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#1c0a0c]/60">
+                  {ty.desc}
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-semibold text-[#1c0a0c]">{t("type.feature_request")}</h3>
-              <p className="text-sm text-[#1c0a0c]/70">{t("landing.types.featureDesc")}</p>
-            </div>
-            <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#da6a78]/10 text-[#da6a78]">
-                <PostTypeIcon type="bug_report" className="h-7 w-7" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-[#1c0a0c]">{t("type.bug_report")}</h3>
-              <p className="text-sm text-[#1c0a0c]/70">{t("landing.types.bugDesc")}</p>
-            </div>
-            <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e399a3]/20 text-[#c74959]">
-                <PostTypeIcon type="feedback" className="h-7 w-7" />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-[#1c0a0c]">{t("type.feedback")}</h3>
-              <p className="text-sm text-[#1c0a0c]/70">{t("landing.types.feedbackDesc")}</p>
+            ))}
+          </div>
+
+          {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
+              is the honest shape for that) but flattened: no shadow, no lift. */}
+          <div className="mt-16 border-t border-[#1c0a0c]/12 pt-8">
+            <p className="text-sm text-[#1c0a0c]/55">
+              {t("landing.uses.subheading")}
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {useCases.map((u) => (
+                <span
+                  key={u.key}
+                  className="rounded-full border border-[#e399a3]/50 px-3.5 py-1.5 text-sm text-[#1c0a0c]/70 transition-colors hover:border-[#c74959]/50 hover:text-[#c74959]"
+                >
+                  {t(u.key)}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" className="container mx-auto px-4 py-20">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-[#1c0a0c]">{t("landing.pricing.heading")}</h2>
-          <p className="text-lg text-[#1c0a0c]/70">{t("landing.pricing.subheading")}</p>
+      {/* ── Pricing ─────────────────────────────────────────────────────── */}
+      <section id="pricing" className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="max-w-2xl">
+          <Eyebrow>{t("nav.pricing")}</Eyebrow>
+          <h2 className="mt-4 font-display text-4xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-5xl">
+            {t("landing.pricing.heading")}
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
+            {t("landing.pricing.subheading")}
+          </p>
         </div>
-        <div className="mx-auto max-w-5xl">
+        <div className="mt-12">
           <PricingSection />
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#c74959] to-[#da6a78] p-12 text-center text-white">
-          <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" />
-          <div aria-hidden className="pointer-events-none absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-white/10 blur-2xl" />
-          <h2 className="relative mb-4 text-4xl font-bold">{t("landing.cta.heading")}</h2>
-          <p className="relative mb-8 text-lg text-white/90">{t("landing.cta.subheading")}</p>
-          <Link href="/signup" className="relative inline-block">
-            <Button size="lg" className="h-12 bg-white px-8 text-base text-[#c74959] transition-transform hover:-translate-y-0.5 hover:bg-[#fdf8f9]">
+      {/* ── Closing ─────────────────────────────────────────────────────── */}
+      {/* The old version was a rose gradient card with two more blur blobs. A
+          full-bleed ink band is quieter and lands harder, and it's the only
+          dark surface on the page so it reads as a full stop. */}
+      <section className="bg-[#1c0a0c]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
+          <div className="max-w-xl">
+            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
+              {t("landing.cta.heading")}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#fdf8f9]/65">
+              {t("landing.cta.subheading")}
+            </p>
+          </div>
+          <Link href="/signup" className="shrink-0">
+            <Button
+              size="lg"
+              className="h-12 w-full bg-[#fdf8f9] px-7 text-base text-[#1c0a0c] hover:bg-white sm:w-auto"
+            >
               {t("landing.hero.startTrial")}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-1.5 h-4 w-4" />
             </Button>
           </Link>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-[#e399a3]/20 bg-white py-8">
-        <div className="container mx-auto flex flex-col items-center gap-2 px-4 text-center text-sm text-[#1c0a0c]/70">
-          <p>{t("landing.footer.rights")}</p>
-          {/* Our own board — reachable without an account, so logged-out
-              visitors can report bugs and request features too. */}
-          <a
-            href={officialBoardUrl()}
-            className="inline-flex items-center gap-1.5 font-medium text-[#c74959] hover:underline"
-          >
-            <MessageSquarePlus className="h-4 w-4" />
-            {t("landing.footer.giveFeedback")}
-          </a>
+      {/* ── Footer ──────────────────────────────────────────────────────── */}
+      <footer className="border-t border-[#e399a3]/25 bg-[#fdf8f9]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <div className="flex items-center gap-2.5">
+            <Logo className="h-6 w-6" />
+            <span className="font-display text-base font-semibold text-[#1c0a0c]">
+              FeedBoard
+            </span>
+            <span className="ml-1 text-sm text-[#1c0a0c]/45">
+              {t("landing.footer.rights")}
+            </span>
+          </div>
 
-          {/* Legal documents. Not localized — English is the authoritative
-              version (see components/legal/legal-shell.tsx). */}
-          <nav className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            {/* Our own board — reachable without an account, so logged-out
+                visitors can report bugs and request features too. */}
+            <a
+              href={officialBoardUrl()}
+              className="inline-flex items-center gap-1.5 font-medium text-[#c74959] hover:underline"
+            >
+              <MessageSquarePlus className="h-4 w-4" />
+              {t("landing.footer.giveFeedback")}
+            </a>
+            {/* Legal documents. Not localized — English is the authoritative
+                version (see components/legal/legal-shell.tsx). */}
             {legalPages.map((p) => (
               <Link
                 key={p.slug}
                 href={legalHref(p.slug)}
-                className="text-[#1c0a0c]/60 transition-colors hover:text-[#c74959] hover:underline"
+                className="text-[#1c0a0c]/50 transition-colors hover:text-[#c74959]"
               >
                 {p.title}
               </Link>
