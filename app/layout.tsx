@@ -1,34 +1,12 @@
 import type { Metadata } from "next";
-import { Fraunces, JetBrains_Mono, Sora } from "next/font/google";
 
 import { auth } from "@/auth";
+// All three typefaces live in lib/fonts.ts — change a font there, not here.
+import { fontVariables } from "@/lib/fonts";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
 import { I18nProvider } from "@/components/providers/i18n-provider";
 import { getLanguage } from "@/lib/i18n/server";
 import "./globals.css";
-
-const fontSans = Sora({
-  variable: "--font-brand-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fontMono = JetBrains_Mono({
-  variable: "--font-brand-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Display face for the marketing surface only. Sora is a geometric sans and
-// carries the whole app; setting headlines in a second, contrasting face is what
-// stops a page reading as a default template. Fraunces is a variable serif with
-// a WONK axis (see `.font-display` in globals.css) that gives it warmth rather
-// than the neutral high-contrast serif every generated page reaches for.
-const fontDisplay = Fraunces({
-  variable: "--font-brand-display",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "FeedBoard",
@@ -50,7 +28,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lng}
-      className={`${fontSans.variable} ${fontMono.variable} ${fontDisplay.variable} h-full antialiased`}
+      className={`${fontVariables} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
         <I18nProvider lng={lng}>

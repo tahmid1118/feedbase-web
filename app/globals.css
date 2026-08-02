@@ -93,19 +93,27 @@ body {
   }
 }
 
-/* Fraunces axes.
-   opsz is left OUT of font-variation-settings on purpose: listing it freezes
-   the axis, whereas font-optical-sizing lets it track the rendered size, so a
-   16px dialog title and a 68px hero headline are each drawn at the weight they
-   were designed for. SOFT/WONK are what keep the face warm instead of the
-   neutral high-contrast serif every generated page reaches for.
-   No letter-spacing here: this rule would out-rank Tailwind's `tracking-*`
-   utilities (same specificity, later in source order) and silently break them. */
+/* Variable-axis settings for the display face — the ONLY CSS a font swap might
+   need, and only if the new face has axes worth setting. A face without these
+   axes ignores them, so swapping in lib/fonts.ts alone is usually enough.
+   Set to `normal` to opt out entirely.
+     Fraunces  → "SOFT" 24, "WONK" 1   (softer terminals, quirkier letterforms)
+     others    → normal */
+:root {
+  --font-display-axes: "SOFT" 24, "WONK" 1;
+}
+
+/* opsz is deliberately NOT listed above: naming the axis freezes it, whereas
+   font-optical-sizing lets it track the rendered size, so a 16px dialog title
+   and a 68px hero headline are each drawn at the weight they were designed for.
+   No letter-spacing here either — this rule would out-rank Tailwind's
+   `tracking-*` utilities (same specificity, later in source order) and silently
+   break them, so per-element tracking is set on the element. */
 h1,
 h2,
 .font-display,
 .font-heading {
-  font-variation-settings: "SOFT" 24, "WONK" 1;
+  font-variation-settings: var(--font-display-axes);
   font-optical-sizing: auto;
 }
 
