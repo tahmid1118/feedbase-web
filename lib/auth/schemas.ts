@@ -31,12 +31,18 @@ const signupBaseSchema = z.object({
     .min(2, "Name must be at least 2 characters.")
     .max(80, "Name is too long."),
   email: z.string().trim().email("Enter a valid email address."),
+  // Optional: only checked for shape/length when the visitor actually enters
+  // something, so an empty field never blocks signup.
   contact: z
     .string()
     .trim()
-    .min(7, "Contact number is too short.")
     .max(20, "Contact number is too long.")
-    .regex(/^\+?[0-9()\-\s]+$/, "Enter a valid contact number."),
+    .refine((value) => value.length === 0 || value.length >= 7, {
+      message: "Contact number is too short.",
+    })
+    .refine((value) => value.length === 0 || /^\+?[0-9()\-\s]+$/.test(value), {
+      message: "Enter a valid contact number.",
+    }),
   password: strongPasswordSchema,
   confirmPassword: z.string().min(1, "Please confirm your password."),
   lg: languageSchema,

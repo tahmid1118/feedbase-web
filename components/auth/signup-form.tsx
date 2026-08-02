@@ -207,12 +207,17 @@ export function SignupForm({
               name="contact"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.contact")}</FormLabel>
+                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
+                    {t("auth.contact")}{" "}
+                    <span className="font-normal text-[#1c0a0c]/45">
+                      ({t("common.optional")})
+                    </span>
+                  </FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       autoComplete="tel"
-                      placeholder="+8801712345678"
+                      placeholder="+1 (555) 123-4567"
                       type="tel"
                       className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
                     />
