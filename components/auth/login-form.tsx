@@ -125,7 +125,8 @@ export function LoginForm() {
           {oauthError === OAUTH_ERROR.activeSession && (
             <GoogleButton
               force
-              label="This is me — sign out other devices and continue with Google"
+              label="This is me — sign out other devices"
+              className="text-left leading-snug"
             />
           )}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
@@ -59,16 +59,26 @@ export function OnboardingForm({
   const subdomainBlocked =
     subStatus === "checking" || subStatus === "taken" || subStatus === "invalid";
 
+  // Set the instant we start leaving after creating the workspace. `update()`
+  // below makes the session look like "already has a workspace", which trips the
+  // guard effect into a /dashboard redirect that RACES the navigation on the
+  // next line — and usually won, which is why a visitor who picked a paid plan
+  // landed on the dashboard instead of checkout. The flag is a ref, not state,
+  // so it takes effect immediately rather than after a re-render.
+  const leaving = useRef(false);
+
   // Not logged in → login. Already has a workspace → dashboard. An invited user
   // DOES have a workspace (the one they joined) but still needs to create their
   // own, so don't bounce them.
   useEffect(() => {
+    if (leaving.current) return;
     if (status === "unauthenticated") router.replace("/login");
     else if (status === "authenticated" && session?.user?.tenantId && !invitedTenantId)
       router.replace("/dashboard");
   }, [status, session?.user?.tenantId, invitedTenantId, router]);
 
   const applyAuth = async (auth: WorkspaceAuth) => {
+    leaving.current = true;
     await update({
       accessToken: auth.token,
       tenantId: String(auth.user.tenantId),

@@ -6,6 +6,7 @@ import { signIn } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 import { OAUTH_FORCE_COOKIE } from "@/lib/auth/oauth";
+import { cn } from "@/lib/utils";
 
 /**
  * Google's mark, inlined. Their branding guidelines require the official
@@ -52,10 +53,12 @@ export function GoogleButton({
    */
   force = false,
   callbackUrl = "/",
+  className,
 }: {
   label: string;
   force?: boolean;
   callbackUrl?: string;
+  className?: string;
 }) {
   const [pending, setPending] = useState(false);
 
@@ -73,7 +76,14 @@ export function GoogleButton({
       variant="outline"
       onClick={start}
       disabled={pending}
-      className="h-11 w-full rounded-xl border-[#e399a3]/65 bg-white text-sm font-semibold text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]"
+      // `min-h` + `whitespace-normal`, not the usual fixed `h-11`: the base
+      // Button is `whitespace-nowrap`, so a long label (the takeover wording, or
+      // a longer translation of it) overflows the rounded border instead of
+      // wrapping. Height grows with the text rather than clipping it.
+      className={cn(
+        "min-h-11 w-full rounded-xl border-[#e399a3]/65 bg-white px-4 py-2 text-sm font-semibold whitespace-normal text-[#1c0a0c] hover:bg-[#c74959]/10 hover:text-[#c74959]",
+        className
+      )}
     >
       {pending ? (
         <Loader2 className="h-4 w-4 animate-spin" />

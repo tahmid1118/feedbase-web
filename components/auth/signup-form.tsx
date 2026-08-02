@@ -150,8 +150,14 @@ export function SignupForm({
 
       {/* Google signs up and signs in through the same button — the backend
           provisions the account on first use. It lands on /onboarding for the
-          same reason an email signup does: a new account has no workspace. */}
-      <GoogleButton label={t("auth.continueWithGoogle")} callbackUrl="/onboarding" />
+          same reason an email signup does: a new account has no workspace.
+          The plan token has to ride on the callback URL: an OAuth round trip
+          leaves the page entirely, so anything not in that URL is lost, and a
+          visitor who picked Pro would silently arrive on the Free dashboard. */}
+      <GoogleButton
+        label={t("auth.continueWithGoogle")}
+        callbackUrl={`/onboarding${planIntentQuery(planToken)}`}
+      />
       <AuthDivider label={t("auth.orUseEmail")} />
 
       <Form {...form}>
