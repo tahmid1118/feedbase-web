@@ -136,7 +136,7 @@ export function OnboardingForm({
       <div className="w-full max-w-md space-y-8">
         <div className="flex items-center gap-2">
           <Logo className="h-9 w-9" />
-          <span className="text-2xl font-bold text-[#1c0a0c]">FeedBoard</span>
+          <span className="font-display text-2xl font-semibold text-[#1c0a0c]">FeedBoard</span>
         </div>
 
         <div>

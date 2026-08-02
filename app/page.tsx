@@ -143,7 +143,9 @@ export default async function HomePage() {
           <div className="min-w-0">
             <Eyebrow>{t("landing.hero.badge")}</Eyebrow>
 
-            <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-semibold text-balance text-[#1c0a0c] sm:text-6xl lg:text-[4.1rem]">
+            {/* Tracking is set here rather than in the shared Fraunces rule so
+                it stays overridable and doesn't apply to small headings. */}
+            <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-semibold tracking-[-0.022em] text-balance text-[#1c0a0c] sm:text-6xl lg:text-[4.1rem]">
               {t("landing.hero.titleLead")}{" "}
               <span className="text-[#8f2f3b] italic">
                 {t("landing.hero.titleHighlight")}

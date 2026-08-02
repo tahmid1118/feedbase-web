@@ -39,13 +39,12 @@
   --color-chart-4: 344 48% 42%;
   --color-chart-5: 353 47% 24%;
   --radius: 0.75rem;
-  /* Headings use the same family as body text so typography is consistent
-     across the whole app (dialogs, cards, page titles all match). */
-  --font-heading: var(--font-brand-sans);
+  /* Headings are set in the display face (Fraunces) across the whole app —
+     dialogs, cards, sheets, auth pages. Body text, controls and dense data stay
+     on Sora: a display serif in form fields, buttons and tables is a downgrade,
+     not an upgrade. */
+  --font-heading: var(--font-brand-display);
   --font-sans: var(--font-brand-sans);
-  /* Marketing display face. Deliberately NOT wired into --font-heading: the
-     app's product surfaces (dashboard, portal, dialogs) stay on one family, and
-     only the landing page opts in via `font-display`. */
   --font-display: var(--font-brand-display);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -81,6 +80,33 @@ body {
   html {
     @apply font-sans;
   }
+
+  /* Page and section titles pick up the display face automatically, so every
+     surface gets it without touching each of the ~20 page files.
+     h3 and below are deliberately NOT included: they title rows in dense lists
+     (feedback posts, comments, table cells) where the sans scans better and a
+     serif would slow reading down. Base layer, so any `font-sans` utility on a
+     specific heading still wins. */
+  h1,
+  h2 {
+    font-family: var(--font-brand-display), Georgia, serif;
+  }
+}
+
+/* Fraunces axes.
+   opsz is left OUT of font-variation-settings on purpose: listing it freezes
+   the axis, whereas font-optical-sizing lets it track the rendered size, so a
+   16px dialog title and a 68px hero headline are each drawn at the weight they
+   were designed for. SOFT/WONK are what keep the face warm instead of the
+   neutral high-contrast serif every generated page reaches for.
+   No letter-spacing here: this rule would out-rank Tailwind's `tracking-*`
+   utilities (same specificity, later in source order) and silently break them. */
+h1,
+h2,
+.font-display,
+.font-heading {
+  font-variation-settings: "SOFT" 24, "WONK" 1;
+  font-optical-sizing: auto;
 }
 
 :root {
@@ -185,16 +211,6 @@ body {
 /* ── Landing page ─────────────────────────────────────────────────────────
    Scoped to the marketing surface. Everything here is `lp-` prefixed so it
    can't leak into the product UI. */
-
-/* Fraunces' WONK axis swaps in the quirkier letterforms and SOFT rounds the
-   terminals — together they keep the serif warm instead of the neutral,
-   high-contrast display serif that every generated landing page uses. Applied
-   here rather than via next/font `axes` so a font build without these axes
-   degrades silently instead of failing. */
-.font-display {
-  font-variation-settings: "SOFT" 24, "WONK" 1, "opsz" 96;
-  letter-spacing: -0.02em;
-}
 
 /* The hero's request card walks through its own lifecycle once on load. Each
    stamp lands 900ms apart (see request-lifecycle.tsx), so the delay is applied

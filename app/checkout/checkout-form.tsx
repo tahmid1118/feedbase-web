@@ -146,7 +146,7 @@ export function CheckoutForm({
     <div className="flex min-h-screen flex-col items-center bg-[#fdf8f9] px-4 py-10">
       <Link href="/" className="mb-8 flex items-center gap-2">
         <Image src="/icon.svg" alt="FeedBoard" width={32} height={32} priority />
-        <span className="text-xl font-bold text-[#1c0a0c]">FeedBoard</span>
+        <span className="font-display text-xl font-semibold text-[#1c0a0c]">FeedBoard</span>
       </Link>
 
       <Card className="w-full max-w-md p-6">
