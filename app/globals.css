@@ -100,7 +100,10 @@ body {
      Fraunces  → "SOFT" 24, "WONK" 1   (softer terminals, quirkier letterforms)
      others    → normal */
 :root {
-  --font-display-axes: "SOFT" 24, "WONK" 1;
+  /* ZCOOL XiaoWei is a single-master face with no variable axes, so there is
+     nothing to set. Restore `"SOFT" 24, "WONK" 1` if the display face goes
+     back to Fraunces. */
+  --font-display-axes: normal;
 }
 
 /* opsz is deliberately NOT listed above: naming the axis freezes it, whereas

@@ -36,7 +36,7 @@
  * unless you actively want different axis values.
  */
 import {
-  Fraunces as DisplayFace,
+  ZCOOL_XiaoWei as DisplayFace,
   JetBrains_Mono as MonoFace,
   Sora as SansFace,
 } from "next/font/google";
@@ -45,6 +45,10 @@ export const fontDisplay = DisplayFace({
   variable: "--font-brand-display",
   subsets: ["latin"],
   display: "swap",
+  // ZCOOL XiaoWei ships a single weight. Non-variable faces must declare it or
+  // next/font fails the build — this is the one case the one-line swap needs a
+  // second line.
+  weight: "400",
 });
 
 export const fontSans = SansFace({
