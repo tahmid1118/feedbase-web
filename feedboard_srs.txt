@@ -231,10 +231,10 @@ Version 1.2
     FR-P8  Get a board .. Every tenant portal carries a FeedBoard growth CTA
                           inviting visitors to create their own feedback board
                           (links to sign-up): a prominent banner at the very top
-                          of every portal page, plus a matching card in the
-                          footer. It is styled in FeedBoard's own brand so it
-                          reads as our promotion, distinct from the tenant's
-                          content.
+                          of every portal page. It is styled in FeedBoard's own
+                          brand so it reads as our promotion, distinct from the
+                          tenant's content. Shown once per page — the footer
+                          does not repeat it.
     FR-P9  Verified ..... A comment authored by a platform administrator shows a
                           "Verified admin" tick beside the name, so visitors can
                           recognise an official reply from the platform's team.

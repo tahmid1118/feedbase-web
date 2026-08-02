@@ -98,38 +98,11 @@ export default async function PortalLayout({
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">{children}</main>
 
       <footer className="mt-auto border-t border-black/5 bg-white">
-        {/* FeedBoard promo — a visitor here is a prospect for their own board.
-            Uses FeedBoard's own rose, not the tenant brand: this is clearly our
-            space, cordoned off in the footer, not part of the tenant's content.
-            Links to the app on the root domain (absolute — see appUrl). */}
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 px-4 sm:px-6 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
-          <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#c74959]/10 text-[#c74959]">
-              <Sparkles className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="text-sm font-semibold text-[#1c0a0c]">
-                {t("portal.ownBoardTitle")}
-              </p>
-              <p className="text-xs text-[#1c0a0c]/55">
-                {t("portal.ownBoardSubtitle")}
-              </p>
-            </div>
-          </div>
-          <a
-            href={appUrl("/signup")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#c74959] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#b03f4d]"
-          >
-            {t("portal.ownBoardCta")}
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-
-        {/* Visitors are on OUR infrastructure, so our policies must be reachable
-            from a tenant board too — not only from the marketing site. */}
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 border-t border-black/5 py-4 text-center text-xs text-[#1c0a0c]/40">
+        {/* The "get your own board" promo lives ONLY in the top bar now — it
+            was duplicated here too, showing the same CTA twice on one page.
+            Visitors are on OUR infrastructure, so our policies must still be
+            reachable from a tenant board, not only from the marketing site. */}
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-4 text-center text-xs text-[#1c0a0c]/40">
           <span>{t("portal.poweredBy")}</span>
           {legalPages.map((lp) => (
             <a
