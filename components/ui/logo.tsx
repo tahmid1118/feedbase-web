@@ -1,9 +1,14 @@
 /**
  * FeedBoard logo mark.
  *
- * A speech bubble (feedback) with an upvote chevron (voting) on the brand
- * rose→secondary gradient. Self-contained and scalable — size it with a
- * className (defaults to h-8 w-8). Pure SVG, no client JS.
+ * Three rounded board rows forming an "F" — the stem plus two arms, reading as
+ * rows on a feedback board — knocked out in white on the brand rose→secondary
+ * gradient. The top arm sits at 62% so the F resolves as a letterform rather
+ * than a solid block. Self-contained and scalable — size it with a className
+ * (defaults to h-8 w-8). Pure SVG, no client JS.
+ *
+ * Keep this in sync with `app/icon.svg` (the favicon) and the backend's
+ * `assets/app-icon.svg` (the platform-admin avatar and official board logo).
  */
 export function Logo({ className = "h-8 w-8" }: { className?: string }) {
   return (
@@ -32,18 +37,12 @@ export function Logo({ className = "h-8 w-8" }: { className?: string }) {
       {/* Brand squircle */}
       <rect width="32" height="32" rx="9" fill="url(#fb-logo-gradient)" />
 
-      {/* Speech bubble + tail */}
-      <path d="M12.4 18.6 L10.8 24 L16.6 18.6 Z" fill="#fff" />
-      <rect x="6.5" y="8" width="19" height="11.5" rx="4" fill="#fff" />
-
-      {/* Upvote chevron */}
-      <path
-        d="M11.8 16 L16 11.9 L20.2 16"
-        stroke="#c74959"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      {/* Stem */}
+      <rect x="8" y="6" width="5" height="20" rx="2.5" fill="#fff" />
+      {/* Top arm — held back so the F reads as a letter, not a block */}
+      <rect x="8" y="6" width="16" height="5" rx="2.5" fill="#fff" opacity="0.62" />
+      {/* Middle arm */}
+      <rect x="8" y="13.5" width="11.5" height="5" rx="2.5" fill="#fff" />
     </svg>
   );
 }
