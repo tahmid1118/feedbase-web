@@ -4,6 +4,7 @@ import { publicApi, normalizeBoardSort, normalizeBoardStatus } from "@/lib/api/p
 import type { PostStatus } from "@/lib/api/types";
 import { Badge } from "@/components/ui/badge";
 import { FeedbackSubmit } from "@/components/portal/feedback-submit";
+import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { PortalVoteButton } from "@/components/portal/portal-vote-button";
 import { BoardSort } from "@/components/portal/board-sort";
 import { BoardTabs } from "@/components/portal/board-tabs";
@@ -19,12 +20,6 @@ const STATUS_BADGE: Record<string, string> = {
   completed: "bg-green-100 text-green-700",
   closed: "bg-gray-100 text-gray-700",
   rejected: "bg-red-100 text-red-700",
-};
-
-const TYPE_ICON: Record<string, string> = {
-  bug_report: "🐛",
-  feature_request: "✨",
-  feedback: "💬",
 };
 
 export default async function PortalBoardPage({
@@ -101,7 +96,10 @@ export default async function PortalBoardPage({
                   <div className="flex items-start justify-between gap-2 sm:gap-3">
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span>{TYPE_ICON[post.post_type] ?? "💬"}</span>
+                        <PostTypeIcon
+                          type={post.post_type}
+                          className="h-4 w-4 shrink-0 text-[#1c0a0c]/50"
+                        />
                         <h3 className="font-semibold text-[#1c0a0c]">
                           {post.title}
                         </h3>

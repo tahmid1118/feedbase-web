@@ -11,6 +11,7 @@ import Link from "next/link";
 import { postsApi, billingApi, uploaderApi } from "@/lib/api";
 import type { UploadedAttachment } from "@/lib/api/uploader";
 import { AttachmentPicker } from "@/components/feedback/attachment-picker";
+import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
 import {
@@ -180,9 +181,18 @@ export function CreatePostDialog({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="feedback">💬 {t("feedback.typeFeedback")}</SelectItem>
-                        <SelectItem value="feature_request">✨ {t("feedback.typeFeatureRequest")}</SelectItem>
-                        <SelectItem value="bug_report">🐛 {t("feedback.typeBugReport")}</SelectItem>
+                        <SelectItem value="feedback">
+                          <PostTypeIcon type="feedback" />
+                          {t("feedback.typeFeedback")}
+                        </SelectItem>
+                        <SelectItem value="feature_request">
+                          <PostTypeIcon type="feature_request" />
+                          {t("feedback.typeFeatureRequest")}
+                        </SelectItem>
+                        <SelectItem value="bug_report">
+                          <PostTypeIcon type="bug_report" />
+                          {t("feedback.typeBugReport")}
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

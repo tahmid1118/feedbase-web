@@ -53,6 +53,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 
 const STATUS_BADGE: Record<string, string> = {
   open: "bg-blue-100 text-blue-700",
@@ -61,12 +62,6 @@ const STATUS_BADGE: Record<string, string> = {
   completed: "bg-green-100 text-green-700",
   closed: "bg-gray-100 text-gray-700",
   rejected: "bg-red-100 text-red-700",
-};
-
-const TYPE_ICON: Record<string, string> = {
-  bug_report: "🐛",
-  feature_request: "✨",
-  feedback: "💬",
 };
 
 const TRIGGER_CLASS =
@@ -372,9 +367,18 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">{t("feedback.allTypes")}</SelectItem>
-              <SelectItem value="feedback">💬 {t("feedback.typeFeedback")}</SelectItem>
-              <SelectItem value="feature_request">✨ {t("feedback.typeFeature")}</SelectItem>
-              <SelectItem value="bug_report">🐛 {t("feedback.typeBug")}</SelectItem>
+              <SelectItem value="feedback">
+                <PostTypeIcon type="feedback" />
+                {t("feedback.typeFeedback")}
+              </SelectItem>
+              <SelectItem value="feature_request">
+                <PostTypeIcon type="feature_request" />
+                {t("feedback.typeFeature")}
+              </SelectItem>
+              <SelectItem value="bug_report">
+                <PostTypeIcon type="bug_report" />
+                {t("feedback.typeBug")}
+              </SelectItem>
             </SelectContent>
           </Select>
 
@@ -503,9 +507,10 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-lg">
-                            {TYPE_ICON[post.post_type] ?? "💬"}
-                          </span>
+                          <PostTypeIcon
+                            type={post.post_type}
+                            className="h-4 w-4 shrink-0 text-[#1c0a0c]/50"
+                          />
                           <h3 className="font-semibold text-[#1c0a0c]">
                             {post.title}
                           </h3>

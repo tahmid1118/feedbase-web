@@ -8,6 +8,7 @@ import { z } from "zod";
 import { Loader2 } from "lucide-react";
 import { postsApi, type Post } from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { useTranslation } from "@/lib/i18n/client";
 import {
   Dialog,
@@ -147,9 +148,18 @@ export function EditPostDialog({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="feedback">💬 Feedback</SelectItem>
-                        <SelectItem value="feature_request">✨ Feature Request</SelectItem>
-                        <SelectItem value="bug_report">🐛 Bug Report</SelectItem>
+                        <SelectItem value="feedback">
+                          <PostTypeIcon type="feedback" />
+                          Feedback
+                        </SelectItem>
+                        <SelectItem value="feature_request">
+                          <PostTypeIcon type="feature_request" />
+                          Feature Request
+                        </SelectItem>
+                        <SelectItem value="bug_report">
+                          <PostTypeIcon type="bug_report" />
+                          Bug Report
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

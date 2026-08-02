@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MessageSquare, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -32,10 +33,10 @@ const API_BASE =
   process.env.NEXT_PUBLIC_FEEDBOARD_API_BASE_URL || "http://localhost:4560";
 
 const TYPES = [
-  { value: "feedback", emoji: "💬", key: "type.feedback" },
-  { value: "feature_request", emoji: "✨", key: "type.featureRequest" },
-  { value: "bug_report", emoji: "🐛", key: "type.bugReport" },
-];
+  { value: "feedback", key: "type.feedback" },
+  { value: "feature_request", key: "type.featureRequest" },
+  { value: "bug_report", key: "type.bugReport" },
+] as const;
 
 // Mirror the backend's guest-email check so the form fails fast.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -190,7 +191,8 @@ export function FeedbackSubmit({
                     <SelectContent>
                       {TYPES.map((opt) => (
                         <SelectItem key={opt.value} value={opt.value}>
-                          {opt.emoji} {t(opt.key)}
+                          <PostTypeIcon type={opt.value} />
+                          {t(opt.key)}
                         </SelectItem>
                       ))}
                     </SelectContent>

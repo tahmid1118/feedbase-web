@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
+import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 import { officialBoardUrl } from "@/lib/official-board";
@@ -289,17 +290,23 @@ export default async function HomePage() {
 
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mb-3 text-4xl">✨</div>
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c74959]/10 text-[#c74959]">
+                <PostTypeIcon type="feature_request" className="h-7 w-7" />
+              </div>
               <h3 className="mb-2 text-lg font-semibold text-[#1c0a0c]">{t("type.feature_request")}</h3>
               <p className="text-sm text-[#1c0a0c]/70">{t("landing.types.featureDesc")}</p>
             </div>
             <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mb-3 text-4xl">🐛</div>
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#da6a78]/10 text-[#da6a78]">
+                <PostTypeIcon type="bug_report" className="h-7 w-7" />
+              </div>
               <h3 className="mb-2 text-lg font-semibold text-[#1c0a0c]">{t("type.bug_report")}</h3>
               <p className="text-sm text-[#1c0a0c]/70">{t("landing.types.bugDesc")}</p>
             </div>
             <div className="rounded-2xl border border-[#e399a3]/20 bg-white p-6 text-center transition-all hover:-translate-y-1 hover:shadow-lg">
-              <div className="mb-3 text-4xl">💬</div>
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#e399a3]/20 text-[#c74959]">
+                <PostTypeIcon type="feedback" className="h-7 w-7" />
+              </div>
               <h3 className="mb-2 text-lg font-semibold text-[#1c0a0c]">{t("type.feedback")}</h3>
               <p className="text-sm text-[#1c0a0c]/70">{t("landing.types.feedbackDesc")}</p>
             </div>
