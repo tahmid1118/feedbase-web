@@ -169,15 +169,15 @@ export default async function HomePage() {
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Button>
               </Link>
-              {/* Our own feedback board doubles as the live demo. Given a
-                  real border + hover fill (the standard outline/ghost
-                  treatment) and an arrow so it reads as a second button next
-                  to Start for free, not a plain text link floating beside one. */}
+              {/* Our own feedback board doubles as the live demo. The rose
+                  border/fill/text is the resting state (not just hover) so it
+                  reads as a real second button next to Start for free right
+                  away; hover just deepens it a step further for feedback. */}
               <a href={officialBoardUrl()} className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="ghost"
-                  className="h-12 w-full gap-1.5 border border-[#1c0a0c]/15 px-5 text-base text-[#1c0a0c]/75 hover:border-[#c74959]/40 hover:bg-[#c74959]/10 hover:text-[#c74959] sm:w-auto sm:px-6"
+                  className="h-12 w-full gap-1.5 border border-[#c74959]/40 bg-[#c74959]/10 px-5 text-base text-[#c74959] hover:border-[#c74959]/60 hover:bg-[#c74959]/15 hover:text-[#c74959] sm:w-auto sm:px-6"
                 >
                   {t("landing.hero.seeLive")}
                   <ArrowUpRight className="h-4 w-4" />
