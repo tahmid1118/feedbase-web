@@ -194,26 +194,31 @@ export default async function HomePage() {
       </section>
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
-      {/* Was a full-bleed rose gradient band with four huge white numbers. A
-          quiet hairline row reads as fact rather than as a billboard. */}
-      <section className="border-y border-[#e399a3]/30 bg-white">
-        {/* No vertical rules between cells: the gap and the type hierarchy
-            already separate them, and four more hairlines here fought the
-            section borders above and below. */}
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-5 py-12 sm:gap-x-8 lg:grid-cols-4 lg:px-8">
-          {facts.map((f) => (
-            <div key={f.label} className="min-w-0">
-              {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
-                  not fit a half-width column on a 360px screen, and one
-                  overflowing word makes the whole page scroll sideways. */}
-              <div className="font-display text-2xl leading-none font-semibold break-words text-[#1c0a0c] sm:text-3xl lg:text-4xl">
-                {f.value}
+      {/* Was a full-bleed rose gradient band, then a full-bleed hairline row —
+          both ran edge to edge while every other section sits in the same
+          max-w-6xl column. A contained card keeps it in that column too, so
+          the page reads as one consistent width instead of the ledger being
+          the one part that ignores the margins everyone else respects. */}
+      <section className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
+        <div className="rounded-2xl border border-[#e399a3]/30 bg-white px-6 py-10 sm:px-10">
+          {/* No vertical rules between cells: the gap and the type hierarchy
+              already separate them, and four more hairlines here fought the
+              card's own border. */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-8 lg:grid-cols-4">
+            {facts.map((f) => (
+              <div key={f.label} className="min-w-0">
+                {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
+                    not fit a half-width column on a 360px screen, and one
+                    overflowing word makes the whole page scroll sideways. */}
+                <div className="font-display text-2xl leading-none font-semibold break-words text-[#1c0a0c] sm:text-3xl lg:text-4xl">
+                  {f.value}
+                </div>
+                <div className="mt-2 text-sm leading-snug text-[#1c0a0c]/55">
+                  {f.label}
+                </div>
               </div>
-              <div className="mt-2 text-sm leading-snug text-[#1c0a0c]/55">
-                {f.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
