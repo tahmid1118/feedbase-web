@@ -25,10 +25,17 @@
  * Vetted display alternatives if you want to try another direction — each is
  * variable, has real character, and pairs with Sora without muddying:
  *
- *   Fraunces            warm, quirky serif (current). Soft/wonk axes.
+ *   Inter               neutral UI grotesque (current). Note: Inter and Sora
+ *                       are both geometric sans, so headings and body barely
+ *                       contrast — the page reads as one family at two weights.
+ *   Fraunces            warm, quirky serif. Strong contrast against Sora.
  *   Instrument_Serif    high-contrast editorial serif, more formal.
- *   Bricolage_Grotesque characterful sans, if you'd rather drop the serif.
+ *   Bricolage_Grotesque characterful sans, if you'd rather stay sans-only.
  *   Playfair_Display    classic, sharper and more traditional than Fraunces.
+ *
+ * A display face only earns its place if it CONTRASTS with the body face. If
+ * you want a single-family look instead, set SansFace to the same font rather
+ * than running two that look alike.
  *
  * If the face you pick has variable axes worth setting (Fraunces' SOFT/WONK),
  * they live in ONE declaration — `--font-display-axes` in `globals.css`. A face
@@ -36,30 +43,38 @@
  * unless you actively want different axis values.
  */
 import {
-  ZCOOL_XiaoWei as DisplayFace,
+  Inter as DisplayFace,
   JetBrains_Mono as MonoFace,
   Sora as SansFace,
 } from "next/font/google";
 
 export const fontDisplay = DisplayFace({
   variable: "--font-brand-display",
-  subsets: ["latin"],
+  // latin-ext is required, not optional: Polish (ą ć ę ł ń ś ź ż) and other
+  // Latin Extended-A characters are NOT in the `latin` subset. Without it those
+  // glyphs fall back to a system font mid-word — which the pl locale did for
+  // every heading and every line of body copy.
+  subsets: ["latin", "latin-ext"],
   display: "swap",
-  // ZCOOL XiaoWei ships a single weight. Non-variable faces must declare it or
-  // next/font fails the build — this is the one case the one-line swap needs a
-  // second line.
-  weight: "400",
 });
 
 export const fontSans = SansFace({
   variable: "--font-brand-sans",
-  subsets: ["latin"],
+  // latin-ext is required, not optional: Polish (ą ć ę ł ń ś ź ż) and other
+  // Latin Extended-A characters are NOT in the `latin` subset. Without it those
+  // glyphs fall back to a system font mid-word — which the pl locale did for
+  // every heading and every line of body copy.
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
 export const fontMono = MonoFace({
   variable: "--font-brand-mono",
-  subsets: ["latin"],
+  // latin-ext is required, not optional: Polish (ą ć ę ł ń ś ź ż) and other
+  // Latin Extended-A characters are NOT in the `latin` subset. Without it those
+  // glyphs fall back to a system font mid-word — which the pl locale did for
+  // every heading and every line of body copy.
+  subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
