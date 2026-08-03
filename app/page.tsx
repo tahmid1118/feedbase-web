@@ -279,20 +279,38 @@ export default async function HomePage() {
       </section>
 
       {/* ── What comes in ───────────────────────────────────────────────── */}
-      <section className="border-y border-[#e399a3]/30 bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-2xl">
-            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-5xl">
-              {t("landing.types.heading")}
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
-              {t("landing.types.subheading")}
-            </p>
-          </div>
+      {/* These three used to be hairline-topped list items (no card at all),
+          the same device as Benefits/Features. Now genuine glass cards, using
+          the recipe that actually worked on the facts card's second attempt:
+          the tint is a gradient painted ON the card's own surface (clipped by
+          its own overflow-hidden, so it can't bleed past the edge like the
+          first, broken attempt did) plus an inset top-edge highlight for the
+          specular catch — never a separately-blurred wash floating behind it.
+          The section itself drops its old bg-white band: translucent white
+          glass sitting on ANOTHER white background barely shows any tint at
+          all — it needs the page's own #fdf8f9 behind it, same context the
+          facts card relies on, or the glass reads as just a plain white box. */}
+      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="max-w-2xl">
+          <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-5xl">
+            {t("landing.types.heading")}
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
+            {t("landing.types.subheading")}
+          </p>
+        </div>
 
-          <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-3">
-            {types.map((ty) => (
-              <div key={ty.type} className="border-t border-[#1c0a0c]/12 pt-6">
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {types.map((ty) => (
+            <div
+              key={ty.type}
+              className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/65 p-6 shadow-[0_20px_50px_-30px_rgba(28,10,12,0.3),inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-xl"
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(199,73,89,0.11)_0%,rgba(218,106,120,0.05)_40%,transparent_68%)]"
+              />
+              <div className="relative">
                 <PostTypeIcon
                   type={ty.type}
                   className="h-5 w-5 text-[#c74959]"
@@ -304,25 +322,25 @@ export default async function HomePage() {
                   {ty.desc}
                 </p>
               </div>
-            ))}
-          </div>
-
-          {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
-              is the honest shape for that) but flattened: no shadow, no lift. */}
-          <div className="mt-16 border-t border-[#1c0a0c]/12 pt-8">
-            <p className="text-sm text-[#1c0a0c]/55">
-              {t("landing.uses.subheading")}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {useCases.map((u) => (
-                <span
-                  key={u.key}
-                  className="rounded-full border border-[#e399a3]/50 px-3.5 py-1.5 text-sm text-[#1c0a0c]/70 transition-colors hover:border-[#c74959]/50 hover:text-[#c74959]"
-                >
-                  {t(u.key)}
-                </span>
-              ))}
             </div>
+          ))}
+        </div>
+
+        {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
+            is the honest shape for that) but flattened: no shadow, no lift. */}
+        <div className="mt-16 border-t border-[#1c0a0c]/12 pt-8">
+          <p className="text-sm text-[#1c0a0c]/55">
+            {t("landing.uses.subheading")}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {useCases.map((u) => (
+              <span
+                key={u.key}
+                className="rounded-full border border-[#e399a3]/50 px-3.5 py-1.5 text-sm text-[#1c0a0c]/70 transition-colors hover:border-[#c74959]/50 hover:text-[#c74959]"
+              >
+                {t(u.key)}
+              </span>
+            ))}
           </div>
         </div>
       </section>
