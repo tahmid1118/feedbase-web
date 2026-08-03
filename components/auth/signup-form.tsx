@@ -53,7 +53,6 @@ export function SignupForm({
     defaultValues: {
       fullName: "",
       email: "",
-      contact: "",
       password: "",
       confirmPassword: "",
       lg: DEFAULT_LANGUAGE,
@@ -95,7 +94,6 @@ export function SignupForm({
         body: JSON.stringify({
           fullName: values.fullName,
           email: values.email,
-          contact: values.contact,
           password: values.password,
           lg: values.lg ?? DEFAULT_LANGUAGE,
         }),
@@ -181,52 +179,25 @@ export function SignupForm({
             )}
           />
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.email")}</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      autoComplete="email"
-                      placeholder="jane@acme.test"
-                      type="email"
-                      className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
-                    />
-                  </FormControl>
-                  <FormMessage className="text-xs text-[#b13d4c]" />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="contact"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">
-                    {t("auth.contact")}{" "}
-                    <span className="font-normal text-[#1c0a0c]/45">
-                      ({t("common.optional")})
-                    </span>
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      autoComplete="tel"
-                      placeholder="+1 (555) 123-4567"
-                      type="tel"
-                      className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
-                    />
-                  </FormControl>
-                  <FormMessage className="text-xs text-[#b13d4c]" />
-                </FormItem>
-              )}
-            />
-          </div>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-sm font-medium text-[#1c0a0c]/85">{t("auth.email")}</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    autoComplete="email"
+                    placeholder="jane@acme.test"
+                    type="email"
+                    className="h-11 rounded-xl border-[#e399a3]/65 bg-[#fdf8f9] px-3.5 text-[#1c0a0c] placeholder:text-[#1c0a0c]/45 focus-visible:border-[#c74959] focus-visible:ring-[#da6a78]/30"
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-[#b13d4c]" />
+              </FormItem>
+            )}
+          />
 
           <FormField
             control={form.control}

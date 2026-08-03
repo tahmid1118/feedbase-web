@@ -14,7 +14,6 @@ export interface LoginCredentialsInput {
 export interface RegisterInput {
   fullName: string;
   email: string;
-  contact: string;
   password: string;
   lg: string;
 }
@@ -88,7 +87,6 @@ export interface RegisterApiRequest {
   userData: {
     fullName: string;
     email: string;
-    contact: string;
     password: string;
   };
 }

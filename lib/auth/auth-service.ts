@@ -150,7 +150,6 @@ export async function registerWithCredentials(
     userData: {
       fullName: input.fullName,
       email: input.email,
-      contact: input.contact,
       password: input.password,
     },
   };

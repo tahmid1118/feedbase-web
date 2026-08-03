@@ -118,9 +118,10 @@ Sample Response:
 ```
 
 ### POST /users/register
+The signup form no longer collects a contact number (unnecessary friction at signup — it can still be added later in Settings → Profile). `contact` remains accepted and optional server-side (`userData.contact || null`) for backward compatibility; the frontend just never sends it.
 Sample Body:
 ```json
-{"lg":"en","userData":{"fullName":"Jane Product","email":"jane@acme.test","contact":"+8801712345678","password":"SecurePass123!"}}
+{"lg":"en","userData":{"fullName":"Jane Product","email":"jane@acme.test","password":"SecurePass123!"}}
 ```
 Sample Response:
 ```json
