@@ -19,7 +19,7 @@ export default async function PricingPage() {
         <div className="container mx-auto flex h-16 items-center justify-between gap-2 px-4 sm:gap-3">
           <Link href="/" className="flex min-w-0 items-center gap-2">
             <Logo className="h-8 w-8 shrink-0" />
-            <span className="hidden truncate text-xl font-bold text-[#1c0a0c] min-[420px]:inline">
+            <span className="hidden truncate font-display text-xl font-semibold text-[#1c0a0c] min-[420px]:inline">
               FeedBoard
             </span>
           </Link>

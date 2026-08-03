@@ -78,7 +78,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         {/* Logo */}
         <div className="flex h-16 items-center gap-2 border-b border-[#e399a3]/20 px-6">
           <Logo className="h-8 w-8" />
-          <span className="text-xl font-bold text-[#1c0a0c]">FeedBoard</span>
+          <span className="font-display text-xl font-semibold text-[#1c0a0c]">FeedBoard</span>
         </div>
 
         {/* Workspace switcher */}

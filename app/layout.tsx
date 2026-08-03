@@ -1,23 +1,12 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Sora } from "next/font/google";
 
 import { auth } from "@/auth";
+// All three typefaces live in lib/fonts.ts — change a font there, not here.
+import { fontVariables } from "@/lib/fonts";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
 import { I18nProvider } from "@/components/providers/i18n-provider";
 import { getLanguage } from "@/lib/i18n/server";
 import "./globals.css";
-
-const fontSans = Sora({
-  variable: "--font-brand-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const fontMono = JetBrains_Mono({
-  variable: "--font-brand-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "FeedBoard",
@@ -39,7 +28,7 @@ export default async function RootLayout({
   return (
     <html
       lang={lng}
-      className={`${fontSans.variable} ${fontMono.variable} h-full antialiased`}
+      className={`${fontVariables} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
         <I18nProvider lng={lng}>
