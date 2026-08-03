@@ -342,13 +342,27 @@ export default async function HomePage() {
       </section>
 
       {/* ── Closing ─────────────────────────────────────────────────────── */}
-      {/* The old version was a rose gradient card with two more blur blobs. A
-          full-bleed ink band is quieter and lands harder, and it's the only
-          dark surface on the page so it reads as a full stop. */}
-      <section className="bg-[#1c0a0c]">
+      {/* The rest of this page is deliberately flat and light — glass needs
+          real contrast behind it to blur, which is exactly what a flat #fdf8f9
+          background can't give it. This is the one surface dark enough to
+          support it, so it's also the one place that borrows the login/signup
+          aside's recipe (the 145deg ink→rose gradient + a frosted white-on-dark
+          panel) rather than that treatment staying stranded on the auth pages.
+          Still one dark surface and one glass element — restraint holds. */}
+      <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-xl">
-            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
+            {/* The one glass moment on the page. Reuses the price fact from the
+                spec-sheet card above rather than new copy, so the chip and the
+                card agree on what "$0" means instead of two different claims. */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#fdf8f9]/20 bg-[#fdf8f9]/10 px-4 py-1.5 backdrop-blur-sm">
+              <CheckCircle2 className="h-3.5 w-3.5 text-[#fdf8f9]/80" />
+              <span className="font-mono text-xs text-[#fdf8f9]/85">
+                {facts[2].value} {facts[2].label}
+              </span>
+            </div>
+
+            <h2 className="mt-5 font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
               {t("landing.cta.heading")}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-[#fdf8f9]/65">
