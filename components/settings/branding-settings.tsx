@@ -96,13 +96,18 @@ export function BrandingSettings() {
         },
         token
       );
-      setOriginalSubdomain(subdomain.trim());
-      setTenant({ ...tenant, subdomain: subdomain.trim() });
       toast.success(t("toast.workspaceUpdated"));
+      // Hard reload rather than updating local state: the dashboard sidebar
+      // (components/dashboard/sidebar.tsx) resolves its own "Public board"
+      // link from tenantsApi.getMine() once on mount and doesn't re-fetch
+      // just because this component's state changes, so a subdomain change
+      // here left that link pointing at the old subdomain until the user
+      // manually refreshed. A full reload remounts everything fresh, same
+      // reasoning as the hard reload after a workspace switch.
+      window.location.reload();
     } catch (e) {
       // Surfaces e.g. "That subdomain is already taken".
       toast.error((e as Error)?.message || "Failed to update workspace");
-    } finally {
       setSaving(false);
     }
   };
