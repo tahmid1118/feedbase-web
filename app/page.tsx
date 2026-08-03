@@ -200,23 +200,23 @@ export default async function HomePage() {
           and divide-x/divide-y turns the boundary between facts into real
           structure, a spec sheet has ruled cells, rather than gap+weight
           doing the separating.
-          Frosted glass: a translucent panel needs real tonal variation behind
-          it to actually blur into something, which a flat #fdf8f9 page can't
-          give it on its own — so the same soft radial wash already used
-          behind the login/signup card (see app/(auth)/layout.tsx) sits behind
-          this one too, sized to the card rather than the auth page's full
-          viewport wash. */}
-      {/* isolate: gives this section its own stacking context so the wash's
-          negative z-index is contained here rather than depending on the
-          sections above/below coincidentally sharing the same background
-          colour to hide any bleed. */}
-      <section className="relative isolate mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-5 -z-10 rounded-[2rem] bg-[radial-gradient(circle_at_28%_25%,rgba(199,73,89,0.22),transparent_60%),radial-gradient(circle_at_78%_75%,rgba(218,106,120,0.18),transparent_55%)] lg:inset-8"
-        />
-        <div className="overflow-hidden rounded-2xl border border-white/70 bg-white/55 shadow-[0_24px_60px_-36px_rgba(28,10,12,0.35)] backdrop-blur-xl">
-          <div className="grid grid-cols-2 divide-x divide-y divide-[#1c0a0c]/10 sm:grid-cols-4 sm:divide-y-0">
+          Glass, take two. The first version put a separately-blurred,
+          separately-rounded wash BEHIND the card — on a flat page that wash
+          has nothing of its own to diffuse, so it just showed through the
+          gaps as a mismatched pink halo poking out around the edges. Real
+          glass (iOS/macOS panels, the login/signup aside) never does that:
+          the tint lives INSIDE the glass material itself, clipped by the same
+          rounded corners as the card, plus a bright hairline along the top
+          inner edge where light would catch it. That's what's here now — a
+          diagonal gradient painted on the card's own surface, an inset
+          top-edge highlight, nothing floating loose behind it. */}
+      <section className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
+        <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/65 shadow-[0_20px_50px_-28px_rgba(28,10,12,0.35),inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-xl">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(199,73,89,0.14)_0%,rgba(218,106,120,0.06)_38%,transparent_65%)]"
+          />
+          <div className="relative grid grid-cols-2 divide-x divide-y divide-[#1c0a0c]/10 sm:grid-cols-4 sm:divide-y-0">
             {facts.map((f) => (
               <div key={f.label} className="min-w-0 px-6 py-8 sm:px-7 sm:py-9 lg:px-8">
                 {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
