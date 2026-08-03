@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
-import { RequestLifecycle } from "@/components/landing/request-lifecycle";
+import { HeroSystemFlow } from "@/components/landing/hero-system-flow";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
@@ -187,7 +187,7 @@ export default async function HomePage() {
           </div>
 
           <div className="flex min-w-0 justify-center lg:justify-end">
-            <RequestLifecycle />
+            <HeroSystemFlow />
           </div>
         </div>
       </section>
@@ -326,20 +326,16 @@ export default async function HomePage() {
           </div>
 
           {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
-              is the honest shape for that) but flattened: no shadow, no lift.
-              Float the same way as the cards above (lp-card-float,
-              globals.css) so the whole section shares one moving vocabulary
-              instead of the cards being the only thing that drifts. */}
+              is the honest shape for that) but flattened: no shadow, no lift. */}
           <div className="mt-16 border-t border-white/15 pt-8">
             <p className="text-sm text-[#fdf8f9]/55">
               {t("landing.uses.subheading")}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              {useCases.map((u, i) => (
+              {useCases.map((u) => (
                 <span
                   key={u.key}
-                  className="lp-card-float rounded-full border border-white/20 px-3.5 py-1.5 text-sm text-[#fdf8f9]/70 transition-colors hover:border-white/40 hover:text-[#fdf8f9]"
-                  style={{ animationDuration: `${5.5 + (i % 4) * 0.4}s`, animationDelay: `${(i % 4) * 0.2}s` }}
+                  className="rounded-full border border-white/20 px-3.5 py-1.5 text-sm text-[#fdf8f9]/70 transition-colors hover:border-white/40 hover:text-[#fdf8f9]"
                 >
                   {t(u.key)}
                 </span>
