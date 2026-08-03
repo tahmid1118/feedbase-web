@@ -15,29 +15,32 @@
  *
  * Three roles, and what each one is for:
  *
- *   DisplayFace  headings only — h1/h2, dialog and card titles, the wordmark.
- *                Wants personality; it is only ever seen large-ish and short.
- *   SansFace     body copy, form controls, buttons, table data, h3 and below.
- *                Wants to disappear. Don't put a display face here.
+ *   DisplayFace  headings — h1/h2, dialog and card titles, the wordmark.
+ *   SansFace     body copy, form controls, buttons, table data, h3 and below,
+ *                and anything else that inherits from <body> (e.g. the
+ *                landing page's flow diagram, which sets no font of its own).
  *   MonoFace     code, API keys, and metadata (vote counts, status labels,
- *                section eyebrows) where tabular figures matter.
+ *                section eyebrows) where tabular figures matter. Kept separate
+ *                on purpose — it's a functional face, not a brand choice.
  *
- * Vetted display alternatives if you want to try another direction — each is
- * variable, has real character, and pairs with Sora without muddying:
+ * CURRENT: single-family look. DisplayFace and SansFace are both IBM Plex
+ * Sans, so headings and body read as one consistent voice everywhere —
+ * buttons, forms, cards, the flow diagram, all of it. This is the "single
+ * family" option this file used to only describe: two separate font calls
+ * below, same family, so heading/body can still be re-split later by pointing
+ * SansFace at something else.
  *
- *   IBM_Plex_Sans       (current) grotesque with squared-off terminals and a
- *                       slight technical feel. Contrasts with Sora more than
- *                       Inter does, though both are still sans.
- *   Inter               neutral UI grotesque. Nearly indistinguishable from
- *                       Sora at heading sizes — no contrast at all.
- *   Fraunces            warm, quirky serif. Strong contrast against Sora.
+ * Vetted display alternatives if you want heading/body CONTRAST instead —
+ * each is variable and pairs with a plain sans body face without muddying:
+ *
+ *   IBM_Plex_Sans       (current, used for both roles) grotesque with
+ *                       squared-off terminals and a slight technical feel.
+ *   Inter               neutral UI grotesque. Barely contrasts with most
+ *                       sans body faces — near-single-family even when split.
+ *   Fraunces            warm, quirky serif. Strong contrast against a sans body.
  *   Instrument_Serif    high-contrast editorial serif, more formal.
- *   Bricolage_Grotesque characterful sans, if you'd rather stay sans-only.
+ *   Bricolage_Grotesque characterful sans if you want contrast without a serif.
  *   Playfair_Display    classic, sharper and more traditional than Fraunces.
- *
- * A display face only earns its place if it CONTRASTS with the body face. If
- * you want a single-family look instead, set SansFace to the same font rather
- * than running two that look alike.
  *
  * If the face you pick has variable axes worth setting (Fraunces' SOFT/WONK),
  * they live in ONE declaration — `--font-display-axes` in `globals.css`. A face
@@ -47,7 +50,7 @@
 import {
   IBM_Plex_Sans as DisplayFace,
   JetBrains_Mono as MonoFace,
-  Sora as SansFace,
+  IBM_Plex_Sans as SansFace,
 } from "next/font/google";
 
 export const fontDisplay = DisplayFace({
