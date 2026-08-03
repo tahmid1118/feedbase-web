@@ -244,10 +244,10 @@ Sample Response:
 ```
 
 ### GET /users/workspaces
-Lists every workspace the account (by email) belongs to, plus per-account limits. `lg` may be a query param. `role` is `owner` (owned) or `user` (joined). `limits.ownLimit`/`joinLimit` are `null` when unlimited.
+Lists every workspace the account (by email) belongs to, plus per-account limits. `lg` may be a query param. `role` is `owner` (owned) or `user` (joined). `limits.ownLimit`/`joinLimit` are `null` when unlimited. `branding_logo_url` is backend-relative — resolve with `resolveUploadUrl` before use in `<img src>` (`components/dashboard/workspace-switcher.tsx`'s `Tile` shows it, falling back to the colored initial when there's no logo or it fails to load).
 Sample Response:
 ```json
-{"status":"success","message":"Data fetched successfully","data":{"workspaces":[{"user_id":1,"role":"owner","tenant_id":1,"name":"Acme Labs","subdomain":"acme","branding_primary_color":"#c74959","current":true}],"limits":{"tier":"pro","ownedCount":1,"memberCount":1,"ownLimit":3,"joinLimit":3,"canCreate":true,"canJoin":true}}}
+{"status":"success","message":"Data fetched successfully","data":{"workspaces":[{"user_id":1,"role":"owner","tenant_id":1,"name":"Acme Labs","subdomain":"acme","branding_primary_color":"#c74959","branding_logo_url":"uploads/branding/logo-1712901234567.png","current":true}],"limits":{"tier":"pro","ownedCount":1,"memberCount":1,"ownLimit":3,"joinLimit":3,"canCreate":true,"canJoin":true}}}
 ```
 
 ### GET /users/workspaces/check-subdomain

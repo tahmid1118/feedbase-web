@@ -273,6 +273,8 @@ export interface Workspace {
   name: string;
   subdomain: string;
   branding_primary_color?: string | null;
+  /** Backend-relative path — resolve with resolveUploadUrl before use in <img src>. */
+  branding_logo_url?: string | null;
   current: boolean;
 }
 

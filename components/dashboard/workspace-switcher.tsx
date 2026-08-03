@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Check, ChevronsUpDown, Plus, Loader2, Lock } from "lucide-react";
@@ -11,6 +11,7 @@ import {
   type WorkspaceAuth,
   type WorkspaceLimits,
 } from "@/lib/api";
+import { resolveUploadUrl } from "@/lib/avatar";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
 import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";
 import {
@@ -46,7 +47,52 @@ function slugifySubdomain(value: string) {
     .slice(0, 40);
 }
 
-function Tile({ name, color }: { name: string; color?: string | null }) {
+/**
+ * Workspace tile: the uploaded branding logo when there is one, falling back
+ * to the colored initial (same fallback logic as components/portal/portal-logo.tsx)
+ * when there's no logo or it fails to load. `errored` is per-mount, not reset
+ * on prop change (that would need a setState-in-effect) — callers that reuse
+ * one Tile instance across different logos (the switcher trigger, whose
+ * `current` workspace changes) MUST `key` it by something logo-identifying so
+ * React remounts instead of a stale error sticking past a workspace switch.
+ */
+function Tile({
+  name,
+  color,
+  logoUrl,
+}: {
+  name: string;
+  color?: string | null;
+  logoUrl?: string | null;
+}) {
+  const [errored, setErrored] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const resolved = resolveUploadUrl(logoUrl);
+
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) {
+      // Fires once for an already-broken image; the perf rule doesn't apply.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setErrored(true);
+    }
+  }, [resolved]);
+
+  if (resolved && !errored) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        ref={imgRef}
+        src={resolved}
+        alt={name}
+        width={28}
+        height={28}
+        onError={() => setErrored(true)}
+        className="h-7 w-7 shrink-0 rounded-md object-cover"
+      />
+    );
+  }
+
   return (
     <span
       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-xs font-bold text-white"
@@ -108,7 +154,7 @@ export function WorkspaceSwitcher() {
       onClick={() => handleSwitch(w)}
       className="gap-2"
     >
-      <Tile name={w.name} color={w.branding_primary_color} />
+      <Tile name={w.name} color={w.branding_primary_color} logoUrl={w.branding_logo_url} />
       <span className="min-w-0 flex-1 truncate">{w.name}</span>
       {w.current && <Check className="h-4 w-4 shrink-0 text-[#c74959]" />}
     </DropdownMenuItem>
@@ -196,7 +242,12 @@ export function WorkspaceSwitcher() {
             type="button"
             className="flex w-full items-center gap-2 rounded-lg border border-[#e399a3]/20 bg-white px-2 py-1.5 text-left transition-colors hover:border-[#c74959]/40"
           >
-            <Tile name={currentName} color={current?.branding_primary_color} />
+            <Tile
+              key={current?.tenant_id ?? "none"}
+              name={currentName}
+              color={current?.branding_primary_color}
+              logoUrl={current?.branding_logo_url}
+            />
             <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-[#1c0a0c]">
                 {currentName}
