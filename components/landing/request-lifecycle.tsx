@@ -29,6 +29,10 @@ const STAGES = [
 ] as const;
 
 const STAGE_MS = 900;
+// How long to sit on "Shipped" before looping back to "Open" — long enough
+// that the payoff (the email line below the card) is actually readable rather
+// than flashing past on the way to a dead card.
+const HOLD_MS = 2600;
 
 /** Muted evergreen is the ONLY cool colour on the page — it marks "shipped". */
 const TONE = {
@@ -38,9 +42,16 @@ const TONE = {
 
 export function RequestLifecycle() {
   const { t } = useTranslation();
-  // Starts at "Open" and only ever moves forward, so the server-rendered frame
-  // is a coherent state rather than one that visibly rewinds on hydration.
+  // Starts at "Open" and only ever moves forward within a cycle, so the
+  // server-rendered frame is a coherent state rather than one that visibly
+  // rewinds on hydration.
   const [stage, setStage] = useState(0);
+  // Bumped each time the sequence loops back to "Open". The trail's stamps and
+  // connectors (`lp-stamp-in` / `lp-thread`) are one-shot CSS animations that
+  // only fire on mount, so keying the trail on `cycle` (see JSX below) forces
+  // fresh DOM nodes each lap and the animation replays instead of sitting in
+  // its finished state forever.
+  const [cycle, setCycle] = useState(0);
 
   useEffect(() => {
     // Every setState below is inside a timer callback on purpose: the React
@@ -48,19 +59,41 @@ export function RequestLifecycle() {
     // effect body (same constraint as the support-chat pollers).
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       // No motion, so jump to the resolved state — that's the one carrying the
-      // meaning. The CSS keyframes are already disabled by the media query.
+      // meaning — and stay there. The CSS keyframes are already disabled by
+      // the media query, so there's nothing to loop.
       const settle = setTimeout(() => setStage(STAGES.length - 1), 0);
       return () => clearTimeout(settle);
     }
 
-    let current = 0;
-    const id = setInterval(() => {
-      current += 1;
-      setStage(current);
-      if (current >= STAGES.length - 1) clearInterval(id);
-    }, STAGE_MS);
+    let live = true;
+    let timer: ReturnType<typeof setTimeout>;
 
-    return () => clearInterval(id);
+    const advance = (i: number) => {
+      if (!live) return;
+      setStage(i);
+      timer = setTimeout(
+        () => {
+          if (!live) return;
+          if (i < STAGES.length - 1) {
+            advance(i + 1);
+          } else {
+            // Landed on "Shipped" and held there; loop back to a fresh "Open".
+            setCycle((c) => c + 1);
+            advance(0);
+          }
+        },
+        i < STAGES.length - 1 ? STAGE_MS : HOLD_MS
+      );
+    };
+
+    // Deferred, not called directly, for the same set-state-in-effect reason
+    // as the reduced-motion branch above.
+    timer = setTimeout(() => advance(0), 0);
+
+    return () => {
+      live = false;
+      clearTimeout(timer);
+    };
   }, []);
 
   const active = STAGES[stage];
@@ -107,8 +140,10 @@ export function RequestLifecycle() {
         </div>
 
         {/* The trail. This is the point of the whole component: the history is
-            visible, so the person who asked can see it moved. */}
-        <ol className="mt-5 border-t border-[#e399a3]/30 pt-4">
+            visible, so the person who asked can see it moved.
+            key={cycle}: forces a remount each lap so the one-shot stamp/thread
+            animations replay — see the effect above. */}
+        <ol key={cycle} className="mt-5 border-t border-[#e399a3]/30 pt-4">
           {STAGES.map((s, i) => {
             const done = i <= stage;
             const isLast = i === STAGES.length - 1;
