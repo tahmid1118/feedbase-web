@@ -15,6 +15,14 @@ export interface PaginationData {
   filterBy: string;
   /** Board sort (newest | oldest | most_voted | least_voted). Falls back to sortOrder. */
   sortBy?: BoardSort;
+  /** Row offset for "load more" pagination on the PUBLIC board only
+      (getPublicBoard.js reads it directly). The authenticated /posts/list
+      endpoint is different: its `paginationData` middleware rebuilds the
+      whole object server-side and computes
+      `offset = itemsPerPage * currentPageNumber` itself, discarding any
+      offset sent here — so pagination there is driven by currentPageNumber,
+      not this field (see components/feedback/feedback-list.tsx loadMore). */
+  offset?: number;
 }
 
 /** Board sort options, shared by the dashboard board and the public portal. */

@@ -337,7 +337,7 @@ Sample Response:
 ```
 
 ### POST /posts/list
-Supported `filters`: `status`, `postType`, `tagId`, `isPinned`, and `search` (full-text-ish match on title/description). `search` may also be passed as `paginationData.filterBy` (legacy). Pinned posts are returned first. Each post includes its `tags` array, `has_voted` (for the current user), and `is_pinned`. `total` respects the active filters.
+Supported `filters`: `status`, `postType`, `tagId`, `isPinned`, and `search` (full-text-ish match on title/description). `search` may also be passed as `paginationData.filterBy` (legacy). Pinned posts are returned first. Each post includes its `tags` array, `has_voted` (for the current user), and `is_pinned`. `total` respects the active filters. **Paginate by incrementing `currentPageNumber`, not by sending `paginationData.offset`** — the `paginationData` middleware in front of this route rebuilds the pagination object and computes `offset = itemsPerPage * currentPageNumber` itself, discarding any offset the client sends. Used for "load more on scroll" by `components/feedback/feedback-list.tsx` (dashboard board) — 20 rows per page.
 Sample Body:
 ```json
 {"lg":"en","paginationData":{"itemsPerPage":10,"currentPageNumber":0,"sortOrder":"desc","filterBy":""},"filters":{"status":"open","postType":"feature_request","tagId":1,"search":"dark mode"}}
@@ -1070,10 +1070,10 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts
-Public feedback board (read). Supports `filters` (`status`, `postType`, `tagId`, `search`) and `paginationData`. Board cards include `attachment_count` + a `thumbnail_path`.
+Public feedback board (read). Supports `filters` (`status`, `postType`, `tagId`, `search`) and `paginationData`. Board cards include `attachment_count` + a `thumbnail_path`. **Unlike `/posts/list`, this endpoint has no pagination middleware and reads `paginationData.offset` directly** — `currentPageNumber` is accepted but ignored server-side, so pass the actual row offset. `itemsPerPage` is clamped to `PUBLIC_MAX_ITEMS_PER_PAGE` (default 50) since this route is unauthenticated. Used for "load more on scroll" by `components/portal/board-list.tsx` — the first page renders server-side in `app/portal/[tenant]/page.tsx`, this client component fetches the rest — 20 rows per page.
 Sample Body:
 ```json
-{"lg":"en","paginationData":{"itemsPerPage":20,"currentPageNumber":0,"sortOrder":"desc","filterBy":""},"filters":{"status":"planned"}}
+{"lg":"en","paginationData":{"itemsPerPage":20,"currentPageNumber":0,"sortOrder":"desc","filterBy":"","offset":20},"filters":{"status":"planned"}}
 ```
 Sample Response:
 ```json

@@ -1,26 +1,16 @@
-import Link from "next/link";
-import { MessageSquare, Paperclip } from "lucide-react";
 import { publicApi, normalizeBoardSort, normalizeBoardStatus } from "@/lib/api/public";
 import type { PostStatus } from "@/lib/api/types";
-import { Badge } from "@/components/ui/badge";
 import { FeedbackSubmit } from "@/components/portal/feedback-submit";
-import { PostTypeIcon } from "@/components/feedback/post-type-icon";
-import { PortalVoteButton } from "@/components/portal/portal-vote-button";
+import { BoardList } from "@/components/portal/board-list";
 import { BoardSort } from "@/components/portal/board-sort";
 import { BoardTabs } from "@/components/portal/board-tabs";
-import { LocalTime } from "@/components/local-time";
 import { getTranslation } from "@/lib/i18n/server";
 
 const DEFAULT_BRAND = "#c74959";
 
-const STATUS_BADGE: Record<string, string> = {
-  open: "bg-blue-100 text-blue-700",
-  planned: "bg-purple-100 text-purple-700",
-  in_progress: "bg-yellow-100 text-yellow-700",
-  completed: "bg-green-100 text-green-700",
-  closed: "bg-gray-100 text-gray-700",
-  rejected: "bg-red-100 text-red-700",
-};
+// Posts fetched per page — the server-rendered first page, and every
+// client-side "load more" tick after it (components/portal/board-list.tsx).
+const PAGE_SIZE = 20;
 
 export default async function PortalBoardPage({
   params,
@@ -39,10 +29,11 @@ export default async function PortalBoardPage({
     status === "all" ? undefined : { status: status as PostStatus };
   // getTenant is React-cached, so this shares the layout's tenant lookup.
   const [data, info] = await Promise.all([
-    publicApi.getBoard(decoded, filters, 100, sort),
+    publicApi.getBoard(decoded, filters, PAGE_SIZE, sort),
     publicApi.getTenant(decoded),
   ]);
   const posts = data?.posts ?? [];
+  const total = data?.total ?? posts.length;
   const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
   return (
@@ -69,85 +60,18 @@ export default async function PortalBoardPage({
           <BoardSort value={sort} />
         </div>
 
-        {posts.length === 0 ? (
-          <div className="rounded-xl border border-black/5 bg-white p-8 text-center sm:p-12 text-[#1c0a0c]/60">
-            {t(status === "all" ? "portal.noFeedbackYet" : "portal.noMatchingPosts")}
-          </div>
-        ) : (
-          posts.map((post) => (
-            <div
-              key={post.id}
-              className="relative isolate rounded-xl border border-black/5 bg-white p-4 transition-shadow hover:shadow-md"
-            >
-              <Link
-                href={`/portal/${decoded}/post/${post.id}`}
-                aria-label={t("portal.openPost", { title: post.title })}
-                className="absolute inset-0 z-[1] rounded-xl"
-              />
-              <div className="flex items-start gap-3 sm:gap-4">
-                <PortalVoteButton
-                  tenant={decoded}
-                  postId={post.id}
-                  initialCount={post.vote_count}
-                  brand={brand}
-                />
-
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-start justify-between gap-2 sm:gap-3">
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <PostTypeIcon
-                          type={post.post_type}
-                          className="h-4 w-4 shrink-0 text-[#1c0a0c]/50"
-                        />
-                        <h3 className="font-semibold text-[#1c0a0c]">
-                          {post.title}
-                        </h3>
-                      </div>
-                      <p className="mt-1 line-clamp-2 text-sm text-[#1c0a0c]/70">
-                        {post.description}
-                      </p>
-                    </div>
-                    <span
-                      className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium sm:px-3 sm:py-1 sm:text-xs ${STATUS_BADGE[post.status]}`}
-                    >
-                      {t(`status.${post.status}`)}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#1c0a0c]/60">
-                    <span className="flex items-center gap-1">
-                      <MessageSquare className="h-3 w-3" />
-                      {t("portal.nComments", { count: post.comment_count ?? 0 })}
-                    </span>
-                    {(post.attachment_count ?? 0) > 0 && (
-                      <span className="flex items-center gap-1">
-                        <Paperclip className="h-3 w-3" />
-                        {post.attachment_count}
-                      </span>
-                    )}
-                    {post.created_at && (
-                      <LocalTime date={post.created_at} relative />
-                    )}
-                    {post.tags?.map((tag) => (
-                      <Badge
-                        key={tag.id}
-                        variant="outline"
-                        style={
-                          tag.color_hex
-                            ? { color: tag.color_hex, borderColor: tag.color_hex }
-                            : undefined
-                        }
-                      >
-                        {tag.name}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))
-        )}
+        {/* Keyed on status+sort: switching tabs/sort should start a fresh
+            accumulated list from the new first page, not try to reconcile
+            client state built for a different filter. */}
+        <BoardList
+          key={`${status}-${sort}`}
+          tenant={decoded}
+          initialPosts={posts}
+          initialTotal={total}
+          status={status}
+          sort={sort}
+          brand={brand}
+        />
       </div>
     </div>
   );

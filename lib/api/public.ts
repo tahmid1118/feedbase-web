@@ -156,8 +156,9 @@ export const publicApi = {
   getBoard: (
     identifier: string,
     filters?: PostListFilters,
-    itemsPerPage = 100,
-    sort: BoardSort = "newest"
+    itemsPerPage = 20,
+    sort: BoardSort = "newest",
+    offset = 0
   ) =>
     publicFetch<{ posts: Post[]; total: number }>(
       `/public/${encodeURIComponent(identifier)}/posts`,
@@ -169,6 +170,7 @@ export const publicApi = {
             currentPageNumber: 0,
             sortBy: sort,
             filterBy: "",
+            offset,
           },
           filters,
         }),

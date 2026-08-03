@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import {
   MessageSquare,
@@ -13,6 +13,7 @@ import {
   Paperclip,
   Ban,
   RotateCcw,
+  Loader2,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -20,6 +21,7 @@ import {
   tagsApi,
   roadmapApi,
   extractRows,
+  extractTotal,
   BOARD_SORT_OPTIONS,
   type BoardSort,
   type Post,
@@ -71,18 +73,24 @@ interface FeedbackListProps {
   refreshKey?: number;
 }
 
+// Posts fetched per page, both on initial load and each "load more" tick.
+const PAGE_SIZE = 20;
+
 export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   const { t } = useTranslation();
   const { data: session } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
+  const [total, setTotal] = useState(0);
   const [tags, setTags] = useState<Tag[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [status, setStatus] = useState<string>("all");
   const [postType, setPostType] = useState<string>("all");
   const [tagId, setTagId] = useState<string>("all");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<BoardSort>("newest");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
 
   // Bulk "send to roadmap" selection (Open tab only).
   const [selected, setSelected] = useState<Set<number>>(new Set());
@@ -103,33 +111,44 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     return () => clearTimeout(id);
   }, [search]);
 
+  const filters = useMemo(
+    () => ({
+      ...(status !== "all" ? { status: status as PostStatus } : {}),
+      ...(postType !== "all" ? { postType: postType as PostType } : {}),
+      ...(tagId !== "all" ? { tagId: Number(tagId) } : {}),
+      ...(debouncedSearch ? { search: debouncedSearch } : {}),
+    }),
+    [status, postType, tagId, debouncedSearch]
+  );
+
+  // Full reset: fires on filter/sort change, the refreshKey bump, and
+  // window refocus (via useRefetchOnFocus below). Always starts from page 0
+  // and replaces the whole list — loadMore (below) is the only path that
+  // appends.
   const loadPosts = useCallback(async () => {
     try {
       setLoading(true);
       const res = await postsApi.list(
         {
-          itemsPerPage: 100,
+          itemsPerPage: PAGE_SIZE,
           currentPageNumber: 0,
           sortOrder: "desc",
           filterBy: "",
           sortBy: sort,
         },
-        {
-          ...(status !== "all" ? { status: status as PostStatus } : {}),
-          ...(postType !== "all" ? { postType: postType as PostType } : {}),
-          ...(tagId !== "all" ? { tagId: Number(tagId) } : {}),
-          ...(debouncedSearch ? { search: debouncedSearch } : {}),
-        },
+        filters,
         token
       );
       setPosts(extractRows<Post>(res.data, "posts"));
+      setTotal(extractTotal(res.data));
     } catch (error) {
       console.error("Failed to load posts:", error);
       setPosts([]);
+      setTotal(0);
     } finally {
       setLoading(false);
     }
-  }, [status, postType, tagId, debouncedSearch, sort, token]);
+  }, [filters, sort, token]);
 
   useEffect(() => {
     loadPosts();
@@ -138,6 +157,58 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   // Reflect changes made elsewhere (e.g. status updated from the roadmap) when
   // the user returns to this page.
   useRefetchOnFocus(loadPosts);
+
+  // Appends the next page instead of replacing. Guarded against re-entrancy
+  // (loading/loadingMore) and against firing once every row is already on
+  // screen (posts.length >= total).
+  //
+  // currentPageNumber, not a raw offset: the backend's `paginationData`
+  // middleware (shared by every authenticated list endpoint) REBUILDS the
+  // pagination object server-side and computes
+  // `offset = itemsPerPage * currentPageNumber` itself, discarding any
+  // offset the client sends. posts.length is always an exact multiple of
+  // PAGE_SIZE here (loadMore only ever appends full pages, and stops once
+  // the final partial page lands), so dividing it back into a page index is
+  // exact, not an approximation.
+  const loadMore = useCallback(async () => {
+    if (loading || loadingMore || posts.length >= total) return;
+    setLoadingMore(true);
+    try {
+      const res = await postsApi.list(
+        {
+          itemsPerPage: PAGE_SIZE,
+          currentPageNumber: Math.floor(posts.length / PAGE_SIZE),
+          sortOrder: "desc",
+          filterBy: "",
+          sortBy: sort,
+        },
+        filters,
+        token
+      );
+      setPosts((prev) => [...prev, ...extractRows<Post>(res.data, "posts")]);
+      setTotal(extractTotal(res.data));
+    } catch (error) {
+      console.error("Failed to load more posts:", error);
+    } finally {
+      setLoadingMore(false);
+    }
+  }, [loading, loadingMore, posts.length, total, sort, filters, token]);
+
+  // IntersectionObserver on a sentinel div after the list — scrolling it into
+  // view loads the next page. Re-created whenever loadMore changes identity
+  // (new filters/sort/page) so the callback it holds is never stale.
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) loadMore();
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [loadMore]);
 
   useEffect(() => {
     if (!token) return;
@@ -574,6 +645,17 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {/* Infinite scroll: an empty sentinel the IntersectionObserver watches,
+          plus a spinner while a page is in flight. Only rendered once there's
+          an initial page to append to and more rows exist beyond it. */}
+      {!loading && posts.length > 0 && posts.length < total && (
+        <div ref={sentinelRef} className="flex justify-center py-6">
+          {loadingMore && (
+            <Loader2 className="h-5 w-5 animate-spin text-[#c74959]/60" />
+          )}
         </div>
       )}
 
