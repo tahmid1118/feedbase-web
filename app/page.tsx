@@ -194,38 +194,31 @@ export default async function HomePage() {
       </section>
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
-      {/* Contained in the same max-w-6xl column as everything else (was
-          full-bleed). Values are mono/tabular — this page's vocabulary for
-          facts and metadata (the hero card's vote count, status labels) —
-          and divide-x/divide-y turns the boundary between facts into real
-          structure, a spec sheet has ruled cells, rather than gap+weight
-          doing the separating.
-          Glass, take two. The first version put a separately-blurred,
-          separately-rounded wash BEHIND the card — on a flat page that wash
-          has nothing of its own to diffuse, so it just showed through the
-          gaps as a mismatched pink halo poking out around the edges. Real
-          glass (iOS/macOS panels, the login/signup aside) never does that:
-          the tint lives INSIDE the glass material itself, clipped by the same
-          rounded corners as the card, plus a bright hairline along the top
-          inner edge where light would catch it. That's what's here now — a
-          diagonal gradient painted on the card's own surface, an inset
-          top-edge highlight, nothing floating loose behind it. */}
+      {/* Two attempts at a light glass card here didn't land — the second one
+          fixed the construction defect (no more halo) but the direction
+          itself was still the problem, not the execution. Third try: drop
+          light-glass entirely and give this the CTA's own dark material — the
+          exact same gradient recipe, not just similar colours, reused rather
+          than re-derived (see the closing section below). That makes the two
+          dark surfaces read as a deliberate pair bracketing the page — the
+          same dramatic material opening the argument here and closing it
+          there — instead of a card straining to look special on its own.
+          Values are mono/tabular, this page's vocabulary for facts and
+          metadata (the hero card's vote count, status labels), and
+          divide-x/divide-y still turns the boundary between facts into ruled
+          structure rather than gap+weight doing the separating. */}
       <section className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
-        <div className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/65 shadow-[0_20px_50px_-28px_rgba(28,10,12,0.35),inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-xl">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(199,73,89,0.14)_0%,rgba(218,106,120,0.06)_38%,transparent_65%)]"
-          />
-          <div className="relative grid grid-cols-2 divide-x divide-y divide-[#1c0a0c]/10 sm:grid-cols-4 sm:divide-y-0">
+        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)] shadow-[0_20px_50px_-28px_rgba(199,73,89,0.4)]">
+          <div className="grid grid-cols-2 divide-x divide-y divide-white/12 sm:grid-cols-4 sm:divide-y-0">
             {facts.map((f) => (
-              <div key={f.label} className="min-w-0 px-6 py-8 sm:px-7 sm:py-9 lg:px-8">
+              <div key={f.label} className="min-w-0 px-6 py-7 sm:px-7 sm:py-8 lg:px-8">
                 {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
                     not fit a half-width column on a 360px screen, and one
                     overflowing word makes the whole page scroll sideways. */}
-                <div className="font-mono text-2xl leading-none font-semibold tabular-nums break-words text-[#1c0a0c] sm:text-[28px] lg:text-3xl">
+                <div className="font-mono text-2xl leading-none font-semibold tabular-nums break-words text-[#fdf8f9] sm:text-[28px] lg:text-3xl">
                   {f.value}
                 </div>
-                <div className="mt-2.5 text-sm leading-snug text-[#1c0a0c]/55">
+                <div className="mt-2.5 text-sm leading-snug text-[#fdf8f9]/55">
                   {f.label}
                 </div>
               </div>
@@ -351,13 +344,17 @@ export default async function HomePage() {
       </section>
 
       {/* ── Closing ─────────────────────────────────────────────────────── */}
-      {/* The rest of this page is deliberately flat and light — glass needs
-          real contrast behind it to blur, which is exactly what a flat #fdf8f9
-          background can't give it. This is the one surface dark enough to
-          support it, so it's also the one place that borrows the login/signup
-          aside's recipe (the 145deg ink→rose gradient + a frosted white-on-dark
-          panel) rather than that treatment staying stranded on the auth pages.
-          Still one dark surface and one glass element — restraint holds. */}
+      {/* Bookends the facts card above with the exact same gradient recipe —
+          the two dark surfaces read as deliberate, opening and closing the
+          page, rather than one card straining to be special in isolation.
+          This is still the only GLASS moment on the page, though: the facts
+          card reuses the gradient but stays a solid, opaque surface (no
+          backdrop-blur, no translucency) — two attempts at glass on a small
+          card already proved that treatment doesn't suit it, so it isn't
+          repeated here either. The chip below borrows the login/signup
+          aside's recipe (frosted white-on-dark, backdrop-blur-sm) precisely
+          because THIS surface — larger, more headline copy around it — can
+          carry it where the facts card couldn't. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-xl">
