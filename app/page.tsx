@@ -194,21 +194,20 @@ export default async function HomePage() {
       </section>
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
-      {/* Two attempts at a light glass card here didn't land — the second one
-          fixed the construction defect (no more halo) but the direction
-          itself was still the problem, not the execution. Third try: drop
-          light-glass entirely and give this the CTA's own dark material — the
-          exact same gradient recipe, not just similar colours, reused rather
-          than re-derived (see the closing section below). That makes the two
-          dark surfaces read as a deliberate pair bracketing the page — the
-          same dramatic material opening the argument here and closing it
-          there — instead of a card straining to look special on its own.
-          Values are mono/tabular, this page's vocabulary for facts and
-          metadata (the hero card's vote count, status labels), and
+      {/* Full-bleed again, same structural pattern as the closing CTA below
+          (section carries the background edge-to-edge, an inner div
+          constrains the content to max-w-6xl) rather than a card floating in
+          the column with margin either side. No rounded corners or shadow
+          here for the same reason the CTA has none — a full-bleed band reads
+          as a band, not an object sitting on the page.
+          Same dark material as the CTA (the exact gradient recipe, reused
+          rather than re-derived), so the two still bracket the page as a
+          pair. Values stay mono/tabular — this page's vocabulary for facts
+          and metadata (the hero card's vote count, status labels) — and
           divide-x/divide-y still turns the boundary between facts into ruled
           structure rather than gap+weight doing the separating. */}
-      <section className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
-        <div className="overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)] shadow-[0_20px_50px_-28px_rgba(199,73,89,0.4)]">
+      <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
+        <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
           <div className="grid grid-cols-2 divide-x divide-y divide-white/12 sm:grid-cols-4 sm:divide-y-0">
             {facts.map((f) => (
               <div key={f.label} className="min-w-0 px-6 py-7 sm:px-7 sm:py-8 lg:px-8">
@@ -362,17 +361,17 @@ export default async function HomePage() {
       </section>
 
       {/* ── Closing ─────────────────────────────────────────────────────── */}
-      {/* Bookends the facts card above with the exact same gradient recipe —
+      {/* Bookends the facts band above with the exact same gradient recipe —
           the two dark surfaces read as deliberate, opening and closing the
-          page, rather than one card straining to be special in isolation.
+          page, rather than one of them straining to be special in isolation.
           This is still the only GLASS moment on the page, though: the facts
-          card reuses the gradient but stays a solid, opaque surface (no
-          backdrop-blur, no translucency) — two attempts at glass on a small
-          card already proved that treatment doesn't suit it, so it isn't
-          repeated here either. The chip below borrows the login/signup
-          aside's recipe (frosted white-on-dark, backdrop-blur-sm) precisely
-          because THIS surface — larger, more headline copy around it — can
-          carry it where the facts card couldn't. */}
+          band reuses the gradient but stays a solid, opaque surface (no
+          backdrop-blur, no translucency) — two attempts at glass on it
+          already proved that treatment doesn't suit it, so it isn't repeated
+          here either. The chip below borrows the login/signup aside's recipe
+          (frosted white-on-dark, backdrop-blur-sm) precisely because THIS
+          surface — larger, more headline copy around it — can carry it where
+          the facts band couldn't. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-xl">
