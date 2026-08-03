@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -169,14 +169,18 @@ export default async function HomePage() {
                   <ArrowRight className="ml-1.5 h-4 w-4" />
                 </Button>
               </Link>
-              {/* Our own feedback board doubles as the live demo. */}
-              <a href={officialBoardUrl()}>
+              {/* Our own feedback board doubles as the live demo. Given a
+                  real border + hover fill (the standard outline/ghost
+                  treatment) and an arrow so it reads as a second button next
+                  to Start for free, not a plain text link floating beside one. */}
+              <a href={officialBoardUrl()} className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="ghost"
-                  className="h-12 px-3 text-base text-[#1c0a0c]/75 underline-offset-4 hover:bg-transparent hover:text-[#c74959] hover:underline sm:px-5"
+                  className="h-12 w-full gap-1.5 border border-[#1c0a0c]/15 px-5 text-base text-[#1c0a0c]/75 hover:border-[#c74959]/40 hover:bg-[#c74959]/10 hover:text-[#c74959] sm:w-auto sm:px-6"
                 >
                   {t("landing.hero.seeLive")}
+                  <ArrowUpRight className="h-4 w-4" />
                 </Button>
               </a>
             </div>
