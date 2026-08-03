@@ -25,9 +25,11 @@
  * Vetted display alternatives if you want to try another direction — each is
  * variable, has real character, and pairs with Sora without muddying:
  *
- *   Inter               neutral UI grotesque (current). Note: Inter and Sora
- *                       are both geometric sans, so headings and body barely
- *                       contrast — the page reads as one family at two weights.
+ *   IBM_Plex_Sans       (current) grotesque with squared-off terminals and a
+ *                       slight technical feel. Contrasts with Sora more than
+ *                       Inter does, though both are still sans.
+ *   Inter               neutral UI grotesque. Nearly indistinguishable from
+ *                       Sora at heading sizes — no contrast at all.
  *   Fraunces            warm, quirky serif. Strong contrast against Sora.
  *   Instrument_Serif    high-contrast editorial serif, more formal.
  *   Bricolage_Grotesque characterful sans, if you'd rather stay sans-only.
@@ -43,7 +45,7 @@
  * unless you actively want different axis values.
  */
 import {
-  Inter as DisplayFace,
+  IBM_Plex_Sans as DisplayFace,
   JetBrains_Mono as MonoFace,
   Sora as SansFace,
 } from "next/font/google";

@@ -220,7 +220,7 @@ Toasts use `sonner` — `import { toast } from "sonner"`. Roadmap drag-and-drop 
 Brand colors:
 - Primary: `#c74959` (rose) · Secondary: `#da6a78` · Accent/border: `#e399a3` · Background: `#fdf8f9` · Text: `#1c0a0c`
 
-Typography: **Inter for headings, Sora (sans) for everything else.** Mono (JetBrains) is reserved for code, API keys and metadata (vote counts, status labels, section eyebrows).
+Typography: **IBM Plex Sans for headings, Sora (sans) for everything else.** Mono (JetBrains) is reserved for code, API keys and metadata (vote counts, status labels, section eyebrows).
 
 - **Every face must request `subsets: ["latin", "latin-ext"]`.** Polish (`ą ć ę ł ń ś ź ż`) and the rest of Latin Extended-A are **not** in the `latin` subset. This was wrong for a long time — Sora carries all body copy and only requested `latin`, so the entire `pl` locale rendered those glyphs in a fallback system font, mid-word, in every heading and paragraph. Verified per-character against the loaded face, not assumed. Any new font added here needs the same pair.
 
