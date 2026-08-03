@@ -194,26 +194,29 @@ export default async function HomePage() {
       </section>
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
-      {/* Was a full-bleed rose gradient band, then a full-bleed hairline row —
-          both ran edge to edge while every other section sits in the same
-          max-w-6xl column. A contained card keeps it in that column too, so
-          the page reads as one consistent width instead of the ledger being
-          the one part that ignores the margins everyone else respects. */}
+      {/* Contained in the same max-w-6xl column as everything else (was
+          full-bleed). A plain white box with the values in the display face
+          was still just a generic four-stat grid — the same shape as every
+          template's "trust bar". Two changes make it specific instead:
+            - Values are mono/tabular, the vocabulary this page already uses
+              for facts and metadata (the hero card's vote count, status
+              labels) — these ARE terse measured specs, not a headline.
+            - divide-x/divide-y turns the boundary between facts into real
+              structure (a spec sheet has ruled cells) rather than gap+weight
+              doing the separating, and the elevated shadow pairs it with the
+              hero card as the page's only two "lifted object" surfaces. */}
       <section className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
-        <div className="rounded-2xl border border-[#e399a3]/30 bg-white px-6 py-10 sm:px-10">
-          {/* No vertical rules between cells: the gap and the type hierarchy
-              already separate them, and four more hairlines here fought the
-              card's own border. */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:gap-x-8 lg:grid-cols-4">
+        <div className="overflow-hidden rounded-2xl border border-[#e399a3]/35 bg-white shadow-[0_24px_60px_-36px_rgba(28,10,12,0.35)]">
+          <div className="grid grid-cols-2 divide-x divide-y divide-[#e399a3]/25 sm:grid-cols-4 sm:divide-y-0">
             {facts.map((f) => (
-              <div key={f.label} className="min-w-0">
+              <div key={f.label} className="min-w-0 px-6 py-8 sm:px-7 sm:py-9 lg:px-8">
                 {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
                     not fit a half-width column on a 360px screen, and one
                     overflowing word makes the whole page scroll sideways. */}
-                <div className="font-display text-2xl leading-none font-semibold break-words text-[#1c0a0c] sm:text-3xl lg:text-4xl">
+                <div className="font-mono text-2xl leading-none font-semibold tabular-nums break-words text-[#1c0a0c] sm:text-[28px] lg:text-3xl">
                   {f.value}
                 </div>
-                <div className="mt-2 text-sm leading-snug text-[#1c0a0c]/55">
+                <div className="mt-2.5 text-sm leading-snug text-[#1c0a0c]/55">
                   {f.label}
                 </div>
               </div>
