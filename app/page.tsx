@@ -199,15 +199,13 @@ export default async function HomePage() {
           content to max-w-6xl). No rounded corners or shadow on the SECTION
           itself for the same reason the CTA has none — a full-bleed band
           reads as a band, not an object sitting on the page.
-          The four cells, though, are now genuine glass — but the light-glass
-          recipe used on the type cards below doesn't apply here: that one is
-          a rose-tinted gradient painted on a card sitting over the page's
-          light #fdf8f9, and there's no equivalent tint that would read on
-          top of this dark gradient. So this reuses the OTHER glass recipe
-          already proven on this exact material: the CTA chip's frosted
-          white-on-dark (`border-white/15 bg-white/10 backdrop-blur-sm` +
-          an inset top highlight), just scaled up from a pill to a card. Values
-          stay mono/tabular — this page's vocabulary for facts and metadata
+          The four cells, though, are now genuine glass — the CTA chip's own
+          frosted white-on-dark recipe (`border-white/15 bg-white/10
+          backdrop-blur-sm` + an inset top highlight), just scaled up from a
+          pill to a card. The type cards below reuse this same recipe rather
+          than a bespoke one, so every glass surface on the page is one
+          consistent material. Values stay mono/tabular — this page's
+          vocabulary for facts and metadata
           (the hero card's vote count, status labels). Gap replaces
           divide-x/divide-y now that each cell is its own bordered surface —
           a divider would double up with the card edges next to it. */}
@@ -286,68 +284,61 @@ export default async function HomePage() {
       </section>
 
       {/* ── What comes in ───────────────────────────────────────────────── */}
-      {/* These three used to be hairline-topped list items (no card at all),
-          the same device as Benefits/Features. Now genuine glass cards, using
-          the recipe that actually worked on the facts card's second attempt:
-          the tint is a gradient painted ON the card's own surface (clipped by
-          its own overflow-hidden, so it can't bleed past the edge like the
-          first, broken attempt did) plus an inset top-edge highlight for the
-          specular catch — never a separately-blurred wash floating behind it.
-          The section itself drops its old bg-white band: translucent white
-          glass sitting on ANOTHER white background barely shows any tint at
-          all — it needs the page's own #fdf8f9 behind it, same context the
-          facts card relies on, or the glass reads as just a plain white box. */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
-        <div className="max-w-2xl">
-          <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-5xl">
-            {t("landing.types.heading")}
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
-            {t("landing.types.subheading")}
-          </p>
-        </div>
+      {/* The frosted card recipe (border-white/15 bg-white/10 backdrop-blur-sm
+          + inset top highlight) is the facts ledger's cells verbatim — reused
+          rather than re-derived, same as the CTA reusing the dark gradient.
+          But that recipe was designed for a dark surface: on the page's plain
+          #fdf8f9 it was tested and came back essentially invisible (no visible
+          border, no visible tint — just floating text). So this section is now
+          a THIRD full-bleed dark band, the same gradient as facts/CTA, which
+          is the only context this recipe actually reads in. Text and borders
+          throughout are flipped to light-on-dark to match; the icon moves from
+          brand rose (illegible on this red-toned gradient) to the pale accent
+          #e399a3, which is what actually separates from the background. */}
+      <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
+        <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
+              {t("landing.types.heading")}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#fdf8f9]/65">
+              {t("landing.types.subheading")}
+            </p>
+          </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {types.map((ty) => (
-            <div
-              key={ty.type}
-              className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/65 p-6 shadow-[0_20px_50px_-30px_rgba(28,10,12,0.3),inset_0_1px_0_0_rgba(255,255,255,0.9)] backdrop-blur-xl"
-            >
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {types.map((ty) => (
               <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(199,73,89,0.11)_0%,rgba(218,106,120,0.05)_40%,transparent_68%)]"
-              />
-              <div className="relative">
-                <PostTypeIcon
-                  type={ty.type}
-                  className="h-5 w-5 text-[#c74959]"
-                />
-                <h3 className="mt-4 text-lg font-semibold text-[#1c0a0c]">
+                key={ty.type}
+                className="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
+              >
+                <PostTypeIcon type={ty.type} className="h-5 w-5 text-[#e399a3]" />
+                <h3 className="mt-4 text-lg font-semibold text-[#fdf8f9]">
                   {ty.label}
                 </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-[#1c0a0c]/60">
+                <p className="mt-2 text-[15px] leading-relaxed text-[#fdf8f9]/60">
                   {ty.desc}
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
-            is the honest shape for that) but flattened: no shadow, no lift. */}
-        <div className="mt-16 border-t border-[#1c0a0c]/12 pt-8">
-          <p className="text-sm text-[#1c0a0c]/55">
-            {t("landing.uses.subheading")}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {useCases.map((u) => (
-              <span
-                key={u.key}
-                className="rounded-full border border-[#e399a3]/50 px-3.5 py-1.5 text-sm text-[#1c0a0c]/70 transition-colors hover:border-[#c74959]/50 hover:text-[#c74959]"
-              >
-                {t(u.key)}
-              </span>
             ))}
+          </div>
+
+          {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
+              is the honest shape for that) but flattened: no shadow, no lift. */}
+          <div className="mt-16 border-t border-white/15 pt-8">
+            <p className="text-sm text-[#fdf8f9]/55">
+              {t("landing.uses.subheading")}
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {useCases.map((u) => (
+                <span
+                  key={u.key}
+                  className="rounded-full border border-white/20 px-3.5 py-1.5 text-sm text-[#fdf8f9]/70 transition-colors hover:border-white/40 hover:text-[#fdf8f9]"
+                >
+                  {t(u.key)}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -369,14 +360,14 @@ export default async function HomePage() {
       </section>
 
       {/* ── Closing ─────────────────────────────────────────────────────── */}
-      {/* Bookends the facts band above with the exact same gradient recipe —
-          the two dark surfaces read as deliberate, opening and closing the
-          page, rather than one of them straining to be special in isolation.
-          The chip below shares its glass recipe with the facts cells above it
-          (frosted white-on-dark, `backdrop-blur-sm` + inset top highlight) —
-          the same recipe as the login/signup aside — so the dark material
-          carries one consistent glass treatment everywhere it appears on the
-          page, rather than a different one per surface. */}
+      {/* Third and last use of the same dark gradient recipe (facts ledger,
+          "What comes in", and here) — one material recurring down the page
+          rather than each dark section inventing its own. The chip below
+          shares its glass recipe with the frosted cards on both sections
+          above it (`border-white/15 bg-white/10 backdrop-blur-sm` + inset top
+          highlight) — the same recipe as the login/signup aside — so every
+          glass surface on the page, dark or light-hosted, is one consistent
+          material. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-xl">
