@@ -193,21 +193,18 @@ export default async function HomePage() {
       </section>
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
-      {/* Full-bleed, same structural pattern as the closing CTA below (section
-          carries the background edge-to-edge, an inner div constrains the
-          content to max-w-6xl). No rounded corners or shadow on the SECTION
-          itself for the same reason the CTA has none — a full-bleed band
-          reads as a band, not an object sitting on the page.
-          The four cells, though, are now genuine glass — the CTA chip's own
-          frosted white-on-dark recipe (`border-white/15 bg-white/10
-          backdrop-blur-sm` + an inset top highlight), just scaled up from a
-          pill to a card. The type cards below reuse this same recipe rather
-          than a bespoke one, so every glass surface on the page is one
-          consistent material. Values stay mono/tabular — this page's
-          vocabulary for facts and metadata
-          (the hero card's vote count, status labels). Gap replaces
-          divide-x/divide-y now that each cell is its own bordered surface —
-          a divider would double up with the card edges next to it. */}
+      {/* Full-bleed: the section carries the dark gradient edge-to-edge, an
+          inner div constrains just the content to max-w-6xl. No rounded
+          corners or shadow on the SECTION itself — a full-bleed band reads
+          as a band, not an object sitting on the page.
+          The four cells are genuine glass: a frosted white-on-dark recipe
+          (`border-white/15 bg-white/10 backdrop-blur-sm` + an inset top
+          highlight). The type cards below reuse this same recipe rather than
+          a bespoke one, so every glass surface on the page is one consistent
+          material. Values stay mono/tabular — this page's vocabulary for
+          facts and metadata (the hero card's vote count, status labels). Gap
+          replaces divide-x/divide-y now that each cell is its own bordered
+          surface — a divider would double up with the card edges next to it. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
@@ -285,15 +282,15 @@ export default async function HomePage() {
       {/* ── What comes in ───────────────────────────────────────────────── */}
       {/* The frosted card recipe (border-white/15 bg-white/10 backdrop-blur-sm
           + inset top highlight) is the facts ledger's cells verbatim — reused
-          rather than re-derived, same as the CTA reusing the dark gradient.
-          But that recipe was designed for a dark surface: on the page's plain
-          #fdf8f9 it was tested and came back essentially invisible (no visible
-          border, no visible tint — just floating text). So this section is now
-          a THIRD full-bleed dark band, the same gradient as facts/CTA, which
-          is the only context this recipe actually reads in. Text and borders
-          throughout are flipped to light-on-dark to match; the icon moves from
-          brand rose (illegible on this red-toned gradient) to the pale accent
-          #e399a3, which is what actually separates from the background. */}
+          rather than re-derived. That recipe was designed for a dark surface:
+          on the page's plain #fdf8f9 it was tested and came back essentially
+          invisible (no visible border, no visible tint — just floating text).
+          So this section is a second full-bleed dark band, the same gradient
+          as the facts ledger above, which is the only context this recipe
+          actually reads in. Text and borders throughout are flipped to
+          light-on-dark to match; the icon moves from brand rose (illegible on
+          this red-toned gradient) to the pale accent #e399a3, which is what
+          actually separates from the background. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
           <div className="max-w-2xl">
@@ -355,32 +352,6 @@ export default async function HomePage() {
         </div>
         <div className="mt-12">
           <PricingSection />
-        </div>
-      </section>
-
-      {/* ── Closing ─────────────────────────────────────────────────────── */}
-      {/* Third and last use of the same dark gradient recipe (facts ledger,
-          "What comes in", and here) — one material recurring down the page
-          rather than each dark section inventing its own. */}
-      <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
-          <div className="max-w-xl">
-            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
-              {t("landing.cta.heading")}
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-[#fdf8f9]/65">
-              {t("landing.cta.subheading")}
-            </p>
-          </div>
-          <Link href="/signup" className="shrink-0">
-            <Button
-              size="lg"
-              className="h-12 w-full bg-[#fdf8f9] px-7 text-base text-[#1c0a0c] hover:bg-white sm:w-auto"
-            >
-              {t("landing.hero.startTrial")}
-              <ArrowRight className="ml-1.5 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
       </section>
 
