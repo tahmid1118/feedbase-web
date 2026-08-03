@@ -16,19 +16,21 @@ import { legalHref, legalPages } from "@/lib/legal";
 /**
  * Marketing landing page.
  *
- * Design notes, because this page deliberately breaks the app's own house
- * style in two places:
+ * Design notes:
  *
- *  - It is the ONLY surface that uses the Fraunces display face (`font-display`).
- *    The product UI stays on a single family; a marketing page needs a second,
- *    contrasting voice or it reads as a template.
- *  - Evergreen (#2f6b53) appears here and nowhere else, used strictly for
- *    "shipped". It's the one cool note in a warm palette, which is what makes
- *    the status system feel like a system rather than decoration.
- *
- * Motion budget is one orchestrated moment — the hero's RequestLifecycle. No
- * scroll-triggered reveals and no lift-on-hover across every card; that scatter
- * is most of what makes a generated page feel generated.
+ *  - Typography is the same single IBM Plex Sans family as the rest of the
+ *    app (`lib/fonts.ts`) — no longer a landing-only display face.
+ *  - The dark gradient band (`linear-gradient(145deg,#1c0a0c,#7a2d38,#c74959)`)
+ *    recurs three times (facts ledger, "What comes in", closing CTA) — one
+ *    material reused down the page rather than re-derived per section.
+ *  - The hero's own visual is the full FeedbackLoopFlow "How it works"
+ *    diagram (`components/landing/feedback-loop-flow.tsx`), promoted here
+ *    from its own separate section — it renders its own heading/background,
+ *    so the hero above it is just centred copy + CTAs.
+ *  - Motion is deliberate but no longer minimal: FeedbackLoopFlow's own
+ *    scroll-triggered reveals and floating figures, plus `lp-card-float`
+ *    (globals.css) on the glass cards/chips — all disabled under
+ *    `prefers-reduced-motion`.
  */
 
 /** Small caps label used to open a section. Mono, so it reads as metadata. */
