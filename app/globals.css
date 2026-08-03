@@ -256,13 +256,35 @@ h2,
   animation: lp-thread 380ms cubic-bezier(0.18, 0.8, 0.32, 1) both;
 }
 
+/* The landing page's glass cards (facts ledger, "What comes in") bob gently,
+   same device as the flow diagram's floating cards (flf-floatY in
+   feedback-loop-flow.tsx) — translateY only, no scale, so it reads as a
+   drifting card rather than a pulse. Duration and delay are set per card
+   inline (see page.tsx) rather than fixed here, matching the flow diagram's
+   own approach of slightly different values per card so a row of them
+   doesn't move in mechanical unison. */
+@keyframes lp-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.lp-card-float {
+  animation: lp-card-float 6s ease-in-out infinite;
+}
+
 /* Motion is decoration here: the card reads correctly in its final state, so
    under reduced-motion we simply show that. */
 @media (prefers-reduced-motion: reduce) {
   .auth-float-slow,
   .auth-reveal,
   .lp-stamp-in,
-  .lp-thread {
+  .lp-thread,
+  .lp-card-float {
     animation: none;
   }
 }

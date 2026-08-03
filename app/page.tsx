@@ -204,14 +204,19 @@ export default async function HomePage() {
           material. Values stay mono/tabular — this page's vocabulary for
           facts and metadata (the hero card's vote count, status labels). Gap
           replaces divide-x/divide-y now that each cell is its own bordered
-          surface — a divider would double up with the card edges next to it. */}
+          surface — a divider would double up with the card edges next to it.
+          Each card also bobs gently (`lp-card-float`, globals.css) — same
+          device as the flow diagram's floating cards below, translateY only,
+          duration/delay staggered per card via inline style so the row
+          doesn't move in mechanical unison. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            {facts.map((f) => (
+            {facts.map((f, i) => (
               <div
                 key={f.label}
-                className="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
+                className="lp-card-float min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
+                style={{ animationDuration: `${6 + i * 0.4}s`, animationDelay: `${i * 0.25}s` }}
               >
                 {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
                     not fit a half-width column on a 360px screen, and one
@@ -303,10 +308,11 @@ export default async function HomePage() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {types.map((ty) => (
+            {types.map((ty, i) => (
               <div
                 key={ty.type}
-                className="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
+                className="lp-card-float min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
+                style={{ animationDuration: `${6.2 + i * 0.4}s`, animationDelay: `${0.2 + i * 0.25}s` }}
               >
                 <PostTypeIcon type={ty.type} className="h-5 w-5 text-[#e399a3]" />
                 <h3 className="mt-4 text-lg font-semibold text-[#fdf8f9]">
