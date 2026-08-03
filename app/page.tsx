@@ -194,23 +194,31 @@ export default async function HomePage() {
       </section>
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
-      {/* Full-bleed again, same structural pattern as the closing CTA below
-          (section carries the background edge-to-edge, an inner div
-          constrains the content to max-w-6xl) rather than a card floating in
-          the column with margin either side. No rounded corners or shadow
-          here for the same reason the CTA has none — a full-bleed band reads
-          as a band, not an object sitting on the page.
-          Same dark material as the CTA (the exact gradient recipe, reused
-          rather than re-derived), so the two still bracket the page as a
-          pair. Values stay mono/tabular — this page's vocabulary for facts
-          and metadata (the hero card's vote count, status labels) — and
-          divide-x/divide-y still turns the boundary between facts into ruled
-          structure rather than gap+weight doing the separating. */}
+      {/* Full-bleed, same structural pattern as the closing CTA below (section
+          carries the background edge-to-edge, an inner div constrains the
+          content to max-w-6xl). No rounded corners or shadow on the SECTION
+          itself for the same reason the CTA has none — a full-bleed band
+          reads as a band, not an object sitting on the page.
+          The four cells, though, are now genuine glass — but the light-glass
+          recipe used on the type cards below doesn't apply here: that one is
+          a rose-tinted gradient painted on a card sitting over the page's
+          light #fdf8f9, and there's no equivalent tint that would read on
+          top of this dark gradient. So this reuses the OTHER glass recipe
+          already proven on this exact material: the CTA chip's frosted
+          white-on-dark (`border-white/15 bg-white/10 backdrop-blur-sm` +
+          an inset top highlight), just scaled up from a pill to a card. Values
+          stay mono/tabular — this page's vocabulary for facts and metadata
+          (the hero card's vote count, status labels). Gap replaces
+          divide-x/divide-y now that each cell is its own bordered surface —
+          a divider would double up with the card edges next to it. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8 lg:py-14">
-          <div className="grid grid-cols-2 divide-x divide-y divide-white/12 sm:grid-cols-4 sm:divide-y-0">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {facts.map((f) => (
-              <div key={f.label} className="min-w-0 px-6 py-7 sm:px-7 sm:py-8 lg:px-8">
+              <div
+                key={f.label}
+                className="min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
+              >
                 {/* Sized down on mobile on purpose: "Unlimited" set at 30px does
                     not fit a half-width column on a 360px screen, and one
                     overflowing word makes the whole page scroll sideways. */}
@@ -364,14 +372,11 @@ export default async function HomePage() {
       {/* Bookends the facts band above with the exact same gradient recipe —
           the two dark surfaces read as deliberate, opening and closing the
           page, rather than one of them straining to be special in isolation.
-          This is still the only GLASS moment on the page, though: the facts
-          band reuses the gradient but stays a solid, opaque surface (no
-          backdrop-blur, no translucency) — two attempts at glass on it
-          already proved that treatment doesn't suit it, so it isn't repeated
-          here either. The chip below borrows the login/signup aside's recipe
-          (frosted white-on-dark, backdrop-blur-sm) precisely because THIS
-          surface — larger, more headline copy around it — can carry it where
-          the facts band couldn't. */}
+          The chip below shares its glass recipe with the facts cells above it
+          (frosted white-on-dark, `backdrop-blur-sm` + inset top highlight) —
+          the same recipe as the login/signup aside — so the dark material
+          carries one consistent glass treatment everywhere it appears on the
+          page, rather than a different one per surface. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-xl">
