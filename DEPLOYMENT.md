@@ -527,6 +527,72 @@ Recreating the container: **stop it before renaming.** `docker rename` on a
 stateless — everything is in the three bind mounts (`traefik.yml`, `dynamic/`,
 `docker.sock`).
 
+### 12.3 Routing one specific subdomain to a DIFFERENT app (bypassing the wildcard)
+
+The wildcard router above matches **every** `*.<domain>` host with no more
+specific router — that's the whole point, tenant subdomains are created at
+runtime and can't be pre-registered. But it means any other subdomain you add
+later (analytics, status, docs, …) is *also* a match for it by default, and
+until that subdomain gets its own router, every request lands on the FeedBoard
+frontend instead of whatever app you meant, which — since `proxy.ts` treats
+every unrecognized subdomain as a tenant lookup — renders the portal's
+**"Workspace not found"** page. That page is real FeedBoard output, not an
+infra error, which makes it a confusing symptom: it looks like the *other*
+app is broken when the actual problem is the wildcard never got outranked.
+
+Dokploy's own domain UI can hit this too — if it does any live check against
+the domain while you're adding it (cert issuance, a reachability probe), that
+check hits the wildcard-routed "Workspace not found" page and the add can
+fail or look successful without actually working.
+
+**Fix: hand-write a dedicated router for that one host**, same file-provider
+mechanism as §12.1, in its own file so it survives Dokploy regenerating its
+own config:
+
+```yaml
+# /etc/dokploy/traefik/dynamic/<name>.yml
+http:
+  routers:
+    <name>-web:
+      rule: Host(`analytics.<domain>`)
+      entryPoints: [web]
+      middlewares: [redirect-to-https]
+      service: <name>-service
+    <name>-websecure:
+      rule: Host(`analytics.<domain>`)
+      entryPoints: [websecure]
+      service: <name>-service
+      tls:
+        certResolver: letsencrypt      # plain HTTP-01 — this is ONE host, not a wildcard
+  services:
+    <name>-service:
+      loadBalancer:
+        passHostHeader: true
+        servers: [{ url: "http://<target-container-or-compose-alias>:<port>" }]
+```
+
+No `priority:` needed here — left unset, Traefik computes it from the rule's
+string length, and an exact `Host(...)` rule is always far longer (higher
+priority) than the wildcard's hardcoded `priority: 1`, so this always wins
+without having to coordinate the two files.
+
+Two things worth checking before trusting a new one of these works:
+
+- **The target container must share a docker network with Traefik.** Dokploy
+  attaches Traefik to every app's network automatically, so
+  `http://<compose-service-alias>:<port>` (the alias Docker Compose gives a
+  service — check with `docker inspect <container> --format
+  '{{json .NetworkSettings.Networks}}'`) resolves from inside the Traefik
+  container without any extra wiring.
+- **Verify with Traefik's own API, and with a real request — not just "the
+  file has no syntax errors."** Traefik's HTTP API is enabled
+  (`api: insecure: true` in `traefik.yml`) on the container's port 8080:
+  `docker exec dokploy-traefik wget -qO- http://localhost:8080/api/http/routers/<name>-websecure@file`
+  confirms the router registered and shows its computed `priority`. Then an
+  actual `curl https://analytics.<domain>/` — check the response body/title
+  for a marker unique to the target app, since both a broken and a working
+  config can return HTTP 200 (a broken one from the wildcard's FeedBoard page).
+
 ### 12.3 Cloudflare proxy: optional either way
 
 With a publicly trusted wildcard at the origin, both modes work:

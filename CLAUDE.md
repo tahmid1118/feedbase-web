@@ -262,7 +262,11 @@ NEXT_PUBLIC_FEEDBACK_SUBDOMAIN     # Subdomain of FeedBoard own feedback board (
 NEXT_PUBLIC_BILLING_PROVIDER      # Active payment provider: paddle (default) | stripe
 NEXT_PUBLIC_PADDLE_CLIENT_TOKEN   # Paddle.js client token (sandbox: test_…, prod: live_…)
 NEXT_PUBLIC_PADDLE_ENV            # sandbox | production (must match the client token)
+NEXT_PUBLIC_UMAMI_SRC             # Self-hosted Umami tracking script URL. Optional — unset in dev
+NEXT_PUBLIC_UMAMI_WEBSITE_ID      # Umami website id. Both unset = no analytics tag rendered at all
 ```
+
+**Analytics.** Self-hosted Umami at `analytics.<root domain>` — its own subdomain of the root domain, which needed a dedicated Traefik router carved out of the wildcard tenant-portal rule (DEPLOYMENT.md §12.3) or every request would land on FeedBoard's own "Workspace not found" page instead of Umami. The tracking `<Script>` lives in the root `app/layout.tsx`, `strategy="afterInteractive"`, and only renders when **both** `NEXT_PUBLIC_UMAMI_SRC` and `NEXT_PUBLIC_UMAMI_WEBSITE_ID` are set — deliberately unset in local dev so dev/test traffic never reaches the real analytics dashboard. It's app-wide (landing, portal, dashboard, admin) since Umami is simple, privacy-respecting pageview analytics, not a marketing pixel.
 
 **`AUTH_URL` is required in any reverse-proxied deployment** (Nginx, Dokploy/Traefik) and omitted in local dev. NextAuth builds every redirect it issues — sign-out `callbackUrl`, post-login `callbackUrl`, `?error=` pages — from `reqWithEnvURL()` (`next-auth/lib/env.js`), which consults **only** `AUTH_URL`/`NEXTAUTH_URL` and otherwise passes the request through untouched. Behind a proxy the request's origin is the container's internal address, so with it unset, signing out redirects to **`https://localhost:3000/...`**. `trustHost: true` (set in `auth.ts`) governs host *trust*, not this URL construction — it does not substitute. Not a `NEXT_PUBLIC_` var, so it's read at runtime: setting it needs a restart, not a rebuild.
 
