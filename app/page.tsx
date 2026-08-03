@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
-import { HeroSystemFlow } from "@/components/landing/hero-system-flow";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
@@ -132,65 +131,60 @@ export default async function HomePage() {
       </nav>
 
       {/* ── Hero ────────────────────────────────────────────────────────── */}
-      {/* Asymmetric: the argument on the left, the artifact on the right. The
-          old centred stack with three blur blobs behind it was the single most
-          template-looking thing on the page. */}
-      <section className="mx-auto max-w-6xl px-5 pt-14 pb-16 lg:px-8 lg:pt-24 lg:pb-24">
-        {/* min-w-0 on both cells: grid children default to min-width:auto, so a
-            long unbreakable word in either column can force the whole page
-            wider than the viewport instead of wrapping. */}
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-          <div className="min-w-0">
-            <Eyebrow>{t("landing.hero.badge")}</Eyebrow>
+      {/* Option B: centred text above the full-width system diagram
+          (FeedbackLoopFlow, promoted here from its own separate "How it
+          works" section further down — removed from there so it isn't shown
+          twice). No side-by-side artifact anymore, so the copy is centred
+          rather than left-aligned against a now-empty right column. */}
+      <section className="mx-auto max-w-3xl px-5 pt-14 pb-8 text-center lg:px-8 lg:pt-24">
+        <Eyebrow>{t("landing.hero.badge")}</Eyebrow>
 
-            {/* Tracking is set here rather than in the shared Fraunces rule so
-                it stays overridable and doesn't apply to small headings. */}
-            <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-semibold tracking-[-0.022em] text-balance text-[#1c0a0c] sm:text-6xl lg:text-[4.1rem]">
-              {t("landing.hero.titleLead")}{" "}
-              <span className="text-[#8f2f3b] italic">
-                {t("landing.hero.titleHighlight")}
-              </span>
-            </h1>
+        {/* Tracking is set here rather than in the shared Fraunces rule so
+            it stays overridable and doesn't apply to small headings. */}
+        <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-semibold tracking-[-0.022em] text-balance text-[#1c0a0c] sm:text-6xl lg:text-[4.1rem]">
+          {t("landing.hero.titleLead")}{" "}
+          <span className="text-[#8f2f3b] italic">
+            {t("landing.hero.titleHighlight")}
+          </span>
+        </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-[#1c0a0c]/65">
-              {t("landing.hero.subtitle")}
-            </p>
+        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-[#1c0a0c]/65">
+          {t("landing.hero.subtitle")}
+        </p>
 
-            {/* items-start so the secondary link sits on the left margin with
-                everything else on mobile. Stretching it full-width centred its
-                label, which was the one thing fighting the left-aligned grid. */}
-            <div className="mt-9 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
-              <Link href="/signup" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="h-12 w-full bg-[#c74959] px-7 text-base text-white shadow-lg shadow-[#c74959]/20 hover:bg-[#b03f4d] sm:w-auto"
-                >
-                  {t("landing.hero.startTrial")}
-                  <ArrowRight className="ml-1.5 h-4 w-4" />
-                </Button>
-              </Link>
-              {/* Our own feedback board doubles as the live demo. The rose
-                  border/fill/text is the resting state (not just hover) so it
-                  reads as a real second button next to Start for free right
-                  away; hover just deepens it a step further for feedback. */}
-              <a href={officialBoardUrl()} className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  variant="ghost"
-                  className="h-12 w-full gap-1.5 border border-[#c74959]/40 bg-[#c74959]/10 px-5 text-base text-[#c74959] hover:border-[#c74959]/60 hover:bg-[#c74959]/15 hover:text-[#c74959] sm:w-auto sm:px-6"
-                >
-                  {t("landing.hero.seeLive")}
-                  <ArrowUpRight className="h-4 w-4" />
-                </Button>
-              </a>
-            </div>
-          </div>
-
-          <div className="flex min-w-0 justify-center lg:justify-end">
-            <HeroSystemFlow />
-          </div>
+        <div className="mt-9 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-3">
+          <Link href="/signup" className="w-full sm:w-auto">
+            <Button
+              size="lg"
+              className="h-12 w-full bg-[#c74959] px-7 text-base text-white shadow-lg shadow-[#c74959]/20 hover:bg-[#b03f4d] sm:w-auto"
+            >
+              {t("landing.hero.startTrial")}
+              <ArrowRight className="ml-1.5 h-4 w-4" />
+            </Button>
+          </Link>
+          {/* Our own feedback board doubles as the live demo. The rose
+              border/fill/text is the resting state (not just hover) so it
+              reads as a real second button next to Start for free right
+              away; hover just deepens it a step further for feedback. */}
+          <a href={officialBoardUrl()} className="w-full sm:w-auto">
+            <Button
+              size="lg"
+              variant="ghost"
+              className="h-12 w-full gap-1.5 border border-[#c74959]/40 bg-[#c74959]/10 px-5 text-base text-[#c74959] hover:border-[#c74959]/60 hover:bg-[#c74959]/15 hover:text-[#c74959] sm:w-auto sm:px-6"
+            >
+              {t("landing.hero.seeLive")}
+              <ArrowUpRight className="h-4 w-4" />
+            </Button>
+          </a>
         </div>
       </section>
+
+      {/* The full system-flow diagram, promoted from its own "How it works"
+          section into hero position (option B of two being compared — see
+          HeroSystemFlow for option A's compact version, used in the hero's
+          right column on the previous commit). Self-contained: renders its
+          own heading, background and padding. */}
+      <FeedbackLoopFlow />
 
       {/* ── Facts ledger ────────────────────────────────────────────────── */}
       {/* Full-bleed: the section carries the dark gradient edge-to-edge, an
@@ -248,12 +242,6 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* ── How it works ────────────────────────────────────────────────── */}
-      {/* Self-contained illustrated infographic: renders its own section,
-          heading and background. Left as-is — it's the most bespoke thing on
-          the page and the redesign is written to match its register. */}
-      <FeedbackLoopFlow />
 
       {/* ── Features ────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
