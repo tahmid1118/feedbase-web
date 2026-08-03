@@ -253,6 +253,9 @@ export interface PersonalData {
   contact_no?: string;
   role?: UserRole;
   avatar_url?: string | null;
+  /** false for a Google-only account that never set a password. MySQL may
+      return this as 0/1 rather than a real boolean — coerce with Boolean(). */
+  has_password?: boolean;
 }
 
 export interface Workspace {

@@ -157,13 +157,14 @@ Sample Response:
 ```
 
 ### GET /users/personal-data
+`has_password` is `false` for an account created through social sign-in (no `password_hash`) — Settings → Profile uses it to swap the password card between "Set Password" (no current-password field) and the normal "Update Password" form.
 Sample Body:
 ```json
 {}
 ```
 Sample Response:
 ```json
-{"status":"success","message":"Data fetched successfully","data":{"user_id":1,"tenant_id":1,"full_name":"Acme Owner","email":"owner@acme.test","contact_no":"+8801712345678","role":"owner","avatar_url":"uploads/profile-images/image-1712901234567.jpeg"}}
+{"status":"success","message":"Data fetched successfully","data":{"user_id":1,"tenant_id":1,"full_name":"Acme Owner","email":"owner@acme.test","contact_no":"+8801712345678","role":"owner","avatar_url":"uploads/profile-images/image-1712901234567.jpeg","has_password":true}}
 ```
 
 ### POST /users/update
@@ -209,6 +210,7 @@ Sample Response:
 ```
 
 ### POST /users/change-password
+`oldPassword` is required and verified **only when the account already has a password**. A social-only account (`password_hash NULL`) can omit/leave it empty to set its *first* password — there's nothing to verify against. Updates `password_hash` for **every** `users` row sharing the account's email (all of an account's workspaces share one password), not just the row named by the JWT.
 Sample Body:
 ```json
 {"lg":"en","oldPassword":"SecurePass123!","newPassword":"NewSecurePass456!"}

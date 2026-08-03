@@ -412,7 +412,8 @@
     "currentPassword": "Current password",
     "newPassword": "New password",
     "confirmNewPassword": "Confirm new password",
-    "updatePassword": "Update Password"
+    "updatePassword": "Update Password",
+    "setPassword": "Set Password"
   },
   "notifications": {
     "loading": "Loading notifications...",
@@ -892,9 +893,11 @@
     "passwordTooShort": "New password must be at least 8 characters",
     "passwordMismatch": "Passwords do not match",
     "passwordUpdateFailed": "Failed to update password. Check your current password.",
+    "setPasswordFailed": "Failed to set password",
     "subtitle": "Update your personal information",
     "changePhoto": "Change photo",
-    "passwordSubtitle": "Change your account password"
+    "passwordSubtitle": "Change your account password",
+    "setPasswordSubtitle": "You signed up with Google, so you don't have a password yet. Set one to also sign in with your email."
   },
   "deleteAccount": {
     "loadFailed": "Could not load account details",

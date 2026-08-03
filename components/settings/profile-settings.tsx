@@ -98,8 +98,15 @@ export function ProfileSettings() {
     }
   };
 
+  // Coerced with Boolean(): MySQL can return the underlying expression as
+  // 0/1 rather than a real boolean. Defaults to true (the has-password shape)
+  // while `profile` is still loading, so the form doesn't render as "set a
+  // password" for a split second before flipping to "update" once it's known.
+  const hasPassword = profile ? Boolean(profile.has_password) : true;
+
   const savePassword = async () => {
     if (!token) return;
+    if (hasPassword && !oldPassword) return;
     if (newPassword.length < 8) {
       toast.error(t("profile.passwordTooShort"));
       return;
@@ -110,13 +117,18 @@ export function ProfileSettings() {
     }
     setSavingPassword(true);
     try {
-      await usersApi.changePassword(oldPassword, newPassword, token);
+      // A Google-only account has no current password to send — the backend
+      // ignores oldPassword entirely when the account has none yet.
+      await usersApi.changePassword(hasPassword ? oldPassword : "", newPassword, token);
       toast.success(t("toast.passwordUpdated"));
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");
+      // Flip the form to "update password" immediately — the account now has
+      // one, so re-fetching on next load would show the same thing anyway.
+      setProfile((p) => (p ? { ...p, has_password: true } : p));
     } catch {
-      toast.error(t("profile.passwordUpdateFailed"));
+      toast.error(hasPassword ? t("profile.passwordUpdateFailed") : t("profile.setPasswordFailed"));
     } finally {
       setSavingPassword(false);
     }
@@ -221,19 +233,24 @@ export function ProfileSettings() {
       <Card className="p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("settings.password")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
-          {t("profile.passwordSubtitle")}
+          {hasPassword ? t("profile.passwordSubtitle") : t("profile.setPasswordSubtitle")}
         </p>
 
         <div className="mt-6 grid gap-4 sm:max-w-md">
-          <div className="space-y-2">
-            <Label htmlFor="old-password">{t("settings.currentPassword")}</Label>
-            <Input
-              id="old-password"
-              type="password"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-          </div>
+          {/* A Google-only account has no password yet, so there's nothing to
+              confirm here — asking for one would block them from ever setting
+              their first password. This field only exists once they have one. */}
+          {hasPassword && (
+            <div className="space-y-2">
+              <Label htmlFor="old-password">{t("settings.currentPassword")}</Label>
+              <Input
+                id="old-password"
+                type="password"
+                value={oldPassword}
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+            </div>
+          )}
           <div className="space-y-2">
             <Label htmlFor="new-password">{t("settings.newPassword")}</Label>
             <Input
@@ -258,15 +275,17 @@ export function ProfileSettings() {
           <Button
             className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
             onClick={savePassword}
-            disabled={savingPassword || !oldPassword || !newPassword}
+            disabled={savingPassword || !newPassword || (hasPassword && !oldPassword)}
           >
             {savingPassword ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Updating...
+                {hasPassword ? "Updating..." : "Setting..."}
               </>
-            ) : (
+            ) : hasPassword ? (
               t("settings.updatePassword")
+            ) : (
+              t("settings.setPassword")
             )}
           </Button>
         </div>
