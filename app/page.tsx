@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, MessageSquarePlus, Users, Vote } from "lucide-react";
+import { ArrowRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -180,11 +180,6 @@ export default async function HomePage() {
                 </Button>
               </a>
             </div>
-
-            <p className="mt-5 font-mono text-xs tracking-wide text-[#1c0a0c]/40">
-              {t("landing.flow.noAccount")} · {t("landing.facts.priceValue")}{" "}
-              {t("landing.facts.priceLabel")}
-            </p>
           </div>
 
           <div className="flex min-w-0 justify-center lg:justify-end">
@@ -362,26 +357,11 @@ export default async function HomePage() {
       {/* ── Closing ─────────────────────────────────────────────────────── */}
       {/* Third and last use of the same dark gradient recipe (facts ledger,
           "What comes in", and here) — one material recurring down the page
-          rather than each dark section inventing its own. The chip below
-          shares its glass recipe with the frosted cards on both sections
-          above it (`border-white/15 bg-white/10 backdrop-blur-sm` + inset top
-          highlight) — the same recipe as the login/signup aside — so every
-          glass surface on the page, dark or light-hosted, is one consistent
-          material. */}
+          rather than each dark section inventing its own. */}
       <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-20 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-24">
           <div className="max-w-xl">
-            {/* The one glass moment on the page. Reuses the price fact from the
-                spec-sheet card above rather than new copy, so the chip and the
-                card agree on what "$0" means instead of two different claims. */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#fdf8f9]/20 bg-[#fdf8f9]/10 px-4 py-1.5 backdrop-blur-sm">
-              <CheckCircle2 className="h-3.5 w-3.5 text-[#fdf8f9]/80" />
-              <span className="font-mono text-xs text-[#fdf8f9]/85">
-                {facts[2].value} {facts[2].label}
-              </span>
-            </div>
-
-            <h2 className="mt-5 font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
+            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
               {t("landing.cta.heading")}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-[#fdf8f9]/65">
@@ -414,15 +394,6 @@ export default async function HomePage() {
           </div>
 
           <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            {/* Our own board — reachable without an account, so logged-out
-                visitors can report bugs and request features too. */}
-            <a
-              href={officialBoardUrl()}
-              className="inline-flex items-center gap-1.5 font-medium text-[#c74959] hover:underline"
-            >
-              <MessageSquarePlus className="h-4 w-4" />
-              {t("landing.footer.giveFeedback")}
-            </a>
             {/* Legal documents. Not localized — English is the authoritative
                 version (see components/legal/legal-shell.tsx). */}
             {legalPages.map((p) => (
