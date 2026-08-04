@@ -5,8 +5,10 @@ import { publicApi } from "@/lib/api/public";
 import { Logo } from "@/components/ui/logo";
 import { InviteAccept } from "@/components/invite/invite-accept";
 
+// Plain string, not the object form — the root layout's title template
+// ("%s — FeedBoard") appends the brand suffix already.
 export const metadata = {
-  title: "Workspace invitation · FeedBoard",
+  title: "Workspace invitation",
 };
 
 const REASON_COPY: Record<string, { title: string; body: string }> = {

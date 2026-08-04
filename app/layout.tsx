@@ -7,6 +7,7 @@ import { fontVariables } from "@/lib/fonts";
 import { AuthSessionProvider } from "@/components/providers/auth-session-provider";
 import { I18nProvider } from "@/components/providers/i18n-provider";
 import { getLanguage } from "@/lib/i18n/server";
+import { appUrl } from "@/lib/app-url";
 import "./globals.css";
 
 // Self-hosted Umami analytics (see CLAUDE.md's Environment Variables section).
@@ -16,9 +17,45 @@ import "./globals.css";
 const UMAMI_SRC = process.env.NEXT_PUBLIC_UMAMI_SRC;
 const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
+// Site-wide SEO defaults (CLAUDE.md's SEO section). A page that needs its own
+// title/description/canonical (pricing, legal, portal posts) sets its own
+// `metadata`/`generateMetadata`, which merges over these rather than replacing
+// them — so every page still inherits metadataBase, the OG/Twitter shape, and
+// the root app/opengraph-image.tsx unless it defines its own.
+const SITE_DESCRIPTION =
+  "Collect product feedback, let users vote on what matters, and share a public roadmap and changelog. A Canny/UserJot alternative with anonymous feedback on the free plan.";
+
 export const metadata: Metadata = {
-  title: "FeedBoard",
-  description: "Collect, prioritize, and ship product feedback with confidence.",
+  metadataBase: new URL(appUrl()),
+  title: {
+    default: "FeedBoard — Feedback Board & Public Roadmap Software",
+    template: "%s — FeedBoard",
+  },
+  description: SITE_DESCRIPTION,
+  keywords: [
+    "feedback board software",
+    "product feedback tool",
+    "public roadmap tool",
+    "changelog tool",
+    "Canny alternative",
+    "UserJot alternative",
+    "feature request tracking",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: "FeedBoard",
+    title: "FeedBoard — Feedback Board & Public Roadmap Software",
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FeedBoard — Feedback Board & Public Roadmap Software",
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 // Seed the single AuthSessionProvider server-side so authenticated pages have

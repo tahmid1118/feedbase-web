@@ -8,8 +8,10 @@ import {
 } from "@/components/legal/legal-shell";
 import { legal, legalHref } from "@/lib/legal";
 
+// Plain "Refund Policy" — the root layout's title template ("%s — FeedBoard")
+// already appends the brand suffix; including it here too would double it.
 export const metadata: Metadata = {
-  title: `Refund Policy — ${legal.product}`,
+  title: "Refund Policy",
   description: `${legal.product} does not offer refunds. How cancellation, plan changes and billing corrections work instead.`,
 };
 

@@ -9,8 +9,11 @@ import {
 } from "@/components/legal/legal-shell";
 import { legal, legalHref } from "@/lib/legal";
 
+// Plain "Terms of Service" — the root layout's title template
+// ("%s — FeedBoard") already appends the brand suffix; including it here too
+// would double it.
 export const metadata: Metadata = {
-  title: `Terms of Service — ${legal.product}`,
+  title: "Terms of Service",
   description: `The agreement between you and ${legal.product} for use of the feedback board service.`,
 };
 

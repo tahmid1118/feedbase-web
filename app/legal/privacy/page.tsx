@@ -10,8 +10,10 @@ import {
 } from "@/components/legal/legal-shell";
 import { legal, legalHref } from "@/lib/legal";
 
+// Plain "Privacy Policy" — the root layout's title template ("%s — FeedBoard")
+// already appends the brand suffix; including it here too would double it.
 export const metadata: Metadata = {
-  title: `Privacy Policy — ${legal.product}`,
+  title: "Privacy Policy",
   description: `What personal data ${legal.product} collects, why, who it is shared with, and how to exercise your rights.`,
 };
 

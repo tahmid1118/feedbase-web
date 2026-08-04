@@ -1,19 +1,58 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
+import { appUrl } from "@/lib/app-url";
+import { PLANS } from "@/lib/plans";
 
-export const metadata = {
-  title: "Pricing — FeedBoard",
-  description: "Simple, transparent pricing. Start free, upgrade as you grow.",
+const PRICING_DESCRIPTION =
+  "Free, Pro ($10/mo) and Business ($15/mo) plans. Unlimited posts and votes on every plan, anonymous feedback included free — no upgrade required.";
+
+export const metadata: Metadata = {
+  title: "Pricing",
+  description: PRICING_DESCRIPTION,
+  alternates: { canonical: appUrl("/pricing") },
+  openGraph: {
+    title: "FeedBoard Pricing — Simple, Transparent Plans",
+    description: PRICING_DESCRIPTION,
+  },
+  twitter: {
+    title: "FeedBoard Pricing — Simple, Transparent Plans",
+    description: PRICING_DESCRIPTION,
+  },
 };
+
+/** One Product/Offer per tier, prices pulled from lib/plans.ts so this can't
+    drift from what the pricing cards on this same page actually show. */
+function jsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: PLANS.map((plan, i) => ({
+      "@type": "Product",
+      position: i + 1,
+      name: `FeedBoard ${plan.name}`,
+      offers: {
+        "@type": "Offer",
+        price: String(plan.monthlyPrice),
+        priceCurrency: "USD",
+        url: appUrl("/pricing"),
+      },
+    })),
+  };
+}
 
 export default async function PricingPage() {
   const { t } = await getTranslation();
   return (
     <div className="min-h-screen bg-[#fdf8f9]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }}
+      />
       <nav className="border-b border-[#e399a3]/20 bg-white/60 backdrop-blur-md">
         {/* Same shrink-not-overflow treatment as the landing nav. */}
         <div className="container mx-auto flex h-16 items-center justify-between gap-2 px-4 sm:gap-3">

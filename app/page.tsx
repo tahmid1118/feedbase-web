@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -12,6 +13,51 @@ import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 import { officialBoardUrl } from "@/lib/official-board";
 import { legalHref, legalPages } from "@/lib/legal";
+import { appUrl } from "@/lib/app-url";
+import { PLANS } from "@/lib/plans";
+
+// Overrides the root layout's default title (the layout's is the <title>
+// fallback for pages that don't set their own — this page always should,
+// being the one most likely to actually be searched). Description leans on
+// both the category terms and the competitor-alternative framing per the SEO
+// design — see CLAUDE.md's SEO section.
+export const metadata: Metadata = {
+  // `absolute` bypasses the root layout's `%s — FeedBoard` template — this is
+  // the one page where the brand belongs at the FRONT of the title, not
+  // appended to it, since it's the homepage title Google shows for brand
+  // searches. A plain string here would otherwise get the template applied
+  // too, producing "...— FeedBoard — FeedBoard".
+  title: { absolute: "FeedBoard — Feedback Board & Public Roadmap Software" },
+  description:
+    "Collect product feedback, let users vote on what matters, and share a public roadmap and changelog. A Canny/UserJot alternative with anonymous feedback on the free plan — free forever, no card required.",
+  alternates: { canonical: appUrl("/") },
+};
+
+/**
+ * SoftwareApplication structured data — lets Google render pricing directly
+ * in the search result. Pulls prices from lib/plans.ts (the same source the
+ * pricing page and dashboard Billing tab use) rather than restating them, so
+ * this can't drift from what's actually charged.
+ */
+function jsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "FeedBoard",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description:
+      "Collect product feedback, let users vote on what matters, and share a public roadmap and changelog.",
+    url: appUrl("/"),
+    offers: PLANS.map((plan) => ({
+      "@type": "Offer",
+      name: plan.name,
+      price: String(plan.monthlyPrice),
+      priceCurrency: "USD",
+      url: appUrl("/pricing"),
+    })),
+  };
+}
 
 /**
  * Marketing landing page.
@@ -92,6 +138,11 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#fdf8f9]">
+      {/* SoftwareApplication structured data — see jsonLd() above. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()) }}
+      />
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
       <nav className="sticky top-0 z-50 border-b border-[#e399a3]/25 bg-[#fdf8f9]/85 backdrop-blur-md">
         {/* Four items plus a wordmark do not fit a 360px viewport: the row grew

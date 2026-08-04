@@ -6,8 +6,11 @@ import { auth } from "@/auth";
 import { Logo } from "@/components/ui/logo";
 import { AdminLoginForm } from "@/components/auth/admin-login-form";
 
+// Plain string, not the object form — the root layout's title template
+// ("%s — FeedBoard") appends the brand suffix, so this must be just the
+// page-specific part or it doubles ("Admin sign in — FeedBoard — FeedBoard").
 export const metadata = {
-  title: "Admin sign in · FeedBoard",
+  title: "Admin sign in",
 };
 
 export default async function AdminLoginPage() {

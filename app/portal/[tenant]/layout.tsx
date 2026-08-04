@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -17,6 +18,38 @@ const DEFAULT_BRAND = "#c74959";
 // Next's Data Cache can't cache — see lib/api/public.ts). Until then the route
 // renders dynamically but streams via loading.tsx.
 export const revalidate = 30;
+
+/**
+ * Resets metadata for the whole portal segment so it stops inheriting the
+ * root layout's MARKETING title template/description (added for the root
+ * site's own SEO — see CLAUDE.md's SEO section). A tenant's board is white-
+ * labeled: it must not silently pick up FeedBoard's own "— FeedBoard" title
+ * suffix or its Canny-alternative marketing pitch just because neither was
+ * explicitly set at this level.
+ *
+ * `absolute`, not `default`: confirmed empirically (not just from docs) that
+ * a descendant `title.default` STILL gets the nearest ANCESTOR template
+ * applied on top when nothing below overrides it — only `title.absolute`
+ * actually stops that. `template: "%s"` (identity) is set alongside it so a
+ * DEEPER page that provides its own plain-string title (post/[id]'s
+ * "<post title> · <tenant name>") also stops at this layout instead of
+ * reaching all the way up to the root's "%s — FeedBoard" template.
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ tenant: string }>;
+}): Promise<Metadata> {
+  const { tenant } = await params;
+  const info = await publicApi.getTenant(decodeURIComponent(tenant));
+  const name = info?.name || "Feedback board";
+  return {
+    title: { absolute: name, template: "%s" },
+    description: info
+      ? `${name}'s public feedback board — share feedback, vote on ideas, and see what's planned.`
+      : undefined,
+  };
+}
 
 export default async function PortalLayout({
   children,

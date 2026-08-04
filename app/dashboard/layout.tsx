@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { Header } from "@/components/dashboard/header";
@@ -7,6 +8,16 @@ import { SingleTabGuard } from "@/components/dashboard/single-tab-guard";
 import { SupportChatWidget } from "@/components/support/support-chat-widget";
 import { Toaster } from "@/components/ui/sonner";
 import { billingApi } from "@/lib/api";
+
+// `absolute` stops the root layout's marketing title template ("%s —
+// FeedBoard", added for the root site's own SEO — CLAUDE.md's SEO section)
+// from reaching authenticated pages, none of which set their own title. Not
+// an SEO concern (auth-gated, disallowed in robots.txt) — this is purely so a
+// logged-in user's browser tab reads "FeedBoard", not the full marketing
+// tagline, matching how it read before that template was added.
+export const metadata: Metadata = {
+  title: { absolute: "FeedBoard" },
+};
 
 /**
  * May this workspace run in several tabs/devices at once? Business only.

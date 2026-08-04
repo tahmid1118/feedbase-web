@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { Toaster } from "@/components/ui/sonner";
+
+// See the identical note in app/dashboard/layout.tsx — stops the root
+// layout's marketing title template from reaching the admin panel.
+export const metadata: Metadata = {
+  title: { absolute: "FeedBoard Admin" },
+};
 
 export default async function AdminLayout({
   children,
