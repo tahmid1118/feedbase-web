@@ -13,9 +13,8 @@ const TRIGGER_CLASS =
 
 /**
  * Status filter tabs for the public board (All / Open / Planned / In Progress /
- * Completed). Writes `?status=` so the Server Component re-renders with the
- * filtered board. "Rejected" is deliberately excluded — those posts are never
- * shown publicly.
+ * Completed / Rejected). Writes `?status=` so the Server Component re-renders
+ * with the filtered board.
  */
 export function BoardTabs({ value }: { value: PublicBoardStatus }) {
   const { t } = useTranslation();

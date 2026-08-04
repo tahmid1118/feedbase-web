@@ -348,7 +348,7 @@ Sample Response:
 ```
 
 ### PATCH /posts/status/:id
-`newStatus` is one of `open` / `planned` / `in_progress` / `completed` / `rejected` (validated). `rejected` = declined feedback (shown in the dashboard "All" + "Rejected" tabs, hidden from the public portal); restore by setting it back to `open`.
+`newStatus` is one of `open` / `planned` / `in_progress` / `completed` / `rejected` (validated). `rejected` = declined feedback (shown in the dashboard "All" + "Rejected" tabs, and in the public portal's "All" + "Rejected" tabs with a Rejected badge); restore by setting it back to `open`.
 Sample Body:
 ```json
 {"lg":"en","newStatus":"in_progress"}
@@ -1035,7 +1035,7 @@ Sample Response:
 
 ## 17) Public / Portal APIs
 
-Unauthenticated, mounted at `/public`. The tenant is resolved from the `:subdomain` param (matches `subdomain` OR `custom_domain`). Comment/feedback/vote routes use optional auth: a Bearer token attributes the action to that user, otherwise it's a guest (identified by `guestId`). Rejected posts and author emails are never exposed here.
+Unauthenticated, mounted at `/public`. The tenant is resolved from the `:subdomain` param (matches `subdomain` OR `custom_domain`). Comment/feedback/vote routes use optional auth: a Bearer token attributes the action to that user, otherwise it's a guest (identified by `guestId`). Author emails are never exposed here. Rejected posts ARE shown (with a Rejected status badge) — the board list and post detail no longer exclude them; `filters.status: "rejected"` returns just those.
 
 ### GET /public/tenant
 Resolve a tenant by subdomain (or `?domain=`) for the portal. Plan-derived booleans: `attachments_enabled` (Pro+), `owner_badge_enabled` (Pro+ — owner may comment as "Name (Owner)" with a verified tick), `owner_privacy_enabled` (Business — owner may comment as "Owner" only, real name withheld). These gate the **badged** identities only; commenting as yourself or **anonymously is free on every plan** (anonymous simply omits the Bearer token, so it lands as an ordinary guest comment). Query: `?subdomain=acme&lg=en`.
@@ -1304,7 +1304,7 @@ Sample Response:
 - `planned`
 - `in_progress`
 - `completed`
-- `rejected` — declined feedback (dashboard "All" + "Rejected" tabs; hidden from the public portal)
+- `rejected` — declined feedback (shown, with a Rejected badge, in both the dashboard's and the public portal's "All" + "Rejected" tabs)
 - `closed` — legacy, not offered in the UI
 
 ### Tenant Roles

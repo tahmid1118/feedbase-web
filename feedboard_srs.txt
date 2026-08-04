@@ -189,8 +189,10 @@ Version 1.2
                           and comment counts. Sortable by newest, oldest, most
                           upvoted, or least upvoted (pinned posts stay on top).
                           Filterable by status via tabs — All, Open, Planned, In
-                          Progress, Completed. Rejected posts are never listed
-                          publicly, so there is no Rejected tab.
+                          Progress, Completed, Rejected. Rejected posts show a
+                          Rejected status badge rather than being hidden, and
+                          voting/commenting on them work the same as any other
+                          post.
     FR-P2  Submit ....... Any visitor may create a post (title and a contact
                           email required; details, type and name optional). The
                           email is mandatory so the team can reach the submitter
@@ -305,9 +307,10 @@ Version 1.2
                           bulk action on the Open tab (alongside "Send to
                           Roadmap") or from a post's detail view. Rejected
                           feedback appears in its own "Rejected" tab and in the
-                          "All" tab, but is hidden from the public portal
-                          entirely. From the Rejected tab (or the post's detail
-                          view) it can be RESTORED to Open.
+                          "All" tab, both in the dashboard and on the public
+                          portal (shown with a Rejected badge, not hidden).
+                          From the Rejected tab (or the post's detail view) it
+                          can be RESTORED to Open.
     FR-F9  Contact ...... On a paid plan (Pro or higher) the workspace OWNER can
            submitter ..... see the email address of the person who submitted a
                           piece of feedback, and — once the feedback is marked

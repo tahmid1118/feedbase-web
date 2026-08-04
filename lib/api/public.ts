@@ -71,14 +71,16 @@ export const BOARD_SORTS: BoardSort[] = [
 export const normalizeBoardSort = (v?: string | null): BoardSort =>
   (BOARD_SORTS as string[]).includes(v ?? "") ? (v as BoardSort) : "newest";
 
-// Status filter tabs shown on the public board. "rejected" is intentionally
-// absent — rejected posts are always excluded from public reads server-side.
+// Status filter tabs shown on the public board, in the same order as the
+// dashboard board's own tabs. "all" includes rejected posts (shown with a
+// Rejected badge) rather than hiding them; "rejected" filters to just those.
 export const PUBLIC_BOARD_STATUSES = [
   "all",
   "open",
   "planned",
   "in_progress",
   "completed",
+  "rejected",
 ] as const;
 export type PublicBoardStatus = (typeof PUBLIC_BOARD_STATUSES)[number];
 export const normalizeBoardStatus = (v?: string | null): PublicBoardStatus =>
