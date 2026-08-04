@@ -127,19 +127,21 @@ export default async function PortalPostPage({
         {t("portal.backToBoard")}
       </Link>
 
-      <Card className="p-6">
-        <div className="flex gap-6">
-          <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-black/5 bg-[#fdf8f9]">
-            <ThumbsUp className="h-5 w-5 text-[#1c0a0c]/60" />
-            <span className="text-sm font-semibold text-[#1c0a0c]">
+      <Card className="p-4 sm:p-6">
+        <div className="flex gap-3 sm:gap-6">
+          <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9] sm:h-16 sm:w-16 sm:gap-1">
+            <ThumbsUp className="h-4 w-4 text-[#1c0a0c]/60 sm:h-5 sm:w-5" />
+            <span className="text-xs font-semibold text-[#1c0a0c] sm:text-sm">
               {post.vote_count}
             </span>
           </div>
 
-          <div className="flex-1 space-y-4">
-            <div className="flex items-start justify-between gap-4">
-              <h1 className="text-2xl font-bold text-[#1c0a0c]">{post.title}</h1>
-              <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+          <div className="min-w-0 flex-1 space-y-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <h1 className="text-xl font-bold break-words text-[#1c0a0c] sm:text-2xl">
+                {post.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-2 sm:shrink-0 sm:justify-end">
                 <Badge className={STATUS_BADGE[post.status]}>
                   {t(`status.${post.status}`)}
                 </Badge>
@@ -217,7 +219,7 @@ export default async function PortalPostPage({
         </div>
       </Card>
 
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <h2 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
           {t("portal.commentsHeading", { count: post.comments?.length ?? 0 })}
         </h2>
