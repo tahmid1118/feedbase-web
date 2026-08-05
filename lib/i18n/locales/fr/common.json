@@ -481,6 +481,7 @@
   },
   "share": {
     "title": "Partager cette publication",
+    "titleBoard": "Partager ce tableau public",
     "copyLink": "Copier le lien",
     "linkCopied": "Lien copié !"
   },

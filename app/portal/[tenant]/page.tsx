@@ -49,7 +49,11 @@ export default async function PortalBoardPage({
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <SharePost title={info?.name || t("portal.boardTitle")} brand={brand} />
+          <SharePost
+            title={info?.name || t("portal.boardTitle")}
+            brand={brand}
+            heading={t("share.titleBoard")}
+          />
           <FeedbackSubmit
             tenant={decoded}
             brand={brand}

@@ -47,10 +47,14 @@ export function SharePost({
   title,
   brand,
   url,
+  heading,
 }: {
   title: string;
   brand: string;
   url?: string;
+  /** Popover heading override — defaults to "Share this post". Pass a
+   * board-specific string when sharing the board itself rather than a post. */
+  heading?: string;
 }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -113,7 +117,9 @@ export function SharePost({
         </Button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-72 p-4">
-        <p className="text-sm font-semibold text-[#1c0a0c]">{t("share.title")}</p>
+        <p className="text-sm font-semibold text-[#1c0a0c]">
+          {heading ?? t("share.title")}
+        </p>
 
         <button
           type="button"

@@ -481,6 +481,7 @@
   },
   "share": {
     "title": "Compartir esta publicación",
+    "titleBoard": "Compartir este tablero público",
     "copyLink": "Copiar enlace",
     "linkCopied": "¡Enlace copiado!"
   },

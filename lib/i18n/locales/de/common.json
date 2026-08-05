@@ -481,6 +481,7 @@
   },
   "share": {
     "title": "Diesen Beitrag teilen",
+    "titleBoard": "Diese öffentliche Pinnwand teilen",
     "copyLink": "Link kopieren",
     "linkCopied": "Link kopiert!"
   },
