@@ -4,6 +4,7 @@ import { FeedbackSubmit } from "@/components/portal/feedback-submit";
 import { BoardList } from "@/components/portal/board-list";
 import { BoardSort } from "@/components/portal/board-sort";
 import { BoardTabs } from "@/components/portal/board-tabs";
+import { SharePost } from "@/components/portal/share-post";
 import { getTranslation } from "@/lib/i18n/server";
 
 const DEFAULT_BRAND = "#c74959";
@@ -47,11 +48,14 @@ export default async function PortalBoardPage({
             {t("portal.boardSubtitle")}
           </p>
         </div>
-        <FeedbackSubmit
-          tenant={decoded}
-          brand={brand}
-          attachmentsEnabled={Boolean(info?.attachments_enabled)}
-        />
+        <div className="flex flex-wrap items-center gap-2">
+          <SharePost title={info?.name || t("portal.boardTitle")} brand={brand} />
+          <FeedbackSubmit
+            tenant={decoded}
+            brand={brand}
+            attachmentsEnabled={Boolean(info?.attachments_enabled)}
+          />
+        </div>
       </div>
 
       <div className="space-y-3">

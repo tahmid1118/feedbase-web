@@ -64,8 +64,15 @@ export function SharePost({
     );
   }, []);
 
-  const currentUrl = () =>
-    url ?? (typeof window !== "undefined" ? window.location.href : "");
+  // Drops any query string/hash (e.g. the board's `?status=&sort=` filters) so
+  // the shared link is always the clean canonical page, not whatever filtered
+  // view the sharer happened to have open. A no-op for the post detail page,
+  // which never carries query params.
+  const currentUrl = () => {
+    if (url) return url;
+    if (typeof window === "undefined") return "";
+    return `${window.location.origin}${window.location.pathname}`;
+  };
 
   const copy = async () => {
     try {
