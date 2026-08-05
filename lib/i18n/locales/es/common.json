@@ -483,7 +483,9 @@
     "title": "Compartir esta publicación",
     "titleBoard": "Compartir este tablero público",
     "copyLink": "Copiar enlace",
-    "linkCopied": "¡Enlace copiado!"
+    "linkCopied": "¡Enlace copiado!",
+    "via": "Compartir vía…",
+    "email": "Correo electrónico"
   },
   "sort": {
     "newest": "Más recientes",

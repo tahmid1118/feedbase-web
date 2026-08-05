@@ -493,7 +493,9 @@
     "title": "Udostępnij ten wpis",
     "titleBoard": "Udostępnij tę publiczną tablicę",
     "copyLink": "Kopiuj link",
-    "linkCopied": "Link skopiowany!"
+    "linkCopied": "Link skopiowany!",
+    "via": "Udostępnij przez…",
+    "email": "E-mail"
   },
   "sort": {
     "newest": "Najnowsze",

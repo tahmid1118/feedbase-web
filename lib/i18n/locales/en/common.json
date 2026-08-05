@@ -484,7 +484,9 @@
     "title": "Share this post",
     "titleBoard": "Share this public board",
     "copyLink": "Copy link",
-    "linkCopied": "Link copied!"
+    "linkCopied": "Link copied!",
+    "via": "Share via…",
+    "email": "Email"
   },
   "sort": {
     "newest": "Newest",

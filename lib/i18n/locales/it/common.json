@@ -483,7 +483,9 @@
     "title": "Condividi questo post",
     "titleBoard": "Condividi questa bacheca pubblica",
     "copyLink": "Copia link",
-    "linkCopied": "Link copiato!"
+    "linkCopied": "Link copiato!",
+    "via": "Condividi tramite…",
+    "email": "Email"
   },
   "sort": {
     "newest": "Più recenti",

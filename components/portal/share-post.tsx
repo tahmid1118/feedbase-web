@@ -144,7 +144,9 @@ export function SharePost({
               onClick={() => openSocial(s.build)}
               className="rounded-full border border-[#e399a3]/40 px-3 py-1 text-xs font-medium text-[#1c0a0c]/70 transition-colors hover:border-[#c74959]/50 hover:text-[#c74959]"
             >
-              {s.name}
+              {/* Brand names (X, LinkedIn, Facebook, WhatsApp) stay as-is —
+                  only "Email" is a generic word that needs translating. */}
+              {s.name === "Email" ? t("share.email") : s.name}
             </button>
           ))}
         </div>
@@ -157,7 +159,7 @@ export function SharePost({
             size="sm"
           >
             <Send className="h-4 w-4" />
-            Share via…
+            {t("share.via")}
           </Button>
         )}
       </PopoverContent>

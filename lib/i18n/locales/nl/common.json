@@ -483,7 +483,9 @@
     "title": "Deel dit bericht",
     "titleBoard": "Deel dit openbare bord",
     "copyLink": "Link kopiëren",
-    "linkCopied": "Link gekopieerd!"
+    "linkCopied": "Link gekopieerd!",
+    "via": "Delen via…",
+    "email": "E-mail"
   },
   "sort": {
     "newest": "Nieuwste",

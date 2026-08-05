@@ -483,7 +483,9 @@
     "title": "Partilhar esta publicação",
     "titleBoard": "Partilhar este painel público",
     "copyLink": "Copiar ligação",
-    "linkCopied": "Ligação copiada!"
+    "linkCopied": "Ligação copiada!",
+    "via": "Partilhar via…",
+    "email": "E-mail"
   },
   "sort": {
     "newest": "Mais recentes",

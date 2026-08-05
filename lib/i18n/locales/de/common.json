@@ -483,7 +483,9 @@
     "title": "Diesen Beitrag teilen",
     "titleBoard": "Diese öffentliche Pinnwand teilen",
     "copyLink": "Link kopieren",
-    "linkCopied": "Link kopiert!"
+    "linkCopied": "Link kopiert!",
+    "via": "Teilen über …",
+    "email": "E-Mail"
   },
   "sort": {
     "newest": "Neueste",
