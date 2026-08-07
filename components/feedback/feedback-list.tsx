@@ -16,6 +16,7 @@ import {
   Loader2,
   ShieldCheck,
   ShieldAlert,
+  Trash2,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -50,6 +51,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import {
   Select,
   SelectContent,
@@ -158,6 +169,8 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   const [sending, setSending] = useState(false);
   // Bulk reject (Open tab) / restore (Rejected tab).
   const [statusBusy, setStatusBusy] = useState(false);
+  // Spam tab: confirm before the one irreversible action in the queue.
+  const [confirmPurge, setConfirmPurge] = useState(false);
 
   const token = session?.user?.accessToken;
 
@@ -451,6 +464,43 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
    * This is what makes automatic quarantine defensible: a false positive costs
    * one click, not a lost customer message.
    */
+  /**
+   * Permanently delete the selected QUARANTINED posts.
+   *
+   * Two guards, because this is the one irreversible action in the queue:
+   * the server refuses anything not already `moderation_state = 'spam'` (so a
+   * flagged-but-published post sharing this tab can't be swept up), and the
+   * button only counts those items, so the confirm dialog states a number the
+   * user can trust.
+   */
+  const quarantinedSelected = useMemo(
+    () =>
+      visiblePosts.filter(
+        (p) => selected.has(p.id) && p.moderation_state === "spam"
+      ),
+    [visiblePosts, selected]
+  );
+
+  const handleDeleteSpam = async () => {
+    if (!token || quarantinedSelected.length === 0) return;
+    setStatusBusy(true);
+    try {
+      const res = await postsApi.purgeSpam(
+        { ids: quarantinedSelected.map((p) => p.id) },
+        token
+      );
+      const deleted = res.data?.deleted ?? quarantinedSelected.length;
+      toast.success(t("feedback.spamDeleted", { count: deleted }));
+      clearSelection();
+      loadPosts();
+    } catch {
+      toast.error(t("feedback.updateFailed", { count: quarantinedSelected.length }));
+    } finally {
+      setStatusBusy(false);
+      setConfirmPurge(false);
+    }
+  };
+
   const handleNotSpam = async () => {
     if (!token || selected.size === 0) return;
     const ids = [...selected];
@@ -594,19 +644,36 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                 {t("common.clear")}
               </Button>
               {status === "spam" ? (
-                // The only bulk action here is the UNDO. Deleting is left to the
-                // per-post detail page, which already gates it on owner + plan —
-                // a bulk delete button one click from a false positive is how
-                // real feedback gets destroyed.
-                <Button
-                  size="sm"
-                  className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
-                  onClick={handleNotSpam}
-                  disabled={statusBusy}
-                >
-                  <ShieldCheck className="h-4 w-4" />
-                  {statusBusy ? t("feedback.restoring") : t("feedback.notSpam")}
-                </Button>
+                <>
+                  {/* Restore first and styled as the primary action: the safe,
+                      reversible choice should be the easy one to hit. */}
+                  <Button
+                    size="sm"
+                    className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                    onClick={handleNotSpam}
+                    disabled={statusBusy}
+                  >
+                    <ShieldCheck className="h-4 w-4" />
+                    {statusBusy ? t("feedback.restoring") : t("feedback.notSpam")}
+                  </Button>
+                  {/* Only offered when the selection actually contains hidden
+                      spam — selecting a flagged-but-published post gives you
+                      nothing to delete, matching what the server will do. */}
+                  {quarantinedSelected.length > 0 && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-red-600 hover:bg-red-50 hover:text-red-700"
+                      onClick={() => setConfirmPurge(true)}
+                      disabled={statusBusy}
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      {t("feedback.deleteSpam", {
+                        count: quarantinedSelected.length,
+                      })}
+                    </Button>
+                  )}
+                </>
               ) : status === "rejected" ? (
                 <Button
                   size="sm"
@@ -845,6 +912,34 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Deleting quarantined spam is the only irreversible action in the queue,
+          so it gets an explicit confirm that names the exact count and says
+          plainly that it cannot be undone. */}
+      <AlertDialog open={confirmPurge} onOpenChange={setConfirmPurge}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              {t("feedback.deleteSpamTitle", {
+                count: quarantinedSelected.length,
+              })}
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              {t("feedback.deleteSpamDesc")}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+            <AlertDialogAction variant="destructive" onClick={handleDeleteSpam}>
+              {statusBusy ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                t("common.delete")
+              )}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

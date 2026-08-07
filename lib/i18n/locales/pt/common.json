@@ -388,7 +388,14 @@
     "notSpamDone_one": "{{count}} publicação restaurada",
     "notSpamDone_other": "{{count}} publicações restauradas",
     "spamHidden": "Ocultado como spam",
-    "spamFlagged": "Assinalado para revisão"
+    "spamFlagged": "Assinalado para revisão",
+    "deleteSpam_one": "Eliminar {{count}}",
+    "deleteSpam_other": "Eliminar {{count}}",
+    "deleteSpamTitle_one": "Eliminar {{count}} publicação de spam?",
+    "deleteSpamTitle_other": "Eliminar {{count}} publicações de spam?",
+    "deleteSpamDesc": "Isto remove permanentemente o spam oculto. Não pode ser anulado. As publicações apenas assinaladas para revisão nunca são eliminadas por esta ação.",
+    "spamDeleted_one": "{{count}} publicação de spam eliminada",
+    "spamDeleted_other": "{{count}} publicações de spam eliminadas"
   },
   "page": {
     "feedback": {
@@ -483,7 +490,10 @@
     "verifiedOwner": "Proprietário verificado",
     "asYourName": "O seu nome",
     "proBadge": "PRO",
-    "goToBilling": "Ir para faturamento"
+    "goToBilling": "Ir para faturamento",
+    "hiddenAsSpam": "Ocultado do painel público como spam",
+    "restoredFromSpam": "Comentário restaurado no painel",
+    "restoreFailed": "Não foi possível restaurar o comentário"
   },
   "share": {
     "title": "Partilhar esta publicação",

@@ -156,6 +156,14 @@ export interface Comment {
   author_as_owner?: number;
   parent_comment_id?: number | null;
   created_at?: string;
+  /**
+   * Spam axis. A `spam` comment is hidden from the PUBLIC board but still shown
+   * to the team (badged), so a false positive is visible and restorable rather
+   * than silently suppressed.
+   */
+  moderation_state?: ModerationState;
+  spam_score?: number;
+  spam_reasons?: string | null;
 }
 
 /** Owner comment identity: named = "Name (Owner)" (Pro+), hidden = "Owner" (Business). */

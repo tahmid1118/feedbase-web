@@ -76,6 +76,26 @@ export const postsApi = {
     ),
 
   /**
+   * Permanently delete spam-QUARANTINED posts. Owner-only but **not**
+   * plan-gated — clearing our own filter's output shouldn't require an upgrade,
+   * unlike `delete` above.
+   *
+   * Pass `ids` for an explicit selection or `olderThanDays` for a retention
+   * sweep. The server only ever touches rows with `moderation_state = 'spam'`,
+   * so a flagged-but-published post caught in the same queue can never be
+   * swept up by this.
+   */
+  purgeSpam: (
+    payload: { ids?: number[]; olderThanDays?: number },
+    token: string
+  ) =>
+    apiClient.post<ApiResponse<{ deleted: number }>>(
+      "/posts/spam/purge",
+      payload,
+      { token }
+    ),
+
+  /**
    * Email the submitter that their feedback is implemented (Pro+, owner-only,
    * post must be completed). Records the send server-side.
    */

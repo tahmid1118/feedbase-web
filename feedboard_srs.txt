@@ -325,7 +325,15 @@ Version 1.2
                           flagged for review. Both appear in a "Spam" tab in the
                           dashboard together with the reasons they were flagged,
                           and the team can mark any of them NOT SPAM to restore
-                          them to the board.
+                          them to the board. Quarantined COMMENTS are likewise
+                          hidden from the public board but still shown to the
+                          team, clearly marked, with the same one-click restore
+                          — nothing is ever suppressed invisibly.
+                          The workspace owner may permanently delete quarantined
+                          spam (this does not require a paid plan, and items
+                          only flagged for review are never included). Anything
+                          left quarantined is discarded automatically after 30
+                          days so the queue cannot grow without bound.
     FR-F9  Contact ...... On a paid plan (Pro or higher) the workspace OWNER can
            submitter ..... see the email address of the person who submitted a
                           piece of feedback, and — once the feedback is marked

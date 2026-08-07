@@ -388,7 +388,14 @@
     "notSpamDone_one": "{{count}} bericht hersteld",
     "notSpamDone_other": "{{count}} berichten hersteld",
     "spamHidden": "Verborgen als spam",
-    "spamFlagged": "Gemarkeerd voor controle"
+    "spamFlagged": "Gemarkeerd voor controle",
+    "deleteSpam_one": "{{count}} verwijderen",
+    "deleteSpam_other": "{{count}} verwijderen",
+    "deleteSpamTitle_one": "{{count}} spambericht verwijderen?",
+    "deleteSpamTitle_other": "{{count}} spamberichten verwijderen?",
+    "deleteSpamDesc": "Hiermee wordt de verborgen spam definitief verwijderd. Dit kan niet ongedaan worden gemaakt. Berichten die alleen zijn gemarkeerd voor controle worden hiermee nooit verwijderd.",
+    "spamDeleted_one": "{{count}} spambericht verwijderd",
+    "spamDeleted_other": "{{count}} spamberichten verwijderd"
   },
   "page": {
     "feedback": {
@@ -483,7 +490,10 @@
     "verifiedOwner": "Geverifieerde eigenaar",
     "asYourName": "Uw naam",
     "proBadge": "PRO",
-    "goToBilling": "Naar facturering"
+    "goToBilling": "Naar facturering",
+    "hiddenAsSpam": "Verborgen van het openbare bord als spam",
+    "restoredFromSpam": "Reactie hersteld op het bord",
+    "restoreFailed": "Kon de reactie niet herstellen"
   },
   "share": {
     "title": "Deel dit bericht",

@@ -398,7 +398,20 @@
     "notSpamDone_many": "Przywrócono {{count}} wpisów",
     "notSpamDone_other": "Przywrócono {{count}} wpisów",
     "spamHidden": "Ukryte jako spam",
-    "spamFlagged": "Oznaczone do przeglądu"
+    "spamFlagged": "Oznaczone do przeglądu",
+    "deleteSpam_one": "Usuń {{count}}",
+    "deleteSpam_few": "Usuń {{count}}",
+    "deleteSpam_many": "Usuń {{count}}",
+    "deleteSpam_other": "Usuń {{count}}",
+    "deleteSpamTitle_one": "Usunąć {{count}} wpis ze spamem?",
+    "deleteSpamTitle_few": "Usunąć {{count}} wpisy ze spamem?",
+    "deleteSpamTitle_many": "Usunąć {{count}} wpisów ze spamem?",
+    "deleteSpamTitle_other": "Usunąć {{count}} wpisów ze spamem?",
+    "deleteSpamDesc": "Trwale usuwa ukryty spam. Tej operacji nie można cofnąć. Wpisy tylko oznaczone do przeglądu nigdy nie są w ten sposób usuwane.",
+    "spamDeleted_one": "Usunięto {{count}} wpis ze spamem",
+    "spamDeleted_few": "Usunięto {{count}} wpisy ze spamem",
+    "spamDeleted_many": "Usunięto {{count}} wpisów ze spamem",
+    "spamDeleted_other": "Usunięto {{count}} wpisów ze spamem"
   },
   "page": {
     "feedback": {
@@ -495,7 +508,10 @@
     "verifiedOwner": "Zweryfikowany właściciel",
     "asYourName": "Twoje imię",
     "proBadge": "PRO",
-    "goToBilling": "Przejdź do rozliczeń"
+    "goToBilling": "Przejdź do rozliczeń",
+    "hiddenAsSpam": "Ukryte na tablicy publicznej jako spam",
+    "restoredFromSpam": "Przywrócono komentarz na tablicę",
+    "restoreFailed": "Nie udało się przywrócić komentarza"
   },
   "share": {
     "title": "Udostępnij ten wpis",

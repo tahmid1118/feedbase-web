@@ -388,7 +388,14 @@
     "notSpamDone_one": "{{count}} Beitrag wiederhergestellt",
     "notSpamDone_other": "{{count}} Beiträge wiederhergestellt",
     "spamHidden": "Als Spam ausgeblendet",
-    "spamFlagged": "Zur Prüfung markiert"
+    "spamFlagged": "Zur Prüfung markiert",
+    "deleteSpam_one": "{{count}} löschen",
+    "deleteSpam_other": "{{count}} löschen",
+    "deleteSpamTitle_one": "{{count}} Spam-Beitrag löschen?",
+    "deleteSpamTitle_other": "{{count}} Spam-Beiträge löschen?",
+    "deleteSpamDesc": "Der ausgeblendete Spam wird endgültig entfernt. Das lässt sich nicht rückgängig machen. Nur zur Prüfung markierte Beiträge werden hierbei nie gelöscht.",
+    "spamDeleted_one": "{{count}} Spam-Beitrag gelöscht",
+    "spamDeleted_other": "{{count}} Spam-Beiträge gelöscht"
   },
   "page": {
     "feedback": {
@@ -483,7 +490,10 @@
     "verifiedOwner": "Verifizierter Inhaber",
     "asYourName": "Ihr Name",
     "proBadge": "PRO",
-    "goToBilling": "Zur Abrechnung"
+    "goToBilling": "Zur Abrechnung",
+    "hiddenAsSpam": "Als Spam von der öffentlichen Pinnwand ausgeblendet",
+    "restoredFromSpam": "Kommentar wiederhergestellt",
+    "restoreFailed": "Kommentar konnte nicht wiederhergestellt werden"
   },
   "share": {
     "title": "Diesen Beitrag teilen",

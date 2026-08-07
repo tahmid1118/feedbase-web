@@ -388,7 +388,14 @@
     "addedToRoadmap_other": "Added {{count}} posts to the roadmap",
     "addFailed": "Failed to add posts to the roadmap.",
     "updateFailed_one": "Failed to update the post.",
-    "updateFailed_other": "Failed to update posts."
+    "updateFailed_other": "Failed to update posts.",
+    "deleteSpam_one": "Delete {{count}}",
+    "deleteSpam_other": "Delete {{count}}",
+    "deleteSpamTitle_one": "Delete {{count}} spam post?",
+    "deleteSpamTitle_other": "Delete {{count}} spam posts?",
+    "deleteSpamDesc": "This permanently removes the hidden spam. It cannot be undone. Posts only flagged for review are never deleted by this action.",
+    "spamDeleted_one": "Deleted {{count}} spam post",
+    "spamDeleted_other": "Deleted {{count}} spam posts"
   },
   "page": {
     "feedback": {
@@ -484,7 +491,10 @@
     "verifiedOwner": "Verified owner",
     "asYourName": "Your name",
     "proBadge": "PRO",
-    "goToBilling": "Go to billing"
+    "goToBilling": "Go to billing",
+    "hiddenAsSpam": "Hidden from the public board as spam",
+    "restoredFromSpam": "Comment restored to the board",
+    "restoreFailed": "Could not restore the comment"
   },
   "share": {
     "title": "Share this post",

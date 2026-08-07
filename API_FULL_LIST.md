@@ -369,6 +369,30 @@ Sample Response:
 {"status":"success","message":"Post status updated successfully"}
 ```
 
+### POST /posts/spam/purge
+Permanently delete spam-**quarantined** posts. Owner-only, and **not plan-gated** (unlike `DELETE /posts/:id`, which is Pro+) — clearing our own filter's output shouldn't require an upgrade. Body is either `{ ids: [...] }` or `{ olderThanDays: 30 }`; a missing/invalid `olderThanDays` is rejected rather than meaning "all". **Only rows with `moderation_state = 'spam'` are touched** — flagged-but-published posts share the review queue but are excluded in SQL, so a bulk action can't destroy real feedback.
+Sample Body:
+```json
+{"lg":"en","ids":[204,205]}
+```
+Sample Response:
+```json
+{"status":"success","message":"Post deleted successfully","data":{"deleted":2}}
+```
+
+> Quarantined posts/comments older than `SPAM_RETENTION_DAYS` (default 30) are also removed automatically, triggered when the review queue is opened and throttled to once an hour per process.
+
+### PATCH /comments/moderation/:id
+Reclassify a comment on the spam axis (owner-only, not plan-gated). `moderationState` is `published` / `pending` / `spam`; `published` is the "Not spam" restore and clears the score. Quarantined comments are hidden from **public** reads but still returned by `POST /comments/post/:postId` so the dashboard can show them badged — without this endpoint a false positive would be suppressed with no way back.
+Sample Body:
+```json
+{"lg":"en","moderationState":"published"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Comment updated successfully"}
+```
+
 ### POST /posts/:id/notify-implemented
 Emails the feedback submitter that their request is implemented (Pro+ `contactSubmitter`, owner-only). Requires the post to be `completed` and to have a submitter email. Records `posts.implemented_notified_at`. Errors: `402 plan_limit_contact_submitter`, `403 billing_forbidden`, `400 feedback_not_completed`, `400 no_submitter_email`.
 Sample Body:

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
-import { CornerDownRight, Loader2 } from "lucide-react";
+import { CornerDownRight, Loader2, ShieldAlert } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -80,6 +80,24 @@ export function CommentThread({
   const commentAsEff = ownerOptions.includes(commentAs as "owner_named" | "owner_hidden")
     ? commentAs
     : ownerOptions[0] ?? "self";
+
+  /**
+   * Restore a comment the spam filter quarantined.
+   *
+   * Quarantined comments are hidden from the PUBLIC board but still rendered
+   * here, badged — otherwise a false positive would be suppressed with nothing
+   * to see and no way back, which is a worse failure than the spam it stopped.
+   */
+  const restoreComment = async (commentId: number) => {
+    if (!token) return;
+    try {
+      await commentsApi.updateModeration(commentId, "published", token);
+      toast.success(t("comments.restoredFromSpam"));
+      onPosted?.(); // reuse the thread's refresh path
+    } catch {
+      toast.error(t("comments.restoreFailed"));
+    }
+  };
 
   const post = async (text: string, parentCommentId: number | null) => {
     if (!text.trim() || !token) return false;
@@ -179,6 +197,7 @@ export function CommentThread({
               depth={0}
               submitting={submitting}
               onReply={post}
+              onRestore={isOwner ? restoreComment : undefined}
             />
           ))}
         </div>
@@ -193,20 +212,33 @@ function CommentItem({
   submitting,
   onReply,
   canReply = true,
+  onRestore,
 }: {
   node: CommentNode;
   depth: number;
   submitting: boolean;
   onReply: (text: string, parentId: number | null) => Promise<boolean>;
   canReply?: boolean;
+  /** Owner-only; absent for members, who can see the badge but not act on it. */
+  onRestore?: (commentId: number) => void | Promise<void>;
 }) {
   const { t } = useTranslation();
   const [replying, setReplying] = useState(false);
   const [replyBody, setReplyBody] = useState("");
+  const quarantined = node.moderation_state === "spam";
 
   return (
     <div className={depth > 0 ? "ml-6 border-l border-[#e399a3]/30 pl-4" : ""}>
-      <div className="rounded-lg border border-[#e399a3]/20 bg-[#fdf8f9] p-4">
+      {/* A quarantined comment is deliberately still shown to the team, tinted
+          and labelled, rather than filtered out — an invisible suppression is
+          impossible to notice, let alone correct. */}
+      <div
+        className={
+          quarantined
+            ? "rounded-lg border border-red-200 bg-red-50/60 p-4"
+            : "rounded-lg border border-[#e399a3]/20 bg-[#fdf8f9] p-4"
+        }
+      >
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="font-medium text-[#1c0a0c]">
@@ -235,6 +267,24 @@ function CommentItem({
             )}
           </span>
         </div>
+
+        {quarantined && (
+          <div className="mt-2 flex flex-wrap items-center gap-2 rounded-md bg-red-100/70 px-2.5 py-1.5">
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-red-700">
+              <ShieldAlert className="h-3 w-3" />
+              {t("comments.hiddenAsSpam")}
+            </span>
+            {onRestore && (
+              <button
+                type="button"
+                onClick={() => onRestore(node.id)}
+                className="text-[11px] font-semibold text-red-700 underline underline-offset-2 hover:text-red-900"
+              >
+                {t("feedback.notSpam")}
+              </button>
+            )}
+          </div>
+        )}
 
         <p className="mt-2 whitespace-pre-wrap text-sm text-[#1c0a0c]/80">
           {node.body}
@@ -303,6 +353,9 @@ function CommentItem({
               submitting={submitting}
               onReply={onReply}
               canReply={canReply}
+              // Threaded through, or a quarantined REPLY would show the badge
+              // with no way to act on it.
+              onRestore={onRestore}
             />
           ))}
         </div>

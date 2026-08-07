@@ -388,7 +388,14 @@
     "notSpamDone_one": "{{count}} post ripristinato",
     "notSpamDone_other": "{{count}} post ripristinati",
     "spamHidden": "Nascosto come spam",
-    "spamFlagged": "Segnalato per revisione"
+    "spamFlagged": "Segnalato per revisione",
+    "deleteSpam_one": "Elimina {{count}}",
+    "deleteSpam_other": "Elimina {{count}}",
+    "deleteSpamTitle_one": "Eliminare {{count}} post di spam?",
+    "deleteSpamTitle_other": "Eliminare {{count}} post di spam?",
+    "deleteSpamDesc": "Rimuove definitivamente lo spam nascosto. Non è reversibile. I post solo segnalati per revisione non vengono mai eliminati da questa azione.",
+    "spamDeleted_one": "{{count}} post di spam eliminato",
+    "spamDeleted_other": "{{count}} post di spam eliminati"
   },
   "page": {
     "feedback": {
@@ -483,7 +490,10 @@
     "verifiedOwner": "Proprietario verificato",
     "asYourName": "Il tuo nome",
     "proBadge": "PRO",
-    "goToBilling": "Vai alla fatturazione"
+    "goToBilling": "Vai alla fatturazione",
+    "hiddenAsSpam": "Nascosto dalla bacheca pubblica come spam",
+    "restoredFromSpam": "Commento ripristinato sulla bacheca",
+    "restoreFailed": "Impossibile ripristinare il commento"
   },
   "share": {
     "title": "Condividi questo post",

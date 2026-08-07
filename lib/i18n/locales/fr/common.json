@@ -388,7 +388,14 @@
     "notSpamDone_one": "{{count}} publication restaurée",
     "notSpamDone_other": "{{count}} publications restaurées",
     "spamHidden": "Masqué comme spam",
-    "spamFlagged": "Signalé pour vérification"
+    "spamFlagged": "Signalé pour vérification",
+    "deleteSpam_one": "Supprimer {{count}}",
+    "deleteSpam_other": "Supprimer {{count}}",
+    "deleteSpamTitle_one": "Supprimer {{count}} publication de spam ?",
+    "deleteSpamTitle_other": "Supprimer {{count}} publications de spam ?",
+    "deleteSpamDesc": "Le spam masqué est supprimé définitivement. Cette action est irréversible. Les publications seulement signalées pour vérification ne sont jamais supprimées ainsi.",
+    "spamDeleted_one": "{{count}} publication de spam supprimée",
+    "spamDeleted_other": "{{count}} publications de spam supprimées"
   },
   "page": {
     "feedback": {
@@ -483,7 +490,10 @@
     "verifiedOwner": "Propriétaire vérifié",
     "asYourName": "Votre nom",
     "proBadge": "PRO",
-    "goToBilling": "Aller à la facturation"
+    "goToBilling": "Aller à la facturation",
+    "hiddenAsSpam": "Masqué du tableau public comme spam",
+    "restoredFromSpam": "Commentaire restauré sur le tableau",
+    "restoreFailed": "Impossible de restaurer le commentaire"
   },
   "share": {
     "title": "Partager cette publication",
