@@ -12,6 +12,7 @@ import type {
   PostStatus,
   PostListFilters,
   DuplicateSuggestion,
+  ModerationState,
 } from "./types";
 
 export const postsApi = {
@@ -54,6 +55,23 @@ export const postsApi = {
     apiClient.patch<ApiResponse>(
       `/posts/status/${id}`,
       { newStatus },
+      { token }
+    ),
+
+  /**
+   * Reclassify a post on the SPAM axis — the human override for the automatic
+   * scorer. Separate from updateStatus because `status` is the pipeline and
+   * syncs to the roadmap, whereas this only controls public visibility.
+   * `"published"` also clears the score, so the post leaves the review queue.
+   */
+  updateModeration: (
+    id: number,
+    moderationState: ModerationState,
+    token: string
+  ) =>
+    apiClient.patch<ApiResponse>(
+      `/posts/moderation/${id}`,
+      { moderationState },
       { token }
     ),
 

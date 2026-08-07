@@ -382,7 +382,13 @@
     "addedToRoadmap_other": "{{count}} publicaciones añadidas a la hoja de ruta",
     "addFailed": "No se pudieron añadir las publicaciones a la hoja de ruta.",
     "updateFailed_one": "No se pudo actualizar la publicación.",
-    "updateFailed_other": "No se pudieron actualizar las publicaciones."
+    "updateFailed_other": "No se pudieron actualizar las publicaciones.",
+    "spamTab": "Spam",
+    "notSpam": "No es spam",
+    "notSpamDone_one": "{{count}} publicación restaurada",
+    "notSpamDone_other": "{{count}} publicaciones restauradas",
+    "spamHidden": "Oculto como spam",
+    "spamFlagged": "Marcado para revisión"
   },
   "page": {
     "feedback": {
@@ -972,5 +978,25 @@
     "taxNote": "Impuestos calculados al pagar.",
     "pay": "Pagar y activar {{plan}}",
     "continueFree": "Continuar con el plan gratuito"
+  },
+  "spamReason": {
+    "many_links": "muchos enlaces",
+    "several_links": "varios enlaces",
+    "multiple_link_domains": "enlaces a varios sitios",
+    "link_in_title": "enlace en el título",
+    "duplicate": "envío duplicado",
+    "repeat_duplicate": "enviado repetidamente",
+    "disposable_email": "correo desechable",
+    "email_domain_no_mx": "el dominio no recibe correo",
+    "submitted_too_fast": "enviado demasiado rápido",
+    "invalid_form_token": "token de formulario inválido",
+    "stale_form_token": "token de formulario caducado",
+    "no_form_token": "enviado fuera del tablero",
+    "spam_phrase": "lenguaje de spam",
+    "spam_phrases": "lenguaje de spam",
+    "all_caps": "todo en mayúsculas",
+    "repeated_characters": "caracteres repetidos",
+    "mostly_non_latin": "conjunto de caracteres inusual",
+    "body_repeats_title": "el cuerpo repite el título"
   }
 }

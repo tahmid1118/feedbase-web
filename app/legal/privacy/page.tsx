@@ -75,7 +75,9 @@ export default function PrivacyPage() {
             "Post and comment text, and any attachments you upload.",
             "A contact email if you submit without an account, so the team can reply about your submission. It is stored but never displayed publicly.",
             "An optional display name. If you leave it blank we show a generated pseudonym instead.",
-            "A random browser identifier (fb_guest_id) so your submissions share one pseudonymous identity and votes can be limited per browser.",
+            "A random browser identifier (fb_guest_id) so your submissions share one pseudonymous identity.",
+            "A one-way hash of your IP address, stored with posts, comments and votes to stop automated spam and vote manipulation. We store only the hash — never the IP address itself — and it cannot be reversed back into an address.",
+            "An automated spam score for your submission, with the reasons behind it, so the workspace team can review anything held back.",
           ]}
         />
         <p className="mt-4 font-medium text-[#1c0a0c]">Automatically</p>
@@ -103,6 +105,7 @@ export default function PrivacyPage() {
             ["Take payment and manage subscriptions", "Email, plan and billing status", "Performance of a contract"],
             ["Transactional email — invitations, password resets, and telling a submitter their feedback shipped", "Email address, related content", "Contract / legitimate interests"],
             ["Keep accounts secure, prevent abuse and vote manipulation, enforce plan limits", "Session data, IP, user-agent, pseudonymous id, audit records", "Legitimate interests"],
+            ["Detect and hold back spam on public boards without making visitors solve a CAPTCHA or create an account", "Hashed IP address, submission content, spam score and reasons", "Legitimate interests"],
             ["Remember your language choice", "Language cookie", "Legitimate interests"],
             ["Answer support requests", "Support chat content", "Contract / legitimate interests"],
             ["Comply with law and respond to lawful requests", "As required", "Legal obligation"],

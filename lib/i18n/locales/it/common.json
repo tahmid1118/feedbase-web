@@ -382,7 +382,13 @@
     "addedToRoadmap_other": "{{count}} post aggiunti alla roadmap",
     "addFailed": "Impossibile aggiungere i post alla roadmap.",
     "updateFailed_one": "Impossibile aggiornare il post.",
-    "updateFailed_other": "Impossibile aggiornare i post."
+    "updateFailed_other": "Impossibile aggiornare i post.",
+    "spamTab": "Spam",
+    "notSpam": "Non è spam",
+    "notSpamDone_one": "{{count}} post ripristinato",
+    "notSpamDone_other": "{{count}} post ripristinati",
+    "spamHidden": "Nascosto come spam",
+    "spamFlagged": "Segnalato per revisione"
   },
   "page": {
     "feedback": {
@@ -972,5 +978,25 @@
     "taxNote": "Le imposte sono calcolate al pagamento.",
     "pay": "Paga e attiva {{plan}}",
     "continueFree": "Continua con il piano gratuito"
+  },
+  "spamReason": {
+    "many_links": "molti link",
+    "several_links": "diversi link",
+    "multiple_link_domains": "link a più siti",
+    "link_in_title": "link nel titolo",
+    "duplicate": "invio duplicato",
+    "repeat_duplicate": "inviato ripetutamente",
+    "disposable_email": "email usa e getta",
+    "email_domain_no_mx": "il dominio non riceve email",
+    "submitted_too_fast": "inviato troppo in fretta",
+    "invalid_form_token": "token del modulo non valido",
+    "stale_form_token": "token del modulo scaduto",
+    "no_form_token": "inviato fuori dalla bacheca",
+    "spam_phrase": "linguaggio da spam",
+    "spam_phrases": "linguaggio da spam",
+    "all_caps": "tutto maiuscolo",
+    "repeated_characters": "caratteri ripetuti",
+    "mostly_non_latin": "set di caratteri insolito",
+    "body_repeats_title": "il testo ripete il titolo"
   }
 }

@@ -48,6 +48,9 @@ export const portalActions = {
       guestId?: string;
       /** Owner-only: "named" ("Name (Owner)") or "hidden" ("Owner"); plan-gated. */
       ownerMode?: "named" | "hidden";
+      /** Invisible anti-bot signals — see components/portal/spam-guard.tsx. */
+      formToken?: string;
+      website?: string;
     },
     token?: string
   ) => request(`/public/${enc(tenant)}/posts/${postId}/comments`, "POST", token, payload),

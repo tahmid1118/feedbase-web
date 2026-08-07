@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { getGuestId } from "@/lib/portal/guest";
+import { HoneypotField, useFormToken } from "@/components/portal/spam-guard";
 import { uploaderApi } from "@/lib/api";
 import type { UploadedAttachment } from "@/lib/api/uploader";
 import { AttachmentPicker } from "@/components/feedback/attachment-picker";
@@ -71,6 +72,10 @@ export function FeedbackSubmit({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [attachments, setAttachments] = useState<UploadedAttachment[]>([]);
+  // Invisible spam signals — see components/portal/spam-guard.tsx. Neither is
+  // shown to or required of the visitor.
+  const [honeypot, setHoneypot] = useState("");
+  const formToken = useFormToken();
 
   const reset = () => {
     setTitle("");
@@ -81,6 +86,7 @@ export function FeedbackSubmit({
     setAttachments([]);
     setError(null);
     setDone(false);
+    setHoneypot("");
   };
 
   const canSubmit = Boolean(title.trim()) && EMAIL_RE.test(email.trim());
@@ -113,6 +119,8 @@ export function FeedbackSubmit({
             submitterEmail: email.trim() || undefined,
             guestId: getGuestId() || undefined,
             attachmentIds: attachments.map((a) => a.id),
+            formToken,
+            website: honeypot,
           }),
         }
       );
@@ -182,6 +190,7 @@ export function FeedbackSubmit({
               </DialogHeader>
 
               <div className="space-y-4">
+                <HoneypotField value={honeypot} onChange={setHoneypot} />
                 <div className="space-y-2">
                   <Label htmlFor="fb-type">{t("portal.type")}</Label>
                   <Select value={postType} onValueChange={setPostType}>

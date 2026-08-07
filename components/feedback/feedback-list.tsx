@@ -14,6 +14,8 @@ import {
   Ban,
   RotateCcw,
   Loader2,
+  ShieldCheck,
+  ShieldAlert,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -76,6 +78,60 @@ interface FeedbackListProps {
 // Posts fetched per page, both on initial load and each "load more" tick.
 const PAGE_SIZE = 20;
 
+/**
+ * Explains a spam flag on a queue row: whether the post was hidden or merely
+ * flagged, and which signals fired.
+ *
+ * Reason codes come from the backend's spamScore.js and are translated via
+ * `spamReason.<code>`, falling back to the raw code so a signal added on the
+ * server still renders something meaningful before its translation lands —
+ * better a moderator sees "several_links" than a blank chip.
+ */
+function SpamReasons({
+  score,
+  reasons,
+  quarantined,
+  t,
+}: {
+  score?: number;
+  reasons?: string | null;
+  quarantined: boolean;
+  t: (key: string, opts?: Record<string, unknown>) => string;
+}) {
+  let codes: string[] = [];
+  try {
+    // Stored as a JSON array of strings; tolerate anything else.
+    const parsed = reasons ? JSON.parse(reasons) : [];
+    if (Array.isArray(parsed)) codes = parsed.filter((c) => typeof c === "string");
+  } catch {
+    /* malformed — show the state chip without reasons rather than break the row */
+  }
+
+  return (
+    <div className="relative z-[2] mt-2 flex flex-wrap items-center gap-1.5">
+      <span
+        className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${
+          quarantined
+            ? "bg-red-100 text-red-700"
+            : "bg-amber-100 text-amber-700"
+        }`}
+      >
+        <ShieldAlert className="h-3 w-3" />
+        {quarantined ? t("feedback.spamHidden") : t("feedback.spamFlagged")}
+        {typeof score === "number" ? ` · ${score}` : ""}
+      </span>
+      {codes.map((code) => (
+        <span
+          key={code}
+          className="rounded-full bg-[#1c0a0c]/5 px-2 py-0.5 text-[10px] text-[#1c0a0c]/60"
+        >
+          {t(`spamReason.${code}`, { defaultValue: code.replace(/_/g, " ") })}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   const { t } = useTranslation();
   const { data: session } = useSession();
@@ -111,9 +167,16 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     return () => clearTimeout(id);
   }, [search]);
 
+  // "spam" is NOT a post status — it's the separate moderation axis — so the
+  // Spam tab sends `moderation` instead of `status`. Every other tab omits it,
+  // which is what keeps quarantined posts out of the normal board.
   const filters = useMemo(
     () => ({
-      ...(status !== "all" ? { status: status as PostStatus } : {}),
+      ...(status === "spam"
+        ? { moderation: "spam" as const }
+        : status !== "all"
+          ? { status: status as PostStatus }
+          : {}),
       ...(postType !== "all" ? { postType: postType as PostType } : {}),
       ...(tagId !== "all" ? { tagId: Number(tagId) } : {}),
       ...(debouncedSearch ? { search: debouncedSearch } : {}),
@@ -260,8 +323,10 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
     );
   }, [posts, debouncedSearch]);
 
-  // --- Selection --- (Open tab → send-to-roadmap/reject; Rejected tab → restore)
-  const selectionEnabled = status === "open" || status === "rejected";
+  // --- Selection --- (Open → send-to-roadmap/reject; Rejected → restore;
+  // Spam → not-spam/delete)
+  const selectionEnabled =
+    status === "open" || status === "rejected" || status === "spam";
   const selectablePosts = useMemo(
     // On the Open tab, posts already on the roadmap can't be re-sent; on the
     // Rejected tab everything is selectable.
@@ -378,6 +443,41 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
   const handleReject = () => bulkSetStatus("rejected", "Rejected");
   const handleRestore = () => bulkSetStatus("open", "Restored");
 
+  /**
+   * "Not spam" — the human override. Republishes AND clears the score
+   * server-side, so the post leaves the queue permanently instead of
+   * reappearing on every visit.
+   *
+   * This is what makes automatic quarantine defensible: a false positive costs
+   * one click, not a lost customer message.
+   */
+  const handleNotSpam = async () => {
+    if (!token || selected.size === 0) return;
+    const ids = [...selected];
+    setStatusBusy(true);
+    let ok = 0;
+    let fail = 0;
+    for (const id of ids) {
+      try {
+        await postsApi.updateModeration(id, "published", token);
+        ok++;
+      } catch {
+        fail++;
+      }
+    }
+    setStatusBusy(false);
+    clearSelection();
+    loadPosts();
+    if (ok > 0) {
+      toast.success(
+        t("feedback.notSpamDone", { count: ok }) +
+          (fail ? ` · ${fail} failed` : "")
+      );
+    } else {
+      toast.error(t("feedback.updateFailed", { count: ids.length }));
+    }
+  };
+
   const selectedCount = selected.size;
   const sortedColumns = useMemo(
     () => [...columns].sort((a, b) => a.sort_order - b.sort_order),
@@ -395,9 +495,9 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               last pill isn't hidden under the page gutter. */}
           <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
             <TabsList className="min-w-max border border-[#e399a3]/30 bg-white">
-              {["all", "open", "planned", "in_progress", "completed", "rejected"].map((s) => (
+              {["all", "open", "planned", "in_progress", "completed", "rejected", "spam"].map((s) => (
                 <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
-                  {t(`status.${s}`)}
+                  {s === "spam" ? t("feedback.spamTab") : t(`status.${s}`)}
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -493,7 +593,21 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
               <Button variant="ghost" size="sm" onClick={clearSelection}>
                 {t("common.clear")}
               </Button>
-              {status === "rejected" ? (
+              {status === "spam" ? (
+                // The only bulk action here is the UNDO. Deleting is left to the
+                // per-post detail page, which already gates it on owner + plan —
+                // a bulk delete button one click from a false positive is how
+                // real feedback gets destroyed.
+                <Button
+                  size="sm"
+                  className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
+                  onClick={handleNotSpam}
+                  disabled={statusBusy}
+                >
+                  <ShieldCheck className="h-4 w-4" />
+                  {statusBusy ? t("feedback.restoring") : t("feedback.notSpam")}
+                </Button>
+              ) : status === "rejected" ? (
                 <Button
                   size="sm"
                   className="bg-[#c74959] text-white hover:bg-[#b03f4d]"
@@ -602,6 +716,19 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                         <p className="mt-1 line-clamp-2 text-sm text-[#1c0a0c]/70">
                           {post.description}
                         </p>
+                        {/* WHY it was flagged. A verdict with no explanation is
+                            impossible to review fairly — the moderator needs to
+                            see "5 links + throwaway inbox" to judge in a glance,
+                            and reason codes are also how we spot a mis-tuned
+                            weight from real traffic. */}
+                        {status === "spam" && (
+                          <SpamReasons
+                            score={post.spam_score}
+                            reasons={post.spam_reasons}
+                            quarantined={post.moderation_state === "spam"}
+                            t={t}
+                          />
+                        )}
                       </div>
                       <span
                         className={`rounded-full px-3 py-1 text-xs font-medium ${STATUS_BADGE[post.status]}`}

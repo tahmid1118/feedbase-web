@@ -382,7 +382,13 @@
     "addedToRoadmap_other": "{{count}} Beiträge zur Roadmap hinzugefügt",
     "addFailed": "Beiträge konnten nicht zur Roadmap hinzugefügt werden.",
     "updateFailed_one": "Der Beitrag konnte nicht aktualisiert werden.",
-    "updateFailed_other": "Beiträge konnten nicht aktualisiert werden."
+    "updateFailed_other": "Beiträge konnten nicht aktualisiert werden.",
+    "spamTab": "Spam",
+    "notSpam": "Kein Spam",
+    "notSpamDone_one": "{{count}} Beitrag wiederhergestellt",
+    "notSpamDone_other": "{{count}} Beiträge wiederhergestellt",
+    "spamHidden": "Als Spam ausgeblendet",
+    "spamFlagged": "Zur Prüfung markiert"
   },
   "page": {
     "feedback": {
@@ -972,5 +978,25 @@
     "taxNote": "Steuern werden beim Bezahlen berechnet.",
     "pay": "Bezahlen & {{plan}} aktivieren",
     "continueFree": "Mit dem Gratis-Tarif fortfahren"
+  },
+  "spamReason": {
+    "many_links": "viele Links",
+    "several_links": "mehrere Links",
+    "multiple_link_domains": "Links zu mehreren Seiten",
+    "link_in_title": "Link im Titel",
+    "duplicate": "doppelte Einsendung",
+    "repeat_duplicate": "mehrfach eingesendet",
+    "disposable_email": "Wegwerf-E-Mail-Adresse",
+    "email_domain_no_mx": "E-Mail-Domain empfängt keine Mails",
+    "submitted_too_fast": "zu schnell abgesendet",
+    "invalid_form_token": "ungültiges Formular-Token",
+    "stale_form_token": "abgelaufenes Formular-Token",
+    "no_form_token": "außerhalb des Boards gesendet",
+    "spam_phrase": "Spam-Formulierung",
+    "spam_phrases": "Spam-Formulierung",
+    "all_caps": "nur Großbuchstaben",
+    "repeated_characters": "wiederholte Zeichen",
+    "mostly_non_latin": "ungewöhnlicher Zeichensatz",
+    "body_repeats_title": "Text wiederholt den Titel"
   }
 }

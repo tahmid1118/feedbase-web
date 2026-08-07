@@ -337,7 +337,7 @@ Sample Response:
 ```
 
 ### POST /posts/list
-Supported `filters`: `status`, `postType`, `tagId`, `isPinned`, and `search` (full-text-ish match on title/description). `search` may also be passed as `paginationData.filterBy` (legacy). Pinned posts are returned first. Each post includes its `tags` array, `has_voted` (for the current user), and `is_pinned`. `total` respects the active filters. **Paginate by incrementing `currentPageNumber`, not by sending `paginationData.offset`** — the `paginationData` middleware in front of this route rebuilds the pagination object and computes `offset = itemsPerPage * currentPageNumber` itself, discarding any offset the client sends. Used for "load more on scroll" by `components/feedback/feedback-list.tsx` (dashboard board) — 20 rows per page.
+Supported `filters`: `status`, `postType`, `tagId`, `isPinned`, `search` (full-text-ish match on title/description), and `moderation`. `search` may also be passed as `paginationData.filterBy` (legacy). **`moderation: "spam"` returns the review queue** — posts that were quarantined (`moderation_state = 'spam'`) *or* merely flagged (score at/above the flag threshold but still published). Omitting it excludes quarantined posts from every normal tab. Rows carry `moderation_state`, `spam_score` and `spam_reasons` (a JSON array of reason codes). Pinned posts are returned first. Each post includes its `tags` array, `has_voted` (for the current user), and `is_pinned`. `total` respects the active filters. **Paginate by incrementing `currentPageNumber`, not by sending `paginationData.offset`** — the `paginationData` middleware in front of this route rebuilds the pagination object and computes `offset = itemsPerPage * currentPageNumber` itself, discarding any offset the client sends. Used for "load more on scroll" by `components/feedback/feedback-list.tsx` (dashboard board) — 20 rows per page.
 Sample Body:
 ```json
 {"lg":"en","paginationData":{"itemsPerPage":10,"currentPageNumber":0,"sortOrder":"desc","filterBy":""},"filters":{"status":"open","postType":"feature_request","tagId":1,"search":"dark mode"}}
@@ -352,6 +352,17 @@ Sample Response:
 Sample Body:
 ```json
 {"lg":"en","newStatus":"in_progress"}
+```
+Sample Response:
+```json
+{"status":"success","message":"Post status updated successfully"}
+```
+
+### PATCH /posts/moderation/:id
+Reclassify a post on the **spam axis** — the human override for the automatic scorer. `moderationState` is `published` / `pending` / `spam`. **Separate from `PATCH /posts/status/:id`** on purpose: `status` is the pipeline and syncs to the roadmap, whereas this only controls public visibility. Setting `published` ("not spam") also clears `spam_score`/`spam_reasons`, so the post leaves the review queue permanently.
+Sample Body:
+```json
+{"lg":"en","moderationState":"published"}
 ```
 Sample Response:
 ```json
@@ -1037,6 +1048,15 @@ Sample Response:
 
 Unauthenticated, mounted at `/public`. The tenant is resolved from the `:subdomain` param (matches `subdomain` OR `custom_domain`). Comment/feedback/vote routes use optional auth: a Bearer token attributes the action to that user, otherwise it's a guest (identified by `guestId`). Author emails are never exposed here. Rejected posts ARE shown (with a Rejected status badge) — the board list and post detail no longer exclude them; `filters.status: "rejected"` returns just those.
 
+**Spam protection (no CAPTCHA, no login).** Anonymous writes pass through layered checks, all invisible to real visitors:
+1. **Honeypot** — the optional `website` field. Non-empty ⇒ bot: the response is a normal success with `"id": null` and nothing is stored. It deliberately does *not* return an error, so a bot can't learn to evade it.
+2. **Form token** — optional `formToken` from `GET /public/form-token`. Missing/forged/too-fast only *raises the score*; it never blocks, so non-browser API clients keep working.
+3. **Burst caps** (`429`) — per hashed IP per board per hour, per board per hour, and per email domain per board per day. Counted in MySQL so they're accurate across PM2 workers.
+4. **Content scoring** — links, duplicates, disposable/undeliverable email, spam wording. At/above the hide threshold the item is quarantined: **still a success response**, but `moderation_state = 'spam'` and it's excluded from every public read. Below it, a flagged item stays public and is surfaced to the team for review.
+5. **Vote dedup** — see `POST /public/:subdomain/posts/:postId/vote`.
+
+Signed-in authors skip scoring entirely. Quarantined content is recoverable via `PATCH /posts/moderation/:id`, and never triggers owner emails or team notifications.
+
 ### GET /public/tenant
 Resolve a tenant by subdomain (or `?domain=`) for the portal. Plan-derived booleans: `attachments_enabled` (Pro+), `owner_badge_enabled` (Pro+ — owner may comment as "Name (Owner)" with a verified tick), `owner_privacy_enabled` (Business — owner may comment as "Owner" only, real name withheld). These gate the **badged** identities only; commenting as yourself or **anonymously is free on every plan** (anonymous simply omits the Bearer token, so it lands as an ordinary guest comment). Query: `?subdomain=acme&lg=en`.
 Sample Response:
@@ -1091,11 +1111,20 @@ Sample Response:
 {"status":"success","message":"Post retrieved successfully","data":{"id":101,"title":"Add dark mode","description":"...","post_type":"feature_request","status":"planned","vote_count":12,"comment_count":4,"author_name":"Brave Otter","guest_id":"fb_guest_ab12","tags":[],"comments":[{"id":401,"body":"Yes please!","author_name":"Kind Fox","guest_id":"fb_guest_cd34"}]}}
 ```
 
+### GET /public/form-token
+Mint a short-lived signed token proving a write came from a real page view rather than a script. The portal fetches one on page load and sends it back as `formToken` on submit/comment. Optional — a missing or invalid token only raises the spam score, it never blocks (see *Spam protection* below).
+Sample Response:
+```json
+{"status":"success","data":{"token":"1786123903718.a56e55b2e7a4c21c..."}}
+```
+
 ### POST /public/:subdomain/feedback
 Submit feedback (guest or logged-in). A guest MUST include `submitterEmail` (so the team can follow up); logged-in submitters are attributed via their Bearer token. `attachmentIds` link previously-uploaded attachments (paid workspaces).
+
+Two optional anti-spam fields, both invisible to real users: `formToken` (above) and `website` (a **honeypot** — any non-empty value means a bot, and the response is a normal `201` with `"id": null` while nothing is stored). Guest submissions are scored; a high score is quarantined (`moderation_state = 'spam'`) and hidden from public reads, but still returns success. Exceeding a burst cap returns `429`.
 Sample Body:
 ```json
-{"lg":"en","title":"Add dark mode","description":"Please add it","postType":"feature_request","submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12","attachmentIds":[11]}
+{"lg":"en","title":"Add dark mode","description":"Please add it","postType":"feature_request","submitterName":"Dana","submitterEmail":"dana@example.com","guestId":"fb_guest_ab12","attachmentIds":[11],"formToken":"1786123903718.a56e...","website":""}
 ```
 Sample Response:
 ```json
@@ -1115,7 +1144,7 @@ Sample Response:
 ```
 
 ### POST /public/:subdomain/posts/:postId/vote
-Toggle an upvote. Anonymous identity comes from `guestId` (a persistent per-browser id), or the Bearer token when logged in.
+Toggle an upvote. **Dedup is server-side**: votes are unique per `(tenant, post, voter_hash)` where `voter_hash` is a salted HMAC of the caller's IP. `guestId` is still sent and stored (it drives the visitor's own filled/unfilled UI state and their pseudonymous identity) but **no longer decides anything** — rotating it does not yield extra votes. Voting on a quarantined post returns `404`.
 Sample Body:
 ```json
 {"lg":"en","guestId":"fb_guest_ab12"}

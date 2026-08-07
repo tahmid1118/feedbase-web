@@ -311,6 +311,21 @@ Version 1.2
                           portal (shown with a Rejected badge, not hidden).
                           From the Rejected tab (or the post's detail view) it
                           can be RESTORED to Open.
+    FR-F10 Spam ......... Anonymous submissions are screened automatically, with
+           moderation .... no CAPTCHA and no account requirement — every check is
+                          invisible to genuine visitors. Signals include hidden
+                          form traps, submission timing, link and duplicate
+                          analysis, throwaway/undeliverable email detection, and
+                          per-board rate caps. Upvotes are de-duplicated by a
+                          server-derived identifier so they cannot be inflated by
+                          a client resetting its browser identity.
+                          High-confidence spam is QUARANTINED: it is hidden from
+                          the public board and raises no notification, but is
+                          never deleted. Borderline items stay published and are
+                          flagged for review. Both appear in a "Spam" tab in the
+                          dashboard together with the reasons they were flagged,
+                          and the team can mark any of them NOT SPAM to restore
+                          them to the board.
     FR-F9  Contact ...... On a paid plan (Pro or higher) the workspace OWNER can
            submitter ..... see the email address of the person who submitted a
                           piece of feedback, and — once the feedback is marked

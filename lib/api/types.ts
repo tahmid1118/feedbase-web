@@ -94,7 +94,18 @@ export interface Post {
   attachment_count?: number;
   has_voted?: boolean;
   created_at?: string;
+  /**
+   * Spam moderation — a separate axis from `status` (which is the open →
+   * planned → completed pipeline). 'spam' is hidden from the public board.
+   */
+  moderation_state?: ModerationState;
+  spam_score?: number;
+  /** JSON array of reason codes, so a flag can be explained to the moderator. */
+  spam_reasons?: string | null;
 }
+
+/** Spam-axis state. See the backend's spamScore.js / publicWriteGuard.js. */
+export type ModerationState = "published" | "pending" | "spam";
 
 export interface CreatePostData {
   title: string;
@@ -111,6 +122,11 @@ export interface PostListFilters {
   postType?: PostType;
   tagId?: number;
   search?: string;
+  /**
+   * `"spam"` returns the moderation queue (quarantined OR flagged); omitting it
+   * excludes quarantined posts from every normal tab.
+   */
+  moderation?: "spam";
 }
 
 // Vote types

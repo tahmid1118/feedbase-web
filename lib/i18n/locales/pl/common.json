@@ -390,7 +390,15 @@
     "addedToRoadmap_few": "Dodano {{count}} wpisy do planu działań",
     "addedToRoadmap_many": "Dodano {{count}} wpisów do planu działań",
     "updateFailed_few": "Nie udało się zaktualizować wpisów.",
-    "updateFailed_many": "Nie udało się zaktualizować wpisów."
+    "updateFailed_many": "Nie udało się zaktualizować wpisów.",
+    "spamTab": "Spam",
+    "notSpam": "To nie spam",
+    "notSpamDone_one": "Przywrócono {{count}} wpis",
+    "notSpamDone_few": "Przywrócono {{count}} wpisy",
+    "notSpamDone_many": "Przywrócono {{count}} wpisów",
+    "notSpamDone_other": "Przywrócono {{count}} wpisów",
+    "spamHidden": "Ukryte jako spam",
+    "spamFlagged": "Oznaczone do przeglądu"
   },
   "page": {
     "feedback": {
@@ -998,5 +1006,25 @@
     "taxNote": "Podatki naliczane przy płatności.",
     "pay": "Zapłać i aktywuj {{plan}}",
     "continueFree": "Kontynuuj w planie darmowym"
+  },
+  "spamReason": {
+    "many_links": "wiele linków",
+    "several_links": "kilka linków",
+    "multiple_link_domains": "linki do wielu stron",
+    "link_in_title": "link w tytule",
+    "duplicate": "zduplikowane zgłoszenie",
+    "repeat_duplicate": "wysyłane wielokrotnie",
+    "disposable_email": "jednorazowy adres e-mail",
+    "email_domain_no_mx": "domena nie odbiera poczty",
+    "submitted_too_fast": "wysłane zbyt szybko",
+    "invalid_form_token": "nieprawidłowy token formularza",
+    "stale_form_token": "wygasły token formularza",
+    "no_form_token": "wysłane spoza tablicy",
+    "spam_phrase": "spamerskie sformułowania",
+    "spam_phrases": "spamerskie sformułowania",
+    "all_caps": "same wielkie litery",
+    "repeated_characters": "powtórzone znaki",
+    "mostly_non_latin": "nietypowy zestaw znaków",
+    "body_repeats_title": "treść powtarza tytuł"
   }
 }

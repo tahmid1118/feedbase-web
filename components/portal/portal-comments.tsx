@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { LocalTime } from "@/components/local-time";
 import { portalActions } from "@/lib/portal/actions";
 import { getGuestId } from "@/lib/portal/guest";
+import { HoneypotField, useFormToken } from "@/components/portal/spam-guard";
 import { guestIdentity, colorFor } from "@/lib/portal/anon-identity";
 import { IncognitoIcon } from "@/components/portal/incognito-icon";
 import { VerifiedBadge } from "@/components/portal/verified-badge";
@@ -675,6 +676,9 @@ export function PortalComments({
   // Identity a privileged commenter (admin / board owner) posts under. Applies
   // to the top comment and any replies in this session.
   const [commentAs, setCommentAs] = useState<CommentAs>("self");
+  // Invisible anti-bot signals — see components/portal/spam-guard.tsx.
+  const [honeypot, setHoneypot] = useState("");
+  const formToken = useFormToken();
 
   const viewer: Viewer = useMemo(() => {
     const token = session?.user?.accessToken || undefined;
@@ -757,6 +761,11 @@ export function PortalComments({
         submitterEmail: useAuth || postAsGuest ? undefined : readLocal(EMAIL_KEY) || undefined,
         guestId: useAuth ? undefined : getGuestId() || undefined,
         ownerMode: useAuth ? ownerMode : undefined,
+        // Invisible spam signals. Sent even when authenticated — the backend
+        // skips scoring for a signed-in author, but the honeypot check is free
+        // and a bot replaying a captured request shouldn't get a pass.
+        formToken,
+        website: honeypot,
       },
       useAuth ? viewer.token : undefined
     );
@@ -772,6 +781,10 @@ export function PortalComments({
 
   return (
     <div className="space-y-5">
+      {/* Sibling of the visible form rather than a prop threaded through it:
+          form-scraping bots collect every input on the page, so it works here
+          without changing CommentForm's API. */}
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <CommentForm
         brand={brand}
         viewer={viewer}
