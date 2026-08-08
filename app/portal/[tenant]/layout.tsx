@@ -68,30 +68,6 @@ export default async function PortalLayout({
 
   return (
     <div className="flex min-h-screen flex-col bg-[#fdf8f9]">
-      {/* First-glance growth CTA. A slim bar at the very top of every portal
-          page so a visitor sees "get your own board" immediately — not only in
-          the footer. FeedBoard's own rose (not the tenant brand): clearly our
-          promo. Links to signup on the root domain (absolute — see appUrl). */}
-      <a
-        href={appUrl("/signup")}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group block bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"
-      >
-        {/* Wrapped onto two tall lines on a phone, costing ~130px above the fold
-            before the visitor saw any of the tenant's own content. */}
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 py-1.5 text-center text-xs sm:gap-x-3 sm:px-6 sm:py-2 sm:text-sm">
-          <span className="inline-flex items-center gap-1.5 font-medium">
-            <Sparkles className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
-            {t("portal.ownBoardTitle")}
-          </span>
-          <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-0.5 font-semibold transition-colors group-hover:bg-white/25 sm:px-3 sm:py-1">
-            {t("portal.ownBoardCta")}
-            <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
-          </span>
-        </div>
-      </a>
-
       {/* Brand + language only. The Board/Changelog nav used to live here too,
           which on a phone forced a third wrapped row (logo, then language,
           then a full-width nav row) before any of the tenant's own content —
@@ -135,10 +111,8 @@ export default async function PortalLayout({
       </main>
 
       <footer className="mt-auto border-t border-black/5 bg-white">
-        {/* The "get your own board" promo lives ONLY in the top bar now — it
-            was duplicated here too, showing the same CTA twice on one page.
-            Visitors are on OUR infrastructure, so our policies must still be
-            reachable from a tenant board, not only from the marketing site. */}
+        {/* Visitors are on OUR infrastructure, so our policies must be reachable
+            from a tenant board, not only from the marketing site. */}
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-4 text-center text-xs text-[#1c0a0c]/40">
           <span>{t("portal.poweredBy")}</span>
           {legalPages.map((lp) => (
@@ -151,6 +125,31 @@ export default async function PortalLayout({
             </a>
           ))}
         </div>
+
+        {/* Growth CTA. Moved out of the top of the page and down here: as a
+            header bar it cost ~130px above the fold on a phone (it wraps to two
+            lines) before a visitor saw any of the tenant's own content, which is
+            a poor trade on a board the customer is paying to make theirs.
+            Keeps FeedBoard's own rose rather than the tenant brand colour, so
+            it reads as our promo and not something the customer is saying.
+            Links to signup on the root domain (absolute — see appUrl). */}
+        <a
+          href={appUrl("/signup")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block bg-[#c74959] text-white transition-colors hover:bg-[#b03f4d]"
+        >
+          <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-2 gap-y-1 px-4 py-1.5 text-center text-xs sm:gap-x-3 sm:px-6 sm:py-2 sm:text-sm">
+            <span className="inline-flex items-center gap-1.5 font-medium">
+              <Sparkles className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" />
+              {t("portal.ownBoardTitle")}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/15 px-2.5 py-0.5 font-semibold transition-colors group-hover:bg-white/25 sm:px-3 sm:py-1">
+              {t("portal.ownBoardCta")}
+              <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </div>
+        </a>
       </footer>
     </div>
   );
