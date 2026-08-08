@@ -462,7 +462,10 @@
     "notFoundDesc": "Questo portale di feedback non esiste o non è più attivo. Controlla l'indirizzo e riprova.",
     "ownBoardTitle": "Vuoi la tua bacheca dei feedback?",
     "ownBoardCta": "Unisciti alla community",
-    "noMatchingPosts": "Nessun post in questa vista."
+    "noMatchingPosts": "Nessun post in questa vista.",
+    "signInToPostTitle": "Accedi per pubblicare feedback",
+    "signInToPostDesc": "Questa bacheca richiede un account per inviare feedback. Accedi o creane uno per continuare.",
+    "postingAs": "Pubblicazione come {{name}}."
   },
   "type": {
     "feedback": "Feedback",
@@ -582,7 +585,10 @@
     "subtitle": "Personalizza l'aspetto del tuo portale di feedback",
     "logoHint": "Mostrato nell'intestazione della tua bacheca pubblica. Un PNG o SVG quadrato è ideale.",
     "uploadLogo": "Carica logo",
-    "portalUrl": "Il tuo portale: {{url}}"
+    "portalUrl": "Il tuo portale: {{url}}",
+    "requireSignIn": "Richiedi l'accesso per pubblicare feedback",
+    "requireSignInDescription": "Se attivo, i visitatori devono accedere per inviare feedback: nessuna pubblicazione anonima. Disattivato per impostazione predefinita.",
+    "upgradeToPro": "Passa a Pro per abilitare questa opzione"
   },
   "delete": {
     "dangerZone": "Zona pericolosa",
@@ -817,7 +823,8 @@
       "multiDevice": "Accedi su più dispositivi",
       "prioritySupport": "Assistenza prioritaria",
       "commentAsOwner": "Rispondi con un badge Proprietario verificato",
-      "ownerPrivacy": "Rispondi come \"Owner\" verificato con il tuo vero nome nascosto"
+      "ownerPrivacy": "Rispondi come \"Owner\" verificato con il tuo vero nome nascosto",
+      "requireSignIn": "Richiedi l'accesso per pubblicare feedback"
     },
     "badge": {
       "popular": "Popolare",

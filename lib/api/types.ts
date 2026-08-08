@@ -388,6 +388,13 @@ export interface Tenant {
   plan_name: string;
   branding_logo_url?: string | null;
   branding_primary_color?: string | null;
+  /**
+   * Pro+ setting: require a signed-in account to post feedback (no guest
+   * posting). The STORED preference — may be true even on a lapsed plan; the
+   * portal enforces the effective value (`PublicTenant.require_signin_to_post`),
+   * which reverts to false without an active Pro+ entitlement.
+   */
+  require_auth_to_post?: number;
   is_active: number;
 }
 
@@ -396,6 +403,8 @@ export interface UpdateTenantData {
   subdomain?: string;
   brandingLogoUrl?: string;
   brandingPrimaryColor?: string;
+  /** Owner-only, Pro+ to turn ON; turning OFF is always allowed. */
+  requireAuthToPost?: boolean;
   isActive?: number;
 }
 
@@ -417,6 +426,8 @@ export interface PlanLimits {
   ownerBadge?: boolean;
   /** Owner may hide their name ("Owner" only) or comment anonymously (Business). */
   ownerPrivacy?: boolean;
+  /** Owner may require sign-in to post feedback, i.e. turn OFF anonymous posting (Pro+). */
+  restrictAnonymousPosting?: boolean;
 }
 
 export interface ActiveOffer {

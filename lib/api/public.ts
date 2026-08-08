@@ -37,6 +37,12 @@ export interface PublicTenant {
   owner_badge_enabled?: boolean;
   /** Owner may hide their name ("Owner" only) or comment anonymously (Business). */
   owner_privacy_enabled?: boolean;
+  /**
+   * EFFECTIVE requirement to sign in before posting feedback (Pro+ setting,
+   * already reconciled server-side against the current plan — never build UI
+   * that also checks the plan; this boolean is the single source of truth).
+   */
+  require_signin_to_post?: boolean;
 }
 
 export interface PublicPostDetail extends Post {

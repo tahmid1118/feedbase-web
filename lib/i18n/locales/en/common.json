@@ -441,6 +441,9 @@
     "descPlaceholder": "Describe it in a bit more detail…",
     "anonymous": "Anonymous",
     "submitFeedback": "Submit feedback",
+    "signInToPostTitle": "Sign in to post feedback",
+    "signInToPostDesc": "This board requires an account to submit feedback. Sign in or create one to continue.",
+    "postingAs": "Posting as {{name}}.",
     "giveFeedback": "Give Feedback",
     "details": "Details",
     "boardTitle": "Feedback Board",
@@ -603,7 +606,10 @@
     "subtitle": "Customize how your feedback portal appears to users",
     "logoHint": "Shown in the header of your public board. A square PNG or SVG works best.",
     "uploadLogo": "Upload logo",
-    "portalUrl": "Your portal: {{url}}"
+    "portalUrl": "Your portal: {{url}}",
+    "requireSignIn": "Require sign-in to post feedback",
+    "requireSignInDescription": "When on, visitors must sign in to submit feedback — no anonymous posting. Off by default.",
+    "upgradeToPro": "Upgrade to Pro to enable this"
   },
   "delete": {
     "dangerZone": "Danger zone",
@@ -832,6 +838,7 @@
       "contactSubmitters": "Contact & notify feedback submitters",
       "deletePosts": "Delete feedback posts",
       "commentAsOwner": "Reply with a verified Owner badge",
+      "requireSignIn": "Require sign-in to post feedback",
       "upTo5Members": "Up to 5 team members",
       "everythingPro": "Everything in Pro",
       "unlimitedWorkspaces": "Unlimited workspaces",

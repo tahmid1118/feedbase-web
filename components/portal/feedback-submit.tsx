@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { MessageSquare, Loader2, CheckCircle2 } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Link from "next/link";
+import { MessageSquare, Loader2, CheckCircle2, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { useTranslation } from "@/lib/i18n/client";
@@ -46,20 +48,34 @@ export function FeedbackSubmit({
   tenant,
   brand,
   attachmentsEnabled = false,
+  requireSignIn = false,
 }: {
   tenant: string;
   brand: string;
   /** Pro+ workspaces let visitors attach a photo or short video. */
   attachmentsEnabled?: boolean;
+  /**
+   * Pro+ owner setting: require a signed-in account to post (no guest
+   * posting). Already the EFFECTIVE value from the backend — never re-check
+   * the plan here. Default false, i.e. anonymous posting allowed, matching
+   * every workspace unless its owner turned this on.
+   */
+  requireSignIn?: boolean;
 }) {
   const { t } = useTranslation();
+  const { data: session } = useSession();
+  const token = session?.user?.accessToken;
+  const isLoggedIn = Boolean(token);
   // Posting is free for everyone, the board's own owner included — no plan
   // check here, and none on the server either.
   //
-  // NOTE: this form always submits as a GUEST (no Bearer token), so a post is
-  // attributed to the typed name/email rather than to a signed-in account, even
-  // when the visitor is logged in. That is pre-existing and why the email is
-  // always required. Attribution lives on comments, not posts.
+  // NOTE: by default this form submits as a GUEST (no Bearer token), so a post
+  // is attributed to the typed name/email rather than to a signed-in account,
+  // even when the visitor is logged in — attribution otherwise lives on
+  // comments, not posts. The one exception is `requireSignIn`: when the owner
+  // has turned that on, a logged-in visitor's submission IS attributed (Bearer
+  // sent, no guest fields), since there is no guest path to fall back to.
+  const attributedSubmit = requireSignIn && isLoggedIn;
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -89,14 +105,16 @@ export function FeedbackSubmit({
     setHoneypot("");
   };
 
-  const canSubmit = Boolean(title.trim()) && EMAIL_RE.test(email.trim());
+  const canSubmit = attributedSubmit
+    ? Boolean(title.trim())
+    : Boolean(title.trim()) && EMAIL_RE.test(email.trim());
 
   const submit = async () => {
     if (!title.trim()) {
       setError("Please add a title.");
       return;
     }
-    if (!EMAIL_RE.test(email.trim())) {
+    if (!attributedSubmit && !EMAIL_RE.test(email.trim())) {
       setError(
         "Please add a valid email so we can update you about your feedback."
       );
@@ -109,15 +127,18 @@ export function FeedbackSubmit({
         `${API_BASE}/public/${encodeURIComponent(tenant)}/feedback`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            ...(attributedSubmit ? { Authorization: `Bearer ${token}` } : {}),
+          },
           body: JSON.stringify({
             lg: "en",
             title: title.trim(),
             description: description.trim(),
             postType,
-            submitterName: name.trim() || undefined,
-            submitterEmail: email.trim() || undefined,
-            guestId: getGuestId() || undefined,
+            submitterName: attributedSubmit ? undefined : name.trim() || undefined,
+            submitterEmail: attributedSubmit ? undefined : email.trim() || undefined,
+            guestId: attributedSubmit ? undefined : getGuestId() || undefined,
             attachmentIds: attachments.map((a) => a.id),
             formToken,
             website: honeypot,
@@ -177,6 +198,28 @@ export function FeedbackSubmit({
                   onClick={() => handleOpenChange(false)}
                 >
                   Done
+                </Button>
+              </div>
+            </div>
+          ) : requireSignIn && !isLoggedIn ? (
+            <div className="flex flex-col items-center gap-3 py-6 text-center">
+              <LogIn className="h-12 w-12" style={{ color: brand }} />
+              <h3 className="text-lg font-semibold text-[#1c0a0c]">
+                {t("portal.signInToPostTitle")}
+              </h3>
+              <p className="max-w-xs text-sm text-[#1c0a0c]/60">
+                {t("portal.signInToPostDesc")}
+              </p>
+              <div className="mt-2 flex gap-2">
+                <Button variant="outline" onClick={() => handleOpenChange(false)}>
+                  {t("common.cancel")}
+                </Button>
+                <Button
+                  asChild
+                  className="text-white hover:opacity-90"
+                  style={{ backgroundColor: brand }}
+                >
+                  <Link href="/login">{t("nav.signIn")}</Link>
                 </Button>
               </div>
             </div>
@@ -254,41 +297,51 @@ export function FeedbackSubmit({
                   </div>
                 )}
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="fb-name">
-                      Name{" "}
-                      <span className="font-normal text-[#1c0a0c]/40">
-                        (optional)
-                      </span>
-                    </Label>
-                    <Input
-                      id="fb-name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder={t("portal.anonymous")}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="fb-email">
-                      Email <span className="text-[#c74959]">*</span>
-                    </Label>
-                    <Input
-                      id="fb-email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@example.com"
-                      required
-                      aria-required="true"
-                    />
-                  </div>
-                </div>
+                {attributedSubmit ? (
+                  <p className="rounded-lg bg-[#c74959]/5 px-3 py-2 text-xs text-[#1c0a0c]/60">
+                    {t("portal.postingAs", {
+                      name: session?.user?.name || session?.user?.email || "",
+                    })}
+                  </p>
+                ) : (
+                  <>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div className="space-y-2">
+                        <Label htmlFor="fb-name">
+                          Name{" "}
+                          <span className="font-normal text-[#1c0a0c]/40">
+                            (optional)
+                          </span>
+                        </Label>
+                        <Input
+                          id="fb-name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder={t("portal.anonymous")}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="fb-email">
+                          Email <span className="text-[#c74959]">*</span>
+                        </Label>
+                        <Input
+                          id="fb-email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@example.com"
+                          required
+                          aria-required="true"
+                        />
+                      </div>
+                    </div>
 
-                <p className="rounded-lg bg-[#c74959]/5 px-3 py-2 text-xs text-[#1c0a0c]/60">
-                  We ask for your email so we can contact you with updates on
-                  your feedback. It&apos;s never shown publicly.
-                </p>
+                    <p className="rounded-lg bg-[#c74959]/5 px-3 py-2 text-xs text-[#1c0a0c]/60">
+                      We ask for your email so we can contact you with updates
+                      on your feedback. It&apos;s never shown publicly.
+                    </p>
+                  </>
+                )}
 
                 {error && (
                   <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-600">

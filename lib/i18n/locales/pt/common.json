@@ -462,7 +462,10 @@
     "notFoundDesc": "Este portal de feedback não existe ou já não está ativo. Verifique o endereço e tente novamente.",
     "ownBoardTitle": "Quer o seu próprio painel de feedback?",
     "ownBoardCta": "Junte-se à nossa comunidade",
-    "noMatchingPosts": "Nenhuma publicação nesta visualização."
+    "noMatchingPosts": "Nenhuma publicação nesta visualização.",
+    "signInToPostTitle": "Faça login para publicar feedback",
+    "signInToPostDesc": "Este quadro exige uma conta para enviar feedback. Faça login ou crie uma conta para continuar.",
+    "postingAs": "Publicando como {{name}}."
   },
   "type": {
     "feedback": "Feedback",
@@ -582,7 +585,10 @@
     "subtitle": "Personalize o aspeto do seu portal de feedback",
     "logoHint": "Apresentado no cabeçalho do seu painel público. Um PNG ou SVG quadrado funciona melhor.",
     "uploadLogo": "Carregar logótipo",
-    "portalUrl": "O seu portal: {{url}}"
+    "portalUrl": "O seu portal: {{url}}",
+    "requireSignIn": "Exigir login para publicar feedback",
+    "requireSignInDescription": "Quando ativado, os visitantes devem fazer login para enviar feedback — sem publicação anônima. Desativado por padrão.",
+    "upgradeToPro": "Atualize para o Pro para ativar isso"
   },
   "delete": {
     "dangerZone": "Zona de perigo",
@@ -817,7 +823,8 @@
       "multiDevice": "Inicie sessão em vários dispositivos",
       "prioritySupport": "Suporte prioritário",
       "commentAsOwner": "Responder com um selo de proprietário verificado",
-      "ownerPrivacy": "Responda como \"Owner\" verificado com seu nome real oculto"
+      "ownerPrivacy": "Responda como \"Owner\" verificado com seu nome real oculto",
+      "requireSignIn": "Exigir login para publicar feedback"
     },
     "badge": {
       "popular": "Popular",

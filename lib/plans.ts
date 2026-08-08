@@ -62,6 +62,7 @@ export const PLANS: PlanDisplay[] = [
       "plan.feat.contactSubmitters",
       "plan.feat.deletePosts",
       "plan.feat.commentAsOwner",
+      "plan.feat.requireSignIn",
       "plan.feat.upTo5Members",
       "plan.feat.oneSession",
     ],

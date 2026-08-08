@@ -462,7 +462,10 @@
     "notFoundDesc": "Dit feedbackportaal bestaat niet of is niet meer actief. Controleer het adres en probeer het opnieuw.",
     "ownBoardTitle": "Wilt u uw eigen feedbackbord?",
     "ownBoardCta": "Word lid van onze community",
-    "noMatchingPosts": "Geen berichten in deze weergave."
+    "noMatchingPosts": "Geen berichten in deze weergave.",
+    "signInToPostTitle": "Log in om feedback te plaatsen",
+    "signInToPostDesc": "Dit bord vereist een account om feedback in te sturen. Log in of maak er een aan om door te gaan.",
+    "postingAs": "Plaatsen als {{name}}."
   },
   "type": {
     "feedback": "Feedback",
@@ -582,7 +585,10 @@
     "subtitle": "Pas aan hoe uw feedbackportaal er voor gebruikers uitziet",
     "logoHint": "Weergegeven in de koptekst van uw openbare bord. Een vierkante PNG of SVG werkt het best.",
     "uploadLogo": "Logo uploaden",
-    "portalUrl": "Uw portaal: {{url}}"
+    "portalUrl": "Uw portaal: {{url}}",
+    "requireSignIn": "Inloggen vereisen om feedback te plaatsen",
+    "requireSignInDescription": "Indien ingeschakeld, moeten bezoekers inloggen om feedback in te sturen — geen anonieme berichten. Standaard uitgeschakeld.",
+    "upgradeToPro": "Upgrade naar Pro om dit in te schakelen"
   },
   "delete": {
     "dangerZone": "Gevarenzone",
@@ -817,7 +823,8 @@
       "multiDevice": "Inloggen op meerdere apparaten",
       "prioritySupport": "Prioriteitsondersteuning",
       "commentAsOwner": "Reageren met een geverifieerd eigenaar-label",
-      "ownerPrivacy": "Reageer als geverifieerde \"Owner\" met je echte naam verborgen"
+      "ownerPrivacy": "Reageer als geverifieerde \"Owner\" met je echte naam verborgen",
+      "requireSignIn": "Inloggen vereisen om feedback te plaatsen"
     },
     "badge": {
       "popular": "Populair",

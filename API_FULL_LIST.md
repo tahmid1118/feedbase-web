@@ -46,10 +46,10 @@ Sample Response:
 ```
 
 ### PUT /tenants/update/:id
-**Owner-only, and only your own workspace** (`:id` must be the caller's `tenantId`, else `403`). `planName` is NOT accepted (plan is set only by Stripe / an admin comp); custom domains are not supported. Changing `subdomain` validates format + reserved words (`400 invalid_subdomain`) and uniqueness (`409 subdomain_taken`); `slug` is kept in sync with it.
+**Owner-only, and only your own workspace** (`:id` must be the caller's `tenantId`, else `403`). `planName` is NOT accepted (plan is set only by Stripe / an admin comp); custom domains are not supported. Changing `subdomain` validates format + reserved words (`400 invalid_subdomain`) and uniqueness (`409 subdomain_taken`); `slug` is kept in sync with it. `requireAuthToPost` (boolean) requires a signed-in account to post feedback on the public board (no guest posting) — turning it **ON** needs the `restrictAnonymousPosting` plan capability (Pro+, else `402 plan_limit_require_signin`); turning it **OFF is always allowed, even on Free**.
 Sample Body:
 ```json
-{"lg":"en","tenantData":{"name":"Acme Corporation","subdomain":"acme","brandingLogoUrl":"https://cdn.example.com/acme/new-logo.png","isActive":1}}
+{"lg":"en","tenantData":{"name":"Acme Corporation","subdomain":"acme","brandingLogoUrl":"https://cdn.example.com/acme/new-logo.png","isActive":1,"requireAuthToPost":true}}
 ```
 Sample Response:
 ```json
@@ -67,10 +67,10 @@ Sample Response:
 ```
 
 ### GET /tenants/me
-Returns the tenant of the currently authenticated user. `lg` may be passed as a query param (`?lg=en`).
+Returns the tenant of the currently authenticated user. `lg` may be passed as a query param (`?lg=en`). `require_auth_to_post` is the raw STORED preference (not plan-reconciled) — use it to reflect the owner's saved setting in the Branding UI.
 Sample Response:
 ```json
-{"status":"success","message":"Tenant retrieved successfully","data":{"id":1,"name":"Acme Labs","slug":"acme-labs","subdomain":"acme","custom_domain":"feedback.acme.test","plan_name":"pro","branding_logo_url":"https://cdn.example.com/acme/logo.png","branding_primary_color":"#0A7CFF","is_active":1}}
+{"status":"success","message":"Tenant retrieved successfully","data":{"id":1,"name":"Acme Labs","slug":"acme-labs","subdomain":"acme","custom_domain":"feedback.acme.test","plan_name":"pro","branding_logo_url":"https://cdn.example.com/acme/logo.png","branding_primary_color":"#0A7CFF","require_auth_to_post":0,"is_active":1}}
 ```
 
 ---
@@ -1082,10 +1082,10 @@ Unauthenticated, mounted at `/public`. The tenant is resolved from the `:subdoma
 Signed-in authors skip scoring entirely. Quarantined content is recoverable via `PATCH /posts/moderation/:id`, and never triggers owner emails or team notifications.
 
 ### GET /public/tenant
-Resolve a tenant by subdomain (or `?domain=`) for the portal. Plan-derived booleans: `attachments_enabled` (Pro+), `owner_badge_enabled` (Pro+ — owner may comment as "Name (Owner)" with a verified tick), `owner_privacy_enabled` (Business — owner may comment as "Owner" only, real name withheld). These gate the **badged** identities only; commenting as yourself or **anonymously is free on every plan** (anonymous simply omits the Bearer token, so it lands as an ordinary guest comment). Query: `?subdomain=acme&lg=en`.
+Resolve a tenant by subdomain (or `?domain=`) for the portal. Plan-derived booleans: `attachments_enabled` (Pro+), `owner_badge_enabled` (Pro+ — owner may comment as "Name (Owner)" with a verified tick), `owner_privacy_enabled` (Business — owner may comment as "Owner" only, real name withheld). These gate the **badged** identities only; commenting as yourself or **anonymously is free on every plan** (anonymous simply omits the Bearer token, so it lands as an ordinary guest comment). `require_signin_to_post` is the **effective** (plan-reconciled) requirement to sign in before posting FEEDBACK (Pro+ owner setting, off by default) — when true, `POST /public/:subdomain/feedback` rejects a guest submission; a downgrade silently reverts this to `false`. Query: `?subdomain=acme&lg=en`.
 Sample Response:
 ```json
-{"status":"success","message":"Tenant retrieved successfully","data":{"id":1,"name":"Acme Labs","subdomain":"acme","custom_domain":null,"branding_logo_url":null,"branding_primary_color":"#c74959","attachments_enabled":true}}
+{"status":"success","message":"Tenant retrieved successfully","data":{"id":1,"name":"Acme Labs","subdomain":"acme","custom_domain":null,"branding_logo_url":null,"branding_primary_color":"#c74959","attachments_enabled":true,"owner_badge_enabled":true,"owner_privacy_enabled":false,"require_signin_to_post":false}}
 ```
 
 ### GET /public/offers
@@ -1144,6 +1144,8 @@ Sample Response:
 
 ### POST /public/:subdomain/feedback
 Submit feedback (guest or logged-in). A guest MUST include `submitterEmail` (so the team can follow up); logged-in submitters are attributed via their Bearer token. `attachmentIds` link previously-uploaded attachments (paid workspaces).
+
+If the workspace has **"require sign-in to post feedback"** enabled (`require_signin_to_post` from `GET /public/tenant`, a Pro+ owner setting, off by default), a guest submission (no Bearer token) is rejected with `401 signin_required_to_post` — sign in and resend with `Authorization: Bearer <token>` instead.
 
 Two optional anti-spam fields, both invisible to real users: `formToken` (above) and `website` (a **honeypot** — any non-empty value means a bot, and the response is a normal `201` with `"id": null` while nothing is stored). Guest submissions are scored; a high score is quarantined (`moderation_state = 'spam'`) and hidden from public reads, but still returns success. Exceeding a burst cap returns `429`.
 Sample Body:

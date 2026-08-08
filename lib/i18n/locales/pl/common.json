@@ -480,7 +480,10 @@
     "notFoundDesc": "Ten portal opinii nie istnieje lub nie jest już aktywny. Sprawdź adres i spróbuj ponownie.",
     "ownBoardTitle": "Chcesz własną tablicę opinii?",
     "ownBoardCta": "Dołącz do naszej społeczności",
-    "noMatchingPosts": "Brak wpisów w tym widoku."
+    "noMatchingPosts": "Brak wpisów w tym widoku.",
+    "signInToPostTitle": "Zaloguj się, aby dodać opinię",
+    "signInToPostDesc": "Ta tablica wymaga konta, aby przesłać opinię. Zaloguj się lub załóż konto, aby kontynuować.",
+    "postingAs": "Publikowanie jako {{name}}."
   },
   "type": {
     "feedback": "Opinia",
@@ -600,7 +603,10 @@
     "subtitle": "Dostosuj wygląd swojego portalu opinii",
     "logoHint": "Wyświetlane w nagłówku Twojej publicznej tablicy. Najlepiej sprawdzi się kwadratowy PNG lub SVG.",
     "uploadLogo": "Prześlij logo",
-    "portalUrl": "Twój portal: {{url}}"
+    "portalUrl": "Twój portal: {{url}}",
+    "requireSignIn": "Wymagaj logowania, aby dodać opinię",
+    "requireSignInDescription": "Gdy włączone, odwiedzający muszą się zalogować, aby przesłać opinię — brak anonimowego publikowania. Domyślnie wyłączone.",
+    "upgradeToPro": "Przejdź na Pro, aby to włączyć"
   },
   "delete": {
     "dangerZone": "Strefa zagrożenia",
@@ -837,7 +843,8 @@
       "multiDevice": "Logowanie na wielu urządzeniach",
       "prioritySupport": "Priorytetowe wsparcie",
       "commentAsOwner": "Odpowiadaj z odznaką zweryfikowanego właściciela",
-      "ownerPrivacy": "Odpowiadaj jako zweryfikowany „Owner” z ukrytym prawdziwym imieniem"
+      "ownerPrivacy": "Odpowiadaj jako zweryfikowany „Owner” z ukrytym prawdziwym imieniem",
+      "requireSignIn": "Wymagaj logowania, aby dodać opinię"
     },
     "badge": {
       "popular": "Popularny",

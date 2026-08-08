@@ -462,7 +462,10 @@
     "notFoundDesc": "Este portal de comentarios no existe o ya no está activo. Comprueba la dirección e inténtalo de nuevo.",
     "ownBoardTitle": "¿Quieres tu propio tablero de comentarios?",
     "ownBoardCta": "Únete a nuestra comunidad",
-    "noMatchingPosts": "No hay publicaciones en esta vista."
+    "noMatchingPosts": "No hay publicaciones en esta vista.",
+    "signInToPostTitle": "Inicia sesión para publicar comentarios",
+    "signInToPostDesc": "Este tablero requiere una cuenta para enviar comentarios. Inicia sesión o crea una cuenta para continuar.",
+    "postingAs": "Publicando como {{name}}."
   },
   "type": {
     "feedback": "Comentario",
@@ -582,7 +585,10 @@
     "subtitle": "Personaliza cómo se ve tu portal de comentarios",
     "logoHint": "Se muestra en la cabecera de tu tablero público. Un PNG o SVG cuadrado funciona mejor.",
     "uploadLogo": "Subir logotipo",
-    "portalUrl": "Tu portal: {{url}}"
+    "portalUrl": "Tu portal: {{url}}",
+    "requireSignIn": "Requerir inicio de sesión para publicar comentarios",
+    "requireSignInDescription": "Cuando está activado, los visitantes deben iniciar sesión para enviar comentarios; no se permite publicar de forma anónima. Desactivado de forma predeterminada.",
+    "upgradeToPro": "Actualiza a Pro para habilitar esto"
   },
   "delete": {
     "dangerZone": "Zona de peligro",
@@ -817,7 +823,8 @@
       "multiDevice": "Inicia sesión en varios dispositivos",
       "prioritySupport": "Soporte prioritario",
       "commentAsOwner": "Responder con una insignia de propietario verificado",
-      "ownerPrivacy": "Responde como \"Owner\" verificado con tu nombre real oculto"
+      "ownerPrivacy": "Responde como \"Owner\" verificado con tu nombre real oculto",
+      "requireSignIn": "Requerir inicio de sesión para publicar comentarios"
     },
     "badge": {
       "popular": "Popular",

@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { ImageIcon, Loader2, Upload } from "lucide-react";
-import { tenantsApi, uploaderApi, ApiError, type Tenant } from "@/lib/api";
+import { tenantsApi, billingApi, uploaderApi, ApiError, type Tenant } from "@/lib/api";
 import { PROFILE_IMAGE_ACCEPT } from "@/lib/attachments";
 import { resolveUploadUrl } from "@/lib/avatar";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
@@ -13,6 +14,7 @@ import { useTranslation } from "@/lib/i18n/client";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
 
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
@@ -30,6 +32,14 @@ export function BrandingSettings() {
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // Pro+ setting: require sign-in to post feedback. `null` while the plan is
+  // still loading — treated as locked (matches the attachments picker's own
+  // "unknown = hide the paid control" convention) so the switch never briefly
+  // flashes enabled before the real entitlement is known.
+  const [requireAuthToPost, setRequireAuthToPost] = useState(false);
+  const [canRestrictAnonymous, setCanRestrictAnonymous] = useState<
+    boolean | null
+  >(null);
 
   // Only validate/gate on availability when the subdomain actually changed —
   // otherwise the account's OWN current subdomain would read as "taken".
@@ -51,12 +61,19 @@ export function BrandingSettings() {
       })
       .catch(() => toast.error(t("branding.loadFailed")))
       .finally(() => setLoading(false));
+    billingApi
+      .getStatus(token)
+      .then((res) =>
+        setCanRestrictAnonymous(Boolean(res.data?.limits?.restrictAnonymousPosting))
+      )
+      .catch(() => setCanRestrictAnonymous(false));
   }, [token, t]);
 
   const applyTenant = (t: Tenant) => {
     setTenant(t);
     setName(t.name ?? "");
     setLogoUrl(t.branding_logo_url ?? "");
+    setRequireAuthToPost(Boolean(t.require_auth_to_post));
     setSubdomain(t.subdomain ?? "");
     setOriginalSubdomain(t.subdomain ?? "");
   };
@@ -93,6 +110,10 @@ export function BrandingSettings() {
           name: name.trim(),
           brandingLogoUrl: logoUrl.trim(),
           subdomain: subdomain.trim(),
+          // Sent unconditionally, same as the fields above — the SERVER is the
+          // authority on entitlement (updateTenant.js re-checks the live plan),
+          // and the UI below never lets a non-Pro+ owner turn this on anyway.
+          requireAuthToPost,
         },
         token
       );
@@ -224,6 +245,35 @@ export function BrandingSettings() {
             </p>
           )}
         </div>
+      </div>
+
+      <div className="mt-6 flex items-start justify-between gap-4 rounded-lg border border-[#e399a3]/40 bg-white p-4">
+        <div className="space-y-1">
+          <Label htmlFor="require-auth-to-post">
+            {t("branding.requireSignIn")}
+          </Label>
+          <p className="text-xs text-[#1c0a0c]/50">
+            {t("branding.requireSignInDescription")}
+          </p>
+          {canRestrictAnonymous === false && (
+            <p className="text-xs text-[#1c0a0c]/50">
+              <Link
+                href="/dashboard/settings?tab=billing"
+                className="font-medium text-[#c74959] hover:underline"
+              >
+                {t("branding.upgradeToPro")}
+              </Link>
+            </p>
+          )}
+        </div>
+        <Switch
+          id="require-auth-to-post"
+          checked={requireAuthToPost}
+          onCheckedChange={setRequireAuthToPost}
+          // Turning ON needs the Pro+ entitlement; turning OFF is always allowed
+          // (a downgrade may have left this stuck on — see updateTenant.js).
+          disabled={!canRestrictAnonymous && !requireAuthToPost}
+        />
       </div>
 
       <div className="mt-6 flex justify-end">

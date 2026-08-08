@@ -462,7 +462,10 @@
     "notFoundDesc": "Dieses Feedback-Portal existiert nicht oder ist nicht mehr aktiv. Bitte überprüfen Sie die Adresse und versuchen Sie es erneut.",
     "ownBoardTitle": "Möchten Sie Ihre eigene Feedback-Pinnwand?",
     "ownBoardCta": "Werden Sie Teil unserer Community",
-    "noMatchingPosts": "Keine Beiträge in dieser Ansicht."
+    "noMatchingPosts": "Keine Beiträge in dieser Ansicht.",
+    "signInToPostTitle": "Zum Posten von Feedback anmelden",
+    "signInToPostDesc": "Dieses Board erfordert ein Konto, um Feedback einzureichen. Melde dich an oder erstelle eines, um fortzufahren.",
+    "postingAs": "Posten als {{name}}."
   },
   "type": {
     "feedback": "Feedback",
@@ -582,7 +585,10 @@
     "subtitle": "Passen Sie an, wie Ihr Feedback-Portal für Nutzer aussieht",
     "logoHint": "Wird in der Kopfzeile Ihrer öffentlichen Pinnwand angezeigt. Ein quadratisches PNG oder SVG eignet sich am besten.",
     "uploadLogo": "Logo hochladen",
-    "portalUrl": "Ihr Portal: {{url}}"
+    "portalUrl": "Ihr Portal: {{url}}",
+    "requireSignIn": "Anmeldung zum Posten von Feedback erforderlich",
+    "requireSignInDescription": "Wenn aktiviert, müssen Besucher sich anmelden, um Feedback einzureichen – kein anonymes Posten. Standardmäßig deaktiviert.",
+    "upgradeToPro": "Auf Pro upgraden, um dies zu aktivieren"
   },
   "delete": {
     "dangerZone": "Gefahrenzone",
@@ -817,7 +823,8 @@
       "multiDevice": "Anmeldung auf mehreren Geräten",
       "prioritySupport": "Priorisierter Support",
       "commentAsOwner": "Mit verifiziertem Inhaber-Abzeichen antworten",
-      "ownerPrivacy": "Als verifizierter „Owner“ antworten – dein echter Name bleibt verborgen"
+      "ownerPrivacy": "Als verifizierter „Owner“ antworten – dein echter Name bleibt verborgen",
+      "requireSignIn": "Anmeldung zum Posten von Feedback erforderlich"
     },
     "badge": {
       "popular": "Beliebt",

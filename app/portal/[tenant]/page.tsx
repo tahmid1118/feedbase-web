@@ -58,6 +58,7 @@ export default async function PortalBoardPage({
             tenant={decoded}
             brand={brand}
             attachmentsEnabled={Boolean(info?.attachments_enabled)}
+            requireSignIn={Boolean(info?.require_signin_to_post)}
           />
         </div>
       </div>

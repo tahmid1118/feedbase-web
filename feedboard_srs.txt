@@ -201,6 +201,8 @@ Version 1.2
                           post records the contact details given on the form and
                           is not attributed to an account. Posting is available
                           on every plan, including to the board's own owner.
+                          An owner may instead require sign-in to post (see
+                          FR-P11); anonymous posting is the default.
                           On workspaces whose plan includes attachments
                           (see FR-A1), the submit form also lets the visitor
                           attach photos or a short video.
@@ -271,6 +273,18 @@ Version 1.2
                           rather than rejecting the comment. The choice applies to
                           the comment and its replies, on both the public portal
                           and (except anonymous) the dashboard.
+    FR-P11 Require ...... Anonymous/guest posting of FEEDBACK (not comments) is
+           sign-in         allowed by default on every plan. On workspaces whose
+                          plan permits it (Pro and above; see FR-B5), the owner
+                          may instead require visitors to sign in before
+                          submitting feedback. When enabled, a signed-out visitor
+                          sees a sign-in prompt in place of the submit form
+                          instead of the guest fields; a signed-in visitor's
+                          submission is attributed to their account. If the
+                          workspace later drops to a plan without the capability,
+                          the owner's choice is remembered but enforcement
+                          reverts to allowing anonymous posting, so real visitors
+                          are never locked out by a lapsed subscription.
     FR-A1  Attachments .. On workspaces whose plan permits it (Pro and above; see
                           FR-B5), a feedback post may carry up to three photo or
                           short-video attachments. Attaching is offered on both
@@ -507,7 +521,8 @@ Version 1.2
                           workspace the account owns.
     FR-B5  Enforcement .. Paid capabilities are gated by plan: a Free workspace
                           cannot delete feedback posts, attach photos/video to
-                          feedback, or contact/notify submitters, and is prompted
+                          feedback, contact/notify submitters, or require
+                          sign-in to post feedback (see FR-P11), and is prompted
                           to upgrade. Deleting feedback and contacting submitters
                           additionally require the owner role.
                           Team size is capped by the plan's seat limit, counted

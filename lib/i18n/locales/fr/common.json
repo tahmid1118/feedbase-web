@@ -462,7 +462,10 @@
     "notFoundDesc": "Ce portail de retours n'existe pas ou n'est plus actif. Veuillez vérifier l'adresse et réessayer.",
     "ownBoardTitle": "Vous voulez votre propre tableau de retours ?",
     "ownBoardCta": "Rejoindre notre communauté",
-    "noMatchingPosts": "Aucune publication dans cette vue."
+    "noMatchingPosts": "Aucune publication dans cette vue.",
+    "signInToPostTitle": "Connectez-vous pour publier un commentaire",
+    "signInToPostDesc": "Ce tableau nécessite un compte pour envoyer des commentaires. Connectez-vous ou créez-en un pour continuer.",
+    "postingAs": "Publication en tant que {{name}}."
   },
   "type": {
     "feedback": "Retour",
@@ -582,7 +585,10 @@
     "subtitle": "Personnalisez l'apparence de votre portail de retours",
     "logoHint": "Affiché dans l'en-tête de votre tableau public. Un PNG ou SVG carré est idéal.",
     "uploadLogo": "Téléverser un logo",
-    "portalUrl": "Votre portail : {{url}}"
+    "portalUrl": "Votre portail : {{url}}",
+    "requireSignIn": "Exiger une connexion pour publier un commentaire",
+    "requireSignInDescription": "Lorsque activé, les visiteurs doivent se connecter pour envoyer des commentaires — pas de publication anonyme. Désactivé par défaut.",
+    "upgradeToPro": "Passez à Pro pour activer cette option"
   },
   "delete": {
     "dangerZone": "Zone de danger",
@@ -817,7 +823,8 @@
       "multiDevice": "Connexion sur plusieurs appareils",
       "prioritySupport": "Support prioritaire",
       "commentAsOwner": "Répondre avec un badge propriétaire vérifié",
-      "ownerPrivacy": "Répondre en tant que « Owner » vérifié, votre vrai nom masqué"
+      "ownerPrivacy": "Répondre en tant que « Owner » vérifié, votre vrai nom masqué",
+      "requireSignIn": "Exiger une connexion pour publier un commentaire"
     },
     "badge": {
       "popular": "Populaire",
