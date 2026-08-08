@@ -1263,7 +1263,7 @@ Workspaces (any tenant):
 
 Accounts (subscriptions are per **account** — the plan covers every workspace the account owns):
 - `GET  /admin/accounts` — list billing accounts (`?search=`): `{ rows: [{ email, name, owned_count, workspaces, plan_name, subscription_status, billing_interval, current_period_end, is_platform_admin }] }`.
-- `PUT  /admin/accounts/:email/plan` — grant / comp / revoke a plan for the whole account. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live account Stripe subscription first, then mirrors the plan onto every workspace the account owns.
+- `PUT  /admin/accounts/:email/plan` — grant / comp / revoke a plan for the whole account. Body `{ plan, durationMonths? }`: `durationMonths` falsy/0 = lifetime comp, positive = expires after N months (reverts to Free). Cancels any live account Stripe subscription first, then mirrors the plan onto every workspace the account owns. **Emails the owner** (fire-and-forget, never blocks the response) when the plan actually changes — re-selecting the current plan sends nothing. Sent from `MAIL_FROM_SUPPORT` (backend env, defaults to `MAIL_FROM` with the display name swapped to "FeedBoard Support") so it reads as a note from the team, not an automated billing receipt.
 
 Users (across tenants). A `users` row is one **workspace membership**; password reset and deletion are **account-scoped** (keyed by the row's email), not row-scoped:
 - `GET  /admin/users` — list/search. Rows include `is_platform_admin`.

@@ -3,8 +3,9 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { Search, Trash2, MessageSquare } from "lucide-react";
+import { Search, Trash2, MessageSquare, ExternalLink } from "lucide-react";
 import { adminApi, type AdminWorkspace } from "@/lib/api";
+import { portalUrlForSubdomain } from "@/lib/official-board";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
@@ -159,6 +160,20 @@ export default function AdminWorkspacesPage() {
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex items-center justify-end gap-1">
+                    {/* Jump straight to the workspace's public board. Always
+                        built from the subdomain, never `custom_domain` — the
+                        proxy doesn't route custom-domain hosts to a portal
+                        (see proxy.ts), so that would be a dead link. */}
+                    <Button asChild variant="outline" size="icon" title="Open public board">
+                      <a
+                        href={portalUrlForSubdomain(w.subdomain)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        <span className="sr-only">Open public board</span>
+                      </a>
+                    </Button>
                     <Button asChild variant="outline" size="sm">
                       <Link href={`/admin/workspaces/${w.id}`}>
                         <MessageSquare className="h-4 w-4" />
