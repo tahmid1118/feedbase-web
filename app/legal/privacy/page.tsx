@@ -21,7 +21,7 @@ export default function PrivacyPage() {
   return (
     <LegalShell
       slug="privacy"
-      summary={`What we collect, why we collect it, and what you can ask us to do about it. We don't sell personal data and we don't run advertising or analytics trackers.`}
+      summary={`What we collect, why we collect it, and what you can ask us to do about it. We don't sell personal data and we don't run advertising or tracking networks — feedback boards carry no ads at all.`}
     >
       <Clause n={1} heading="Who is responsible for your data">
         <p>
@@ -93,6 +93,24 @@ export default function PrivacyPage() {
           We do <strong>not</strong> collect special-category data, we do not run
           advertising or analytics trackers, and we do not build profiles or make
           automated decisions with legal effects about you.
+        </p>
+        <p>
+          Our public marketing pages carry a single small advertisement for
+          another independent website, served in an isolated frame by{" "}
+          <a
+            href="https://ad-swap.web.app"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-[#c74959] underline underline-offset-2"
+          >
+            Ad&nbsp;Swap
+          </a>
+          , a reciprocal exchange between small sites. It is not a tracking or
+          profiling network: it sets no cookies on our behalf, we receive no
+          information about you from it, and we send it none. Loading the frame
+          does reveal your IP address to that provider, as loading any image or
+          frame from another site would. It appears <strong>only</strong> on our
+          own marketing pages — never on a customer&rsquo;s feedback board.
         </p>
       </Clause>
 
@@ -240,7 +258,10 @@ export default function PrivacyPage() {
       <Clause n={10} heading="Cookies">
         <p>
           We use a small number of cookies, all of them necessary or functional —
-          no advertising or analytics trackers. See the{" "}
+          we set no advertising or analytics cookies of our own. The Ad&nbsp;Swap
+          frame on our marketing pages is a separate site and may set cookies on
+          its own domain; we cannot read those, and your browser&rsquo;s
+          third-party cookie settings apply to them. See the{" "}
           <Link href={legalHref("cookies")} className="font-medium text-[#c74959] hover:underline">
             Cookie Policy
           </Link>{" "}

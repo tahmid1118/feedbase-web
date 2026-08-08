@@ -13,14 +13,14 @@ import { legal, legalHref } from "@/lib/legal";
 // already appends the brand suffix; including it here too would double it.
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: `Every cookie ${legal.product} sets, what it does and how long it lasts. No advertising or analytics trackers.`,
+  description: `Every cookie ${legal.product} sets, what it does and how long it lasts. We set no advertising or analytics cookies.`,
 };
 
 export default function CookiesPage() {
   return (
     <LegalShell
       slug="cookies"
-      summary="Every cookie we set, what it does and how long it lasts. There are five, all of them needed to make the product work — no advertising or analytics trackers."
+      summary="Every cookie we set, what it does and how long it lasts. There are five, all of them needed to make the product work — we set no advertising or analytics cookies of our own, and feedback boards carry no ads at all."
     >
       <Clause n={1} heading="Why you don't see a consent banner">
         <p>
@@ -96,6 +96,17 @@ export default function CookiesPage() {
               <code className="text-xs">__cf_bm</code>) to distinguish humans from
               automated traffic. It is used for security, not tracking or
               advertising.
+            </>,
+            <>
+              <strong>Ad&nbsp;Swap</strong> — our public marketing pages show one
+              small advertisement for another independent site, loaded in an
+              isolated frame from{" "}
+              <code className="text-xs">ad-swap.web.app</code>. It is a
+              reciprocal exchange between small sites, not an ad network: it
+              receives no information from us and does not track you across
+              sites, though as a separate site it may set cookies on its own
+              domain, which we cannot read. It never appears on a feedback
+              board — only on our own marketing pages.
             </>,
           ]}
         />

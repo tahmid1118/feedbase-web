@@ -58,7 +58,7 @@ export const legal = {
   privacyEmail: "privacy@feedboardapp.com",
 
   /** Shown as "Last updated" on every page. Bump when you change the text. */
-  lastUpdated: "6 August 2026 (rev. 3)",
+  lastUpdated: "8 August 2026 (rev. 4)",
 } as const;
 
 /** The four documents, in the order they appear in the switcher. */
