@@ -56,6 +56,27 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  /**
+   * Declared here rather than left to the `app/favicon.ico` file convention.
+   *
+   * That convention emits its `<link>` on EVERY route and a nested layout's
+   * `metadata.icons` cannot suppress it (verified: it overrode `app/icon.svg`
+   * but the favicon.ico link survived). On a tenant board that meant Chrome
+   * had both FeedBoard's .ico and the customer's logo to choose from — and for
+   * a PNG logo, which is what most customers upload, it picked ours. The
+   * white-labeled board showed our "F" in the browser tab.
+   *
+   * `public/favicon.ico` serves at exactly the same `/favicon.ico` URL, so
+   * Google's favicon crawler is unaffected; declaring it here keeps the
+   * explicit `<link>` on marketing pages, and the portal layout can now replace
+   * it wholesale.
+   */
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+  },
 };
 
 // Seed the single AuthSessionProvider server-side so authenticated pages have

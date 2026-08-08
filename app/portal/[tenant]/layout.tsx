@@ -43,11 +43,24 @@ export async function generateMetadata({
   const { tenant } = await params;
   const info = await publicApi.getTenant(decodeURIComponent(tenant));
   const name = info?.name || "Feedback board";
+
+  // Favicon follows the tenant's branding, same white-label logic as the title:
+  // a board showing FeedBoard's "F" in the browser tab tells the customer's own
+  // users whose product they're looking at, which is the opposite of what
+  // Branding settings sell.
+  //
+  // Omitting `icons` entirely when there's no logo is what produces the
+  // fallback — the root layout's own `metadata.icons` then applies. Don't
+  // "helpfully" point this at /icon.svg in the else branch; that duplicates the
+  // root declaration and drifts the moment it changes.
+  const logo = resolveUploadUrl(info?.branding_logo_url);
+
   return {
     title: { absolute: name, template: "%s" },
     description: info
       ? `${name}'s public feedback board — share feedback, vote on ideas, and see what's planned.`
       : undefined,
+    ...(logo ? { icons: { icon: [{ url: logo, sizes: "any" }] } } : {}),
   };
 }
 

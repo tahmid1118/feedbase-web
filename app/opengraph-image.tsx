@@ -29,7 +29,7 @@ export default async function OgImage() {
       >
         {/* Wordmark */}
         <div style={{ display: "flex", alignItems: "center", gap: "22px" }}>
-          {/* Same three-rect "F" as components/ui/logo.tsx / app/icon.svg */}
+          {/* Same three-rect "F" as components/ui/logo.tsx / public/icon.svg */}
           <svg width={76} height={76} viewBox="0 0 32 32" fill="none">
             <rect width="32" height="32" rx="9" fill="rgba(255,255,255,0.16)" />
             <rect x="8" y="6" width="5" height="20" rx="2.5" fill="#fff" />

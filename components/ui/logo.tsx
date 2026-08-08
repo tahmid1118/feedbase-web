@@ -7,7 +7,7 @@
  * than a solid block. Self-contained and scalable — size it with a className
  * (defaults to h-8 w-8). Pure SVG, no client JS.
  *
- * Keep this in sync with `app/icon.svg` (the favicon) and the backend's
+ * Keep this in sync with `public/icon.svg` (the favicon) and the backend's
  * `assets/app-icon.svg` (the platform-admin avatar and official board logo).
  */
 export function Logo({ className = "h-8 w-8" }: { className?: string }) {
