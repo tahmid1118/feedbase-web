@@ -437,6 +437,21 @@ Verify the inlining after deploy — this must print nothing:
 curl -s https://<domain>/_next/static/chunks/*.js | grep -o 'localhost:4560'
 ```
 
+### Schema migrations are automatic — and health-checked
+
+The backend runs its migrations at boot (`src/common/bootMigrations.js`) before
+opening its socket, so a deploy carries its own schema change. **A migration
+failure exits the process**, so a container stuck restarting after a deploy means
+the schema couldn't be applied — check `docker logs` for `Boot migrations FAILED`
+rather than assuming a crash loop.
+
+This exists because of a real outage: a release shipped code referencing a column
+whose migration hadn't been run, and **every public board 500'd for hours** behind
+a generic error while the admin panel looked fine. Point uptime monitoring at
+**`GET /health`** on the backend — it runs a real schema-dependent query and
+returns `503` when the schema is behind the code, which is precisely the failure
+that was invisible. A plain liveness ping would have reported everything healthy.
+
 ### Still required from the VPS sections
 
 - **Wildcard DNS + TLS** (§1, §7): `*.<domain>` must resolve and be covered by the
