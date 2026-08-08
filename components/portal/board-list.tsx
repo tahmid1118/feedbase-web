@@ -56,6 +56,19 @@ export function BoardList({
   const [loadingMore, setLoadingMore] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
+  // `useState(initialPosts)` only consumes that value on the INITIAL mount —
+  // React never re-runs it when the prop changes on a later render. Submitting
+  // feedback calls `router.refresh()`, which re-runs the server-rendered parent
+  // and hands this component a fresh `initialPosts`/`initialTotal` (same key,
+  // so no remount), but without this the new post silently never appeared
+  // until a full manual reload. Same reset-to-page-1 tradeoff the parent
+  // already makes on a filter/sort change — any further-scrolled pages are
+  // dropped in favor of showing the just-submitted post.
+  useEffect(() => {
+    setPosts(initialPosts);
+    setTotal(initialTotal);
+  }, [initialPosts, initialTotal]);
+
   const filters =
     status === "all" ? undefined : { status: status as PostStatus };
 
