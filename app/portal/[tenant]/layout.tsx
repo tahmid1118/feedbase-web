@@ -43,6 +43,11 @@ export async function generateMetadata({
   const { tenant } = await params;
   const info = await publicApi.getTenant(decodeURIComponent(tenant));
   const name = info?.name || "Feedback board";
+  // Browser-tab title for the segment's default (board index, changelog list
+  // /detail — anything without its own generateMetadata). "<Company> |
+  // Feedback" identifies both whose board it is and what kind of page, since a
+  // bare company name in a pinned tab is otherwise ambiguous.
+  const tabTitle = `${name} | Feedback`;
 
   // Favicon follows the tenant's branding, same white-label logic as the title:
   // a board showing FeedBoard's "F" in the browser tab tells the customer's own
@@ -56,7 +61,7 @@ export async function generateMetadata({
   const logo = resolveUploadUrl(info?.branding_logo_url);
 
   return {
-    title: { absolute: name, template: "%s" },
+    title: { absolute: tabTitle, template: "%s" },
     description: info
       ? `${name}'s public feedback board — share feedback, vote on ideas, and see what's planned.`
       : undefined,
