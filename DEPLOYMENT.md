@@ -430,6 +430,7 @@ app breaks in the browser while the build and logs look clean.
 | `NEXT_PUBLIC_FEEDBOARD_API_BASE_URL` | `https://api.<domain>` | browser→API, must be public HTTPS |
 | `NEXT_PUBLIC_ROOT_DOMAIN` | `<domain>` | subdomain routing + cookie scope |
 | `NEXT_PUBLIC_FEEDBACK_SUBDOMAIN` | `feedback` | dogfooding board |
+| `NEXT_PUBLIC_ADSWAP_SITE_ID` | Ad Swap site id | Optional. Renders the reciprocal ad in the **landing footer only**; unset = no ad. Build-time like every `NEXT_PUBLIC_*`, so it must be set **before** the build that goes live — Ad Swap won't approve your registration until they can see the embed on the site. |
 
 Verify the inlining after deploy — this must print nothing:
 ```bash
