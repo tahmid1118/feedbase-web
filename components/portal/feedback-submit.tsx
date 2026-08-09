@@ -168,11 +168,11 @@ export function FeedbackSubmit({
     <>
       <Button
         onClick={() => setOpen(true)}
-        className="fixed right-5 bottom-5 z-40 h-14 w-14 shrink-0 rounded-full p-0 text-white shadow-lg shadow-[#c74959]/30 hover:opacity-90 sm:static sm:h-8 sm:w-auto sm:rounded-lg sm:px-2.5 sm:shadow-none"
+        className="fixed right-5 bottom-5 z-40 h-14 shrink-0 gap-2 rounded-full px-5 text-white shadow-lg shadow-[#c74959]/30 hover:opacity-90 sm:static sm:h-8 sm:rounded-lg sm:px-2.5 sm:shadow-none"
         style={{ backgroundColor: brand }}
       >
         <MessageSquare className="h-5 w-5 sm:h-4 sm:w-4" />
-        <span className="hidden sm:inline">{t("portal.giveFeedback")}</span>
+        {t("portal.giveFeedback")}
       </Button>
 
       <Dialog open={open} onOpenChange={handleOpenChange}>
