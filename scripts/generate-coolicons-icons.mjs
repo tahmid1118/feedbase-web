@@ -92,6 +92,13 @@ function extractPaths(svg) {
   return paths;
 }
 
+function assertNoDroppedGeometry(name, svg) {
+  const other = svg.match(/<(circle|rect|line|polyline|polygon|ellipse)\b/);
+  if (other) {
+    throw new Error(`${name}: source uses <${other[1]}>, which this extractor drops — hand-author this icon instead`);
+  }
+}
+
 function componentSource(name, paths) {
   const pathTags = paths.map((d) => `      <path d="${d}" />`).join("\n");
   return `import type { IconProps } from "./types";
@@ -126,6 +133,7 @@ async function main() {
       throw new Error(`fetch failed (${res.status}) for ${name}: ${url}`);
     }
     const svg = await res.text();
+    assertNoDroppedGeometry(name, svg);
     const paths = extractPaths(svg);
     const source = componentSource(name, paths);
     const outPath = path.join(OUT_DIR, `${name}.tsx`);

@@ -281,7 +281,10 @@ Conventions:
   <component>` on any of them will silently reintroduce a `lucide-react`
   import** (which no longer resolves, since the dependency is removed) —
   after any such regeneration, manually repoint that file's icon imports back
-  to `@/components/icons` using the same name (no rename needed).
+  to `@/components/icons` using the same name (no rename needed)
+  (`components.json`'s `iconLibrary` is still `lucide` — shadcn only accepts
+  `lucide` or `radix`, there's no coolicons option — which is why the re-add
+  reintroduces it).
 
 ### Rendering & performance
 

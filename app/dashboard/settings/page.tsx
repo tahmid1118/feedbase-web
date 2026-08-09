@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { User, Users, Tag, Palette, CreditCard } from "@/components/icons";
-import type { IconComponent } from "@/components/icons/types";
+import type { IconComponent } from "@/components/icons";
 import type { UserRole } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/i18n/client";

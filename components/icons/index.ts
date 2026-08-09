@@ -89,4 +89,4 @@ export { Users } from "./Users";
 export { X, X as XIcon } from "./X";
 export { Zap } from "./Zap";
 
-export type { IconProps } from "./types";
+export type { IconProps, IconComponent } from "./types";

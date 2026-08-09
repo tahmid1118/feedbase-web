@@ -176,7 +176,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Built with [Next.js](https://nextjs.org/)
 - UI components from [shadcn/ui](https://ui.shadcn.com/)
-- Icons from [Lucide](https://lucide.dev/)
+- Icons from [coolicons](https://coolicons.cool/) (CC BY 4.0) — see ATTRIBUTION.md
 
 ## Support
 
