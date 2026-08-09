@@ -119,14 +119,14 @@ export function BoardList({
       {posts.map((post) => (
         <div
           key={post.id}
-          className="relative isolate rounded-xl border border-black/5 bg-white p-4 transition-shadow hover:shadow-md"
+          className="relative isolate rounded-xl border border-black/5 bg-white p-3 transition-shadow hover:shadow-md sm:p-4"
         >
           <Link
             href={`/portal/${tenant}/post/${post.id}`}
             aria-label={t("portal.openPost", { title: post.title })}
             className="absolute inset-0 z-[1] rounded-xl"
           />
-          <div className="flex items-start gap-3 sm:gap-4">
+          <div className="flex items-start gap-2.5 sm:gap-4">
             <PortalVoteButton
               tenant={tenant}
               postId={post.id}
@@ -134,7 +134,7 @@ export function BoardList({
               brand={brand}
             />
 
-            <div className="flex-1 space-y-2">
+            <div className="flex-1 space-y-1.5 sm:space-y-2">
               <div className="flex items-start justify-between gap-2 sm:gap-3">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">

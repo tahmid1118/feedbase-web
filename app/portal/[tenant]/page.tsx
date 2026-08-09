@@ -38,17 +38,22 @@ export default async function PortalBoardPage({
   const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
   return (
-    <div className="space-y-5 sm:space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-[#1c0a0c]">
+    <div className="space-y-3 sm:space-y-6">
+      {/* One row on a phone too. "Give Feedback" is a floating button on mobile
+          (see FeedbackSubmit), so this row only carries Share there — stacking
+          it cost a full row of height for a single small button. */}
+      <div className="flex items-start justify-between gap-3 sm:gap-4">
+        <div className="min-w-0">
+          <h1 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">
             {t("portal.boardTitle")}
           </h1>
-          <p className="text-sm text-[#1c0a0c]/60">
+          {/* Hidden on a phone: it wraps to two lines and the board below it
+              is self-explanatory — those ~40px are better spent on posts. */}
+          <p className="hidden text-sm text-[#1c0a0c]/60 sm:block">
             {t("portal.boardSubtitle")}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex shrink-0 flex-wrap items-center gap-2">
           <SharePost
             title={info?.name || t("portal.boardTitle")}
             brand={brand}
@@ -63,8 +68,10 @@ export default async function PortalBoardPage({
         </div>
       </div>
 
-      <div className="space-y-3">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="space-y-2 sm:space-y-3">
+        {/* Filter + sort share a row at every width — the tabs scroll in
+            whatever space the sort control leaves. */}
+        <div className="flex items-center gap-2 sm:justify-between sm:gap-3">
           <BoardTabs value={status} />
           <BoardSort value={sort} />
         </div>

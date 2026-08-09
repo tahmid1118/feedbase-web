@@ -118,11 +118,13 @@ export default async function PortalLayout({
         </div>
       </header>
 
-      {/* flex-1 pushes the footer to the bottom of the viewport on short pages. */}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6 sm:py-8">
+      {/* flex-1 pushes the footer to the bottom of the viewport on short pages.
+          Tighter vertical padding on a phone: every px here is one fewer px of
+          the actual board above the fold. */}
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-4 sm:px-6 sm:py-8">
         {/* The Board/Changelog nav now lives in the page body, above the page's
             own heading, instead of in the header chrome above the fold. */}
-        <div className="-mx-1 mb-4 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
+        <div className="-mx-1 mb-3 overflow-x-auto px-1 sm:mx-0 sm:mb-4 sm:overflow-visible sm:px-0">
           <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
         </div>
         {children}

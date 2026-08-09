@@ -31,11 +31,20 @@ export function BoardTabs({ value }: { value: PublicBoardStatus }) {
   };
 
   return (
-    <Tabs value={value} onValueChange={onChange} className="min-w-0">
+    <Tabs
+      value={value}
+      onValueChange={onChange}
+      className="min-w-0 flex-1 sm:flex-initial"
+    >
       {/* Scrolls on a phone rather than wrapping: wrapped pills inside a single
           bordered pill container read as a broken control. Matches the dashboard
-          board and the Settings tab rail. */}
-      <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
+          board and the Settings tab rail.
+          No negative-margin bleed to the screen edges — the rail now shares its
+          row with the sort control, so bleeding right would slide the pills
+          underneath it. Instead the right edge fades, which reads as "scrolls
+          for more"; without it the rail ends in a hard vertical cut mid-pill
+          that looks like a rendering bug rather than an affordance. */}
+      <div className="overflow-x-auto pb-1 [mask-image:linear-gradient(to_right,#000_calc(100%-24px),transparent)] sm:overflow-visible sm:pb-0 sm:[mask-image:none]">
         <TabsList className="min-w-max border border-[#e399a3]/30 bg-white">
           {PUBLIC_BOARD_STATUSES.map((s) => (
             <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
