@@ -37,6 +37,7 @@ export function BrandingSettings() {
   // "unknown = hide the paid control" convention) so the switch never briefly
   // flashes enabled before the real entitlement is known.
   const [requireAuthToPost, setRequireAuthToPost] = useState(false);
+  const [savingToggle, setSavingToggle] = useState(false);
   const [canRestrictAnonymous, setCanRestrictAnonymous] = useState<
     boolean | null
   >(null);
@@ -110,10 +111,6 @@ export function BrandingSettings() {
           name: name.trim(),
           brandingLogoUrl: logoUrl.trim(),
           subdomain: subdomain.trim(),
-          // Sent unconditionally, same as the fields above — the SERVER is the
-          // authority on entitlement (updateTenant.js re-checks the live plan),
-          // and the UI below never lets a non-Pro+ owner turn this on anyway.
-          requireAuthToPost,
         },
         token
       );
@@ -130,6 +127,27 @@ export function BrandingSettings() {
       // Surfaces e.g. "That subdomain is already taken".
       toast.error((e as Error)?.message || "Failed to update workspace");
       setSaving(false);
+    }
+  };
+
+  // Saves itself immediately on toggle, independent of the "Save changes"
+  // button below — a switch reads as a live control, not a form field you
+  // still have to submit, and bundling it into the form meant flipping it
+  // and navigating away without hitting Save silently discarded the change.
+  const handleRequireAuthToggle = async (next: boolean) => {
+    if (!token || !tenant) return;
+    const prev = requireAuthToPost;
+    setRequireAuthToPost(next);
+    setSavingToggle(true);
+    try {
+      await tenantsApi.update(tenant.id, { requireAuthToPost: next }, token);
+      setTenant({ ...tenant, require_auth_to_post: next ? 1 : 0 });
+    } catch (e) {
+      setRequireAuthToPost(prev);
+      // Surfaces e.g. "Requiring sign-in to post feedback is a Pro feature."
+      toast.error((e as Error)?.message || "Failed to update workspace");
+    } finally {
+      setSavingToggle(false);
     }
   };
 
@@ -269,10 +287,12 @@ export function BrandingSettings() {
         <Switch
           id="require-auth-to-post"
           checked={requireAuthToPost}
-          onCheckedChange={setRequireAuthToPost}
+          onCheckedChange={handleRequireAuthToggle}
           // Turning ON needs the Pro+ entitlement; turning OFF is always allowed
           // (a downgrade may have left this stuck on — see updateTenant.js).
-          disabled={!canRestrictAnonymous && !requireAuthToPost}
+          disabled={
+            savingToggle || (!canRestrictAnonymous && !requireAuthToPost)
+          }
         />
       </div>
 
