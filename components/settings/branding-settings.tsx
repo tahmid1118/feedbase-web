@@ -247,7 +247,7 @@ export function BrandingSettings() {
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-4 rounded-lg border border-[#e399a3]/40 bg-white p-3">
+      <div className="mt-6 flex max-w-lg items-center justify-between gap-4 rounded-lg border border-[#e399a3]/40 bg-white p-3">
         <div className="space-y-0.5">
           <Label htmlFor="require-auth-to-post">
             {t("branding.requireSignIn")}
