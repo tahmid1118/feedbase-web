@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Share2, Link2, Check, Send } from "lucide-react";
+import { Share2, Link2, Check, Send } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
 import {

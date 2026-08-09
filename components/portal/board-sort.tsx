@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { ArrowUpDown } from "lucide-react";
+import { ArrowUpDown } from "@/components/icons";
 import type { BoardSort as BoardSortValue } from "@/lib/api/public";
 import { useTranslation } from "@/lib/i18n/client";
 import {

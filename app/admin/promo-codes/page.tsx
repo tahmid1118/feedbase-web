@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Loader2, Plus, Ban, RotateCcw, Trash2 } from "lucide-react";
+import { Loader2, Plus, Ban, RotateCcw, Trash2 } from "@/components/icons";
 import {
   adminApi,
   type PromoCode,

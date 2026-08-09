@@ -1,4 +1,4 @@
-import { Bug, MessageSquare, Sparkles } from "lucide-react";
+import { Bug, MessageSquare, Sparkles } from "@/components/icons";
 import type { ComponentType } from "react";
 
 import type { PostType } from "@/lib/api";

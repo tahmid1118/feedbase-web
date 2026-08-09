@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Building2, Users, MessageSquare, CreditCard, Ticket } from "lucide-react";
+import { Building2, Users, MessageSquare, CreditCard, Ticket } from "@/components/icons";
 import { adminApi, type OverviewData } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";

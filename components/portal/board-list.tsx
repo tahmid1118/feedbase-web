@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Loader2, MessageSquare, Paperclip } from "lucide-react";
+import { Loader2, MessageSquare, Paperclip } from "@/components/icons";
 import { publicApi } from "@/lib/api/public";
 import type { Post, PostStatus, BoardSort } from "@/lib/api/types";
 import { Badge } from "@/components/ui/badge";

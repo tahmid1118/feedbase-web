@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Loader2, Upload } from "lucide-react";
+import { Loader2, Upload } from "@/components/icons";
 import { usersApi, uploaderApi, ApiError, type PersonalData } from "@/lib/api";
 import { PROFILE_IMAGE_ACCEPT } from "@/lib/attachments";
 import { resolveAvatarUrl } from "@/lib/avatar";

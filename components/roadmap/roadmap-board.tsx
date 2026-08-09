@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useSession } from "next-auth/react";
-import { Plus, X, Calendar, GripVertical } from "lucide-react";
+import { Plus, X, Calendar, GripVertical } from "@/components/icons";
 import {
   DndContext,
   DragOverlay,

@@ -1,4 +1,4 @@
-import { Check, Loader2, X } from "lucide-react";
+import { Check, Loader2, X } from "@/components/icons";
 import type { SubdomainStatus } from "@/lib/hooks/use-subdomain-availability";
 
 /** Inline availability feedback under a workspace subdomain input. */

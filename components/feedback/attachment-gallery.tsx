@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X } from "lucide-react";
+import { X } from "@/components/icons";
 
 import type { PostAttachment } from "@/lib/api";
 import { resolveUploadUrl } from "@/lib/avatar";

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "@/components/icons";
 
 import { Logo } from "@/components/ui/logo";
 import { legal, legalHref, legalPages, type LegalSlug } from "@/lib/legal";

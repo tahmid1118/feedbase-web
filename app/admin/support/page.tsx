@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Send, Loader2, Headset, CheckCircle2 } from "lucide-react";
+import { Send, Loader2, Headset, CheckCircle2 } from "@/components/icons";
 import {
   adminApi,
   type SupportSessionRow,

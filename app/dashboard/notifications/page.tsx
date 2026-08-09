@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { Bell, Check, Trash2 } from "lucide-react";
+import { Bell, Check, Trash2 } from "@/components/icons";
 import {
   notificationsApi,
   extractRows,

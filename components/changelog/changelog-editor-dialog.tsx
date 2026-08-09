@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "@/components/icons";
 import { changelogApi, type Changelog } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";

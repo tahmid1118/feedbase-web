@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Check, ChevronsUpDown, Plus, Loader2, Lock } from "lucide-react";
+import { Check, ChevronsUpDown, Plus, Loader2, Lock } from "@/components/icons";
 import {
   usersApi,
   ApiError,

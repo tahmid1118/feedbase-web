@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "@/components/icons";
 import { publicApi } from "@/lib/api/public";
 import { PortalLogo } from "@/components/portal/portal-logo";
 import { PortalNav } from "@/components/portal/portal-nav";

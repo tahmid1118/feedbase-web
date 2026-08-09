@@ -7,7 +7,7 @@ import {
   ThumbsUp,
   ArrowRight,
   Users,
-} from "lucide-react";
+} from "@/components/icons";
 import { auth } from "@/auth";
 import { getTranslation } from "@/lib/i18n/server";
 import {

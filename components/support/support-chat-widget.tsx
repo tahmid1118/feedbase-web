@@ -9,7 +9,7 @@ import {
   Loader2,
   Headset,
   MessageCirclePlus,
-} from "lucide-react";
+} from "@/components/icons";
 import { supportApi, ApiError, type SupportMessage } from "@/lib/api";
 import { LocalTime } from "@/components/local-time";
 import { useTranslation } from "@/lib/i18n/client";

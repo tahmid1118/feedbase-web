@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "@/components/icons";
 import { usersApi, type WorkspaceAuth } from "@/lib/api";
 import { useSubdomainAvailability } from "@/lib/hooks/use-subdomain-availability";
 import { SubdomainStatusHint } from "@/components/dashboard/subdomain-status-hint";

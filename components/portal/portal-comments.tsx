@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { CornerDownRight, Loader2, Pencil, Trash2 } from "lucide-react";
+import { CornerDownRight, Loader2, Pencil, Trash2 } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";

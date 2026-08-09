@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "@/components/icons";
 import { postsApi, type Post } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "@/lib/i18n/client";
-import { Check, Plus, X } from "lucide-react";
+import { Check, Plus, X } from "@/components/icons";
 import { tagsApi, extractRows, type Tag } from "@/lib/api";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

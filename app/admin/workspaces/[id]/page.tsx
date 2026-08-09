@@ -14,7 +14,7 @@ import {
   CornerDownRight,
   Loader2,
   LayoutDashboard,
-} from "lucide-react";
+} from "@/components/icons";
 import { adminApi, type AdminPost, type AdminComment } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";

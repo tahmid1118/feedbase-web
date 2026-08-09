@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Pencil, Trash2, Loader2 } from "lucide-react";
+import { Pencil, Trash2, Loader2 } from "@/components/icons";
 import { portalActions } from "@/lib/portal/actions";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";

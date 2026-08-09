@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useTranslation } from "@/lib/i18n/client";
 import Link from "next/link";
-import { Copy, X, ThumbsUp } from "lucide-react";
+import { Copy, X, ThumbsUp } from "@/components/icons";
 import {
   postsApi,
   extractRows,

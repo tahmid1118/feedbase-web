@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { MessageSquare, Loader2, CheckCircle2, LogIn } from "lucide-react";
+import { MessageSquare, Loader2, CheckCircle2, LogIn } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { useTranslation } from "@/lib/i18n/client";

@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck } from "@/components/icons";
 import { useTranslation } from "@/lib/i18n/client";
 
 /**

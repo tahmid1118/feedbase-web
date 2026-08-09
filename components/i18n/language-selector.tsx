@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe } from "lucide-react";
+import { Globe } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { i18next } from "@/lib/i18n/client";

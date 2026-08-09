@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
-import { CornerDownRight, Loader2, ShieldAlert } from "lucide-react";
+import { CornerDownRight, Loader2, ShieldAlert } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";

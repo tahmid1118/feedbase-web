@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar } from "lucide-react";
+import { Calendar } from "@/components/icons";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
 import { getTranslation } from "@/lib/i18n/server";

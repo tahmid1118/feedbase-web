@@ -16,7 +16,7 @@ import {
   Mail,
   Send,
   Loader2,
-} from "lucide-react";
+} from "@/components/icons";
 import Link from "next/link";
 import {
   postsApi,

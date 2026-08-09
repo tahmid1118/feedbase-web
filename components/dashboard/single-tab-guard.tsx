@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MonitorSmartphone } from "lucide-react";
+import { MonitorSmartphone } from "@/components/icons";
 
 import { Button } from "@/components/ui/button";
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MailX } from "lucide-react";
+import { MailX } from "@/components/icons";
 
 import { publicApi } from "@/lib/api/public";
 import { Logo } from "@/components/ui/logo";

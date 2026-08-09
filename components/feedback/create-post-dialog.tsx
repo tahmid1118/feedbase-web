@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Loader2 } from "lucide-react";
+import { Loader2 } from "@/components/icons";
 import Link from "next/link";
 import { postsApi, billingApi, uploaderApi } from "@/lib/api";
 import type { UploadedAttachment } from "@/lib/api/uploader";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowLeft, Calendar } from "@/components/icons";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
 import { Markdown } from "@/components/ui/markdown";

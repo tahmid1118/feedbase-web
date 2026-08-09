@@ -2,7 +2,7 @@
 
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { useSession } from "next-auth/react";
-import { KeyRound, Loader2, Search, ShieldCheck, Trash2 } from "lucide-react";
+import { KeyRound, Loader2, Search, ShieldCheck, Trash2 } from "@/components/icons";
 import {
   adminApi,
   type AdminUserRow,

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight, ArrowUpRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "@/components/icons";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 

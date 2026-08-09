@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Plus, Trash2, Loader2 } from "lucide-react";
+import { Plus, Trash2, Loader2 } from "@/components/icons";
 import { adminApi, type AdminRow } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";

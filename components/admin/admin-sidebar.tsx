@@ -15,7 +15,7 @@ import {
   Headset,
   MessagesSquare,
   Menu,
-} from "lucide-react";
+} from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Search, BadgeCheck } from "lucide-react";
+import { Search, BadgeCheck } from "@/components/icons";
 import { adminApi, type AdminAccount } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { useTranslation } from "@/lib/i18n/client";

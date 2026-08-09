@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { KeyRound } from "lucide-react";
+import { KeyRound } from "@/components/icons";
 
 import { publicApi } from "@/lib/api/public";
 import { getLanguage, getTranslation } from "@/lib/i18n/server";

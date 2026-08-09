@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Loader2, Mail, Send, X } from "lucide-react";
+import { Loader2, Mail, Send, X } from "@/components/icons";
 import {
   usersApi,
   invitationsApi,

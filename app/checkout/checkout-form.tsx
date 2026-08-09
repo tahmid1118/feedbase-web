@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2 } from "@/components/icons";
 import { billingApi, type BillingInterval, type OfferMap } from "@/lib/api";
 import { publicApi } from "@/lib/api/public";
 import { planByKey, planPricing, formatPrice, offerDisplay } from "@/lib/plans";

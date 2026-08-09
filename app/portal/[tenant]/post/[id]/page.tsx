@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ThumbsUp, MessageSquare, Calendar } from "lucide-react";
+import { ArrowLeft, ThumbsUp, MessageSquare, Calendar } from "@/components/icons";
 import { publicApi } from "@/lib/api/public";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

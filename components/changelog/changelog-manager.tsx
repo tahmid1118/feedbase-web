@@ -10,7 +10,7 @@ import {
   Pencil,
   Trash2,
   Send,
-} from "lucide-react";
+} from "@/components/icons";
 import {
   changelogApi,
   extractRows,

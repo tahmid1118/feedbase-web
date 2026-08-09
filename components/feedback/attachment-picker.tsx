@@ -2,7 +2,7 @@
 import { useTranslation } from "@/lib/i18n/client";
 
 import { useRef, useState } from "react";
-import { Paperclip, X, Loader2, Film } from "lucide-react";
+import { Paperclip, X, Loader2, Film } from "@/components/icons";
 import { toast } from "sonner";
 
 import { ApiError } from "@/lib/api/client";

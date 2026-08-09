@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, ShieldCheck } from "lucide-react";
+import { LogOut, ShieldCheck } from "@/components/icons";
 import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/i18n/language-selector";

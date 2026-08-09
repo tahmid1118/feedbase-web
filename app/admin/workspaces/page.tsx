@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { Search, Trash2, MessageSquare, ExternalLink } from "lucide-react";
+import { Search, Trash2, MessageSquare, ExternalLink } from "@/components/icons";
 import { adminApi, type AdminWorkspace } from "@/lib/api";
 import { portalUrlForSubdomain } from "@/lib/official-board";
 import { Card } from "@/components/ui/card";

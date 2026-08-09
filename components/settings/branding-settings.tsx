@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { ImageIcon, Loader2, Upload } from "lucide-react";
+import { ImageIcon, Loader2, Upload } from "@/components/icons";
 import { tenantsApi, billingApi, uploaderApi, ApiError, type Tenant } from "@/lib/api";
 import { PROFILE_IMAGE_ACCEPT } from "@/lib/attachments";
 import { resolveUploadUrl } from "@/lib/avatar";

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowLeft, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Sparkles, Zap } from "@/components/icons";
 import { Logo } from "@/components/ui/logo";
 import { getTranslation } from "@/lib/i18n/server";
 

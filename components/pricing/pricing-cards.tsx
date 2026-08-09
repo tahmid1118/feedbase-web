@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { Check } from "lucide-react";
+import { Check } from "@/components/icons";
 import { PLANS, planPricing, formatPrice, offerDisplay } from "@/lib/plans";
 import type { OfferMap, BillingInterval } from "@/lib/api";
 import { Button } from "@/components/ui/button";

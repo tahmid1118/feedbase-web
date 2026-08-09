@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Bell, LogOut, User } from "lucide-react";
+import { Bell, LogOut, User } from "@/components/icons";
 import { useSession } from "next-auth/react";
 import { notificationsApi } from "@/lib/api";
 import { useRefetchOnFocus } from "@/lib/hooks/use-refetch-on-focus";

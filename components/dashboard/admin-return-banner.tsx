@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { ShieldCheck, ArrowLeft, Loader2 } from "lucide-react";
+import { ShieldCheck, ArrowLeft, Loader2 } from "@/components/icons";
 import { useTranslation } from "@/lib/i18n/client";
 
 /**

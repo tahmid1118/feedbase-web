@@ -13,7 +13,7 @@ import {
   Settings,
   ExternalLink,
   Menu,
-} from "lucide-react";
+} from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,

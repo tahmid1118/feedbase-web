@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowLeft, Loader2, MailCheck, Send } from "lucide-react";
+import { ArrowLeft, Loader2, MailCheck, Send } from "@/components/icons";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";

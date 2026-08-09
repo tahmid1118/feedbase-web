@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { Plus, Pencil, Trash2 } from "lucide-react";
+import { Plus, Pencil, Trash2 } from "@/components/icons";
 import { tagsApi, extractRows, type Tag } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";

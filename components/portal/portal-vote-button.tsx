@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ThumbsUp } from "lucide-react";
+import { ThumbsUp } from "@/components/icons";
 import { getGuestId, getVotedSet, setVotedLocal } from "@/lib/portal/guest";
 
 const API_BASE =

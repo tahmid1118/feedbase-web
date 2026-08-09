@@ -17,7 +17,7 @@ import {
   ShieldCheck,
   ShieldAlert,
   Trash2,
-} from "lucide-react";
+} from "@/components/icons";
 import Link from "next/link";
 import {
   postsApi,
