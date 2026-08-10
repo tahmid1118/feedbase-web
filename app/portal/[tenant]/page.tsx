@@ -69,9 +69,7 @@ export default async function PortalBoardPage({
       </div>
 
       <div className="space-y-2 sm:space-y-3">
-        {/* Filter + sort share a row at every width — the tabs scroll in
-            whatever space the sort control leaves. */}
-        <div className="flex items-center gap-2 sm:justify-between sm:gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <BoardTabs value={status} />
           <BoardSort value={sort} />
         </div>

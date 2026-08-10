@@ -137,10 +137,14 @@ export function BoardList({
             <div className="flex-1 space-y-1.5 sm:space-y-2">
               <div className="flex items-start justify-between gap-2 sm:gap-3">
                 <div className="min-w-0">
-                  <div className="flex items-center gap-2">
+                  {/* items-START, not center: a title that wraps to 2-3 lines
+                      would otherwise float the type icon against the middle
+                      line, reading as a stray glyph rather than a label for
+                      the post. mt-1 optically centers it on the first line. */}
+                  <div className="flex items-start gap-2">
                     <PostTypeIcon
                       type={post.post_type}
-                      className="h-4 w-4 shrink-0 text-[#1c0a0c]/50"
+                      className="mt-1 h-4 w-4 shrink-0 text-[#1c0a0c]/50"
                     />
                     <h3 className="font-semibold text-[#1c0a0c]">
                       {post.title}

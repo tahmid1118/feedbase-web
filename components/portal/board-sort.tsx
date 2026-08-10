@@ -36,9 +36,7 @@ export function BoardSort({ value }: { value: BoardSortValue }) {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      {/* Narrower on a phone so the status tabs keep usable room beside it —
-          the selected label line-clamps rather than overflowing. */}
-      <SelectTrigger className="h-9 w-[140px] shrink-0 gap-2 sm:w-[168px]">
+      <SelectTrigger className="h-9 w-[168px] gap-2">
         <ArrowUpDown className="h-4 w-4 text-[#1c0a0c]/50" />
         <SelectValue />
       </SelectTrigger>
