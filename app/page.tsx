@@ -9,6 +9,7 @@ import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { AdSwap } from "@/components/landing/ad-swap";
+import { AuraBadge } from "@/components/landing/aura-badge";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
@@ -430,11 +431,16 @@ export default async function HomePage() {
             ))}
           </nav>
 
-          {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
-              board. Renders nothing unless NEXT_PUBLIC_ADSWAP_SITE_ID is set.
-              In the footer on purpose: below the fold, out of the signup path,
-              and the conventional place for a link exchange. */}
-          <AdSwap />
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
+                board. Renders nothing unless NEXT_PUBLIC_ADSWAP_SITE_ID is
+                set. In the footer on purpose: below the fold, out of the
+                signup path, and the conventional place for a link exchange. */}
+            <AdSwap />
+            {/* Directory backlink badge — same marketing-site-only scope as
+                AdSwap, see components/landing/aura-badge.tsx. */}
+            <AuraBadge />
+          </div>
         </div>
       </footer>
     </div>
