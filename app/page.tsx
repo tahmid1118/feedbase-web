@@ -10,6 +10,7 @@ import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
+import { FazierBadge } from "@/components/landing/fazier-badge";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
@@ -437,9 +438,10 @@ export default async function HomePage() {
                 set. In the footer on purpose: below the fold, out of the
                 signup path, and the conventional place for a link exchange. */}
             <AdSwap />
-            {/* Directory backlink badge — same marketing-site-only scope as
-                AdSwap, see components/landing/aura-badge.tsx. */}
+            {/* Directory backlink badges — same marketing-site-only scope as
+                AdSwap, see components/landing/aura-badge.tsx / fazier-badge.tsx. */}
             <AuraBadge />
+            <FazierBadge />
           </div>
         </div>
       </footer>
