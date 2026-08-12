@@ -13,6 +13,7 @@ import { AuraBadge } from "@/components/landing/aura-badge";
 import { DangBadge } from "@/components/landing/dang-badge";
 import { FazierBadge } from "@/components/landing/fazier-badge";
 import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
+import { ToolfioBadge } from "@/components/landing/toolfio-badge";
 import { TwelveToolsBadge } from "@/components/landing/twelve-tools-badge";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
@@ -454,6 +455,7 @@ export default async function HomePage() {
               <LaunchZoneBadge />
               <DangBadge />
               <TwelveToolsBadge />
+              <ToolfioBadge />
             </div>
 
             {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
