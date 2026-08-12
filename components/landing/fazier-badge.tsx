@@ -13,7 +13,11 @@ export function FazierBadge() {
       <img
         src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light"
         width={250}
+        height={54}
         alt="Fazier badge"
+        // Normalised to the shared badge rail height (footer in app/page.tsx);
+        // width/height attrs stay for the intrinsic ratio, so no layout shift.
+        className="h-[54px] w-auto"
       />
     </a>
   );

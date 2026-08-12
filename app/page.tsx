@@ -11,6 +11,7 @@ import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
 import { FazierBadge } from "@/components/landing/fazier-badge";
+import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
@@ -407,41 +408,55 @@ export default async function HomePage() {
 
       {/* ── Footer ──────────────────────────────────────────────────────── */}
       <footer className="border-t border-[#e399a3]/25 bg-[#fdf8f9]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div className="flex items-center gap-2.5">
-            <Logo className="h-6 w-6" />
-            <span className="font-display text-base font-semibold text-[#1c0a0c]">
-              FeedBoard
-            </span>
-            <span className="ml-1 text-sm text-[#1c0a0c]/45">
-              {t("landing.footer.rights")}
-            </span>
+        <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8">
+          {/* Row 1 — identity and legal. The site's own links stay together and
+              above the third-party rail, so a badge never reads as ours. */}
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-center gap-2.5">
+              <Logo className="h-6 w-6" />
+              <span className="font-display text-base font-semibold text-[#1c0a0c]">
+                FeedBoard
+              </span>
+              <span className="ml-1 text-sm text-[#1c0a0c]/45">
+                {t("landing.footer.rights")}
+              </span>
+            </div>
+
+            <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+              {/* Legal documents. Not localized — English is the authoritative
+                  version (see components/legal/legal-shell.tsx). */}
+              {legalPages.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={legalHref(p.slug)}
+                  className="text-[#1c0a0c]/50 transition-colors hover:text-[#c74959]"
+                >
+                  {p.title}
+                </Link>
+              ))}
+            </nav>
           </div>
 
-          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            {/* Legal documents. Not localized — English is the authoritative
-                version (see components/legal/legal-shell.tsx). */}
-            {legalPages.map((p) => (
-              <Link
-                key={p.slug}
-                href={legalHref(p.slug)}
-                className="text-[#1c0a0c]/50 transition-colors hover:text-[#c74959]"
-              >
-                {p.title}
-              </Link>
-            ))}
-          </nav>
+          {/* Row 2 — third-party rail, on its own line under a rule. The badges
+              are separately-sourced SVGs of different intrinsic sizes, so each
+              component normalises itself to a 54px height (h-[54px] w-auto);
+              that shared height is what makes them read as one row rather than
+              a pile. Badges left, the ad slot right — it's taller and labelled,
+              so it gets its own end of the row instead of sitting in the run. */}
+          <div className="mt-8 flex flex-col items-center gap-6 border-t border-[#e399a3]/25 pt-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-4 lg:justify-start">
+              {/* Directory backlink badges — same marketing-site-only scope as
+                  AdSwap, see components/landing/{aura,fazier,launchzone}-badge.tsx. */}
+              <AuraBadge />
+              <FazierBadge />
+              <LaunchZoneBadge />
+            </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
             {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
                 board. Renders nothing unless NEXT_PUBLIC_ADSWAP_SITE_ID is
                 set. In the footer on purpose: below the fold, out of the
                 signup path, and the conventional place for a link exchange. */}
             <AdSwap />
-            {/* Directory backlink badges — same marketing-site-only scope as
-                AdSwap, see components/landing/aura-badge.tsx / fazier-badge.tsx. */}
-            <AuraBadge />
-            <FazierBadge />
           </div>
         </div>
       </footer>

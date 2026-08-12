@@ -25,6 +25,9 @@ export function AuraBadge() {
         alt="Featured on Aura++"
         width={265}
         height={58}
+        // Normalised to the shared badge rail height (footer in app/page.tsx);
+        // width/height attrs stay for the intrinsic ratio, so no layout shift.
+        className="h-[54px] w-auto"
       />
     </a>
   );
