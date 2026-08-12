@@ -23,8 +23,12 @@ export function AuraBadge() {
       <img
         src="https://auraplusplus.com/images/badges/featured-on-light.svg"
         alt="Featured on Aura++"
-        width={265}
-        height={58}
+        // The SVG's real intrinsic size (confirmed by fetching it directly) is
+        // 150x44 — NOT 265x58. Wrong attrs here made the browser compute
+        // `w-auto` from the wrong aspect ratio, so the badge rendered
+        // letterboxed inside a box shaped for a different image.
+        width={150}
+        height={44}
         // Normalised to the shared badge rail height (footer in app/page.tsx);
         // width/height attrs stay for the intrinsic ratio, so no layout shift.
         className="h-[54px] w-auto"

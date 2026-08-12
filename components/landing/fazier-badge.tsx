@@ -12,8 +12,12 @@ export function FazierBadge() {
       {/* eslint-disable-next-line @next/next/no-img-element -- external badge asset, not one of our own optimized images */}
       <img
         src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light"
-        width={250}
-        height={54}
+        // Real intrinsic size (confirmed by fetching the SVG directly) is
+        // 182x43, not 250x54 — close enough to not be obviously broken like
+        // Aura++'s was, but still a ~9% aspect-ratio error that subtly
+        // stretched the badge.
+        width={182}
+        height={43}
         alt="Fazier badge"
         // Normalised to the shared badge rail height (footer in app/page.tsx);
         // width/height attrs stay for the intrinsic ratio, so no layout shift.

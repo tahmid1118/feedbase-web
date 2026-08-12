@@ -37,6 +37,17 @@ export function AdSwap() {
     SITE_ID
   )}&theme=light`;
 
+  // Ad Swap's unit has a fixed functional size (300x130) — shrinking the
+  // iframe's own width/height would just clip the ad creative, not scale it.
+  // So the iframe still renders at full native size, and a CSS transform
+  // scales the whole thing down to the badge rail's shared 54px height
+  // (see app/page.tsx); the wrapper's box is sized to match that SCALED
+  // footprint, so it only ever occupies that much room in the footer's flex
+  // layout — this is what keeps a 130px-tall ad from dwarfing a row of
+  // 54px-tall badges. Click targets inside a CSS-scaled element stay
+  // correctly mapped by the browser, so the ad is still fully clickable.
+  const SCALE = 54 / 130;
+
   return (
     <div className="flex flex-col items-center gap-1.5 lg:items-end">
       {/* Labelled, because an unlabelled ad among our own footer links reads as
@@ -45,17 +56,32 @@ export function AdSwap() {
       <span className="text-[10px] uppercase tracking-wide text-[#1c0a0c]/35">
         From around the web
       </span>
-      <iframe
-        src={src}
-        title="Advertisement from another site"
-        loading="lazy"
-        // Their recommended sandbox, minus allow-top-navigation.
-        sandbox="allow-scripts allow-same-origin allow-popups"
-        // referrerPolicy tightened from the site-wide default: the ad network
-        // has no need for the path a visitor came from.
-        referrerPolicy="no-referrer"
-        style={{ border: 0, width: 300, height: 130, maxWidth: "100%" }}
-      />
+      <div
+        style={{
+          width: 300 * SCALE,
+          height: 130 * SCALE,
+          maxWidth: "100%",
+          overflow: "hidden",
+        }}
+      >
+        <iframe
+          src={src}
+          title="Advertisement from another site"
+          loading="lazy"
+          // Their recommended sandbox, minus allow-top-navigation.
+          sandbox="allow-scripts allow-same-origin allow-popups"
+          // referrerPolicy tightened from the site-wide default: the ad network
+          // has no need for the path a visitor came from.
+          referrerPolicy="no-referrer"
+          style={{
+            border: 0,
+            width: 300,
+            height: 130,
+            transform: `scale(${SCALE})`,
+            transformOrigin: "top left",
+          }}
+        />
+      </div>
     </div>
   );
 }
