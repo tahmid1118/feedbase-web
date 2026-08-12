@@ -10,6 +10,7 @@ import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
+import { BoostDomainRatingBadge } from "@/components/landing/boost-domain-rating-badge";
 import { DangBadge } from "@/components/landing/dang-badge";
 import { FazierBadge } from "@/components/landing/fazier-badge";
 import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
@@ -441,11 +442,12 @@ export default async function HomePage() {
           </div>
 
           {/* Row 2 — third-party rail, on its own line under a rule. The badges
-              are separately-sourced SVGs of different intrinsic sizes, so each
-              component normalises itself to a 54px height (h-[54px] w-auto);
-              that shared height is what makes them read as one row rather than
-              a pile. Badges left, the ad slot right — it's taller and labelled,
-              so it gets its own end of the row instead of sitting in the run. */}
+              are separately-sourced SVGs/PNGs of different intrinsic sizes, so
+              each component normalises itself to a shared 36px height (h-9
+              w-auto); that shared height is what makes them read as one row
+              rather than a pile. Badges left, the ad slot right — it's taller
+              and labelled, so it gets its own end of the row instead of
+              sitting in the run. */}
           <div className="mt-8 flex flex-col items-center gap-6 border-t border-[#e399a3]/25 pt-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-4 lg:justify-start">
               {/* Directory backlink badges — same marketing-site-only scope as
@@ -456,6 +458,7 @@ export default async function HomePage() {
               <DangBadge />
               <TwelveToolsBadge />
               <ToolfioBadge />
+              <BoostDomainRatingBadge />
             </div>
 
             {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
