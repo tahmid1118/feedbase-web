@@ -40,13 +40,14 @@ export function AdSwap() {
   // Ad Swap's unit has a fixed functional size (300x130) — shrinking the
   // iframe's own width/height would just clip the ad creative, not scale it.
   // So the iframe still renders at full native size, and a CSS transform
-  // scales the whole thing down to the badge rail's shared 54px height
-  // (see app/page.tsx); the wrapper's box is sized to match that SCALED
-  // footprint, so it only ever occupies that much room in the footer's flex
-  // layout — this is what keeps a 130px-tall ad from dwarfing a row of
-  // 54px-tall badges. Click targets inside a CSS-scaled element stay
-  // correctly mapped by the browser, so the ad is still fully clickable.
-  const SCALE = 54 / 130;
+  // scales the whole thing down to the badge rail's shared height (h-9,
+  // 36px — see the badge components in this folder and app/page.tsx); the
+  // wrapper's box is sized to match that SCALED footprint, so it only ever
+  // occupies that much room in the footer's flex layout — this is what
+  // keeps a 130px-tall ad from dwarfing a row of 36px-tall badges. Click
+  // targets inside a CSS-scaled element stay correctly mapped by the
+  // browser, so the ad is still fully clickable.
+  const SCALE = 36 / 130;
 
   return (
     <div className="flex flex-col items-center gap-1.5 lg:items-end">

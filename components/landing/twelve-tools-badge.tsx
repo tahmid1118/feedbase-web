@@ -9,10 +9,10 @@
  *
  * `badge0-white` is the light-background variant (white fill, grey hairline
  * border, dark text), which is the right one for our light-only footer —
- * `badge0-dark`/`-black` are for dark pages. Its intrinsic size is 200x54,
- * so it lands on the rail's 54px height at native scale; the width/height
- * attrs state that rather than the smaller 148x40 from their snippet (same
- * aspect ratio either way).
+ * `badge0-dark`/`-black` are for dark pages. Its intrinsic size is 200x54;
+ * the width/height attrs state that rather than the smaller 148x40 from
+ * their snippet (same aspect ratio either way) — `h-9` below scales it down
+ * to the rail's shared height regardless.
  */
 export function TwelveToolsBadge() {
   return (
@@ -30,7 +30,7 @@ export function TwelveToolsBadge() {
         height={54}
         // Normalised to the shared badge rail height (footer in app/page.tsx);
         // width/height attrs stay for the intrinsic ratio, so no layout shift.
-        className="h-[54px] w-auto"
+        className="h-9 w-auto"
       />
     </a>
   );

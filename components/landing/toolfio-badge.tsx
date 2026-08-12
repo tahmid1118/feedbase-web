@@ -33,7 +33,7 @@ export function ToolfioBadge() {
         height={54}
         // Normalised to the shared badge rail height (footer in app/page.tsx);
         // width/height attrs stay for the intrinsic ratio, so no layout shift.
-        className="h-[54px] w-auto"
+        className="h-9 w-auto"
       />
     </a>
   );

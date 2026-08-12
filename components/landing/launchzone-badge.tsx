@@ -25,7 +25,7 @@ export function LaunchZoneBadge() {
         alt="Find us on LaunchZone"
         width={154}
         height={54}
-        className="h-[54px] w-auto"
+        className="h-9 w-auto"
       />
     </a>
   );
