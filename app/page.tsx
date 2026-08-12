@@ -13,6 +13,7 @@ import { AuraBadge } from "@/components/landing/aura-badge";
 import { DangBadge } from "@/components/landing/dang-badge";
 import { FazierBadge } from "@/components/landing/fazier-badge";
 import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
+import { TwelveToolsBadge } from "@/components/landing/twelve-tools-badge";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
@@ -447,11 +448,12 @@ export default async function HomePage() {
           <div className="mt-8 flex flex-col items-center gap-6 border-t border-[#e399a3]/25 pt-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-4 lg:justify-start">
               {/* Directory backlink badges — same marketing-site-only scope as
-                  AdSwap, see components/landing/{aura,fazier,launchzone,dang}-badge.tsx. */}
+                  AdSwap, see components/landing/*-badge.tsx. */}
               <AuraBadge />
               <FazierBadge />
               <LaunchZoneBadge />
               <DangBadge />
+              <TwelveToolsBadge />
             </div>
 
             {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
