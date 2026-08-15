@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
+import { ComparisonTable } from "@/components/landing/comparison-table";
+import { LandingFaq } from "@/components/landing/landing-faq";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
 import { BoostDomainRatingBadge } from "@/components/landing/boost-domain-rating-badge";
@@ -380,6 +382,14 @@ export default async function HomePage() {
           the hero and spends this space on nothing at all, which is the
           cheaper trade. */}
 
+      {/* ── Comparison ──────────────────────────────────────────────────── */}
+      {/* Placed BEFORE pricing on purpose: a visitor deciding between us and
+          Canny/UserJot needs the difference settled before a number means
+          anything to them. Every cell is sourced from the competitor's own
+          public pages — see the component's header for what was verified and
+          when, and why that matters more here than anywhere else on the site. */}
+      <ComparisonTable t={t} />
+
       {/* ── Pricing ─────────────────────────────────────────────────────── */}
       <section id="pricing" className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="max-w-2xl">
@@ -393,6 +403,53 @@ export default async function HomePage() {
         </div>
         <div className="mt-12">
           <PricingSection />
+        </div>
+      </section>
+
+      {/* ── FAQ ─────────────────────────────────────────────────────────── */}
+      {/* Last objections, answered at the decision point rather than on the
+          separate /faq route almost nobody reaches (3 visitors in 30 days). */}
+      <LandingFaq t={t} />
+
+      {/* ── Closing CTA ─────────────────────────────────────────────────── */}
+      {/* The page previously ran from pricing straight into the footer, so a
+          visitor convinced by the pricing table had nothing to act on without
+          scrolling back up. The `landing.cta.*` copy existed in the
+          dictionaries all along but was never wired to any JSX — this is the
+          first time it renders. Reuses the facts-ledger gradient: one
+          material, used twice, rather than a new surface for the close. */}
+      <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
+        <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:px-8 lg:py-24">
+          <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
+            {t("landing.cta.heading")}
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-[#fdf8f9]/70">
+            {t("landing.cta.subheading")}
+          </p>
+          <div className="mt-9 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-3">
+            <Link href="/signup" className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                className="h-12 w-full bg-[#fdf8f9] px-7 text-base text-[#1c0a0c] shadow-lg hover:bg-white sm:w-auto"
+              >
+                {t("landing.hero.startTrial")}
+                <ArrowRight className="ml-1.5 h-4 w-4" />
+              </Button>
+            </Link>
+            <a href={officialBoardUrl()} className="w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="ghost"
+                className="h-12 w-full gap-1.5 border-2 border-[#fdf8f9]/45 px-7 text-base text-[#fdf8f9] hover:bg-[#fdf8f9]/10 hover:text-[#fdf8f9] sm:w-auto"
+              >
+                {t("landing.hero.seeLive")}
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </a>
+          </div>
+          <p className="mt-5 font-mono text-[12px] tracking-[0.04em] text-[#fdf8f9]/50">
+            {t("landing.hero.heroNote")}
+          </p>
         </div>
       </section>
 
