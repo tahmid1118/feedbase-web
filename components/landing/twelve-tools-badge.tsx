@@ -3,7 +3,7 @@
  * exchange for being featured in their directory.
  *
  * Same shape and same scope rule as the other directory badges
- * (components/landing/{aura,fazier,launchzone,dang}-badge.tsx): a plain
+ * (components/landing/{aura,fazier,launchzone}-badge.tsx): a plain
  * <a><img>, no iframe, no script, no third-party tracking — marketing site
  * footer only, never a tenant portal board.
  *

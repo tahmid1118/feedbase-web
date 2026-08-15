@@ -11,7 +11,6 @@ import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
 import { BoostDomainRatingBadge } from "@/components/landing/boost-domain-rating-badge";
-import { DangBadge } from "@/components/landing/dang-badge";
 import { FazierBadge } from "@/components/landing/fazier-badge";
 import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
 import { ToolfioBadge } from "@/components/landing/toolfio-badge";
@@ -455,7 +454,6 @@ export default async function HomePage() {
               <AuraBadge />
               <FazierBadge />
               <LaunchZoneBadge />
-              <DangBadge />
               <TwelveToolsBadge />
               <ToolfioBadge />
               <BoostDomainRatingBadge />
