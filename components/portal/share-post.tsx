@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Share2, Link2, Check, Send } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n/client";
+import { track } from "@/lib/analytics";
 import {
   Popover,
   PopoverContent,
@@ -82,6 +83,11 @@ export function SharePost({
     try {
       await navigator.clipboard.writeText(currentUrl());
       setCopied(true);
+      // Funnel stage 4 of 5. A board nobody shares can never receive
+      // feedback, so sharing is the last action the owner controls before
+      // activation depends on someone else. Only counted after the clipboard
+      // write actually resolves — a blocked clipboard is not a share.
+      track("board_shared", { method: "copy_link" });
       setTimeout(() => setCopied(false), 1800);
     } catch {
       /* clipboard blocked — no-op */
@@ -91,6 +97,7 @@ export function SharePost({
   const nativeShare = async () => {
     try {
       await navigator.share({ title, url: currentUrl() });
+      track("board_shared", { method: "native_share" });
       setOpen(false);
     } catch {
       /* user cancelled — no-op */

@@ -52,12 +52,13 @@
   },
   "landing": {
     "hero": {
-      "badge": "Collect feedback on anything you build",
-      "titleLead": "Turn Customer Feedback Into",
-      "titleHighlight": "Product Success",
-      "subtitle": "An app, a store, a game, a service — give your users one place to speak, vote, and see you listen. Build what they actually want.",
-      "startTrial": "Start for free",
-      "seeLive": "See our live board"
+      "badge": "For indie makers & small SaaS teams",
+      "titleLead": "Your users shouldn't need an account to",
+      "titleHighlight": "tell you what's broken",
+      "subtitle": "A feedback board and public roadmap where anyone can post and vote without signing up. Spam is filtered automatically — no CAPTCHA, no login wall.",
+      "startTrial": "Create your board — free",
+      "seeLive": "See a real board",
+      "heroNote": "No credit card · Live in 3 minutes"
     },
     "features": {
       "heading": "Everything You Need",
@@ -105,8 +106,8 @@
       "subheading": "Start free, upgrade when you grow"
     },
     "cta": {
-      "heading": "Ready to Build Better Products?",
-      "subheading": "Join thousands of teams using FeedBoard to understand their customers"
+      "heading": "Put a board up in three minutes.",
+      "subheading": "Free forever on the starter plan. No credit card, no sales call — and you can look at a real board before you sign up."
     },
     "footer": {
       "rights": "© 2026 FeedBoard. All rights reserved.",

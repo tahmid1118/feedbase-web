@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeOff, Loader2, UserPlus } from "@/components/icons";
 import { signIn } from "next-auth/react";
@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useTranslation } from "@/lib/i18n/client";
+import { track } from "@/lib/analytics";
 import { DEFAULT_LANGUAGE } from "@/lib/auth/constants";
 import { planIntentQuery } from "@/lib/plan-intent";
 import { AuthDivider, GoogleButton } from "@/components/auth/google-button";
@@ -46,6 +47,8 @@ export function SignupForm({
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  /** Guards the one-per-mount `signup_started` event — see the form's onFocusCapture. */
+  const startedRef = useRef(false);
   const router = useRouter();
 
   const form = useForm<SignupFormValues>({
@@ -125,6 +128,11 @@ export function SignupForm({
         return;
       }
 
+      // Funnel stage 2 of 5. Fired here rather than on the /onboarding page
+      // load so a failed auto-sign-in doesn't get counted as a completed
+      // signup — the account genuinely exists by this point.
+      track("signup_completed", { method: "email" });
+
       // New accounts have no workspace yet — onboard to create their first.
       // A plan chosen on the pricing page rides along: checkout requires an
       // OWNER, and creating a workspace is what makes them one.
@@ -159,7 +167,22 @@ export function SignupForm({
       <AuthDivider label={t("auth.orUseEmail")} />
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>
+        {/* Funnel stage 1 of 5. Capture-phase focus on the form wrapper, so
+            one handler covers every field without threading an onFocus
+            through each one. `startedRef` keeps it to a single event per
+            mount — otherwise tabbing between fields would report several
+            signup attempts from one person and make the completion rate look
+            far worse than it is. */}
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          onFocusCapture={() => {
+            if (startedRef.current) return;
+            startedRef.current = true;
+            track("signup_started", { method: "email" });
+          }}
+          className="space-y-4"
+          noValidate
+        >
           <FormField
             control={form.control}
             name="fullName"

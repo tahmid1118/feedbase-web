@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Trasforma il feedback dei clienti in",
-      "titleHighlight": "successo di prodotto",
-      "subtitle": "Un'app, un negozio, un gioco, un servizio — dai ai tuoi utenti un unico posto per esprimersi, votare e vedere che li ascolti. Costruisci ciò che vogliono davvero.",
-      "startTrial": "Inizia gratis",
-      "badge": "Raccogli feedback su qualsiasi cosa tu crei",
-      "seeLive": "Guarda la nostra bacheca dal vivo"
+      "titleLead": "I tuoi utenti non dovrebbero aver bisogno di un account per",
+      "titleHighlight": "dirti cosa non funziona",
+      "subtitle": "Una board di feedback e una roadmap pubblica dove chiunque può pubblicare e votare senza registrarsi. Lo spam viene filtrato automaticamente — niente CAPTCHA, nessuna barriera di accesso.",
+      "startTrial": "Crea la tua board — gratis",
+      "badge": "Per creatori indipendenti e piccoli team SaaS",
+      "seeLive": "Vedi una board reale",
+      "heroNote": "Nessuna carta di credito · Online in 3 minuti"
     },
     "features": {
       "heading": "Tutto ciò di cui hai bisogno",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "Pronto a creare prodotti migliori?",
-      "subheading": "Unisciti a migliaia di team che usano FeedBoard per capire i propri clienti"
+      "heading": "Crea una board in tre minuti.",
+      "subheading": "Gratis per sempre con il piano base. Nessuna carta di credito, nessuna chiamata commerciale — e puoi vedere una board reale prima di registrarti."
     },
     "how": {
       "heading": "Ascoltato. Costruito. Rilasciato. E il ciclo ricomincia.",

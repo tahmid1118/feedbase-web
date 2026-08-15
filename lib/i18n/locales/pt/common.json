@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Transforme o feedback dos clientes em",
-      "titleHighlight": "sucesso do produto",
-      "subtitle": "Uma app, uma loja, um jogo, um serviço — dê aos seus utilizadores um único lugar para opinar, votar e ver que os ouve. Construa o que eles realmente querem.",
-      "startTrial": "Comece grátis",
-      "badge": "Recolha feedback sobre tudo o que constrói",
-      "seeLive": "Veja nosso quadro ao vivo"
+      "titleLead": "Seus usuários não deveriam precisar de uma conta para",
+      "titleHighlight": "dizer o que está quebrado",
+      "subtitle": "Um quadro de feedback e um roadmap público onde qualquer pessoa pode publicar e votar sem se cadastrar. O spam é filtrado automaticamente — sem CAPTCHA, sem barreira de login.",
+      "startTrial": "Crie seu quadro — grátis",
+      "badge": "Para criadores independentes e pequenas equipes de SaaS",
+      "seeLive": "Ver um quadro real",
+      "heroNote": "Sem cartão de crédito · No ar em 3 minutos"
     },
     "features": {
       "heading": "Tudo o que precisa",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "Pronto para criar produtos melhores?",
-      "subheading": "Junte-se a milhares de equipas que usam o FeedBoard para perceber os seus clientes"
+      "heading": "Coloque um quadro no ar em três minutos.",
+      "subheading": "Grátis para sempre no plano inicial. Sem cartão de crédito, sem ligação de vendas — e você pode ver um quadro real antes de se cadastrar."
     },
     "how": {
       "heading": "Ouvido. Construído. Lançado. E o ciclo recomeça.",

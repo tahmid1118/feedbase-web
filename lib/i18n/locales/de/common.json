@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Verwandeln Sie Kundenfeedback in",
-      "titleHighlight": "Produkterfolg",
-      "subtitle": "Eine App, ein Shop, ein Spiel, ein Service — geben Sie Ihren Nutzern einen Ort, um sich zu äußern, abzustimmen und zu sehen, dass Sie zuhören. Entwickeln Sie, was sie wirklich wollen.",
-      "startTrial": "Kostenlos starten",
-      "badge": "Sammeln Sie Feedback zu allem, was Sie entwickeln",
-      "seeLive": "Unser Live-Board ansehen"
+      "titleLead": "Ihre Nutzer sollten kein Konto brauchen, um",
+      "titleHighlight": "Ihnen Probleme zu melden",
+      "subtitle": "Ein Feedback-Board und eine öffentliche Roadmap, auf der jeder ohne Anmeldung posten und abstimmen kann. Spam wird automatisch gefiltert — kein CAPTCHA, keine Anmeldeschranke.",
+      "startTrial": "Board erstellen — kostenlos",
+      "badge": "Für Indie-Entwickler & kleine SaaS-Teams",
+      "seeLive": "Echtes Board ansehen",
+      "heroNote": "Keine Kreditkarte · In 3 Minuten live"
     },
     "features": {
       "heading": "Alles, was Sie brauchen",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "Bereit, bessere Produkte zu entwickeln?",
-      "subheading": "Schließen Sie sich Tausenden von Teams an, die FeedBoard nutzen, um ihre Kunden zu verstehen"
+      "heading": "Erstellen Sie ein Board in drei Minuten.",
+      "subheading": "Dauerhaft kostenlos im Starter-Tarif. Keine Kreditkarte, kein Verkaufsgespräch — und Sie können vorher ein echtes Board ansehen."
     },
     "how": {
       "heading": "Gehört. Gebaut. Veröffentlicht. Und dann geht es von vorn los.",

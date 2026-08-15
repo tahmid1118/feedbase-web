@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Zet klantfeedback om in",
-      "titleHighlight": "productsucces",
-      "subtitle": "Een app, een winkel, een game, een dienst — geef uw gebruikers één plek om zich uit te spreken, te stemmen en te zien dat u luistert. Bouw wat ze echt willen.",
-      "startTrial": "Gratis beginnen",
-      "badge": "Verzamel feedback over alles wat u maakt",
-      "seeLive": "Bekijk ons live board"
+      "titleLead": "Je gebruikers zouden geen account nodig moeten hebben om",
+      "titleHighlight": "te melden wat er stuk is",
+      "subtitle": "Een feedbackbord en publieke roadmap waar iedereen kan posten en stemmen zonder zich aan te melden. Spam wordt automatisch gefilterd — geen CAPTCHA, geen inlogmuur.",
+      "startTrial": "Maak je bord — gratis",
+      "badge": "Voor indie makers en kleine SaaS-teams",
+      "seeLive": "Bekijk een echt bord",
+      "heroNote": "Geen creditcard · Live in 3 minuten"
     },
     "features": {
       "heading": "Alles wat u nodig hebt",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "Klaar om betere producten te bouwen?",
-      "subheading": "Sluit u aan bij duizenden teams die FeedBoard gebruiken om hun klanten te begrijpen"
+      "heading": "Zet in drie minuten een bord online.",
+      "subheading": "Voor altijd gratis met het starterplan. Geen creditcard, geen verkoopgesprek — en je kunt eerst een echt bord bekijken."
     },
     "how": {
       "heading": "Gehoord. Gebouwd. Uitgebracht. En dan begint het opnieuw.",

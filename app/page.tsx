@@ -222,21 +222,30 @@ export default async function HomePage() {
               <ArrowRight className="ml-1.5 h-4 w-4" />
             </Button>
           </Link>
-          {/* Our own feedback board doubles as the live demo. The rose
-              border/fill/text is the resting state (not just hover) so it
-              reads as a real second button next to Start for free right
-              away; hover just deepens it a step further for feedback. */}
+          {/* Our own feedback board doubles as the live demo, and for a product
+              whose value is visual and social, letting someone LOOK before
+              committing is the shortest path to trust — so this is a
+              co-equal CTA (solid surface, full-strength border and text),
+              not a de-emphasised ghost. The audit found 87% of visitors
+              leaving the homepage without ever seeing the product. */}
           <a href={officialBoardUrl()} className="w-full sm:w-auto">
             <Button
               size="lg"
               variant="ghost"
-              className="h-12 w-full gap-1.5 border border-[#c74959]/40 bg-[#c74959]/10 px-5 text-base text-[#c74959] hover:border-[#c74959]/60 hover:bg-[#c74959]/15 hover:text-[#c74959] sm:w-auto sm:px-6"
+              className="h-12 w-full gap-1.5 border-2 border-[#c74959] bg-white px-7 text-base font-medium text-[#c74959] shadow-sm hover:bg-[#c74959]/8 hover:text-[#c74959] sm:w-auto"
             >
               {t("landing.hero.seeLive")}
               <ArrowUpRight className="h-4 w-4" />
             </Button>
           </a>
         </div>
+
+        {/* Risk reducer directly under the CTAs — answers "what happens if I
+            click?", which the audit flagged as unanswered at the decision
+            point. */}
+        <p className="mt-4 font-mono text-[12px] tracking-[0.04em] text-[#1c0a0c]/45">
+          {t("landing.hero.heroNote")}
+        </p>
       </section>
 
       {/* The full system-flow diagram, promoted from its own "How it works"

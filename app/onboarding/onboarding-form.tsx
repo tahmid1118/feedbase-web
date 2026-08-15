@@ -13,6 +13,7 @@ import { useTranslation } from "@/lib/i18n/client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { planIntentQuery } from "@/lib/plan-intent";
+import { track } from "@/lib/analytics";
 
 const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN || "localhost:3000";
 
@@ -110,6 +111,11 @@ export function OnboardingForm({
         token
       );
       if (res.data) {
+        // Funnel stage 3 of 5 — the point a signup becomes a real workspace.
+        // `invited` separates people creating their own board from those
+        // passing through onboarding only to join someone else's, since the
+        // two have completely different activation paths.
+        track("workspace_created", { invited: Boolean(invitedTenantId) });
         let auth = res.data;
         // Invited users finish in the workspace that invited them.
         if (invitedTenantId) {

@@ -20,6 +20,7 @@ import {
 } from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ActivationTracker } from "@/components/dashboard/activation-tracker";
 
 // Status order for the breakdown list; labels are looked up via t(`status.${s}`).
 const STATUS_ORDER: PostStatus[] = [
@@ -144,6 +145,12 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-6">
+      {/* Renders nothing — reports the activation moment (this board is no
+          longer empty) exactly once per workspace. See the component. */}
+      <ActivationTracker
+        totalPosts={totalPosts}
+        tenantId={session?.user?.tenantId ?? null}
+      />
       <div>
         <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("dash.overviewTitle")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">

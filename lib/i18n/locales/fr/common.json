@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Transformez les retours clients en",
-      "titleHighlight": "succès produit",
-      "subtitle": "Une appli, une boutique, un jeu, un service — offrez à vos utilisateurs un lieu unique pour s'exprimer, voter et constater que vous écoutez. Créez ce qu'ils veulent vraiment.",
-      "startTrial": "Commencer gratuitement",
-      "badge": "Recueillez des retours sur tout ce que vous créez",
-      "seeLive": "Voir notre tableau en direct"
+      "titleLead": "Vos utilisateurs ne devraient pas avoir besoin d'un compte pour",
+      "titleHighlight": "vous signaler un problème",
+      "subtitle": "Un tableau de feedback et une feuille de route publique où chacun peut publier et voter sans créer de compte. Le spam est filtré automatiquement — sans CAPTCHA, sans barrière de connexion.",
+      "startTrial": "Créer votre tableau — gratuit",
+      "badge": "Pour les créateurs indépendants et petites équipes SaaS",
+      "seeLive": "Voir un vrai tableau",
+      "heroNote": "Sans carte bancaire · En ligne en 3 minutes"
     },
     "features": {
       "heading": "Tout ce dont vous avez besoin",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "Prêt à créer de meilleurs produits ?",
-      "subheading": "Rejoignez des milliers d'équipes qui utilisent FeedBoard pour comprendre leurs clients"
+      "heading": "Créez un tableau en trois minutes.",
+      "subheading": "Gratuit à vie avec l'offre de départ. Sans carte bancaire, sans appel commercial — et vous pouvez voir un vrai tableau avant de vous inscrire."
     },
     "how": {
       "heading": "Écouté. Construit. Livré. Puis la boucle recommence.",

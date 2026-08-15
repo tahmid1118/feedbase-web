@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Convierte los comentarios de clientes en",
-      "titleHighlight": "éxito del producto",
-      "subtitle": "Una app, una tienda, un juego, un servicio: dales a tus usuarios un solo lugar para opinar, votar y ver que escuchas. Construye lo que de verdad quieren.",
-      "startTrial": "Empieza gratis",
-      "badge": "Recoge comentarios sobre todo lo que construyas",
-      "seeLive": "Ver nuestro tablero en vivo"
+      "titleLead": "Tus usuarios no deberían necesitar una cuenta para",
+      "titleHighlight": "decirte qué falla",
+      "subtitle": "Un tablero de feedback y una hoja de ruta pública donde cualquiera puede publicar y votar sin registrarse. El spam se filtra automáticamente — sin CAPTCHA, sin muro de acceso.",
+      "startTrial": "Crea tu tablero — gratis",
+      "badge": "Para creadores independientes y equipos SaaS pequeños",
+      "seeLive": "Ver un tablero real",
+      "heroNote": "Sin tarjeta de crédito · Listo en 3 minutos"
     },
     "features": {
       "heading": "Todo lo que necesitas",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "¿Listo para crear mejores productos?",
-      "subheading": "Únete a miles de equipos que usan FeedBoard para entender a sus clientes"
+      "heading": "Crea un tablero en tres minutos.",
+      "subheading": "Gratis para siempre en el plan inicial. Sin tarjeta de crédito, sin llamadas de ventas — y puedes ver un tablero real antes de registrarte."
     },
     "how": {
       "heading": "Escuchado. Construido. Publicado. Y el ciclo vuelve a empezar.",

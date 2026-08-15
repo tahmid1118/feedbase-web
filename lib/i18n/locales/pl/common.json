@@ -20,12 +20,13 @@
   },
   "landing": {
     "hero": {
-      "titleLead": "Zamień opinie klientów w",
-      "titleHighlight": "sukces produktu",
-      "subtitle": "Aplikacja, sklep, gra, usługa — daj swoim użytkownikom jedno miejsce, by mówić, głosować i widzieć, że słuchasz. Twórz to, czego naprawdę chcą.",
-      "startTrial": "Zacznij za darmo",
-      "badge": "Zbieraj opinie o wszystkim, co tworzysz",
-      "seeLive": "Zobacz naszą tablicę na żywo"
+      "titleLead": "Twoi użytkownicy nie powinni potrzebować konta, żeby",
+      "titleHighlight": "zgłosić, co nie działa",
+      "subtitle": "Tablica opinii i publiczna mapa drogowa, gdzie każdy może pisać i głosować bez zakładania konta. Spam jest filtrowany automatycznie — bez CAPTCHA, bez bariery logowania.",
+      "startTrial": "Stwórz tablicę — za darmo",
+      "badge": "Dla niezależnych twórców i małych zespołów SaaS",
+      "seeLive": "Zobacz prawdziwą tablicę",
+      "heroNote": "Bez karty kredytowej · Gotowe w 3 minuty"
     },
     "features": {
       "heading": "Wszystko, czego potrzebujesz",
@@ -64,8 +65,8 @@
       }
     },
     "cta": {
-      "heading": "Gotowy na tworzenie lepszych produktów?",
-      "subheading": "Dołącz do tysięcy zespołów, które używają FeedBoard, aby zrozumieć swoich klientów"
+      "heading": "Uruchom tablicę w trzy minuty.",
+      "subheading": "Na zawsze za darmo w planie startowym. Bez karty kredytowej, bez rozmowy sprzedażowej — i możesz zobaczyć prawdziwą tablicę przed rejestracją."
     },
     "how": {
       "heading": "Wysłuchane. Zbudowane. Wdrożone. A potem cykl zaczyna się od nowa.",
