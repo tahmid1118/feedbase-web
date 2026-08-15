@@ -51,17 +51,9 @@
         "title": "Analysedashboard",
         "desc": "Volg trends, meet betrokkenheid en neem datagestuurde beslissingen"
       },
-      "multitenant": {
-        "title": "Multi-tenant-ondersteuning",
-        "desc": "Beheer meerdere werkruimtes met aangepaste domeinen en branding"
-      },
       "attachments": {
         "title": "Foto- en videobewijs",
         "desc": "Gebruikers voegen screenshots en korte clips toe aan hun feedback, zodat uw team precies ziet wat ze bedoelen."
-      },
-      "languages": {
-        "title": "Spreekt 8 talen",
-        "desc": "Uw bord, dashboard en e-mails werken in 8 grote Europese talen — uw gebruikers kiezen de hunne met één klik."
       }
     },
     "cta": {
@@ -86,18 +78,6 @@
       "post2": "Een mobiele app, graag!",
       "post3": "Snellere zoekresultaten"
     },
-    "uses": {
-      "heading": "Gemaakt voor elk soort product",
-      "subheading": "Als mensen het gebruiken, kunt u er feedback over verzamelen.",
-      "saas": "SaaS & webapps",
-      "mobile": "Mobiele apps",
-      "ecommerce": "Webwinkels",
-      "games": "Games",
-      "agencies": "Bureaus & klanten",
-      "hardware": "Hardware",
-      "services": "Diensten",
-      "communities": "Community's"
-    },
     "benefits": {
       "hearTitle": "Hoor alles",
       "hearDesc": "Elk idee, verzoek en elke bug komt op één openbaar bord terecht — niet verspreid over inboxen en chats.",
@@ -109,19 +89,12 @@
     "facts": {
       "launchValue": "3 min",
       "launchLabel": "om uw bord te lanceren",
-      "langValue": "8",
-      "langLabel": "talen standaard inbegrepen",
+      "langValue": "0",
+      "langLabel": "accounts nodig om te posten",
       "priceValue": "$ 0",
       "priceLabel": "om te beginnen",
       "postsValue": "Onbeperkt",
       "postsLabel": "berichten & stemmen in elk abonnement"
-    },
-    "types": {
-      "heading": "Elk soort input, één inbox",
-      "subheading": "Uw gebruikers kiezen wat ze sturen — u handelt alles op één plek af.",
-      "featureDesc": "\"Het zou geweldig zijn als…\" — ideeën waar uw gebruikers voor zouden betalen, gerangschikt op hun eigen stemmen.",
-      "bugDesc": "\"Er is iets kapot\" — met screenshots en clips erbij, rechtstreeks van de mensen die het tegenkwamen.",
-      "feedbackDesc": "\"Dit vind ik ervan\" — eerlijke meningen en complimenten die vertellen hoe uw product echt aanvoelt."
     },
     "flow": {
       "loop": "…en ze komen terug met het volgende idee",
@@ -161,6 +134,17 @@
       "exampleCsv": "CSV-export",
       "exampleSlack": "Slack-meldingen",
       "exampleSso": "SSO-aanmelding"
+    },
+    "spam": {
+      "eyebrow": "Spambescherming",
+      "heading": "Open voor iedereen. Dicht voor bots.",
+      "subheading": "Iedereen laten posten zonder account roept een voor de hand liggende vraag op. Dit is het antwoord: elke inzending wordt beoordeeld vóór publicatie, en je gebruikers zien nooit een CAPTCHA.",
+      "scoredTitle": "Automatisch beoordeeld",
+      "scoredDesc": "Linkspam, wegwerpadressen, dubbele tekst en golven vanaf één bron worden gewogen voordat er iets op je bord verschijnt.",
+      "quarantineTitle": "In quarantaine, niet verwijderd",
+      "quarantineDesc": "Duidelijke spam verschijnt nooit publiek. Niets wordt vernietigd — het wacht in een controlewachtrij, met de reden erbij.",
+      "restoreTitle": "Herstellen met één klik",
+      "restoreDesc": "Wat per ongeluk wordt tegengehouden staat meteen weer op het bord en wordt niet opnieuw gemarkeerd."
     }
   },
   "common": {

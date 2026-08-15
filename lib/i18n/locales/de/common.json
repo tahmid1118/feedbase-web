@@ -51,17 +51,9 @@
         "title": "Analyse-Dashboard",
         "desc": "Verfolgen Sie Trends, messen Sie das Engagement und treffen Sie datenbasierte Entscheidungen"
       },
-      "multitenant": {
-        "title": "Mandantenfähigkeit",
-        "desc": "Verwalten Sie mehrere Arbeitsbereiche mit benutzerdefinierten Domains und Branding"
-      },
       "attachments": {
         "title": "Foto- & Videobelege",
         "desc": "Nutzer hängen Screenshots und kurze Clips an ihr Feedback an — Ihr Team sieht genau, was gemeint ist."
-      },
-      "languages": {
-        "title": "Spricht 8 Sprachen",
-        "desc": "Pinnwand, Dashboard und E-Mails funktionieren in 8 großen europäischen Sprachen — Ihre Nutzer wählen ihre mit einem Klick."
       }
     },
     "cta": {
@@ -86,18 +78,6 @@
       "post2": "Bitte eine Mobile-App!",
       "post3": "Schnellere Suchergebnisse"
     },
-    "uses": {
-      "heading": "Gemacht für jede Art von Produkt",
-      "subheading": "Wenn Menschen es nutzen, können Sie Feedback dazu sammeln.",
-      "saas": "SaaS & Web-Apps",
-      "mobile": "Mobile Apps",
-      "ecommerce": "Online-Shops",
-      "games": "Spiele",
-      "agencies": "Agenturen & Kunden",
-      "hardware": "Hardware",
-      "services": "Dienstleistungen",
-      "communities": "Communitys"
-    },
     "benefits": {
       "hearTitle": "Alles hören",
       "hearDesc": "Jede Idee, jeder Wunsch und jeder Fehler landet auf einer öffentlichen Pinnwand — statt verstreut in Postfächern und Chats.",
@@ -109,19 +89,12 @@
     "facts": {
       "launchValue": "3 Min.",
       "launchLabel": "bis Ihre Pinnwand live ist",
-      "langValue": "8",
-      "langLabel": "Sprachen ab Werk",
+      "langValue": "0",
+      "langLabel": "Konten nötig, um zu posten",
       "priceValue": "0 $",
       "priceLabel": "für den Einstieg",
       "postsValue": "Unbegrenzt",
       "postsLabel": "Beiträge & Stimmen in jedem Tarif"
-    },
-    "types": {
-      "heading": "Jede Art von Rückmeldung, ein Eingang",
-      "subheading": "Ihre Nutzer wählen, was sie senden — Sie sichten alles an einem Ort.",
-      "featureDesc": "„Es wäre toll, wenn …“ — Ideen, für die Ihre Nutzer zahlen würden, sortiert nach ihren eigenen Stimmen.",
-      "bugDesc": "„Etwas ist kaputt“ — mit Screenshots und Clips, direkt von den Betroffenen.",
-      "feedbackDesc": "„Das denke ich“ — ehrliche Meinungen und Lob, die zeigen, wie sich Ihr Produkt wirklich anfühlt."
     },
     "flow": {
       "loop": "…und sie kommen mit der nächsten Idee zurück",
@@ -161,6 +134,17 @@
       "exampleCsv": "CSV-Export",
       "exampleSlack": "Slack-Benachrichtigungen",
       "exampleSso": "SSO-Anmeldung"
+    },
+    "spam": {
+      "eyebrow": "Spam-Schutz",
+      "heading": "Offen für alle. Geschlossen für Bots.",
+      "subheading": "Wenn jeder ohne Konto posten kann, stellt sich eine naheliegende Frage. Die Antwort: Jeder Beitrag wird vor der Veröffentlichung bewertet — und Ihre Nutzer sehen nie ein CAPTCHA.",
+      "scoredTitle": "Automatisch bewertet",
+      "scoredDesc": "Link-Spam, Wegwerf-Adressen, doppelte Texte und Massen-Einsendungen aus einer Quelle werden gewichtet, bevor etwas auf Ihrem Board landet.",
+      "quarantineTitle": "Isoliert, nicht gelöscht",
+      "quarantineDesc": "Eindeutiger Spam erscheint nie öffentlich. Nichts wird vernichtet — er wartet mit Begründung in einer Prüf-Warteschlange.",
+      "restoreTitle": "Wiederherstellen mit einem Klick",
+      "restoreDesc": "Fälschlich markierte Beiträge kehren sofort zurück und werden nicht erneut markiert."
     }
   },
   "common": {

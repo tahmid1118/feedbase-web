@@ -83,17 +83,9 @@
         "title": "Analytics Dashboard",
         "desc": "Track trends, measure engagement, and make data-driven decisions"
       },
-      "multitenant": {
-        "title": "Multi-Tenant Support",
-        "desc": "Manage multiple workspaces with custom domains and branding"
-      },
       "attachments": {
         "title": "Photo & Video Proof",
         "desc": "Users attach screenshots and short clips to their feedback, so your team sees exactly what they mean."
-      },
-      "languages": {
-        "title": "Speaks 8 Languages",
-        "desc": "Your board, dashboard, and emails work in 8 major European languages — your users pick theirs in one click."
       }
     },
     "how": {
@@ -118,18 +110,6 @@
       "post2": "Mobile app, please!",
       "post3": "Faster search results"
     },
-    "uses": {
-      "heading": "Made for any kind of product",
-      "subheading": "If people use it, you can collect feedback on it.",
-      "saas": "SaaS & web apps",
-      "mobile": "Mobile apps",
-      "ecommerce": "Online stores",
-      "games": "Games",
-      "agencies": "Agencies & clients",
-      "hardware": "Hardware",
-      "services": "Services",
-      "communities": "Communities"
-    },
     "benefits": {
       "hearTitle": "Hear everything",
       "hearDesc": "Every idea, request, and bug lands on one public board — not scattered across inboxes and chats.",
@@ -141,19 +121,12 @@
     "facts": {
       "launchValue": "3 min",
       "launchLabel": "to launch your board",
-      "langValue": "8",
-      "langLabel": "languages out of the box",
+      "langValue": "0",
+      "langLabel": "accounts needed to post",
       "priceValue": "$0",
       "priceLabel": "to get started",
       "postsValue": "Unlimited",
       "postsLabel": "posts & votes on every plan"
-    },
-    "types": {
-      "heading": "Every kind of input, one inbox",
-      "subheading": "Your users choose what they're sending — you triage it all in one place.",
-      "featureDesc": "\"It would be great if…\" — ideas your users would pay for, ranked by their own votes.",
-      "bugDesc": "\"Something's broken\" — with screenshots and clips attached, straight from the people who hit it.",
-      "feedbackDesc": "\"Here's what I think\" — honest opinions and praise that tell you how your product really feels."
     },
     "flow": {
       "loop": "…and they come back with the next idea",
@@ -193,6 +166,17 @@
       "exampleCsv": "CSV export",
       "exampleSlack": "Slack alerts",
       "exampleSso": "SSO login"
+    },
+    "spam": {
+      "eyebrow": "Spam protection",
+      "heading": "Open to everyone. Closed to bots.",
+      "subheading": "Letting anyone post without an account raises an obvious question. Here's the answer: every submission is scored before it publishes, and your users never see a CAPTCHA.",
+      "scoredTitle": "Scored automatically",
+      "scoredDesc": "Link stuffing, disposable inboxes, duplicate text and floods from one source are all weighted before anything reaches your board.",
+      "quarantineTitle": "Quarantined, not deleted",
+      "quarantineDesc": "High-confidence spam never appears publicly. Nothing is destroyed — it waits in a review queue with the reason it was caught.",
+      "restoreTitle": "One-click restore",
+      "restoreDesc": "Anything caught by mistake goes straight back to the board, and stops being flagged again."
     }
   },
   "dashboard": {

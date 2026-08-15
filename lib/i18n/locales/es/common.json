@@ -51,17 +51,9 @@
         "title": "Panel de análisis",
         "desc": "Sigue las tendencias, mide la interacción y toma decisiones basadas en datos"
       },
-      "multitenant": {
-        "title": "Compatibilidad multiinquilino",
-        "desc": "Gestiona varios espacios de trabajo con dominios y marca personalizados"
-      },
       "attachments": {
         "title": "Pruebas en foto y vídeo",
         "desc": "Los usuarios adjuntan capturas y clips cortos a sus comentarios, y tu equipo ve exactamente a qué se refieren."
-      },
-      "languages": {
-        "title": "Habla 8 idiomas",
-        "desc": "Tu tablero, panel y correos funcionan en 8 grandes idiomas europeos: tus usuarios eligen el suyo con un clic."
       }
     },
     "cta": {
@@ -86,18 +78,6 @@
       "post2": "¡Una app móvil, por favor!",
       "post3": "Resultados de búsqueda más rápidos"
     },
-    "uses": {
-      "heading": "Hecho para cualquier tipo de producto",
-      "subheading": "Si la gente lo usa, puedes recoger comentarios sobre ello.",
-      "saas": "SaaS y apps web",
-      "mobile": "Apps móviles",
-      "ecommerce": "Tiendas online",
-      "games": "Juegos",
-      "agencies": "Agencias y clientes",
-      "hardware": "Hardware",
-      "services": "Servicios",
-      "communities": "Comunidades"
-    },
     "benefits": {
       "hearTitle": "Escúchalo todo",
       "hearDesc": "Cada idea, petición y error llega a un único tablero público, en lugar de dispersarse entre correos y chats.",
@@ -109,19 +89,12 @@
     "facts": {
       "launchValue": "3 min",
       "launchLabel": "para lanzar tu tablero",
-      "langValue": "8",
-      "langLabel": "idiomas de serie",
+      "langValue": "0",
+      "langLabel": "cuentas necesarias para publicar",
       "priceValue": "0 $",
       "priceLabel": "para empezar",
       "postsValue": "Ilimitados",
       "postsLabel": "publicaciones y votos en todos los planes"
-    },
-    "types": {
-      "heading": "Todo tipo de aportes, una sola bandeja",
-      "subheading": "Tus usuarios eligen qué envían y tú lo gestionas todo en un solo lugar.",
-      "featureDesc": "«Estaría genial que…»: ideas por las que tus usuarios pagarían, ordenadas por sus propios votos.",
-      "bugDesc": "«Algo está roto»: con capturas y clips adjuntos, directamente de quien lo sufrió.",
-      "feedbackDesc": "«Esto es lo que opino»: opiniones sinceras y elogios que te dicen cómo se siente de verdad tu producto."
     },
     "flow": {
       "loop": "…y vuelven con la siguiente idea",
@@ -161,6 +134,17 @@
       "exampleCsv": "Exportación CSV",
       "exampleSlack": "Alertas de Slack",
       "exampleSso": "Inicio de sesión SSO"
+    },
+    "spam": {
+      "eyebrow": "Protección contra spam",
+      "heading": "Abierto para todos. Cerrado para bots.",
+      "subheading": "Permitir que cualquiera publique sin cuenta plantea una pregunta obvia. Esta es la respuesta: cada envío se puntúa antes de publicarse, y tus usuarios nunca ven un CAPTCHA.",
+      "scoredTitle": "Puntuado automáticamente",
+      "scoredDesc": "Exceso de enlaces, correos desechables, texto duplicado y avalanchas desde una sola fuente se ponderan antes de llegar a tu tablero.",
+      "quarantineTitle": "En cuarentena, no eliminado",
+      "quarantineDesc": "El spam evidente nunca aparece en público. Nada se destruye: espera en una cola de revisión con el motivo por el que se detectó.",
+      "restoreTitle": "Restaurar con un clic",
+      "restoreDesc": "Lo que se detecte por error vuelve al tablero de inmediato y deja de marcarse."
     }
   },
   "common": {

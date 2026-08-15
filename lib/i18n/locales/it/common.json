@@ -51,17 +51,9 @@
         "title": "Dashboard di analisi",
         "desc": "Monitora le tendenze, misura il coinvolgimento e prendi decisioni basate sui dati"
       },
-      "multitenant": {
-        "title": "Supporto multi-tenant",
-        "desc": "Gestisci più spazi di lavoro con domini e branding personalizzati"
-      },
       "attachments": {
         "title": "Prove foto e video",
         "desc": "Gli utenti allegano screenshot e brevi clip al loro feedback, così il tuo team vede esattamente cosa intendono."
-      },
-      "languages": {
-        "title": "Parla 8 lingue",
-        "desc": "Bacheca, dashboard ed e-mail funzionano in 8 grandi lingue europee: i tuoi utenti scelgono la loro con un clic."
       }
     },
     "cta": {
@@ -86,18 +78,6 @@
       "post2": "Un'app mobile, per favore!",
       "post3": "Risultati di ricerca più veloci"
     },
-    "uses": {
-      "heading": "Fatto per ogni tipo di prodotto",
-      "subheading": "Se le persone lo usano, puoi raccogliere feedback al riguardo.",
-      "saas": "SaaS e app web",
-      "mobile": "App mobili",
-      "ecommerce": "Negozi online",
-      "games": "Giochi",
-      "agencies": "Agenzie e clienti",
-      "hardware": "Hardware",
-      "services": "Servizi",
-      "communities": "Community"
-    },
     "benefits": {
       "hearTitle": "Ascolta tutto",
       "hearDesc": "Ogni idea, richiesta e bug arriva su un'unica bacheca pubblica — invece di disperdersi tra e-mail e chat.",
@@ -109,19 +89,12 @@
     "facts": {
       "launchValue": "3 min",
       "launchLabel": "per lanciare la tua bacheca",
-      "langValue": "8",
-      "langLabel": "lingue incluse",
+      "langValue": "0",
+      "langLabel": "account necessari per pubblicare",
       "priceValue": "0 $",
       "priceLabel": "per iniziare",
       "postsValue": "Illimitati",
       "postsLabel": "post e voti in ogni piano"
-    },
-    "types": {
-      "heading": "Ogni tipo di contributo, un'unica casella",
-      "subheading": "I tuoi utenti scelgono cosa inviare — tu smisti tutto in un unico posto.",
-      "featureDesc": "«Sarebbe fantastico se…» — idee per cui i tuoi utenti pagherebbero, ordinate dai loro stessi voti.",
-      "bugDesc": "«Qualcosa è rotto» — con screenshot e clip allegati, direttamente da chi l'ha riscontrato.",
-      "feedbackDesc": "«Ecco cosa ne penso» — opinioni sincere ed elogi che ti dicono come viene percepito davvero il tuo prodotto."
     },
     "flow": {
       "loop": "…e tornano con l'idea successiva",
@@ -161,6 +134,17 @@
       "exampleCsv": "Esportazione CSV",
       "exampleSlack": "Avvisi Slack",
       "exampleSso": "Accesso SSO"
+    },
+    "spam": {
+      "eyebrow": "Protezione anti-spam",
+      "heading": "Aperto a tutti. Chiuso ai bot.",
+      "subheading": "Permettere a chiunque di pubblicare senza account solleva una domanda ovvia. Ecco la risposta: ogni invio viene valutato prima della pubblicazione e i tuoi utenti non vedono mai un CAPTCHA.",
+      "scoredTitle": "Valutato automaticamente",
+      "scoredDesc": "Accumulo di link, indirizzi usa e getta, testi duplicati e ondate dalla stessa fonte vengono pesati prima che qualcosa arrivi sulla board.",
+      "quarantineTitle": "In quarantena, non eliminato",
+      "quarantineDesc": "Lo spam evidente non compare mai in pubblico. Nulla viene distrutto: resta in una coda di revisione con il motivo.",
+      "restoreTitle": "Ripristino con un clic",
+      "restoreDesc": "Ciò che viene bloccato per errore torna subito sulla board e non viene più segnalato."
     }
   },
   "common": {

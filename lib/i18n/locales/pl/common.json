@@ -51,17 +51,9 @@
         "title": "Panel analityczny",
         "desc": "Śledź trendy, mierz zaangażowanie i podejmuj decyzje oparte na danych"
       },
-      "multitenant": {
-        "title": "Obsługa wielu środowisk",
-        "desc": "Zarządzaj wieloma przestrzeniami roboczymi z niestandardowymi domenami i marką"
-      },
       "attachments": {
         "title": "Dowody w postaci zdjęć i wideo",
         "desc": "Użytkownicy dołączają zrzuty ekranu i krótkie klipy do opinii, więc Twój zespół widzi dokładnie, o co chodzi."
-      },
-      "languages": {
-        "title": "Mówi w 8 językach",
-        "desc": "Twoja tablica, pulpit i e-maile działają w 8 głównych językach europejskich — użytkownicy wybierają swój jednym kliknięciem."
       }
     },
     "cta": {
@@ -86,18 +78,6 @@
       "post2": "Poproszę aplikację mobilną!",
       "post3": "Szybsze wyniki wyszukiwania"
     },
-    "uses": {
-      "heading": "Stworzony dla każdego rodzaju produktu",
-      "subheading": "Jeśli ludzie z tego korzystają, możesz zbierać o tym opinie.",
-      "saas": "SaaS i aplikacje webowe",
-      "mobile": "Aplikacje mobilne",
-      "ecommerce": "Sklepy internetowe",
-      "games": "Gry",
-      "agencies": "Agencje i klienci",
-      "hardware": "Sprzęt",
-      "services": "Usługi",
-      "communities": "Społeczności"
-    },
     "benefits": {
       "hearTitle": "Usłysz wszystko",
       "hearDesc": "Każdy pomysł, prośba i błąd trafia na jedną publiczną tablicę — zamiast ginąć w skrzynkach i czatach.",
@@ -109,19 +89,12 @@
     "facts": {
       "launchValue": "3 min",
       "launchLabel": "aby uruchomić tablicę",
-      "langValue": "8",
-      "langLabel": "języków od ręki",
+      "langValue": "0",
+      "langLabel": "kont potrzebnych do publikacji",
       "priceValue": "0 $",
       "priceLabel": "na start",
       "postsValue": "Bez limitu",
       "postsLabel": "wpisów i głosów w każdym planie"
-    },
-    "types": {
-      "heading": "Każdy rodzaj uwag, jedna skrzynka",
-      "subheading": "Użytkownicy wybierają, co wysyłają — Ty porządkujesz wszystko w jednym miejscu.",
-      "featureDesc": "„Byłoby świetnie, gdyby…” — pomysły, za które Twoi użytkownicy by zapłacili, uszeregowane ich głosami.",
-      "bugDesc": "„Coś nie działa” — ze zrzutami ekranu i klipami, prosto od osób, które na to trafiły.",
-      "feedbackDesc": "„Oto co myślę” — szczere opinie i pochwały, które mówią, jak naprawdę odbierany jest Twój produkt."
     },
     "flow": {
       "loop": "…i wracają z kolejnym pomysłem",
@@ -161,6 +134,17 @@
       "exampleCsv": "Eksport CSV",
       "exampleSlack": "Powiadomienia Slack",
       "exampleSso": "Logowanie SSO"
+    },
+    "spam": {
+      "eyebrow": "Ochrona przed spamem",
+      "heading": "Otwarte dla ludzi. Zamknięte dla botów.",
+      "subheading": "Pozwolenie każdemu na publikowanie bez konta rodzi oczywiste pytanie. Oto odpowiedź: każde zgłoszenie jest oceniane przed publikacją, a Twoi użytkownicy nigdy nie widzą CAPTCHA.",
+      "scoredTitle": "Oceniane automatycznie",
+      "scoredDesc": "Nadmiar linków, jednorazowe adresy e-mail, powielony tekst i fale zgłoszeń z jednego źródła są ważone, zanim cokolwiek trafi na tablicę.",
+      "quarantineTitle": "Kwarantanna, nie usuwanie",
+      "quarantineDesc": "Oczywisty spam nigdy nie pojawia się publicznie. Nic nie jest niszczone — czeka w kolejce do przeglądu wraz z powodem.",
+      "restoreTitle": "Przywracanie jednym kliknięciem",
+      "restoreDesc": "To, co zostanie zatrzymane przez pomyłkę, wraca na tablicę i przestaje być oznaczane."
     }
   },
   "common": {

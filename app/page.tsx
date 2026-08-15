@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight, ArrowUpRight, BarChart3, Camera, CheckCircle2, GitBranch, Globe, MessageSquare, Users, Vote } from "@/components/icons";
+import { ArrowRight, ArrowUpRight, Ban, BarChart3, Camera, CheckCircle2, GitBranch, MessageSquare, RotateCcw, ShieldCheck, Vote } from "@/components/icons";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -15,7 +15,6 @@ import { FazierBadge } from "@/components/landing/fazier-badge";
 import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
 import { ToolfioBadge } from "@/components/landing/toolfio-badge";
 import { TwelveToolsBadge } from "@/components/landing/twelve-tools-badge";
-import { PostTypeIcon } from "@/components/feedback/post-type-icon";
 import { LanguageSelector } from "@/components/i18n/language-selector";
 import { getTranslation } from "@/lib/i18n/server";
 import { officialBoardUrl } from "@/lib/official-board";
@@ -103,18 +102,6 @@ export default async function HomePage() {
     redirect("/dashboard");
   }
 
-  // "Works for anything people use" — the use-case chips.
-  const useCases = [
-    { key: "landing.uses.saas" },
-    { key: "landing.uses.mobile" },
-    { key: "landing.uses.ecommerce" },
-    { key: "landing.uses.games" },
-    { key: "landing.uses.agencies" },
-    { key: "landing.uses.hardware" },
-    { key: "landing.uses.services" },
-    { key: "landing.uses.communities" },
-  ];
-
   const facts = [
     { value: t("landing.facts.launchValue"), label: t("landing.facts.launchLabel") },
     { value: t("landing.facts.langValue"), label: t("landing.facts.langLabel") },
@@ -122,25 +109,28 @@ export default async function HomePage() {
     { value: t("landing.facts.postsValue"), label: t("landing.facts.postsLabel") },
   ];
 
+  // Four, not six. "8 languages" and "multi-workspace" were dropped: neither
+  // is something a first-time visitor is choosing on, and a six-item grid
+  // spends attention on the two weakest cells.
   const features = [
     { icon: MessageSquare, title: t("landing.features.collection.title"), desc: t("landing.features.collection.desc") },
     { icon: Vote, title: t("landing.features.voting.title"), desc: t("landing.features.voting.desc") },
     { icon: GitBranch, title: t("landing.features.roadmap.title"), desc: t("landing.features.roadmap.desc") },
     { icon: Camera, title: t("landing.features.attachments.title"), desc: t("landing.features.attachments.desc") },
-    { icon: Globe, title: t("landing.features.languages.title"), desc: t("landing.features.languages.desc") },
-    { icon: Users, title: t("landing.features.multitenant.title"), desc: t("landing.features.multitenant.desc") },
+  ];
+
+  // The rebuttal to the hero's claim. Order is the order a sceptic asks:
+  // how do you catch it → what happens to it → what if you're wrong.
+  const spamPoints = [
+    { icon: ShieldCheck, title: t("landing.spam.scoredTitle"), desc: t("landing.spam.scoredDesc") },
+    { icon: Ban, title: t("landing.spam.quarantineTitle"), desc: t("landing.spam.quarantineDesc") },
+    { icon: RotateCcw, title: t("landing.spam.restoreTitle"), desc: t("landing.spam.restoreDesc") },
   ];
 
   const benefits = [
     { icon: MessageSquare, title: t("landing.benefits.hearTitle"), desc: t("landing.benefits.hearDesc") },
     { icon: BarChart3, title: t("landing.benefits.decideTitle"), desc: t("landing.benefits.decideDesc") },
     { icon: CheckCircle2, title: t("landing.benefits.showTitle"), desc: t("landing.benefits.showDesc") },
-  ];
-
-  const types = [
-    { type: "feature_request" as const, label: t("type.feature_request"), desc: t("landing.types.featureDesc") },
-    { type: "bug_report" as const, label: t("type.bug_report"), desc: t("landing.types.bugDesc") },
-    { type: "feedback" as const, label: t("type.feedback"), desc: t("landing.types.feedbackDesc") },
   ];
 
   return (
@@ -248,6 +238,47 @@ export default async function HomePage() {
         </p>
       </section>
 
+      {/* ── Spam protection ─────────────────────────────────────────────── */}
+      {/* Position is the whole point: the hero now claims anyone can post
+          WITHOUT an account, and the first thing a founder thinks is "so
+          won't I drown in junk?". An objection left hanging discredits the
+          claim that raised it, so the answer goes immediately after the
+          hero — before the flow diagram, before features, before anything
+          else competes for the thought.
+
+          Visually it's a tinted band with hairline edges rather than a card
+          grid: deep enough to read as its own beat (this is a rebuttal, not
+          another feature), quiet enough not to fight the hero directly above
+          it. The three columns reuse the border-t + icon + heading recipe
+          from Benefits/Features rather than inventing a fourth card style. */}
+      <section className="border-y border-[#e399a3]/30 bg-[#fbeef0]">
+        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+          <div className="max-w-2xl">
+            <Eyebrow>{t("landing.spam.eyebrow")}</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl leading-tight font-semibold text-balance text-[#1c0a0c] lg:text-4xl">
+              {t("landing.spam.heading")}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-[#1c0a0c]/65">
+              {t("landing.spam.subheading")}
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-x-12 gap-y-9 md:grid-cols-3">
+            {spamPoints.map((s) => (
+              <div key={s.title} className="border-t border-[#1c0a0c]/12 pt-6">
+                <s.icon className="h-5 w-5 text-[#c74959]" strokeWidth={1.75} />
+                <h3 className="mt-4 text-lg font-semibold text-[#1c0a0c]">
+                  {s.title}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#1c0a0c]/60">
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* The full system-flow diagram, promoted from its own "How it works"
           section into hero position (option B of two being compared — see
           HeroSystemFlow for option A's compact version, used in the hero's
@@ -341,66 +372,13 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── What comes in ───────────────────────────────────────────────── */}
-      {/* The frosted card recipe (border-white/15 bg-white/10 backdrop-blur-sm
-          + inset top highlight) is the facts ledger's cells verbatim — reused
-          rather than re-derived. That recipe was designed for a dark surface:
-          on the page's plain #fdf8f9 it was tested and came back essentially
-          invisible (no visible border, no visible tint — just floating text).
-          So this section is a second full-bleed dark band, the same gradient
-          as the facts ledger above, which is the only context this recipe
-          actually reads in. Text and borders throughout are flipped to
-          light-on-dark to match; the icon moves from brand rose (illegible on
-          this red-toned gradient) to the pale accent #e399a3, which is what
-          actually separates from the background. */}
-      <section className="bg-[linear-gradient(145deg,#1c0a0c_0%,#7a2d38_45%,#c74959_100%)]">
-        <div className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-2xl">
-            <h2 className="font-display text-4xl leading-tight font-semibold text-balance text-[#fdf8f9] lg:text-5xl">
-              {t("landing.types.heading")}
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-[#fdf8f9]/65">
-              {t("landing.types.subheading")}
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {types.map((ty, i) => (
-              <div
-                key={ty.type}
-                className="lp-card-float min-w-0 rounded-2xl border border-white/15 bg-white/10 px-5 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] backdrop-blur-sm sm:px-6 sm:py-7"
-                style={{ animationDuration: `${6.2 + i * 0.4}s`, animationDelay: `${0.2 + i * 0.25}s` }}
-              >
-                <PostTypeIcon type={ty.type} className="h-5 w-5 text-[#e399a3]" />
-                <h3 className="mt-4 text-lg font-semibold text-[#fdf8f9]">
-                  {ty.label}
-                </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-[#fdf8f9]/60">
-                  {ty.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Use-case chips. Kept as chips (they're a list of nouns, and a chip
-              is the honest shape for that) but flattened: no shadow, no lift. */}
-          <div className="mt-16 border-t border-white/15 pt-8">
-            <p className="text-sm text-[#fdf8f9]/55">
-              {t("landing.uses.subheading")}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {useCases.map((u) => (
-                <span
-                  key={u.key}
-                  className="rounded-full border border-white/20 px-3.5 py-1.5 text-sm text-[#fdf8f9]/70 transition-colors hover:border-white/40 hover:text-[#fdf8f9]"
-                >
-                  {t(u.key)}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* The "What comes in" band (post-type cards + eight use-case chips)
+          stood here and was removed deliberately, not lost in a refactor. It
+          was the THIRD consecutive "here's what it does" block before pricing,
+          and the chips listed eight audiences — which reads as serving nobody
+          in particular rather than as breadth. The page now names one ICP in
+          the hero and spends this space on nothing at all, which is the
+          cheaper trade. */}
 
       {/* ── Pricing ─────────────────────────────────────────────────────── */}
       <section id="pricing" className="mx-auto max-w-6xl px-5 py-20 lg:px-8 lg:py-24">

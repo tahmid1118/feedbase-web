@@ -51,17 +51,9 @@
         "title": "Tableau de bord d'analyse",
         "desc": "Suivez les tendances, mesurez l'engagement et prenez des décisions fondées sur les données"
       },
-      "multitenant": {
-        "title": "Prise en charge multi-locataires",
-        "desc": "Gérez plusieurs espaces de travail avec des domaines et une image de marque personnalisés"
-      },
       "attachments": {
         "title": "Preuves photo et vidéo",
         "desc": "Les utilisateurs joignent captures d'écran et courts clips à leurs retours : votre équipe voit exactement de quoi il s'agit."
-      },
-      "languages": {
-        "title": "Parle 8 langues",
-        "desc": "Tableau, tableau de bord et e-mails fonctionnent en 8 grandes langues européennes : vos utilisateurs choisissent la leur en un clic."
       }
     },
     "cta": {
@@ -86,18 +78,6 @@
       "post2": "Une appli mobile, svp !",
       "post3": "Des résultats de recherche plus rapides"
     },
-    "uses": {
-      "heading": "Conçu pour tout type de produit",
-      "subheading": "Si des gens l'utilisent, vous pouvez recueillir des retours dessus.",
-      "saas": "SaaS et applis web",
-      "mobile": "Applis mobiles",
-      "ecommerce": "Boutiques en ligne",
-      "games": "Jeux",
-      "agencies": "Agences et clients",
-      "hardware": "Matériel",
-      "services": "Services",
-      "communities": "Communautés"
-    },
     "benefits": {
       "hearTitle": "Tout entendre",
       "hearDesc": "Chaque idée, demande et bogue atterrit sur un tableau public unique — au lieu d'être éparpillé entre boîtes mail et messageries.",
@@ -109,19 +89,12 @@
     "facts": {
       "launchValue": "3 min",
       "launchLabel": "pour lancer votre tableau",
-      "langValue": "8",
-      "langLabel": "langues incluses d'office",
+      "langValue": "0",
+      "langLabel": "compte requis pour publier",
       "priceValue": "0 $",
       "priceLabel": "pour commencer",
       "postsValue": "Illimité",
       "postsLabel": "publications et votes sur chaque forfait"
-    },
-    "types": {
-      "heading": "Tous les types de retours, une seule boîte",
-      "subheading": "Vos utilisateurs choisissent ce qu'ils envoient — vous triez tout au même endroit.",
-      "featureDesc": "« Ce serait génial si… » — des idées que vos utilisateurs paieraient, classées par leurs propres votes.",
-      "bugDesc": "« Quelque chose est cassé » — avec captures et clips joints, directement des personnes concernées.",
-      "feedbackDesc": "« Voici ce que j'en pense » — avis sincères et compliments qui révèlent ce que votre produit inspire vraiment."
     },
     "flow": {
       "loop": "…et ils reviennent avec la prochaine idée",
@@ -161,6 +134,17 @@
       "exampleCsv": "Export CSV",
       "exampleSlack": "Alertes Slack",
       "exampleSso": "Connexion SSO"
+    },
+    "spam": {
+      "eyebrow": "Protection anti-spam",
+      "heading": "Ouvert à tous. Fermé aux bots.",
+      "subheading": "Laisser chacun publier sans compte soulève une question évidente. Voici la réponse : chaque envoi est évalué avant publication, et vos utilisateurs ne voient jamais de CAPTCHA.",
+      "scoredTitle": "Évalué automatiquement",
+      "scoredDesc": "Accumulation de liens, adresses jetables, textes dupliqués et envois massifs depuis une même source sont pondérés avant toute publication.",
+      "quarantineTitle": "Mis en quarantaine, pas supprimé",
+      "quarantineDesc": "Le spam évident n'apparaît jamais publiquement. Rien n'est détruit : il attend dans une file de vérification, avec le motif.",
+      "restoreTitle": "Restauration en un clic",
+      "restoreDesc": "Tout ce qui est retenu par erreur revient immédiatement et cesse d'être signalé."
     }
   },
   "common": {
