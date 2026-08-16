@@ -11,6 +11,7 @@ import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { ComparisonTable } from "@/components/landing/comparison-table";
 import { LandingFaq } from "@/components/landing/landing-faq";
 import { ProductProof } from "@/components/landing/product-proof";
+import { ScreenshotOrbit } from "@/components/landing/screenshot-orbit";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
 import { BoostDomainRatingBadge } from "@/components/landing/boost-domain-rating-badge";
@@ -240,6 +241,13 @@ export default async function HomePage() {
           {t("landing.hero.heroNote")}
         </p>
       </section>
+
+      {/* The hero's visual, and full-bleed by necessity — the arc only reads as
+          a curve if it runs past both edges of the screen, which it cannot do
+          inside the hero's own max-w-3xl column. Decorative (aria-hidden): the
+          same screenshots are presented legibly, with captions, in
+          ProductProof further down. */}
+      <ScreenshotOrbit />
 
       {/* ── Spam protection ─────────────────────────────────────────────── */}
       {/* Position is the whole point: the hero now claims anyone can post

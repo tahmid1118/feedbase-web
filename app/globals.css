@@ -277,14 +277,43 @@ h2,
   animation: lp-card-float 6s ease-in-out infinite;
 }
 
+/* ── Screenshot orbit ───────────────────────────────────────────────────────
+   Product screenshots pinned around the rim of a very large invisible circle
+   whose CENTRE sits far below the fold, so only the top of the arc is ever on
+   screen. Rotating the wheel drifts the cards across that arc and gives each
+   one its tangent tilt for free — no per-card angle bookkeeping, and the tilt
+   is always correct because it IS the geometry rather than an approximation
+   of it.
+
+   The radius and card size are custom properties so the whole thing scales at
+   a breakpoint by changing two numbers (see components/landing/screenshot-orbit.tsx).
+   Card COUNT must stay 360/step so the rim is fully populated — a partial ring
+   parades a long empty stretch through the viewport once per revolution. */
+@keyframes lp-orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lp-orbit-wheel {
+  animation: lp-orbit-spin var(--orbit-duration, 140s) linear infinite;
+}
+
 /* Motion is decoration here: the card reads correctly in its final state, so
-   under reduced-motion we simply show that. */
+   under reduced-motion we simply show that. The orbit is the one exception
+   that needs more than `animation: none` — frozen mid-spin it would sit at a
+   fixed rotation, which is a perfectly good static arc, so stopping it is the
+   whole fix. */
 @media (prefers-reduced-motion: reduce) {
   .auth-float-slow,
   .auth-reveal,
   .lp-stamp-in,
   .lp-thread,
-  .lp-card-float {
+  .lp-card-float,
+  .lp-orbit-wheel {
     animation: none;
   }
 }
