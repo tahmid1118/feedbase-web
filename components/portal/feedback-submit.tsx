@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import { MessageSquare, Loader2, CheckCircle2, LogIn } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { PostTypeIcon } from "@/components/feedback/post-type-icon";
@@ -12,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { getGuestId } from "@/lib/portal/guest";
+import { appUrl } from "@/lib/app-url";
 import { HoneypotField, useFormToken } from "@/components/portal/spam-guard";
 import { uploaderApi } from "@/lib/api";
 import type { UploadedAttachment } from "@/lib/api/uploader";
@@ -214,12 +214,18 @@ export function FeedbackSubmit({
                 <Button variant="outline" onClick={() => handleOpenChange(false)}>
                   {t("common.cancel")}
                 </Button>
+                {/* A relative /login is swallowed by the portal's own
+                    subdomain rewrite (`<tenant>.<root>/login` becomes
+                    `/portal/<tenant>/login`, which doesn't exist, and 404s)
+                    — the portal itself runs on the tenant subdomain, so this
+                    has to be an absolute link to the root app, same pattern
+                    as the layout's signup CTA (see lib/app-url.ts). */}
                 <Button
                   asChild
                   className="text-white hover:opacity-90"
                   style={{ backgroundColor: brand }}
                 >
-                  <Link href="/login">{t("nav.signIn")}</Link>
+                  <a href={appUrl("/login")}>{t("nav.signIn")}</a>
                 </Button>
               </div>
             </div>
