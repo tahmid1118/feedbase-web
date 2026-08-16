@@ -188,6 +188,14 @@
       "exportA": "Sì. Feedback, roadmap e changelog sono tuoi, e c'è una API REST per estrarre tutto. Eliminando l'account spariscono gli spazi che possiedi e i loro contenuti — nessun vincolo.",
       "afterQ": "Cosa succede subito dopo la registrazione?",
       "afterA": "Dai un nome allo spazio, scegli un sottodominio e sei sulla tua board — circa tre minuti, senza carta di credito. Poi condividi il link con i tuoi utenti: è l'unica cosa tra te e il primo feedback vero."
+    },
+    "proof": {
+      "heading": "Questo è ciò che vedono i tuoi utenti",
+      "subheading": "Screenshot reali di uno spazio FeedBoard attivo, non un mockup.",
+      "boardCaption": "Una board reale — voti e stato, aggiornati in tempo reale",
+      "dialogCaption": "Nessun account necessario. Solo un titolo e un'email.",
+      "roadmapCaption": "Sposta una card e la roadmap si aggiorna per tutti",
+      "commentsCaption": "Le risposte mostrano un segno di spunta verificato quando è davvero il proprietario"
     }
   },
   "common": {

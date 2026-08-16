@@ -220,6 +220,14 @@
       "exportA": "Yes. Your feedback, roadmap and changelog belong to you, and there's a REST API to read it all out. Deleting your account removes the workspaces you own along with their contents — no lock-in and no hostage-taking.",
       "afterQ": "What happens right after I sign up?",
       "afterA": "You name your workspace, pick a subdomain, and you're on your board — about three minutes, no credit card. The next step is sharing the link with your users, which is the only thing standing between you and your first piece of real feedback."
+    },
+    "proof": {
+      "heading": "This is what your users see",
+      "subheading": "Real screenshots from a live FeedBoard workspace, not a mockup.",
+      "boardCaption": "A real board — votes and status, updated live",
+      "dialogCaption": "No account needed. Just a title and an email.",
+      "roadmapCaption": "Drag a card, and the roadmap updates for everyone watching",
+      "commentsCaption": "Replies show a verified tick when it's really the owner"
     }
   },
   "dashboard": {

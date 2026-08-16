@@ -188,6 +188,14 @@
       "exportA": "Tak. Twoje opinie, mapa drogowa i changelog należą do Ciebie, a REST API pozwala wszystko odczytać. Usunięcie konta usuwa przestrzenie, które posiadasz, wraz z zawartością — bez uzależnienia od dostawcy.",
       "afterQ": "Co dzieje się zaraz po rejestracji?",
       "afterA": "Nazywasz przestrzeń, wybierasz subdomenę i jesteś na swojej tablicy — około trzech minut, bez karty. Potem udostępniasz link użytkownikom: to jedyna rzecz między Tobą a pierwszą prawdziwą opinią."
+    },
+    "proof": {
+      "heading": "To widzą Twoi użytkownicy",
+      "subheading": "Prawdziwe zrzuty ekranu z działającej przestrzeni FeedBoard, nie makieta.",
+      "boardCaption": "Prawdziwa tablica — głosy i status, aktualizowane na żywo",
+      "dialogCaption": "Konto nie jest potrzebne. Tylko tytuł i e-mail.",
+      "roadmapCaption": "Przenieś kartę, a mapa drogowa zaktualizuje się dla wszystkich",
+      "commentsCaption": "Odpowiedzi pokazują zweryfikowany znacznik, gdy to naprawdę właściciel"
     }
   },
   "common": {

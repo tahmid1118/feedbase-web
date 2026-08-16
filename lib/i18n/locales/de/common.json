@@ -188,6 +188,14 @@
       "exportA": "Ja. Ihr Feedback, Ihre Roadmap und Ihr Changelog gehören Ihnen, und eine REST-API liest alles aus. Beim Löschen Ihres Kontos verschwinden die von Ihnen besessenen Workspaces samt Inhalten — kein Lock-in.",
       "afterQ": "Was passiert direkt nach der Anmeldung?",
       "afterA": "Sie benennen Ihren Workspace, wählen eine Subdomain und sind auf Ihrem Board — rund drei Minuten, keine Kreditkarte. Danach teilen Sie den Link mit Ihren Nutzern; das ist das Einzige, was zwischen Ihnen und dem ersten echten Feedback steht."
+    },
+    "proof": {
+      "heading": "Das sehen Ihre Nutzer",
+      "subheading": "Echte Screenshots aus einem laufenden FeedBoard-Workspace, kein Mockup.",
+      "boardCaption": "Ein echtes Board — Stimmen und Status, live aktualisiert",
+      "dialogCaption": "Kein Konto nötig. Nur ein Titel und eine E-Mail-Adresse.",
+      "roadmapCaption": "Karte verschieben, und die Roadmap aktualisiert sich für alle",
+      "commentsCaption": "Antworten zeigen ein verifiziertes Häkchen, wenn es wirklich der Inhaber ist"
     }
   },
   "common": {

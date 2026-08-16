@@ -10,6 +10,7 @@ import { PricingSection } from "@/components/pricing/pricing-section";
 import { FeedbackLoopFlow } from "@/components/landing/feedback-loop-flow";
 import { ComparisonTable } from "@/components/landing/comparison-table";
 import { LandingFaq } from "@/components/landing/landing-faq";
+import { ProductProof } from "@/components/landing/product-proof";
 import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
 import { BoostDomainRatingBadge } from "@/components/landing/boost-domain-rating-badge";
@@ -280,6 +281,13 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── Product proof ───────────────────────────────────────────────── */}
+      {/* Real screenshots, placed before the abstract flow diagram on
+          purpose: proof comes before explanation. This was the single
+          biggest gap the audit found — a visitor could read the entire page
+          without ever seeing the actual product. */}
+      <ProductProof t={t} />
 
       {/* The full system-flow diagram, promoted from its own "How it works"
           section into hero position (option B of two being compared — see

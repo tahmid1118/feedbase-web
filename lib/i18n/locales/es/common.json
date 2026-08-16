@@ -188,6 +188,14 @@
       "exportA": "Sí. Tu feedback, hoja de ruta y changelog son tuyos, y hay una API REST para extraerlo todo. Borrar tu cuenta elimina los espacios que posees y su contenido — sin ataduras.",
       "afterQ": "¿Qué pasa justo después de registrarme?",
       "afterA": "Pones nombre a tu espacio, eliges un subdominio y ya estás en tu tablero — unos tres minutos, sin tarjeta. Después compartes el enlace con tus usuarios: es lo único que te separa de tu primer feedback real."
+    },
+    "proof": {
+      "heading": "Esto es lo que ven tus usuarios",
+      "subheading": "Capturas reales de un espacio FeedBoard en funcionamiento, no una maqueta.",
+      "boardCaption": "Un tablero real: votos y estado, actualizados en vivo",
+      "dialogCaption": "No hace falta cuenta. Solo un título y un correo.",
+      "roadmapCaption": "Mueve una tarjeta y la hoja de ruta se actualiza para todos",
+      "commentsCaption": "Las respuestas muestran una marca verificada cuando es realmente el propietario"
     }
   },
   "common": {

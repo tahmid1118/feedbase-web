@@ -188,6 +188,14 @@
       "exportA": "Sim. Seu feedback, roadmap e changelog são seus, e há uma API REST para extrair tudo. Excluir sua conta remove os espaços que você possui e seus conteúdos — sem amarras.",
       "afterQ": "O que acontece logo após o cadastro?",
       "afterA": "Você nomeia seu espaço, escolhe um subdomínio e já está no seu quadro — cerca de três minutos, sem cartão. Depois é compartilhar o link com seus usuários: é a única coisa entre você e o primeiro feedback real."
+    },
+    "proof": {
+      "heading": "É isso que seus usuários veem",
+      "subheading": "Capturas reais de um workspace FeedBoard em funcionamento, não uma maquete.",
+      "boardCaption": "Um quadro real — votos e status, atualizados ao vivo",
+      "dialogCaption": "Nenhuma conta necessária. Só um título e um e-mail.",
+      "roadmapCaption": "Mova um cartão e o roadmap é atualizado para todos",
+      "commentsCaption": "As respostas mostram um selo verificado quando é realmente o proprietário"
     }
   },
   "common": {

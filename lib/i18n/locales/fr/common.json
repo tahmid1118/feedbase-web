@@ -188,6 +188,14 @@
       "exportA": "Oui. Vos retours, votre feuille de route et votre journal vous appartiennent, et une API REST permet de tout extraire. Supprimer votre compte supprime les espaces que vous possédez et leur contenu — aucun verrouillage.",
       "afterQ": "Que se passe-t-il juste après l'inscription ?",
       "afterA": "Vous nommez votre espace, choisissez un sous-domaine, et vous êtes sur votre tableau — environ trois minutes, sans carte bancaire. Ensuite, partagez le lien avec vos utilisateurs : c'est la seule chose entre vous et votre premier vrai retour."
+    },
+    "proof": {
+      "heading": "Voici ce que voient vos utilisateurs",
+      "subheading": "De vraies captures d'un espace FeedBoard en activité, pas une maquette.",
+      "boardCaption": "Un vrai tableau — votes et statut, mis à jour en direct",
+      "dialogCaption": "Aucun compte requis. Juste un titre et un e-mail.",
+      "roadmapCaption": "Déplacez une carte, et la feuille de route se met à jour pour tout le monde",
+      "commentsCaption": "Les réponses affichent une coche vérifiée quand c'est vraiment le propriétaire"
     }
   },
   "common": {

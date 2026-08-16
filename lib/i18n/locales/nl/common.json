@@ -188,6 +188,14 @@
       "exportA": "Ja. Je feedback, roadmap en changelog zijn van jou, en er is een REST-API om alles uit te lezen. Je account verwijderen verwijdert de werkruimtes die je bezit met hun inhoud — geen lock-in.",
       "afterQ": "Wat gebeurt er direct na aanmelden?",
       "afterA": "Je geeft je werkruimte een naam, kiest een subdomein en staat op je bord — ongeveer drie minuten, geen creditcard. Daarna deel je de link met je gebruikers: het enige wat tussen jou en je eerste echte feedback staat."
+    },
+    "proof": {
+      "heading": "Dit is wat je gebruikers zien",
+      "subheading": "Echte screenshots van een actieve FeedBoard-werkruimte, geen mockup.",
+      "boardCaption": "Een echt bord — stemmen en status, live bijgewerkt",
+      "dialogCaption": "Geen account nodig. Alleen een titel en een e-mailadres.",
+      "roadmapCaption": "Versleep een kaart en de roadmap werkt bij voor iedereen die kijkt",
+      "commentsCaption": "Reacties tonen een geverifieerd vinkje wanneer het echt de eigenaar is"
     }
   },
   "common": {
