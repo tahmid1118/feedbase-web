@@ -228,7 +228,8 @@
     "updating": "Bijwerken…",
     "remove": "Verwijderen",
     "name": "Naam",
-    "role": "Rol"
+    "role": "Rol",
+    "previous": "Vorige"
   },
   "dashboard": {
     "welcomeBack": "Welkom terug"

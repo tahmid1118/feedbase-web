@@ -48,7 +48,8 @@
     "updating": "Updating…",
     "remove": "Remove",
     "name": "Name",
-    "role": "Role"
+    "role": "Role",
+    "previous": "Previous"
   },
   "landing": {
     "hero": {

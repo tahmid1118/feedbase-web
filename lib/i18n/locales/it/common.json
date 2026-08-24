@@ -228,7 +228,8 @@
     "updating": "Aggiornamento…",
     "remove": "Rimuovi",
     "name": "Nome",
-    "role": "Ruolo"
+    "role": "Ruolo",
+    "previous": "Precedente"
   },
   "dashboard": {
     "welcomeBack": "Bentornato"
