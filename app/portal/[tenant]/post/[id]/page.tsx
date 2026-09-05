@@ -118,7 +118,7 @@ export default async function PortalPostPage({
           })();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <Link
         href={`/portal/${decoded}/`}
         className="inline-flex items-center gap-1 text-sm text-[#1c0a0c]/60 hover:text-[#1c0a0c]"
@@ -127,18 +127,21 @@ export default async function PortalPostPage({
         {t("portal.backToBoard")}
       </Link>
 
-      <Card className="p-4 sm:p-6">
-        <div className="flex gap-3 sm:gap-6">
-          <div className="flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9] sm:h-16 sm:w-16 sm:gap-1">
+      {/* Tighter on a phone throughout. Every gap here was tuned at desktop
+          width, and stacked up they pushed the comments — the reason most
+          visitors open a post at all — well below the fold. */}
+      <Card className="p-3 sm:p-6">
+        <div className="flex gap-2.5 sm:gap-6">
+          <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9] sm:h-16 sm:w-16 sm:gap-1">
             <ThumbsUp className="h-4 w-4 text-[#1c0a0c]/60 sm:h-5 sm:w-5" />
             <span className="text-xs font-semibold text-[#1c0a0c] sm:text-sm">
               {post.vote_count}
             </span>
           </div>
 
-          <div className="min-w-0 flex-1 space-y-4">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <h1 className="text-xl font-bold break-words text-[#1c0a0c] sm:text-2xl">
+          <div className="min-w-0 flex-1 space-y-2.5 sm:space-y-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+              <h1 className="text-lg leading-snug font-bold break-words text-[#1c0a0c] sm:text-2xl sm:leading-tight">
                 {post.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 sm:shrink-0 sm:justify-end">
@@ -156,7 +159,7 @@ export default async function PortalPostPage({
                 />
               </div>
             </div>
-            <p className="whitespace-pre-wrap text-[#1c0a0c]/70">
+            <p className="text-[15px] leading-relaxed whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
               {post.description}
             </p>
 
@@ -166,9 +169,12 @@ export default async function PortalPostPage({
               </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">
+            {/* gap-x/gap-y split: at a uniform gap-4 these four items wrapped
+                onto three near-empty lines on a phone. Tightening the vertical
+                gap lets them pack onto one or two. */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
               <span className="flex items-center gap-1">
-                <MessageSquare className="h-4 w-4" />
+                <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 {t("portal.nComments", { count: post.comment_count ?? 0 })}
               </span>
               <span className="flex items-center gap-1.5">
@@ -196,7 +202,7 @@ export default async function PortalPostPage({
               </span>
               {post.created_at && (
                 <span className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
+                  <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   <LocalTime date={post.created_at} />
                 </span>
               )}

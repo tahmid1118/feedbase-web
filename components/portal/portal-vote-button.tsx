@@ -70,7 +70,10 @@ export function PortalVoteButton({
       onClick={toggle}
       aria-pressed={voted}
       aria-label={voted ? "Remove vote" : "Upvote"}
-      className="group/vote relative z-[2] flex h-14 w-12 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border transition-all duration-150 hover:shadow-sm active:scale-90"
+      // Smaller on a phone: at a fixed 56px this was the tallest thing in a
+      // board card and set the floor on card height, so it capped how many
+      // posts fit on screen. 44px still clears the minimum touch target.
+      className="group/vote relative z-[2] flex h-11 w-10 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border transition-all duration-150 hover:shadow-sm active:scale-90 sm:h-14 sm:w-12"
       style={
         voted
           ? { backgroundColor: brand, borderColor: brand, color: "#fff" }
@@ -82,10 +85,10 @@ export function PortalVoteButton({
       }
     >
       <ThumbsUp
-        className="h-4 w-4 transition-transform duration-150 group-hover/vote:scale-125"
+        className="h-3.5 w-3.5 transition-transform duration-150 group-hover/vote:scale-125 sm:h-4 sm:w-4"
         style={voted ? { fill: "#fff", color: "#fff" } : { color: brand }}
       />
-      <span className="text-sm font-semibold">{count}</span>
+      <span className="text-[13px] leading-none font-semibold sm:text-sm">{count}</span>
     </button>
   );
 }
