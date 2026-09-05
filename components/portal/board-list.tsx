@@ -119,7 +119,7 @@ export function BoardList({
       {posts.map((post) => (
         <div
           key={post.id}
-          className="relative isolate rounded-xl border border-black/5 bg-white p-2.5 transition-shadow hover:shadow-md sm:p-4"
+          className="relative isolate rounded-xl border border-black/5 bg-white p-2 transition-shadow hover:shadow-md sm:p-4"
         >
           <Link
             href={`/portal/${tenant}/post/${post.id}`}
@@ -134,7 +134,7 @@ export function BoardList({
               brand={brand}
             />
 
-            <div className="min-w-0 flex-1 space-y-1 sm:space-y-2">
+            <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-2">
               <div className="flex items-start justify-between gap-2 sm:gap-3">
                 {/* flex-1 + min-w-0: without BOTH, this column keeps its
                     max-content width and the title runs underneath the status
@@ -148,35 +148,35 @@ export function BoardList({
                   <div className="flex min-w-0 items-start gap-1.5 sm:gap-2">
                     <PostTypeIcon
                       type={post.post_type}
-                      className="mt-[3px] h-3.5 w-3.5 shrink-0 text-[#1c0a0c]/50 sm:mt-1 sm:h-4 sm:w-4"
+                      className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-1 sm:h-4 sm:w-4"
                     />
                     {/* break-words is load-bearing, not defensive: a title like
                         "Progress/Calendar/Customization" is one unbroken token
                         to the line breaker, so without it the word overflows
                         the column and is overlapped by the status badge. */}
-                    <h3 className="min-w-0 text-[15px] leading-snug font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
+                    <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
                       {post.title}
                     </h3>
                   </div>
-                  <p className="mt-0.5 line-clamp-2 text-[13px] leading-snug text-[#1c0a0c]/70 sm:mt-1 sm:text-sm sm:leading-normal">
+                  <p className="mt-0.5 line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:mt-1 sm:text-sm sm:leading-normal">
                     {post.description}
                   </p>
                 </div>
                 <span
-                  className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium sm:px-3 sm:py-1 sm:text-xs ${STATUS_BADGE[post.status]}`}
+                  className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium sm:px-3 sm:py-1 sm:text-xs ${STATUS_BADGE[post.status]}`}
                 >
                   {t(`status.${post.status}`)}
                 </span>
               </div>
 
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-1 sm:text-xs">
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[10px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-1 sm:text-xs">
                 <span className="flex items-center gap-1">
-                  <MessageSquare className="h-3 w-3" />
+                  <MessageSquare className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                   {t("portal.nComments", { count: post.comment_count ?? 0 })}
                 </span>
                 {(post.attachment_count ?? 0) > 0 && (
                   <span className="flex items-center gap-1">
-                    <Paperclip className="h-3 w-3" />
+                    <Paperclip className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                     {post.attachment_count}
                   </span>
                 )}
@@ -185,6 +185,11 @@ export function BoardList({
                   <Badge
                     key={tag.id}
                     variant="outline"
+                    // Badge is a fixed h-5/text-xs by default, which after the
+                    // meta row dropped to 10px made the tag the tallest thing
+                    // in it — so the row height ignored the smaller type until
+                    // this came down with it.
+                    className="max-sm:h-4 max-sm:px-1.5 max-sm:text-[10px]"
                     style={
                       tag.color_hex
                         ? { color: tag.color_hex, borderColor: tag.color_hex }

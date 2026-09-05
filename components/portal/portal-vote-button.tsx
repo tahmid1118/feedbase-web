@@ -88,7 +88,12 @@ export function PortalVoteButton({
         className="h-3.5 w-3.5 transition-transform duration-150 group-hover/vote:scale-125 sm:h-4 sm:w-4"
         style={voted ? { fill: "#fff", color: "#fff" } : { color: brand }}
       />
-      <span className="text-[13px] leading-none font-semibold sm:text-sm">{count}</span>
+      {/* The button keeps its 44px height (the minimum touch target) even
+          though the type came down, so this doesn't change card height — it
+          just stops the tally looking oversized next to the smaller title. */}
+      <span className="text-[12px] leading-none font-semibold sm:text-sm">
+        {count}
+      </span>
     </button>
   );
 }
