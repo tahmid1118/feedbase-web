@@ -470,6 +470,7 @@
   },
   "portal": {
     "board": "Bord",
+    "changelogShort": "Wijzigingen",
     "shareFeedback": "Deel uw feedback",
     "type": "Type",
     "title": "Titel",

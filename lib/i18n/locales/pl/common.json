@@ -486,6 +486,7 @@
   },
   "portal": {
     "board": "Tablica",
+    "changelogShort": "Zmiany",
     "shareFeedback": "Podziel się opinią",
     "type": "Typ",
     "title": "Tytuł",

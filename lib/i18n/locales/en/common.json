@@ -471,6 +471,7 @@
   },
   "portal": {
     "board": "Board",
+    "changelogShort": "Changelog",
     "shareFeedback": "Share your feedback",
     "type": "Type",
     "title": "Title",

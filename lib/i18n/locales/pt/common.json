@@ -470,6 +470,7 @@
   },
   "portal": {
     "board": "Quadro",
+    "changelogShort": "Alterações",
     "shareFeedback": "Partilhe o seu feedback",
     "type": "Tipo",
     "title": "Título",

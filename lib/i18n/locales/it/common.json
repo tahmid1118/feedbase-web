@@ -470,6 +470,7 @@
   },
   "portal": {
     "board": "Bacheca",
+    "changelogShort": "Modifiche",
     "shareFeedback": "Condividi il tuo feedback",
     "type": "Tipo",
     "title": "Titolo",

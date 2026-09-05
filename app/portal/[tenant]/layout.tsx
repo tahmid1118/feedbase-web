@@ -86,17 +86,21 @@ export default async function PortalLayout({
 
   return (
     <div className="flex min-h-screen flex-col bg-[#fdf8f9]">
-      {/* Brand + language only. The Board/Changelog nav used to live here too,
-          which on a phone forced a third wrapped row (logo, then language,
-          then a full-width nav row) before any of the tenant's own content —
-          the growth bar above it already costs ~130px, so the header alone
-          could push "Feedback Board" a full screen down. Two items always fit
-          one row (the name truncates), so this needs no wrap/order juggling. */}
+      {/* Brand, nav and language on ONE row at every width. The nav was moved
+          down into the page body for a while because at full size these three
+          wrapped to a third row on a phone — but the fix for that is sizing,
+          not relocation: the pills and the language control (which already
+          shortens to the language CODE) are both compact below `sm`, so all
+          three fit across a 390px viewport with the tenant name truncating if
+          it has to. Folding the nav back in reclaims the whole body row it
+          used to occupy above the fold. */}
       <header className="border-b border-black/5 bg-white">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-2.5 sm:gap-3 sm:px-6 sm:py-4">
+          {/* min-w-0 but no flex-1: the name truncates once the row is full,
+              without the link claiming the empty space on a wide screen. */}
           <Link
             href={`/portal/${decodeURIComponent(tenant)}`}
-            className="flex min-w-0 flex-1 items-center gap-2 sm:flex-initial sm:gap-3"
+            className="flex min-w-0 items-center gap-2 sm:gap-3"
           >
             <span className="shrink-0">
               <PortalLogo
@@ -105,15 +109,22 @@ export default async function PortalLayout({
                 brand={brand}
               />
             </span>
-            <span className="truncate text-base font-bold text-[#1c0a0c] sm:text-lg">
+            <span className="truncate text-[15px] font-bold text-[#1c0a0c] sm:text-lg">
               {info.name}
             </span>
           </Link>
 
-          {/* Visitors are the tenant's own users, so they get their own language
-              control — the dashboard navbar isn't shown here. */}
-          <div className="shrink-0">
-            <LanguageSelector iconColor={brand} className="border-black/10" />
+          {/* ml-auto pins this group right; shrink-0 makes the brand name the
+              thing that gives way, since it's the only truncatable item in the
+              row. Visitors are the tenant's own users, so they get their own
+              language control — the dashboard navbar isn't shown here. */}
+          <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-3">
+            <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
+            <LanguageSelector
+              iconColor={brand}
+              className="border-black/10"
+              compact
+            />
           </div>
         </div>
       </header>
@@ -122,11 +133,6 @@ export default async function PortalLayout({
           Tighter vertical padding on a phone: every px here is one fewer px of
           the actual board above the fold. */}
       <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-4 sm:px-6 sm:py-8">
-        {/* The Board/Changelog nav now lives in the page body, above the page's
-            own heading, instead of in the header chrome above the fold. */}
-        <div className="-mx-1 mb-3 overflow-x-auto px-1 sm:mx-0 sm:mb-4 sm:overflow-visible sm:px-0">
-          <PortalNav tenant={decodeURIComponent(tenant)} brand={brand} />
-        </div>
         {children}
       </main>
 

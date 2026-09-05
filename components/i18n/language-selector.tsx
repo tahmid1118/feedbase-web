@@ -26,9 +26,18 @@ import {
 export function LanguageSelector({
   className,
   iconColor = "#c74959",
+  compact = false,
 }: {
   className?: string;
   iconColor?: string;
+  /**
+   * Drops the globe below `sm`, leaving a bare language-code chip. Used by the
+   * portal header, where this shares one row with the brand and the nav on a
+   * phone; the globe is ~20px of that row and the "EN" already says what the
+   * control is. Off elsewhere — a lone code with no icon in the marketing or
+   * dashboard navbar reads as a stray abbreviation.
+   */
+  compact?: boolean;
 }) {
   const router = useRouter();
   // Server-resolved language — always agrees with the rendered page content.
@@ -46,9 +55,14 @@ export function LanguageSelector({
     <Select value={current} onValueChange={onChange}>
       <SelectTrigger
         aria-label="Select language"
-        className={`h-9 w-auto gap-1 border-[#e399a3]/50 px-2 sm:gap-1.5 sm:px-2.5 ${className ?? ""}`}
+        className={`w-auto gap-1 border-[#e399a3]/50 px-2 sm:h-9 sm:gap-1.5 sm:px-2.5 ${
+          compact ? "h-8" : "h-9"
+        } ${className ?? ""}`}
       >
-        <Globe className="h-4 w-4 shrink-0" style={{ color: iconColor }} />
+        <Globe
+          className={`h-4 w-4 shrink-0 ${compact ? "hidden sm:block" : ""}`}
+          style={{ color: iconColor }}
+        />
         {/* Explicit children: Radix resolves the item label only on the client,
             so without this the trigger server-renders blank. */}
         <SelectValue>
