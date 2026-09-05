@@ -536,14 +536,24 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      {/* sm:flex-wrap: seven tabs plus four filter controls are wider than the
+          content column at common laptop widths, and without it the toolbar had
+          nowhere to go but ON TOP of the tab rail (measured: two controls
+          overlapping the rail at 1280px). Wrapping lets it drop to its own
+          line instead. */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
         <Tabs value={status} onValueChange={setStatus} className="min-w-0">
           {/* Six pills are wider than a phone. `TabsList` is an inline-flex with
               no overflow handling, so "Rejected" was simply clipped off the edge
               and unreachable. Scroll the row instead (same approach as the
               Settings tab rail), bleeding to the screen edges on mobile so the
               last pill isn't hidden under the page gutter. */}
-          <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0">
+          {/* sm:w-max is what makes the wrap above work. TabsList is min-w-max
+              inside an overflow-visible block, so the flex item measured
+              NARROWER than the rail it renders — flexbox saw room that wasn't
+              there and packed the toolbar into it. Sizing this to its content
+              lets the row wrap honestly. */}
+          <div className="-mx-4 overflow-x-auto px-4 pb-1 sm:mx-0 sm:w-max sm:overflow-visible sm:px-0 sm:pb-0">
             <TabsList className="min-w-max border border-[#e399a3]/30 bg-white">
               {["all", "open", "planned", "in_progress", "completed", "rejected", "spam"].map((s) => (
                 <TabsTrigger key={s} value={s} className={TRIGGER_CLASS}>
@@ -554,14 +564,21 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           </div>
         </Tabs>
 
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="relative">
+        {/* Every control here was a fixed pixel width, so on a phone they wrapped
+            one-per-row and the filters alone cost more height than two posts.
+            Below `sm` the selects `flex-1` onto a single shared row instead —
+            flex-grow rather than a fixed basis, so they divide the row evenly
+            whether there are two of them or three (the tag filter only renders
+            when the workspace has tags, and a fixed 50% basis left it stranded
+            alone on a third row). The search keeps its own full-width row. */}
+        <div className="flex flex-wrap items-center gap-2 max-sm:[&>*]:min-w-0 max-sm:[&>*]:flex-1">
+          <div className="relative max-sm:!basis-full">
             <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#1c0a0c]/40" />
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t("feedback.searchPlaceholder")}
-              className="w-48 pl-8"
+              className="w-full pl-8 sm:w-48"
             />
           </div>
 
@@ -569,7 +586,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             value={sort}
             onValueChange={(v) => setSort(v as BoardSort)}
           >
-            <SelectTrigger className="w-[165px]">
+            <SelectTrigger className="w-full sm:w-[165px]">
               <ArrowUpDown className="h-4 w-4 text-[#1c0a0c]/40" />
               <SelectValue />
             </SelectTrigger>
@@ -583,7 +600,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
           </Select>
 
           <Select value={postType} onValueChange={setPostType}>
-            <SelectTrigger className="w-[150px]">
+            <SelectTrigger className="w-full sm:w-[150px]">
               <SelectValue placeholder={t("feedback.allTypes")} />
             </SelectTrigger>
             <SelectContent>
@@ -605,7 +622,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
 
           {tags.length > 0 && (
             <Select value={tagId} onValueChange={setTagId}>
-              <SelectTrigger className="w-[140px]">
+              <SelectTrigger className="w-full sm:w-[140px]">
                 <SelectValue placeholder={t("feedback.allTags")} />
               </SelectTrigger>
               <SelectContent>
@@ -724,7 +741,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
             return (
               <div
                 key={post.id}
-                className="relative isolate rounded-xl border border-[#e399a3]/20 bg-white p-4 transition-all hover:border-[#c74959]/40 hover:shadow-md"
+                className="relative isolate rounded-xl border border-[#e399a3]/20 bg-white p-2.5 transition-all hover:border-[#c74959]/40 hover:shadow-md sm:p-4"
               >
                 {/* Stretched link: the whole card navigates, except elements above it. */}
                 <Link
@@ -732,7 +749,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                   aria-label={t("portal.openPost", { title: post.title })}
                   className="absolute inset-0 z-[1] rounded-xl"
                 />
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2 sm:gap-3">
                   {selectionEnabled && (
                     <div className="relative z-[2] flex items-center pt-1">
                       <Checkbox
@@ -753,34 +770,36 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                   <div
                     aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
                     title={t("postDetail.upvoteTitle")}
-                    className="relative z-[2] flex h-12 w-12 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c]"
+                    className="relative z-[2] flex h-11 w-10 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c] sm:h-12 sm:w-12 sm:gap-1"
                   >
-                    <ThumbsUp className="h-4 w-4 text-[#c74959]" />
-                    <span className="text-xs font-semibold">{post.vote_count}</span>
+                    <ThumbsUp className="h-3.5 w-3.5 text-[#c74959] sm:h-4 sm:w-4" />
+                    <span className="text-[12px] font-semibold sm:text-xs">
+                      {post.vote_count}
+                    </span>
                   </div>
 
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
+                  <div className="min-w-0 flex-1 space-y-1 sm:space-y-2">
+                    <div className="flex items-start justify-between gap-2 sm:gap-4">
+                      {/* min-w-0 with flex-1: without BOTH, this column keeps its
+                          max-content width and the title is squeezed against the
+                          status badge instead of wrapping beside it. */}
+                      <div className="min-w-0 flex-1">
+                        {/* items-START, not center: a title that wraps floats the
+                            type icon against the middle line otherwise, reading
+                            as a stray glyph rather than a label for the post. */}
+                        <div className="flex min-w-0 items-start gap-1.5 sm:gap-2">
                           <PostTypeIcon
                             type={post.post_type}
-                            className="h-4 w-4 shrink-0 text-[#1c0a0c]/50"
+                            className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-0.5 sm:h-4 sm:w-4"
                           />
-                          <h3 className="font-semibold text-[#1c0a0c]">
+                          <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
                             {post.title}
                           </h3>
                           {post.is_pinned ? (
-                            <Pin className="h-3.5 w-3.5 fill-[#c74959] text-[#c74959]" />
+                            <Pin className="mt-0.5 h-3.5 w-3.5 shrink-0 fill-[#c74959] text-[#c74959]" />
                           ) : null}
-                          {isOnRoadmap && (
-                            <span className="relative z-[2] inline-flex items-center gap-1 rounded-full bg-[#c74959]/10 px-2 py-0.5 text-[10px] font-medium text-[#c74959]">
-                              <GitBranch className="h-3 w-3" />
-                              {t("feedback.onRoadmap")}
-                            </span>
-                          )}
                         </div>
-                        <p className="mt-1 line-clamp-2 text-sm text-[#1c0a0c]/70">
+                        <p className="mt-0.5 line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:mt-1 sm:text-sm sm:leading-normal">
                           {post.description}
                         </p>
                         {/* WHY it was flagged. A verdict with no explanation is
@@ -797,33 +816,51 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                           />
                         )}
                       </div>
+                      {/* shrink-0 + nowrap: this is a two-word label in English
+                          and longer in most other locales, so without both it
+                          wraps to two lines and drags the card taller. */}
                       <span
-                        className={`rounded-full px-3 py-1 text-xs font-medium ${STATUS_BADGE[post.status]}`}
+                        className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium whitespace-nowrap sm:px-3 sm:py-1 sm:text-xs ${STATUS_BADGE[post.status]}`}
                       >
                         {t(`status.${post.status}`)}
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#1c0a0c]/60">
+                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[10px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-1 sm:text-xs">
+                      {/* "On roadmap" belongs here, with the other metadata, not
+                          in the title row. Inline beside the title it took ~85px
+                          out of the line on a phone, so a normal four-word title
+                          wrapped to four near-empty lines with the chip stranded
+                          in the middle of them. */}
+                      {isOnRoadmap && (
+                        <span className="relative z-[2] inline-flex shrink-0 items-center gap-1 rounded-full bg-[#c74959]/10 px-1.5 py-0.5 font-medium whitespace-nowrap text-[#c74959] sm:px-2">
+                          <GitBranch className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+                          {t("feedback.onRoadmap")}
+                        </span>
+                      )}
                       <span className="flex items-center gap-1">
-                        <MessageSquare className="h-3 w-3" />
+                        <MessageSquare className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                         {t("portal.nComments", { count: post.comment_count ?? 0 })}
                       </span>
                       {(post.attachment_count ?? 0) > 0 && (
                         <span className="flex items-center gap-1">
-                          <Paperclip className="h-3 w-3" />
+                          <Paperclip className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                           {post.attachment_count}
                         </span>
                       )}
                       <span className="flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
+                        <Clock className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                         {t("portal.byAuthor", { name: post.author_name })}
                       </span>
                       {post.tags?.map((tag) => (
                         <Badge
                           key={tag.id}
                           variant="outline"
-                          className="border-[#e399a3]/40"
+                          // Badge is a fixed h-5/text-xs, which after the meta
+                          // row dropped to 10px made the tag the tallest thing
+                          // in it — the row height would ignore the smaller
+                          // type until this came down with it.
+                          className="border-[#e399a3]/40 max-sm:h-4 max-sm:px-1.5 max-sm:text-[10px]"
                           style={
                             tag.color_hex
                               ? { color: tag.color_hex, borderColor: tag.color_hex }
