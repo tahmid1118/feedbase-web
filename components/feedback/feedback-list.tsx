@@ -779,42 +779,28 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                   </div>
 
                   <div className="min-w-0 flex-1 space-y-1 sm:space-y-2">
+                    {/* ONLY the title shares this row with the status badge.
+                        The description used to live in here too, so it stopped
+                        where the badge started and left the whole area beneath
+                        the badge empty. It's a sibling now — see below. */}
                     <div className="flex items-start justify-between gap-2 sm:gap-4">
                       {/* min-w-0 with flex-1: without BOTH, this column keeps its
                           max-content width and the title is squeezed against the
-                          status badge instead of wrapping beside it. */}
-                      <div className="min-w-0 flex-1">
-                        {/* items-START, not center: a title that wraps floats the
-                            type icon against the middle line otherwise, reading
-                            as a stray glyph rather than a label for the post. */}
-                        <div className="flex min-w-0 items-start gap-1.5 sm:gap-2">
-                          <PostTypeIcon
-                            type={post.post_type}
-                            className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-0.5 sm:h-4 sm:w-4"
-                          />
-                          <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
-                            {post.title}
-                          </h3>
-                          {post.is_pinned ? (
-                            <Pin className="mt-0.5 h-3.5 w-3.5 shrink-0 fill-[#c74959] text-[#c74959]" />
-                          ) : null}
-                        </div>
-                        <p className="mt-0.5 line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:mt-1 sm:text-sm sm:leading-normal">
-                          {post.description}
-                        </p>
-                        {/* WHY it was flagged. A verdict with no explanation is
-                            impossible to review fairly — the moderator needs to
-                            see "5 links + throwaway inbox" to judge in a glance,
-                            and reason codes are also how we spot a mis-tuned
-                            weight from real traffic. */}
-                        {status === "spam" && (
-                          <SpamReasons
-                            score={post.spam_score}
-                            reasons={post.spam_reasons}
-                            quarantined={post.moderation_state === "spam"}
-                            t={t}
-                          />
-                        )}
+                          status badge instead of wrapping beside it.
+                          items-START, not center: a title that wraps floats the
+                          type icon against the middle line otherwise, reading
+                          as a stray glyph rather than a label for the post. */}
+                      <div className="flex min-w-0 flex-1 items-start gap-1.5 sm:gap-2">
+                        <PostTypeIcon
+                          type={post.post_type}
+                          className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-0.5 sm:h-4 sm:w-4"
+                        />
+                        <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
+                          {post.title}
+                        </h3>
+                        {post.is_pinned ? (
+                          <Pin className="mt-0.5 h-3.5 w-3.5 shrink-0 fill-[#c74959] text-[#c74959]" />
+                        ) : null}
                       </div>
                       {/* shrink-0 + nowrap: this is a two-word label in English
                           and longer in most other locales, so without both it
@@ -825,6 +811,25 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                         {t(`status.${post.status}`)}
                       </span>
                     </div>
+
+                    {/* Full card width, including the space under the badge. */}
+                    <p className="line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:text-sm sm:leading-normal">
+                      {post.description}
+                    </p>
+
+                    {/* WHY it was flagged. A verdict with no explanation is
+                        impossible to review fairly — the moderator needs to
+                        see "5 links + throwaway inbox" to judge in a glance,
+                        and reason codes are also how we spot a mis-tuned
+                        weight from real traffic. */}
+                    {status === "spam" && (
+                      <SpamReasons
+                        score={post.spam_score}
+                        reasons={post.spam_reasons}
+                        quarantined={post.moderation_state === "spam"}
+                        t={t}
+                      />
+                    )}
 
                     <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[10px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-1 sm:text-xs">
                       {/* "On roadmap" belongs here, with the other metadata, not

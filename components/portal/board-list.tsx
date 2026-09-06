@@ -135,32 +135,31 @@ export function BoardList({
             />
 
             <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-2">
+              {/* ONLY the title shares this row with the status badge. The
+                  description used to live in here too, so it stopped where the
+                  badge started and left the area beneath the badge empty —
+                  it's a sibling below now, at the card's full width. */}
               <div className="flex items-start justify-between gap-2 sm:gap-3">
                 {/* flex-1 + min-w-0: without BOTH, this column keeps its
                     max-content width and the title runs underneath the status
-                    badge instead of wrapping beside it. */}
-                <div className="min-w-0 flex-1">
-                  {/* items-START, not center: a title that wraps to 2-3 lines
-                      would otherwise float the type icon against the middle
-                      line, reading as a stray glyph rather than a label for
-                      the post. The small top margin optically centers it on
-                      the first line. */}
-                  <div className="flex min-w-0 items-start gap-1.5 sm:gap-2">
-                    <PostTypeIcon
-                      type={post.post_type}
-                      className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-1 sm:h-4 sm:w-4"
-                    />
-                    {/* break-words is load-bearing, not defensive: a title like
-                        "Progress/Calendar/Customization" is one unbroken token
-                        to the line breaker, so without it the word overflows
-                        the column and is overlapped by the status badge. */}
-                    <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
-                      {post.title}
-                    </h3>
-                  </div>
-                  <p className="mt-0.5 line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:mt-1 sm:text-sm sm:leading-normal">
-                    {post.description}
-                  </p>
+                    badge instead of wrapping beside it.
+                    items-START, not center: a title that wraps to 2-3 lines
+                    would otherwise float the type icon against the middle
+                    line, reading as a stray glyph rather than a label for
+                    the post. The small top margin optically centers it on
+                    the first line. */}
+                <div className="flex min-w-0 flex-1 items-start gap-1.5 sm:gap-2">
+                  <PostTypeIcon
+                    type={post.post_type}
+                    className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-1 sm:h-4 sm:w-4"
+                  />
+                  {/* break-words is load-bearing, not defensive: a title like
+                      "Progress/Calendar/Customization" is one unbroken token
+                      to the line breaker, so without it the word overflows
+                      the column and is overlapped by the status badge. */}
+                  <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
+                    {post.title}
+                  </h3>
                 </div>
                 <span
                   className={`shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium sm:px-3 sm:py-1 sm:text-xs ${STATUS_BADGE[post.status]}`}
@@ -168,6 +167,10 @@ export function BoardList({
                   {t(`status.${post.status}`)}
                 </span>
               </div>
+
+              <p className="line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:text-sm sm:leading-normal">
+                {post.description}
+              </p>
 
               <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[10px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-1 sm:text-xs">
                 <span className="flex items-center gap-1">
