@@ -192,7 +192,7 @@ export default function AdminSupportPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.support")}</h2>
+        <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("admin.nav.support")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           Live chat with workspace users. Close a chat when it&apos;s resolved —
           the user loses access but the transcript stays here.

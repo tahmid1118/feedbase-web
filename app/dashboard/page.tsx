@@ -152,7 +152,7 @@ export default async function DashboardPage() {
         tenantId={session?.user?.tenantId ?? null}
       />
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("dash.overviewTitle")}</h2>
+        <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("dash.overviewTitle")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           {t("dash.overviewSubtitle")}
         </p>
@@ -173,7 +173,7 @@ export default async function DashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-[#1c0a0c]/60">{card.label}</p>
-                <p className="mt-2 text-3xl font-bold text-[#1c0a0c]">
+                <p className="mt-2 text-2xl font-bold text-[#1c0a0c] sm:text-3xl">
                   {card.value}
                 </p>
               </div>
@@ -187,7 +187,7 @@ export default async function DashboardPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Status breakdown */}
-        <Card className="p-6 lg:col-span-1">
+        <Card className="p-4 sm:p-6 lg:col-span-1">
           <h3 className="mb-4 text-lg font-semibold text-[#1c0a0c]">
             {t("dash.feedbackByStatus")}
           </h3>
@@ -219,7 +219,7 @@ export default async function DashboardPage() {
         </Card>
 
         {/* Recent activity */}
-        <Card className="p-6 lg:col-span-2">
+        <Card className="p-4 sm:p-6 lg:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-lg font-semibold text-[#1c0a0c]">
               {t("dash.recentFeedback")}
@@ -265,7 +265,7 @@ export default async function DashboardPage() {
 
       {/* 30-day new-feedback trend */}
       {overview && (
-        <Card className="p-6">
+        <Card className="p-4 sm:p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <BarChart3 className="h-5 w-5 text-[#c74959]" />

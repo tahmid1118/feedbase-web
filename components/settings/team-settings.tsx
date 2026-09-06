@@ -119,7 +119,7 @@ export function TeamSettings() {
     <div className="space-y-6">
       {/* Invite */}
       {isOwner && (
-        <Card className="p-6">
+        <Card className="p-4 sm:p-6">
           <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("team.inviteTeammate")}</h3>
           <p className="text-sm text-[#1c0a0c]/60">
             {t("team.inviteDesc")}
@@ -201,7 +201,7 @@ export function TeamSettings() {
       )}
 
       {/* Members */}
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("team.teamMembers")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
           {t("team.subtitle")}

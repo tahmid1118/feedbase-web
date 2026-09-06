@@ -28,7 +28,7 @@ export default async function PortalChangelogDetailPage({
         {t("portal.backToChangelog")}
       </Link>
 
-      <Card className="p-8">
+      <Card className="p-4 sm:p-8">
         <h1 className="text-3xl font-bold text-[#1c0a0c]">{entry.title}</h1>
         {entry.summary && (
           <p className="mt-2 text-lg text-[#1c0a0c]/70">{entry.summary}</p>

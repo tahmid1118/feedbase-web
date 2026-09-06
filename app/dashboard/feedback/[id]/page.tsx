@@ -268,18 +268,26 @@ export default function PostDetailPage() {
 
   return (
     <div className="space-y-6">
-      {/* flex-wrap: Back + Share + Pin + Delete is wider than a phone, and
-          without it the row simply ran off the right edge with Delete
-          unreachable. The actions drop to their own line instead. */}
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <Link href="/dashboard/feedback">
-          <Button variant="ghost" size="sm">
+      {/* Back collapses to its arrow below sm. That reclaims ~110px, which is
+          what lets Share/Pin/Delete share this row instead of wrapping onto
+          their own line. The label stays for screen readers via aria-label —
+          an icon-only control still needs an accessible name. */}
+      <div className="flex items-center justify-between gap-2">
+        <Link href="/dashboard/feedback" className="shrink-0">
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label={t("postDetail.backToFeedback")}
+            className="max-sm:px-2"
+          >
             <ArrowLeft className="h-4 w-4" />
-            {t("postDetail.backToFeedback")}
+            <span className="max-sm:sr-only">
+              {t("postDetail.backToFeedback")}
+            </span>
           </Button>
         </Link>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center gap-2">
           {publicUrl && (
             <SharePost title={post.title} brand="#c74959" url={publicUrl} />
           )}
@@ -380,12 +388,15 @@ export default function PostDetailPage() {
                 {t("feedback.restoreToOpen")}
               </Button>
             ) : (
-              <div className="flex w-full items-center gap-2 sm:w-auto sm:shrink-0">
+              // w-auto, not w-full: the Select is `w-fit` by default, so
+              // stretching it to flex-1 gave "Planned" a box three times the
+              // width of its own text with the rest empty.
+              <div className="flex w-auto items-center gap-2 sm:shrink-0">
                 <Select
                   value={post.status}
                   onValueChange={(v) => handleStatusChange(v as PostStatus)}
                 >
-                  <SelectTrigger className="min-w-0 flex-1 sm:w-[150px] sm:flex-none">
+                  <SelectTrigger className="sm:w-[150px]">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

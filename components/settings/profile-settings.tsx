@@ -143,7 +143,7 @@ export function ProfileSettings() {
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("user.profile")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
           {t("profile.subtitle")}
@@ -230,7 +230,7 @@ export function ProfileSettings() {
         </div>
       </Card>
 
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("settings.password")}</h3>
         <p className="text-sm text-[#1c0a0c]/60">
           {hasPassword ? t("profile.passwordSubtitle") : t("profile.setPasswordSubtitle")}

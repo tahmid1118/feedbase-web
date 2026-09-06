@@ -72,9 +72,9 @@ export default function ChangelogDetailPage() {
         </Button>
       </Link>
 
-      <Card className="p-8">
+      <Card className="p-4 sm:p-8">
         <div className="flex items-center gap-3">
-          <h1 className="text-3xl font-bold text-[#1c0a0c]">
+          <h1 className="text-2xl font-bold text-[#1c0a0c] sm:text-3xl">
             {changelog.title}
           </h1>
           {changelog.is_published === 1 ? (

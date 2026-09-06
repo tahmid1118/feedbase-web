@@ -39,7 +39,7 @@ export default function AdminOverviewPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.overview")}</h2>
+        <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("admin.nav.overview")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           Platform-wide activity across all workspaces.
         </p>
@@ -57,7 +57,7 @@ export default function AdminOverviewPage() {
                     <s.icon className="h-5 w-5" />
                   </span>
                   <div>
-                    <p className="text-2xl font-bold text-[#1c0a0c]">{s.value ?? 0}</p>
+                    <p className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{s.value ?? 0}</p>
                     <p className="text-xs text-[#1c0a0c]/60">
                       {s.label}
                       {s.hint ? ` · ${s.hint}` : ""}

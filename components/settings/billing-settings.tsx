@@ -302,7 +302,7 @@ export function BillingSettings() {
 
   if (loading) {
     return (
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <div className="py-8 text-center text-[#1c0a0c]/60">{t("billing.loadingBilling")}</div>
       </Card>
     );
@@ -458,7 +458,7 @@ export function BillingSettings() {
 
   return (
     <div className="space-y-6">
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-sm text-[#1c0a0c]/60">{t("billing.currentPlan")}</p>
@@ -599,7 +599,7 @@ export function BillingSettings() {
         </Card>
       )}
 
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex-1 space-y-1">
               <p className="text-sm font-medium text-[#1c0a0c]">{t("billing.havePromoCode")}</p>

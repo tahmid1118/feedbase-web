@@ -170,7 +170,7 @@ export default function NotificationsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("nav.notifications")}</h2>
+          <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("nav.notifications")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             {unreadCount > 0
               ? t("notif.nUnread", { count: unreadCount })

@@ -143,7 +143,7 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.users")}</h2>
+        <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("admin.nav.users")}</h2>
         <p className="text-sm text-[#1c0a0c]/60">
           Every user across all workspaces. Change roles, reset passwords, or remove.
         </p>

@@ -166,7 +166,7 @@ export default function AdminOffersPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.offers")}</h2>
+          <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("admin.nav.offers")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             Put a promotional price on a paid plan. Active offers show a discounted
             price in every workspace&apos;s Billing tab and apply at checkout.

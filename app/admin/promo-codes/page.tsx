@@ -158,7 +158,7 @@ export default function AdminPromoCodesPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-[#1c0a0c]">{t("admin.nav.promoCodes")}</h2>
+          <h2 className="text-xl font-bold text-[#1c0a0c] sm:text-2xl">{t("admin.nav.promoCodes")}</h2>
           <p className="text-sm text-[#1c0a0c]/60">
             Generate discount and free-plan codes to share with customers.
           </p>

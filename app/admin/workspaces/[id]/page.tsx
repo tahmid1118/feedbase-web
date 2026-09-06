@@ -236,7 +236,7 @@ export default function AdminWorkspacePostsPage() {
             <ArrowLeft className="h-4 w-4" />
             All workspaces
           </Link>
-          <h2 className="mt-2 text-2xl font-bold text-[#1c0a0c]">
+          <h2 className="mt-2 text-xl font-bold text-[#1c0a0c] sm:text-2xl">
             {workspaceName || "Workspace"} · Posts
           </h2>
           <p className="text-sm text-[#1c0a0c]/60">

@@ -107,7 +107,7 @@ export function TagsSettings() {
   };
 
   return (
-    <Card className="p-6">
+    <Card className="p-4 sm:p-6">
       <div className="flex items-start justify-between">
         <div>
           <h3 className="text-lg font-semibold text-[#1c0a0c]">{t("settings.tab.tags")}</h3>
