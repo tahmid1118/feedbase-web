@@ -141,7 +141,7 @@ export default async function PortalPostPage({
             the body text starts at the card's left edge and uses the full
             width. */}
         <div className="flex items-start gap-2.5 sm:gap-6">
-          <div className="flex h-11 w-11 shrink-0 self-center flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9] sm:h-16 sm:w-16 sm:gap-1">
+          <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9] sm:h-16 sm:w-16 sm:gap-1">
             <ThumbsUp className="h-4 w-4 text-[#1c0a0c]/60 sm:h-5 sm:w-5" />
             <span className="text-xs font-semibold text-[#1c0a0c] sm:text-sm">
               {post.vote_count}

@@ -354,12 +354,14 @@ export default function PostDetailPage() {
       <Card className="gap-3 p-3 sm:gap-4 sm:p-6">
         <div className="flex items-start gap-2.5 sm:gap-6">
           {/* Read-only tally: only the public board votes, never the team.
-              self-center so it sits against the middle of the title row
-              instead of hanging off the top when the title wraps. */}
+              Top-aligned (the row's items-start), NOT self-center: centring it
+              against the title+status block parked it beside the status
+              dropdown rather than the thing it belongs to. On a list card the
+              tally IS centred, because there it stands for the whole row. */}
           <div
             aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
             title={t("postDetail.upvoteTitle")}
-            className="flex h-11 w-11 shrink-0 self-center flex-col items-center justify-center gap-0.5 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c] sm:h-16 sm:w-16 sm:gap-1"
+            className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c] sm:h-16 sm:w-16 sm:gap-1"
           >
             <ThumbsUp className="h-4 w-4 text-[#c74959] sm:h-5 sm:w-5" />
             <span className="text-xs font-semibold sm:text-sm">
