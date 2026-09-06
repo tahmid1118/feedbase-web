@@ -130,8 +130,17 @@ export default async function PortalPostPage({
       {/* Tighter on a phone throughout. Every gap here was tuned at desktop
           width, and stacked up they pushed the comments — the reason most
           visitors open a post at all — well below the fold. */}
-      <Card className="p-3 sm:p-6">
-        <div className="flex gap-2.5 sm:gap-6">
+      {/* Card is itself a flex column, so its own `gap` spaces these children —
+          no per-block margins to keep in sync. */}
+      <Card className="gap-2.5 p-3 sm:gap-4 sm:p-6">
+        {/* The vote tally sits beside the TITLE ONLY. It used to be the first
+            child of a flex row wrapping the entire card body, which locked the
+            description, attachments and meta line into a column indented past
+            a 44px box that had already ended several lines earlier — a tall
+            empty gutter down the left of the card. They're siblings now, so
+            the body text starts at the card's left edge and uses the full
+            width. */}
+        <div className="flex items-start gap-2.5 sm:gap-6">
           <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-black/5 bg-[#fdf8f9] sm:h-16 sm:w-16 sm:gap-1">
             <ThumbsUp className="h-4 w-4 text-[#1c0a0c]/60 sm:h-5 sm:w-5" />
             <span className="text-xs font-semibold text-[#1c0a0c] sm:text-sm">
@@ -139,40 +148,39 @@ export default async function PortalPostPage({
             </span>
           </div>
 
-          <div className="min-w-0 flex-1 space-y-2.5 sm:space-y-4">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
-              <h1 className="text-lg leading-snug font-bold break-words text-[#1c0a0c] sm:text-2xl sm:leading-tight">
-                {post.title}
-              </h1>
-              <div className="flex flex-wrap items-center gap-2 sm:shrink-0 sm:justify-end">
-                <Badge className={STATUS_BADGE[post.status]}>
-                  {t(`status.${post.status}`)}
-                </Badge>
-                <SharePost title={post.title} brand={brand} />
-                <PostOwnerActions
-                  tenant={decoded}
-                  postId={post.id}
-                  authorId={post.author_id ?? null}
-                  title={post.title}
-                  description={post.description}
-                  postType={post.post_type}
-                />
-              </div>
+          <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+            <h1 className="min-w-0 text-lg leading-snug font-bold break-words text-[#1c0a0c] sm:text-2xl sm:leading-tight">
+              {post.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-2 sm:shrink-0 sm:justify-end">
+              <Badge className={STATUS_BADGE[post.status]}>
+                {t(`status.${post.status}`)}
+              </Badge>
+              <SharePost title={post.title} brand={brand} />
+              <PostOwnerActions
+                tenant={decoded}
+                postId={post.id}
+                authorId={post.author_id ?? null}
+                title={post.title}
+                description={post.description}
+                postType={post.post_type}
+              />
             </div>
-            <p className="text-[15px] leading-relaxed whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
-              {post.description}
-            </p>
+          </div>
+        </div>
 
-            {post.attachments && post.attachments.length > 0 && (
-              <div className="mt-4">
-                <AttachmentGallery attachments={post.attachments} />
-              </div>
-            )}
+        <p className="text-[15px] leading-relaxed whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
+          {post.description}
+        </p>
 
-            {/* gap-x/gap-y split: at a uniform gap-4 these four items wrapped
-                onto three near-empty lines on a phone. Tightening the vertical
-                gap lets them pack onto one or two. */}
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
+        {post.attachments && post.attachments.length > 0 && (
+          <AttachmentGallery attachments={post.attachments} />
+        )}
+
+        {/* gap-x/gap-y split: at a uniform gap-4 these four items wrapped
+            onto three near-empty lines on a phone. Tightening the vertical
+            gap lets them pack onto one or two. */}
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
               <span className="flex items-center gap-1">
                 <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 {t("portal.nComments", { count: post.comment_count ?? 0 })}
@@ -220,8 +228,6 @@ export default async function PortalPostPage({
                   {tag.name}
                 </Badge>
               ))}
-            </div>
-          </div>
         </div>
       </Card>
 
