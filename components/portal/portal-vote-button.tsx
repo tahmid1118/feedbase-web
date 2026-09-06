@@ -73,7 +73,7 @@ export function PortalVoteButton({
       // Smaller on a phone: at a fixed 56px this was the tallest thing in a
       // board card and set the floor on card height, so it capped how many
       // posts fit on screen. 44px still clears the minimum touch target.
-      className="group/vote relative z-[2] flex h-11 w-10 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border transition-all duration-150 hover:shadow-sm active:scale-90 sm:h-14 sm:w-12"
+      className="group/vote relative z-[2] flex h-11 w-10 shrink-0 self-center flex-col items-center justify-center gap-0.5 rounded-lg border transition-all duration-150 hover:shadow-sm active:scale-90 sm:h-14 sm:w-12"
       style={
         voted
           ? { backgroundColor: brand, borderColor: brand, color: "#fff" }

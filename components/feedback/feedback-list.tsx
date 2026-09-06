@@ -770,7 +770,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                   <div
                     aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
                     title={t("postDetail.upvoteTitle")}
-                    className="relative z-[2] flex h-11 w-10 shrink-0 flex-col items-center justify-center gap-0.5 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c] sm:h-12 sm:w-12 sm:gap-1"
+                    className="relative z-[2] flex h-11 w-10 shrink-0 self-center flex-col items-center justify-center gap-0.5 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c] sm:h-12 sm:w-12 sm:gap-1"
                   >
                     <ThumbsUp className="h-3.5 w-3.5 text-[#c74959] sm:h-4 sm:w-4" />
                     <span className="text-[12px] font-semibold sm:text-xs">

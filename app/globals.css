@@ -91,6 +91,29 @@ body {
   h2 {
     font-family: var(--font-brand-display), Georgia, serif;
   }
+
+  /* Mobile type scale, set ONCE at the root rather than per component.
+     Tailwind's text-* utilities are rem-based, so dropping the root size
+     scales every one of them together — headings, labels, buttons, form
+     controls, table text — which is what "smaller everywhere" actually
+     requires. Doing it surface by surface would have meant touching dozens
+     of files and would drift the moment a new one is added.
+
+     `--spacing` is re-anchored to a literal 4px because Tailwind's spacing
+     scale is ALSO rem-based (calc(var(--spacing) * n)). Left alone, a
+     smaller root would silently shrink every padding, gap, width and height
+     in the app by the same 6% — including the 44px minimum touch target on
+     the vote button, which would drop to 41px. Pinning it keeps this change
+     to type only, which is what was asked for.
+
+     Arbitrary px sizes (text-[13.5px] on the dense list cards) are already
+     tuned and deliberately do not scale. */
+  @media (width < 40rem) {
+    :root {
+      font-size: 15px;
+      --spacing: 4px;
+    }
+  }
 }
 
 /* Variable-axis settings for the display face — the ONLY CSS a font swap might

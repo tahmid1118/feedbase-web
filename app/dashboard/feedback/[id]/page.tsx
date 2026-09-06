@@ -268,15 +268,18 @@ export default function PostDetailPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      {/* flex-wrap: Back + Share + Pin + Delete is wider than a phone, and
+          without it the row simply ran off the right edge with Delete
+          unreachable. The actions drop to their own line instead. */}
+      <div className="flex flex-wrap items-center justify-between gap-2">
         <Link href="/dashboard/feedback">
-          <Button variant="ghost">
+          <Button variant="ghost" size="sm">
             <ArrowLeft className="h-4 w-4" />
             {t("postDetail.backToFeedback")}
           </Button>
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {publicUrl && (
             <SharePost title={post.title} brand="#c74959" url={publicUrl} />
           )}
@@ -337,91 +340,100 @@ export default function PostDetailPage() {
         </div>
       </div>
 
-      <Card className="p-6">
-        <div className="flex gap-6">
-          {/* Read-only tally: only the public board votes, never the team. */}
+      {/* Card is a flex column, so its own gap spaces these blocks. Everything
+          below the title row is a full-width sibling rather than a child of a
+          column indented past the tally — see the note on the row below. */}
+      <Card className="gap-3 p-3 sm:gap-4 sm:p-6">
+        <div className="flex items-start gap-2.5 sm:gap-6">
+          {/* Read-only tally: only the public board votes, never the team.
+              self-center so it sits against the middle of the title row
+              instead of hanging off the top when the title wraps. */}
           <div
             aria-label={`${post.vote_count} ${post.vote_count === 1 ? "upvote" : "upvotes"}`}
             title={t("postDetail.upvoteTitle")}
-            className="flex h-16 w-16 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c]"
+            className="flex h-11 w-11 shrink-0 self-center flex-col items-center justify-center gap-0.5 rounded-lg border border-[#e399a3]/40 bg-white text-[#1c0a0c] sm:h-16 sm:w-16 sm:gap-1"
           >
-            <ThumbsUp className="h-5 w-5 text-[#c74959]" />
-            <span className="text-sm font-semibold">{post.vote_count}</span>
+            <ThumbsUp className="h-4 w-4 text-[#c74959] sm:h-5 sm:w-5" />
+            <span className="text-xs font-semibold sm:text-sm">
+              {post.vote_count}
+            </span>
           </div>
 
-          <div className="flex-1 space-y-4">
-            <div>
-              <div className="flex items-start justify-between gap-4">
-                <h1 className="text-2xl font-bold text-[#1c0a0c]">
-                  {post.title}
-                </h1>
-                {post.status === "rejected" ? (
-                  // Rejected feedback isn't a pipeline stage — offer a restore
-                  // to Open rather than a status dropdown.
-                  <Button
-                    variant="outline"
-                    className="shrink-0"
-                    onClick={() => handleStatusChange("open")}
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                    {t("feedback.restoreToOpen")}
-                  </Button>
-                ) : (
-                  <div className="flex shrink-0 items-center gap-2">
-                    <Select
-                      value={post.status}
-                      onValueChange={(v) => handleStatusChange(v as PostStatus)}
-                    >
-                      <SelectTrigger className="w-[150px]">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {STATUS_OPTIONS.map((s) => (
-                          <SelectItem key={s} value={s}>
-                            {t(`status.${s}`)}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <Button
-                      variant="outline"
-                      className="text-[#c74959] hover:bg-[#c74959]/10 hover:text-[#c74959]"
-                      onClick={() => handleStatusChange("rejected")}
-                    >
-                      <Ban className="h-4 w-4" />
-                      {t("feedback.reject")}
-                    </Button>
-                  </div>
-                )}
+          {/* Stacked on a phone. Side by side, the status Select (150px) plus
+              the Reject button are ~250px of a ~300px column and neither can
+              shrink, so the title was crushed to one word per line AND the
+              card overflowed the viewport. */}
+          <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+            <h1 className="min-w-0 text-lg leading-snug font-bold break-words text-[#1c0a0c] sm:text-2xl sm:leading-tight">
+              {post.title}
+            </h1>
+            {post.status === "rejected" ? (
+              // Rejected feedback isn't a pipeline stage — offer a restore
+              // to Open rather than a status dropdown.
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full sm:w-auto sm:shrink-0"
+                onClick={() => handleStatusChange("open")}
+              >
+                <RotateCcw className="h-4 w-4" />
+                {t("feedback.restoreToOpen")}
+              </Button>
+            ) : (
+              <div className="flex w-full items-center gap-2 sm:w-auto sm:shrink-0">
+                <Select
+                  value={post.status}
+                  onValueChange={(v) => handleStatusChange(v as PostStatus)}
+                >
+                  <SelectTrigger className="min-w-0 flex-1 sm:w-[150px] sm:flex-none">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {STATUS_OPTIONS.map((s) => (
+                      <SelectItem key={s} value={s}>
+                        {t(`status.${s}`)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <Button
+                  variant="outline"
+                  className="shrink-0 text-[#c74959] hover:bg-[#c74959]/10 hover:text-[#c74959]"
+                  onClick={() => handleStatusChange("rejected")}
+                >
+                  <Ban className="h-4 w-4" />
+                  {t("feedback.reject")}
+                </Button>
               </div>
-              <p className="mt-3 whitespace-pre-wrap text-[#1c0a0c]/70">
-                {post.description}
-              </p>
-              {post.attachments && post.attachments.length > 0 && (
-                <div className="mt-4">
-                  <AttachmentGallery attachments={post.attachments} />
-                </div>
-              )}
-            </div>
+            )}
+          </div>
+        </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-[#1c0a0c]/60">
-              <span className="flex items-center gap-1">
-                <MessageSquare className="h-4 w-4" />
-                {t("portal.nComments", { count: comments.length })}
-              </span>
-              <span className="flex items-center gap-1">
-                <Calendar className="h-4 w-4" />
-                {t("portal.byAuthor", { name: post.author_name })}
-              </span>
-              <Badge className={STATUS_BADGE[post.status]}>
-                {t(`status.${post.status}`)}
-              </Badge>
-              <Badge variant="outline">{t(`type.${post.post_type}`)}</Badge>
-            </div>
+        <p className="text-[15px] whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
+          {post.description}
+        </p>
+        {post.attachments && post.attachments.length > 0 && (
+          <AttachmentGallery attachments={post.attachments} />
+        )}
 
-            {/* Submitter contact + "implemented" notification (owner, Pro+). */}
-            {isOwner && canContactSubmitter && post.author_email ? (
-              <div className="rounded-lg border border-[#e399a3]/25 bg-[#fdf8f9] p-4">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
+          <span className="flex items-center gap-1">
+            <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            {t("portal.nComments", { count: comments.length })}
+          </span>
+          <span className="flex items-center gap-1">
+            <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+            {t("portal.byAuthor", { name: post.author_name })}
+          </span>
+          <Badge className={STATUS_BADGE[post.status]}>
+            {t(`status.${post.status}`)}
+          </Badge>
+          <Badge variant="outline">{t(`type.${post.post_type}`)}</Badge>
+        </div>
+
+        {/* Submitter contact + "implemented" notification (owner, Pro+). */}
+        {isOwner && canContactSubmitter && post.author_email ? (
+              <div className="rounded-lg border border-[#e399a3]/25 bg-[#fdf8f9] p-3 sm:p-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
@@ -480,23 +492,21 @@ export default function PostDetailPage() {
               </button>
             ) : null}
 
-            <div className="border-t border-[#e399a3]/20 pt-4">
-              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
-                {t("postDetail.tags")}
-              </p>
-              <PostTags postId={post.id} initialTags={post.tags ?? []} />
-            </div>
-
-            <DuplicateManager
-              postId={post.id}
-              duplicateOfPostId={post.duplicate_of_post_id ?? null}
-              onChange={loadPostData}
-            />
-          </div>
+        <div className="border-t border-[#e399a3]/20 pt-3 sm:pt-4">
+          <p className="mb-2 text-xs font-medium uppercase tracking-wide text-[#1c0a0c]/50">
+            {t("postDetail.tags")}
+          </p>
+          <PostTags postId={post.id} initialTags={post.tags ?? []} />
         </div>
+
+        <DuplicateManager
+          postId={post.id}
+          duplicateOfPostId={post.duplicate_of_post_id ?? null}
+          onChange={loadPostData}
+        />
       </Card>
 
-      <Card className="p-6">
+      <Card className="p-4 sm:p-6">
         <div className="mb-4 flex items-center justify-between gap-2">
           <h3 className="text-lg font-semibold text-[#1c0a0c]">
             {t("postDetail.commentsHeading", { count: comments.length })}
