@@ -795,7 +795,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                           type={post.post_type}
                           className="mt-[3px] h-3 w-3 shrink-0 text-[#1c0a0c]/50 sm:mt-0.5 sm:h-4 sm:w-4"
                         />
-                        <h3 className="min-w-0 text-[13.5px] leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
+                        <h3 className="min-w-0 text-sm leading-tight font-semibold break-words text-[#1c0a0c] sm:text-base sm:leading-normal">
                           {post.title}
                         </h3>
                         {post.is_pinned ? (
@@ -813,7 +813,7 @@ export function FeedbackList({ refreshKey = 0 }: FeedbackListProps) {
                     </div>
 
                     {/* Full card width, including the space under the badge. */}
-                    <p className="line-clamp-2 text-[12px] leading-tight text-[#1c0a0c]/70 sm:text-sm sm:leading-normal">
+                    <p className="line-clamp-2 text-xs leading-tight text-[#1c0a0c]/70 sm:text-sm sm:leading-normal">
                       {post.description}
                     </p>
 

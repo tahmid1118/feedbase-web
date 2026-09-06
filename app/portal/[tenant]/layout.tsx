@@ -109,7 +109,7 @@ export default async function PortalLayout({
                 brand={brand}
               />
             </span>
-            <span className="truncate text-[15px] font-bold text-[#1c0a0c] sm:text-lg">
+            <span className="truncate text-base font-bold text-[#1c0a0c] sm:text-lg">
               {info.name}
             </span>
           </Link>

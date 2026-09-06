@@ -169,7 +169,7 @@ export default async function PortalPostPage({
           </div>
         </div>
 
-        <p className="text-[15px] leading-relaxed whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
+        <p className="text-sm leading-relaxed whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
           {post.description}
         </p>
 
@@ -180,7 +180,7 @@ export default async function PortalPostPage({
         {/* gap-x/gap-y split: at a uniform gap-4 these four items wrapped
             onto three near-empty lines on a phone. Tightening the vertical
             gap lets them pack onto one or two. */}
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
               <span className="flex items-center gap-1">
                 <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 {t("portal.nComments", { count: post.comment_count ?? 0 })}

@@ -422,14 +422,14 @@ export default function PostDetailPage() {
           </div>
         </div>
 
-        <p className="text-[15px] whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
+        <p className="text-sm whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
           {post.description}
         </p>
         {post.attachments && post.attachments.length > 0 && (
           <AttachmentGallery attachments={post.attachments} />
         )}
 
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#1c0a0c]/60 sm:gap-x-4 sm:gap-y-2 sm:text-sm">
           <span className="flex items-center gap-1">
             <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             {t("portal.nComments", { count: comments.length })}

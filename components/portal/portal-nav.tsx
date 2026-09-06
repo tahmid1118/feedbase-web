@@ -46,7 +46,7 @@ export function PortalNav({ tenant, brand }: { tenant: string; brand: string }) 
           // second row. whitespace-nowrap because "Changelog" translates to
           // longer words (nl "Wijzigingslogboek") that would otherwise wrap
           // inside the pill and make the header two lines tall.
-          className="rounded-lg px-2.5 py-1 text-[13px] font-medium whitespace-nowrap transition-colors sm:px-3 sm:py-1.5 sm:text-sm"
+          className="rounded-lg px-2.5 py-1 text-xs font-medium whitespace-nowrap transition-colors sm:px-3 sm:py-1.5 sm:text-sm"
           style={
             item.active
               ? { backgroundColor: brand, color: "#fff" }

@@ -106,11 +106,15 @@ body {
      the vote button, which would drop to 41px. Pinning it keeps this change
      to type only, which is what was asked for.
 
-     Arbitrary px sizes (text-[13.5px] on the dense list cards) are already
-     tuned and deliberately do not scale. */
+     This only works if surfaces USE the scale. An earlier pass pinned card
+     and post text to arbitrary px (text-[15px], text-[13.5px]) so it would
+     stay put — which meant the root lever couldn't reach exactly the copy
+     that reads largest, and lowering the root did nothing to it. Those are
+     back on the scale. Anything still pinned here is 10-12px, i.e. already
+     at or below the smallest step, and stays pinned on purpose. */
   @media (width < 40rem) {
     :root {
-      font-size: 15px;
+      font-size: 14px;
       --spacing: 4px;
     }
   }
