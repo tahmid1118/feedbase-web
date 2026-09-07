@@ -114,7 +114,7 @@ body {
      at or below the smallest step, and stays pinned on purpose. */
   @media (width < 40rem) {
     :root {
-      font-size: 14px;
+      font-size: 14.5px;
       --spacing: 4px;
     }
   }
