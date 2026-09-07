@@ -164,21 +164,29 @@ export default async function DashboardPage() {
         </div>
       )}
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {/* Two-up on a phone, not one-per-row. These are four short numbers, so a
+          single column spent a full screen of scrolling on ~40 characters and
+          pushed the charts below it out of sight. The card's own padding, icon
+          and type come down to match the narrower column. */}
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {statCards.map((card) => (
           <div
             key={card.label}
-            className="rounded-xl border border-[#e399a3]/20 bg-white p-6"
+            className="rounded-xl border border-[#e399a3]/20 bg-white p-3 sm:p-6"
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-[#1c0a0c]/60">{card.label}</p>
-                <p className="mt-2 text-2xl font-bold text-[#1c0a0c] sm:text-3xl">
+            <div className="flex items-center justify-between gap-2">
+              {/* min-w-0 so a two-word label wraps inside the column instead of
+                  pushing the icon out of the card. */}
+              <div className="min-w-0">
+                <p className="text-xs text-[#1c0a0c]/60 sm:text-sm">
+                  {card.label}
+                </p>
+                <p className="mt-1 text-xl font-bold text-[#1c0a0c] sm:mt-2 sm:text-2xl lg:text-3xl">
                   {card.value}
                 </p>
               </div>
-              <div className={`rounded-full p-3 ${card.tint}`}>
-                <card.icon className="h-6 w-6" />
+              <div className={`shrink-0 rounded-full p-2 sm:p-3 ${card.tint}`}>
+                <card.icon className="h-4 w-4 sm:h-6 sm:w-6" />
               </div>
             </div>
           </div>
