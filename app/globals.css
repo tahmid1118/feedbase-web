@@ -120,6 +120,27 @@ body {
   }
 }
 
+/* iOS Safari zooms the whole page when a focused field's font is under 16px,
+   and inside a dialog that zoom clipped the form off the right edge of the
+   screen while the keyboard covered the bottom. Form fields are text-sm
+   (~13px) everywhere else by choice, so iOS alone gets 16px here.
+
+   Three details are load-bearing:
+   - UNLAYERED on purpose. Inside @layer base this would lose to Tailwind's
+     `text-sm` utility; unlayered declarations beat every layered one.
+   - `16px`, not `1rem`. The mobile root is 15px, so 1rem would still zoom.
+   - `-webkit-touch-callout` is supported only by iOS WebKit (every iOS
+     browser, since all use WebKit), so Android and desktop keep text-sm.
+   `maximum-scale=1` would also stop the zoom but disables pinch-zoom for
+   everyone (WCAG 1.4.4), so it is not used. */
+@supports (-webkit-touch-callout: none) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
 /* Variable-axis settings for the display face — the ONLY CSS a font swap might
    need, and only if the new face has axes worth setting. A face without these
    axes ignores them, so swapping in lib/fonts.ts alone is usually enough.

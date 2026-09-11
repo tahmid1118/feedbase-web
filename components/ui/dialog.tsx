@@ -47,18 +47,110 @@ function DialogOverlay({
   )
 }
 
+/**
+ * Keeps an open dialog inside the VISUAL viewport — the part of the screen not
+ * covered by the on-screen keyboard.
+ *
+ * The dialog is `position: fixed` and sized against the LAYOUT viewport
+ * (`max-h-[calc(100%-2rem)]`, centred with `top-1/2`). On iOS the keyboard
+ * shrinks only the visual viewport, never the layout one, so the dialog kept
+ * its full height and its lower half sat behind the keys. It could scroll, but
+ * its own bottom edge was under the keyboard, so the last fields (name, email
+ * on the portal submit form) could never be brought above it. Pinning `top`
+ * and `max-height` to `visualViewport` re-fits it to the visible area as the
+ * keyboard opens and closes.
+ *
+ * Inline styles rather than Tailwind `calc(var(--x) …)` arbitrary values: they
+ * override the classes cleanly and there is no arbitrary-value parsing to get
+ * wrong. The classes remain the fallback for SSR's first paint and for any
+ * browser without `visualViewport`.
+ */
+function attachVisualViewportFit(node: HTMLDivElement): () => void {
+  const vv = window.visualViewport
+  if (!vv) return () => {}
+
+  const fit = () => {
+    node.style.top = `${vv.offsetTop + vv.height / 2}px`
+    node.style.maxHeight = `${Math.max(vv.height - 32, 0)}px`
+  }
+
+  // Autoscroll: bring the focused field into the dialog's own scroll area.
+  // `nearest` is a no-op when it's already visible, so calling this on every
+  // viewport change is cheap and never yanks a field that's in view.
+  const reveal = () => {
+    const f = document.activeElement
+    if (
+      f instanceof HTMLElement &&
+      node.contains(f) &&
+      f.matches("input, textarea, select, [contenteditable='true']")
+    ) {
+      f.scrollIntoView({ block: "nearest" })
+    }
+  }
+
+  // The keyboard animates in AFTER focus, and the viewport resize that follows
+  // is what actually makes room — so reveal on resize too, not just on focus.
+  // The timeout covers moving between fields while the keyboard is already
+  // open, when no resize fires.
+  let timer: ReturnType<typeof setTimeout> | undefined
+  const onViewportChange = () => {
+    fit()
+    reveal()
+  }
+  const onFocusIn = () => {
+    reveal()
+    clearTimeout(timer)
+    timer = setTimeout(reveal, 350)
+  }
+
+  fit()
+  vv.addEventListener("resize", onViewportChange)
+  vv.addEventListener("scroll", onViewportChange)
+  node.addEventListener("focusin", onFocusIn)
+  return () => {
+    clearTimeout(timer)
+    vv.removeEventListener("resize", onViewportChange)
+    vv.removeEventListener("scroll", onViewportChange)
+    node.removeEventListener("focusin", onFocusIn)
+  }
+}
+
 function DialogContent({
   className,
   children,
   showCloseButton = true,
+  ref,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
 }) {
+  // Attached from a callback ref that returns its cleanup (React 19), not from
+  // an effect. Radix mounts the content only while the dialog is OPEN, so a
+  // mount-time effect would see null and never run; a callback ref fires each
+  // time it actually opens, and React runs the cleanup when it closes. Keeping
+  // the DOM writes in a plain module function also keeps them out of compiled
+  // code, where mutating a hook argument fails react-hooks/immutability. Any
+  // ref passed in by a caller is still honoured.
+  const setRefs = React.useCallback(
+    (n: HTMLDivElement | null) => {
+      if (typeof ref === "function") ref(n)
+      else if (ref) ref.current = n
+      if (!n) return
+      const detach = attachVisualViewportFit(n)
+      return () => {
+        detach()
+        if (typeof ref === "function") ref(null)
+        else if (ref) ref.current = null
+      }
+    },
+    [ref]
+  )
+
   return (
     <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Content
+        ref={setRefs}
         data-slot="dialog-content"
         className={cn(
           // max-h + overflow-y-auto: this is `position: fixed` and centered by

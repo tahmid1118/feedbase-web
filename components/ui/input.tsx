@@ -3,17 +3,17 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * `text-sm` at every width, which is a deliberate change from stock shadcn's
- * `text-base md:text-sm`. Stock renders 16px on a phone specifically because
- * iOS Safari zooms the page when a focused field is under 16px — but it left
- * every placeholder noticeably larger than the UI around it (measured: 15px
- * against 12-13px buttons and labels on the same screen).
+ * `text-sm` at every width, a deliberate change from stock shadcn's
+ * `text-base md:text-sm`, so placeholders match the UI around them (stock
+ * measured 15px against 12-13px buttons on the same screen).
  *
- * The trade is therefore explicit: fields now match their surroundings, and
- * iOS Safari will zoom in when one is focused (it zooms back out on blur).
- * The alternative — `maximum-scale=1` on the viewport — is not on the table,
- * since it disables pinch-zoom for everyone (WCAG 1.4.4). Restore
- * `text-base md:text-sm` here and in textarea.tsx to undo.
+ * EXCEPT on iOS, which gets 16px from an unlayered
+ * `@supports (-webkit-touch-callout: none)` rule in app/globals.css. iOS
+ * Safari zooms the page on focus of any field under 16px, and that was not a
+ * cosmetic cost: inside a dialog it pushed the form off the right edge while
+ * the keyboard covered the bottom. So the smaller size applies to Android and
+ * desktop only. `maximum-scale=1` is still not an option — it disables
+ * pinch-zoom for everyone (WCAG 1.4.4).
  */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
