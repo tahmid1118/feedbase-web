@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Linkify } from "@/components/linkify";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { CornerDownRight, Loader2, Pencil, Trash2 } from "@/components/icons";
@@ -412,6 +413,7 @@ function CommentCard({
   comment,
   viewer,
   tenant,
+  brand,
   onReply,
   onChanged,
   canReply = true,
@@ -419,6 +421,7 @@ function CommentCard({
   comment: Comment;
   viewer: Viewer;
   tenant: string;
+  brand: string;
   onReply: () => void;
   onChanged: () => void;
   canReply?: boolean;
@@ -519,7 +522,7 @@ function CommentCard({
         </div>
       ) : (
         <p className="mt-2 whitespace-pre-wrap break-words text-sm text-[#1c0a0c]/80">
-          {comment.body}
+          <Linkify color={brand}>{comment.body}</Linkify>
         </p>
       )}
 
@@ -613,6 +616,7 @@ function ThreadView({
         comment={root}
         viewer={viewer}
         tenant={tenant}
+        brand={brand}
         onReply={() => setReplyTo(isReplying ? null : root.id)}
         onChanged={onChanged}
         canReply={canReply}
@@ -625,6 +629,7 @@ function ThreadView({
               comment={reply}
               viewer={viewer}
               tenant={tenant}
+              brand={brand}
               onReply={() => setReplyTo(root.id)}
               onChanged={onChanged}
               canReply={canReply}

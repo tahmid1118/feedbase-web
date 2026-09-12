@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Linkify } from "@/components/linkify";
 import { useSession } from "next-auth/react";
 import { CornerDownRight, Loader2, ShieldAlert } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
@@ -287,7 +288,7 @@ function CommentItem({
         )}
 
         <p className="mt-2 whitespace-pre-wrap break-words text-sm text-[#1c0a0c]/80">
-          {node.body}
+          <Linkify>{node.body}</Linkify>
         </p>
 
         {canReply && (
