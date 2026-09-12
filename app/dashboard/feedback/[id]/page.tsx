@@ -422,7 +422,7 @@ export default function PostDetailPage() {
           </div>
         </div>
 
-        <p className="text-sm whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
+        <p className="text-sm whitespace-pre-wrap break-words text-[#1c0a0c]/70 sm:text-base">
           {post.description}
         </p>
         {post.attachments && post.attachments.length > 0 && (

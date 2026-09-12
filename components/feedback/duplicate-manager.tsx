@@ -126,7 +126,7 @@ export function DuplicateManager({
                 onClick={() => markDuplicate(s.id)}
                 className="flex w-full items-start justify-between gap-2 rounded-md px-2 py-2 text-left text-sm hover:bg-[#fdf8f9] disabled:opacity-50"
               >
-                <span className="line-clamp-2 text-[#1c0a0c]">{s.title}</span>
+                <span className="line-clamp-2 break-words text-[#1c0a0c]">{s.title}</span>
                 <span className="flex shrink-0 items-center gap-1 text-xs text-[#1c0a0c]/50">
                   <ThumbsUp className="h-3 w-3" />
                   {s.vote_count}

@@ -518,7 +518,7 @@ function CommentCard({
           </div>
         </div>
       ) : (
-        <p className="mt-2 whitespace-pre-wrap text-sm text-[#1c0a0c]/80">
+        <p className="mt-2 whitespace-pre-wrap break-words text-sm text-[#1c0a0c]/80">
           {comment.body}
         </p>
       )}

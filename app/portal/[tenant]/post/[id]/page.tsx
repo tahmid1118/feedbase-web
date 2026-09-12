@@ -169,7 +169,7 @@ export default async function PortalPostPage({
           </div>
         </div>
 
-        <p className="text-sm leading-relaxed whitespace-pre-wrap text-[#1c0a0c]/70 sm:text-base">
+        <p className="text-sm leading-relaxed whitespace-pre-wrap break-words text-[#1c0a0c]/70 sm:text-base">
           {post.description}
         </p>
 

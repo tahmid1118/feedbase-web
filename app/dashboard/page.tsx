@@ -257,7 +257,7 @@ export default async function DashboardPage() {
                       <ThumbsUp className="h-3.5 w-3.5 text-[#c74959]" />
                       {post.vote_count}
                     </div>
-                    <span className="line-clamp-1 font-medium text-[#1c0a0c]">
+                    <span className="line-clamp-1 break-words font-medium text-[#1c0a0c]">
                       {post.title}
                     </span>
                   </div>

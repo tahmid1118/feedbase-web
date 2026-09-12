@@ -168,7 +168,7 @@ export function BoardList({
                 </span>
               </div>
 
-              <p className="line-clamp-2 text-xs leading-tight text-[#1c0a0c]/70 sm:text-sm sm:leading-normal">
+              <p className="line-clamp-2 break-words text-xs leading-tight text-[#1c0a0c]/70 sm:text-sm sm:leading-normal">
                 {post.description}
               </p>
 
