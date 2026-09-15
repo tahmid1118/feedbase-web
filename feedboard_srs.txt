@@ -586,6 +586,15 @@ Version 1.2
                           posts — change status, pin/unpin, or delete — and delete
                           any of a post's comments (comment text is not editable —
                           it belongs to its author).
+                          The admin can also CLEAR ALL feedback in a workspace
+                          in one action. Because this destroys a customer's
+                          entire board, it requires typing that workspace's own
+                          subdomain to confirm, and the confirmation is
+                          verified again by the server — a mismatch deletes
+                          nothing. Clearing removes every post together with
+                          its comments, votes, tags and roadmap items; the
+                          workspace, its members, tag definitions, roadmap
+                          columns and the changelog are unaffected.
     FR-AD2a Accounts ... View every billing account (email, owner name, the
                           workspaces it owns, and its plan); grant/revoke a plan
                           (a comp — a paid plan with no charge) for the WHOLE

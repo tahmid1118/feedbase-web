@@ -1261,6 +1261,7 @@ Workspaces (any tenant):
 - `GET    /admin/workspaces/:id/posts` — list a workspace's posts (moderation view).
 - `PUT    /admin/workspaces/:id/posts/:postId/status` · `.../pin` — moderate status (roadmap-synced) / pin.
 - `DELETE /admin/workspaces/:id/posts/:postId` — delete a post.
+- `DELETE /admin/workspaces/:id/posts` — **clear ALL feedback in a workspace.** Body must carry `{ confirm: "<the workspace's subdomain>" }`; the handler re-checks it against `tenants.subdomain` and answers **`400 clear_confirm_mismatch`** having deleted nothing, so a call aimed at the wrong workspace cannot wipe it. Returns `{ deleted, filesRemoved }`. Dependents come out through the schema (every FK to `posts(id)` is `ON DELETE CASCADE`), so this also removes those posts' comments, votes, tags links, **roadmap items** and attachment rows — and unlinks the attachment **files** best-effort, since a whole-board clear would otherwise orphan them on disk. The workspace, its tag definitions, its roadmap **columns** and the **changelog** all survive. `404 workspace_not_found` for an unknown id.
 - `GET    /admin/workspaces/:id/posts/:postId/comments` · `DELETE /admin/workspaces/:id/comments/:commentId` — view / delete comments (no editing).
 
 Accounts (subscriptions are per **account** — the plan covers every workspace the account owns):

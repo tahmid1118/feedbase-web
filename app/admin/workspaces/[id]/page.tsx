@@ -76,12 +76,20 @@ export default function AdminWorkspacePostsPage() {
   // board they own). Server-enforced too; this just gates showing the button.
   const [canEnter, setCanEnter] = useState(false);
   const [entering, setEntering] = useState(false);
+  // The workspace's own subdomain — what the admin must type to confirm a wipe.
+  const [subdomain, setSubdomain] = useState("");
+  const [clearOpen, setClearOpen] = useState(false);
+  const [clearConfirm, setClearConfirm] = useState("");
+  const [clearing, setClearing] = useState(false);
 
   useEffect(() => {
     if (!token || !id) return;
     adminApi.getWorkspace(token, id).then((res) => {
-      const tenant = res.data?.tenant as { name?: string } | undefined;
+      const tenant = res.data?.tenant as
+        | { name?: string; subdomain?: string }
+        | undefined;
       if (tenant?.name) setWorkspaceName(tenant.name);
+      if (tenant?.subdomain) setSubdomain(tenant.subdomain);
       const members = (res.data?.members ?? []) as {
         email: string;
         is_active: number;
@@ -188,6 +196,26 @@ export default function AdminWorkspacePostsPage() {
     } else toast.error(res.message || "Failed");
   };
 
+  /**
+   * Delete EVERY post in this workspace. The typed confirmation is re-checked
+   * server-side against the subdomain, so this cannot fire at the wrong
+   * workspace even if the dialog were bypassed.
+   */
+  const clearAllFeedback = async () => {
+    if (!token || clearConfirm.trim() !== subdomain) return;
+    setClearing(true);
+    const res = await adminApi.clearWorkspaceFeedback(token, id, clearConfirm.trim());
+    setClearing(false);
+    if (res.ok) {
+      setPosts([]);
+      setClearOpen(false);
+      setClearConfirm("");
+      const n = res.data?.deleted ?? 0;
+      toast.success(n === 1 ? "Deleted 1 post" : `Deleted ${n} posts`);
+      load(status, search);
+    } else toast.error(res.message || "Failed");
+  };
+
   // --- Comment moderation ---
   const [commentsPost, setCommentsPost] = useState<AdminPost | null>(null);
   const [comments, setComments] = useState<AdminComment[]>([]);
@@ -253,6 +281,69 @@ export default function AdminWorkspacePostsPage() {
             {t("admin.openInDashboard")}
           </Button>
         )}
+
+        {/* Most destructive action in the panel, so it is deliberately plain
+            (not a primary button) and gated behind typing the subdomain. */}
+        <AlertDialog
+          open={clearOpen}
+          onOpenChange={(o) => {
+            setClearOpen(o);
+            if (!o) setClearConfirm("");
+          }}
+        >
+          <AlertDialogTrigger asChild>
+            <Button
+              variant="outline"
+              className="shrink-0 text-red-600 hover:bg-red-50 hover:text-red-700"
+            >
+              <Trash2 className="h-4 w-4" />
+              Clear all feedback
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>
+                Clear all feedback in {workspaceName || "this workspace"}?
+              </AlertDialogTitle>
+              <AlertDialogDescription asChild>
+                <div className="space-y-2">
+                  <p>
+                    This permanently deletes <strong>every feedback post</strong>{" "}
+                    in this workspace, together with their comments, votes,
+                    attachments and any roadmap items built from them. The
+                    changelog is not affected.
+                  </p>
+                  <p>
+                    This cannot be undone, and the workspace owner is not
+                    notified. Type the subdomain{" "}
+                    <strong className="text-[#1c0a0c]">{subdomain}</strong> to
+                    confirm.
+                  </p>
+                </div>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <Input
+              value={clearConfirm}
+              onChange={(e) => setClearConfirm(e.target.value)}
+              placeholder={subdomain}
+              autoComplete="off"
+            />
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                variant="destructive"
+                disabled={clearing || clearConfirm.trim() !== subdomain || !subdomain}
+                onClick={(e) => {
+                  e.preventDefault(); // keep the dialog open until the call returns
+                  clearAllFeedback();
+                }}
+              >
+                {clearing ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+                Delete all feedback
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">

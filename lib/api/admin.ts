@@ -294,6 +294,22 @@ export const adminApi = {
     request(`/workspaces/${id}/posts/${postId}/pin`, "PUT", token, { isPinned }),
   deleteWorkspacePost: (token: string | undefined, id: number, postId: number) =>
     request(`/workspaces/${id}/posts/${postId}`, "DELETE", token),
+  /**
+   * Delete EVERY post in a workspace. `confirm` must be the workspace's own
+   * subdomain — the server re-checks it and deletes nothing on a mismatch, so
+   * the typed confirmation is a real guard rather than a client-side courtesy.
+   */
+  clearWorkspaceFeedback: (
+    token: string | undefined,
+    id: number,
+    confirm: string
+  ) =>
+    request<{ deleted: number; filesRemoved: number }>(
+      `/workspaces/${id}/posts`,
+      "DELETE",
+      token,
+      { confirm }
+    ),
 
   // Comment moderation within a workspace
   listPostComments: (token: string | undefined, id: number, postId: number) =>
