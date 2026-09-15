@@ -38,7 +38,10 @@ export default async function PortalBoardPage({
   const brand = info?.branding_primary_color || DEFAULT_BRAND;
 
   return (
-    <div className="space-y-3 sm:space-y-6">
+    // `max-sm:pb-20` reserves room for the floating "Give feedback" button
+    // (56px tall, resting 20px above the footer), so the last card can scroll
+    // clear of it instead of ending up underneath.
+    <div className="space-y-3 max-sm:pb-20 sm:space-y-6">
       {/* One row on a phone too. "Give Feedback" is a floating button on mobile
           (see FeedbackSubmit), so this row only carries Share there — stacking
           it cost a full row of height for a single small button. */}

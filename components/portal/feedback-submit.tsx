@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { MessageSquare, Loader2, CheckCircle2, LogIn } from "@/components/icons";
@@ -43,6 +43,47 @@ const TYPES = [
 
 // Mirror the backend's guest-email check so the form fails fast.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/**
+ * Keeps the phone FAB clear of the portal footer by lifting it exactly as far
+ * as the footer has entered the viewport, so it rests just above the footer
+ * instead of on top of its legal links and "Want your own board?" bar.
+ *
+ * It used to HIDE once the footer was on screen. On a board short enough not
+ * to scroll — an empty one, i.e. precisely the board that most needs its first
+ * post — the footer is on screen from the start, so the only way to post was
+ * permanently invisible and unclickable. Lifting keeps it reachable in every
+ * state, which is why there is no hidden state left to manage.
+ *
+ * Attached from a callback ref returning its cleanup (React 19); the DOM write
+ * is a CSS variable consumed by a `max-sm:` translate, so desktop ignores it.
+ * Re-measured on scroll, resize and body size changes — the last covers the
+ * infinite-scroll list growing the page without any scroll event.
+ */
+function attachFooterClearance(button: HTMLButtonElement | null) {
+  const footer = document.querySelector("footer");
+  if (!button || !footer) return;
+  let frame = 0;
+  const measure = () => {
+    frame = 0;
+    const overlap = window.innerHeight - footer.getBoundingClientRect().top;
+    button.style.setProperty("--fab-lift", `${Math.max(0, Math.round(overlap))}px`);
+  };
+  const schedule = () => {
+    if (!frame) frame = requestAnimationFrame(measure);
+  };
+  measure();
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+  const ro = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(schedule);
+  ro?.observe(document.body);
+  return () => {
+    if (frame) cancelAnimationFrame(frame);
+    window.removeEventListener("scroll", schedule);
+    window.removeEventListener("resize", schedule);
+    ro?.disconnect();
+  };
+}
 
 export function FeedbackSubmit({
   tenant,
@@ -164,59 +205,15 @@ export function FeedbackSubmit({
     if (!next) setTimeout(reset, 200);
   };
 
-  // On a phone this button is a FAB pinned to the bottom of the viewport, which
-  // means at the end of the page it lands squarely on the footer's legal links
-  // and the "Want your own feedback board?" bar. Padding the page to clear it
-  // would leave a dead strip under a full-bleed bar, and growing that bar is
-  // the opposite of what it was shrunk down for — so instead the button steps
-  // aside once the footer is actually on screen, and comes straight back when
-  // the visitor scrolls up. Only below `sm`: from there up the button is
-  // `static` in the header row and never overlaps anything.
-  const [footerInView, setFooterInView] = useState(false);
-  useEffect(() => {
-    const footer = document.querySelector("footer");
-    if (!footer || typeof IntersectionObserver === "undefined") return;
-    const io = new IntersectionObserver((entries) =>
-      setFooterInView(entries.some((e) => e.isIntersecting))
-    );
-    io.observe(footer);
-    return () => io.disconnect();
-  }, []);
-
-  // The visual hiding is `max-sm:`-scoped CSS, but aria-hidden/tabIndex are DOM
-  // attributes with no breakpoint of their own — so this tracks the same
-  // breakpoint in JS. Without it the desktop button, which is always beside a
-  // visible footer, would be marked hidden from assistive tech and pulled out
-  // of the tab order while still being perfectly visible and clickable.
-  const [isCompact, setIsCompact] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 639.98px)"); // Tailwind `sm`
-    const apply = () => setIsCompact(mq.matches);
-    apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
-  }, []);
-
-  /** Off-screen: only ever true on a phone, with the footer reached. */
-  const fabHidden = isCompact && footerInView;
-
   return (
     <>
       <Button
+        ref={attachFooterClearance}
         onClick={() => setOpen(true)}
-        // `max-sm:` on the hidden state so the desktop button — which is
-        // `static` and inline, not floating — can never be moved or hidden by
-        // it. The a11y attributes use `fabHidden`, which additionally checks
-        // the breakpoint: an opacity-0 button left focusable would be a
-        // keyboard trap, but marking the *visible* desktop button hidden would
-        // be worse.
-        aria-hidden={fabHidden ? true : undefined}
-        tabIndex={fabHidden ? -1 : undefined}
-        className={`fixed right-5 bottom-5 z-40 h-14 shrink-0 gap-2 rounded-full px-5 text-white shadow-lg shadow-[#c74959]/30 transition-[transform,opacity] duration-200 ease-out hover:opacity-90 sm:static sm:h-8 sm:rounded-lg sm:px-2.5 sm:shadow-none sm:transition-none ${
-          footerInView
-            ? "max-sm:pointer-events-none max-sm:translate-y-28 max-sm:opacity-0"
-            : ""
-        }`}
+        // A FAB pinned to the viewport bottom on a phone, `static` in the
+        // header row from `sm` up. The lift is `max-sm:`-scoped so it can
+        // never move the desktop button. See attachFooterClearance.
+        className="fixed right-5 bottom-5 z-40 h-14 shrink-0 gap-2 rounded-full px-5 text-white shadow-lg shadow-[#c74959]/30 hover:opacity-90 max-sm:-translate-y-(--fab-lift) sm:static sm:h-8 sm:rounded-lg sm:px-2.5 sm:shadow-none"
         style={{ backgroundColor: brand }}
       >
         <MessageSquare className="h-5 w-5 sm:h-4 sm:w-4" />
