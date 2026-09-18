@@ -19,8 +19,21 @@ const OPTIONS: { value: BoardSortValue; key: string }[] = [
   { value: "least_voted", key: "sort.leastUpvoted" },
 ];
 
-/** Sort control for the public board — writes `?sort=` so the server re-renders. */
-export function BoardSort({ value }: { value: BoardSortValue }) {
+/**
+ * Sort control for the public board — writes `?sort=` so the server re-renders.
+ *
+ * `compact` is the phone variant: it rides in the page header row beside Share
+ * (see app/portal/[tenant]/page.tsx) rather than taking a row of its own, so it
+ * matches that row's `size="sm"` buttons and sizes to its label instead of the
+ * fixed 168px the desktop control uses to stop the tabs row shifting.
+ */
+export function BoardSort({
+  value,
+  compact = false,
+}: {
+  value: BoardSortValue;
+  compact?: boolean;
+}) {
   const { t } = useTranslation();
   const router = useRouter();
   const pathname = usePathname();
@@ -36,8 +49,21 @@ export function BoardSort({ value }: { value: BoardSortValue }) {
 
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="h-9 w-[168px] gap-2">
-        <ArrowUpDown className="h-4 w-4 text-[#1c0a0c]/50" />
+      {/* `size="sm"` is what actually sets the height: the primitive's own
+          `data-[size=default]:h-10` out-ranks a plain `h-*` class here.
+          Compact also drops the leading icon and caps its width: sharing the
+          row with the page title means a long label ("Most upvoted", and more
+          so its translations) would otherwise push the title onto two lines.
+          The chevron still marks it as a dropdown. */}
+      <SelectTrigger
+        size={compact ? "sm" : "default"}
+        className={
+          compact
+            ? "w-auto max-w-[42vw] gap-1 px-2.5 text-xs"
+            : "h-9 w-[168px] gap-2"
+        }
+      >
+        {!compact && <ArrowUpDown className="h-4 w-4 text-[#1c0a0c]/50" />}
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

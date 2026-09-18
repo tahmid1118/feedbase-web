@@ -57,6 +57,12 @@ export default async function PortalBoardPage({
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-2">
+          {/* Phone only: the sort control joins this row instead of owning one
+              below the tabs — a whole row for one select is the most expensive
+              thing on a 390px board. Desktop keeps it beside the tabs. */}
+          <div className="sm:hidden">
+            <BoardSort value={sort} compact />
+          </div>
           <SharePost
             title={info?.name || t("portal.boardTitle")}
             brand={brand}
@@ -74,7 +80,9 @@ export default async function PortalBoardPage({
       <div className="space-y-2 sm:space-y-3">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <BoardTabs value={status} />
-          <BoardSort value={sort} />
+          <div className="hidden sm:block">
+            <BoardSort value={sort} />
+          </div>
         </div>
 
         {/* Keyed on status+sort: switching tabs/sort should start a fresh
