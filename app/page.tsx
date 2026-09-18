@@ -15,6 +15,7 @@ import { AdSwap } from "@/components/landing/ad-swap";
 import { AuraBadge } from "@/components/landing/aura-badge";
 import { BoostDomainRatingBadge } from "@/components/landing/boost-domain-rating-badge";
 import { FazierBadge } from "@/components/landing/fazier-badge";
+import { FindToolForBadge } from "@/components/landing/find-tool-for-badge";
 import { LaunchZoneBadge } from "@/components/landing/launchzone-badge";
 import { ToolfioBadge } from "@/components/landing/toolfio-badge";
 import { TwelveToolsBadge } from "@/components/landing/twelve-tools-badge";
@@ -509,6 +510,7 @@ export default async function HomePage() {
               <TwelveToolsBadge />
               <ToolfioBadge />
               <BoostDomainRatingBadge />
+              <FindToolForBadge />
             </div>
 
             {/* Reciprocal ad exchange — MARKETING SITE ONLY, never a tenant
