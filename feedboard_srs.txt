@@ -77,6 +77,11 @@ Version 1.2
 3.1 Authentication & Accounts
     - Email/password authentication using JWT bearer tokens.
     - The session carries the user identity, tenant, and role.
+    - A signed-in user stays signed in for up to 90 days of inactivity; any
+      use of the application extends that period. Sessions end early only
+      when the user signs out, another device takes the session over, or an
+      administrator ends it — in which case the device is signed out on its
+      next action and returned to the sign-in page.
     - Profile management: name, contact, avatar upload, and password change.
     FR-G1  Google sign-in  A visitor may create an account or sign in with
                           "Continue with Google", offered on both the sign-in and

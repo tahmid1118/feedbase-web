@@ -138,7 +138,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   session: {
     strategy: "jwt",
-    maxAge: 60 * 60 * 8,
+    // 90 days, rolling: the JWT is re-issued whenever the session is read, so
+    // this is 90 days of INACTIVITY, not 90 days from signing in. It was 8
+    // hours, which signed people out roughly daily for no security gain we
+    // actually rely on — a session is killed server-side (revoked device
+    // session) rather than by waiting for the cookie to lapse.
+    //
+    // It must not outlive the backend access token this session carries
+    // (`ACCESS_TOKEN_EXPIRE`, also 90d): the cookie surviving the token it
+    // holds is a signed-in-but-every-request-fails state.
+    maxAge: 60 * 60 * 24 * 90,
   },
   trustHost: true,
   secret: process.env.AUTH_SECRET,

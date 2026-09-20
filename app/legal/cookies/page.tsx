@@ -44,7 +44,7 @@ export default function CookiesPage() {
               <code key="__Secure-authjs.session-token" className="text-xs">__Secure-authjs.session-token</code>,
               "Keeps you signed in. Scoped to our parent domain so one login also works on your workspace's public board subdomain. HttpOnly, so JavaScript cannot read it.",
               "Strictly necessary",
-              "8 hours",
+              "90 days",
             ],
             [
               <code key="authjs.csrf-token" className="text-xs">authjs.csrf-token</code>,
