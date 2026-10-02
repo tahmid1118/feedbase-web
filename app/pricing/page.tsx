@@ -26,7 +26,12 @@ export const metadata: Metadata = {
 };
 
 /** One Product/Offer per tier, prices pulled from lib/plans.ts so this can't
-    drift from what the pricing cards on this same page actually show. */
+    drift from what the pricing cards on this same page actually show.
+    `image` is required for Google's Merchant listings experience — Search
+    Console flagged all three Product entries for a missing "image" field
+    (a critical issue: it blocks the rich result entirely). There's no
+    per-plan screenshot, so every tier points at the same square brand mark;
+    it has to be an absolute URL, which is what appUrl() is for. */
 function jsonLd() {
   return {
     "@context": "https://schema.org",
@@ -35,6 +40,7 @@ function jsonLd() {
       "@type": "Product",
       position: i + 1,
       name: `FeedBoard ${plan.name}`,
+      image: appUrl("/logo-512.png"),
       offers: {
         "@type": "Offer",
         price: String(plan.monthlyPrice),
